@@ -12,3 +12,6 @@ Learnbgame面向所有人开放，每个人，每个组织都可以通过合适�
 
 
 由于现实之中的资金，技术等问题，所以目前还是很缓慢，敬请期待
+
+# 关于[Fofight](Fofight.md):
+	Forever Fight<——Fofight——>45——>Four Five
