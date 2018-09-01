@@ -1,4 +1,4 @@
-# Learnbgame
+# [Learnbgame](http://www.learnbgame.com/)
 Learnbgame是一种理念，即Learn by Game，我希望学习的过程应该是自然的，自由的，直观的，并且是富有乐趣的。
 Learnbgame面向所有人开放，每个人，每个组织都可以通过合适的方式参与进来，自由参与，自由退出，但是，这并不意味着你可以为所欲为，自由是所追求的，混乱是所不想看到的。
 
