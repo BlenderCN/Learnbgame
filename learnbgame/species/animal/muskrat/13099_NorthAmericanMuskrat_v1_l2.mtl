@@ -1,0 +1,28 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 16.01.2012 10:49:30
+
+newmtl 13099_North_American_Muskrat
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka North American Muskrat_diffuse.jpg
+	map_Kd North American Muskrat_diffuse.jpg
+
+newmtl North_American_Muskrat_mustache
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.3098 0.2157 0.1176
+	Kd 0.3098 0.2157 0.1176
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000

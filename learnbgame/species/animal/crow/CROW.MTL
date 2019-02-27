@@ -1,0 +1,16 @@
+# Wavefront material library
+# Tue Aug 03 07:53:55 1999
+# Created with Viewpoint Interchange www.viewpoint.com
+
+newmtl crow_body
+  Ka 0 0 0
+  Kd 0 0 0
+  Ks 0 0 0
+  illum 2
+  map_Kd images\crow.tif
+
+newmtl crow_eye
+  Ka 0 0 0
+  Kd 0.0392157 0.0117647 0.0117647
+  Ks 0.0392157 0.0117647 0.0117647
+  illum 2

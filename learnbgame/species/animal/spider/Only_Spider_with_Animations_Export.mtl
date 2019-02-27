@@ -1,0 +1,74 @@
+# Blender MTL File: 'Only_Spider_with_Animations_Export.blend'
+# Material Count: 6
+
+newmtl Spider
+Ns 37.254902
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.400000 0.400000 0.400000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Spinnen_Bein_tex.jpg
+map_Bump  haar_detail_NRM.jpg
+map_Ks  Spinnen_Bein_tex_2.jpg
+
+newmtl Spider_Eye
+Ns 849.285036
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump -bm 0.500000 haar_detail_NRM.jpg
+
+newmtl Spider_Fur
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.724827 0.724827 0.724827
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd SH3.png
+map_d  SH3.png
+
+newmtl Spider_Fur_NONE
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.724827 0.724827 0.724827
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd  SH3.png
+map_d  SH3.png
+
+newmtl Spider_NONE
+Ns 37.254902
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.400000 0.400000 0.400000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump  haar_detail_NRM.jpg
+map_Kd  Spinnen_Bein_tex_2.jpg
+map_Ks  Spinnen_Bein_tex_2.jpg
+
+newmtl Spider_teeth
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.413204 0.311263 0.221805
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Bump -bm 0.700000 haar_detail_NRM.jpg
