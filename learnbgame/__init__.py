@@ -22,15 +22,25 @@ bl_info = {
     'support': 'COMMUNITY',
     'category': 'Add Mesh'
     }
-
+##########################Import Module############################
 
 import os
 
+import sys
+sys.path.append(sys.path.append("/root/Software/anaconda3/lib/python3.7/site-packages"))
+import openbabel
+import pybel
+
+import json
+
 import bgl,blf
 
-# noinspection PyUnresolvedReferences
 import bpy
-# noinspection PyUnresolvedReferences
+
+from math import acos
+
+from mathutils import Vector
+
 from bpy.types import (
     Panel, 
     Operator,
@@ -46,7 +56,15 @@ from bpy.props import (
     StringProperty,
     BoolProperty,
     )
-from bpy.utils import previews
+from bpy.utils import (
+    previews,
+    register_class,
+    unregister_class
+    )
+
+##########################Import Module############################
+
+##########################Variable################################
 
 icons_collection = {}
     
@@ -58,7 +76,13 @@ for icon in os.listdir(icons_dir):
 icons_collection["main"] = icons
 
 atoms_dir = os.path.join(os.path.dirname(__file__), "atoms")
-atoms_list = os.listdir(atoms_dir)
+atoms_file = open(os.path.join(atoms_dir,"atoms.json"))
+atoms_list = json.load(atoms_file)
+
+molecules_dir = os.path.join(os.path.dirname(__file__), "molecules")
+with open(os.path.join(molecules_dir, 'atoms.json')) as in_file:
+    atom_data = json.load(in_file)
+
 
 animals_dir = os.path.join(os.path.dirname(__file__), "species/animal")
 animals_list = os.listdir(animals_dir)
@@ -74,6 +98,8 @@ planets_list = os.listdir(planets_dir)
 
 icons_dir = os.path.join(os.path.dirname(__file__), "icons")
 icons_list = os.listdir(icons_dir)
+
+##########################Variable################################
 
 ########################UI##################################
 class LEARNBGAME_ATOM(Panel):
@@ -194,11 +220,14 @@ class LEARNBGAME_PLANET(Panel):
 
 class ATOM_PROPERTY(PropertyGroup):
     atom : EnumProperty(
-        name = "Atom",
-        items=(
-            ('H',"Hydrogen","add H"),
-            ("He","Heliem","add He")
-            )
+        name = "Atoms",
+        items= [
+        (
+            atom['symbol'],
+            atom['name'],
+            "add " + atom['name'],
+            ) for atom in atoms_list
+        ]
         )
 
 class BRAND_PROPERTY(PropertyGroup):
@@ -254,8 +283,6 @@ class SPECIES_PROPERTY(PropertyGroup):
         ]
         )
 
-
-
 class PLANET_PROPERTY(PropertyGroup):
     planet : EnumProperty(
         name = "Planet",
@@ -302,6 +329,7 @@ class PLANT_ADD(Operator):
         obj[0].name = plant_name
         obj[0].location = bpy.context.scene.cursor_location
         return {'FINISHED'}
+
 class MICRABE_ADD(Operator):
     bl_idname = "species.micrabe"
     bl_label = "Micrabe+"
@@ -318,6 +346,7 @@ class MICRABE_ADD(Operator):
         obj[0].name = micrabe_name
         obj[0].location = bpy.context.scene.cursor_location
         return {'FINISHED'}
+
 #########################Species Execute#######################
 
 #########################Planet Execute###################################
@@ -346,8 +375,120 @@ class MOLECULE_ADD(Operator):
     bl_label = "Molecule+"
 
     def execute(self,context):
+        self.draw_molecule(context,center=(0, 0, 0), show_bonds=True, join=True)
 
         return {'FINISHED'}
+
+    def draw_molecule(self,context,center=(0, 0, 0), show_bonds=True, join=True):
+
+        smile_text = context.scene.molecule.smile_format
+        molecule = pybel.readstring("smi", smile_text)
+        molecule.make3D()
+
+        shapes = []
+
+        bpy.ops.mesh.primitive_uv_sphere_add()
+        sphere = bpy.context.object
+
+        # Initialize bond material if it's going to be used.
+        if show_bonds:
+            bpy.data.materials.new(name='bond')
+            bpy.data.materials['bond'].diffuse_color = atom_data['bond']['color']
+            bpy.data.materials['bond'].specular_intensity = 0.2
+            bpy.ops.mesh.primitive_cylinder_add()
+            cylinder = bpy.context.object
+            cylinder.active_material = bpy.data.materials['bond']
+
+        for atom in molecule.atoms:
+            element = atom.type
+            if element not in atom_data:
+                element = 'undefined'
+
+            if element not in bpy.data.materials:
+                key = element
+                bpy.data.materials.new(name=key)
+                bpy.data.materials[key].diffuse_color = atom_data[key]['color']
+                bpy.data.materials[key].specular_intensity = 0.2
+
+            atom_sphere = sphere.copy()
+            atom_sphere.data = sphere.data.copy()
+            atom_sphere.location = [l + c for l, c in
+                                    zip(atom.coords, center)]
+            scale = 1 if show_bonds else 2.5
+            atom_sphere.dimensions = [atom_data[element]['radius'] *scale * 2] * 3
+            atom_sphere.active_material = bpy.data.materials[element]
+            bpy.context.scene.collection.objects.link(atom_sphere)
+            shapes.append(atom_sphere)
+
+        for bond in (openbabel.OBMolBondIter(molecule.OBMol) if show_bonds else []):
+            start = molecule.atoms[bond.GetBeginAtom().GetIndex()].coords
+            end = molecule.atoms[bond.GetEndAtom().GetIndex()].coords
+            diff = [c2 - c1 for c2, c1 in zip(start, end)]
+            cent = [(c2 + c1) / 2 for c2, c1 in zip(start, end)]
+            mag = sum([(c2 - c1) ** 2 for c1, c2 in zip(start, end)]) ** 0.5
+
+            v_axis = Vector(diff).normalized()
+            v_obj = Vector((0, 0, 1))
+            v_rot = v_obj.cross(v_axis)
+
+            # This check prevents gimbal lock (ie. weird behavior when v_axis is
+            # close to (0, 0, 1))
+            if v_rot.length > 0.01:
+                v_rot = v_rot.normalized()
+                axis_angle = [acos(v_obj.dot(v_axis))] + list(v_rot)
+            else:
+                v_rot = Vector((1, 0, 0))
+                axis_angle = [0] * 4
+            order = bond.GetBondOrder()
+            if order not in range(1, 4):
+                sys.stderr.write("Improper number of bonds! Defaulting to 1.\n")
+                bond.GetBondOrder = 1
+
+            if order == 1:
+                trans = [[0] * 3]
+            elif order == 2:
+                trans = [[1.4 * atom_data['bond']['radius'] * x for x in v_rot],
+                         [-1.4 * atom_data['bond']['radius'] * x for x in v_rot]]
+            elif order == 3:
+                trans = [[0] * 3,
+                         [2.2 * atom_data['bond']['radius'] * x for x in v_rot],
+                         [-2.2 * atom_data['bond']['radius'] * x for x in v_rot]]
+
+            for i in range(order):
+                bond_cylinder = cylinder.copy()
+                bond_cylinder.data = cylinder.data.copy()
+                bond_cylinder.dimensions = [atom_data['bond']['radius'] * scale *2] * 2 + [mag]
+                bond_cylinder.location = [c + scale * v for c,v in zip(cent, trans[i])]
+                bond_cylinder.rotation_mode = 'AXIS_ANGLE'
+                bond_cylinder.rotation_axis_angle = axis_angle
+                bpy.context.scene.collection.objects.link(bond_cylinder)
+                shapes.append(bond_cylinder)
+
+        # Remove primitive meshes
+        #bpy.ops.object.select_all(action='DESELECT')
+        sphere.select_set(True)
+        if show_bonds:
+            cylinder.select_set(True)
+        # If the starting cube is there, remove it
+        #if 'Cube' in bpy.data.objects.keys():
+            #bpy.data.objects.get('Cube').select_set(True)
+        bpy.ops.object.delete()
+
+        for shape in shapes:
+            shape.select_set(True)
+        bpy.context.view_layer.objects.active = shapes[0]
+        bpy.ops.object.shade_smooth()
+        if join:
+            bpy.ops.object.join()
+
+        bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='MEDIAN')
+        bpy.context.scene.update()
+        obj = bpy.context.selected_objects
+        obj[0].name = smile_text
+        obj[0].location = bpy.context.scene.cursor_location
+
+        return {'FINISHED'}
+
 
 #############################Molecule Execute################################
 
@@ -413,78 +554,6 @@ class BRAND_DISPLAY(Operator):
 ############################Brand Execute###################################
 
 
-"""
-class BIOLOGY_ANIMAL_ADD(Menu):
-    bl_idname = "biology.animal.add"
-    bl_label = "Animal"
-
-    def draw(self,context):
-        global icons_collection
-        icons = icons_collection["main"]
-        layout = self.layout
-        for animal in animals_list:
-            layout.operator(
-                "biology_animal."+animal,
-                text=animal.capitalize(),
-                icon_value=icons[animal if animal+".png" in icons_list else "learnbgame"].icon_id)
-
-
-class BIOLOGY_PLANT_ADD(Menu):
-    bl_idname = "biology.plant.add"
-    bl_label = "Plant"
-
-    def draw(self,context):
-        global icons_collection
-        icons = icons_collection["main"]
-        layout = self.layout
-        scene = context.scene
-        plants_add = scene.plants_add
-        row = layout.column()
-        row.prop(plants_add,"plant_add",text="")
-        #layout.operator("biology_animal.dog",text="Dog",icon_value=icons["dog"].icon_id)
-        plant_name = plants_add.plant_add
-        bpy.ops.import_scene.obj(filepath=animals_dir+"/" + plant_name + "/" + plant_name +".obj")
-
-class BIOLOGY_MICROBE_ADD(Menu):
-    bl_idname = "biology.micrabe.add"
-    bl_label = "Microbe"
-
-    def draw(self,context):
-        global icons_collection
-        icons = icons_collection["main"]
-        layout = self.layout
-        
-        layout.operator("biology_animal.dog",text="Dog",icon_value=icons["dog"].icon_id)
-        layout.operator("biology_animal.dog",text="Dog",icon_value=icons["dog"].icon_id)
-        layout.operator("biology_animal.dog",text="Dog",icon_value=icons["dog"].icon_id)
-        layout.operator("biology_animal.dog",text="Dog",icon_value=icons["dog"].icon_id)
-        layout.operator("biology_animal.dog",text="Dog",icon_value=icons["dog"].icon_id)
-        layout.operator("biology_animal.dog",text="Dog",icon_value=icons["dog"].icon_id)
-        layout.operator("biology_animal.dog",text="Dog",icon_value=icons["dog"].icon_id)
-
-
-class BIOLOGY_CREATURE_ADD(Menu):
-    bl_idname = "biology.creature.add"
-    bl_label = 'Biology'
-
-
-    def draw(self, context):
-        global icons_collection
-        icons = icons_collection["main"]
-        layout = self.layout
-        layout.menu(BIOLOGY_ANIMAL_ADD.bl_idname,text="Animal",icon="RNA_ADD")
-        layout.menu(BIOLOGY_PLANT_ADD.bl_idname,text="Plant",icon="RNA_ADD")
-        layout.menu(BIOLOGY_MICROBE_ADD.bl_idname,text="Microbe",icon="RNA_ADD")
-
-
-
-
-def biology_func(self, context):
-    layout = self.layout
-    global icons_collection
-    icons = icons_collection["main"]
-    layout.menu(BIOLOGY_CREATURE_ADD.bl_idname, text="Biology",icon="RNA")
-"""
 CLASSES = (
     SPECIES_PROPERTY,
     PLANT_ADD,
@@ -508,7 +577,7 @@ CLASSES = (
 def register():
 
     for cla in CLASSES:
-        bpy.utils.register_class(cla)
+        register_class(cla)
     bpy.types.Scene.plants = PointerProperty(type=SPECIES_PROPERTY)
     bpy.types.Scene.animals = PointerProperty(type=SPECIES_PROPERTY)
     bpy.types.Scene.micrabes = PointerProperty(type=SPECIES_PROPERTY)
@@ -524,7 +593,7 @@ def register():
 def unregister():
     global icons_collection
     for cla in CLASSES:
-        bpy.utils.unregister_class(cla)
+        unregister_class(cla)
     for icons in icons_collection.values():
         previews.remove(icons)
     icons_collection.clear()
