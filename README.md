@@ -3,6 +3,7 @@
 #### Addon UI
 
 ![](mDrivEngine/screen_addon.png)
+![](mDrivEngine/demo.gif)
 
 # 物质世界
 

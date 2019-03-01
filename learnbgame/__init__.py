@@ -1,5 +1,3 @@
-
-
 # <pep8 compliant>
 
 # ----------------------------------------------------------
@@ -147,13 +145,20 @@ class LEARNBGAME_MOLECULE(Panel):
     bl_region_type = "UI"
     bl_category = "Learnbgame"
 
+    global icons_collection
+    icons = icons_collection["main"]
+
     def draw(self,context):
         layout = self.layout
         scene = context.scene
 
         molecule = scene.molecule
         row = layout.row()
-        row.prop(molecule,"smile_format",icon="PIVOT_INDIVIDUAL")
+        row.prop(
+            molecule,
+            "smile_format",
+            icon_value=icons['molecule'].icon_id
+            )
         row.operator(MOLECULE_ADD.bl_idname,text="add",icon="ADD")
 
 
@@ -464,14 +469,9 @@ class MOLECULE_ADD(Operator):
                 bpy.context.scene.collection.objects.link(bond_cylinder)
                 shapes.append(bond_cylinder)
 
-        # Remove primitive meshes
-        #bpy.ops.object.select_all(action='DESELECT')
         sphere.select_set(True)
         if show_bonds:
             cylinder.select_set(True)
-        # If the starting cube is there, remove it
-        #if 'Cube' in bpy.data.objects.keys():
-            #bpy.data.objects.get('Cube').select_set(True)
         bpy.ops.object.delete()
 
         for shape in shapes:
@@ -548,8 +548,6 @@ class BRAND_DISPLAY(Operator):
         blf.position(font_id, 25, 45, 0)
         blf.size(font_id, 50, 72)
         blf.draw(font_id, text)
-
-
         
 ############################Brand Execute###################################
 
@@ -585,8 +583,6 @@ def register():
     bpy.types.Scene.molecule = PointerProperty(type=MOLECULE_PROPERTY)
     bpy.types.Scene.atoms = PointerProperty(type=ATOM_PROPERTY)
     bpy.types.Scene.brand = PointerProperty(type=BRAND_PROPERTY)
-
-
 
 
 
