@@ -83,16 +83,17 @@ with open(os.path.join(molecules_dir, 'atoms.json')) as in_file:
 
 
 animals_dir = os.path.join(os.path.dirname(__file__), "species/animal")
-animals_list = os.listdir(animals_dir)
+animals_list = [os.path.splitext(anl)[0] for anl in os.listdir(animals_dir)]
+
 
 plants_dir = os.path.join(os.path.dirname(__file__), "species/plant")
-plants_list = os.listdir(plants_dir)
+plants_list = [os.path.splitext(plt)[0] for plt in os.listdir(plants_dir)]
 
 micrabes_dir = os.path.join(os.path.dirname(__file__), "species/micrabe")
-micrabes_list = os.listdir(micrabes_dir)
+micrabes_list = [os.path.splitext(mib)[0] for mib in os.listdir(micrabes_dir)]
 
 planets_dir = os.path.join(os.path.dirname(__file__), "planets")
-planets_list = os.listdir(planets_dir)
+planets_list = [os.path.splitext(plet)[0] for plet in os.listdir(planets_dir)]
 
 icons_dir = os.path.join(os.path.dirname(__file__), "icons")
 icons_list = os.listdir(icons_dir)
@@ -306,7 +307,7 @@ class ANIMAL_ADD(Operator):
     def execute(self,context):
         animals = context.scene.animals
         animal_name = animals.animal
-        bpy.ops.import_scene.obj(filepath=animals_dir+"/"+animal_name+"/"+animal_name+".obj")
+        bpy.ops.import_scene.gltf(filepath=animals_dir+"/"+animal_name+".glb")
         obj = context.selected_objects
         context.view_layer.objects.active=obj[0]
         bpy.ops.object.join()
@@ -323,7 +324,7 @@ class PLANT_ADD(Operator):
 
         plants = context.scene.plants
         plant_name = plants.plant
-        bpy.ops.import_scene.obj(filepath=plants_dir+"/" + plant_name + "/" + plant_name +".obj")
+        bpy.ops.import_scene.gltf(filepath=plants_dir+"/" + plant_name +".glb")
         obj = bpy.context.selected_objects
         bpy.context.view_layer.objects.active=obj[0]
         bpy.ops.object.join()
@@ -340,7 +341,7 @@ class MICRABE_ADD(Operator):
 
         micrabes = context.scene.micrabes
         micrabe_name = micrabes.micrabe
-        bpy.ops.import_scene.obj(filepath=micrabes_dir+"/" + micrabe_name + "/" + micrabe_name +".obj")
+        bpy.ops.import_scene.gltf(filepath=micrabes_dir+"/" + micrabe_name +".glb")
         obj = bpy.context.selected_objects
         bpy.context.view_layer.objects.active=obj[0]
         bpy.ops.object.join()
@@ -360,7 +361,7 @@ class PLANET_ADD(Operator):
 
         planets = context.scene.planets
         planet_name = planets.planet
-        bpy.ops.import_scene.obj(filepath=planets_dir+"/" + planet_name + "/" + planet_name +".obj")
+        bpy.ops.import_scene.gltf(filepath=planets_dir+"/" + planet_name +".obj")
         obj = bpy.context.selected_objects
         bpy.context.view_layer.objects.active=obj[0]
         bpy.ops.object.join()
