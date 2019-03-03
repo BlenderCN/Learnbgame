@@ -224,15 +224,12 @@ class LEARNBGAME_PLANET(Panel):
 #########################Property###################################
 
 class ATOM_PROPERTY(PropertyGroup):
+    
+    atom_items = [(atom['symbol'],atom['name'],"add " + atom['name']) for atom in atoms_list]
+    atom_items.insert(0,("ptable","PeriodicTable","add Periodic Table of chemistry element"))
     atom : EnumProperty(
         name = "Atoms",
-        items= [
-        (
-            atom['symbol'],
-            atom['name'],
-            "add " + atom['name'],
-            ) for atom in atoms_list
-        ]
+        items= atom_items
         )
 
 class BRAND_PROPERTY(PropertyGroup):
@@ -499,8 +496,117 @@ class ATOM_ADD(Operator):
     bl_label = "atom+"
 
     def execute(self,context):
+        if context.scene.atoms.atom == "ptable":
+            self.ptable(context)
+        else:
+            self.draw_proton_electron(context)
 
         return {'FINISHED'}
+
+    def ptable(self,context):
+        
+        names = [ele['name'] for ele in atoms_list]
+        alias = [ele['symbol'] for ele in atoms_list]
+
+        keylist = bpy.data.objects.keys()
+
+        num = 0
+
+
+        for y in range(9,-11,-2):
+            for x in range(-17,19,2):
+                if y == 9 and x <= 15 and x >=-15:
+                    pass
+                elif (y == 7 and x >=-13 and x <= 5) or (y==5 and x >=-13 and x <= 5):
+                    pass
+
+                elif (y == -1 and x ==-13) or (y == -3 and x == -13):
+                    pass
+
+                elif y == -5 and x >= -17 and x <= 17:
+                    pass
+
+                elif (y == -7 and x >=-17 and x <=-13) or (y == -9 and x >=-17 and x <=-13) :
+                    pass
+                else:
+                    bpy.ops.mesh.primitive_cube_add(
+                        size=2,
+                        view_align=False,
+                        enter_editmode=False,
+                        location=(x, y, 0))
+                    bpy.context.object.name = names[num]            
+                    bpy.data.materials.new(name=names[num])
+                    bpy.data.materials[names[num]].diffuse_color = (0,0,0,1)
+                    bpy.context.object.active_material = bpy.data.materials[names[num]]
+
+                    bpy.ops.object.text_add(
+                        view_align=False,
+                        enter_editmode=True,
+                        location=(x,y,1))
+                    bpy.context.object.name = alias[num]
+
+                    bpy.ops.font.delete(type='PREVIOUS_WORD') 
+                    bpy.ops.font.text_insert(text=alias[num])
+                    bpy.ops.object.editmode_toggle()
+                    bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_MASS')
+                    bpy.context.object.location = (x,y,1)
+                    bpy.data.materials.new(name=alias[num])
+                    bpy.data.materials[alias[num]].diffuse_color = (1,0,0,1)
+                    bpy.context.object.active_material = bpy.data.materials[alias[num]]
+                    bpy.ops.object.convert()
+                    bpy.data.objects[names[num]].select_set(True)
+                    bpy.context.view_layer.objects.active=bpy.data.objects[names[num]]
+                    bpy.ops.object.join()
+
+
+                    num += 1
+
+    def draw_proton_electron(self,context):
+
+        cursor_loc = bpy.context.scene.cursor_location
+
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=1, location=(cursor_loc[0],cursor_loc[1],cursor_loc[2]))
+
+        obj = bpy.context.selected_objects
+
+        obj[0].name = "proton"
+
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=0.1, location=(cursor_loc[0]+5,cursor_loc[1],cursor_loc[2]))
+
+        obj = bpy.context.selected_objects
+
+        obj[0].name = "electron"
+
+        bpy.context.object.parent = bpy.data.objects["proton"]
+
+        bpy.context.object.rotation_mode = 'XYZ'
+
+        proton = bpy.data.objects['proton']
+
+        proton.rotation_euler = (0,0,0)
+
+        proton.keyframe_insert(data_path="rotation_euler",index=1,frame=bpy.context.scene.frame_start)
+
+        proton.rotation_euler = (0,6.28319,0)
+
+        end_frame = bpy.context.scene.frame_end = 50
+
+        proton.keyframe_insert(data_path='rotation_euler', index=1,frame=end_frame + 1)
+
+        proton.select_set(True)
+
+        bpy.context.view_layer.objects.active = proton
+
+        bpy.context.area.type = 'GRAPH_EDITOR'             
+
+        bpy.ops.graph.interpolation_type(type='LINEAR')     
+
+        bpy.context.area.type = 'VIEW_3D'
+
+
+
+        bpy.ops.screen.animation_play()
+
 
 ############################Atom Execute###################################
 
