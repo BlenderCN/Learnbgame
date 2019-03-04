@@ -309,9 +309,6 @@ class ANIMAL_ADD(Operator):
         animal_name = animals.animal
         bpy.ops.import_scene.gltf(filepath=animals_dir+"/"+animal_name+".glb")
         obj = context.selected_objects
-        context.view_layer.objects.active=obj[0]
-        bpy.ops.object.join()
-        obj = context.selected_objects
         obj[0].name = animal_name
         obj[0].location = context.scene.cursor_location
         return {'FINISHED'}
@@ -326,9 +323,6 @@ class PLANT_ADD(Operator):
         plant_name = plants.plant
         bpy.ops.import_scene.gltf(filepath=plants_dir+"/" + plant_name +".glb")
         obj = bpy.context.selected_objects
-        bpy.context.view_layer.objects.active=obj[0]
-        bpy.ops.object.join()
-        obj = bpy.context.selected_objects
         obj[0].name = plant_name
         obj[0].location = bpy.context.scene.cursor_location
         return {'FINISHED'}
@@ -342,9 +336,6 @@ class MICRABE_ADD(Operator):
         micrabes = context.scene.micrabes
         micrabe_name = micrabes.micrabe
         bpy.ops.import_scene.gltf(filepath=micrabes_dir+"/" + micrabe_name +".glb")
-        obj = bpy.context.selected_objects
-        bpy.context.view_layer.objects.active=obj[0]
-        bpy.ops.object.join()
         obj = bpy.context.selected_objects
         obj[0].name = micrabe_name
         obj[0].location = bpy.context.scene.cursor_location
@@ -361,10 +352,7 @@ class PLANET_ADD(Operator):
 
         planets = context.scene.planets
         planet_name = planets.planet
-        bpy.ops.import_scene.gltf(filepath=planets_dir+"/" + planet_name +".obj")
-        obj = bpy.context.selected_objects
-        bpy.context.view_layer.objects.active=obj[0]
-        bpy.ops.object.join()
+        bpy.ops.import_scene.gltf(filepath=planets_dir+"/" + planet_name +".glb")
         obj = bpy.context.selected_objects
         obj[0].name = planet_name
         obj[0].location = bpy.context.scene.cursor_location
@@ -500,7 +488,7 @@ class ATOM_ADD(Operator):
         if context.scene.atoms.atom == "ptable":
             self.ptable(context)
         else:
-            self.draw_proton_electron(context)
+            self.draw_nucleus_electron(context)
 
         return {'FINISHED'}
 
@@ -562,41 +550,42 @@ class ATOM_ADD(Operator):
 
                     num += 1
 
-    def draw_proton_electron(self,context):
+    def draw_nucleus_electron(self,context):
 
         cursor_loc = bpy.context.scene.cursor_location
 
         bpy.ops.mesh.primitive_uv_sphere_add(radius=1, location=(cursor_loc[0],cursor_loc[1],cursor_loc[2]))
+        bpy.ops.object.shade_smooth()
 
         obj = bpy.context.selected_objects
 
-        obj[0].name = "proton"
+        obj[0].name = "nucleus"
 
         bpy.ops.mesh.primitive_uv_sphere_add(radius=0.1, location=(cursor_loc[0]+5,cursor_loc[1],cursor_loc[2]))
+        
+        bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
+
+        bpy.ops.object.shade_smooth()
 
         obj = bpy.context.selected_objects
 
         obj[0].name = "electron"
 
-        bpy.context.object.parent = bpy.data.objects["proton"]
+        bpy.context.object.parent = bpy.data.objects["nucleus"]
 
         bpy.context.object.rotation_mode = 'XYZ'
 
-        proton = bpy.data.objects['proton']
+        electron = bpy.data.objects['electron']
 
-        proton.rotation_euler = (0,0,0)
+        electron.rotation_euler = (0,0,0)
 
-        proton.keyframe_insert(data_path="rotation_euler",index=1,frame=bpy.context.scene.frame_start)
+        electron.keyframe_insert(data_path="rotation_euler",index=1,frame=bpy.context.scene.frame_start)
 
-        proton.rotation_euler = (0,6.28319,0)
+        electron.rotation_euler = (0,6.28319,0)
 
         end_frame = bpy.context.scene.frame_end = 50
 
-        proton.keyframe_insert(data_path='rotation_euler', index=1,frame=end_frame + 1)
-
-        proton.select_set(True)
-
-        bpy.context.view_layer.objects.active = proton
+        electron.keyframe_insert(data_path='rotation_euler', index=1,frame=end_frame + 1)
 
         bpy.context.area.type = 'GRAPH_EDITOR'             
 
