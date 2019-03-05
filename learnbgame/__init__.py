@@ -31,6 +31,8 @@ import pybel
 
 import json
 
+from math import sqrt
+
 import bgl,blf
 
 import bpy
@@ -76,6 +78,9 @@ icons_collection["main"] = icons
 atoms_dir = os.path.join(os.path.dirname(__file__), "atoms")
 atoms_file = open(os.path.join(atoms_dir,"atoms.json"))
 atoms_list = json.load(atoms_file)
+atoms_dict = dict()
+for atom in atoms_list:
+    atoms_dict[atom["symbol"]]=atom["number"] 
 
 molecules_dir = os.path.join(os.path.dirname(__file__), "molecules")
 with open(os.path.join(molecules_dir, 'atoms.json')) as in_file:
@@ -383,12 +388,16 @@ class MOLECULE_ADD(Operator):
 
         # Initialize bond material if it's going to be used.
         if show_bonds:
-            bpy.data.materials.new(name='bond')
-            bpy.data.materials['bond'].diffuse_color = atom_data['bond']['color']
-            bpy.data.materials['bond'].specular_intensity = 0.2
+            bond_material = bpy.data.materials.new(name='bond')
+            bond_material.use_nodes = True
+            bond_material.node_tree.nodes["Principled BSDF"].inputs['Base Color'].default_value = atom_data['bond']['color']
+            bond_material.node_tree.nodes["Principled BSDF"].inputs['Metallic'].default_value = 1
+            bond_material.node_tree.nodes["Principled BSDF"].inputs['Roughness'].default_value = 0
             bpy.ops.mesh.primitive_cylinder_add()
             cylinder = bpy.context.object
-            cylinder.active_material = bpy.data.materials['bond']
+            cylinder.data.materials.append(bond_material)
+
+
 
         for atom in molecule.atoms:
             element = atom.type
@@ -397,9 +406,11 @@ class MOLECULE_ADD(Operator):
 
             if element not in bpy.data.materials:
                 key = element
-                bpy.data.materials.new(name=key)
-                bpy.data.materials[key].diffuse_color = atom_data[key]['color']
-                bpy.data.materials[key].specular_intensity = 0.2
+                atom_material = bpy.data.materials.new(name=key)
+                atom_material.use_nodes = True
+                atom_material.node_tree.nodes["Principled BSDF"].inputs['Base Color'].default_value = atom_data[key]['color']
+                atom_material.node_tree.nodes["Principled BSDF"].inputs['Metallic'].default_value = 1
+                atom_material.node_tree.nodes["Principled BSDF"].inputs['Roughness'].default_value = 0
 
             atom_sphere = sphere.copy()
             atom_sphere.data = sphere.data.copy()
@@ -407,7 +418,7 @@ class MOLECULE_ADD(Operator):
                                     zip(atom.coords, center)]
             scale = 1 if show_bonds else 2.5
             atom_sphere.dimensions = [atom_data[element]['radius'] *scale * 2] * 3
-            atom_sphere.active_material = bpy.data.materials[element]
+            atom_sphere.data.materials.append(atom_material)
             bpy.context.scene.collection.objects.link(atom_sphere)
             shapes.append(atom_sphere)
 
@@ -523,10 +534,14 @@ class ATOM_ADD(Operator):
                         view_align=False,
                         enter_editmode=False,
                         location=(x, y, 0))
-                    bpy.context.object.name = names[num]            
-                    bpy.data.materials.new(name=names[num])
-                    bpy.data.materials[names[num]].diffuse_color = (0,0,0,1)
-                    bpy.context.object.active_material = bpy.data.materials[names[num]]
+                    obj = bpy.context.selected_objects
+                    obj[0].name = names[num]            
+                    element_material = bpy.data.materials.new(name=names[num])
+                    element_material.use_nodes = True
+                    element_material.node_tree.nodes["Principled BSDF"].inputs['Base Color'].default_value = (0, 0, 0, 1)
+                    element_material.node_tree.nodes["Principled BSDF"].inputs['Metallic'].default_value = 1
+                    element_material.node_tree.nodes["Principled BSDF"].inputs['Roughness'].default_value = 0
+                    obj[0].data.materials.append(element_material)
 
                     bpy.ops.object.text_add(
                         view_align=False,
@@ -538,10 +553,16 @@ class ATOM_ADD(Operator):
                     bpy.ops.font.text_insert(text=alias[num])
                     bpy.ops.object.editmode_toggle()
                     bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_MASS')
-                    bpy.context.object.location = (x,y,1)
-                    bpy.data.materials.new(name=alias[num])
-                    bpy.data.materials[alias[num]].diffuse_color = (1,0,0,1)
-                    bpy.context.object.active_material = bpy.data.materials[alias[num]]
+                    obj = bpy.context.selected_objects
+                    obj[0].location = (x,y,1)
+                    
+                    obj[0].name = names[num]                    
+                    text_material = bpy.data.materials.new(name=alias[num])
+                    text_material.use_nodes = True
+                    text_material.node_tree.nodes["Principled BSDF"].inputs['Base Color'].default_value = (1, 0, 0, 1)
+                    text_material.node_tree.nodes["Principled BSDF"].inputs['Metallic'].default_value = 1
+                    text_material.node_tree.nodes["Principled BSDF"].inputs['Roughness'].default_value = 0
+                    obj[0].data.materials.append(text_material)
                     bpy.ops.object.convert()
                     bpy.data.objects[names[num]].select_set(True)
                     bpy.context.view_layer.objects.active=bpy.data.objects[names[num]]
@@ -550,50 +571,103 @@ class ATOM_ADD(Operator):
 
                     num += 1
 
-    def draw_nucleus_electron(self,context):
+    def draw_nucleus_electron(self,context,atom_num=1):
 
-        cursor_loc = bpy.context.scene.cursor_location
+        electron_material = bpy.data.materials.new('electron')
+        electron_material.use_nodes = True
+        electron_material.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value = (1,0.1,0,1)
+        electron_material.node_tree.nodes['Principled BSDF'].inputs['Metallic'].default_value = 1
+        electron_material.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = 0
 
-        bpy.ops.mesh.primitive_uv_sphere_add(radius=1, location=(cursor_loc[0],cursor_loc[1],cursor_loc[2]))
+        nucleus_material = bpy.data.materials.new('nucleus')
+        nucleus_material.use_nodes = True
+        nucleus_material.node_tree.nodes["Principled BSDF"].inputs['Base Color'].default_value = (0, 0, 0, 1)
+        nucleus_material.node_tree.nodes["Principled BSDF"].inputs['Metallic'].default_value = 1
+        nucleus_material.node_tree.nodes["Principled BSDF"].inputs['Roughness'].default_value = 0
+
+
+
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=1, location=(0,0,0))
+
         bpy.ops.object.shade_smooth()
 
         obj = bpy.context.selected_objects
 
         obj[0].name = "nucleus"
+        obj[0].data.materials.append(nucleus_material)
 
-        bpy.ops.mesh.primitive_uv_sphere_add(radius=0.1, location=(cursor_loc[0]+5,cursor_loc[1],cursor_loc[2]))
-        
-        bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
+        electron_locs = [
+        (2,0,0),
+        (0,2,0),
+        (0,0,2),
+        (-2,0,0),
+        (0,-2,0),
+        (0,0,-2),
+        (sqrt(2),sqrt(2),0),
+        (sqrt(2),0,sqrt(2)),
+        (0,sqrt(2),sqrt(2)),
+        (-sqrt(2),-sqrt(2),0),
+        (-sqrt(2),0,-sqrt(2)),
+        (0,-sqrt(2),-sqrt(2)),
+        (sqrt(2),-sqrt(2),0),
+        (sqrt(2),0,-sqrt(2)),
+        (-sqrt(2),sqrt(2),0),
+        (0,sqrt(2),-sqrt(2)),
+        (-sqrt(2),0,sqrt(2)),
+        (0,-sqrt(2),sqrt(2)),
+        ]
 
-        bpy.ops.object.shade_smooth()
+        e_num = 1
 
-        obj = bpy.context.selected_objects
+        for loc in electron_locs:
+            bpy.ops.mesh.primitive_uv_sphere_add(radius=0.1, location=loc)
+            bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
+            
+            obj = bpy.context.selected_objects
+            bpy.ops.object.shade_smooth()
+            
+            electron_name = "electron"+ str(e_num)
+            
+            obj[0].name =electron_name
 
-        obj[0].name = "electron"
-
-        bpy.context.object.parent = bpy.data.objects["nucleus"]
-
-        bpy.context.object.rotation_mode = 'XYZ'
-
-        electron = bpy.data.objects['electron']
-
-        electron.rotation_euler = (0,0,0)
-
-        electron.keyframe_insert(data_path="rotation_euler",index=1,frame=bpy.context.scene.frame_start)
-
-        electron.rotation_euler = (0,6.28319,0)
-
-        end_frame = bpy.context.scene.frame_end = 50
-
-        electron.keyframe_insert(data_path='rotation_euler', index=1,frame=end_frame + 1)
-
-        bpy.context.area.type = 'GRAPH_EDITOR'             
-
-        bpy.ops.graph.interpolation_type(type='LINEAR')     
-
-        bpy.context.area.type = 'VIEW_3D'
+            obj[0].data.materials.append(electron_material)
 
 
+
+            bpy.context.object.parent = bpy.data.objects["nucleus"]
+            
+            bpy.context.object.rotation_mode = 'XYZ'
+            
+            electron = bpy.data.objects[electron_name]
+
+
+            electron.rotation_euler = (0,0,0)
+
+            start_frame = bpy.context.scene.frame_start
+
+            electron.keyframe_insert(data_path="rotation_euler",frame=start_frame)
+
+
+            if loc[0] == 0:
+                electron.rotation_euler = (6.28319,0,0)
+            elif loc[1] == 0:
+                electron.rotation_euler = (0,6.28319,0)
+            elif loc[2] == 0:
+                electron.rotation_euler = (0,0,6.28319)
+
+            end_frame = bpy.context.scene.frame_end = 50
+
+            electron.keyframe_insert(data_path='rotation_euler',frame=end_frame + 1)
+            e_num +=1
+
+            bpy.context.area.type = 'GRAPH_EDITOR'             
+            bpy.ops.graph.interpolation_type(type='LINEAR')     
+            bpy.context.area.type = 'VIEW_3D'
+
+        bpy.ops.object.select_all(action='DESELECT')
+        nucleus_obj = bpy.data.objects["nucleus"]
+        nucleus_obj.select_set(True)
+        bpy.context.view_layer.objects.active = nucleus_obj
 
         bpy.ops.screen.animation_play()
 
