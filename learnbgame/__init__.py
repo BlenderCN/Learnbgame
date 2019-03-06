@@ -23,7 +23,7 @@ bl_info = {
 ##########################Import Module############################
 
 import os
-
+import random
 import sys
 sys.path.append(sys.path.append("/root/Software/anaconda3/lib/python3.7/site-packages"))
 import openbabel
@@ -31,7 +31,7 @@ import pybel
 
 import json
 
-from math import sqrt
+from math import sqrt,pi
 
 import bgl,blf
 
@@ -78,9 +78,9 @@ icons_collection["main"] = icons
 atoms_dir = os.path.join(os.path.dirname(__file__), "atoms")
 atoms_file = open(os.path.join(atoms_dir,"atoms.json"))
 atoms_list = json.load(atoms_file)
-atoms_dict = dict()
+electron_dict = dict()
 for atom in atoms_list:
-    atoms_dict[atom["symbol"]]=atom["number"] 
+    electron_dict[atom["symbol"]]=atom["electrons"] 
 
 molecules_dir = os.path.join(os.path.dirname(__file__), "molecules")
 with open(os.path.join(molecules_dir, 'atoms.json')) as in_file:
@@ -499,7 +499,8 @@ class ATOM_ADD(Operator):
         if context.scene.atoms.atom == "ptable":
             self.ptable(context)
         else:
-            self.draw_nucleus_electron(context)
+            electronic_arrangement = electron_dict[context.scene.atoms.atom]
+            self.draw_nucleus_electron(context,electronic_arrangement)
 
         return {'FINISHED'}
 
@@ -571,7 +572,7 @@ class ATOM_ADD(Operator):
 
                     num += 1
 
-    def draw_nucleus_electron(self,context,atom_num=1):
+    def draw_nucleus_electron(self,context,electronic_arrangement=[1,]):
 
         electron_material = bpy.data.materials.new('electron')
         electron_material.use_nodes = True
@@ -582,7 +583,7 @@ class ATOM_ADD(Operator):
         nucleus_material = bpy.data.materials.new('nucleus')
         nucleus_material.use_nodes = True
         nucleus_material.node_tree.nodes["Principled BSDF"].inputs['Base Color'].default_value = (0, 0, 0, 1)
-        nucleus_material.node_tree.nodes["Principled BSDF"].inputs['Metallic'].default_value = 1
+        nucleus_material.node_tree.nodes["Principled BSDF"].inputs['Metallic'].default_value = 0
         nucleus_material.node_tree.nodes["Principled BSDF"].inputs['Roughness'].default_value = 0
 
 
@@ -595,75 +596,101 @@ class ATOM_ADD(Operator):
 
         obj[0].name = "nucleus"
         obj[0].data.materials.append(nucleus_material)
-
-        electron_locs = [
-        (2,0,0),
-        (0,2,0),
-        (0,0,2),
-        (-2,0,0),
-        (0,-2,0),
-        (0,0,-2),
-        (sqrt(2),sqrt(2),0),
-        (sqrt(2),0,sqrt(2)),
-        (0,sqrt(2),sqrt(2)),
-        (-sqrt(2),-sqrt(2),0),
-        (-sqrt(2),0,-sqrt(2)),
-        (0,-sqrt(2),-sqrt(2)),
-        (sqrt(2),-sqrt(2),0),
-        (sqrt(2),0,-sqrt(2)),
-        (-sqrt(2),sqrt(2),0),
-        (0,sqrt(2),-sqrt(2)),
-        (-sqrt(2),0,sqrt(2)),
-        (0,-sqrt(2),sqrt(2)),
-        ]
+        radius=2
 
         e_num = 1
+        for electron_num in electronic_arrangement:
+            electrons_status = [
+                {"loc":(radius,0,0),"rot":(0,pi*2,0)},
+                {"loc":(radius,0,0),"rot":(0,0,pi*2)},
+                {"loc":(0,radius,0),"rot":(pi*2,0,0)},
+                {"loc":(0,radius,0),"rot":(0,0,pi*2)},
+                {"loc":(0,0,radius),"rot":(pi*2,0,0)},
+                {"loc":(0,0,radius),"rot":(0,pi*2,0)},
+                {"loc":(-radius,0,0),"rot":(0,pi*2,0)},
+                {"loc":(-radius,0,0),"rot":(0,0,pi*2)},
+                {"loc":(0,-radius,0),"rot":(pi*2,0,0)},
+                {"loc":(0,-radius,0),"rot":(0,0,pi*2)},
+                {"loc":(0,0,-radius),"rot":(pi*2,0,0)},
+                {"loc":(0,0,-radius),"rot":(0,pi*2,0)},
+                {"loc":(sqrt(radius**2/2),sqrt(radius**2/2),0),"rot":(0,0,pi*2)},
+                {"loc":(sqrt(radius**2/2),0,sqrt(radius**2/2)),"rot":(0,pi*2,0)},
+                {"loc":(0,sqrt(radius**2/2),sqrt(radius**2/2)),"rot":(pi*2,0,0)},
+                {"loc":(-sqrt(radius**2/2),-sqrt(radius**2/2),0),"rot":(0,0,pi*2)},
+                {"loc":(-sqrt(radius**2/2),0,-sqrt(radius**2/2)),"rot":(0,pi*2,0)},
+                {"loc":(0,-sqrt(radius**2/2),-sqrt(radius**2/2)),"rot":(pi*2,0,0)},
+                {"loc":(sqrt(radius**2/2),-sqrt(radius**2/2),0),"rot":(0,0,pi*2)},
+                {"loc":(sqrt(radius**2/2),0,-sqrt(radius**2/2)),"rot":(0,pi*2,0)},
+                {"loc":(-sqrt(radius**2/2),sqrt(radius**2/2),0),"rot":(0,0,pi*2)},
+                {"loc":(0,sqrt(radius**2/2),-sqrt(radius**2/2)),"rot":(pi*2,0,0)},
+                {"loc":(-sqrt(radius**2/2),0,sqrt(radius**2/2)),"rot":(0,pi*2,0)},
+                {"loc":(0,-sqrt(radius**2/2),sqrt(radius**2/2)),"rot":(pi*2,0,0)},
+                {"loc":(radius,0,0),"rot":(0,-pi*2,0)},
+                {"loc":(radius,0,0),"rot":(0,0,-pi*2)},
+                {"loc":(0,radius,0),"rot":(-pi*2,0,0)},
+                {"loc":(0,radius,0),"rot":(0,0,-pi*2)},
+                {"loc":(0,0,radius),"rot":(-pi*2,0,0)},
+                {"loc":(0,0,radius),"rot":(0,-pi*2,0)},
+                {"loc":(-radius,0,0),"rot":(0,-pi*2,0)},
+                {"loc":(-radius,0,0),"rot":(0,0,-pi*2)},
+                {"loc":(0,-radius,0),"rot":(-pi*2,0,0)},
+                {"loc":(0,-radius,0),"rot":(0,0,-pi*2)},
+                {"loc":(0,0,-radius),"rot":(-pi*2,0,0)},
+                {"loc":(0,0,-radius),"rot":(0,-pi*2,0)},
+                {"loc":(sqrt(radius**2/2),sqrt(radius**2/2),0),"rot":(0,0,-pi*2)},
+                {"loc":(sqrt(radius**2/2),0,sqrt(radius**2/2)),"rot":(0,-pi*2,0)},
+                {"loc":(0,sqrt(radius**2/2),sqrt(radius**2/2)),"rot":(-pi*2,0,0)},
+                {"loc":(-sqrt(radius**2/2),-sqrt(radius**2/2),0),"rot":(0,0,-pi*2)},
+                {"loc":(-sqrt(radius**2/2),0,-sqrt(radius**2/2)),"rot":(0,-pi*2,0)},
+                {"loc":(0,-sqrt(radius**2/2),-sqrt(radius**2/2)),"rot":(-pi*2,0,0)},
+                {"loc":(sqrt(radius**2/2),-sqrt(radius**2/2),0),"rot":(0,0,-pi*2)},
+                {"loc":(sqrt(radius**2/2),0,-sqrt(radius**2/2)),"rot":(0,-pi*2,0)},
+                {"loc":(-sqrt(radius**2/2),sqrt(radius**2/2),0),"rot":(0,0,-pi*2)},
+                {"loc":(0,sqrt(radius**2/2),-sqrt(radius**2/2)),"rot":(-pi*2,0,0)},
+                {"loc":(-sqrt(radius**2/2),0,sqrt(radius**2/2)),"rot":(0,-pi*2,0)},
+                {"loc":(0,-sqrt(radius**2/2),sqrt(radius**2/2)),"rot":(-pi*2,0,0)},
+                ]
 
-        for loc in electron_locs:
-            bpy.ops.mesh.primitive_uv_sphere_add(radius=0.1, location=loc)
-            bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
-            
-            obj = bpy.context.selected_objects
-            bpy.ops.object.shade_smooth()
-            
-            electron_name = "electron"+ str(e_num)
-            
-            obj[0].name =electron_name
+            for status in random.sample(electrons_status,electron_num):
+                bpy.ops.mesh.primitive_uv_sphere_add(radius=0.1, location=status['loc'])
+                bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
+                
+                obj = bpy.context.selected_objects
+                bpy.ops.object.shade_smooth()
+                
+                electron_name = "electron"+ str(e_num)
+                
+                obj[0].name =electron_name
 
-            obj[0].data.materials.append(electron_material)
-
-
-
-            bpy.context.object.parent = bpy.data.objects["nucleus"]
-            
-            bpy.context.object.rotation_mode = 'XYZ'
-            
-            electron = bpy.data.objects[electron_name]
+                obj[0].data.materials.append(electron_material)
 
 
-            electron.rotation_euler = (0,0,0)
 
-            start_frame = bpy.context.scene.frame_start
+                bpy.context.object.parent = bpy.data.objects["nucleus"]
+                
+                bpy.context.object.rotation_mode = 'XYZ'
+                
+                electron = bpy.data.objects[electron_name]
 
-            electron.keyframe_insert(data_path="rotation_euler",frame=start_frame)
+
+                electron.rotation_euler = (0,0,0)
+
+                start_frame = bpy.context.scene.frame_start
+
+                electron.keyframe_insert(data_path="rotation_euler",frame=start_frame)
 
 
-            if loc[0] == 0:
-                electron.rotation_euler = (6.28319,0,0)
-            elif loc[1] == 0:
-                electron.rotation_euler = (0,6.28319,0)
-            elif loc[2] == 0:
-                electron.rotation_euler = (0,0,6.28319)
+                electron.rotation_euler = status['rot']
 
-            end_frame = bpy.context.scene.frame_end = 50
+                end_frame = bpy.context.scene.frame_end = 45
 
-            electron.keyframe_insert(data_path='rotation_euler',frame=end_frame + 1)
-            e_num +=1
+                electron.keyframe_insert(data_path='rotation_euler',frame=end_frame + 1)
+                e_num +=1
 
-            bpy.context.area.type = 'GRAPH_EDITOR'             
-            bpy.ops.graph.interpolation_type(type='LINEAR')     
-            bpy.context.area.type = 'VIEW_3D'
-
+                bpy.context.area.type = 'GRAPH_EDITOR'             
+                bpy.ops.graph.interpolation_type(type='LINEAR')     
+                bpy.context.area.type = 'VIEW_3D'
+            radius+=1
         bpy.ops.object.select_all(action='DESELECT')
         nucleus_obj = bpy.data.objects["nucleus"]
         nucleus_obj.select_set(True)
