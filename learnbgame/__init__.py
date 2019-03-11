@@ -653,6 +653,7 @@ class ATOM_ADD(Operator):
 
             for status in random.sample(electrons_status,electron_num):
                 bpy.ops.mesh.primitive_uv_sphere_add(radius=0.1, location=status['loc'])
+                #bpy.ops.object.particle_system_add()
                 bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
                 
                 obj = bpy.context.selected_objects
@@ -663,6 +664,9 @@ class ATOM_ADD(Operator):
                 obj[0].name =electron_name
 
                 obj[0].data.materials.append(electron_material)
+                #obj[0].particle_systems[-1].settings.count=100
+                #obj[0].particle_systems[-1].settings.mass=0.01
+                #obj[0].particle_systems[-1].settings.effector_weights.gravity=0
 
 
 

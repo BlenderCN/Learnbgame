@@ -29,7 +29,7 @@ atoms---molecules---species---planets---
 
 声--
 
-光--材质库(blender有内置材质库)
+光--材质库(blender有内置材质库)--环境光([easyhdri](http://codeofart.com/easy-hdri-0-9-0/))
 
 热--
 
