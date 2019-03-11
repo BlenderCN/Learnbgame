@@ -29,37 +29,47 @@ atoms---molecules---species---planets---
 
 <a href="#">
   <img width="45" height="45" src="mDrivEngine/sound.jpg" >
+声--
 </a>
 
-声--
+
 
 <a href="#">
   <img width="45" height="45" src="mDrivEngine/light.jpeg" >
+光--材质库(blender有内置材质库)--环境光([easyhdri](http://codeofart.com/easy-hdri-0-9-0/))
 </a>
 
-光--材质库(blender有内置材质库)--环境光([easyhdri](http://codeofart.com/easy-hdri-0-9-0/))
+
 
 <a href="#">
   <img width="45" height="45" src="mDrivEngine/fire.jpeg" >
-  热--
+热--
 </a>
 
 
 <a href="#">
   <img width="45" height="45" src="mDrivEngine/electron.jpeg" >
-  电--
+电--
+</a>
+
+<a href="#">
+  <img width="45" height="45" src="mDrivEngine/act.jpg" >
+动--
 </a>
 
 
-动--
-
+<a href="#">
+  <img width="45" height="45" src="mDrivEngine/potential.jpg" >
 势--
+</a>
+
 
 <a href="#">
   <img width="45" height="45" src="mDrivEngine/field.jpg" >
+场--Force Field(blender内置)
 </a>
 
-场--Force Field(blender内置)
+
 
 
 # 注意事项:
