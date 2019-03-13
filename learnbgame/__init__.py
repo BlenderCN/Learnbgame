@@ -574,11 +574,78 @@ class ATOM_ADD(Operator):
 
     def draw_nucleus_electron(self,context,electronic_arrangement=[1,]):
 
-        electron_material = bpy.data.materials.new('electron')
+        #electron_material = bpy.data.materials.new('electron')
+        #electron_material.use_nodes = True
+        #electron_material.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value = (0.045,0.945,0.945,1)
+        #electron_material.node_tree.nodes['Principled BSDF'].inputs['Metallic'].default_value = 1
+        #electron_material.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = 0
+
+################################fire material############
+        electron_material = bpy.data.materials.new(name='electron')
         electron_material.use_nodes = True
-        electron_material.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value = (1,0.1,0,1)
-        electron_material.node_tree.nodes['Principled BSDF'].inputs['Metallic'].default_value = 1
-        electron_material.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = 0
+        electron_material.node_tree.nodes.clear()
+
+        output_material = electron_material.node_tree.nodes.new(type="ShaderNodeOutputMaterial") 
+        emission1 = electron_material.node_tree.nodes.new(type="ShaderNodeEmission")   
+        mix_rgb = electron_material.node_tree.nodes.new(type="ShaderNodeMixRGB")  
+        mix_shader = electron_material.node_tree.nodes.new(type="ShaderNodeMixShader")   
+        emission2 = electron_material.node_tree.nodes.new(type="ShaderNodeEmission")  
+        transparent_bsdf = electron_material.node_tree.nodes.new(type="ShaderNodeBsdfTransparent")
+        color_ramp1 = electron_material.node_tree.nodes.new(type="ShaderNodeValToRGB")
+        color_ramp2 = electron_material.node_tree.nodes.new(type="ShaderNodeValToRGB")
+        color_ramp3 = electron_material.node_tree.nodes.new(type="ShaderNodeValToRGB")
+        normal = electron_material.node_tree.nodes.new(type="ShaderNodeNormal")
+        voronoi_texture = electron_material.node_tree.nodes.new(type="ShaderNodeTexVoronoi")
+        geometry = electron_material.node_tree.nodes.new(type="ShaderNodeNewGeometry")
+        mapping = electron_material.node_tree.nodes.new(type="ShaderNodeMapping")
+        texture_coordinate = electron_material.node_tree.nodes.new(type="ShaderNodeTexCoord")    
+
+               
+            # Change the parameters
+        mix_rgb.blend_type = "MULTIPLY"
+        mix_rgb.use_clamp = True
+        mix_rgb.inputs['Fac'].default_value = 1
+        mix_shader.name = ''
+        emission2.inputs['Strength'].default_value = 3.2  
+
+        color_ramp1.color_ramp.elements.new(0.478)
+        color_ramp1.color_ramp.elements[0].color = (1,0,0,1)
+        color_ramp1.color_ramp.elements[1].color = (1, 0.309396, 0, 1)
+        color_ramp1.color_ramp.elements[2].color = (1, 0.732476, 0.427407, 1)
+
+        color_ramp2.color_ramp.elements[0].position = 0.4495
+        color_ramp2.color_ramp.elements[0].color = (0,0,0,1)
+        color_ramp2.color_ramp.elements[1].position = 1
+        color_ramp2.color_ramp.elements[1].color = (1,1,1,1)
+
+        color_ramp3.color_ramp.elements[0].position = 0.268
+        color_ramp3.color_ramp.elements[0].color = (1,1,1,1)
+        color_ramp3.color_ramp.elements[1].position = 0.523
+        color_ramp3.color_ramp.elements[1].color = (0,0,0,1)
+
+        normal.outputs[0].default_value = (0.172571, -0.977901, -0.118026)
+        voronoi_texture.inputs['Scale'].default_value=-2.7
+        mapping.scale[0] = 0.9
+        mapping.scale[1] = 2.0
+        mapping.scale[2] = 0.0
+                
+        # Links
+        electron_material.node_tree.links.new(texture_coordinate.outputs['Generated'], mapping.inputs[0])
+        electron_material.node_tree.links.new(mapping.outputs[0], voronoi_texture.inputs[0])
+        electron_material.node_tree.links.new(voronoi_texture.outputs[0], color_ramp3.inputs[0])
+        electron_material.node_tree.links.new(color_ramp3.outputs[0], mix_rgb.inputs[1])
+        electron_material.node_tree.links.new(mix_rgb.outputs[0], emission1.inputs[1])
+        electron_material.node_tree.links.new(geometry.outputs['Normal'], normal.inputs[0])
+        electron_material.node_tree.links.new(normal.outputs[1], color_ramp2.inputs[0])
+        electron_material.node_tree.links.new(color_ramp2.outputs[0], mix_rgb.inputs[1])
+        electron_material.node_tree.links.new(color_ramp2.outputs[0], mix_shader.inputs[0])
+        electron_material.node_tree.links.new(color_ramp2.outputs[0], color_ramp1.inputs[0])
+        electron_material.node_tree.links.new(color_ramp1.outputs[0], emission2.inputs[0])
+        electron_material.node_tree.links.new(emission2.outputs[0], mix_shader.inputs[2])
+        electron_material.node_tree.links.new(transparent_bsdf.outputs[0], mix_shader.inputs[1])
+        electron_material.node_tree.links.new(mix_shader.outputs[0], output_material.inputs[0])
+
+################################fire material############
 
         nucleus_material = bpy.data.materials.new('nucleus')
         nucleus_material.use_nodes = True
@@ -653,7 +720,7 @@ class ATOM_ADD(Operator):
 
             for status in random.sample(electrons_status,electron_num):
                 bpy.ops.mesh.primitive_uv_sphere_add(radius=0.1, location=status['loc'])
-                #bpy.ops.object.particle_system_add()
+                bpy.ops.object.particle_system_add()
                 bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
                 
                 obj = bpy.context.selected_objects
@@ -664,9 +731,11 @@ class ATOM_ADD(Operator):
                 obj[0].name =electron_name
 
                 obj[0].data.materials.append(electron_material)
-                #obj[0].particle_systems[-1].settings.count=100
-                #obj[0].particle_systems[-1].settings.mass=0.01
-                #obj[0].particle_systems[-1].settings.effector_weights.gravity=0
+                obj[0].particle_systems[-1].settings.count=100
+                obj[0].particle_systems[-1].settings.mass=0.01
+                obj[0].particle_systems[-1].settings.effector_weights.gravity=0
+                obj[0].particle_systems[-1].settings.display_size = 0.05
+
 
 
 
