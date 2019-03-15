@@ -7,6 +7,8 @@
 
 # 物质世界
 
+这是关于物质世界的模型库集合,模型的生成主要通过算法的生成和[gltf格式](https://github.com/KhronosGroup/glTF)文件的导入.
+
 ## struct
 ![](mDrivEngine/modulStruct.png)
 
@@ -56,6 +58,7 @@ atoms---molecules---species---planets---
 
 
 [其他](https://github.com/BlenderCN/Blender3DWorld/blob/master/blender%E6%A8%A1%E5%9E%8B%E5%BA%93.md)
+
 # 能量驱动
 
 声--光--热--电--动--势--场
@@ -104,6 +107,11 @@ atoms---molecules---species---planets---
 场--Force Field(blender内置)
 </a>
 </br>
+
+# requirement 
+
+blender 2.8+
+openbabel
 
 
 

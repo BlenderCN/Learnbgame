@@ -315,7 +315,7 @@ class ANIMAL_ADD(Operator):
         bpy.ops.import_scene.gltf(filepath=animals_dir+"/"+animal_name+".glb")
         obj = context.selected_objects
         obj[0].name = animal_name
-        obj[0].location = context.scene.cursor_location
+        obj[0].location = context.scene.cursor.location
         return {'FINISHED'}
 
 class PLANT_ADD(Operator):
@@ -329,7 +329,7 @@ class PLANT_ADD(Operator):
         bpy.ops.import_scene.gltf(filepath=plants_dir+"/" + plant_name +".glb")
         obj = bpy.context.selected_objects
         obj[0].name = plant_name
-        obj[0].location = bpy.context.scene.cursor_location
+        obj[0].location = bpy.context.scene.cursor.location
         return {'FINISHED'}
 
 class MICRABE_ADD(Operator):
@@ -343,7 +343,7 @@ class MICRABE_ADD(Operator):
         bpy.ops.import_scene.gltf(filepath=micrabes_dir+"/" + micrabe_name +".glb")
         obj = bpy.context.selected_objects
         obj[0].name = micrabe_name
-        obj[0].location = bpy.context.scene.cursor_location
+        obj[0].location = bpy.context.scene.cursor.location
         return {'FINISHED'}
 
 #########################Species Execute#######################
@@ -360,7 +360,7 @@ class PLANET_ADD(Operator):
         bpy.ops.import_scene.gltf(filepath=planets_dir+"/" + planet_name +".glb")
         obj = bpy.context.selected_objects
         obj[0].name = planet_name
-        obj[0].location = bpy.context.scene.cursor_location
+        obj[0].location = bpy.context.scene.cursor.location
         return {'FINISHED'}
 
 ###########################Planet Execute########################################        
@@ -482,7 +482,7 @@ class MOLECULE_ADD(Operator):
         bpy.context.scene.update()
         obj = bpy.context.selected_objects
         obj[0].name = smile_text
-        obj[0].location = bpy.context.scene.cursor_location
+        obj[0].location = bpy.context.scene.cursor.location
 
         return {'FINISHED'}
 
