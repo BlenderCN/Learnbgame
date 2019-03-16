@@ -103,15 +103,20 @@ planets_list = [os.path.splitext(plet)[0] for plet in os.listdir(planets_dir)]
 icons_dir = os.path.join(os.path.dirname(__file__), "icons")
 icons_list = os.listdir(icons_dir)
 
+poqbdb_dir = os.path.join(os.path.dirname(__file__),"poqbdb")
+
 ##########################Variable################################
 
 ########################UI##################################
+
+
+
 class LEARNBGAME_ATOM(Panel):
-    bl_idname = "learnbgame.atom"
     bl_label = "Atom"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Learnbgame"
+    bl_parent_id = "LEARNBGAME_POQBDB"
 
     def draw(self,context):
         layout = self.layout
@@ -122,7 +127,6 @@ class LEARNBGAME_ATOM(Panel):
         row.operator(ATOM_ADD.bl_idname,text="add",icon="ADD")
 
 class LEARNBGAME_BRAND(Panel):
-    bl_idname = "learnbgame.brand"
     bl_label = "Learnbgame"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
@@ -145,11 +149,11 @@ class LEARNBGAME_BRAND(Panel):
 
 
 class LEARNBGAME_MOLECULE(Panel):
-    bl_idname = "learnbgame.molecule"
     bl_label = "Molecule"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Learnbgame"
+    bl_parent_id = "LEARNBGAME_POQBDB"
 
     global icons_collection
     icons = icons_collection["main"]
@@ -170,11 +174,11 @@ class LEARNBGAME_MOLECULE(Panel):
 
 
 class LEARNBGAME_SPECIES(Panel):
-    bl_idname = "learnbgame.species"
     bl_label = "Species"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Learnbgame"
+    bl_parent_id = "LEARNBGAME_POQBDB"
 
     global icons_collection
     icons = icons_collection["main"]
@@ -211,11 +215,11 @@ class LEARNBGAME_SPECIES(Panel):
 
 
 class LEARNBGAME_PLANET(Panel):
-    bl_idname = "learnbgame.planet"
     bl_label = "Planet"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Learnbgame"
+    bl_parent_id = "LEARNBGAME_POQBDB"
 
     def draw(self,context):
         layout = self.layout
@@ -224,6 +228,27 @@ class LEARNBGAME_PLANET(Panel):
         row = layout.row()
         row.prop(planets,"planet",icon="SHADING_WIRE")
         row.operator(PLANET_ADD.bl_idname,text="add",icon="ADD")
+
+
+
+
+class LEARNBGAME_POQBDB(Panel):
+    bl_label = "poqbdb"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = "Learnbgame"
+    
+
+    def draw(self,context):
+        layout = self.layout
+        scene = context.scene
+        #poqbdb = scene.poqbdb
+        #row = layout.row()
+        
+
+
+        #for root,dirs,files in os.walk('poqbdb_dir')
+
 
 ##########################UI#####################################
 
@@ -302,6 +327,10 @@ class PLANET_PROPERTY(PropertyGroup):
             )for planet_name in planets_list
         ]
         )
+class POQBDB_PROPERTY(PropertyGroup):
+    pass
+
+
 ##########################Property####################################
 
 ######################Species Execute######################
@@ -823,6 +852,8 @@ class BRAND_DISPLAY(Operator):
 
 
 CLASSES = (
+    #
+    LEARNBGAME_POQBDB,
     SPECIES_PROPERTY,
     PLANT_ADD,
     LEARNBGAME_SPECIES,
@@ -839,7 +870,7 @@ CLASSES = (
     ATOM_ADD,
     BRAND_PROPERTY,
     BRAND_DISPLAY,
-    LEARNBGAME_BRAND,
+    LEARNBGAME_BRAND
     )
 
 def register():
@@ -853,7 +884,7 @@ def register():
     bpy.types.Scene.molecule = PointerProperty(type=MOLECULE_PROPERTY)
     bpy.types.Scene.atoms = PointerProperty(type=ATOM_PROPERTY)
     bpy.types.Scene.brand = PointerProperty(type=BRAND_PROPERTY)
-
+    #bpy.types.Scene.poqbdb = PointerProperty(type=PLANET_PROPERTY)
 
 
 def unregister():
