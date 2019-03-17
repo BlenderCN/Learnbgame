@@ -41,6 +41,8 @@ from math import acos
 
 from mathutils import Vector
 
+from . import poqbdb
+
 from bpy.types import (
     Panel, 
     Operator,
@@ -116,7 +118,6 @@ class LEARNBGAME_ATOM(Panel):
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Learnbgame"
-    bl_parent_id = "LEARNBGAME_POQBDB"
 
     def draw(self,context):
         layout = self.layout
@@ -153,7 +154,7 @@ class LEARNBGAME_MOLECULE(Panel):
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Learnbgame"
-    bl_parent_id = "LEARNBGAME_POQBDB"
+
 
     global icons_collection
     icons = icons_collection["main"]
@@ -178,7 +179,7 @@ class LEARNBGAME_SPECIES(Panel):
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Learnbgame"
-    bl_parent_id = "LEARNBGAME_POQBDB"
+
 
     global icons_collection
     icons = icons_collection["main"]
@@ -219,7 +220,6 @@ class LEARNBGAME_PLANET(Panel):
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Learnbgame"
-    bl_parent_id = "LEARNBGAME_POQBDB"
 
     def draw(self,context):
         layout = self.layout
@@ -232,22 +232,7 @@ class LEARNBGAME_PLANET(Panel):
 
 
 
-class LEARNBGAME_POQBDB(Panel):
-    bl_label = "poqbdb"
-    bl_space_type = "VIEW_3D"
-    bl_region_type = "UI"
-    bl_category = "Learnbgame"
-    
 
-    def draw(self,context):
-        layout = self.layout
-        scene = context.scene
-        #poqbdb = scene.poqbdb
-        #row = layout.row()
-        
-
-
-        #for root,dirs,files in os.walk('poqbdb_dir')
 
 
 ##########################UI#####################################
@@ -327,8 +312,7 @@ class PLANET_PROPERTY(PropertyGroup):
             )for planet_name in planets_list
         ]
         )
-class POQBDB_PROPERTY(PropertyGroup):
-    pass
+
 
 
 ##########################Property####################################
@@ -853,7 +837,7 @@ class BRAND_DISPLAY(Operator):
 
 CLASSES = (
     #
-    LEARNBGAME_POQBDB,
+
     SPECIES_PROPERTY,
     PLANT_ADD,
     LEARNBGAME_SPECIES,
@@ -874,6 +858,7 @@ CLASSES = (
     )
 
 def register():
+    poqbdb.register()
 
     for cla in CLASSES:
         register_class(cla)
@@ -894,6 +879,7 @@ def unregister():
     for icons in icons_collection.values():
         previews.remove(icons)
     icons_collection.clear()
+    poqbdb.unregister()
 
 
 if __name__ == "__main__":
