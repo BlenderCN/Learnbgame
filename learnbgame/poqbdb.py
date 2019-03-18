@@ -1,4 +1,5 @@
 import bpy
+import os
 from bpy.types import (Panel,PropertyGroup,Operator)
 from bpy.props import (EnumProperty,PointerProperty)
 
@@ -24,7 +25,7 @@ class POQBDB_POQBDB_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		other = poqbdbs.poqbdb
-		bpy.ops.import_scene.gltf(filepath="poqbdb/" + other + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/") + other + ".glb")
 		obj = context.selected_objects
 		obj[0].name = other
 		obj[0].location = context.scene.cursor.location 
@@ -52,7 +53,7 @@ class POQBDB_SPECIES_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		poqbdb_species = poqbdbs.poqbdb_species
-		bpy.ops.import_scene.gltf(filepath="poqbdb/species/" + poqbdb_species + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/species")+"/" + poqbdb_species + ".glb")
 		obj = context.selected_objects
 		obj[0].name = poqbdb_species
 		obj[0].location = context.scene.cursor.location 
@@ -80,7 +81,7 @@ class POQBDB_PLANETS_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		poqbdb_planets = poqbdbs.poqbdb_planets
-		bpy.ops.import_scene.gltf(filepath="poqbdb/planets/" + poqbdb_planets + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/planets")+"/" + poqbdb_planets + ".glb")
 		obj = context.selected_objects
 		obj[0].name = poqbdb_planets
 		obj[0].location = context.scene.cursor.location 
@@ -108,7 +109,7 @@ class POQBDB_SPECIES_ANIMAL_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		poqbdb_species_animal = poqbdbs.poqbdb_species_animal
-		bpy.ops.import_scene.gltf(filepath="poqbdb/species/animal/" + poqbdb_species_animal + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/species/animal")+"/" + poqbdb_species_animal + ".glb")
 		obj = context.selected_objects
 		obj[0].name = poqbdb_species_animal
 		obj[0].location = context.scene.cursor.location 
@@ -136,7 +137,7 @@ class POQBDB_SPECIES_PLANT_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		poqbdb_species_plant = poqbdbs.poqbdb_species_plant
-		bpy.ops.import_scene.gltf(filepath="poqbdb/species/plant/" + poqbdb_species_plant + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/species/plant")+"/" + poqbdb_species_plant + ".glb")
 		obj = context.selected_objects
 		obj[0].name = poqbdb_species_plant
 		obj[0].location = context.scene.cursor.location 
@@ -164,7 +165,7 @@ class POQBDB_SPECIES_MICRABE_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		poqbdb_species_micrabe = poqbdbs.poqbdb_species_micrabe
-		bpy.ops.import_scene.gltf(filepath="poqbdb/species/micrabe/" + poqbdb_species_micrabe + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/species/micrabe")+"/" + poqbdb_species_micrabe + ".glb")
 		obj = context.selected_objects
 		obj[0].name = poqbdb_species_micrabe
 		obj[0].location = context.scene.cursor.location 
@@ -181,7 +182,7 @@ class POQBDB_PROPERTY(PropertyGroup):
 	poqbdb_species : EnumProperty(
 		name="species",
 		items=[
-			("hologram","Hologram","add hologram"),
+			("learnioc","Learnioc","add learnioc"),
 			]
 	)
 

@@ -20,7 +20,7 @@ def draw_classes():
 		if files:
 			gltf_dict[root] = [os.path.splitext(gltf)[0] for gltf in files]
 
-	class_str = """import bpy\nfrom bpy.types import (Panel,PropertyGroup,Operator)\n""" + \
+	class_str = """import bpy\nimport os\nfrom bpy.types import (Panel,PropertyGroup,Operator)\n""" + \
 	"""from bpy.props import (EnumProperty,PointerProperty)\n\n""" +\
 	"""class POQBDB_POQBDB(Panel):\n\tbl_label="poqbdb"\n\tbl_space_type = "VIEW_3D"\n\t""" +\
 	"""bl_region_type = "UI"\n\tbl_category = "Learnbgame"\n\t\n\n\tdef draw(self,context)""" + \
@@ -30,7 +30,7 @@ def draw_classes():
 	"""class POQBDB_POQBDB_ADD(Operator):\n\tbl_idname = "poqbdb_poqbdb.add"\n\t""" +\
 	"""bl_label = "poqbdb_poqbdb+"\n\n\tdef execute(self,context):\n\t\t""" +\
 	"""poqbdbs = context.scene.poqbdbs\n\t\tother = poqbdbs.poqbdb\n\t\t""" + \
-	"""bpy.ops.import_scene.gltf(filepath="{0}/" + other + ".glb")\n\t\t""".format(path)  + \
+	"""bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"{0}/") + other + ".glb")\n\t\t""".format(path)  + \
 	"""obj = context.selected_objects\n\t\tobj[0].name = other\n\t\t""" + \
 	"""obj[0].location = context.scene.cursor.location \n\t\treturn {'FINISHED'}""" +\
 	"""\n\n"""
@@ -52,7 +52,7 @@ def draw_classes():
 				"""class {0}(Operator):\n\tbl_idname = "{1}.add"\n\t""".format(label_dir.replace("/","_").upper()+"_ADD",label_dir.replace("/","_")) +\
 				"""bl_label = "{0}"\n\n\tdef execute(self,context):\n\t\t""".format(label_dir.replace("/","_")+"+") +\
 				"""poqbdbs = context.scene.poqbdbs\n\t\t{0} = poqbdbs.{0}\n\t\t""".format(label_dir.replace("/","_")) + \
-				"""bpy.ops.import_scene.gltf(filepath="{0}/" + {1} + ".glb")\n\t\t""".format(label_dir,label_dir.replace("/","_"))  + \
+				"""bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"{0}")+"/" + {1} + ".glb")\n\t\t""".format(label_dir,label_dir.replace("/","_"))  + \
 				"""obj = context.selected_objects\n\t\tobj[0].name = {0}\n\t\t""".format(label_dir.replace("/","_")) + \
 				"""obj[0].location = context.scene.cursor.location \n\t\treturn {'FINISHED'}\n\n""" 
 

@@ -25,13 +25,15 @@ bl_info = {
 import os
 import random
 import sys
-sys.path.append(sys.path.append("/root/Software/anaconda3/lib/python3.7/site-packages"))
+import time
+import datetime
+sys.path.append("/root/Software/anaconda3/lib/python3.7/site-packages")
 import openbabel
 import pybel
 
 import json
 
-from math import sqrt,pi
+from math import sqrt,pi,radians, sin, cos, tan, asin, degrees
 
 import bgl,blf
 
@@ -39,9 +41,17 @@ import bpy
 
 from math import acos
 
-from mathutils import Vector
+from mathutils import Vector,Matrix
 
 from . import poqbdb
+from . import spaceship_generator
+from . import hdri
+from . import spacestation
+from .book import Book
+from .shelf import Shelf
+from .ch_trees import gui
+
+
 
 from bpy.types import (
     Panel, 
@@ -57,6 +67,8 @@ from bpy.props import (
     PointerProperty,
     StringProperty,
     BoolProperty,
+    IntProperty,
+    FloatProperty,
     )
 from bpy.utils import (
     previews,
@@ -180,6 +192,17 @@ class LEARNBGAME_SPECIES(Panel):
     bl_region_type = "UI"
     bl_category = "Learnbgame"
 
+    def draw(self,context):
+        pass
+
+
+
+class LEARNBGAME_SPECIES_ANIMAL(Panel):
+    bl_label = "Animals"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = "Learnbgame" 
+    bl_parent_id = "LEARNBGAME_SPECIES"
 
     global icons_collection
     icons = icons_collection["main"]
@@ -197,6 +220,20 @@ class LEARNBGAME_SPECIES(Panel):
             )
         row.operator(ANIMAL_ADD.bl_idname,text="add",icon="ADD")
 
+class LEARNBGAME_SPECIES_PLANT(Panel):
+    bl_label = "Plants"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = "Learnbgame" 
+    bl_parent_id = "LEARNBGAME_SPECIES"
+
+    global icons_collection
+    icons = icons_collection["main"]
+
+    def draw(self,context):
+        layout = self.layout
+        scene = context.scene
+
         plants = scene.plants
         row = layout.row()
         row.prop(
@@ -206,6 +243,20 @@ class LEARNBGAME_SPECIES(Panel):
             )
         row.operator(PLANT_ADD.bl_idname,text="add",icon="ADD")
 
+class LEARNBGAME_SPECIES_MICRABE(Panel):
+    bl_label = "Macrabes"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = "Learnbgame" 
+    bl_parent_id = "LEARNBGAME_SPECIES"
+
+    global icons_collection
+    icons = icons_collection["main"]
+
+    def draw(self,context):
+        layout = self.layout
+        scene = context.scene
+
         micrabes = scene.micrabes
         row = layout.row()
         row.prop(
@@ -213,7 +264,6 @@ class LEARNBGAME_SPECIES(Panel):
             "micrabe",
             icon_value=icons[micrabes.micrabe if micrabes.micrabe+".png" in icons_list else "learnbgame"].icon_id)
         row.operator(MICRABE_ADD.bl_idname,text="add",icon="ADD")
-
 
 class LEARNBGAME_PLANET(Panel):
     bl_label = "Planet"
@@ -228,11 +278,14 @@ class LEARNBGAME_PLANET(Panel):
         row = layout.row()
         row.prop(planets,"planet",icon="SHADING_WIRE")
         row.operator(PLANET_ADD.bl_idname,text="add",icon="ADD")
-
-
-
-
-
+        row1 = layout.row()
+        row1.operator(GenerateSpaceship.bl_idname,text="Spaceship",icon="AUTO")
+        row2 = layout.row()
+        row2.operator(GenerateSpacestation.bl_idname,text="Spacestation",icon="AUTO")
+        row3 = layout.row()
+        row3.operator(bookGen.bl_idname,text="Book",icon="AUTO")        
+        row4 = layout.row()
+        row4.operator(CLOCK_ADD.bl_idname,text="Clock",icon="AUTO")
 
 
 ##########################UI#####################################
@@ -312,7 +365,6 @@ class PLANET_PROPERTY(PropertyGroup):
             )for planet_name in planets_list
         ]
         )
-
 
 
 ##########################Property####################################
@@ -787,6 +839,459 @@ class ATOM_ADD(Operator):
 
 ############################Atom Execute###################################
 
+############################Spaceship Execute#############################
+
+class GenerateSpaceship(Operator):
+    """Procedurally generate 3D spaceships from a random seed."""
+    bl_idname = "spaceship.add"
+    bl_label = "Spaceship"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    random_seed                : StringProperty(default='', name='Seed')
+    num_hull_segments_min      : IntProperty (default=3, min=0, soft_max=16, name='Min. Hull Segments')
+    num_hull_segments_max      : IntProperty (default=6, min=0, soft_max=16, name='Max. Hull Segments')
+    create_asymmetry_segments  : BoolProperty(default=True, name='Create Asymmetry Segments')
+    num_asymmetry_segments_min : IntProperty (default=1, min=1, soft_max=16, name='Min. Asymmetry Segments')
+    num_asymmetry_segments_max : IntProperty (default=5, min=1, soft_max=16, name='Max. Asymmetry Segments')
+    create_face_detail         : BoolProperty(default=True,  name='Create Face Detail')
+    allow_horizontal_symmetry  : BoolProperty(default=True,  name='Allow Horizontal Symmetry')
+    allow_vertical_symmetry    : BoolProperty(default=False, name='Allow Vertical Symmetry')
+    apply_bevel_modifier       : BoolProperty(default=True,  name='Apply Bevel Modifier')
+    assign_materials           : BoolProperty(default=True,  name='Assign Materials')
+
+    def execute(self, context):
+        spaceship_generator.generate_spaceship(
+            self.random_seed,
+            self.num_hull_segments_min,
+            self.num_hull_segments_max,
+            self.create_asymmetry_segments,
+            self.num_asymmetry_segments_min,
+            self.num_asymmetry_segments_max,
+            self.create_face_detail,
+            self.allow_horizontal_symmetry,
+            self.allow_vertical_symmetry,
+            self.apply_bevel_modifier,
+            self.assign_materials)
+        return {'FINISHED'}
+
+###############################Spaceship Execute##########################
+
+##############################Spacestation Execute#######################
+
+class GenerateSpacestation(Operator):
+    bl_idname = "mesh.generate_spacestation"
+    bl_label  = "Spacestation"
+    #bl_options = {'REGISTER', 'UNDO'}
+
+    use_seed : BoolProperty(default=False, name="Use Seed")
+    seed : IntProperty(default=5, name="Seed (Requires 'Use Seed')")
+    parts_min : IntProperty(default=3, min=0, name="Min. Parts")
+    parts_max : IntProperty(default=8, min=3, name="Max. Parts")
+    torus_major_min : FloatProperty(default=2.0, min=0.1, name="Min. Torus radius")
+    torus_major_max : FloatProperty(default=5.0, min=0.1, name="Max. Torus radius")
+    torus_minor_min : FloatProperty(default=0.1, min=0.1, name="Min. Torus thickness")
+    torus_minor_max : FloatProperty(default=0.5, min=0.1, name="Max. Torus thickness")
+    bevelbox_min : FloatProperty(default=0.2, min=0.1, name="Min. Bevelbox scale")
+    bevelbox_max : FloatProperty(default=0.5, min=0.1, name="Max. Bevelbox scale")
+    cylinder_min : FloatProperty(default=0.5, min=0.1, name="Min. Cylinder radius")
+    cylinder_max : FloatProperty(default=3.0, min=0.1, name="Max. Cylinder radius")
+    cylinder_h_min : FloatProperty(default=0.3, min=0.1, name="Min. Cylinder height")
+    cylinder_h_max : FloatProperty(default=1.0, min=0.1, name="Max. Cylinder height")
+    storage_min : FloatProperty(default=0.5, min=0.1, name="Min. Storage height")
+    storage_max : FloatProperty(default=1.0, min=0.1, name="Max. Storage height")
+
+    def execute(self, context):
+        if not self.use_seed:
+            seed = random.randint(0, 100000)
+        else:
+            seed = self.seed
+        config = {
+            "min_parts":      self.parts_min,
+            "max_parts":      self.parts_max,
+            "torus_major_min":self.torus_major_min,
+            "torus_major_max":self.torus_major_max,
+            "torus_minor_min":self.torus_minor_min,
+            "torus_minor_max":self.torus_minor_max,
+            "bevelbox_min":   self.bevelbox_min,
+            "bevelbox_max":   self.bevelbox_max,
+            "cylinder_min":   self.cylinder_min,
+            "cylinder_max":   self.cylinder_max,
+            "cylinder_h_min": self.cylinder_h_min,
+            "cylinder_h_max": self.cylinder_h_max,
+            "storage_min":    self.storage_min,
+            "storage_max":    self.storage_max
+        }
+        spacestation.generate_station(seed, config)
+        return {'FINISHED'}
+
+##############################Spacestation Execute#######################
+
+##############################BookGen Execute#################################
+
+class bookGen(bpy.types.Operator):
+    bl_idname = "object.book_gen"
+    bl_label = "BookGen"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def hinge_inset_guard(self, context):
+        if(self.hinge_inset > self.cover_thickness):
+            self.hinge_inset = self.cover_thickness - self.cover_thickness / 8
+
+    width : FloatProperty(name="width", default=1, min=0)
+    scale : FloatProperty(name="scale", default=1, min=0)
+    seed : IntProperty(name="seed", default=0)
+
+    axis : EnumProperty(name="axis",
+                                  items=(("0", "x", "distribute along the x-axis"),
+                                         ("1", "y", "distribute along the y-axis"),
+                                         ("2", "custom", "distribute along a custom axis")))
+
+    angle : FloatProperty(name="angle", unit='ROTATION')
+
+    alignment : EnumProperty(name="alignment", items=(("0", "spline", "align books at the spline (usually front in a shelf)"), ("1", "fore egde", "align books along there fore edge (usually back in a shelf)"), ("2", "center", "align along center")))
+
+    lean_amount : FloatProperty(name="lean amount", subtype="FACTOR", min=.0, soft_max=1.0)
+
+    lean_direction : FloatProperty(name="lean direction", subtype="FACTOR", min=-1, max=1, default=0)
+
+    lean_angle : FloatProperty(name="lean angle", unit='ROTATION', min=.0, max=pi / 2.0, default=radians(30))
+    rndm_lean_angle_factor : FloatProperty(name="random", default=1, min=.0, soft_max=1, subtype="FACTOR")
+
+    book_height : FloatProperty(name="height", default=3.0, min=.0, unit="LENGTH")
+    rndm_book_height_factor : FloatProperty(name=" random", default=1, min=.0, soft_max=1, subtype="FACTOR")
+
+    book_width : FloatProperty(name="width", default=0.5, min=.01, unit="LENGTH")
+    rndm_book_width_factor : FloatProperty(name="random", default=1, min=.0, soft_max=1, subtype="FACTOR")
+
+    book_depth : FloatProperty(name="depth", default=3.0, min=.0, unit="LENGTH")
+    rndm_book_depth_factor : FloatProperty(name="random", default=1, min=.0, soft_max=1, subtype="FACTOR")
+
+    cover_thickness : FloatProperty(name="cover thickness", default=0.05, min=.0, step=.02, unit="LENGTH", update=hinge_inset_guard)
+    rndm_cover_thickness_factor : FloatProperty(name="random", default=1, min=.0, soft_max=1, subtype="FACTOR")
+
+    textblock_offset : FloatProperty(name="textblock offset", default=0.1, min=.0, unit="LENGTH")
+    rndm_textblock_offset_factor : FloatProperty(name="randon", default=1, min=.0, soft_max=1, subtype="FACTOR")
+
+    spline_curl : FloatProperty(name="spline curl", default=0.01, step=.02, min=.0, unit="LENGTH")
+    rndm_spline_curl_factor : FloatProperty(name="random", default=1, min=.0, soft_max=1, subtype="FACTOR")
+
+    hinge_inset : FloatProperty(name="hinge inset", default=0.03, min=.0, step=.01, unit="LENGTH", update=hinge_inset_guard)
+    rndm_hinge_inset_factor : FloatProperty(name="random", default=1, min=.0, soft_max=1, subtype="FACTOR")
+
+    hinge_width : FloatProperty(name="hinge width", default=0.08, min=.0, step=.05, unit="LENGTH")
+    rndm_hinge_width_factor : FloatProperty(name="random", default=1, min=.0, soft_max=1, subtype="FACTOR")
+
+    spacing : FloatProperty(name="spacing", default=0.05, min=.0, unit="LENGTH")
+    rndm_spacing_factor : FloatProperty(name="random", default=1, min=.0, soft_max=1, subtype="FACTOR")
+
+    subsurf : BoolProperty(name="Add Subsurf-Modifier", default=False)
+    smooth : BoolProperty(name="shade smooth", default=False)
+    unwrap : BoolProperty(name="unwrap", default=True)
+
+    cur_width = 0
+
+    cur_offset = 0
+
+    def check(self, context):
+        self.run()
+
+    def invoke(self, context, event):
+        self.run()
+        return {'FINISHED'}
+
+    def execute(self, context):
+        return {'FINISHED'}
+
+    @classmethod
+    def poll(cls, context):
+        return context.mode == 'OBJECT'
+
+    def run(self):
+        time_start = time.time()
+
+        if(self.axis == "0"):
+            angle = radians(0)
+        elif(self.axis == "1"):
+            angle = radians(90)
+        elif(self.axis == "2"):
+            angle = self.angle
+
+        parameters = {
+            "scale": self.scale,
+            "seed": self.seed,
+            "alignment": self.alignment,
+            "lean_amount": self.lean_amount,
+            "lean_direction": self.lean_direction,
+            "lean_angle": self.lean_angle,
+            "rndm_lean_angle_factor": self.rndm_lean_angle_factor,
+            "book_height": self.book_height,
+            "rndm_book_height_factor": self.rndm_book_height_factor,
+            "book_width": self.book_width,
+            "rndm_book_width_factor": self.rndm_book_width_factor,
+            "book_depth": self.book_depth,
+            "rndm_book_depth_factor": self.rndm_book_depth_factor,
+            "cover_thickness": self.cover_thickness,
+            "rndm_cover_thickness_factor": self.rndm_cover_thickness_factor,
+            "textblock_offset": self.textblock_offset,
+            "rndm_textblock_offset_factor": self.rndm_textblock_offset_factor,
+            "spline_curl": self.spline_curl,
+            "rndm_spline_curl_factor": self.rndm_spline_curl_factor,
+            "hinge_inset": self.hinge_inset,
+            "rndm_hinge_inset_factor": self.rndm_hinge_inset_factor,
+            "hinge_width": self.hinge_width,
+            "rndm_hinge_width_factor": self.rndm_hinge_width_factor,
+            "spacing": self.spacing,
+            "rndm_spacing_factor": self.rndm_spacing_factor,
+            "subsurf": self.subsurf,
+            "smooth": self.smooth,
+            "unwrap": self.unwrap
+        }
+
+        shelf = Shelf(bpy.context.scene.cursor.location, angle, self.width, parameters)
+        shelf.fill()
+
+        print("Finished: %.4f sec" % (time.time() - time_start))
+
+    def draw(self, context):
+        layout = self.layout
+
+        layout.prop(self, "width")
+        layout.prop(self, "scale")
+        layout.prop(self, "seed")
+
+        row = layout.row(align=True)
+        row.prop(self, "spacing")
+        row.prop(self, "rndm_spacing_factor")
+
+        layout.separator()
+        layout.label(text = "axis")
+        layout.prop(self, "axis", expand=True)
+        sub = layout.column()
+        sub.active = self.axis == "2"
+        sub.prop(self, "angle")
+
+        layout.separator()
+
+        layout.label(text = "alignment")
+        layout.prop(self, "alignment", expand=True)
+
+        """layout.separator()
+
+        leaning = layout.box()
+        leaning.label(text = "leaning")
+        leaning.prop(self, "lean_amount")
+        leaning.prop(self, "lean_direction")
+        row = leaning.row(align=True)
+        row.prop(self, "lean_angle")
+        row.prop(self, "rndm_lean_angle_factor")"""
+
+        layout.separator()
+
+        proportions = layout.box()
+        proportions.label(text = "Proportions:")
+
+        row = proportions.row(align=True)
+        row.prop(self, "book_height")
+        row.prop(self, "rndm_book_height_factor")
+
+        row = proportions.row(align=True)
+        row.prop(self, "book_depth")
+        row.prop(self, "rndm_book_depth_factor")
+
+        row = proportions.row(align=True)
+        row.prop(self, "book_width")
+        row.prop(self, "rndm_book_width_factor")
+
+        layout.separator()
+
+        details_box = layout.box()
+        details_box.label(text = "Details:")
+
+        row = details_box.row(align=True)
+        row.prop(self, "textblock_offset")
+        row.prop(self, "rndm_textblock_offset_factor")
+
+        row = details_box.row(align=True)
+        row.prop(self, "cover_thickness")
+        row.prop(self, "rndm_cover_thickness_factor")
+
+        row = details_box.row(align=True)
+        row.prop(self, "spline_curl")
+        row.prop(self, "rndm_spline_curl_factor")
+
+        row = details_box.row(align=True)
+        row.prop(self, "hinge_inset")
+        row.prop(self, "rndm_hinge_inset_factor")
+
+        row = details_box.row(align=True)
+        row.prop(self, "hinge_width")
+        row.prop(self, "rndm_hinge_width_factor")
+
+        layout.separator()
+
+        layout.prop(self, "subsurf")
+        layout.prop(self, "smooth")
+        layout.prop(self, "unwrap")
+
+#######################BookGen Execute########################
+
+#######################CLOCK_ADD Execute###################
+
+class CLOCK_ADD(Operator):
+    bl_idname = "clock.add"
+    bl_label = "add clock"
+
+    def execute(self,context):
+        
+        now = datetime.datetime.now()                        #Get the current date/time
+
+        hour = now.hour                                      #Get hours,
+        min = now.minute                                     #minutes
+        sec = now.second                                     #and seconds  
+
+
+        #bpy.ops.object.select_all(action='TOGGLE')            #Deselects any objects which may be selected
+        #bpy.ops.object.select_all(action='TOGGLE')            #Selects all objects
+        #bpy.ops.object.delete()                               #Deletes all objects to allow for new clockface (will delete old one)
+
+
+        #Clock hand creation
+
+
+        bpy.ops.mesh.primitive_cube_add(location=(0,0,1))                                        
+        bpy.context.active_object.name = "hour hand"
+        bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
+        bpy.ops.transform.resize(value=(0.2,0.2,2.5))
+
+        bpy.context.active_object.rotation_euler = (-0.523599*hour)+(-min*0.008727),0,0          # 30 degrees*hour to get the correct placement on clock. But at
+                                                                                                   # half past the hour the hour hand should be placed somewhere between
+                                                                                                   # two hour numbers, hence the min*0.5 (*0.5 converts 60 minutes to 30 degrees)
+
+        bpy.ops.mesh.primitive_cube_add(location=(0,0,1))
+        bpy.context.active_object.name = "min hand"
+        bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
+        bpy.ops.transform.resize(value=(0.2,0.2,3)) 
+
+        bpy.context.active_object.rotation_euler = (-0.104720*min)+(-sec*0.001745),0,0             # Same as the hour hand except using the seconds to offset the minutes
+
+
+
+        bpy.ops.mesh.primitive_cube_add(location=(0,0,1))
+        bpy.context.active_object.name = "sec hand"
+        bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
+        bpy.ops.transform.resize(value=(0.1,0.1,3.5)) 
+
+        bpy.context.active_object.rotation_euler = -0.104720*sec,0,0
+
+        #Clock rim creation
+
+        for i in range(0,60):
+            
+            
+            bpy.ops.mesh.primitive_cube_add(location=(0,0,8))              #add cube
+
+            bpy.ops.transform.resize(value=(0.1,0.1,0.5))                  #resize it
+
+            bpy.context.scene.cursor.location = 0,0,0                      #Set cursor to origin of scene
+            bpy.ops.object.origin_set(type='ORIGIN_CURSOR')                #Set objects origin to cursor
+
+            bpy.context.active_object.rotation_euler = 0.104720*i,0,0      #rotate object with radians (6 degrees)
+         
+
+        #Clock numbers creation
+
+        for i in range(1,13):
+
+            bpy.ops.object.text_add(rotation=(1.570796,0,1.5707960))            #Create text object
+            bpy.ops.object.editmode_toggle()                                    #Go to edit mode to allow text editing
+            bpy.ops.font.delete(type='PREVIOUS_WORD')                                     #Delete text
+            bpy.ops.font.text_insert(text=str(i), accent=False)                 #Make the text a number (i)
+            bpy.ops.object.editmode_toggle()                                    #Back to object mode to allow object manipulation
+
+            bpy.context.active_object.name = "Text" +str(i)                     #Give a name to text of 'Texti' so they can be accessed later
+
+            bpy.context.active_object.location = 0,0,6.5                        #Move text up to clock face edge
+
+            bpy.ops.object.origin_set(type='GEOMETRY_ORIGIN')
+
+            bpy.ops.object.origin_set(type='ORIGIN_CURSOR')                     #Set pivot point to origin of scene
+            
+            bpy.ops.object.convert(target='MESH', keep_original=False)          #Convert text to mesh so rotation can be applied
+            
+            bpy.ops.object.transform_apply(rotation=True)                                     #Apply rotation
+            
+            bpy.context.active_object.rotation_euler =-0.523599*i,0,0           #Rotate numbers around clock face
+            
+            bpy.ops.object.transform_apply(rotation=True)                                       #Apply rotation
+            
+            bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY')                   #Set origins back to center or geometry (needed for correction, below)
+            
+            
+        #Corrects rotation for numbers on bottom half of clockface
+            
+        for i in range(4,9):                                                    #Loop through numbers 4-9
+            
+            currentText = bpy.data.objects['Text'+str(i)]                       #Get the object
+            
+            bpy.context.view_layer.objects.active = currentText                      #Set the object to selected
+         
+            bpy.context.active_object.rotation_euler = 3.141593,0,0             #Rotate number to right way up (180 degrees)
+          
+
+        bpy.context.scene.frame_current = 1    
+
+        #Insert keyframe 1
+
+        currentObject = bpy.data.objects['hour hand']
+        bpy.context.view_layer.objects.active= currentObject
+        bpy.context.view_layer.objects.active.select_set(True)
+        bpy.ops.anim.keyframe_insert(type='Rotation', confirm_success=False)    #Inserts first keyframe for rotation
+
+        currentObject = bpy.data.objects['min hand']
+        bpy.context.view_layer.objects.active= currentObject
+        bpy.context.view_layer.objects.active.select_set(True)
+        bpy.ops.anim.keyframe_insert(type='Rotation', confirm_success=False)
+
+        currentObject = bpy.data.objects['sec hand']
+        bpy.context.view_layer.objects.active= currentObject
+        bpy.context.view_layer.objects.active.select_set(True)
+        bpy.ops.anim.keyframe_insert(type='Rotation', confirm_success=False)
+         
+        bpy.context.scene.frame_current = bpy.context.scene.frame_end           #Go to the last frame in playback range 
+
+
+        #Insert Keyframe 2
+
+        currentObject = bpy.data.objects['hour hand']
+        bpy.context.view_layer.objects.active= currentObject
+        bpy.context.view_layer.objects.active.select_set(True)
+        bpy.context.active_object.rotation_euler.x = bpy.context.active_object.rotation_euler.x+(0.000006*-bpy.context.scene.frame_end) #adds new rotation of 0.00033333*number of frames to get correct position
+        bpy.ops.anim.keyframe_insert(type='Rotation', confirm_success=False)
+
+        currentObject = bpy.data.objects['min hand']
+        bpy.context.view_layer.objects.active= currentObject
+        bpy.context.view_layer.objects.active.select_set(True)
+        bpy.context.active_object.rotation_euler.x = bpy.context.active_object.rotation_euler.x+(0.000070*-bpy.context.scene.frame_end) #Same as above except 0.004 degrees
+        bpy.ops.anim.keyframe_insert(type='Rotation', confirm_success=False)
+
+        currentObject = bpy.data.objects['sec hand']
+        bpy.context.view_layer.objects.active= currentObject
+        bpy.context.view_layer.objects.active.select_set(True)
+        bpy.context.active_object.rotation_euler.x = bpy.context.active_object.rotation_euler.x+(0.004189*-bpy.context.scene.frame_end) #Same as above except 0.24 degrees
+        bpy.ops.anim.keyframe_insert(type='Rotation', confirm_success=False)
+
+        bpy.context.area.type = 'GRAPH_EDITOR'              #Change screen to graph editor to do the next operation
+
+        bpy.ops.graph.interpolation_type(type='LINEAR')     #Set keyframe type to linear to avoid acceleration of the hands animation
+
+        bpy.context.area.type = 'VIEW_3D'               #Change back to text editor
+
+        bpy.ops.screen.animation_play() 
+
+        return {'FINISHED'}
+
+#######################CLOCK_ADD Execute###################
+
 ############################Brand Execute###################################
 
 class BRAND_DISPLAY(Operator):
@@ -836,8 +1341,10 @@ class BRAND_DISPLAY(Operator):
 
 
 CLASSES = (
-    #
-
+    bookGen,
+    CLOCK_ADD,
+    GenerateSpacestation,
+    GenerateSpaceship,
     SPECIES_PROPERTY,
     PLANT_ADD,
     LEARNBGAME_SPECIES,
@@ -854,11 +1361,16 @@ CLASSES = (
     ATOM_ADD,
     BRAND_PROPERTY,
     BRAND_DISPLAY,
-    LEARNBGAME_BRAND
+    LEARNBGAME_BRAND,
+    LEARNBGAME_SPECIES_ANIMAL,
+    LEARNBGAME_SPECIES_PLANT,
+    LEARNBGAME_SPECIES_MICRABE,
     )
 
 def register():
     poqbdb.register()
+    hdri.register()
+    
 
     for cla in CLASSES:
         register_class(cla)
@@ -869,10 +1381,13 @@ def register():
     bpy.types.Scene.molecule = PointerProperty(type=MOLECULE_PROPERTY)
     bpy.types.Scene.atoms = PointerProperty(type=ATOM_PROPERTY)
     bpy.types.Scene.brand = PointerProperty(type=BRAND_PROPERTY)
-    #bpy.types.Scene.poqbdb = PointerProperty(type=PLANET_PROPERTY)
+    gui.register()
+
 
 
 def unregister():
+
+    gui.unregister()
     global icons_collection
     for cla in CLASSES:
         unregister_class(cla)
@@ -880,6 +1395,8 @@ def unregister():
         previews.remove(icons)
     icons_collection.clear()
     poqbdb.unregister()
+    hdri.unregister()
+
 
 
 if __name__ == "__main__":
