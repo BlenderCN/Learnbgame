@@ -50,8 +50,9 @@ from . import spacestation
 from .book import Book
 from .shelf import Shelf
 from .ch_trees import gui
+from .grove import Grove_Operator, Grove_Preferences
 
-
+from . import grove
 
 from bpy.types import (
     Panel, 
@@ -242,6 +243,11 @@ class LEARNBGAME_SPECIES_PLANT(Panel):
             icon_value=icons[plants.plant if plants.plant+".png" in icons_list else "learnbgame"].icon_id
             )
         row.operator(PLANT_ADD.bl_idname,text="add",icon="ADD")
+        row1 = layout.row()
+        row1.operator(Grove_Operator.TheGrove6.bl_idname, text="The Grove ",icon="PARTICLE_TIP")
+        row2 = layout.row()
+        row2.prop(plants,"twigs_folder")
+        row2.prop(plants,"textures_folder")
 
 class LEARNBGAME_SPECIES_MICRABE(Panel):
     bl_label = "Macrabes"
@@ -283,9 +289,9 @@ class LEARNBGAME_PLANET(Panel):
         row2 = layout.row()
         row2.operator(GenerateSpacestation.bl_idname,text="Spacestation",icon="AUTO")
         row3 = layout.row()
-        row3.operator(bookGen.bl_idname,text="Book",icon="AUTO")        
+        row3.operator(bookGen.bl_idname,text="Book",icon="ASSET_MANAGER")        
         row4 = layout.row()
-        row4.operator(CLOCK_ADD.bl_idname,text="Clock",icon="AUTO")
+        row4.operator(CLOCK_ADD.bl_idname,text="Clock",icon="TIME")
 
 
 ##########################UI#####################################
@@ -341,6 +347,18 @@ class SPECIES_PROPERTY(PropertyGroup):
             "add "+ plant_name,
             )for plant_name in plants_list
         ]
+        )
+
+    twigs_folder : StringProperty(
+        name = "Twigs Folder",
+        description = "Twigs Folder",
+        subtype='DIR_PATH'
+        )
+    
+    textures_folder : StringProperty(
+        name = "Textures Folder",
+        description = "Textures Folder",
+        subtype = 'DIR_PATH'
         )
 
     micrabe : EnumProperty(
@@ -1370,7 +1388,10 @@ CLASSES = (
 def register():
     poqbdb.register()
     hdri.register()
+    Grove_Preferences.register()
+    Grove_Operator.register()
     
+
 
     for cla in CLASSES:
         register_class(cla)
@@ -1396,6 +1417,9 @@ def unregister():
     icons_collection.clear()
     poqbdb.unregister()
     hdri.unregister()
+    Grove_Operator.unregister()
+    Grove_Preferences.unregister()
+
 
 
 

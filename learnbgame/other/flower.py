@@ -31,13 +31,13 @@ def removeAll(type=None):
         bpy.ops.object.delete()
     else:
         # Remove all elements in scene
-        bpy.ops.object.select_by_layer()
+
         bpy.ops.object.delete(use_global=False)
 
 
 def target(origin=(0,0,0)):
     tar = bpy.data.objects.new('Target', None)
-    bpy.context.scene.objects.link(tar)
+    bpy.context.scene.collection.objects.link(tar)
     tar.location = origin
 
     return tar
@@ -45,8 +45,7 @@ def target(origin=(0,0,0)):
 def setAmbientOcclusion(ambient_occulusion=True, samples=5, blend_type='ADD'):
     # blend_type options: 'ADD', 'MULTIPLY'
     bpy.context.scene.world.light_settings.use_ambient_occlusion = ambient_occulusion
-    bpy.context.scene.world.light_settings.ao_blend_type = blend_type
-    bpy.context.scene.world.light_settings.samples = samples
+
 
 
 def simpleScene(targetCoord, cameraCoord, sunCoord, lens=35):
@@ -71,7 +70,7 @@ def camera(origin, target=None, lens=35, clip_start=0.1, clip_end=200, type='PER
     # Link object to scene
     obj = bpy.data.objects.new("CameraObj", camera)
     obj.location = origin
-    bpy.context.scene.objects.link(obj)
+    bpy.context.scene.collection.objects.link(obj)
     bpy.context.scene.camera = obj # Make this the current camera
 
     if target: trackToConstraint(obj, target)
@@ -92,7 +91,7 @@ def trackToConstraint(obj, target):
 def lamp(origin, type='POINT', energy=1, color=(1,1,1), target=None):
     # Lamp types: 'POINT', 'SUN', 'SPOT', 'HEMI', 'AREA'
     print('createLamp called')
-    bpy.ops.object.add(type='LAMP', location=origin)
+    bpy.ops.object.add(type='LIGHT', location=origin)
     obj = bpy.context.object
     obj.data.type = type
     obj.data.energy = energy
@@ -104,24 +103,8 @@ def lamp(origin, type='POINT', energy=1, color=(1,1,1), target=None):
 
 def falloffMaterial(diffuse_color):
     mat = bpy.data.materials.new('FalloffMaterial')
-
-    # Diffuse
-    mat.diffuse_shader = 'LAMBERT'
-    mat.use_diffuse_ramp = True
-    mat.diffuse_ramp_input = 'NORMAL'
-    mat.diffuse_ramp_blend = 'ADD'
-    mat.diffuse_ramp.elements[0].color = (1, 1, 1, 1)
-    mat.diffuse_ramp.elements[1].color = (1, 1, 1, 0)
     mat.diffuse_color = diffuse_color
-    mat.diffuse_intensity = 1.0
-
-    # Specular
     mat.specular_intensity = 0.0
-
-    # Shading
-    mat.emit = 0.05
-    mat.translucency = 0.2
-
     return mat
 
 def renderToFolder(renderFolder='rendering', renderName='render', resX=800, resY=800, resPercentage=100, animation=False, frame_end=None):
@@ -177,7 +160,7 @@ class PhyllotaxisFlower():
         bm.free()
 
         # Link object to scene
-        scene.objects.link(self.obj)
+        scene.collection.objects.link(self.obj)
         scene.update()
 
         # Append new frame change handler to redraw geometry
@@ -227,14 +210,14 @@ class PhyllotaxisFlower():
                 T1, N1, B1 = getTNBfromVector(p1)
                 M1 = Matrix([T1, B1, N1]).to_4x4().transposed()
 
-                p = p0 + M0*p1
+                p = p0 + M0@p1
                 r2 = t2*t1*self.r2
 
                 T = Matrix.Translation(p)
                 bmesh.ops.create_cone(bm,
                                 cap_ends=True, segments=6,
                                 diameter1=r2, diameter2=r2,
-                                depth=0.1*r2, matrix=T*M0*M1*Rot)
+                                depth=0.1*r2, matrix=T@M0@M1@Rot)
         return bm
 
 
@@ -258,10 +241,10 @@ if __name__ == '__main__':
                 for color in palette]
 
     # Set background color of scene
-    bpy.context.scene.world.horizon_color = palette[0]
+    #bpy.context.scene.world.horizon_color = palette[0]
 
     # Set material for object
-    mat = falloffMaterial(palette[1])
+    mat = falloffMaterial(palette[1]+(1,))
     blossom.obj.data.materials.append(mat)
 
     # Render scene
