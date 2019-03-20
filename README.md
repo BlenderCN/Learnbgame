@@ -122,3 +122,28 @@ openbabel
 atom模块中电子的运动是绕着x或y或z轴旋转的,并非绕原点旋转,关于绕原点的算法暂时还没有思路,有待改进.
 
 
+
+### [Fofight](Fofight.md)
+
+### [ImmunemaG](ImmunemaG.md)
+
+### [LearmWWW](LearmWWW.md)
+
+### [LearnbdnelB](LearnbdnelB.md)
+
+### [Learnbgame](Learnbgame.md)
+
+### [LearnbgameWWW](LearnbgameWWW.md)
+
+### [LearnBikiW](LearnBikiW.md)
+
+### [LearnioC](LearnioC.md)
+
+### [LearnruT](LearnruT.md)
+
+### [LearnW5H](LearnW5H.md)
+
+### [PByHack](PByHack.md)
+
+### [poqbdb](poqbdb.md)
+
