@@ -50,9 +50,11 @@ from . import spacestation
 from .book import Book
 from .shelf import Shelf
 from .ch_trees import gui
-from .grove import Grove_Operator, Grove_Preferences
+from .grove import Grove_Operator#, Grove_Preferences
 
-from . import grove
+from . import human
+
+from . import jewelcraft
 
 from bpy.types import (
     Panel, 
@@ -383,6 +385,8 @@ class PLANET_PROPERTY(PropertyGroup):
             )for planet_name in planets_list
         ]
         )
+
+
 
 
 ##########################Property####################################
@@ -1388,10 +1392,8 @@ CLASSES = (
 def register():
     poqbdb.register()
     hdri.register()
-    Grove_Preferences.register()
+    #Grove_Preferences.register()
     Grove_Operator.register()
-    
-
 
     for cla in CLASSES:
         register_class(cla)
@@ -1403,11 +1405,14 @@ def register():
     bpy.types.Scene.atoms = PointerProperty(type=ATOM_PROPERTY)
     bpy.types.Scene.brand = PointerProperty(type=BRAND_PROPERTY)
     gui.register()
+    human.register()
+    jewelcraft.register()
 
 
 
 def unregister():
-
+    jewelcraft.unregister()
+    human.unregister()
     gui.unregister()
     global icons_collection
     for cla in CLASSES:
@@ -1418,7 +1423,7 @@ def unregister():
     poqbdb.unregister()
     hdri.unregister()
     Grove_Operator.unregister()
-    Grove_Preferences.unregister()
+    #Grove_Preferences.unregister()
 
 
 
