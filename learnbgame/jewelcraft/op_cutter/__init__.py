@@ -139,7 +139,7 @@ class OBJECT_OT_jewelcraft_cutter_add(UI, Operator):
             return {"CANCELLED"}
 
         asset.get_gem(self, context)
-        prefs = context.preferences.addons[var.ADDON_ID].preferences
+        prefs = bpy.context.scene.jewelcraft_preset
         self.color = tuple(prefs.color_cutter)
 
         if self.auto_presets:

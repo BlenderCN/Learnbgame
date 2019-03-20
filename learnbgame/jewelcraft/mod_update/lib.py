@@ -75,7 +75,6 @@ def _update_check(use_force_check):
     import json
     import ssl
 
-    #prefs = bpy.context.preferences.addons[var.ADDON_ID].preferences
     prefs = bpy.context.scene.jewelcraft_preset
     save_state = _save_state_get()
 

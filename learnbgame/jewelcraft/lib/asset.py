@@ -110,7 +110,7 @@ def add_material(ob, mat_name="New Material", color=(0.8, 0.8, 0.8, 1.0), is_gem
 
 
 def user_asset_library_folder_object():
-    prefs = bpy.context.preferences.addons[var.ADDON_ID].preferences
+    prefs = bpy.context.scene.jewelcraft_preset
 
     if prefs.use_custom_asset_dir:
         return bpy.path.abspath(prefs.custom_asset_dir)
@@ -119,7 +119,7 @@ def user_asset_library_folder_object():
 
 
 def user_asset_library_folder_weighting():
-    prefs = bpy.context.preferences.addons[var.ADDON_ID].preferences
+    prefs = bpy.context.scene.jewelcraft_preset
 
     if prefs.weighting_set_use_custom_dir:
         return bpy.path.abspath(prefs.weighting_set_custom_dir)

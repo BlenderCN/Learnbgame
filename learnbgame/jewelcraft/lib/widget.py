@@ -64,11 +64,11 @@ def handler_toggle(self, context):
 
 def draw(self, context):
 
-    if not context.window_manager.jewelcraft.widget_toggle or not context.space_data.overlay.show_overlays:
+    if not context.scene.jewelcraft.widget_toggle or not context.space_data.overlay.show_overlays:
         return
 
     depsgraph = context.depsgraph
-    prefs = context.preferences.addons[var.ADDON_ID].preferences
+    prefs = bpy.context.scene.jewelcraft_preset
     use_ovrd = prefs.widget_use_overrides
     use_ovrd_only = use_ovrd and prefs.widget_overrides_only
     use_sel_only = prefs.widget_selection_only

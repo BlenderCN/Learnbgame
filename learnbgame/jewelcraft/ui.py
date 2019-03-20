@@ -38,10 +38,7 @@ class Setup:
 
     def __init__(self):
         self.prefs = bpy.context.scene.jewelcraft_preset
-        #self.prefs = bpy.context.preferences.addons[__package__].preferences
-        self.scene_props = bpy.context.scene.jewelcraft
         self.wm_props = bpy.context.scene.jewelcraft_preset
-        #self.wm_props = bpy.context.window_manager.jewelcraft
         self.pcoll = var.preview_collections["icons"]
 
 
@@ -396,12 +393,14 @@ class VIEW3D_PT_jewelcraft_product_report(Panel, Setup):
         layout = self.layout
         layout.use_property_split = True
         layout.use_property_decorate = False
+        scene = context.scene
+        jewelcraft = scene.jewelcraft
 
         col = layout.column()
-        col.prop(self.scene_props, "product_report_ob_size")
-        col.prop(self.scene_props, "product_report_ob_shank")
-        col.prop(self.scene_props, "product_report_ob_dim")
-        col.prop(self.scene_props, "product_report_ob_weight")
+        col.prop(jewelcraft, "product_report_ob_size")
+        col.prop(jewelcraft, "product_report_ob_shank")
+        col.prop(jewelcraft, "product_report_ob_dim")
+        col.prop(jewelcraft, "product_report_ob_weight")
 
         row = layout.row(align=True)
         row.operator("wm.jewelcraft_product_report", text="Product Report")

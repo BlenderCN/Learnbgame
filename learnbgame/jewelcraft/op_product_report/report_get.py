@@ -31,7 +31,7 @@ def data_collect():
     scene = bpy.context.scene
     depsgraph = bpy.context.depsgraph
     props = scene.jewelcraft
-    prefs = bpy.context.preferences.addons[var.ADDON_ID].preferences
+    prefs = bpy.context.scene.jewelcraft_preset
     data = {
         "size": 0.0,
         "shank": [],

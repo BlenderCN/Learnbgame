@@ -79,7 +79,7 @@ class OBJECT_OT_jewelcraft_widgets_overrides_set(Operator):
         return {"FINISHED"}
 
     def invoke(self, context, event):
-        prefs = context.preferences.addons[var.ADDON_ID].preferences
+        prefs = bpy.context.scene.jewelcraft_preset
         default_settings = {
             "color": prefs.widget_color,
             "linewidth": prefs.widget_linewidth,

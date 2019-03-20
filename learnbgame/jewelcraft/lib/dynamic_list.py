@@ -128,7 +128,7 @@ def weighting_set(self, context):
     if "weighting_set__list" in _cache:
         return _cache["weighting_set__list"]
 
-    prefs = context.preferences.addons[var.ADDON_ID].preferences
+    prefs = bpy.context.scene.jewelcraft_preset
     list_ = []
 
     if not prefs.weighting_hide_default_sets:
@@ -205,7 +205,7 @@ def asset_folders(self, context):
 
 
 def assets(self, context):
-    category = context.window_manager.jewelcraft.asset_folder
+    category = context.scene.jewelcraft.asset_folder
 
     if "assets__list" in _cache and category == _cache.get("assets__category"):
         return _cache["assets__list"]

@@ -35,7 +35,7 @@ class WM_OT_jewelcraft_product_report(Operator):
     bl_idname = "wm.jewelcraft_product_report"
 
     def execute(self, context):
-        prefs = context.preferences.addons[var.ADDON_ID].preferences
+        prefs = bpy.context.scene.jewelcraft_preset
         data_raw = report_get.data_collect()
         data_fmt = report_fmt.data_format(data_raw)
         warnf = [_(x) for x in data_raw["warn"]]

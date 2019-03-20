@@ -33,8 +33,8 @@ from ..lib import asset, dynamic_list
 class Setup:
 
     def __init__(self):
-        self.prefs = bpy.context.preferences.addons[var.ADDON_ID].preferences
-        self.props = bpy.context.window_manager.jewelcraft
+        self.prefs = bpy.context.scene.jewelcraft_preset
+        self.props = bpy.context.scene.jewelcraft_preset
         self.materials = self.prefs.weighting_materials
         self.filename = self.props.weighting_set
         self.folder = asset.user_asset_library_folder_weighting()
@@ -45,7 +45,7 @@ class EditCheck:
 
     @classmethod
     def poll(cls, context):
-        props = context.window_manager.jewelcraft
+        props = context.scene.jewelcraft
         return bool(props.weighting_set) and not props.weighting_set.startswith("JCASSET")
 
 
@@ -216,7 +216,7 @@ class WeightingSetLoad:
 
     @classmethod
     def poll(cls, context):
-        props = context.window_manager.jewelcraft
+        props = context.scene.jewelcraft_preset
         return bool(props.weighting_set)
 
     def execute(self, context):

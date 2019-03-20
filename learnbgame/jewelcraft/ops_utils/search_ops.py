@@ -35,7 +35,7 @@ class VIEW3D_OT_jewelcraft_search_stone(Operator):
     stone: EnumProperty(items=dynamic_list.stones)
 
     def execute(self, context):
-        context.window_manager.jewelcraft.gem_stone = self.stone
+        context.scene.jewelcraft.gem_stone = self.stone
         context.area.tag_redraw()
         return {"FINISHED"}
 
@@ -54,7 +54,7 @@ class VIEW3D_OT_jewelcraft_search_asset(Operator):
     asset: EnumProperty(items=dynamic_list.assets)
 
     def execute(self, context):
-        context.window_manager.jewelcraft.asset_list = self.asset
+        context.scene.jewelcraft.asset_list = self.asset
         context.area.tag_redraw()
         return {"FINISHED"}
 

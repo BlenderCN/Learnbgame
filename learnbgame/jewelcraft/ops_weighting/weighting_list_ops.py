@@ -29,7 +29,7 @@ from .. import var
 class Setup:
 
     def __init__(self):
-        prefs = bpy.context.preferences.addons[var.ADDON_ID].preferences
+        prefs = bpy.context.scene.jewelcraft_preset
         self.materials = prefs.weighting_materials
 
 

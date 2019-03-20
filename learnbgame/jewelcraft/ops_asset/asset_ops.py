@@ -33,7 +33,7 @@ from ..lib import asset, dynamic_list
 class Setup:
 
     def __init__(self):
-        self.props = bpy.context.window_manager.jewelcraft
+        self.props = bpy.context.scene.jewelcraft
         self.folder_name = self.props.asset_folder
         self.folder = os.path.join(asset.user_asset_library_folder_object(), self.folder_name)
         self.asset_name = self.props.asset_list
@@ -50,7 +50,7 @@ class WM_OT_jewelcraft_asset_add_to_library(Operator, Setup):
 
     @classmethod
     def poll(cls, context):
-        return bool(context.window_manager.jewelcraft.asset_folder)
+        return bool(context.scene.jewelcraft.asset_folder)
 
     def draw(self, context):
         layout = self.layout
@@ -78,8 +78,7 @@ class WM_OT_jewelcraft_asset_add_to_library(Operator, Setup):
         return {"FINISHED"}
 
     def invoke(self, context, event):
-        prefs = context.preferences.addons[var.ADDON_ID].preferences
-
+        prefs = bpy.context.scene.jewelcraft_preset
         if prefs.asset_name_from_obj:
             self.asset_name = context.object.name
         else:
@@ -97,7 +96,7 @@ class WM_OT_jewelcraft_asset_remove_from_library(Operator, Setup):
 
     @classmethod
     def poll(cls, context):
-        return bool(context.window_manager.jewelcraft.asset_list)
+        return bool(context.scene.jewelcraft.asset_list)
 
     def execute(self, context):
         asset_list = dynamic_list.assets(self, context)
@@ -134,7 +133,7 @@ class WM_OT_jewelcraft_asset_rename(Operator, Setup):
 
     @classmethod
     def poll(cls, context):
-        return bool(context.window_manager.jewelcraft.asset_list)
+        return bool(context.scene.jewelcraft.asset_list)
 
     def draw(self, context):
         layout = self.layout
@@ -187,7 +186,7 @@ class WM_OT_jewelcraft_asset_replace(Operator, Setup):
 
     @classmethod
     def poll(cls, context):
-        return bool(context.window_manager.jewelcraft.asset_list)
+        return bool(context.scene.jewelcraft.asset_list)
 
     def execute(self, context):
         asset.asset_export(folder=self.folder, filename=self.asset_name + ".blend")
@@ -206,7 +205,7 @@ class WM_OT_jewelcraft_asset_preview_replace(Operator, Setup):
 
     @classmethod
     def poll(cls, context):
-        return bool(context.window_manager.jewelcraft.asset_list)
+        return bool(context.scene.jewelcraft.asset_list)
 
     def execute(self, context):
         asset.render_preview(filepath=self.filepath + ".png")
@@ -232,7 +231,7 @@ class WM_OT_jewelcraft_asset_import(Operator, Setup):
 
     @classmethod
     def poll(cls, context):
-        return bool(context.window_manager.jewelcraft.asset_list)
+        return bool(context.scene.jewelcraft.asset_list)
 
     def execute(self, context):
         space_data = context.space_data

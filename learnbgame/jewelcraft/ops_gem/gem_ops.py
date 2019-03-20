@@ -90,7 +90,7 @@ class OBJECT_OT_jewelcraft_gem_add(Operator):
         return {"FINISHED"}
 
     def invoke(self, context, event):
-        props = context.window_manager.jewelcraft
+        props = context.scene.jewelcraft
         self.stone = props.gem_stone
         self.cut = props.gem_cut
         self.color = asset.color_rnd()

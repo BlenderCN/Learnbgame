@@ -29,7 +29,7 @@ from ..lib import unit, asset
 
 
 def _gettext_prep(text, ctxt="*"):
-    lang = bpy.context.preferences.addons[var.ADDON_ID].preferences.product_report_lang
+    lang = bpy.context.scene.jewelcraft_preset.product_report_lang
 
     if lang == "AUTO":
         lang = bpy.app.translations.locale
@@ -77,7 +77,7 @@ def _ct_calc(stone, cut, l, w, h):
 
 
 def data_format(data):
-    prefs = bpy.context.preferences.addons[var.ADDON_ID].preferences
+    prefs = bpy.context.scene.jewelcraft_preset
     _ = _gettext_prep
     report = ""
 

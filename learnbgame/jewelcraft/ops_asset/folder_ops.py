@@ -31,7 +31,7 @@ from ..lib import asset, dynamic_list
 class Setup:
 
     def __init__(self):
-        self.props = bpy.context.window_manager.jewelcraft
+        self.props = bpy.context.scene.jewelcraft
         self.folder_name = self.props.asset_folder
         self.folder = os.path.join(asset.user_asset_library_folder_object(), self.folder_name)
 

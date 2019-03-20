@@ -38,7 +38,7 @@ class OBJECT_OT_jewelcraft_weight_display(Operator):
             self.report({"ERROR"}, "At least one mesh object must be selected")
             return {"CANCELLED"}
 
-        prefs = context.preferences.addons[var.ADDON_ID].preferences
+        prefs = bpy.context.scene.jewelcraft_preset
         materials = prefs.weighting_materials
 
         vol = unit.to_metric(mesh.est_volume(obs), volume=True)
