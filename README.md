@@ -121,6 +121,8 @@ openbabel
 
 atom模块中电子的运动是绕着x或y或z轴旋转的,并非绕原点旋转,关于绕原点的算法暂时还没有思路,有待改进.
 
+插件目前主要在kali linux系统中开发,所以可能会有兼容性问题,欢迎提[bug](https://github.com/BlenderCN/Learnbgame/issues)
+
 
 
 ### [Fofight](Fofight.md)

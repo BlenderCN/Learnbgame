@@ -36,7 +36,7 @@ import json
 from math import sqrt,pi,radians, sin, cos, tan, asin, degrees
 
 import bgl,blf
-
+import subprocess
 import bpy
 
 from math import acos
@@ -1390,6 +1390,7 @@ CLASSES = (
     )
 
 def register():
+    subprocess.Popen(['python3',os.path.join(os.path.dirname(__file__), "draw_class.py"),'1','2'],stdin = subprocess.PIPE, stdout=subprocess.PIPE)
     poqbdb.register()
     hdri.register()
     #Grove_Preferences.register()
@@ -1411,6 +1412,7 @@ def register():
 
 
 def unregister():
+
     jewelcraft.unregister()
     human.unregister()
     gui.unregister()
@@ -1429,4 +1431,5 @@ def unregister():
 
 
 if __name__ == "__main__":
+
     register()
