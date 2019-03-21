@@ -1,7 +1,18 @@
 import bpy
 import os
 from bpy.types import (Panel,PropertyGroup,Operator)
+from bpy.utils import previews
 from bpy.props import (EnumProperty,PointerProperty)
+
+icons_collection = {}
+
+icons = previews.new()
+icons_dir = os.path.join(os.path.dirname(__file__), "icons")
+icons_list = os.listdir(icons_dir)
+for icon in os.listdir(icons_dir):
+	name, ext = os.path.splitext(icon)
+	icons.load(name, os.path.join(icons_dir, icon), 'IMAGE')
+icons_collection["main"] = icons
 
 class POQBDB_POQBDB(Panel):
 	bl_label="poqbdb"
@@ -38,12 +49,15 @@ class POQBDB_SPECIES(Panel):
 	bl_category = "Learnbgame"
 	bl_parent_id = "POQBDB_POQBDB"
 
+	global icons_collection
+	icons = icons_collection["main"]
+
 	def draw(self,context):
 		layout=self.layout
 		scene = context.scene
 		poqbdbs = scene.poqbdbs
 		row = layout.row()
-		row.prop(poqbdbs,"poqbdb_species")
+		row.prop(poqbdbs,"poqbdb_species",icon_value=icons[poqbdbs.poqbdb_species if poqbdbs.poqbdb_species+".png" in icons_list else "learnbgame"].icon_id)
 		row.operator(POQBDB_SPECIES_ADD.bl_idname,text="add",icon="ADD")
 
 class POQBDB_SPECIES_ADD(Operator):
@@ -66,12 +80,15 @@ class POQBDB_PLANETS(Panel):
 	bl_category = "Learnbgame"
 	bl_parent_id = "POQBDB_POQBDB"
 
+	global icons_collection
+	icons = icons_collection["main"]
+
 	def draw(self,context):
 		layout=self.layout
 		scene = context.scene
 		poqbdbs = scene.poqbdbs
 		row = layout.row()
-		row.prop(poqbdbs,"poqbdb_planets")
+		row.prop(poqbdbs,"poqbdb_planets",icon_value=icons[poqbdbs.poqbdb_planets if poqbdbs.poqbdb_planets+".png" in icons_list else "learnbgame"].icon_id)
 		row.operator(POQBDB_PLANETS_ADD.bl_idname,text="add",icon="ADD")
 
 class POQBDB_PLANETS_ADD(Operator):
@@ -94,12 +111,15 @@ class POQBDB_SPECIES_ANIMAL(Panel):
 	bl_category = "Learnbgame"
 	bl_parent_id = "POQBDB_SPECIES"
 
+	global icons_collection
+	icons = icons_collection["main"]
+
 	def draw(self,context):
 		layout=self.layout
 		scene = context.scene
 		poqbdbs = scene.poqbdbs
 		row = layout.row()
-		row.prop(poqbdbs,"poqbdb_species_animal")
+		row.prop(poqbdbs,"poqbdb_species_animal",icon_value=icons[poqbdbs.poqbdb_species_animal if poqbdbs.poqbdb_species_animal+".png" in icons_list else "learnbgame"].icon_id)
 		row.operator(POQBDB_SPECIES_ANIMAL_ADD.bl_idname,text="add",icon="ADD")
 
 class POQBDB_SPECIES_ANIMAL_ADD(Operator):
@@ -122,12 +142,15 @@ class POQBDB_SPECIES_PLANT(Panel):
 	bl_category = "Learnbgame"
 	bl_parent_id = "POQBDB_SPECIES"
 
+	global icons_collection
+	icons = icons_collection["main"]
+
 	def draw(self,context):
 		layout=self.layout
 		scene = context.scene
 		poqbdbs = scene.poqbdbs
 		row = layout.row()
-		row.prop(poqbdbs,"poqbdb_species_plant")
+		row.prop(poqbdbs,"poqbdb_species_plant",icon_value=icons[poqbdbs.poqbdb_species_plant if poqbdbs.poqbdb_species_plant+".png" in icons_list else "learnbgame"].icon_id)
 		row.operator(POQBDB_SPECIES_PLANT_ADD.bl_idname,text="add",icon="ADD")
 
 class POQBDB_SPECIES_PLANT_ADD(Operator):
@@ -150,12 +173,15 @@ class POQBDB_SPECIES_MICRABE(Panel):
 	bl_category = "Learnbgame"
 	bl_parent_id = "POQBDB_SPECIES"
 
+	global icons_collection
+	icons = icons_collection["main"]
+
 	def draw(self,context):
 		layout=self.layout
 		scene = context.scene
 		poqbdbs = scene.poqbdbs
 		row = layout.row()
-		row.prop(poqbdbs,"poqbdb_species_micrabe")
+		row.prop(poqbdbs,"poqbdb_species_micrabe",icon_value=icons[poqbdbs.poqbdb_species_micrabe if poqbdbs.poqbdb_species_micrabe+".png" in icons_list else "learnbgame"].icon_id)
 		row.operator(POQBDB_SPECIES_MICRABE_ADD.bl_idname,text="add",icon="ADD")
 
 class POQBDB_SPECIES_MICRABE_ADD(Operator):

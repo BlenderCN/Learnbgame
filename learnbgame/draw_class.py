@@ -24,7 +24,15 @@ for root,dirs,files in os.walk(path):
 		gltf_dict[root] = [os.path.splitext(gltf)[0] for gltf in files]
 
 class_str = """import bpy\nimport os\nfrom bpy.types import (Panel,PropertyGroup,Operator)\n""" + \
+"""from bpy.utils import previews\n""" +\
 """from bpy.props import (EnumProperty,PointerProperty)\n\n""" +\
+"""icons_collection = {}\n\nicons = previews.new()\n""" +\
+"""icons_dir = os.path.join(os.path.dirname(__file__), "icons")\n""" +\
+"""icons_list = os.listdir(icons_dir)\n""" +\
+"""for icon in os.listdir(icons_dir):\n\t""" +\
+"""name, ext = os.path.splitext(icon)\n\t""" +\
+"""icons.load(name, os.path.join(icons_dir, icon), 'IMAGE')\n""" +\
+"""icons_collection["main"] = icons\n\n""" +\
 """class POQBDB_POQBDB(Panel):\n\tbl_label="poqbdb"\n\tbl_space_type = "VIEW_3D"\n\t""" +\
 """bl_region_type = "UI"\n\tbl_category = "Learnbgame"\n\t\n\n\tdef draw(self,context)""" + \
 """:\n\t\tlayout=self.layout\n\t\tscene = context.scene\n\t\tpoqbdbs = scene.poqbdbs\n\t\t""" +\
@@ -48,9 +56,9 @@ for key,value in level_dict.items():
 			class_str += """class {0}(Panel):\n\t""".format(label_dir.replace("/","_").upper()) + \
 			"""bl_label="{0}"\n\tbl_space_type = "VIEW_3D"\n\t""".format(label) + \
 			"""bl_region_type = "UI"\n\tbl_category = "Learnbgame"\n\tbl_parent_id """ + \
-			"""= "POQBDB_{0}"\n\n\tdef draw(self,context):\n\t\tlayout=""".format(label_parent.upper()) +\
+			"""= "POQBDB_{0}"\n\n\tglobal icons_collection\n\ticons = icons_collection["main"]\n\n\tdef draw(self,context):\n\t\tlayout=""".format(label_parent.upper()) +\
 			"""self.layout\n\t\tscene = context.scene\n\t\tpoqbdbs = scene.poqbdbs\n\t\t""" + \
-			"""row = layout.row()\n\t\trow.prop(poqbdbs,"{0}")\n\t\t""".format(label_dir.replace("/","_")) +\
+			"""row = layout.row()\n\t\trow.prop(poqbdbs,"{0}",icon_value=icons[poqbdbs.{0} if poqbdbs.{0}+".png" in icons_list else "learnbgame"].icon_id)\n\t\t""".format(label_dir.replace("/","_")) +\
 			"""row.operator({0}.bl_idname,text="add",icon="ADD")\n\n""".format(label_dir.replace("/","_").upper()+"_ADD") +\
 			"""class {0}(Operator):\n\tbl_idname = "{1}.add"\n\t""".format(label_dir.replace("/","_").upper()+"_ADD",label_dir.replace("/","_")) +\
 			"""bl_label = "{0}"\n\n\tdef execute(self,context):\n\t\t""".format(label_dir.replace("/","_")+"+") +\

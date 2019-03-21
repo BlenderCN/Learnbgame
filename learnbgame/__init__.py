@@ -28,8 +28,12 @@ import sys
 import time
 import datetime
 sys.path.append("/root/Software/anaconda3/lib/python3.7/site-packages")
-import openbabel
-import pybel
+
+try :
+    import openbabel
+    import pybel
+except:
+    pass
 
 import json
 
@@ -87,6 +91,7 @@ icons_collection = {}
     
 icons = previews.new()
 icons_dir = os.path.join(os.path.dirname(__file__), "icons")
+icons_list = os.listdir(icons_dir)
 for icon in os.listdir(icons_dir):
     name, ext = os.path.splitext(icon)
     icons.load(name, os.path.join(icons_dir, icon), 'IMAGE')
@@ -117,8 +122,7 @@ micrabes_list = [os.path.splitext(mib)[0] for mib in os.listdir(micrabes_dir)]
 planets_dir = os.path.join(os.path.dirname(__file__), "planets")
 planets_list = [os.path.splitext(plet)[0] for plet in os.listdir(planets_dir)]
 
-icons_dir = os.path.join(os.path.dirname(__file__), "icons")
-icons_list = os.listdir(icons_dir)
+
 
 poqbdb_dir = os.path.join(os.path.dirname(__file__),"poqbdb")
 
@@ -207,10 +211,12 @@ class LEARNBGAME_SPECIES_ANIMAL(Panel):
     bl_category = "Learnbgame" 
     bl_parent_id = "LEARNBGAME_SPECIES"
 
-    global icons_collection
-    icons = icons_collection["main"]
+    #global icons_collection
+    #icons = icons_collection["main"]
 
     def draw(self,context):
+        pass
+        """
         layout = self.layout
         scene = context.scene
 
@@ -222,7 +228,7 @@ class LEARNBGAME_SPECIES_ANIMAL(Panel):
             icon_value=icons[animals.animal if animals.animal+".png" in icons_list else "learnbgame"].icon_id
             )
         row.operator(ANIMAL_ADD.bl_idname,text="add",icon="ADD")
-
+"""
 class LEARNBGAME_SPECIES_PLANT(Panel):
     bl_label = "Plants"
     bl_space_type = "VIEW_3D"
@@ -230,14 +236,14 @@ class LEARNBGAME_SPECIES_PLANT(Panel):
     bl_category = "Learnbgame" 
     bl_parent_id = "LEARNBGAME_SPECIES"
 
-    global icons_collection
-    icons = icons_collection["main"]
+    #global icons_collection
+    #icons = icons_collection["main"]
 
     def draw(self,context):
         layout = self.layout
         scene = context.scene
-
         plants = scene.plants
+        """
         row = layout.row()
         row.prop(
             plants,
@@ -245,11 +251,13 @@ class LEARNBGAME_SPECIES_PLANT(Panel):
             icon_value=icons[plants.plant if plants.plant+".png" in icons_list else "learnbgame"].icon_id
             )
         row.operator(PLANT_ADD.bl_idname,text="add",icon="ADD")
+"""        
+
+        row = layout.row()
+        row.operator(Grove_Operator.TheGrove6.bl_idname, text="The Grove ",icon="PARTICLE_TIP")
         row1 = layout.row()
-        row1.operator(Grove_Operator.TheGrove6.bl_idname, text="The Grove ",icon="PARTICLE_TIP")
-        row2 = layout.row()
-        row2.prop(plants,"twigs_folder")
-        row2.prop(plants,"textures_folder")
+        row1.prop(plants,"twigs_folder")
+        row1.prop(plants,"textures_folder")
 
 class LEARNBGAME_SPECIES_MICRABE(Panel):
     bl_label = "Macrabes"
@@ -258,10 +266,11 @@ class LEARNBGAME_SPECIES_MICRABE(Panel):
     bl_category = "Learnbgame" 
     bl_parent_id = "LEARNBGAME_SPECIES"
 
-    global icons_collection
-    icons = icons_collection["main"]
+    #global icons_collection
+    #icons = icons_collection["main"]
 
     def draw(self,context):
+        
         layout = self.layout
         scene = context.scene
 
