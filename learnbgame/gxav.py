@@ -1,31 +1,3 @@
-"""
-GXAudioVisualisation - Blender Music Visualizer
-Copyright (C) 2013 Sławomir Kur (Gethiox)
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see http://www.gnu.org/licenses/
-"""
-
-bl_info = {
-    "name": "GxAV",
-    "author": "Sławomir Kur (Gethiox)",
-    "version": (1, 0, 1),
-    "blender": (2, 7, 1),
-    "location": "Properties > Scene",
-    "description": "Bake Audio Visualisation ",
-    "category": "Animation",
-    "wiki_url": "https://github.com/gethiox/GXAudioVisualisation/wiki",
-    "tracker_url": "https://github.com/gethiox/GXAudioVisualisation/issues"}
 
 import bpy
 import math
@@ -326,20 +298,20 @@ class GXAVPanel(bpy.types.Panel):
     """Creates a Panel in the scene context of the properties editor"""
     bl_label = "GXAudioVisualisation"
     bl_idname = "SCENE_PT_layout"
-    bl_space_type = 'PROPERTIES'
-    bl_region_type = 'WINDOW'
-    bl_context = "scene"
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
+    bl_parent_id = "ENERGY"
 
     def draw(self, context):
         layout = self.layout
         scene = context.scene
         row = layout.row()
-        row.operator("object.gx_create_base", icon="MODIFIER", text="(re)Create Visualizer Base")
+        row.operator("object.gx_create_base", icon="SOUND", text="(re)Create Visualizer Base")
 
 
         try:
             if bpy.context.scene['gx_init'] == 1:
-                layout.label(text="Parameters:", icon="UI")
+                layout.label(text="Parameters:", icon="SOUND")
                 row = layout.row()
                 row.prop(scene, "gx_center_space")
                 row = layout.row(align=True)
@@ -347,7 +319,7 @@ class GXAVPanel(bpy.types.Panel):
                 row.prop(scene, "gx_space_x")
                 row = layout.row()
                 row.prop(scene, "gx_slash")
-                row.prop(scene, "gx_slash_rotate", icon="MAN_ROT")
+                row.prop(scene, "gx_slash_rotate", icon="NDOF_TURN")
 
                 row = layout.row()
                 row.prop(scene, "gx_custom_object_b")
@@ -356,7 +328,7 @@ class GXAVPanel(bpy.types.Panel):
                     row.prop(scene, "gx_custom_object")
                     row = layout.row()
                     row.label(text="Update Visualiser Base")
-                    row.operator("object.gx_create_base", icon="MODIFIER", text="Update")
+                    row.operator("object.gx_create_base", icon="SOUND", text="Update")
 
                 try:
                     if bpy.context.scene['gx_type'] == 0:
@@ -364,23 +336,23 @@ class GXAVPanel(bpy.types.Panel):
                         row.prop(scene, "gx_type", icon="MOD_ARRAY", text="Mode")
                         split = layout.split()
                         col = split.column()
-                        col.label(text="Object Scale:", icon="MANIPUL")
+                        col.label(text="Object Scale:", icon="EMPTY_ARROWS")
                         col = split.column(align=True)
                         col.prop(scene, 'gx_scale_x', text="X")
                         col.prop(scene, 'gx_scale_y', text="Y")
                         col.prop(scene, 'gx_scale_z', text="Z")
                         row = layout.row()
-                        row.label(text="Array modifier space:", icon="UNLINKED")
+                        row.label(text="Array modifier space:", icon="SOUND")
                         row.prop(scene, "gx_space_array")
                         row = layout.row()
-                        row.label(text="Merge Array", icon="UNLINKED")
+                        row.label(text="Merge Array", icon="SOUND")
                         row.prop(scene, "gx_array_merge")
                     else:
                         row = layout.row()
-                        row.prop(scene, "gx_type", icon="MESH_CUBE", text="Mode")
+                        row.prop(scene, "gx_type", icon="OBJECT_DATAMODE", text="Mode")
                         split = layout.split()
                         col = split.column()
-                        col.label(text="Object Scale:", icon="MANIPUL")
+                        col.label(text="Object Scale:", icon="SOUND")
                         col = split.column(align=True)
                         col.prop(scene, 'gx_cube_scale_x', text="X")
                         col.prop(scene, 'gx_cube_scale_y', text="Y")
@@ -397,7 +369,7 @@ class GXAVPanel(bpy.types.Panel):
 
                 row = layout.row()
                 box = layout.box()
-                box.label("Channels to bake and audio files path:", icon="SOUND")
+                box.label(text="Channels to bake and audio files path:", icon="SOUND")
                 if bpy.context.scene['gx_channels'] == 0:
                     box.prop(scene, "gx_channels", icon="ARROW_LEFTRIGHT")
                 elif bpy.context.scene['gx_channels'] == 1:
@@ -407,7 +379,7 @@ class GXAVPanel(bpy.types.Panel):
                 box.prop(scene, "gx_left_file")
                 box.prop(scene, "gx_right_file")
                 row = layout.row()
-                row.prop(scene, "gx_mode", icon="RNDCURVE")
+                row.prop(scene, "gx_mode", icon="IPO_BOUNCE")
                 row = layout.row()
                 row.prop(scene, "gx_start")
                 row = layout.row()
@@ -416,12 +388,12 @@ class GXAVPanel(bpy.types.Panel):
                 #row = layout.row()
                 #row.prop(scene, "gx_freq_debug")
                 row = layout.row()
-                row.operator("object.gx_bake", icon="RADIO", text="(re)Bake animation data")
+                row.operator("object.gx_bake", icon="SOUND", text="(re)Bake animation data")
                 row = layout.row()
                 row.label(text="")
 
                 box = layout.box()
-                box.label(text="'Bake Sound to F-Curves' options:", icon="UI")
+                box.label(text="'Bake Sound to F-Curves' options:", icon="MATERIAL")
                 split = box.split()
                 col = split.column(align=True)
                 col.prop(scene, 'gx_attack')
@@ -440,12 +412,12 @@ class GXAVPanel(bpy.types.Panel):
                 #row = layout.row()
                 #row.prop(scene, 'gx_zenit')
                 row = layout.row()
-                row.operator("object.gx_init_variables", icon="COLOR", text="Init/Reset Variables")
+                row.operator("object.gx_init_variables", icon="MATERIAL", text="Init/Reset Variables")
         except:
             False
 
 def gxstart():
-    print("jaa")
+    #print("jaa")
     try:
         bpy.context.scene['gx_init']
     except:
@@ -455,14 +427,14 @@ def gxstart():
     try:
         for i in range(bpy.context.scene['gx_count_x']):
             name = "bar_r_" + str(i+1)
-            bpy.data.objects[name].select = True
+            bpy.data.objects[name].select_set(True)
         bpy.ops.object.delete()
     except:
         False
     try:
         for i in range(bpy.context.scene['gx_count_x']):
             name = "bar_l_" + str(i+1)
-            bpy.data.objects[name].select = True
+            bpy.data.objects[name].select_set(True)
         bpy.ops.object.delete()
     except:
         False
@@ -472,10 +444,10 @@ def gxstart():
 
 
     if bpy.context.scene['gx_channels'] == 1 or bpy.context.scene['gx_channels'] == 0:
-        bpy.context.scene.objects.active = bpy.data.objects["bar_l_" + str(bpy.context.scene['gx_count_x'])]
+        bpy.context.view_layer.objects.active = bpy.data.objects["bar_l_" + str(bpy.context.scene['gx_count_x'])]
         bpy.ops.object.select_pattern(pattern="bar_l_" + str(bpy.context.scene['gx_count_x']))
     if bpy.context.scene['gx_channels'] == 2 or bpy.context.scene['gx_channels'] == 0:
-        bpy.context.scene.objects.active = bpy.data.objects["bar_r_" + str(bpy.context.scene['gx_count_x'])]
+        bpy.context.view_layer.objects.active = bpy.data.objects["bar_r_" + str(bpy.context.scene['gx_count_x'])]
         bpy.ops.object.select_pattern(pattern="bar_r_" + str(bpy.context.scene['gx_count_x']))
 
     bpy.types.Scene.allobjects = bpy.context.scene['gx_count_x']
@@ -499,14 +471,14 @@ def gxbake():
     try:
         for i in range(bpy.types.Scene.bakedobjects):
             name = "obj_r_" + str(i+1)
-            bpy.data.objects[name].select = True
+            bpy.data.objects[name].select_set(True)
         bpy.ops.object.delete()
     except:
         False
     try:
         for i in range(bpy.types.Scene.bakedobjects):
             name = "obj_l_" + str(i+1)
-            bpy.data.objects[name].select = True
+            bpy.data.objects[name].select_set(True)
         bpy.ops.object.delete()
     except:
         False
@@ -549,7 +521,7 @@ def gxbake():
                         sthreshold = bpy.context.scene['gx_sthreshold'])
                 except:
                     False
-                bpy.context.area.type = 'PROPERTIES'
+                bpy.context.area.type = 'SOUND'
 
             if bpy.context.scene['gx_channels'] == 0:
                 bpy.context.window_manager.progress_update((i+0.5)/bpy.context.scene['gx_count_x'])
@@ -580,7 +552,7 @@ def gxbake():
                         sthreshold = bpy.context.scene['gx_sthreshold'])
                 except:
                     False
-                bpy.context.area.type = 'PROPERTIES'
+                bpy.context.area.type = 'SOUND'
 
             if bpy.context.scene['gx_channels'] == 0:
                 bpy.context.window_manager.progress_update((i+1)/bpy.context.scene['gx_count_x'])
@@ -851,7 +823,7 @@ def update_scale(self, context):
                 #bpy.ops.object.transform_apply(scale=True)
 
 def generate_objects(i):
-    gx_save = bpy.context.scene.cursor_location.copy()
+    gx_save = bpy.context.scene.cursor.location.copy()
     if bpy.context.scene['gx_channels'] == 1 or bpy.context.scene['gx_channels'] == 0:
 
         if bpy.context.scene['gx_custom_object_b']==True:
@@ -861,7 +833,7 @@ def generate_objects(i):
                 new_ob = old_ob.copy()
                 bpy.context.scene.objects.link(new_ob)
                 new_ob.location = (-(i*bpy.context.scene['gx_space_x'] + bpy.context.scene['gx_center_space']/2), bpy.context.scene['gx_slash'] * i, 0)
-                bpy.context.scene.objects.active=new_ob
+                bpy.context.view_layer.objects.active=new_ob
             except:bpy.ops.mesh.primitive_cube_add(location=(-(i*bpy.context.scene['gx_space_x'] + bpy.context.scene['gx_center_space']/2), bpy.context.scene['gx_slash'] * i, 0))
         else:
               bpy.ops.mesh.primitive_cube_add(location=(-(i*bpy.context.scene['gx_space_x'] + bpy.context.scene['gx_center_space']/2), bpy.context.scene['gx_slash'] * i, 0))
@@ -874,7 +846,7 @@ def generate_objects(i):
             bpy.context.active_object.scale = (1, 1, 0.06)
             bpy.ops.object.transform_apply(scale=True)
             bpy.context.active_object.location[2] = 0.06
-            bpy.context.scene.cursor_location = (-(i*bpy.context.scene['gx_space_x'] + bpy.context.scene['gx_center_space']/2), bpy.context.scene['gx_slash'] * i, 0)
+            bpy.context.scene.cursor.location = (-(i*bpy.context.scene['gx_space_x'] + bpy.context.scene['gx_center_space']/2), bpy.context.scene['gx_slash'] * i, 0)
             bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
             bpy.context.active_object.scale = (bpy.context.scene['gx_cube_scale_x'], bpy.context.scene['gx_cube_scale_y'], bpy.context.scene['gx_cube_scale_z'])
         elif bpy.context.scene['gx_type'] == 2:
@@ -899,7 +871,7 @@ def generate_objects(i):
                 new_ob = old_ob.copy()
                 bpy.context.scene.objects.link(new_ob)
                 new_ob.location = (-(i*bpy.context.scene['gx_space_x'] + bpy.context.scene['gx_center_space']/2), bpy.context.scene['gx_slash'] * i, 0)
-                bpy.context.scene.objects.active=new_ob
+                bpy.context.view_layer.objects.active=new_ob
             except:bpy.ops.mesh.primitive_cube_add(location=(-(i*bpy.context.scene['gx_space_x'] + bpy.context.scene['gx_center_space']/2), bpy.context.scene['gx_slash'] * i, 0))
         else:
               bpy.ops.mesh.primitive_cube_add(location=(-(i*bpy.context.scene['gx_space_x'] + bpy.context.scene['gx_center_space']/2), bpy.context.scene['gx_slash'] * i, 0))
@@ -913,7 +885,7 @@ def generate_objects(i):
             bpy.context.active_object.scale = (1, 1, 0.06)
             bpy.ops.object.transform_apply(scale=True)
             bpy.context.active_object.location[2] = 0.06
-            bpy.context.scene.cursor_location = (i*bpy.context.scene['gx_space_x'] + bpy.context.scene['gx_center_space']/2, bpy.context.scene['gx_slash'] * i, 0)
+            bpy.context.scene.cursor.location = (i*bpy.context.scene['gx_space_x'] + bpy.context.scene['gx_center_space']/2, bpy.context.scene['gx_slash'] * i, 0)
             bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
             bpy.context.active_object.scale = (bpy.context.scene['gx_cube_scale_x'], bpy.context.scene['gx_cube_scale_y'], bpy.context.scene['gx_cube_scale_z'])
         elif bpy.context.scene['gx_type'] == 2:
@@ -929,7 +901,7 @@ def generate_objects(i):
             bpy.context.active_object.modifiers['Array'].count = 10
             bpy.context.active_object.modifiers['Array'].relative_offset_displace[0] = 0
             bpy.context.active_object.modifiers['Array'].relative_offset_displace[2] = bpy.context.scene['gx_space_array']
-    bpy.context.scene.cursor_location = gx_save
+    bpy.context.scene.cursor.location = gx_save
 
 def update_count(self, context):
     if bpy.types.Scene.allobjects > bpy.context.scene['gx_count_x']:
@@ -937,17 +909,17 @@ def update_count(self, context):
         for i in range(bpy.context.scene['gx_count_x'], bpy.types.Scene.allobjects):
             if bpy.context.scene['gx_channels'] == 1 or bpy.context.scene['gx_channels'] == 0:
                 name = "bar_l_" + str(i+1)
-                bpy.data.objects[name].select = True
+                bpy.data.objects[name].select_set(True)
             if bpy.context.scene['gx_channels'] == 2 or bpy.context.scene['gx_channels'] == 0:
                 name = "bar_r_" + str(i+1)
-                bpy.data.objects[name].select = True
+                bpy.data.objects[name].select_set(True)
         bpy.ops.object.delete()
 
         if bpy.context.scene['gx_channels'] == 1 or bpy.context.scene['gx_channels'] == 0:
-            bpy.context.scene.objects.active = bpy.data.objects["bar_l_" + str(bpy.context.scene['gx_count_x'])]
+            bpy.context.view_layer.objects.active = bpy.data.objects["bar_l_" + str(bpy.context.scene['gx_count_x'])]
             bpy.ops.object.select_pattern(pattern="bar_l_" + str(bpy.context.scene['gx_count_x']))
         if bpy.context.scene['gx_channels'] == 2 or bpy.context.scene['gx_channels'] == 0:
-            bpy.context.scene.objects.active = bpy.data.objects["bar_r_" + str(bpy.context.scene['gx_count_x'])]
+            bpy.context.view_layer.objects.active = bpy.data.objects["bar_r_" + str(bpy.context.scene['gx_count_x'])]
             bpy.ops.object.select_pattern(pattern="bar_r_" + str(bpy.context.scene['gx_count_x']))
 
         bpy.types.Scene.allobjects = bpy.context.scene['gx_count_x']
@@ -962,10 +934,10 @@ def update_count(self, context):
                 False
 
         if bpy.context.scene['gx_channels'] == 1 or bpy.context.scene['gx_channels'] == 0:
-            bpy.context.scene.objects.active = bpy.data.objects["bar_l_" + str(bpy.context.scene['gx_count_x'])]
+            bpy.context.view_layer.objects.active = bpy.data.objects["bar_l_" + str(bpy.context.scene['gx_count_x'])]
             bpy.ops.object.select_pattern(pattern="bar_l_" + str(bpy.context.scene['gx_count_x']))
         if bpy.context.scene['gx_channels'] == 2 or bpy.context.scene['gx_channels'] == 0:
-            bpy.context.scene.objects.active = bpy.data.objects["bar_r_" + str(bpy.context.scene['gx_count_x'])]
+            bpy.context.view_layer.objects.active = bpy.data.objects["bar_r_" + str(bpy.context.scene['gx_count_x'])]
             bpy.ops.object.select_pattern(pattern="bar_r_" + str(bpy.context.scene['gx_count_x']))
 
         bpy.types.Scene.allobjects = bpy.context.scene['gx_count_x']

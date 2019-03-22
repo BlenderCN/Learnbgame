@@ -60,6 +60,8 @@ from . import human
 
 from . import jewelcraft
 
+from . import gxav
+
 from bpy.types import (
     Panel, 
     Operator,
@@ -1417,11 +1419,12 @@ def register():
     gui.register()
     human.register()
     jewelcraft.register()
+    gxav.register()
 
 
 
 def unregister():
-
+    gxav.unregister()
     jewelcraft.unregister()
     human.unregister()
     gui.unregister()
