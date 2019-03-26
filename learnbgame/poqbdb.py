@@ -36,7 +36,7 @@ class POQBDB_POQBDB_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		other = poqbdbs.poqbdb
-		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"/root/Blender/Blender-a/2.80/scripts/addons/learnbgame/poqbdb/") + other + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"/root/Blender/blender_280/2.80/scripts/addons/learnbgame/poqbdb/") + other + ".glb")
 		obj = context.selected_objects
 		obj[0].name = other
 		obj[0].location = context.scene.cursor.location 

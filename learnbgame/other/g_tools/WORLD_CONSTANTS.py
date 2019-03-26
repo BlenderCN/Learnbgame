@@ -1,0 +1,6 @@
+WORLD_U = (0,0,1)
+WORLD_D = (0,0,1)
+WORLD_F = (0,-1,0)
+WORLD_B = (0,1,0)
+WORLD_L = (-1,0,0)
+WORLD_R = (1,0,0)
