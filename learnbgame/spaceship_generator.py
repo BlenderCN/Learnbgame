@@ -1,12 +1,3 @@
-#
-# spaceship_generator.py
-#
-# This is a Blender script that uses procedural generation to create
-# textured 3D spaceship models. Tested with Blender 2.77a.
-#
-# michael@spaceduststudios.com
-# https://github.com/a1studmuffin/SpaceshipGenerator
-#
 
 import sys
 import os

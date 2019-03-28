@@ -111,18 +111,18 @@ with open(os.path.join(molecules_dir, 'atoms.json')) as in_file:
     atom_data = json.load(in_file)
 
 
-animals_dir = os.path.join(os.path.dirname(__file__), "species/animal")
-animals_list = [os.path.splitext(anl)[0] for anl in os.listdir(animals_dir)]
+#animals_dir = os.path.join(os.path.dirname(__file__), "species/animal")
+#animals_list = [os.path.splitext(anl)[0] for anl in os.listdir(animals_dir)]
 
 
-plants_dir = os.path.join(os.path.dirname(__file__), "species/plant")
-plants_list = [os.path.splitext(plt)[0] for plt in os.listdir(plants_dir)]
+#plants_dir = os.path.join(os.path.dirname(__file__), "species/plant")
+#plants_list = [os.path.splitext(plt)[0] for plt in os.listdir(plants_dir)]
 
-micrabes_dir = os.path.join(os.path.dirname(__file__), "species/micrabe")
-micrabes_list = [os.path.splitext(mib)[0] for mib in os.listdir(micrabes_dir)]
+#micrabes_dir = os.path.join(os.path.dirname(__file__), "species/micrabe")
+#micrabes_list = [os.path.splitext(mib)[0] for mib in os.listdir(micrabes_dir)]
 
-planets_dir = os.path.join(os.path.dirname(__file__), "planets")
-planets_list = [os.path.splitext(plet)[0] for plet in os.listdir(planets_dir)]
+#planets_dir = os.path.join(os.path.dirname(__file__), "planets")
+#planets_list = [os.path.splitext(plet)[0] for plet in os.listdir(planets_dir)]
 
 
 
@@ -244,22 +244,21 @@ class LEARNBGAME_SPECIES_PLANT(Panel):
     def draw(self,context):
         layout = self.layout
         scene = context.scene
-        plants = scene.plants
-        """
-        row = layout.row()
-        row.prop(
-            plants,
-            "plant",
-            icon_value=icons[plants.plant if plants.plant+".png" in icons_list else "learnbgame"].icon_id
-            )
-        row.operator(PLANT_ADD.bl_idname,text="add",icon="ADD")
-"""        
-
+        plants = scene.plants     
         row = layout.row()
         row.operator(Grove_Operator.TheGrove6.bl_idname, text="The Grove ",icon="PARTICLE_TIP")
         row1 = layout.row()
         row1.prop(plants,"twigs_folder")
         row1.prop(plants,"textures_folder")
+"""
+        row = layout.row()
+                row.prop(
+                    plants,
+                    "plant",
+                    icon_value=icons[plants.plant if plants.plant+".png" in icons_list else "learnbgame"].icon_id
+                    )
+        row.operator(PLANT_ADD.bl_idname,text="add",icon="ADD")         
+"""
 
 class LEARNBGAME_SPECIES_MICRABE(Panel):
     bl_label = "Macrabes"
@@ -275,7 +274,8 @@ class LEARNBGAME_SPECIES_MICRABE(Panel):
         
         layout = self.layout
         scene = context.scene
-
+        pass
+"""
         micrabes = scene.micrabes
         row = layout.row()
         row.prop(
@@ -283,7 +283,7 @@ class LEARNBGAME_SPECIES_MICRABE(Panel):
             "micrabe",
             icon_value=icons[micrabes.micrabe if micrabes.micrabe+".png" in icons_list else "learnbgame"].icon_id)
         row.operator(MICRABE_ADD.bl_idname,text="add",icon="ADD")
-
+"""
 class LEARNBGAME_PLANET(Panel):
     bl_label = "Planet"
     bl_space_type = "VIEW_3D"
@@ -293,10 +293,10 @@ class LEARNBGAME_PLANET(Panel):
     def draw(self,context):
         layout = self.layout
         scene = context.scene
-        planets = scene.planets
-        row = layout.row()
-        row.prop(planets,"planet",icon="SHADING_WIRE")
-        row.operator(PLANET_ADD.bl_idname,text="add",icon="ADD")
+        #planets = scene.planets
+        #row = layout.row()
+        #row.prop(planets,"planet",icon="SHADING_WIRE")
+        #row.operator(PLANET_ADD.bl_idname,text="add",icon="ADD")
         row1 = layout.row()
         row1.operator(GenerateSpaceship.bl_idname,text="Spaceship",icon="AUTO")
         row2 = layout.row()
@@ -337,8 +337,7 @@ class MOLECULE_PROPERTY(PropertyGroup):
         )
 
 class SPECIES_PROPERTY(PropertyGroup):
-
-
+    """
     animal : EnumProperty(
         name = "Animals",
         items=[
@@ -361,7 +360,7 @@ class SPECIES_PROPERTY(PropertyGroup):
             )for plant_name in plants_list
         ]
         )
-
+    """
     twigs_folder : StringProperty(
         name = "Twigs Folder",
         description = "Twigs Folder",
@@ -373,7 +372,7 @@ class SPECIES_PROPERTY(PropertyGroup):
         description = "Textures Folder",
         subtype = 'DIR_PATH'
         )
-
+"""
     micrabe : EnumProperty(
         name = "Micrabes",
         items =[
@@ -384,7 +383,7 @@ class SPECIES_PROPERTY(PropertyGroup):
             )for micrabe_name in micrabes_list
         ]
         )
-
+    
 class PLANET_PROPERTY(PropertyGroup):
     planet : EnumProperty(
         name = "Planet",
@@ -398,11 +397,12 @@ class PLANET_PROPERTY(PropertyGroup):
         )
 
 
-
+"""
 
 ##########################Property####################################
 
 ######################Species Execute######################
+"""
 class ANIMAL_ADD(Operator):
     bl_idname = "species.animal"
     bl_label = "Animal+"
@@ -443,10 +443,11 @@ class MICRABE_ADD(Operator):
         obj[0].name = micrabe_name
         obj[0].location = bpy.context.scene.cursor.location
         return {'FINISHED'}
-
+"""
 #########################Species Execute#######################
 
 #########################Planet Execute###################################
+"""
 class PLANET_ADD(Operator):
     bl_idname = "planet.add"
     bl_label = "Planet+"
@@ -460,7 +461,7 @@ class PLANET_ADD(Operator):
         obj[0].name = planet_name
         obj[0].location = bpy.context.scene.cursor.location
         return {'FINISHED'}
-
+"""
 ###########################Planet Execute########################################        
 
 ###########################Molecule Execute####################################
@@ -1379,16 +1380,16 @@ CLASSES = (
     GenerateSpacestation,
     GenerateSpaceship,
     SPECIES_PROPERTY,
-    PLANT_ADD,
+    #PLANT_ADD,
     LEARNBGAME_SPECIES,
     LEARNBGAME_ATOM,
     LEARNBGAME_MOLECULE,
     LEARNBGAME_PLANET,
     MOLECULE_PROPERTY,
-    PLANET_PROPERTY,
-    ANIMAL_ADD,
-    PLANET_ADD,
-    MICRABE_ADD,
+    #PLANET_PROPERTY,
+    #ANIMAL_ADD,
+    #PLANET_ADD,
+    #MICRABE_ADD,
     MOLECULE_ADD,
     ATOM_PROPERTY,
     ATOM_ADD,
@@ -1410,9 +1411,9 @@ def register():
     for cla in CLASSES:
         register_class(cla)
     bpy.types.Scene.plants = PointerProperty(type=SPECIES_PROPERTY)
-    bpy.types.Scene.animals = PointerProperty(type=SPECIES_PROPERTY)
-    bpy.types.Scene.micrabes = PointerProperty(type=SPECIES_PROPERTY)
-    bpy.types.Scene.planets = PointerProperty(type=PLANET_PROPERTY)
+    #bpy.types.Scene.animals = PointerProperty(type=SPECIES_PROPERTY)
+    #bpy.types.Scene.micrabes = PointerProperty(type=SPECIES_PROPERTY)
+    #bpy.types.Scene.planets = PointerProperty(type=PLANET_PROPERTY)
     bpy.types.Scene.molecule = PointerProperty(type=MOLECULE_PROPERTY)
     bpy.types.Scene.atoms = PointerProperty(type=ATOM_PROPERTY)
     bpy.types.Scene.brand = PointerProperty(type=BRAND_PROPERTY)

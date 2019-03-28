@@ -249,6 +249,7 @@ class POQBDB_PROPERTY(PropertyGroup):
 			("seahorse","Seahorse","add seahorse"),
 			("elephant","Elephant","add elephant"),
 			("bison","Bison","add bison"),
+			("fly","Fly","add fly"),
 			("giraffe","Giraffe","add giraffe"),
 			("dog","Dog","add dog"),
 			("fish","Fish","add fish"),
