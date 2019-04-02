@@ -1,6 +1,7 @@
 import bpy
 import os
 from bpy.types import (Panel,PropertyGroup,Operator)
+from bl_ui.properties_object import ObjectButtonsPanel
 from bpy.utils import previews
 from bpy.props import (EnumProperty,PointerProperty)
 
@@ -36,13 +37,13 @@ class POQBDB_POQBDB_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		other = poqbdbs.poqbdb
-		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"/root/Blender/blender_280/2.80/scripts/addons/learnbgame/poqbdb/") + other + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"/root/Blender/blender-280/2.80/scripts/addons/learnbgame/poqbdb/") + other + ".glb")
 		obj = context.selected_objects
 		obj[0].name = other
 		obj[0].location = context.scene.cursor.location 
 		return {'FINISHED'}
 
-class POQBDB_SPECIES(Panel):
+class POQBDB_SPECIES(Panel,ObjectButtonsPanel):
 	bl_label="species"
 	bl_space_type = "VIEW_3D"
 	bl_region_type = "UI"
@@ -67,13 +68,13 @@ class POQBDB_SPECIES_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		poqbdb_species = poqbdbs.poqbdb_species
-		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/species")+"/" + poqbdb_species + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/species")+os.path.sep + poqbdb_species + ".glb")
 		obj = context.selected_objects
 		obj[0].name = poqbdb_species
 		obj[0].location = context.scene.cursor.location 
 		return {'FINISHED'}
 
-class POQBDB_PLANETS(Panel):
+class POQBDB_PLANETS(Panel,ObjectButtonsPanel):
 	bl_label="planets"
 	bl_space_type = "VIEW_3D"
 	bl_region_type = "UI"
@@ -98,13 +99,13 @@ class POQBDB_PLANETS_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		poqbdb_planets = poqbdbs.poqbdb_planets
-		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/planets")+"/" + poqbdb_planets + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/planets")+os.path.sep + poqbdb_planets + ".glb")
 		obj = context.selected_objects
 		obj[0].name = poqbdb_planets
 		obj[0].location = context.scene.cursor.location 
 		return {'FINISHED'}
 
-class POQBDB_SPECIES_ANIMAL(Panel):
+class POQBDB_SPECIES_ANIMAL(Panel,ObjectButtonsPanel):
 	bl_label="animal"
 	bl_space_type = "VIEW_3D"
 	bl_region_type = "UI"
@@ -129,13 +130,13 @@ class POQBDB_SPECIES_ANIMAL_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		poqbdb_species_animal = poqbdbs.poqbdb_species_animal
-		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/species/animal")+"/" + poqbdb_species_animal + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/species/animal")+os.path.sep + poqbdb_species_animal + ".glb")
 		obj = context.selected_objects
 		obj[0].name = poqbdb_species_animal
 		obj[0].location = context.scene.cursor.location 
 		return {'FINISHED'}
 
-class POQBDB_SPECIES_PLANT(Panel):
+class POQBDB_SPECIES_PLANT(Panel,ObjectButtonsPanel):
 	bl_label="plant"
 	bl_space_type = "VIEW_3D"
 	bl_region_type = "UI"
@@ -160,13 +161,13 @@ class POQBDB_SPECIES_PLANT_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		poqbdb_species_plant = poqbdbs.poqbdb_species_plant
-		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/species/plant")+"/" + poqbdb_species_plant + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/species/plant")+os.path.sep + poqbdb_species_plant + ".glb")
 		obj = context.selected_objects
 		obj[0].name = poqbdb_species_plant
 		obj[0].location = context.scene.cursor.location 
 		return {'FINISHED'}
 
-class POQBDB_SPECIES_MICRABE(Panel):
+class POQBDB_SPECIES_MICRABE(Panel,ObjectButtonsPanel):
 	bl_label="micrabe"
 	bl_space_type = "VIEW_3D"
 	bl_region_type = "UI"
@@ -191,9 +192,40 @@ class POQBDB_SPECIES_MICRABE_ADD(Operator):
 	def execute(self,context):
 		poqbdbs = context.scene.poqbdbs
 		poqbdb_species_micrabe = poqbdbs.poqbdb_species_micrabe
-		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/species/micrabe")+"/" + poqbdb_species_micrabe + ".glb")
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/species/micrabe")+os.path.sep + poqbdb_species_micrabe + ".glb")
 		obj = context.selected_objects
 		obj[0].name = poqbdb_species_micrabe
+		obj[0].location = context.scene.cursor.location 
+		return {'FINISHED'}
+
+class POQBDB_PLANETS_TRAFFIC(Panel,ObjectButtonsPanel):
+	bl_label="traffic"
+	bl_space_type = "VIEW_3D"
+	bl_region_type = "UI"
+	bl_category = "Learnbgame"
+	bl_parent_id = "POQBDB_PLANETS"
+
+	global icons_collection
+	icons = icons_collection["main"]
+
+	def draw(self,context):
+		layout=self.layout
+		scene = context.scene
+		poqbdbs = scene.poqbdbs
+		row = layout.row()
+		row.prop(poqbdbs,"poqbdb_planets_traffic",icon_value=icons[poqbdbs.poqbdb_planets_traffic if poqbdbs.poqbdb_planets_traffic+".png" in icons_list else "learnbgame"].icon_id)
+		row.operator(POQBDB_PLANETS_TRAFFIC_ADD.bl_idname,text="add",icon="ADD")
+
+class POQBDB_PLANETS_TRAFFIC_ADD(Operator):
+	bl_idname = "poqbdb_planets_traffic.add"
+	bl_label = "poqbdb_planets_traffic+"
+
+	def execute(self,context):
+		poqbdbs = context.scene.poqbdbs
+		poqbdb_planets_traffic = poqbdbs.poqbdb_planets_traffic
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/planets/traffic")+os.path.sep + poqbdb_planets_traffic + ".glb")
+		obj = context.selected_objects
+		obj[0].name = poqbdb_planets_traffic
 		obj[0].location = context.scene.cursor.location 
 		return {'FINISHED'}
 
@@ -239,6 +271,7 @@ class POQBDB_PROPERTY(PropertyGroup):
 			("swan","Swan","add swan"),
 			("pheasant","Pheasant","add pheasant"),
 			("deer","Deer","add deer"),
+			("glowworm","Glowworm","add glowworm"),
 			("muskrat","Muskrat","add muskrat"),
 			("armadillo","Armadillo","add armadillo"),
 			("rabbit","Rabbit","add rabbit"),
@@ -282,6 +315,13 @@ class POQBDB_PROPERTY(PropertyGroup):
 			]
 	)
 
+	poqbdb_planets_traffic : EnumProperty(
+		name="traffic",
+		items=[
+			("cycle","Cycle","add cycle"),
+			]
+	)
+
 	
 
 def register():
@@ -311,6 +351,10 @@ def register():
 	
 	bpy.utils.register_class(POQBDB_SPECIES_MICRABE_ADD)
 	
+	bpy.utils.register_class(POQBDB_PLANETS_TRAFFIC)
+	
+	bpy.utils.register_class(POQBDB_PLANETS_TRAFFIC_ADD)
+	
 	bpy.types.Scene.poqbdbs = PointerProperty(type=POQBDB_PROPERTY)
 
 def unregister():
@@ -339,4 +383,8 @@ def unregister():
 	bpy.utils.unregister_class(POQBDB_SPECIES_MICRABE)
 	
 	bpy.utils.unregister_class(POQBDB_SPECIES_MICRABE_ADD)
+	
+	bpy.utils.unregister_class(POQBDB_PLANETS_TRAFFIC)
+	
+	bpy.utils.unregister_class(POQBDB_PLANETS_TRAFFIC_ADD)
 	

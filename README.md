@@ -1,15 +1,35 @@
 # Learnbgame ----learnbgame is learn by game
 
-#### Addon UI
+Learnbgame的目标是一个创建一个关于科学知识学习的AR/VR游戏,将科学研究得到的科学知识进行三维可视化,力求创建一种所见即所得的学习方式,你可以理解为现实世界的虚拟仿真映射.
 
+## Learnbgame开发路线图式
+
+![](mDrivEngine/develep.jpg)
+
+Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为依托[Blender](https://www.blender.org/)三维软件开发三维模型集成插件,插件集成开源的模型生成插件算法和脚本,力求
+
+* 一键生成模型
+
+* 灵活自定义模型
+
+* 批量生成高级可观模型
+
+* 创建基于现实的模型
+
+* 灵活管理模型
+
+#### 插件效果演示
 
 ![](mDrivEngine/demo.gif)
 
-# 物质世界
+# poqbdb
 
 这是关于物质世界的模型库集合,模型的生成主要通过算法的生成和[gltf格式](https://github.com/KhronosGroup/glTF)文件的导入.
 
-## struct
+# 目前集成开源[插件列表](LearnbdnelB.md)
+
+
+## 模型集成插件UI架构--基于现实世界和科学研究理论进行分类
 ![](mDrivEngine/modulStruct.png)
 
 ### 生物
@@ -118,11 +138,11 @@ openbabel
 
 # 注意事项:
 
-目前由于插件中的分子生成部分需要调用openbabel化学python库,所以还需另外安装,日后会进行改进,敬请期待
+* 目前由于插件中的化学分子三维结构生成部分需要调用openbabel化学python库,所以还需另外安装,日后会进行改进,敬请期待
 
-atom模块中电子的运动是绕着x或y或z轴旋转的,并非绕原点旋转,关于绕原点的算法暂时还没有思路,有待改进.
+* atom模块中电子的运动是绕着x或y或z轴旋转的,并非绕原点旋转,关于绕原点的算法暂时还没有思路,有待改进.
 
-插件目前主要在kali linux系统中开发,所以可能会有兼容性问题,欢迎提[bug](https://github.com/BlenderCN/Learnbgame/issues)
+* 插件目前主要在kali linux系统中开发,所以可能会有系统兼容性问题,欢迎提[bug](https://github.com/BlenderCN/Learnbgame/issues)
 
 <a href="Fofight.md">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">

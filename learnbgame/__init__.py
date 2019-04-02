@@ -189,7 +189,7 @@ class LEARNBGAME_MOLECULE(Panel):
         row.prop(
             molecule,
             "smile_format",
-            icon_value=icons['molecule'].icon_id
+            icon_value=icons["molecule"].icon_id
             )
         row.operator(MOLECULE_ADD.bl_idname,text="add",icon="ADD")
 
@@ -410,7 +410,7 @@ class ANIMAL_ADD(Operator):
     def execute(self,context):
         animals = context.scene.animals
         animal_name = animals.animal
-        bpy.ops.import_scene.gltf(filepath=animals_dir+"/"+animal_name+".glb")
+        bpy.ops.import_scene.gltf(filepath=animals_dir+os.path.sep+animal_name+".glb")
         obj = context.selected_objects
         obj[0].name = animal_name
         obj[0].location = context.scene.cursor.location
@@ -424,7 +424,7 @@ class PLANT_ADD(Operator):
 
         plants = context.scene.plants
         plant_name = plants.plant
-        bpy.ops.import_scene.gltf(filepath=plants_dir+"/" + plant_name +".glb")
+        bpy.ops.import_scene.gltf(filepath=plants_dir+os.path.sep + plant_name +".glb")
         obj = bpy.context.selected_objects
         obj[0].name = plant_name
         obj[0].location = bpy.context.scene.cursor.location
@@ -438,7 +438,7 @@ class MICRABE_ADD(Operator):
 
         micrabes = context.scene.micrabes
         micrabe_name = micrabes.micrabe
-        bpy.ops.import_scene.gltf(filepath=micrabes_dir+"/" + micrabe_name +".glb")
+        bpy.ops.import_scene.gltf(filepath=micrabes_dir+os.path.sep + micrabe_name +".glb")
         obj = bpy.context.selected_objects
         obj[0].name = micrabe_name
         obj[0].location = bpy.context.scene.cursor.location
@@ -456,7 +456,7 @@ class PLANET_ADD(Operator):
 
         planets = context.scene.planets
         planet_name = planets.planet
-        bpy.ops.import_scene.gltf(filepath=planets_dir+"/" + planet_name +".glb")
+        bpy.ops.import_scene.gltf(filepath=planets_dir+os.path.sep + planet_name +".glb")
         obj = bpy.context.selected_objects
         obj[0].name = planet_name
         obj[0].location = bpy.context.scene.cursor.location
@@ -1402,7 +1402,8 @@ CLASSES = (
     )
 
 def register():
-    subprocess.Popen(['python3',os.path.join(os.path.dirname(__file__), "draw_class.py"),'1','2'],stdin = subprocess.PIPE, stdout=subprocess.PIPE)
+    pro = subprocess.Popen([bpy.app.binary_path_python,os.path.join(os.path.dirname(__file__), "draw_class.py")])
+    pro.wait()
     poqbdb.register()
     hdri.register()
     #Grove_Preferences.register()
