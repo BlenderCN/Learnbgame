@@ -18,18 +18,18 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 
 * 灵活管理模型
 
-#### 插件效果演示
+### 插件效果演示
 
 ![](mDrivEngine/demo.gif)
 
-# poqbdb
+### poqbdb
 
 这是关于物质世界的模型库集合,模型的生成主要通过算法的生成和[gltf格式](https://github.com/KhronosGroup/glTF)文件的导入.
 
-# 目前集成开源[插件列表](LearnbdnelB.md)
+### 目前集成开源[插件列表](LearnbdnelB.md)
 
 
-## 模型集成插件UI架构--基于现实世界和科学研究理论进行分类
+# 模型集成插件UI架构--基于现实世界和科学研究理论进行分类
 ![](mDrivEngine/modulStruct.png)
 
 ### 生物
@@ -80,7 +80,7 @@ atoms---molecules---species---planets---
 
 [其他](https://github.com/BlenderCN/Blender3DWorld/blob/master/blender%E6%A8%A1%E5%9E%8B%E5%BA%93.md)
 
-# 能量驱动
+### 能量驱动
 
 声--光--热--电--动--势--场
 
@@ -143,6 +143,13 @@ openbabel
 * atom模块中电子的运动是绕着x或y或z轴旋转的,并非绕原点旋转,关于绕原点的算法暂时还没有思路,有待改进.
 
 * 插件目前主要在kali linux系统中开发,所以可能会有系统兼容性问题,欢迎提[bug](https://github.com/BlenderCN/Learnbgame/issues)
+
+
+# 插件安装
+
+将插件目录[learnbgame](https://github.com/BlenderCN/Learnbgame/tree/master/learnbgame)压缩,即可从blender-2.8安装,插件[目录结构树](Learnbgame.md)
+
+# other
 
 <a href="Fofight.md">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
