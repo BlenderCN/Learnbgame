@@ -1,6 +1,6 @@
 # Learnbgame ----learnbgame is learn by game
 
-Learnbgame的目标是一个创建一个关于科学知识学习的AR/VR游戏,将科学研究得到的科学知识进行三维可视化,力求创建一种所见即所得的学习方式,你可以理解为现实世界的虚拟仿真映射.
+Learnbgame的目标是一个创建一个关于科学知识学习的[AR/VR游戏](),将科学研究得到的科学知识进行三维可视化,力求创建一种所见即所得的学习方式,你可以理解为现实世界的虚拟仿真映射.
 
 ## Learnbgame开发路线图式
 
@@ -25,6 +25,10 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 ### poqbdb
 
 这是关于物质世界的模型库集合,模型的生成主要通过算法的生成和[gltf格式](https://github.com/KhronosGroup/glTF)文件的导入.
+
+### [ImmunemaG](ImmunemaG.md)
+
+这是关于免疫学知识的卡牌游戏
 
 ### 目前集成开源[插件列表](LearnbdnelB.md)
 
