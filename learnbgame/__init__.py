@@ -62,6 +62,8 @@ from . import jewelcraft
 
 from . import gxav
 
+from . import materials_library_vx
+
 from bpy.types import (
     Panel, 
     Operator,
@@ -1422,10 +1424,12 @@ def register():
     human.register()
     jewelcraft.register()
     gxav.register()
+    materials_library_vx.register()
 
 
 
 def unregister():
+    materials_library_vx.unregister()
     gxav.unregister()
     jewelcraft.unregister()
     human.unregister()
