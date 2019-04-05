@@ -54,7 +54,7 @@ class TreeGen(bpy.types.Operator):
     _props = bpy.props
 
     # Drop-downs containing tree options for each generation method
-    # These are switched between by TreeGenPanel.draw() based on the state of tree_gen_method_input
+    # These are switched between by TreeGen_PT_Panel.draw() based on the state of tree_gen_method_input
     parametric_items = _get_tree_types()
 
     # Nothing exciting here. Seed, leaf toggle, and simplify geometry toggle.
@@ -316,7 +316,7 @@ class LEARNBGAME_SPECIES_PLANT_TREE(bpy.types.Panel):
     def draw(self,context):
         pass
 
-class TreeGenCustomisePanel(bpy.types.Panel):
+class TreeGenCustomise_PT_Panel(bpy.types.Panel):
     """Provides the main user interface for TreeGen"""
 
     bl_label = "TreeGen Customisation"
@@ -433,7 +433,7 @@ class TreeGenCustomisePanel(bpy.types.Panel):
         box.row()
 
 
-class TreeGenPanel(bpy.types.Panel):
+class TreeGen_PT_Panel(bpy.types.Panel):
     """Provides the main user interface for TreeGen"""
 
     bl_label = "TreeGen"
@@ -493,8 +493,8 @@ class TreeGenPanel(bpy.types.Panel):
 def register():
     bpy.utils.register_class(LEARNBGAME_SPECIES_PLANT_TREE)
     bpy.utils.register_class(TreeGen)
-    bpy.utils.register_class(TreeGenPanel)
-    bpy.utils.register_class(TreeGenCustomisePanel)
+    bpy.utils.register_class(TreeGen_PT_Panel)
+    bpy.utils.register_class(TreeGenCustomise_PT_Panel)
     bpy.utils.register_class(TreeGenSaveFile)
     bpy.utils.register_class(TreeGenLoadParams)
 
@@ -503,7 +503,7 @@ def unregister():
     # Reversing order is best-practice
     bpy.utils.unregister_class(TreeGenLoadParams)
     bpy.utils.unregister_class(TreeGenSaveFile)
-    bpy.utils.unregister_class(TreeGenCustomisePanel)
-    bpy.utils.unregister_class(TreeGenPanel)
+    bpy.utils.unregister_class(TreeGenCustomise_PT_Panel)
+    bpy.utils.unregister_class(TreeGen_PT_Panel)
     bpy.utils.unregister_class(TreeGen)
     bpy.utils.unregister_class(LEARNBGAME_SPECIES_PLANT_TREE)

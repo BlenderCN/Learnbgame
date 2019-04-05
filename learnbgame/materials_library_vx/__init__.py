@@ -1118,7 +1118,7 @@ class MATLIB_PT_vxPanel(Panel):
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
   bl_category = "Learnbgame"
-  bl_parent_id = "ENERGY"
+  bl_parent_id = "LEARNBGAME_PT_ENERGY"
   #bl_context = "material"
 
   @classmethod

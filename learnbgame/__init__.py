@@ -136,7 +136,7 @@ poqbdb_dir = os.path.join(os.path.dirname(__file__),"poqbdb")
 
 
 
-class LEARNBGAME_ATOM(Panel):
+class LEARNBGAME_PT_ATOM(Panel):
     bl_label = "Atom"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
@@ -150,7 +150,7 @@ class LEARNBGAME_ATOM(Panel):
         row.prop(atoms,"atom",icon="PHYSICS")
         row.operator(ATOM_ADD.bl_idname,text="add",icon="ADD")
 
-class LEARNBGAME_BRAND(Panel):
+class LEARNBGAME_PT_BRAND(Panel):
     bl_label = "Learnbgame"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
@@ -172,7 +172,7 @@ class LEARNBGAME_BRAND(Panel):
         row.operator(BRAND_DISPLAY.bl_idname,text="show",icon="PLAY")
 
 
-class LEARNBGAME_MOLECULE(Panel):
+class LEARNBGAME_PT_MOLECULE(Panel):
     bl_label = "Molecule"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
@@ -1384,8 +1384,8 @@ CLASSES = (
     SPECIES_PROPERTY,
     #PLANT_ADD,
     LEARNBGAME_SPECIES,
-    LEARNBGAME_ATOM,
-    LEARNBGAME_MOLECULE,
+    LEARNBGAME_PT_ATOM,
+    LEARNBGAME_PT_MOLECULE,
     LEARNBGAME_PLANET,
     MOLECULE_PROPERTY,
     #PLANET_PROPERTY,
@@ -1397,7 +1397,7 @@ CLASSES = (
     ATOM_ADD,
     BRAND_PROPERTY,
     BRAND_DISPLAY,
-    LEARNBGAME_BRAND,
+    LEARNBGAME_PT_BRAND,
     LEARNBGAME_SPECIES_ANIMAL,
     LEARNBGAME_SPECIES_PLANT,
     LEARNBGAME_SPECIES_MICRABE,

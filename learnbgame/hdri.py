@@ -441,7 +441,7 @@ class EASYHDRI_OT_previous_image(Operator):
 ###########################################################################################
 ##################################### The UI ##############################################
 ###########################################################################################          
-class ENERGY(Panel):
+class LEARNBGAME_PT_ENERGY(Panel):
     bl_label = "Energy"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
@@ -457,7 +457,7 @@ class EASYHDRI_PT_main(Panel):
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = 'Learnbgame'
-    bl_parent_id = "ENERGY"
+    bl_parent_id = "LEARNBGAME_PT_ENERGY"
     
     def draw(self, context):
         scn = context.scene
@@ -564,7 +564,7 @@ class EASYHDRI_MT_settings(Menu):
 # Register/Unregister
 
 classes = (
-    ENERGY,
+    LEARNBGAME_PT_ENERGY,
     EASYHDRI_OT_add_to_fav,
     EASYHDRI_OT_remove_from_fav,
     EASYHDRI_OT_reload_previews,

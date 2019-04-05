@@ -34,7 +34,7 @@ class Setup:
     bl_category = "Learnbgame"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
-    bl_parent_id = "JEWELCRAFT"
+    bl_parent_id = "JEWEL_PT_CRAFT"
 
     def __init__(self):
         self.prefs = bpy.context.scene.jewelcraft_preset

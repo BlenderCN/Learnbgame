@@ -47,7 +47,7 @@ else:
     )
 
 
-class JEWELCRAFT(Panel):
+class JEWEL_PT_CRAFT(Panel):
     bl_label = "JewelCraft"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
@@ -60,10 +60,10 @@ class JEWELCRAFT(Panel):
 var.UPDATE_CURRENT_VERSION = jewelcraft_info["version"]
 
 classes = (
-    JEWELCRAFT,
+    JEWEL_PT_CRAFT,
     preferences.JewelCraftMaterialsCollection,
     preferences.JewelCraftMaterialsList,
-    preferences.JewelCraftPreferences,
+    preferences.JewelCraft_PT_Preferences,
     preferences.JewelCraftPropertiesWm,
     preferences.JewelCraftPropertiesScene,
     ui.VIEW3D_UL_jewelcraft_weighting_set,

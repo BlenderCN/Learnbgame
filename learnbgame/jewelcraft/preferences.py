@@ -100,13 +100,13 @@ def update_asset_refresh(self, context):
     dynamic_list.asset_list_refresh(hard=True)
 
 
-class JewelCraftPreferences(Panel):#,AddonPreferences):
+class JewelCraft_PT_Preferences(Panel):#,AddonPreferences):
     bl_label = "JewelCraft_preset"
     bl_idname = "JewelCraft_Preferences"#__package__
     bl_category = "Learnbgame"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
-    bl_parent_id = "JEWELCRAFT"
+    bl_parent_id = "JEWEL_PT_CRAFT"
     
 
 

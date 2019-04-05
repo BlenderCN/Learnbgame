@@ -300,7 +300,7 @@ class GXAVPanel(bpy.types.Panel):
     bl_idname = "SCENE_PT_layout"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_parent_id = "ENERGY"
+    bl_parent_id = "LEARNBGAME_PT_ENERGY"
 
     def draw(self, context):
         layout = self.layout
