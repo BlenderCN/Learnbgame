@@ -49,7 +49,6 @@ from mathutils import Vector,Matrix
 
 from . import poqbdb
 from . import spaceship_generator
-from . import hdri
 from . import spacestation
 from .book import Book
 from .shelf import Shelf
@@ -60,9 +59,9 @@ from . import human
 
 from . import jewelcraft
 
-from . import gxav
-
-from . import materials_library_vx
+from .energy import gxav
+from .energy import hdri
+from .energy import materials_library_vx
 
 from bpy.types import (
     Panel, 
