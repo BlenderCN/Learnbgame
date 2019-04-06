@@ -144,7 +144,7 @@ openbabel
 
 * 目前由于插件中的化学分子三维结构生成部分需要调用openbabel化学python库,所以还需另外安装,日后会进行改进,敬请期待
 
-* atom模块中电子的运动是绕着x或y或z轴旋转的,并非绕原点旋转,关于绕原点的算法暂时还没有思路,有待改进.
+* atom模块中电子的排布引用Fibonacci lattice算法,运动引用AXIS ANGLE旋转算法.
 
 * 插件目前主要在kali linux系统中开发,所以可能会有系统兼容性问题,欢迎提[bug](https://github.com/BlenderCN/Learnbgame/issues)
 
