@@ -36,7 +36,7 @@ except:
     pass
 
 import json
-
+import math
 from math import sqrt,pi,radians, sin, cos, tan, asin, degrees
 
 import bgl,blf
@@ -671,6 +671,16 @@ class ATOM_ADD(Operator):
 
 
                     num += 1
+    def rot_axis(self,e_loc):
+        if e_loc[0] != 0 and e_loc[1] !=0 and e_loc[2] !=0:
+            vector_x = -e_loc[1]
+            vector_y = e_loc[0]
+            vector_z = 0
+        else:
+            vector_x = 0
+            vector_y = 1
+            vector_z = 0
+        return (vector_x,vector_y,vector_z)
 
     def draw_nucleus_electron(self,context,electronic_arrangement=[1,]):
 
@@ -767,67 +777,27 @@ class ATOM_ADD(Operator):
 
         e_num = 1
         for electron_num in electronic_arrangement:
-            electrons_status = [
-                {"loc":(radius,0,0),"rot":(0,pi*2,0)},
-                {"loc":(radius,0,0),"rot":(0,0,pi*2)},
-                {"loc":(0,radius,0),"rot":(pi*2,0,0)},
-                {"loc":(0,radius,0),"rot":(0,0,pi*2)},
-                {"loc":(0,0,radius),"rot":(pi*2,0,0)},
-                {"loc":(0,0,radius),"rot":(0,pi*2,0)},
-                {"loc":(-radius,0,0),"rot":(0,pi*2,0)},
-                {"loc":(-radius,0,0),"rot":(0,0,pi*2)},
-                {"loc":(0,-radius,0),"rot":(pi*2,0,0)},
-                {"loc":(0,-radius,0),"rot":(0,0,pi*2)},
-                {"loc":(0,0,-radius),"rot":(pi*2,0,0)},
-                {"loc":(0,0,-radius),"rot":(0,pi*2,0)},
-                {"loc":(sqrt(radius**2/2),sqrt(radius**2/2),0),"rot":(0,0,pi*2)},
-                {"loc":(sqrt(radius**2/2),0,sqrt(radius**2/2)),"rot":(0,pi*2,0)},
-                {"loc":(0,sqrt(radius**2/2),sqrt(radius**2/2)),"rot":(pi*2,0,0)},
-                {"loc":(-sqrt(radius**2/2),-sqrt(radius**2/2),0),"rot":(0,0,pi*2)},
-                {"loc":(-sqrt(radius**2/2),0,-sqrt(radius**2/2)),"rot":(0,pi*2,0)},
-                {"loc":(0,-sqrt(radius**2/2),-sqrt(radius**2/2)),"rot":(pi*2,0,0)},
-                {"loc":(sqrt(radius**2/2),-sqrt(radius**2/2),0),"rot":(0,0,pi*2)},
-                {"loc":(sqrt(radius**2/2),0,-sqrt(radius**2/2)),"rot":(0,pi*2,0)},
-                {"loc":(-sqrt(radius**2/2),sqrt(radius**2/2),0),"rot":(0,0,pi*2)},
-                {"loc":(0,sqrt(radius**2/2),-sqrt(radius**2/2)),"rot":(pi*2,0,0)},
-                {"loc":(-sqrt(radius**2/2),0,sqrt(radius**2/2)),"rot":(0,pi*2,0)},
-                {"loc":(0,-sqrt(radius**2/2),sqrt(radius**2/2)),"rot":(pi*2,0,0)},
-                {"loc":(radius,0,0),"rot":(0,-pi*2,0)},
-                {"loc":(radius,0,0),"rot":(0,0,-pi*2)},
-                {"loc":(0,radius,0),"rot":(-pi*2,0,0)},
-                {"loc":(0,radius,0),"rot":(0,0,-pi*2)},
-                {"loc":(0,0,radius),"rot":(-pi*2,0,0)},
-                {"loc":(0,0,radius),"rot":(0,-pi*2,0)},
-                {"loc":(-radius,0,0),"rot":(0,-pi*2,0)},
-                {"loc":(-radius,0,0),"rot":(0,0,-pi*2)},
-                {"loc":(0,-radius,0),"rot":(-pi*2,0,0)},
-                {"loc":(0,-radius,0),"rot":(0,0,-pi*2)},
-                {"loc":(0,0,-radius),"rot":(-pi*2,0,0)},
-                {"loc":(0,0,-radius),"rot":(0,-pi*2,0)},
-                {"loc":(sqrt(radius**2/2),sqrt(radius**2/2),0),"rot":(0,0,-pi*2)},
-                {"loc":(sqrt(radius**2/2),0,sqrt(radius**2/2)),"rot":(0,-pi*2,0)},
-                {"loc":(0,sqrt(radius**2/2),sqrt(radius**2/2)),"rot":(-pi*2,0,0)},
-                {"loc":(-sqrt(radius**2/2),-sqrt(radius**2/2),0),"rot":(0,0,-pi*2)},
-                {"loc":(-sqrt(radius**2/2),0,-sqrt(radius**2/2)),"rot":(0,-pi*2,0)},
-                {"loc":(0,-sqrt(radius**2/2),-sqrt(radius**2/2)),"rot":(-pi*2,0,0)},
-                {"loc":(sqrt(radius**2/2),-sqrt(radius**2/2),0),"rot":(0,0,-pi*2)},
-                {"loc":(sqrt(radius**2/2),0,-sqrt(radius**2/2)),"rot":(0,-pi*2,0)},
-                {"loc":(-sqrt(radius**2/2),sqrt(radius**2/2),0),"rot":(0,0,-pi*2)},
-                {"loc":(0,sqrt(radius**2/2),-sqrt(radius**2/2)),"rot":(-pi*2,0,0)},
-                {"loc":(-sqrt(radius**2/2),0,sqrt(radius**2/2)),"rot":(0,-pi*2,0)},
-                {"loc":(0,-sqrt(radius**2/2),sqrt(radius**2/2)),"rot":(-pi*2,0,0)},
-                ]
+            offset = 2.0 / electron_num
+            increment = math.pi * (3.0 - math.sqrt(5.0))
 
-            for status in random.sample(electrons_status,electron_num):
-                bpy.ops.mesh.primitive_uv_sphere_add(radius=0.1, location=status['loc'])
+            for i in range(electron_num):
+                z = ((i * offset) - 1.0) + (offset / 2.0)
+                r = math.sqrt(1.0 - pow(z, 2.0))
+                
+                phi = ((i + 1) % electron_num) * increment
+                
+                x = math.cos(phi) * r
+                y = math.sin(phi) * r
+                e_loc = (radius*x,radius*y,radius*z)
+                bpy.ops.mesh.primitive_uv_sphere_add(radius=0.1, location=e_loc)
                 bpy.ops.object.particle_system_add()
                 bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
-                
+
                 obj = bpy.context.selected_objects
                 bpy.ops.object.shade_smooth()
-                
+
                 electron_name = "electron"+ str(e_num)
-                
+
                 obj[0].name =electron_name
 
                 obj[0].data.materials.append(electron_material)
@@ -836,28 +806,23 @@ class ATOM_ADD(Operator):
                 obj[0].particle_systems[-1].settings.effector_weights.gravity=0
                 obj[0].particle_systems[-1].settings.display_size = 0.05
 
-
-
-
                 bpy.context.object.parent = bpy.data.objects["nucleus"]
-                
-                bpy.context.object.rotation_mode = 'XYZ'
-                
+                bpy.context.object.rotation_mode = 'AXIS_ANGLE'
+
                 electron = bpy.data.objects[electron_name]
 
-
-                electron.rotation_euler = (0,0,0)
+                electron.rotation_axis_angle = (0,)+self.rot_axis(e_loc)
 
                 start_frame = bpy.context.scene.frame_start
 
-                electron.keyframe_insert(data_path="rotation_euler",frame=start_frame)
+                electron.keyframe_insert(data_path="rotation_axis_angle",frame=start_frame)
 
-
-                electron.rotation_euler = status['rot']
+                electron.rotation_axis_angle = (2*math.pi,)+self.rot_axis(e_loc)
 
                 end_frame = bpy.context.scene.frame_end = 45
 
-                electron.keyframe_insert(data_path='rotation_euler',frame=end_frame + 1)
+                electron.keyframe_insert(data_path="rotation_axis_angle",frame=end_frame)
+
                 e_num +=1
 
                 bpy.context.area.type = 'GRAPH_EDITOR'             
