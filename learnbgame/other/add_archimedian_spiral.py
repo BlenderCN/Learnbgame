@@ -1,16 +1,3 @@
-# Author: Tamir Lousky
-# Updated: 27Dec2015
-
-bl_info = {
-    "name"        : "Add Archimedian Spiral",
-    "author"      : "Tamir Lousky",
-    "version"     : (0, 0, 1),
-    "blender"     : (2, 75, 0),
-    "category"    : "Add Mesh",
-    "location"    : "View3D > Add > Mesh > Archimedian Spiral",
-    "tracker_url" : "https://github.com/Tlousky/blender_scripts/blob/master/add_archimedian_spiral.py",
-    "description" : "Generates An Archimedian Spiral"
-}
 
 import bpy
 from math import cos, sin
@@ -33,16 +20,16 @@ class add_archimedian_spiral( bpy.types.Operator ):
     @classmethod
     def poll( self, context ): return True
 
-    name   = bpy.props.StringProperty( default = 'archispiral' )
-    size   = bpy.props.FloatProperty( 
+    name   : bpy.props.StringProperty( default = 'archispiral' )
+    size   : bpy.props.FloatProperty( 
         default = 0.1,
         min     = 0
     )
-    length = bpy.props.IntProperty( 
+    length : bpy.props.IntProperty( 
         default = 500,
         min     = 10
     )
-    height = bpy.props.FloatProperty( 
+    height : bpy.props.FloatProperty( 
         default = 5,
         min     = 0,
     )
@@ -63,7 +50,7 @@ class add_archimedian_spiral( bpy.types.Operator ):
 
         o = bpy.data.objects.new( self.name, mesh )
         o.location = (0,0,0) # place at object origin
-        S.objects.link( o )
+        S.collection.objects.link( o )
 
         z     = 0
         verts = []  
@@ -84,12 +71,12 @@ class add_archimedian_spiral( bpy.types.Operator ):
         return {'FINISHED'}
 
 def register():
-    bpy.utils.register_module(__name__)
-    bpy.types.INFO_MT_mesh_add.append( menu_func )
+    bpy.utils.register_class(add_archimedian_spiral)
+    bpy.types.VIEW3D_MT_mesh_add.append( menu_func )
 
 def unregister():
-    bpy.utils.unregister_module(__name__)
-    bpy.types.INFO_MT_mesh_add.remove( menu_func )
+    bpy.utils.unregister_class(add_archimedian_spiral)
+    bpy.types.VIEW3D_MT_mesh_add.remove( menu_func )
 
 if __name__ == "__main__":
     register()
