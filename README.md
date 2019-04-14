@@ -302,7 +302,7 @@ LearnBikiW
 LearnioC
 </a>
 </br>
-<a href="LearnruT">
+<a href="LearnruT.md">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
 LearnruT.md
 </a>
