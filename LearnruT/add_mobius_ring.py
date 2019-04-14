@@ -1,37 +1,4 @@
-'''# +---------------------------------------------------------+
-# | Copyright (c) 2005-2010 Anthony D'Agostino              |
-# | http://home.comcast.net/~chronosphere                   |
-# | scorpius@netzero.com                                    |
-# | February 12, 2005                                       |
-# | Torus Knot Generator                                    |
-# | Adds the famous missing primitive to Blender            |
-# +---------------------------------------------------------+
-# ***** BEGIN GPL LICENSE BLOCK *****
-#
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
-# of the License, or (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software Foundation,
-# Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-#
-# ***** END GPL LICENCE BLOCK *****
-bl_info = {
-    "name": "Torus Knot",
-    "author": "Anthony D'Agostino",
-    "version": (1, 0),
-    "blender": (2, 57, 0),
-    "location": "View3D > Add > Mesh ",
-    "url": "http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/Add_TorusKnot",
-    "category": "Add Mesh"}
-'''
+
 import bpy, mathutils, math
 
 def create_mesh_object(context, verts, edges, faces, name):
@@ -45,7 +12,7 @@ def create_mesh_object(context, verts, edges, faces, name):
     return object_utils.object_data_add(context, mesh, operator=None)
 
 # ========================
-# === Torus Knot Block ===
+# === Mobius ring ===
 # ========================
 def k1(t):
 	x = math.cos(t) - 2*math.cos(2*t)
@@ -118,11 +85,11 @@ class AddTorusKnot(bpy.types.Operator):
 	bl_label = "Add Torus Knot"
 	bl_options = {"REGISTER", "UNDO"}
 
-	resolution = bpy.props.IntProperty(name="Resolution",
+	resolution : bpy.props.IntProperty(name="Resolution",
 		description="Resolution of the Torus Knot",
 		default=80, min=30, max=256)
 
-	objecttype = bpy.props.IntProperty(name="Knot Type",
+	objecttype : bpy.props.IntProperty(name="Knot Type",
 		description="Type of Knot",
 		default=1, min=1, max=3)
 
@@ -135,10 +102,10 @@ class AddTorusKnot(bpy.types.Operator):
 def menu_func(self, context):
 	self.layout.operator(AddTorusKnot.bl_idname, text="Torus Knot", icon="MESH_CUBE")
 def register():
-    bpy.utils.register_module(__name__)
-    bpy.types.INFO_MT_mesh_add.append(menu_func)
+    bpy.utils.register_class(AddTorusKnot)
+    bpy.types.VIEW3D_MT_mesh_add.append(menu_func)
 def unregister():
-    bpy.utils.unregister_module(__name__)
-    bpy.types.INFO_MT_mesh_add.remove(menu_func)
+    bpy.utils.unregister_class(AddTorusKnot)
+    bpy.types.VIEW3D_MT_mesh_add.remove(menu_func)
 if __name__ == "__main__":
 	register()

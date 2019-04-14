@@ -1,39 +1,17 @@
-# #################################################################
-#  Copyright (C) 2010 by Conquera Team
-#  Part of the Conquera Project
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-# #################################################################
 
-bl_info = {
-    "name": "Connection Point",
-    "blender": (2, 5, 7),
-    "location": "View3D > Add > Mesh ",
-    "description": "Adds a connection point",
-    "category": "Add Mesh"}
 
 import bpy
-from bpy.props import *
+#from bpy.props import *
 
 import mathutils
-from mathutils import *
+from mathutils import Vector,Matrix
 from math import cos, sin, pi, radians
 
 
 class AddConnectionPoint(bpy.types.Operator):
     '''Add a torus mesh'''
     bl_idname = "mesh.add_connection_point"
-    bl_label = "Add Connection Point"
+    bl_label = "Add Ball frame"
     bl_options = {'REGISTER', 'UNDO'}
 
     def CreateCircleMesh(self, verts, edges , size, axis):
@@ -51,7 +29,7 @@ class AddConnectionPoint(bpy.types.Operator):
         vCnt = len(verts)
         for i in range(0,sCnt):
             mtx = Matrix.Rotation( radians(i  * 360/sCnt), 3, 'Y' )
-            vect = Vector((size,0,0)) * mtx * rotMat
+            vect = Vector((size,0,0)) @ mtx @ rotMat
             verts.append(vect)
         for i in range(vCnt+1,vCnt+sCnt):
             edges.append([i, i-1])
@@ -62,7 +40,7 @@ class AddConnectionPoint(bpy.types.Operator):
         aSize2 = size/8
         aSize3 =aSize2/2
         
-        v = [Vector((0, aSize, 0))* rotMat, Vector((0,0,0))* rotMat, Vector((aSize3, aSize-aSize2, aSize3))* rotMat, Vector((-aSize3, aSize-aSize2, aSize3))* rotMat, Vector((aSize3, aSize-aSize2, -aSize3))* rotMat, Vector((-aSize3, aSize-aSize2, -aSize3))* rotMat]
+        v = [Vector((0, aSize, 0))@rotMat, Vector((0,0,0))@ rotMat, Vector((aSize3, aSize-aSize2, aSize3))@ rotMat, Vector((-aSize3, aSize-aSize2, aSize3))@ rotMat, Vector((aSize3, aSize-aSize2, -aSize3))@ rotMat, Vector((-aSize3, aSize-aSize2, -aSize3))@ rotMat]
         verts.extend(v)
         edges.extend([[vCnt, vCnt+i] for i in range(1,len(v))])
         
@@ -70,13 +48,13 @@ class AddConnectionPoint(bpy.types.Operator):
         #axis name
         vCnt = len(verts)
         if 'x' == axis:
-            v = [Vector((aSize3 +aSize2/4, aSize3+aSize2,0))* rotMat, Vector((aSize3*2 +aSize2/4, aSize3*2+aSize2,0))* rotMat, Vector((aSize3*2 +aSize2/4, aSize3+aSize2,0))* rotMat, Vector((aSize3 +aSize2/4, aSize3*2+aSize2,0))* rotMat]
+            v = [Vector((aSize3 +aSize2/4, aSize3+aSize2,0))@ rotMat, Vector((aSize3*2 +aSize2/4, aSize3*2+aSize2,0))@ rotMat, Vector((aSize3*2 +aSize2/4, aSize3+aSize2,0))@ rotMat, Vector((aSize3 +aSize2/4, aSize3*2+aSize2,0))@ rotMat]
             e = [[vCnt, vCnt+1], [vCnt+2, vCnt+3]]
         elif 'y' == axis:
-            v = [Vector((aSize3 +aSize2/4, aSize3 + aSize3/2 +aSize2,0))* rotMat, Vector((aSize3 + aSize3/2 +aSize2/4, aSize3+aSize2,0))* rotMat, Vector((aSize3*2 +aSize2/4, aSize3 + aSize3/2 +aSize2,0))* rotMat, Vector((aSize3 + aSize3/2 +aSize2/4, aSize3/2 +aSize2,0))* rotMat]
+            v = [Vector((aSize3 +aSize2/4, aSize3 + aSize3/2 +aSize2,0))@ rotMat, Vector((aSize3 + aSize3/2 +aSize2/4, aSize3+aSize2,0))@ rotMat, Vector((aSize3*2 +aSize2/4, aSize3 + aSize3/2 +aSize2,0))@ rotMat, Vector((aSize3 + aSize3/2 +aSize2/4, aSize3/2 +aSize2,0))@ rotMat]
             e = [[vCnt, vCnt+1], [vCnt+1, vCnt+2], [vCnt+1, vCnt+3]]
         else:
-            v = [Vector((aSize3 +aSize2/4, aSize3+aSize2,0))* rotMat, Vector((aSize3*2 +aSize2/4, aSize3*2+aSize2,0))* rotMat, Vector((aSize3*2 +aSize2/4, aSize3+aSize2,0))* rotMat, Vector((aSize3 +aSize2/4, aSize3*2+aSize2,0))* rotMat]
+            v = [Vector((aSize3 +aSize2/4, aSize3+aSize2,0))@ rotMat, Vector((aSize3*2 +aSize2/4, aSize3*2+aSize2,0))@ rotMat, Vector((aSize3*2 +aSize2/4, aSize3+aSize2,0))@ rotMat, Vector((aSize3 +aSize2/4, aSize3*2+aSize2,0))@ rotMat]
             e = [[vCnt, vCnt+2], [vCnt+2, vCnt+3], [vCnt+3, vCnt+1]]
         verts.extend(v)
         edges.extend(e)
@@ -102,10 +80,10 @@ class AddConnectionPoint(bpy.types.Operator):
         bpy.ops.object.select_all(action='DESELECT')
 
         obj = bpy.data.objects.new("cp_ConnectionPoint", mesh)
-        context.scene.objects.link(obj)
+        context.scene.collection.objects.link(obj)
         
         
-        selObj = context.scene.objects.active
+        selObj = context.view_layer.objects.active
         if selObj:
             obj.parent = selObj
             
@@ -116,10 +94,10 @@ class AddConnectionPoint(bpy.types.Operator):
                     obj.parent_type='BONE'
             
             obj.matrix_local = Matrix()
-            selObj.select = False
+            selObj.select_set(False)
         
         
-        obj.select = True
+        obj.select_set(True)
 
         return {'FINISHED'}
 
@@ -129,17 +107,17 @@ class AddConnectionPoint(bpy.types.Operator):
 
 # Add to the menu
 def menu_func(self, context):
-    self.layout.operator(AddConnectionPoint.bl_idname, text="Connection Point")
+    self.layout.operator(AddConnectionPoint.bl_idname, text="Ball Frame")
 
 
 def register():
-    bpy.utils.register_module(__name__)
-    bpy.types.INFO_MT_mesh_add.append(menu_func)
+    bpy.utils.register_class(AddConnectionPoint)
+    bpy.types.VIEW3D_MT_mesh_add.append(menu_func)
 
 
 def unregister():
-    bpy.utils.unregister_module(__name__)
-    bpy.types.INFO_MT_mesh_add.remove(menu_func)
+    bpy.utils.unregister_class(AddConnectionPoint)
+    bpy.types.VIEW3D_MT_mesh_add.remove(menu_func)
 	
 
 if __name__ == "__main__":

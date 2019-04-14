@@ -1,35 +1,4 @@
-# ***** BEGIN GPL LICENSE BLOCK *****
-#
-#
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
-# of the License, or (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software Foundation,
-# Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-#
-# ***** END GPL LICENCE BLOCK *****
 
-# <pep8 compliant>
-
-bl_info = {
-    "name": "LowPoly Rock",
-    "author": "Hidesato Ikeya",
-    "version": (0, 1, 9),
-    "blender": (2, 68, 0),
-    "location": "VIEW3D > ADD > Mesh",
-    "description": "LowPoly Rock",
-    "warning": "",
-    "wiki_url": "",
-    "tracker_url": "",
-    "category": "Add Mesh"}
 
 import bpy
 import bmesh
@@ -81,15 +50,15 @@ def create_rock(context, subdiv, radius, size_ratio,
         number = rock.name[ix_dot:]
     else:
         number = ""
-    context.scene.objects.link(rock)
-    context.scene.objects.active = rock
+    context.scene.collection.objects.link(rock)
+    context.view_layer.objects.active = rock
 
     # Displacement
     noise_origin = \
         context.blend_data.objects.new(ORIGIN_NAME + number, None)
     noise_origin.location = noise_center
     noise_origin.location *= radius
-    context.scene.objects.link(noise_origin)
+    context.scene.collection.objects.link(noise_origin)
     disp = rock.modifiers.new('displace', 'DISPLACE')
     disp.direction = 'NORMAL'
     disp.mid_level = displace_midlevel
@@ -121,61 +90,61 @@ class LowPolyRock(bpy.types.Operator):
     bl_label = "LowPoly Rock"
     bl_options = {'REGISTER', 'UNDO', 'PRESET'}
 
-    num_rock = bpy.props.IntProperty(
+    num_rock : bpy.props.IntProperty(
         name="Number", min=1, max=9, default=1,
         description="Number of rocks")
-    size = bpy.props.FloatProperty(
+    size : bpy.props.FloatProperty(
         name="Size", min=.0, default=1.0, precision=3, step=0.01)
-    size_ratio = bpy.props.FloatVectorProperty(
+    size_ratio : bpy.props.FloatVectorProperty(
         name="Size Ratio", size=3, min=.0, default=(1., 1., 1.),
         subtype='TRANSLATION', step=0.1, precision=2, description="Size ratio")
-    displace_midlevel = bpy.props.FloatProperty(
+    displace_midlevel : bpy.props.FloatProperty(
         name="Midlevel", min=.0, max=1.0, default=.5, precision=3, step=0.1)
-    noise_center = bpy.props.FloatVectorProperty(
+    noise_center : bpy.props.FloatVectorProperty(
         name="Noise Center", size=3, step=0.1, subtype='TRANSLATION',
         description="Displacement noise texture origin")
-    simplicity = bpy.props.FloatProperty(
+    simplicity : bpy.props.FloatProperty(
         name="Simplicity", min=.0, max=1.0, default=0.25,
         precision=2, step=0.1, description="Reduce polygons")
-    sharpness = bpy.props.FloatProperty(
+    sharpness : bpy.props.FloatProperty(
         name="Sharpness", min=.0, max=2.0, default=.8, precision=3, step=0.1)
-    edge_split = bpy.props.BoolProperty(
+    edge_split : bpy.props.BoolProperty(
         name="Edge Split", default=True,
         description="Shade smooth and add edge split modifier")
 
-    random_seed = bpy.props.IntProperty(
+    random_seed : bpy.props.IntProperty(
         name="Random Seed", min=-1, default=0,
         description="Randome seed (set -1 to use system clock)")
-    size_min = bpy.props.FloatProperty(
+    size_min : bpy.props.FloatProperty(
         name="Size Min", min=-1.0, max=.0, default=-.3, precision=3, step=0.01)
-    size_max = bpy.props.FloatProperty(
+    size_max : bpy.props.FloatProperty(
         name="Size Max", min=.0, default=.3, precision=3, step=0.01)
-    size_ratio_min = bpy.props.FloatVectorProperty(
+    size_ratio_min : bpy.props.FloatVectorProperty(
         name="Ratio Min", size=3, min=-1.0, max=.0, default=(-.2, -.2, -.2),
         precision=3, step=0.01)
-    size_ratio_max = bpy.props.FloatVectorProperty(
+    size_ratio_max : bpy.props.FloatVectorProperty(
         name="Ratio Max", size=3, min=.0, default=(.2, .2, .2),
         precision=3, step=0.01)
 
-    keep_modifiers = bpy.props.BoolProperty(
+    keep_modifiers : bpy.props.BoolProperty(
         name="Keep Modifiers", default=False,
         description="Keep modifiers")
-    advanced_menu = bpy.props.BoolProperty(
+    advanced_menu : bpy.props.BoolProperty(
         name="Advanced Menu", default=False,
         description="Display advanced menu")
-    voronoi_weights = bpy.props.FloatVectorProperty(
+    voronoi_weights : bpy.props.FloatVectorProperty(
         name="Voronoi Weights", min=-1.0, max=1.0, size=3,
         default=(1.,.3,.0), step=0.1, description="Voronoi Weights")
-    displace_strength = bpy.props.FloatProperty(
+    displace_strength : bpy.props.FloatProperty(
         name="Strength", min=.0, default=1.0, precision=3, step=0.1)
-    noise_size = bpy.props.FloatProperty(
+    noise_size : bpy.props.FloatProperty(
         name="Nsize", min=.0, default=1.0, precision=3, step=0.1)
-    noise_brightness = bpy.props.FloatProperty(
+    noise_brightness : bpy.props.FloatProperty(
         name="Nbright", min=.0, max=1.5, default=.8, precision=3, step=0.1)
-    subdiv = bpy.props.IntProperty(
+    subdiv : bpy.props.IntProperty(
         name="Subdivision", min=1, max=7, default=5,
         description="Icosphere subdivision")
-    collapse_ratio = bpy.props.FloatProperty(
+    collapse_ratio : bpy.props.FloatProperty(
         name="Collapse Ratio", min=.0, max=1.0, default=.06,
         precision=3, step=0.01,)
 
@@ -187,16 +156,16 @@ class LowPolyRock(bpy.types.Operator):
         layout = self.layout
 
         basic = layout.box()
-        basic.label("Basic Settings:")
+        basic.label(text="Basic Settings:")
         basic.prop(self, 'num_rock')
         col = basic.column(align=True)
         col.prop(self, 'size')
-        col.label("Size Ratio:")
+        col.label(text="Size Ratio:")
         col.prop(self, 'size_ratio', text="")
         col.prop(self, 'displace_midlevel')
 
         col = basic.column(align=True)
-        col.label("Noise Center:")
+        col.label(text="Noise Center:")
         row = col.row()
         row.prop(self, 'noise_center', text="")
 
@@ -205,17 +174,17 @@ class LowPolyRock(bpy.types.Operator):
         basic.prop(self, 'edge_split')
 
         random = layout.box()
-        random.label("Random Settings:")
+        random.label(text="Random Settings:")
         random.prop(self, 'random_seed')
 
         col = random.column(align=True)
-        col.label('Size Range:')
+        col.label(text='Size Range:')
         row = col.row(align=True)
         row.prop(self, 'size_min', text='min')
         row.prop(self, 'size_max', text='max')
 
         col = random.column(align=True)
-        col.label('Size Ratio Range:')
+        col.label(text='Size Ratio Range:')
         row = col.row()
         col = row.column(align=True)
         col.prop(self, 'size_ratio_min', text="")
@@ -245,7 +214,7 @@ class LowPolyRock(bpy.types.Operator):
             random_seed = None
         seed(random_seed)
 
-        location = context.scene.cursor_location.copy()
+        location = context.scene.cursor.location.copy()
         rocks = [None] * self.num_rock
         for n in range(self.num_rock):
             rock, noise_origin = create_rock(
@@ -262,22 +231,22 @@ class LowPolyRock(bpy.types.Operator):
                 context.scene.update()
                 me_orig = rock.data
                 tex = rock.modifiers['displace'].texture
-                rock.data = rock.to_mesh(context.scene, True, 'PREVIEW')
+                rock.data = rock.to_mesh(context.depsgraph,True,calc_undeformed=True)
                 context.blend_data.meshes.remove(me_orig)
                 rock.modifiers.clear()
                 rock.location = location
-                context.scene.objects.unlink(noise_origin)
+                context.scene.collection.objects.unlink(noise_origin)
                 context.blend_data.objects.remove(noise_origin)
                 context.blend_data.textures.remove(tex)
 
             if self.edge_split:
-                rock.select = True
+                rock.select_set(True)
                 bpy.ops.object.shade_smooth()
                 split = rock.modifiers.new('split', 'EDGE_SPLIT')
                 split.use_edge_angle = True
                 split.use_edge_sharp = False
                 split.split_angle = .0
-                rock.select = False
+                rock.select_set(False)
 
             rock.data.name = rock.name
 
@@ -287,19 +256,19 @@ class LowPolyRock(bpy.types.Operator):
                 size_ratio[i] = self.size_ratio[i] * \
                     (1.0 + uniform(self.size_ratio_min[i], self.size_ratio_max[i]))
             if n % 2 == 0:
-                location.x = context.scene.cursor_location.x \
+                location.x = context.scene.cursor.location.x \
                     + self.size * 1.6 * (n // 2 + 1)
             else:
-                location.x = context.scene.cursor_location.x \
+                location.x = context.scene.cursor.location.x \
                     - self.size * 1.6 * (n // 2 + 1)
 
         for rock in rocks:
-            rock.select = True
+            rock.select_set(True)
 
         return {'FINISHED'}
 
-    def invoke(self, context, event):
-        return self.execute(context)
+    #def invoke(self, context, event):
+        #return self.execute(context)
 
 
 def draw_item(self, context):
@@ -307,12 +276,12 @@ def draw_item(self, context):
     self.layout.operator(LowPolyRock.bl_idname, text="LowPoly Rock", icon="PLUGIN")
 
 def register():
-    bpy.utils.register_module(__name__)
-    bpy.types.INFO_MT_mesh_add.append(draw_item)
+    bpy.utils.register_class(LowPolyRock)
+    bpy.types.VIEW3D_MT_mesh_add.append(draw_item)
 
 def unregister():
-    bpy.utils.unregister_module(__name__)
-    bpy.types.INFO_MT_mesh_add.remove(draw_item)
+    bpy.utils.unregister_class(LowPolyRock)
+    bpy.types.VIEW3D_MT_mesh_add.remove(draw_item)
 
 if __name__ == '__main__':
     register()

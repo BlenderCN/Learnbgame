@@ -1,15 +1,6 @@
 import bmesh
 import bpy
 
-bl_info = {
-    "name": "Dandelion + Burdock",
-    "author": "Multiple Authors",
-    "version": (0, 0, 1),
-    "blender": (2, 69, 0),
-    "location": "View3D > Add > Mesh",
-    "description": "Dandelion + Burdock tools",
-    "category": "Add Mesh",
-}
 
 def pixels_add(object, quad_size):
     me = object.data
@@ -20,7 +11,7 @@ def pixels_add(object, quad_size):
 
     new_me = bpy.data.meshes.new('newmesh')
     new_ob = bpy.data.objects.new('newObj', new_me)
-    bpy.context.scene.objects.link(new_ob)
+    bpy.context.scene.collection.objects.link(new_ob)
     new_bm = bmesh.new()
     new_bm.from_mesh(new_me)
 
@@ -36,7 +27,7 @@ def pixels_add(object, quad_size):
             delta = vert.co - center
             delta.normalize()
             out = center + delta * (quad_size / 2)
-            out = bpy.context.object.matrix_world * out
+            out = bpy.context.object.matrix_world @ out
             verts.append(new_bm.verts.new(out))
 
 
@@ -44,7 +35,7 @@ def pixels_add(object, quad_size):
 
         # add uvs to the new face
         new_uvs = new_bm.loops.layers.uv.verify()
-        new_bm.faces.layers.tex.verify()
+        new_bm.faces.layers.face_map.verify()
 
         # match the uv's from the old face to the new
         new_bm.faces.ensure_lookup_table()
@@ -96,12 +87,14 @@ def menu_func(self, context):
     lay_out.menu("INFO_MT_mesh_dnb_add", text="d+b")
 
 def register():
-    bpy.utils.register_module(__name__)
-    bpy.types.INFO_MT_mesh_add.append(menu_func)
+    bpy.utils.register_class(MESH_OT_dnb_pixels_add)
+    bpy.utils.register_class(INFO_MT_mesh_dnb_add)
+    bpy.types.VIEW3D_MT_mesh_add.append(menu_func)
 
 def unregister():
-    bpy.types.INFO_MT_mesh_add.remove(menu_func)
-    bpy.utils.unregister_module(__name__)
+    bpy.types.VIEW3D_MT_mesh_add.remove(menu_func)
+    bpy.utils.unregister_class(MESH_OT_dnb_pixels_add)
+    bpy.utils.unregister_class(INFO_MT_mesh_dnb_add)
 
 
 if __name__ == "__main__":

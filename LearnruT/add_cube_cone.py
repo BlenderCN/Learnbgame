@@ -1,14 +1,3 @@
-bl_info = {
-    "name": "new objects template",
-    "author": "Diego Quevedo",
-    "version": (1, 0),
-    "blender": (2, 7, 3),
-    "location": "View3D > Add > Mesh > New Objetc",
-    "description": "template to add new Mesh Object",
-    "warning": "",
-    "wiki_url": "",
-    "tracker_url": "",
-    "category": "Add Mesh"}
 
 
 import bpy
@@ -40,7 +29,7 @@ def add_object(self, context):
 class OBJECT_OT_add_object(Operator, AddObjectHelper):
     """Create a new  Mesh Object"""
     bl_idname = "mesh.add_object"
-    bl_label = "template Add new mesh Object"
+    bl_label = "cube cone"
     bl_options = {'REGISTER', 'UNDO'}
     
     
@@ -67,12 +56,12 @@ def menu_draw(self, context):
     
 
 def register():
-    bpy.utils.register_module(__name__)
-    bpy.types.INFO_MT_mesh_add.prepend(menu_draw)
+    bpy.utils.register_class(OBJECT_OT_add_object)
+    bpy.types.VIEW3D_MT_mesh_add.append(menu_draw)
 
 def unregister():
-    bpy.utils.unregister_module(__name__)
-    bpy.types.INFO_MT_mesh_custom_add.remove(menu_draw)
+    bpy.utils.unregister_class(OBJECT_OT_add_object)
+    bpy.types.VIEW3D_MT_mesh_add.remove(menu_draw)
 
 
 if __name__ == "__main__":

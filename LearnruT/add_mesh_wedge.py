@@ -1,21 +1,4 @@
-#
-# Adds a wedge mesh
-#
-bl_info = {
-    "name": "Wedge",
-    "author": "Devin Watson",
-    "version": (1, 0, 5),
-    "blender": (2, 78, 0),
-    "location": "View3D > Add > Mesh",
-    "description": "Add a Wedge primitive",
-    "warning": "", # used for warning icon and text in addons panel
-    "wiki_url": ""
-                "",
-    "tracker_url": "",
-    "category": "Add Mesh",
-}
 
-# import modules
 import bpy
 from bpy.props import *
 from mathutils import *
@@ -75,19 +58,19 @@ class wedge_add(bpy.types.Operator):
     bl_description = "Add wedge mesh"
 
     # properties
-    MeshWidth = FloatProperty(name="Width",
+    MeshWidth : FloatProperty(name="Width",
                 min = 0.01,
                 max = 100000.0,
                 default = 3.5,
                 description = "Mesh width")
 
-    MeshHeight = FloatProperty(name="Height",
+    MeshHeight : FloatProperty(name="Height",
                 min = 0.01,
                 max = 100000.0,
                 default = 1.2,
                 description = "Mesh height")
 
-    MeshDepth = FloatProperty(name="Depth",
+    MeshDepth : FloatProperty(name="Depth",
                 min = 0.01,
                 max = 100000.0,
                 default = 1.2,
@@ -110,8 +93,8 @@ class wedge_add(bpy.types.Operator):
         #mesh update
 
         # turn off undo
-        undo = bpy.context.user_preferences.edit.use_global_undo
-        bpy.context.user_preferences.edit.use_global_undo = False
+        undo = bpy.context.preferences.edit.use_global_undo
+        bpy.context.preferences.edit.use_global_undo = False
 
         # deselect all objects when in object mode
         if bpy.ops.object.select_all.poll():
@@ -129,7 +112,7 @@ class wedge_add(bpy.types.Operator):
         # Fix normals that might be broken on the mesh
         bpy.ops.mesh.normals_make_consistent( inside=False )
         bpy.ops.object.mode_set( mode='OBJECT' )
-        ob = context.scene.objects.active
+        ob = context.view_layer.objects.active
         # Rotate it around 90 degrees about the X axis
         ob.rotation_euler = ( radians(90), 0, 0 )
         # Apply the rotation transform so it appears as 0 degrees
@@ -137,7 +120,7 @@ class wedge_add(bpy.types.Operator):
         bpy.ops.object.transform_apply( rotation = True )
 
         # restore pre operator undo state
-        bpy.context.user_preferences.edit.use_global_undo = undo
+        bpy.context.preferences.edit.use_global_undo = undo
 
         return {'FINISHED'}
     # end execute
@@ -159,15 +142,15 @@ def menu_func_wedge(self, context):
 
 
 def register():
-    bpy.utils.register_module(__name__)
+    bpy.utils.register_class(wedge_add)
 
-    bpy.types.INFO_MT_mesh_add.append(menu_func_wedge)
+    bpy.types.VIEW3D_MT_mesh_add.append(menu_func_wedge)
 
 
 def unregister():
-    bpy.utils.unregister_module(__name__)
+    bpy.utils.unregister_class(wedge_add)
 
-    bpy.types.INFO_MT_mesh_add.remove(menu_func_wedge)
+    bpy.types.VIEW3D_MT_mesh_add.remove(menu_func_wedge)
 
 
 if __name__ == "__main__":

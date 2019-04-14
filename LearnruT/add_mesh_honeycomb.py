@@ -1,34 +1,8 @@
-'''# ##### BEGIN GPL LICENSE BLOCK #####
-#
-#  This program is free software; you can redistribute it and/or
-#  modify it under the terms of the GNU General Public License
-#  as published by the Free Software Foundation; either version 2
-#  of the License, or (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with this program; if not, write to the Free Software Foundation,
-#  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-#
-# ##### END GPL LICENSE BLOCK #####
-bl_info = {
-    "name": "HoneyComb",
-    "author": "Kayo Phoenix <kayo@illumium.org>",
-    "version": (0, 1),
-    "blender": (2, 5, 7),
-    "api": 35853,
-    "location": "View3D > Add > Mesh > HoneyComb",
-    "description": "Adds HoneyComb Mesh",
-    "warning": "",
-    "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/Add_Mesh/HoneyComb",
-    "category": "Add Mesh"
-    }
-'''
+
 from math import pi, sin, cos
+import bpy
+from bpy.props import *
+from bpy_extras import object_utils
 
 class honeycomb_geometry():
     def __init__(self, rows, cols, D, E):
@@ -198,9 +172,6 @@ class honeycomb_geometry():
         
         return verts, faces
 
-import bpy
-from bpy.props import *
-from bpy_extras import object_utils
 
 def edge_max(diam):
     return diam * sin(pi / 3)
@@ -211,12 +182,12 @@ class add_mesh_honeycomb(bpy.types.Operator):
     bl_label = 'Add HoneyComb'
     bl_options = {'REGISTER', 'UNDO'}
     
-    rows = IntProperty(
+    rows : IntProperty(
         name = 'Num of rows', default = 2,
         min = 1, max = 100,
         description='Number of the rows')
     
-    cols = IntProperty(
+    cols : IntProperty(
         name = 'Num of cols', default = 2,
         min = 1, max = 100,
         description='Number of the columns')
@@ -225,24 +196,24 @@ class add_mesh_honeycomb(bpy.types.Operator):
         m = edge_max(self.diam)
         if self.edge > m: self.edge = m
     
-    diam = FloatProperty(
+    diam : FloatProperty(
         name = 'Cell Diameter', default = 1.0,
         min = 0.0, update = fix_edge,
         description='Diameter of the cell')
     
-    edge = FloatProperty(
+    edge : FloatProperty(
         name = 'Edge Width', default = 0.1,
         min = 0.0, update = fix_edge,
         description='Width of the edge')
     
     # generic transform props
-    view_align = BoolProperty(
+    view_align : BoolProperty(
         name="Align to View",
         default=False)
-    location = FloatVectorProperty(
+    location : FloatVectorProperty(
         name="Location",
         subtype='TRANSLATION')
-    rotation = FloatVectorProperty(
+    rotation : FloatVectorProperty(
         name="Rotation",
         subtype='EULER')
     
@@ -266,15 +237,14 @@ class add_mesh_honeycomb(bpy.types.Operator):
         return {'FINISHED'}
 
 def menu_func(self, context):
-    self.layout.operator(add_mesh_honeycomb.bl_idname, text = bl_info['name'], icon="PLUGIN")
+    self.layout.operator(add_mesh_honeycomb.bl_idname, icon="PLUGIN")
 def register():
-    bpy.utils.register_module(__name__)
-    
-    bpy.types.INFO_MT_mesh_add.append(menu_func)
+    bpy.utils.register_class(add_mesh_honeycomb)    
+    bpy.types.VIEW3D_MT_mesh_add.append( menu_func )
+
 def unregister():
-    bpy.utils.unregister_module(__name__)
-    
-    bpy.types.INFO_MT_mesh_add.remove(menu_func)
+    bpy.utils.unregister_class(add_mesh_honeycomb)    
+    bpy.types.VIEW3D_MT_mesh_add.append( menu_func )
     
 if __name__ == "__main__":
     register()
