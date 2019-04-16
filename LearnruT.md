@@ -2,7 +2,7 @@ LearnruT is learn turn
 
 # 初学者
 
-[阿基米德螺旋](LearnruT/add_archimedian_spiral.py)
+[阿基米德螺旋](LearnruT/add_archimedian_spiral.py)--[tutorial](https://www.bilibili.com/video/av49349447/)
 
 [蜂窝](LearnruT/add_mesh_honeycomb.py)
 
@@ -10,7 +10,7 @@ LearnruT is learn turn
 
 [石头](LearnruT/add_mesh_lowpoly_rock.py)
 
-[声音可视化](LearnruT/audio_visualisation.py)
+[声音可视化](LearnruT/audio_visualisation.py)--[tutorial](https://www.bilibili.com/video/av49469832/)
 
 [金字塔](LearnruT/add_mesh_pyramid.py)
 
@@ -23,7 +23,6 @@ LearnruT is learn turn
 [六角细胞](LearnruT/add_hex_cell.py)
 
 [缩面轮廓/镂空](LearnruT/add_face_hollow.py)
-
 
 [花束](LearnruT/add_flower.py)
 
