@@ -6,7 +6,7 @@ LearnruT is learn turn
 
 [蜂窝](LearnruT/add_mesh_honeycomb.py)
 
-[时钟](LearnruT/add_clock.py)
+[时钟](LearnruT/add_clock.py)--[tutorial](https://www.bilibili.com/video/av49530846)
 
 [石头](LearnruT/add_mesh_lowpoly_rock.py)
 
