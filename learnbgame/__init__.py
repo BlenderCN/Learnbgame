@@ -363,7 +363,7 @@ class MOLECULE_ADD(Operator):
                                     zip(atom.coords, center)]
             scale = 1 if show_bonds else 2.5
             atom_sphere.dimensions = [atom_data[element]['radius'] *scale * 2] * 3
-            atom_sphere.data.materials.append(atom_material)
+            atom_sphere.data.materials.append(bpy.data.materials[element])
             bpy.context.scene.collection.objects.link(atom_sphere)
             shapes.append(atom_sphere)
 
