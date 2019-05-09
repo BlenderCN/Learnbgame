@@ -88,8 +88,7 @@
             "Marble",
             "Basic Glass",
             "Pluie sur vitre",
-            "Pool Water",
-            "Soap Bubble"
+            "Pool Water"
         ]
     ],
     [

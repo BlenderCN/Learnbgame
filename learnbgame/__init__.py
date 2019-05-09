@@ -10,7 +10,7 @@ bl_info = {
     'description': 'Learn by game',
     'author': 'Fofight',
     'license': 'GPL',
-    'version': (1, 0, 0),
+    'version': (1, 1, 0),
     'blender': (2, 80, 0),
     'location': 'View3D > Tools > Learnbgame',
     'warning': '',
@@ -53,15 +53,14 @@ from . import spacestation
 from .book import Book
 from .shelf import Shelf
 from .ch_trees import gui
-from .grove import Grove_Operator#, Grove_Preferences
+from .grove import Grove_Operator
 
 from . import human
 
 from . import jewelcraft
+from . import LearnbgamEngine
 
-from .energy import gxav
-from .energy import hdri
-from .energy import materials_library_vx
+from .energy import gxav,hdri,materials_library_vx
 
 from bpy.types import (
     Panel, 
@@ -1225,6 +1224,7 @@ def register():
     gui.register()
     human.register()
     jewelcraft.register()
+    LearnbgamEngine.register()
     gxav.register()
     materials_library_vx.register()
 
@@ -1234,6 +1234,7 @@ def unregister():
     materials_library_vx.unregister()
     gxav.unregister()
     jewelcraft.unregister()
+    LearnbgamEngine
     human.unregister()
     gui.unregister()
     global icons_collection
