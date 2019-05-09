@@ -260,6 +260,28 @@ openbabel
 
 将插件目录[learnbgame](https://github.com/BlenderCN/Learnbgame/tree/master/learnbgame)压缩,即可从blender-2.8安装,插件[目录结构树](Learnbgame.md)
 
+# Learnbgame游戏引擎LearnbgamEngine
+
+*   三维模型--专注于[gltf](https://github.com/KhronosGroup/glTF)格式
+
+*   脚本语言:专注于python
+
+*   依托blender平台eevee引擎
+
+*   注释系统
+
+*   特效系统
+
+*   物理引擎
+
+*   声音引擎
+
+*   人工智能
+
+借鉴[BlenderPanda引擎](https://github.com/Moguri/BlenderPanda)----[UPBGE引擎](https://github.com/UPBGE/blender)
+
+
+
 # other
 
 <a href="Fofight.md">
