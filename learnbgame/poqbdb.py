@@ -43,6 +43,37 @@ class POQBDB_POQBDB_ADD(Operator):
 		obj[0].location = context.scene.cursor.location 
 		return {'FINISHED'}
 
+class POQBDB_ORGAN(Panel,ObjectButtonsPanel):
+	bl_label="organ"
+	bl_space_type = "VIEW_3D"
+	bl_region_type = "UI"
+	bl_category = "Learnbgame"
+	bl_parent_id = "POQBDB_POQBDB"
+
+	global icons_collection
+	icons = icons_collection["main"]
+
+	def draw(self,context):
+		layout=self.layout
+		scene = context.scene
+		poqbdbs = scene.poqbdbs
+		row = layout.row()
+		row.prop(poqbdbs,"poqbdb_organ",icon_value=icons[poqbdbs.poqbdb_organ if poqbdbs.poqbdb_organ+".png" in icons_list else "learnbgame"].icon_id)
+		row.operator(POQBDB_ORGAN_ADD.bl_idname,text="add",icon="ADD")
+
+class POQBDB_ORGAN_ADD(Operator):
+	bl_idname = "poqbdb_organ.add"
+	bl_label = "poqbdb_organ+"
+
+	def execute(self,context):
+		poqbdbs = context.scene.poqbdbs
+		poqbdb_organ = poqbdbs.poqbdb_organ
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/organ")+os.path.sep + poqbdb_organ + ".glb")
+		obj = context.selected_objects
+		obj[0].name = poqbdb_organ
+		obj[0].location = context.scene.cursor.location 
+		return {'FINISHED'}
+
 class POQBDB_SPECIES(Panel,ObjectButtonsPanel):
 	bl_label="species"
 	bl_space_type = "VIEW_3D"
@@ -229,11 +260,49 @@ class POQBDB_PLANETS_TRAFFIC_ADD(Operator):
 		obj[0].location = context.scene.cursor.location 
 		return {'FINISHED'}
 
+class POQBDB_PLANETS_WEAPON(Panel,ObjectButtonsPanel):
+	bl_label="weapon"
+	bl_space_type = "VIEW_3D"
+	bl_region_type = "UI"
+	bl_category = "Learnbgame"
+	bl_parent_id = "POQBDB_PLANETS"
+
+	global icons_collection
+	icons = icons_collection["main"]
+
+	def draw(self,context):
+		layout=self.layout
+		scene = context.scene
+		poqbdbs = scene.poqbdbs
+		row = layout.row()
+		row.prop(poqbdbs,"poqbdb_planets_weapon",icon_value=icons[poqbdbs.poqbdb_planets_weapon if poqbdbs.poqbdb_planets_weapon+".png" in icons_list else "learnbgame"].icon_id)
+		row.operator(POQBDB_PLANETS_WEAPON_ADD.bl_idname,text="add",icon="ADD")
+
+class POQBDB_PLANETS_WEAPON_ADD(Operator):
+	bl_idname = "poqbdb_planets_weapon.add"
+	bl_label = "poqbdb_planets_weapon+"
+
+	def execute(self,context):
+		poqbdbs = context.scene.poqbdbs
+		poqbdb_planets_weapon = poqbdbs.poqbdb_planets_weapon
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/planets/weapon")+os.path.sep + poqbdb_planets_weapon + ".glb")
+		obj = context.selected_objects
+		obj[0].name = poqbdb_planets_weapon
+		obj[0].location = context.scene.cursor.location 
+		return {'FINISHED'}
+
 class POQBDB_PROPERTY(PropertyGroup):
 	poqbdb : EnumProperty(
 		name="poqbdb",
 		items=[
 			("learnioc","Learnioc","add learnioc"),
+			]
+	)
+
+	poqbdb_organ : EnumProperty(
+		name="organ",
+		items=[
+			("heart","Heart","add heart"),
 			]
 	)
 
@@ -311,7 +380,6 @@ class POQBDB_PROPERTY(PropertyGroup):
 		items=[
 			("jupiter","Jupiter","add jupiter"),
 			("moon","Moon","add moon"),
-			("earth","Earth","add earth"),
 			]
 	)
 
@@ -319,6 +387,13 @@ class POQBDB_PROPERTY(PropertyGroup):
 		name="traffic",
 		items=[
 			("cycle","Cycle","add cycle"),
+			]
+	)
+
+	poqbdb_planets_weapon : EnumProperty(
+		name="weapon",
+		items=[
+			("sword","Sword","add sword"),
 			]
 	)
 
@@ -330,6 +405,10 @@ def register():
 	bpy.utils.register_class(POQBDB_POQBDB_ADD)
 	
 	bpy.utils.register_class(POQBDB_PROPERTY)
+	
+	bpy.utils.register_class(POQBDB_ORGAN)
+	
+	bpy.utils.register_class(POQBDB_ORGAN_ADD)
 	
 	bpy.utils.register_class(POQBDB_SPECIES)
 	
@@ -355,6 +434,10 @@ def register():
 	
 	bpy.utils.register_class(POQBDB_PLANETS_TRAFFIC_ADD)
 	
+	bpy.utils.register_class(POQBDB_PLANETS_WEAPON)
+	
+	bpy.utils.register_class(POQBDB_PLANETS_WEAPON_ADD)
+	
 	bpy.types.Scene.poqbdbs = PointerProperty(type=POQBDB_PROPERTY)
 
 def unregister():
@@ -363,6 +446,10 @@ def unregister():
 	bpy.utils.unregister_class(POQBDB_POQBDB_ADD)
 	
 	bpy.utils.unregister_class(POQBDB_PROPERTY)
+	
+	bpy.utils.unregister_class(POQBDB_ORGAN)
+	
+	bpy.utils.unregister_class(POQBDB_ORGAN_ADD)
 	
 	bpy.utils.unregister_class(POQBDB_SPECIES)
 	
@@ -387,4 +474,8 @@ def unregister():
 	bpy.utils.unregister_class(POQBDB_PLANETS_TRAFFIC)
 	
 	bpy.utils.unregister_class(POQBDB_PLANETS_TRAFFIC_ADD)
+	
+	bpy.utils.unregister_class(POQBDB_PLANETS_WEAPON)
+	
+	bpy.utils.unregister_class(POQBDB_PLANETS_WEAPON_ADD)
 	
