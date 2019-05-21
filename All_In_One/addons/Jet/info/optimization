@@ -1,6 +1,0 @@
-OPTIMIZATION
-When working for videogames, you usually have to work within a "polygon budget". For the game to run smoothly, the number of polygons of each prop and character have to be limited.
-
-Optimization is the part of the process in which you take the model from retopo, and "clean" it so the number of polygons ends up within the limit.
-
-It's usually measured in triangles, as it's the minimum number of sides that a polygon can have, and this way you have a more reliable number to work with.

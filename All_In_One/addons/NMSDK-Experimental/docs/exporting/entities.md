@@ -1,3 +1,0 @@
-# Adding entities
-
-Coming soon!

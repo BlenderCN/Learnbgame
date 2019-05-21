@@ -1,9 +1,0 @@
-SMOOTHING & SHARPENING
-After you have the final geometry for your model, it's time to define how that geometry looks like. To do that, we use Smoothing and Sharpening.
-
-Basically, you'd have to define which parts of the geometry are smooth, and then choose which edges would be sharp (corners).
-
-The steps to follow we suggest to perform this part of the process are:
-1. Smoothing everything.
-2. Set autosmooth as enabled and setting it to 180 degrees (this will make your model completely smooth, while showing the desired edges as sharp).
-3. Marking desired edges a sharp.

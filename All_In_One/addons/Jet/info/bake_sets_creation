@@ -1,6 +1,0 @@
-BAKE SETS CREATION
-This is the last step of the model preparation process. Basically, you must link sets of high resolution models to the low resolution models they "belong" to.
-
-A bake is the extraction of the high resolution mesh details to the low resolution mesh in the form of a texture.
-
-These bake sets will define which high resolution objects are baked in which low resolution objects, which will make it easy to explode the model. Explode? Yes: model exploding is basically taking groups of pieces apart so the bakes from one piece don't affect the adjacent ones.

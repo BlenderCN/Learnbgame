@@ -1,1 +1,0 @@
-blender -b --python InstallPresentation.py

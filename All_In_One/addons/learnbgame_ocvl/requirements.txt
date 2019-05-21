@@ -1,5 +1,0 @@
-opencv-python-headless==3.4.2.17
-opencv-contrib-python-headless==3.4.2.17
-tornado==4.5.3
-pynput==1.4
-requests==2.20.0
