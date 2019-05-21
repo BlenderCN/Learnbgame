@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<material name="pearl_G" view_color="rgb(0.80000, 0.80000, 0.80000)" sample_lamp="False">
+	<nodes>
+		<node type="OUTPUT_MATERIAL" node_height="100" node_width="120" width_hidden="42" loc="159, 34" />
+		<node type="GROUP" node_tree="OR_Pearl" group="0" node_height="100" node_width="120" width_hidden="42" loc="-279, 90" />
+	</nodes>
+	<links>
+		<link to="0" input="0" from="1" output="0" />
+	</links>
+	<groups>
+		<group name="OR_Pearl" id="0">
+			<groupnodes>
+				<groupnode type="BSDF_GLOSSY" distribution="BECKMANN" color="rgba(1.0, 0.98511, 0.80187, 1.0)" roughness="0.05000" node_height="100" node_width="150" width_hidden="42" loc="-1201, 213" />
+				<groupnode type="BSDF_DIFFUSE" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" roughness="0.0" node_height="100" node_width="150" width_hidden="42" loc="-1204, 44" />
+				<groupnode type="BSDF_GLOSSY" distribution="BECKMANN" color="rgba(0.80000, 0.79436, 0.53259, 1.0)" roughness="0.5" node_height="100" node_width="150" width_hidden="42" loc="-1218, -180" />
+				<groupnode type="BSDF_DIFFUSE" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" roughness="0.0" node_height="100" node_width="150" width_hidden="42" loc="-1218, -359" />
+				<groupnode type="MIX_SHADER" fac="0.5" node_height="100" node_width="150" width_hidden="42" loc="-914, -203" />
+				<groupnode type="MIX_SHADER" fac="0.5" node_height="100" node_width="150" width_hidden="42" loc="-921, 62" />
+				<groupnode type="MIX_SHADER" fac="0.5" node_height="100" node_width="150" width_hidden="42" loc="-687, -33" />
+				<groupnode type="BSDF_TRANSLUCENT" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" node_height="100" node_width="150" width_hidden="42" loc="-426, -257" />
+				<groupnode type="MIX_SHADER" fac="0.20000" node_height="100" node_width="150" width_hidden="42" loc="-173, 74" />
+				<groupnode type="GROUP_INPUT" node_height="100" node_width="140" width_hidden="42" loc="-1340, -21" />
+				<groupnode type="GROUP_OUTPUT" node_height="100" node_width="140" width_hidden="42" loc="-51, 74" />
+			</groupnodes>
+			<groupinputs>
+				<groupinput name="Hard Colour" type="RGBA" value="rgba(1.0, 0.98511, 0.80187, 1.0)" />
+				<groupinput name="Soft Colour" type="RGBA" value="rgba(0.80000, 0.80000, 0.80000, 1.0)" />
+				<groupinput name="Trans Colour" type="RGBA" value="rgba(0.80000, 0.80000, 0.80000, 1.0)" />
+				<groupinput name="Light Transmission" type="VALUE" value="0.20000" />
+			</groupinputs>
+			<groupoutputs>
+				<groupoutput name="Shader" type="SHADER" />
+			</groupoutputs>
+			<grouplinks>
+				<grouplink to="10" input="0" from="8" output="0" />
+				<grouplink to="6" input="1" from="5" output="0" />
+				<grouplink to="5" input="1" from="0" output="0" />
+				<grouplink to="8" input="1" from="6" output="0" />
+				<grouplink to="5" input="2" from="1" output="0" />
+				<grouplink to="0" input="0" from="9" output="0" />
+				<grouplink to="4" input="1" from="2" output="0" />
+				<grouplink to="4" input="2" from="3" output="0" />
+				<grouplink to="6" input="2" from="4" output="0" />
+				<grouplink to="8" input="2" from="7" output="0" />
+				<grouplink to="1" input="0" from="9" output="0" />
+				<grouplink to="2" input="0" from="9" output="1" />
+				<grouplink to="7" input="0" from="9" output="2" />
+				<grouplink to="8" input="0" from="9" output="3" />
+			</grouplinks>
+		</group>
+	</groups>
+</material>

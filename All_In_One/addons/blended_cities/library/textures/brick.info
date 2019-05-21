@@ -1,0 +1,6 @@
+mx		65
+my		65
+ox		0
+oy		0
+nmap	brick_nmap.png
+use		walls

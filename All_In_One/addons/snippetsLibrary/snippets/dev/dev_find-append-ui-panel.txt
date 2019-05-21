@@ -1,0 +1,45 @@
+import bpy
+
+#often like 'RENDER_PT_dimensions'
+# in interactive console, try keywords to find pannel type      |           |       |
+# [d for d in dir(bpy.types) if all(n in d.lower() for n in ['pencil', "palette", "pt"])]
+
+class TestOperator(bpy.types.Operator):
+    bl_idname = "test.zen_test_ops"
+    bl_label = "Print Zen Code"
+    bl_description = "Print le zen dans la console (en clair)"
+    bl_options = {"REGISTER"}
+
+    def execute(self, context):
+        import this
+        txt = ''
+        for char in this.s: txt += this.d[char] if this.d.get(char) else char
+        #from codecs import decode; decode(this.s, 'rot13')
+        print('\n%s\n' % txt)
+        self.report({'INFO'}, 'Look zen console !')
+        return {"FINISHED"}
+
+
+################## Pannel Integration
+
+def Test_panel(self, context):
+    """test pannels append"""
+    layout = self.layout
+    row = layout.row(align=False)
+    row.operator(TestOperator.bl_idname, text = "Zen Python", icon = 'IPO_EXPO')
+
+
+################## Registration
+
+
+def register():
+    bpy.utils.register_module(__name__)
+    bpy.types.RENDER_PT_render.append(Test_panel)
+
+def unregister():
+    bpy.types.RENDER_PT_render.remove(Test_panel)
+    bpy.utils.unregister_module(__name__)
+
+
+if __name__ == "__main__":
+    register()

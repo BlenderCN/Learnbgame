@@ -1,0 +1,32 @@
+diff --git a/source/blender/editors/interface/interface_layout.c b/source/blender/editors/interface/interface_layout.c
+index 67b4f18..598bbe0 100644
+--- a/source/blender/editors/interface/interface_layout.c
++++ b/source/blender/editors/interface/interface_layout.c
+@@ -3009,7 +3009,7 @@ static void ui_item_align(uiLayout *litem, short nr)
+ 	uiButtonItem *bitem;
+ 	uiLayoutItemBx *box;
+ 
+-	for (item = litem->items.last; item; item = item->prev) {
++	for (item = litem->items.first; item; item = item->next) {
+ 		if (item->type == ITEM_BUTTON) {
+ 			bitem = (uiButtonItem *)item;
+ 			if (ui_but_can_align(bitem->but))
+@@ -3023,10 +3023,16 @@ static void ui_item_align(uiLayout *litem, short nr)
+ 			/* pass */
+ 		}
+ 		else if (item->type == ITEM_LAYOUT_BOX) {
++			uiBut *but;
+ 			box = (uiLayoutItemBx *)item;
+ 			box->roundbox->alignnr = nr;
+-			BLI_remlink(&litem->root->block->buttons, box->roundbox);
+-			BLI_addhead(&litem->root->block->buttons, box->roundbox);
++			for (but = box->roundbox->prev; but; but = but->prev) {
++				if (but->alignnr == nr && ELEM(but->type, UI_BTYPE_ROUNDBOX, UI_BTYPE_LISTBOX)) {
++					BLI_remlink(&litem->root->block->buttons, box->roundbox);
++					BLI_insertlinkafter(&litem->root->block->buttons, but, box->roundbox);
++					break;
++				}
++			}
+ 		}
+ 		else if (((uiLayout *)item)->align) {
+ 			ui_item_align((uiLayout *)item, nr);

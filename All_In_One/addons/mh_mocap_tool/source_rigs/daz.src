@@ -1,0 +1,68 @@
+#
+# DAZ 
+#		bone		 MHX bone		twist)
+
+Name:	DAZ
+
+Armature:
+		hip		Root		0 
+		abdomen		Spine2		0
+
+		chest		Spine3		0
+		neck		Neck		0
+		head		Head		0 
+		lefteye		None		0
+		righteye	None		0
+		figurehair	None		0
+
+		lcollar		Clavicle_L	0
+		lshldr		UpArm_L		0 
+		lforearm	LoArm_L		0
+		lhand		Hand_L		0
+		lthumb1		None		0 
+		lthumb2		None		0 
+		lthumb3		None		0 
+		lindex1		None		0 
+		lindex2		None		0 
+		lindex3		None		0 
+		lmid1		None		0 
+		lmid2		None		0 
+		lmid3		None		0 
+		lring1		None		0 
+		lring2		None		0 
+		lring3		None		0 
+		lpinky1		None		0 
+		lpinky2		None		0 
+		lpinky3		None		0 
+
+		rcollar		Clavicle_R	0
+		rshldr		UpArm_R		0 
+		rforearm	LoArm_R		0
+		rhand		Hand_R		0
+		rthumb1		None		0 
+		rthumb2		None		0 
+		rthumb3		None		0 
+		rindex1		None		0 
+		rindex2		None		0 
+		rindex3		None		0 
+		rmid1		None		0 
+		rmid2		None		0 
+		rmid3		None		0 
+		rring1		None		0 
+		rring2		None		0 
+		rring3		None		0 
+		rpinky1		None		0 
+		rpinky2		None		0 
+		rpinky3		None		0 
+
+		lbuttock	None		0
+		lthigh		UpLeg_L		0
+		lshin		LoLeg_L		0 
+		lfoot		Foot_L		0 
+		ltoe		Toe_L		0
+
+		rbuttock	None		0
+		rthigh		UpLeg_R		0
+		rshin		LoLeg_R		0 
+		rfoot		Foot_R		0 
+		rtoe		Toe_R		0

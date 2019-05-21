@@ -1,0 +1,1099 @@
+{
+    "docs": [
+        {
+            "location": "/index.html",
+            "text": "What is MESHmachine?\n\n\nGumroad\n | \nBlender Market\n - \nBlenderArtists\n - \nYoutube\n - \nTwitter\n - \nFacebook\n - \neMail\n\n\n\n\n\n\n\n\n\ncover image based on \nHumanoid Mecha\n concept by \nBruno Gauthier Leblanc\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMESHmachine\n is a \nblender mesh modeling addon\n with a focus on hard surface work without subdivision surfaces.  \n\n\nMESHmachine's \nchamfer and fillet\n toolset allows for more flexibility, when dealing with fillet-like surfaces, traditionally created with the \nBevel\n and \nBridge\n tools.\n\nMESHmachine's approach to fillets is the \nFuse\n tool, which builds transitional surfaces from chamfers, \nfusing\n the surfaces on both sides.\n\nDoing this, you get the benefits of both - chamfers and fillets - while avoiding their disadvantages.\n\n\nRead on below for an \noverview\n of MESHmachine's tools and ideas.\n\n\nResources\n\n\n\n\nAttention\n\n\nIf you need to get in touch with me to \nreport an error\n, \nreport tool misbehavior\n or \nhave another problem\n \nREAD THIS FIRST\n.\n\n\n\n\nFor \ninstallation\n help, see the \nInstallation\n page.\n\nFor \nquestions\n you have or problems you may run into, see the \nFAQ\n.\n\nTo \ndiscuss\n using MESHmachine, please use the \nblender artists\n and \npolycount\n threads.\n\nTo \nlearn\n about \nall of MESHmachine's features and tools\n, you can either check out \nthis playlist\n on youtube, or better -  access the same videos through the sidebar to the left.   \n\n\nFeatures\n\n\n\n\nturn chamfers into fillets/bevels and back\n\n\nchange the width of a chamfer or bevel\n\n\ncreate variable fillets and washouts \n\n\nunbevel and unchamfer to go back to a hard edge\n\n\npractically edit existing existing bevels\n\n\nresolve tricky geometry overlaps in cases where two bevels meet\n\n\nflatten polygons based on another polygon or flatten a polygon based on 3 vertices\n\n\nflatten along a normal or flatten along edges\n\n\nredirect chamfer flow by turning the corners\n\n\nconvert triangular bevel corners into quad corners\n\n\nplug details into your mesh\n\n\nbuild your own plugs and create/buy/sell plug libraries\n\n\ncleanup booleans and create clean perimeter loops around their intersections\n\n\nstash backups and objects referenced by other tools, without cluttering the scene\n\n\ncreate and manipulate custom normals\n\n\nmirror and symmetrize custom normals\n\n\n\n\n\n\nOverview\n\n\nChamfers\n\n\nChamfers (flat bevels)\n are easy to create, easy to manipulate and are easy to (loop) select.\n\nThey are very useful to quickly block out more complex forms and already contain all the important information in regards to the flow of surfaces and edges as well as the chamfer width.\n\n\nChamfers are also a dead end, if you want to further refine them later on, unless you get down to the edge or vertex level, which is time consuming.\n\nTraditionally, they can't be easily turned into fillets(rounded bevels) and removing the chamfer polygons to bridge the open edge loops, bedides being tedious, often produces results without good surface continuity or with unnessesary edges.\n\n\n\n\nThe overshooting is relatively easy to fix, \nIF\n you actually want to create a chamfer, but gets harder (support edges), if you want a rounded bevel.\nSo, what if you could turn a chamfer into a bevel?\n\n\nFillets\n\n\nFillets (round bevels)\n are also easy to create, using Blender's Bevel tool. But once created, they are hard or downright impossible to manipulate. Depending on the density, they are also significantly harder to select.\n\nFillets are excellent for refined, finished forms however, but due to how hard they are to manipulate, using them early on usually means you are locking the design down. Changing it later becomes so hard, you're likely to deny yourself that option completely.\n\nAs a result your design may suffer.\n\n\nFuse\n\n\nUsing MESHmachine's \nFuse\n and \nUnfuse\n tools, you can move between chamfers and fillets back and forth effortlessly - you can turn a chamfer into a fillet and a fillet back into a chamfer.\n\nThis allows for significant gains in flexibility, because - remember - a chamfer is trivial to manipulate and once you've done so, you can turn it into a Fillet again.  \n\n\nMoreover, the width of a chamfer will directly determine the width of a fillet(the radius if you want, but it's not precisly circular and depends on the tension setting).\n\nThis in turn allows for the creation of variable fillets and even washouts, which are impossible to do with the bevel tool and modifier.\n\n\n\n\ntasks like these are usually pretty tedious, but are rather trivial with MESHmachine\n\n\nPlugs\n\n\n\n\nPlugs\n are mesh inserts, that in combination with normal transfers, can produce flawless detailing, even on curved surfaces and even on medium or low density models.\nMESHmachine provides tools to manage plug libraries and tools to create your own plugs well.\n\n\nBoolean Helpers\n\n\nMESHmachine provides a few tools, that are helpful after boolean operations.\n\n\nBoolean Cleanup\n merges vertices on the transitional edge between two boolean operators.  \n\n\nThe \nChamfer\n and \nOffset\n tools help to create clean boundary topology, which in turn is beneficial for tools like \nChange Width\n and \nRefuse\n.\n\n\nStashes\n\n\nMESHmachine introduced the concept of \nStashes\n, which are basically object backups, that can be referenced by other tools, like \nConform\n, or by modifiers.  \n\n\nWhat's special about them, is that they don't clutter the scene and instead are accessed or brought back using a \nmodal stash viewer\n or conveniently by the tools that reference them directly.\n\n\nNormal Tools\n\n\nIn addition to modeling tools, MESHmachine has so far added 4 tools to manipulate vertex normals.\n\nTraditionally used in game art, if at all, this makes custom normals accessible in medium and high resolution mesh modeling as well and further loosens topology constraints in non-subd modeling.  \n\n\nThe \nNormal Transfer\n tool in combination with stashes, mirrors behavior of parametric solids and nurbs modelers and can produce the same quality in terms of shading.\n\n\nMirroring\n\n\nUtilizing custom normals, required additional work on the mirroring front, as neither Blender's symmetrize tool, nor the mirror modifier supports custom normals.\n\nMESHmachine's \nSymmetrize\n adds those missing normal mirror capabilities.  \n\n\nAs for the mirror modifier, MESHmachine's \nReal Mirror\n will create real geometry with proper origins and custom normals from objects carrying mirror mods.\nThis also enables correct object space texturing for geometry that needs to be mirrored.  \n\n\nSelection\n\n\nVSelect\n provides a quick, visual way to select geometry stored in vertex groups. This is especially useful in combination with Plugs and Normal Transfers.\n\n\nLooptools\n\n\nLooptools is a favourite addon of many blender users and ships with blender's default set of addons.\n\nIf activated, MESHmachine will provide modal wrappers, so Looptools' \nCircle and Relax\n can be used in the same fashion as MESHmachine's tools.\n\n\nGrease Pencil\n\n\nThe \nTape\n tool adressess a weakness of Blender's grease pencil line tool, and allows you to draw straight lines projected on curved surfaces.",
+            "title": "Introduction"
+        },
+        {
+            "location": "/index.html#what-is-meshmachine",
+            "text": "Gumroad  |  Blender Market  -  BlenderArtists  -  Youtube  -  Twitter  -  Facebook  -  eMail     cover image based on  Humanoid Mecha  concept by  Bruno Gauthier Leblanc      MESHmachine  is a  blender mesh modeling addon  with a focus on hard surface work without subdivision surfaces.    MESHmachine's  chamfer and fillet  toolset allows for more flexibility, when dealing with fillet-like surfaces, traditionally created with the  Bevel  and  Bridge  tools. \nMESHmachine's approach to fillets is the  Fuse  tool, which builds transitional surfaces from chamfers,  fusing  the surfaces on both sides. \nDoing this, you get the benefits of both - chamfers and fillets - while avoiding their disadvantages.  Read on below for an  overview  of MESHmachine's tools and ideas.",
+            "title": "What is MESHmachine?"
+        },
+        {
+            "location": "/index.html#resources",
+            "text": "Attention  If you need to get in touch with me to  report an error ,  report tool misbehavior  or  have another problem   READ THIS FIRST .   For  installation  help, see the  Installation  page. \nFor  questions  you have or problems you may run into, see the  FAQ . \nTo  discuss  using MESHmachine, please use the  blender artists  and  polycount  threads. \nTo  learn  about  all of MESHmachine's features and tools , you can either check out  this playlist  on youtube, or better -  access the same videos through the sidebar to the left.",
+            "title": "Resources"
+        },
+        {
+            "location": "/index.html#features",
+            "text": "turn chamfers into fillets/bevels and back  change the width of a chamfer or bevel  create variable fillets and washouts   unbevel and unchamfer to go back to a hard edge  practically edit existing existing bevels  resolve tricky geometry overlaps in cases where two bevels meet  flatten polygons based on another polygon or flatten a polygon based on 3 vertices  flatten along a normal or flatten along edges  redirect chamfer flow by turning the corners  convert triangular bevel corners into quad corners  plug details into your mesh  build your own plugs and create/buy/sell plug libraries  cleanup booleans and create clean perimeter loops around their intersections  stash backups and objects referenced by other tools, without cluttering the scene  create and manipulate custom normals  mirror and symmetrize custom normals",
+            "title": "Features"
+        },
+        {
+            "location": "/index.html#overview",
+            "text": "",
+            "title": "Overview"
+        },
+        {
+            "location": "/index.html#chamfers",
+            "text": "Chamfers (flat bevels)  are easy to create, easy to manipulate and are easy to (loop) select. \nThey are very useful to quickly block out more complex forms and already contain all the important information in regards to the flow of surfaces and edges as well as the chamfer width.  Chamfers are also a dead end, if you want to further refine them later on, unless you get down to the edge or vertex level, which is time consuming. \nTraditionally, they can't be easily turned into fillets(rounded bevels) and removing the chamfer polygons to bridge the open edge loops, bedides being tedious, often produces results without good surface continuity or with unnessesary edges.   The overshooting is relatively easy to fix,  IF  you actually want to create a chamfer, but gets harder (support edges), if you want a rounded bevel.\nSo, what if you could turn a chamfer into a bevel?",
+            "title": "Chamfers"
+        },
+        {
+            "location": "/index.html#fillets",
+            "text": "Fillets (round bevels)  are also easy to create, using Blender's Bevel tool. But once created, they are hard or downright impossible to manipulate. Depending on the density, they are also significantly harder to select. \nFillets are excellent for refined, finished forms however, but due to how hard they are to manipulate, using them early on usually means you are locking the design down. Changing it later becomes so hard, you're likely to deny yourself that option completely. \nAs a result your design may suffer.",
+            "title": "Fillets"
+        },
+        {
+            "location": "/index.html#fuse",
+            "text": "Using MESHmachine's  Fuse  and  Unfuse  tools, you can move between chamfers and fillets back and forth effortlessly - you can turn a chamfer into a fillet and a fillet back into a chamfer. \nThis allows for significant gains in flexibility, because - remember - a chamfer is trivial to manipulate and once you've done so, you can turn it into a Fillet again.    Moreover, the width of a chamfer will directly determine the width of a fillet(the radius if you want, but it's not precisly circular and depends on the tension setting). \nThis in turn allows for the creation of variable fillets and even washouts, which are impossible to do with the bevel tool and modifier.   tasks like these are usually pretty tedious, but are rather trivial with MESHmachine",
+            "title": "Fuse"
+        },
+        {
+            "location": "/index.html#plugs",
+            "text": "Plugs  are mesh inserts, that in combination with normal transfers, can produce flawless detailing, even on curved surfaces and even on medium or low density models.\nMESHmachine provides tools to manage plug libraries and tools to create your own plugs well.",
+            "title": "Plugs"
+        },
+        {
+            "location": "/index.html#boolean-helpers",
+            "text": "MESHmachine provides a few tools, that are helpful after boolean operations.  Boolean Cleanup  merges vertices on the transitional edge between two boolean operators.    The  Chamfer  and  Offset  tools help to create clean boundary topology, which in turn is beneficial for tools like  Change Width  and  Refuse .",
+            "title": "Boolean Helpers"
+        },
+        {
+            "location": "/index.html#stashes",
+            "text": "MESHmachine introduced the concept of  Stashes , which are basically object backups, that can be referenced by other tools, like  Conform , or by modifiers.    What's special about them, is that they don't clutter the scene and instead are accessed or brought back using a  modal stash viewer  or conveniently by the tools that reference them directly.",
+            "title": "Stashes"
+        },
+        {
+            "location": "/index.html#normal-tools",
+            "text": "In addition to modeling tools, MESHmachine has so far added 4 tools to manipulate vertex normals. \nTraditionally used in game art, if at all, this makes custom normals accessible in medium and high resolution mesh modeling as well and further loosens topology constraints in non-subd modeling.    The  Normal Transfer  tool in combination with stashes, mirrors behavior of parametric solids and nurbs modelers and can produce the same quality in terms of shading.",
+            "title": "Normal Tools"
+        },
+        {
+            "location": "/index.html#mirroring",
+            "text": "Utilizing custom normals, required additional work on the mirroring front, as neither Blender's symmetrize tool, nor the mirror modifier supports custom normals. \nMESHmachine's  Symmetrize  adds those missing normal mirror capabilities.    As for the mirror modifier, MESHmachine's  Real Mirror  will create real geometry with proper origins and custom normals from objects carrying mirror mods.\nThis also enables correct object space texturing for geometry that needs to be mirrored.",
+            "title": "Mirroring"
+        },
+        {
+            "location": "/index.html#selection",
+            "text": "VSelect  provides a quick, visual way to select geometry stored in vertex groups. This is especially useful in combination with Plugs and Normal Transfers.",
+            "title": "Selection"
+        },
+        {
+            "location": "/index.html#looptools",
+            "text": "Looptools is a favourite addon of many blender users and ships with blender's default set of addons. \nIf activated, MESHmachine will provide modal wrappers, so Looptools'  Circle and Relax  can be used in the same fashion as MESHmachine's tools.",
+            "title": "Looptools"
+        },
+        {
+            "location": "/index.html#grease-pencil",
+            "text": "The  Tape  tool adressess a weakness of Blender's grease pencil line tool, and allows you to draw straight lines projected on curved surfaces.",
+            "title": "Grease Pencil"
+        },
+        {
+            "location": "/installation/index.html",
+            "text": "Requirements\n\n\n\n\nBlender 2.79b\n\n\n\n\n\n\nNote\n\n\nEarlier versions as well as experimental builds may also work, but are untested.\n\n\n\n\nOnly stable releases are supported, the latest of which is 2.79b.\n\nUse the addon at your own risk with the experimental builds.\n\n\nLatest\n\n\nThe latest version of MESHmachine is 0.6 - available on \nGumroad\n and \nBlender Market\n.\n\nSee \nthis page\n the learn what's new in the latest versions, or see the \nchangelog\n for the full release history.\n\n\nInstructions\n\n\n\n\n\n\n\n\n\n\n\nInstall from File\n\n\n\n\nstart Blender, press\nCTRL + ALT + U\n to open the user preferences\n\n\nswitch to the \nAdd-ons\n tab and click the \nInstall Add-on from file...\n button at the bottom\n\n\nlocate the downloaded MESHmachine_v0.6.zip file and double-click it\n\n\nactivate the addon by ticking the checkbox and hit the \nSave User Settings\n button at the bottom\n\n\npress \nX\n to bring up the MESHmachine menu in either oject or edit mode\n\n\n\n\nManual Installation (alternative)\n\n\n\n\nextract the MESHmachine_v0.6.zip archive\n\n\nmove the extracted \nMESHmachine\n folder and its contents to your \naddons folder\n in the \nuser scripts location\n\n\nstart Blender, find the addon in preferences in the Add-ons tab and activate it, save your user config\n\n\npress \nX\n to bring up the MESHmachine menu in either oject or edit mode\n\n\n\n\n\n\nAddons Folder (in user scripts)\n\n\nLinux\n: /home/name/.config/blender/2.79/scripts/addons\n\n\nMacOS\n: /Users/name/Library/Application Support/Blender/2.79/scripts/addons\n1\n\n\nWindows\n: C:\\Users\\name\\AppData\\Roaming\\Blender Foundation\\Blender\\2.78\\scripts\\addons  \n\n\n\n\n\n\n\n\n\n\n\n\nHow to enable the Library folder on MacOS\n\u00a0\n\u21a9",
+            "title": "Installation"
+        },
+        {
+            "location": "/installation/index.html#requirements",
+            "text": "Blender 2.79b    Note  Earlier versions as well as experimental builds may also work, but are untested.   Only stable releases are supported, the latest of which is 2.79b. \nUse the addon at your own risk with the experimental builds.",
+            "title": "Requirements"
+        },
+        {
+            "location": "/installation/index.html#latest",
+            "text": "The latest version of MESHmachine is 0.6 - available on  Gumroad  and  Blender Market . \nSee  this page  the learn what's new in the latest versions, or see the  changelog  for the full release history.",
+            "title": "Latest"
+        },
+        {
+            "location": "/installation/index.html#instructions",
+            "text": "",
+            "title": "Instructions"
+        },
+        {
+            "location": "/installation/index.html#install-from-file",
+            "text": "start Blender, press CTRL + ALT + U  to open the user preferences  switch to the  Add-ons  tab and click the  Install Add-on from file...  button at the bottom  locate the downloaded MESHmachine_v0.6.zip file and double-click it  activate the addon by ticking the checkbox and hit the  Save User Settings  button at the bottom  press  X  to bring up the MESHmachine menu in either oject or edit mode",
+            "title": "Install from File"
+        },
+        {
+            "location": "/installation/index.html#manual-installation-alternative",
+            "text": "extract the MESHmachine_v0.6.zip archive  move the extracted  MESHmachine  folder and its contents to your  addons folder  in the  user scripts location  start Blender, find the addon in preferences in the Add-ons tab and activate it, save your user config  press  X  to bring up the MESHmachine menu in either oject or edit mode    Addons Folder (in user scripts)  Linux : /home/name/.config/blender/2.79/scripts/addons  MacOS : /Users/name/Library/Application Support/Blender/2.79/scripts/addons 1  Windows : C:\\Users\\name\\AppData\\Roaming\\Blender Foundation\\Blender\\2.78\\scripts\\addons         How to enable the Library folder on MacOS \u00a0 \u21a9",
+            "title": "Manual Installation (alternative)"
+        },
+        {
+            "location": "/preferences/index.html",
+            "text": "General\n\n\n\n\n\n\n\n\n\n\n\nPlugs\n\n\n\n\nNote\n\n\nIf you haven't already, make sure to watch the \nPlugs Introduction\n first and familiarize yourself with \nPlug Libraries\n.\n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout\n\n\nQuick links to all things MESHmachine and MACHIN3 right inside Blender.\n\n\n\n\nStores, documentation, FAQ, How to report problems, Blenderartists, Polycount, Artstation and social media.",
+            "title": "Preferences"
+        },
+        {
+            "location": "/preferences/index.html#general",
+            "text": "",
+            "title": "General"
+        },
+        {
+            "location": "/preferences/index.html#plugs",
+            "text": "Note  If you haven't already, make sure to watch the  Plugs Introduction  first and familiarize yourself with  Plug Libraries .",
+            "title": "Plugs"
+        },
+        {
+            "location": "/preferences/index.html#about",
+            "text": "Quick links to all things MESHmachine and MACHIN3 right inside Blender.   Stores, documentation, FAQ, How to report problems, Blenderartists, Polycount, Artstation and social media.",
+            "title": "About"
+        },
+        {
+            "location": "/whatsnew/index.html",
+            "text": "0.6 - MESHmachine\n\n\n\n\nNew territories\n\n\n\n\nQuite a lot has happened since 0.5.13, and even more has happened since the initial 0.5 release, 6 months ago.\n\nTo get a better understanding of the amount of work that went into the 0.6 release, feel free to glance over the \nchangelog\n. \nBe warned, it's not really aimed at the end user however.\n\n\n\n\nnew since 0.5.13\n\n\nFirst and foremost, highly anticipated, \nPlugs\n are here.  \n\n\nPlugs are a quick way to add detail to a mesh. Make sure to check out the \nPlugs Introduction\n first.\n\nThe Plug tool is the biggest, most complex tool I've worked on yet, and it has a few controls to tune its behavior, which you should learn first.\n\n\nThe Plug tool alone is nothing, without the \nplug library\n system, which allows you easily access and manage plug assets.\n\nThere are a number of example plugs to familiarize yourself with the plug tools and ideas.\n\nBeyond these example plugs, you can also get \n3rd party plug libraries\n. \n\n\nWhat I really want, is for you to \ncreate your own plugs\n. And you are of course free to sell or share your plug libraries, if you want.\n\n\nBeyond Plugs, there are two other powerful tools called Real Mirror and VSelect.\n\nReal Mirror\n turns mirror modifiers into real, separate geometry with proper origins and orientation. It also mirrors custom normals.\n\n\nVSelect\n is extremely useful to select geometry based on vertex group membership. It's perfect in combination with the Normal Transfer and Conform tools.\n\n\nFurthermore, the modal HUDs can now be scaled. Check out the \npreferences\n for details.\n\n\nI have removed the HUD positioning options for now. There are a number of problems with fixed HUD positions and I didn't have the time and patience to work around them.\n\nFollownig the mouse position is a superior approach IMHO and it's what I use. Let me know if you hate this :)\n\n\nFinally, and perhaps most importantly, I have invested \na lot\n of time into documentation, I hope it was spent well.\n\nEvery single tool is documented and demonstrated in narrated videos, which you can watch via this \nyoutube playlist\n.\nThese videos are also embedded throughout this very documentation, which I think is a better way to consume them.\n\n\nAlso, checkout the updated \nFAQ\n, where I explain some of the core ideas and theory behind MESHmachine.\n\n\nnew since 0.5\n\n\nWhere should I start? \n\n\nTake a look at the sidebar to the left. The initial release only had the chamfer and fillet tools and had them in their earliest iterations.\n\nAll of these have been improved and expanded. All of them are (optionally) modal now, making them so much more convenient to use.  \n\n\nThe concept of \nStashes\n has been introduced. \nNormal tools\n, \npost-boolean tools\n and \nmirror tools\n have been built.\n\nThe list goes on, and will keep growing.\n\n\nbeyond 0.6\n\n\nI feel like 0.6 is in a great state now. A lot of pieces are in their place and I'm looking forward to spend some serious art time with this release.  \n\n\nNo doubt, there are still kinks to smooth out, and tool performances to be improved. This will be the focus of 0.7, I think. \n\n\nI've got plans for some new tools as well. There's also the 2.80 port to be done, which will likely happen before 0.7.\n\n\n\n\nQuite a few people have been very excited for this release, I just hope it doesn't disappoint.\n\nI'm certainly very happy with how MESHmachine has evolved. It really has come a \nlong\n way and I've learned so much in the process.\n\n\nHappy plugging.\n\n\n0.5 - MESHmachine\n\n\n\n\nThe missing essentials\n\n\n\n\nThe initial release provides a number of tools, that work in tandem and outline a modeling workflow, that was previously impossible.\n\nMESHmachine should dramatically increase your flexibility, especially when working with bevels on a geometry level.\n\n\nIt is not to be used in isolation and does not intend to replace any other tools.\nRather, it's an addition to the basic modeling toolset, which IMHO really should have been ubiquitous in 3D software for at least the past decade, hence the subtitle :)\n\n\nThis release aims to test the waters, to find out what the larger community thinks and to retrieve feedback as well as uncover edge cases where the tools fail to work.\n\n\n\n\n\nFuse\n\n\nThe Fuse\n tool is the center piece of MESHmachine. Its purpose is to create rounded surfaces from chamfers/flat bevels.\n\n\nChange Width\n\n\nUsing the \nChange Width\n tool you can easily adjust the width of an existing chamfer.\n\n\nUnfuse\n\n\nUnfuse\n turns a curved surface created by Fuse or the Bevel and Bridge tools into a chamfer.\n\n\nUnchamfer\n\n\nThe \nUnchamfer\n tool turns a chamfer back into into a hard edge.\n\n\n\n\nNow, with these 4 tools in place, a few others could be build, just by combining them.\n\n\nThe \nRefuse\n tool is just the \nUnfuse\n and \nFuse\n tools called in sequence, which effectively means you can edit bevel geometry.\nSimilarly, the \nUnbevel\n tool is just \nUnfuse\n and \nUnchamfer\n called in sequence.\n\n\nIn addition there's a few more tools, that can be very useful in dealing with speciic situations\n\n\nUnf*ck\n\n\nUnf*ck\n aligns vertices along an implicit spline curve. This is especially useful in situations were the Bevel tool overshoots vertex positions.\n\n\nTurn Corner\n\n\nThe \nTurn Corner\n tool is used to re-direct the flow of a chamfer.\n\n\nQuad Corner\n\n\nThe \nQuad Corner\n tool is used to convert a triangular bevel corner into a quad corner.\n\n\n\n\nThat's about it for the inital release. I'm looking forward to feedback.\n\nThere will likely be a number of edge cases, that I didn't catch yet and I hope to fix these \nas soon as they are reported\n.\n\n\nLooking back at how \nDECALmachine\n evolved in one year, I can't wait to see what MESHmachine will become over the next 12 months..",
+            "title": "What's new?"
+        },
+        {
+            "location": "/whatsnew/index.html#06-meshmachine",
+            "text": "New territories   Quite a lot has happened since 0.5.13, and even more has happened since the initial 0.5 release, 6 months ago. \nTo get a better understanding of the amount of work that went into the 0.6 release, feel free to glance over the  changelog . \nBe warned, it's not really aimed at the end user however.",
+            "title": "0.6 - MESHmachine"
+        },
+        {
+            "location": "/whatsnew/index.html#new-since-0513",
+            "text": "First and foremost, highly anticipated,  Plugs  are here.    Plugs are a quick way to add detail to a mesh. Make sure to check out the  Plugs Introduction  first. \nThe Plug tool is the biggest, most complex tool I've worked on yet, and it has a few controls to tune its behavior, which you should learn first.  The Plug tool alone is nothing, without the  plug library  system, which allows you easily access and manage plug assets. \nThere are a number of example plugs to familiarize yourself with the plug tools and ideas. \nBeyond these example plugs, you can also get  3rd party plug libraries .   What I really want, is for you to  create your own plugs . And you are of course free to sell or share your plug libraries, if you want.  Beyond Plugs, there are two other powerful tools called Real Mirror and VSelect. Real Mirror  turns mirror modifiers into real, separate geometry with proper origins and orientation. It also mirrors custom normals.  VSelect  is extremely useful to select geometry based on vertex group membership. It's perfect in combination with the Normal Transfer and Conform tools.  Furthermore, the modal HUDs can now be scaled. Check out the  preferences  for details.  I have removed the HUD positioning options for now. There are a number of problems with fixed HUD positions and I didn't have the time and patience to work around them. \nFollownig the mouse position is a superior approach IMHO and it's what I use. Let me know if you hate this :)  Finally, and perhaps most importantly, I have invested  a lot  of time into documentation, I hope it was spent well. \nEvery single tool is documented and demonstrated in narrated videos, which you can watch via this  youtube playlist .\nThese videos are also embedded throughout this very documentation, which I think is a better way to consume them.  Also, checkout the updated  FAQ , where I explain some of the core ideas and theory behind MESHmachine.",
+            "title": "new since 0.5.13"
+        },
+        {
+            "location": "/whatsnew/index.html#new-since-05",
+            "text": "Where should I start?   Take a look at the sidebar to the left. The initial release only had the chamfer and fillet tools and had them in their earliest iterations. \nAll of these have been improved and expanded. All of them are (optionally) modal now, making them so much more convenient to use.    The concept of  Stashes  has been introduced.  Normal tools ,  post-boolean tools  and  mirror tools  have been built. \nThe list goes on, and will keep growing.",
+            "title": "new since 0.5"
+        },
+        {
+            "location": "/whatsnew/index.html#beyond-06",
+            "text": "I feel like 0.6 is in a great state now. A lot of pieces are in their place and I'm looking forward to spend some serious art time with this release.    No doubt, there are still kinks to smooth out, and tool performances to be improved. This will be the focus of 0.7, I think.   I've got plans for some new tools as well. There's also the 2.80 port to be done, which will likely happen before 0.7.   Quite a few people have been very excited for this release, I just hope it doesn't disappoint. \nI'm certainly very happy with how MESHmachine has evolved. It really has come a  long  way and I've learned so much in the process.  Happy plugging.",
+            "title": "beyond 0.6"
+        },
+        {
+            "location": "/whatsnew/index.html#05-meshmachine",
+            "text": "The missing essentials   The initial release provides a number of tools, that work in tandem and outline a modeling workflow, that was previously impossible. \nMESHmachine should dramatically increase your flexibility, especially when working with bevels on a geometry level.  It is not to be used in isolation and does not intend to replace any other tools.\nRather, it's an addition to the basic modeling toolset, which IMHO really should have been ubiquitous in 3D software for at least the past decade, hence the subtitle :)  This release aims to test the waters, to find out what the larger community thinks and to retrieve feedback as well as uncover edge cases where the tools fail to work.",
+            "title": "0.5 - MESHmachine"
+        },
+        {
+            "location": "/whatsnew/index.html#fuse",
+            "text": "The Fuse  tool is the center piece of MESHmachine. Its purpose is to create rounded surfaces from chamfers/flat bevels.",
+            "title": "Fuse"
+        },
+        {
+            "location": "/whatsnew/index.html#change-width",
+            "text": "Using the  Change Width  tool you can easily adjust the width of an existing chamfer.",
+            "title": "Change Width"
+        },
+        {
+            "location": "/whatsnew/index.html#unfuse",
+            "text": "Unfuse  turns a curved surface created by Fuse or the Bevel and Bridge tools into a chamfer.",
+            "title": "Unfuse"
+        },
+        {
+            "location": "/whatsnew/index.html#unchamfer",
+            "text": "The  Unchamfer  tool turns a chamfer back into into a hard edge.   Now, with these 4 tools in place, a few others could be build, just by combining them.  The  Refuse  tool is just the  Unfuse  and  Fuse  tools called in sequence, which effectively means you can edit bevel geometry.\nSimilarly, the  Unbevel  tool is just  Unfuse  and  Unchamfer  called in sequence.  In addition there's a few more tools, that can be very useful in dealing with speciic situations",
+            "title": "Unchamfer"
+        },
+        {
+            "location": "/whatsnew/index.html#unf42ck",
+            "text": "Unf*ck  aligns vertices along an implicit spline curve. This is especially useful in situations were the Bevel tool overshoots vertex positions.",
+            "title": "Unf*ck"
+        },
+        {
+            "location": "/whatsnew/index.html#turn-corner",
+            "text": "The  Turn Corner  tool is used to re-direct the flow of a chamfer.",
+            "title": "Turn Corner"
+        },
+        {
+            "location": "/whatsnew/index.html#quad-corner",
+            "text": "The  Quad Corner  tool is used to convert a triangular bevel corner into a quad corner.   That's about it for the inital release. I'm looking forward to feedback. \nThere will likely be a number of edge cases, that I didn't catch yet and I hope to fix these  as soon as they are reported .  Looking back at how  DECALmachine  evolved in one year, I can't wait to see what MESHmachine will become over the next 12 months..",
+            "title": "Quad Corner"
+        },
+        {
+            "location": "/faq/index.html",
+            "text": "Installation\n\n\nOther Addons\n\n\nTerminology\n\n\nUsing MESHmachine\n\n\nReporting Errors or Problems\n\n\n\n\nInstallation\n\n\nHow is it done?\n\n\nSee the \nInstallation\n guide and note the version requirement.\n\n\nSomething went wrong! Where can I report errors?\n\n\nOnly via email, \nhere\n\n\nOther Addons\n\n\nAre DECALmachine and MACHIN3tools required?\n\n\nNo, MESHmachine provides modeling tools that work on the mesh level. It does not depend on any other addon to do so.\n\nMESHmachine is a mesh modeling toolset, while \nDECALmachine\n is a detailing toolset, using mesh decals.    \n\n\nMACHIN3tools\n is a free addon collection, covering a variety of tasks simple, common blender task, including but not exclusively related to modeling.\nMACHin3tools is a bit outdated by now, and represents my first steps in addon development. I still use it's various tools heavily and will completetly overhaul MACHin3tools for Blender 2.80.\n\n\nIs HardOps or BoxCutter required?\n\n\nHardOps\n and \nBoxCutter\n are not developed by myself and they are not required to use MESHmachine.\n\nThey can complement each other however, and I personally do use both of them.\n\n\nTerminology\n\n\nWhat is a chamfer? What is a fillet? What is a bevel?\n\n\nA chamfer is a transitional surface between 2 other surfaces, often - but not necessiarily - at a 45 degree angle. It's also referred to as a flat bevel.\n\nIn blender it can be created using the \nBevel\n tool and modifier, if the segments are set to 1 and with the \nBridge\n tool if the number of cuts is set to 0.\n\nA chamfer has a \nflat profile\n.\n\n\nSimilarly, a fillet is a transitional surface, with a \ncurved profile\n. It's also referred to as a rounded bevel.\nIn blender it can be created using the \nBevel\n tool and modifier, if the segments are set to higher than 1 and with the \nBridge\n tool if the number of cuts is set to above 0.\n\nA fillet has a \nround profile\n.\n\n\nBoth are used to refine and replace hard edges.\n\n\n\n\nthis chamfer has 2 micro bevels of its own!\n\n\nAnd so in the context of MESHmachine, I think it makes sense to differentiate between fillet and bevel.\n\nBevel is a tool to create a fillet from a hard edge. And with MESHmachine's fuse tool, you can now also create a fillet from a chamfer.\nThe chamfer itself, can of course also be created by the bevel tool or by using MESHmachine's \nChamfer\n tool, although the later is specifically made for post-boolean chamfers.\n\n\nWhat are rail and sweep edges?\n\n\nRail edges are edges or edgeloops going along a bevel or chamfer.\nSweep edges are edges going across.\n\n\n\n\nchamfers have only 2 sets of rails\n\n\n\n\nwhile bevels can have many rails\n\n\nRail edges are great to \nloop select\n across a chamfer or bevel, while sweep edges can be used to \nloop select\n along a chamfer or bevel.\n\n\n\n\nLoop Selections\n\n\nLoop selections are done - by default via \nAlt + Select Mouse\n, while pointing at an edge.\n\n\n\n\nWhat are triangular and quad bevel corners?\n\n\nA triangular bevel corner is one, that has three corner vertices.\n\nSimilarly a quad corner is one, that has four corner verts.\n\n\n\n\na triangular bevel corner can be a single triangle, can include a single triangle in its center or may not contain a triangle at all\n\n\n\n\nTriangular Bevel Corners\n\n\nTriangular bevel corners split the flow of a bevel/fillet in 2 directions.\n\nThis is undesired and tools like \nUnfuse\n, \nRefuse\n and \nUnbevel\n, will not work with these kinds of corners.\n\n\n\n\n\n\nIs this non-destructive modeling?\n\n\nIt's not \nnon-destructive\n, no. \n\n\nWith MESHmachine you work directly on the mesh level. There's no continuous construction history as in CAD modeler and there's aren't stacks of modifiers either. Mesh manipulation is permanent.\n\nWhat MESHmachine's chamfer and fillet toolset does, is reconstruct geometry, which is imperfect, but often good enough.\n\nAnd so, I'd call it pseudo-non-destructive, or better \nreconstructive\n.\n\n\nUsing MESHmachine\n\n\nWhere can I discuss the MESHmachine workflow?\n\n\nI'd invite you to discuss all things MESHmachine (except \nerrors and tool misbehaviors\n) in the \nblenderartists\n and \npolycount\n threads.\n\n\nCan I use this with subdivision surfaces? Are plugs compatible with sub-d's?\n\n\nSubdivision Surface modeling is generally understood as working on a low to mid poly model, and adding a live sub-d modfier on top, which produces a higher density, smoother mesh.\nWhile I think some of MESHmachine's tools can be helpful in this context, it's not really aimed at that.  \n\n\nYou will likely have to manually remove ngons and avoid triangles due to the tight topology constraints of the sub-d workflow.\n\n\nFor me personally, sub-d's only play a role, if a sculptural surfacing is an important part of the form language. And in that case I will use it to generate the main forms, but then fatten the modifier stack.\n\nIn that scenario you can then abolutely use plugs on top of the mesh, but you loose the flexibily of sub-d modeling.\n\n\nWhat you can't do is use plugs on the low or mid poly model while keeping the sub-d modifier live. This is asking for trouble.\n\n\nSo, if you use sub-d's as a finishing tool, MESHmachine is not your best choice. If you only use it for form generation initialy and are willing to apply the subsurf modifier, MESHmachine can be useful.\n\n\nWhy is the ... tool greyed out in the MESHmachine menu?\n\n\nEvery time you open the \nMESHmachine menu\n, each tool listed will check if certain conditions are met, before becoming available.\n\nThis is to avoid having to deal with illegal selections a tool can't properly process.\n\n\nRefer to the individual tool pages here in the docs, for details on what tool expects what kind of selection.\n\n\n\n\nNote\n\n\nThese conditions are intentionally very simple and just because, a tool is no longer greyed out does not mean it will execute properly.  \n\n\nIllegal selections may still be present and you will receive feedback, if that's the case.\n\n\n\n\n\nReporting Errors or Problems\n\n\n\n\nAttention\n\n\nNote the \nRequirements\n in the installation guide.\n\nMake sure you are using the \nlatest version\n.\n\nConfirm you've followed the \ninstallation instructions\n.\n\n\n\n\nErrors\n\n\nIf you are seeing an error, please send me a \nscreenshot of the error message\n.\n\nEven better, send a \nscreenshot of the terminal/system console\n, which you can turn on under Windows by clicking 'Toggle System Console'.\n\n\n\n\n\n\n\n\nI do not need an image of blenders info view and I don't need to see blender's python console.\n\n\n\n\nKeep in mind\n\n\nSend\n the screenshot, \nattach it to the email\n, don't link to an image on some obscure image hoster.\n\nAlternatively you can also just copy and paste the error message directly from the terminal into the email!\n\n\n\n\nIf the error only occurs on a certain model, please attach the blend file as well.\n\nFeel free to remove any part of the model that doesn't contrinbute to the problem to keep the file size small.\n\n\nTool misbehaviors\n\n\nIf you think a tool of MESHmachine doesn't do what it should do on your model, please send me the blend file.\n\nPlease remove any part of the model that doesn't contribute to the problem to keep the file size small.\n\n\nGeneral information I need to help you:\n\n\nPlease provide the following:\n\n\n\n\nsystem-info.txt\n open Blender's Help menu, choose Save System Info, attach file to email\n\n\nProof of Purchase\n\n\nin case of error: \nterminal/console output or screenshot\n (see above)\n\n\nif you know: \nBlender version\n \n\n\nif you know: \nMESHmachine version\n\n\n\n\n\n\nKeep in mind\n\n\nIf your mail is missing the specific error message or the first two items of the list entries above, don't expect a speedy reply.  \n\n\n\n\nUse \neMail\n, not twitter, not facebook, not youtube, not artstation, not blender market, and not the blenderartists or polycount threads \nfor reporting of errors\n.",
+            "title": "FAQ"
+        },
+        {
+            "location": "/faq/index.html#installation",
+            "text": "",
+            "title": "Installation"
+        },
+        {
+            "location": "/faq/index.html#how-is-it-done",
+            "text": "See the  Installation  guide and note the version requirement.",
+            "title": "How is it done?"
+        },
+        {
+            "location": "/faq/index.html#something-went-wrong-where-can-i-report-errors",
+            "text": "Only via email,  here",
+            "title": "Something went wrong! Where can I report errors?"
+        },
+        {
+            "location": "/faq/index.html#other-addons",
+            "text": "",
+            "title": "Other Addons"
+        },
+        {
+            "location": "/faq/index.html#are-decalmachine-and-machin3tools-required",
+            "text": "No, MESHmachine provides modeling tools that work on the mesh level. It does not depend on any other addon to do so. \nMESHmachine is a mesh modeling toolset, while  DECALmachine  is a detailing toolset, using mesh decals.      MACHIN3tools  is a free addon collection, covering a variety of tasks simple, common blender task, including but not exclusively related to modeling.\nMACHin3tools is a bit outdated by now, and represents my first steps in addon development. I still use it's various tools heavily and will completetly overhaul MACHin3tools for Blender 2.80.",
+            "title": "Are DECALmachine and MACHIN3tools required?"
+        },
+        {
+            "location": "/faq/index.html#is-hardops-or-boxcutter-required",
+            "text": "HardOps  and  BoxCutter  are not developed by myself and they are not required to use MESHmachine. \nThey can complement each other however, and I personally do use both of them.",
+            "title": "Is HardOps or BoxCutter required?"
+        },
+        {
+            "location": "/faq/index.html#terminology",
+            "text": "",
+            "title": "Terminology"
+        },
+        {
+            "location": "/faq/index.html#what-is-a-chamfer-what-is-a-fillet-what-is-a-bevel",
+            "text": "A chamfer is a transitional surface between 2 other surfaces, often - but not necessiarily - at a 45 degree angle. It's also referred to as a flat bevel. \nIn blender it can be created using the  Bevel  tool and modifier, if the segments are set to 1 and with the  Bridge  tool if the number of cuts is set to 0. \nA chamfer has a  flat profile .  Similarly, a fillet is a transitional surface, with a  curved profile . It's also referred to as a rounded bevel.\nIn blender it can be created using the  Bevel  tool and modifier, if the segments are set to higher than 1 and with the  Bridge  tool if the number of cuts is set to above 0. \nA fillet has a  round profile .  Both are used to refine and replace hard edges.   this chamfer has 2 micro bevels of its own!  And so in the context of MESHmachine, I think it makes sense to differentiate between fillet and bevel. \nBevel is a tool to create a fillet from a hard edge. And with MESHmachine's fuse tool, you can now also create a fillet from a chamfer.\nThe chamfer itself, can of course also be created by the bevel tool or by using MESHmachine's  Chamfer  tool, although the later is specifically made for post-boolean chamfers.",
+            "title": "What is a chamfer? What is a fillet? What is a bevel?"
+        },
+        {
+            "location": "/faq/index.html#what-are-rail-and-sweep-edges",
+            "text": "Rail edges are edges or edgeloops going along a bevel or chamfer.\nSweep edges are edges going across.   chamfers have only 2 sets of rails   while bevels can have many rails  Rail edges are great to  loop select  across a chamfer or bevel, while sweep edges can be used to  loop select  along a chamfer or bevel.   Loop Selections  Loop selections are done - by default via  Alt + Select Mouse , while pointing at an edge.",
+            "title": "What are rail and sweep edges?"
+        },
+        {
+            "location": "/faq/index.html#what-are-triangular-and-quad-bevel-corners",
+            "text": "A triangular bevel corner is one, that has three corner vertices. \nSimilarly a quad corner is one, that has four corner verts.   a triangular bevel corner can be a single triangle, can include a single triangle in its center or may not contain a triangle at all   Triangular Bevel Corners  Triangular bevel corners split the flow of a bevel/fillet in 2 directions. \nThis is undesired and tools like  Unfuse ,  Refuse  and  Unbevel , will not work with these kinds of corners.",
+            "title": "What are triangular and quad bevel corners?"
+        },
+        {
+            "location": "/faq/index.html#is-this-non-destructive-modeling",
+            "text": "It's not  non-destructive , no.   With MESHmachine you work directly on the mesh level. There's no continuous construction history as in CAD modeler and there's aren't stacks of modifiers either. Mesh manipulation is permanent. \nWhat MESHmachine's chamfer and fillet toolset does, is reconstruct geometry, which is imperfect, but often good enough. \nAnd so, I'd call it pseudo-non-destructive, or better  reconstructive .",
+            "title": "Is this non-destructive modeling?"
+        },
+        {
+            "location": "/faq/index.html#using-meshmachine",
+            "text": "",
+            "title": "Using MESHmachine"
+        },
+        {
+            "location": "/faq/index.html#where-can-i-discuss-the-meshmachine-workflow",
+            "text": "I'd invite you to discuss all things MESHmachine (except  errors and tool misbehaviors ) in the  blenderartists  and  polycount  threads.",
+            "title": "Where can I discuss the MESHmachine workflow?"
+        },
+        {
+            "location": "/faq/index.html#can-i-use-this-with-subdivision-surfaces-are-plugs-compatible-with-sub-ds",
+            "text": "Subdivision Surface modeling is generally understood as working on a low to mid poly model, and adding a live sub-d modfier on top, which produces a higher density, smoother mesh.\nWhile I think some of MESHmachine's tools can be helpful in this context, it's not really aimed at that.    You will likely have to manually remove ngons and avoid triangles due to the tight topology constraints of the sub-d workflow.  For me personally, sub-d's only play a role, if a sculptural surfacing is an important part of the form language. And in that case I will use it to generate the main forms, but then fatten the modifier stack. \nIn that scenario you can then abolutely use plugs on top of the mesh, but you loose the flexibily of sub-d modeling.  What you can't do is use plugs on the low or mid poly model while keeping the sub-d modifier live. This is asking for trouble.  So, if you use sub-d's as a finishing tool, MESHmachine is not your best choice. If you only use it for form generation initialy and are willing to apply the subsurf modifier, MESHmachine can be useful.",
+            "title": "Can I use this with subdivision surfaces? Are plugs compatible with sub-d's?"
+        },
+        {
+            "location": "/faq/index.html#why-is-the-tool-greyed-out-in-the-meshmachine-menu",
+            "text": "Every time you open the  MESHmachine menu , each tool listed will check if certain conditions are met, before becoming available. \nThis is to avoid having to deal with illegal selections a tool can't properly process.  Refer to the individual tool pages here in the docs, for details on what tool expects what kind of selection.   Note  These conditions are intentionally very simple and just because, a tool is no longer greyed out does not mean it will execute properly.    Illegal selections may still be present and you will receive feedback, if that's the case.",
+            "title": "Why is the ... tool greyed out in the MESHmachine menu?"
+        },
+        {
+            "location": "/faq/index.html#reporting-errors-or-problems",
+            "text": "Attention  Note the  Requirements  in the installation guide. \nMake sure you are using the  latest version . \nConfirm you've followed the  installation instructions .",
+            "title": "Reporting Errors or Problems"
+        },
+        {
+            "location": "/faq/index.html#errors",
+            "text": "If you are seeing an error, please send me a  screenshot of the error message . \nEven better, send a  screenshot of the terminal/system console , which you can turn on under Windows by clicking 'Toggle System Console'.    I do not need an image of blenders info view and I don't need to see blender's python console.   Keep in mind  Send  the screenshot,  attach it to the email , don't link to an image on some obscure image hoster. \nAlternatively you can also just copy and paste the error message directly from the terminal into the email!   If the error only occurs on a certain model, please attach the blend file as well. \nFeel free to remove any part of the model that doesn't contrinbute to the problem to keep the file size small.",
+            "title": "Errors"
+        },
+        {
+            "location": "/faq/index.html#tool-misbehaviors",
+            "text": "If you think a tool of MESHmachine doesn't do what it should do on your model, please send me the blend file. \nPlease remove any part of the model that doesn't contribute to the problem to keep the file size small.",
+            "title": "Tool misbehaviors"
+        },
+        {
+            "location": "/faq/index.html#general-information-i-need-to-help-you",
+            "text": "Please provide the following:   system-info.txt  open Blender's Help menu, choose Save System Info, attach file to email  Proof of Purchase  in case of error:  terminal/console output or screenshot  (see above)  if you know:  Blender version    if you know:  MESHmachine version    Keep in mind  If your mail is missing the specific error message or the first two items of the list entries above, don't expect a speedy reply.     Use  eMail , not twitter, not facebook, not youtube, not artstation, not blender market, and not the blenderartists or polycount threads  for reporting of errors .",
+            "title": "General information I need to help you:"
+        },
+        {
+            "location": "/change_width/index.html",
+            "text": "Change Width\n\n\nshortcut\n \nQWERTY\n \nxw\n, \nQWERTZ\n \nyw\n\n\nUsing the \nChange Width\n tool you can adjust the width of an existing chamfer. Usually, that can only be done by manually sliding the edges of a chamfer. The \nChange Width\n tool simplifies that process. \n\n\nSelection\n\n\nPoly strip - a row of polygons - along the chamfer.\n\n\nThe best way to select a chamfer is usually by loop selecting it - by default via \nAlt + Select Mouse\n, while pointing at an sweep edge of the chamfer.\n\n\n\n\npoly strip selection along chamfer\n\n\nSingle polygons can also be selected, in which case the direction will be determined by edge length. As with the \nFuse\n tool, you can can also reverse the direction in the redo/tool properties panel.\n\n\nUsing Change Width",
+            "title": "Change Width"
+        },
+        {
+            "location": "/change_width/index.html#change-width",
+            "text": "shortcut   QWERTY   xw ,  QWERTZ   yw  Using the  Change Width  tool you can adjust the width of an existing chamfer. Usually, that can only be done by manually sliding the edges of a chamfer. The  Change Width  tool simplifies that process.",
+            "title": "Change Width"
+        },
+        {
+            "location": "/change_width/index.html#selection",
+            "text": "Poly strip - a row of polygons - along the chamfer.  The best way to select a chamfer is usually by loop selecting it - by default via  Alt + Select Mouse , while pointing at an sweep edge of the chamfer.   poly strip selection along chamfer  Single polygons can also be selected, in which case the direction will be determined by edge length. As with the  Fuse  tool, you can can also reverse the direction in the redo/tool properties panel.",
+            "title": "Selection"
+        },
+        {
+            "location": "/change_width/index.html#using-change-width",
+            "text": "",
+            "title": "Using Change Width"
+        },
+        {
+            "location": "/fuse/index.html",
+            "text": "Fuse\n\n\nshortcut\n \nQWERTY\n \nxf\n, \nQWERTZ\n \nyf\n\n\nThe \nFuse\n tool is the center piece of MESHmachine's chamfer and fillet toolset. Its purpose is to create rounded surfaces from chamfers/flat bevels.  \n\n\nOne of the benefits of this, is the ability to create variable fillets, as well as washouts.\n\n\n\n\nfillets with changing 'radii' on the left, fillets washing out on the right\n\n\nSelection\n\n\nPoly strip - a row of polygons - \nalong\n the chamfer.\n\n\nThe best way to select a chamfer is usually by loop selecting it - by default via \nAlt + Select Mouse\n, while pointing at an \nsweep edge\n of the chamfer.\n\n\n\n\npoly strip selection along chamfer\n\n\nThe sequence of the chamfer polygons determine the direction of the fuse surface.\nIf \nFuse\n is run on a single polygon, the direction will be determined by edge length, but can can also be reversed in the redo/tool properties panel.\n\n\nUsing Fuse",
+            "title": "Fuse"
+        },
+        {
+            "location": "/fuse/index.html#fuse",
+            "text": "shortcut   QWERTY   xf ,  QWERTZ   yf  The  Fuse  tool is the center piece of MESHmachine's chamfer and fillet toolset. Its purpose is to create rounded surfaces from chamfers/flat bevels.    One of the benefits of this, is the ability to create variable fillets, as well as washouts.   fillets with changing 'radii' on the left, fillets washing out on the right",
+            "title": "Fuse"
+        },
+        {
+            "location": "/fuse/index.html#selection",
+            "text": "Poly strip - a row of polygons -  along  the chamfer.  The best way to select a chamfer is usually by loop selecting it - by default via  Alt + Select Mouse , while pointing at an  sweep edge  of the chamfer.   poly strip selection along chamfer  The sequence of the chamfer polygons determine the direction of the fuse surface.\nIf  Fuse  is run on a single polygon, the direction will be determined by edge length, but can can also be reversed in the redo/tool properties panel.",
+            "title": "Selection"
+        },
+        {
+            "location": "/fuse/index.html#using-fuse",
+            "text": "",
+            "title": "Using Fuse"
+        },
+        {
+            "location": "/flatten/index.html",
+            "text": "Flatten\n\n\nshortcut\n \nQWERTY\n \nxe\n, \nQWERTZ\n \nye\n\n\nUsing the \nFlatten\n tool you can flatten a single or multiple Polygons and you can flatten in 2 modes: \nAlong Edge\n or \nAlong Normal\n.\n\n\nSelection\n\n\nFlatten can take 2 kinds of selections.\n\nYou can either select \n3 vertices\n or \nmultiple polygons* with one \nbeing active**.\n\n\nIf you select 3 vertices, all verts of the connected polygon will be flattend based on the normal of the implicit triangle the 3 verts create.\n\n\nIf you select 2 or poly polygons, all polygons will be flattened based on the normal of the active (last selected) polygon.\n\n\n\n\n3 vert selection and 2+ polygon selection\n \n\n\nUsing Flatten",
+            "title": "Flatten"
+        },
+        {
+            "location": "/flatten/index.html#flatten",
+            "text": "shortcut   QWERTY   xe ,  QWERTZ   ye  Using the  Flatten  tool you can flatten a single or multiple Polygons and you can flatten in 2 modes:  Along Edge  or  Along Normal .",
+            "title": "Flatten"
+        },
+        {
+            "location": "/flatten/index.html#selection",
+            "text": "Flatten can take 2 kinds of selections. \nYou can either select  3 vertices  or  multiple polygons* with one  being active**.  If you select 3 vertices, all verts of the connected polygon will be flattend based on the normal of the implicit triangle the 3 verts create.  If you select 2 or poly polygons, all polygons will be flattened based on the normal of the active (last selected) polygon.   3 vert selection and 2+ polygon selection",
+            "title": "Selection"
+        },
+        {
+            "location": "/flatten/index.html#using-flatten",
+            "text": "",
+            "title": "Using Flatten"
+        },
+        {
+            "location": "/unfuse/index.html",
+            "text": "Unfuse\n\n\nshortcut\n \nQWERTY\n \nxd\n, \nQWERTZ\n \nyd\n\n\nUnfuse\n turns a curved surface created by \nFuse\n or the Bevel and Bridge tools into a chamfer.\n\n\nSelection\n\n\nPoly strip - a row of polygons - \nacross\n the Fuse/Bevel/Bridge surface.\n\n\nThe best way to select this is by using the \nPick Shortest Path\n tool via \nCtrl + Select Mouse\n.\n\nIf there are Ngons on both sides, you can be even faster by loop selecting - by default via \nAlt + Select Mouse\n - while pointing at a \nrail edge\n of the Fuse/Bevel/Bridge surface.\n\n\n\n\npoly strip across fuse/bevel/bridge surface\n\n\n\n\nNote\n\n\nUnfuse\n will automatically expand the selection to the entire Fuse/Bevel/Bridge surface.\n\nIf it runs into triangles or ngons, it will abort.\n\nSee \nQuad Corner\n for how to deal with triangular Bevel corners.\n\n\n\n\n\n\nKeep in mind\n\n\nYou currently can not select the entire bevel surface on your own to unfuse, it has to be a poly strip going across.\n\n\n\n\nUsing Unfuse",
+            "title": "Unfuse"
+        },
+        {
+            "location": "/unfuse/index.html#unfuse",
+            "text": "shortcut   QWERTY   xd ,  QWERTZ   yd  Unfuse  turns a curved surface created by  Fuse  or the Bevel and Bridge tools into a chamfer.",
+            "title": "Unfuse"
+        },
+        {
+            "location": "/unfuse/index.html#selection",
+            "text": "Poly strip - a row of polygons -  across  the Fuse/Bevel/Bridge surface.  The best way to select this is by using the  Pick Shortest Path  tool via  Ctrl + Select Mouse . \nIf there are Ngons on both sides, you can be even faster by loop selecting - by default via  Alt + Select Mouse  - while pointing at a  rail edge  of the Fuse/Bevel/Bridge surface.   poly strip across fuse/bevel/bridge surface   Note  Unfuse  will automatically expand the selection to the entire Fuse/Bevel/Bridge surface. \nIf it runs into triangles or ngons, it will abort. \nSee  Quad Corner  for how to deal with triangular Bevel corners.    Keep in mind  You currently can not select the entire bevel surface on your own to unfuse, it has to be a poly strip going across.",
+            "title": "Selection"
+        },
+        {
+            "location": "/unfuse/index.html#using-unfuse",
+            "text": "",
+            "title": "Using Unfuse"
+        },
+        {
+            "location": "/refuse/index.html",
+            "text": "Refuse\n\n\nshortcut\n \nQWERTY\n \nxr\n, \nQWERTZ\n \nyr\n\n\nRefuse\n is a quick way, to \nUnfuse\n and \nFuse\n right after.\n\n\nFor all practical purposes, this enables you to edit existing Fuse/Bevel/Bridge surfaces.\n\n\n\n\nKeep in mind\n\n\nWhile the initial segments for the refuse are determined automatically, the tension is currently not and will be set to its default value of 0.7 or the value you've chosen the last time you ran the \nRefuse\n tool in your current session.\n\n\n\n\nSelection\n\n\nSelection requirements are the same as for the \nUnfuse\n tool:\n\n\nPoly strip - a row of polygons - \nacross\n the Fuse/Bevel/Bridge surface.\n\n\nThe best way to select this is by using the \nPick Shortest Path\n tool via \nCtrl + Select Mouse\n.\n\nIf there are Ngons on both sides, you can be even faster by loop selecting - via \nAlt + Select Mouse\n - while pointing at a \nrail edge\n of the Fuse/Bevel/Bridge surface.\n\n\n\n\npoly strip across fuse/bevel/bridge surface\n\n\n\n\nNote\n\n\nRefuse\n will automatically expand the selection to the entire Fuse/Bevel/Bridge surface.\n\nIf it runs into triangles or ngons, it will abort.\n\nSee \nQuad Corner\n for how to deal with triangular Bevel corners.\n\n\n\n\n\n\nKeep in mind\n\n\nYou currently can not select the entire bevel surface on your own to refuse, it has to be a poly strip going across.\n\n\n\n\nUsing Refuse",
+            "title": "Refuse"
+        },
+        {
+            "location": "/refuse/index.html#refuse",
+            "text": "shortcut   QWERTY   xr ,  QWERTZ   yr  Refuse  is a quick way, to  Unfuse  and  Fuse  right after.  For all practical purposes, this enables you to edit existing Fuse/Bevel/Bridge surfaces.   Keep in mind  While the initial segments for the refuse are determined automatically, the tension is currently not and will be set to its default value of 0.7 or the value you've chosen the last time you ran the  Refuse  tool in your current session.",
+            "title": "Refuse"
+        },
+        {
+            "location": "/refuse/index.html#selection",
+            "text": "Selection requirements are the same as for the  Unfuse  tool:  Poly strip - a row of polygons -  across  the Fuse/Bevel/Bridge surface.  The best way to select this is by using the  Pick Shortest Path  tool via  Ctrl + Select Mouse . \nIf there are Ngons on both sides, you can be even faster by loop selecting - via  Alt + Select Mouse  - while pointing at a  rail edge  of the Fuse/Bevel/Bridge surface.   poly strip across fuse/bevel/bridge surface   Note  Refuse  will automatically expand the selection to the entire Fuse/Bevel/Bridge surface. \nIf it runs into triangles or ngons, it will abort. \nSee  Quad Corner  for how to deal with triangular Bevel corners.    Keep in mind  You currently can not select the entire bevel surface on your own to refuse, it has to be a poly strip going across.",
+            "title": "Selection"
+        },
+        {
+            "location": "/refuse/index.html#using-refuse",
+            "text": "",
+            "title": "Using Refuse"
+        },
+        {
+            "location": "/unchamfer/index.html",
+            "text": "Unchamfer\n\n\nshortcut\n \nQWERTY\n \nxc\n, \nQWERTZ\n \nyc\n\n\nThe \nUnchamfer\n tool turns a chamfer into a hard edge.\n\n\nSelection\n\n\nPoly strip - a row of polygons - \nalong\n the chamfer.\n\n\nThe best way to select a chamfer is usually by loop selecting it - by default via \nAlt + Select Mouse\n, while pointing at an \nsweep edge\n of the chamfer.\n\n\n\n\nThe sequence of the chamfer polygons determine the direction of the hard edge.\nIf \nUnchamfer\n is run on a single polygon, the direction will be determined by edge length, but can can also be reversed in the redo/tool properties panel.\n\n\nUsing Unchamfer",
+            "title": "Unchamfer"
+        },
+        {
+            "location": "/unchamfer/index.html#unchamfer",
+            "text": "shortcut   QWERTY   xc ,  QWERTZ   yc  The  Unchamfer  tool turns a chamfer into a hard edge.",
+            "title": "Unchamfer"
+        },
+        {
+            "location": "/unchamfer/index.html#selection",
+            "text": "Poly strip - a row of polygons -  along  the chamfer.  The best way to select a chamfer is usually by loop selecting it - by default via  Alt + Select Mouse , while pointing at an  sweep edge  of the chamfer.   The sequence of the chamfer polygons determine the direction of the hard edge.\nIf  Unchamfer  is run on a single polygon, the direction will be determined by edge length, but can can also be reversed in the redo/tool properties panel.",
+            "title": "Selection"
+        },
+        {
+            "location": "/unchamfer/index.html#using-unchamfer",
+            "text": "",
+            "title": "Using Unchamfer"
+        },
+        {
+            "location": "/unbevel/index.html",
+            "text": "Unbevel\n\n\nshortcut\n \nQWERTY\n \nxb\n, \nQWERTZ\n \nyb\n\n\nUnbevel\n is a quick way, to \nUnfuse\n and \nUnchhamfer\n right after.\n\n\nIt turns a Fuse/Bevel/Bridge surface into a hard edge.\n\n\nSelection\n\n\nSelectiton requirements are the same as for the \nUnfuse\n tool:\n\n\nPoly strip - a row of polygons - \nacross\n the Fuse/Bevel/Bridge surface.\n\n\nThe best way to select this is by using the \nPick Shortest Path\n tool via \nCtrl + Select Mouse\n.\n\nIf there are Ngons on both sides, you can be even faster by loop selecting via \nAlt + Select Mouse\n, while pointing at a \nrail edge\n of the Fuse/Bevel/Bridge surface.\n\n\n\n\npoly strip across fuse/bevel/bridge surface\n\n\n\n\nNote\n\n\nUnbevel\n will automatically expand the selection to the entire Fuse/Bevel/Bridge surface.\n\nIf it runs into triangles or ngons, it will abort.\n\nSee \nQuad Corner\n for how to deal with triangular Bevel corners.\n\n\n\n\n\n\nKeep in mind\n\n\nYou currently can not select the entire bevel surface on your own to unbevel, it has to be a poly strip going across.\n\n\n\n\nUsing Unbevel",
+            "title": "Unbevel"
+        },
+        {
+            "location": "/unbevel/index.html#unbevel",
+            "text": "shortcut   QWERTY   xb ,  QWERTZ   yb  Unbevel  is a quick way, to  Unfuse  and  Unchhamfer  right after.  It turns a Fuse/Bevel/Bridge surface into a hard edge.",
+            "title": "Unbevel"
+        },
+        {
+            "location": "/unbevel/index.html#selection",
+            "text": "Selectiton requirements are the same as for the  Unfuse  tool:  Poly strip - a row of polygons -  across  the Fuse/Bevel/Bridge surface.  The best way to select this is by using the  Pick Shortest Path  tool via  Ctrl + Select Mouse . \nIf there are Ngons on both sides, you can be even faster by loop selecting via  Alt + Select Mouse , while pointing at a  rail edge  of the Fuse/Bevel/Bridge surface.   poly strip across fuse/bevel/bridge surface   Note  Unbevel  will automatically expand the selection to the entire Fuse/Bevel/Bridge surface. \nIf it runs into triangles or ngons, it will abort. \nSee  Quad Corner  for how to deal with triangular Bevel corners.    Keep in mind  You currently can not select the entire bevel surface on your own to unbevel, it has to be a poly strip going across.",
+            "title": "Selection"
+        },
+        {
+            "location": "/unbevel/index.html#using-unbevel",
+            "text": "",
+            "title": "Using Unbevel"
+        },
+        {
+            "location": "/unfuck/index.html",
+            "text": "Unf*ck\n\n\nshortcut\n \nQWERTY\n \nxy\n, \nQWERTZ\n \nyx\n\n\nUnf*ck\n aligns vertices along an implicit spline curve. This is especially useful in situations were the Bevel tool overshoots vertex positions.\n\n\n\n\nbevel overshoot\n\n\nSelection\n\n\nEdge loop of at least 4 edges.\n\n\nThe best way to select them is by using the \nPick Shortest Path\n tool via \nCtrl + Select Mouse\n.\n\n\n\n\nf*cked up geometry\n\n\n\n\nNote\n\n\nNote, that the 2 vertices at the end of the selected edges will not be changed, they are only used internally to setup the implicit spline curve.\n\n\n\n\nUsing Unf*ck",
+            "title": "Unf*ck"
+        },
+        {
+            "location": "/unfuck/index.html#unfck",
+            "text": "shortcut   QWERTY   xy ,  QWERTZ   yx  Unf*ck  aligns vertices along an implicit spline curve. This is especially useful in situations were the Bevel tool overshoots vertex positions.   bevel overshoot",
+            "title": "Unf*ck"
+        },
+        {
+            "location": "/unfuck/index.html#selection",
+            "text": "Edge loop of at least 4 edges.  The best way to select them is by using the  Pick Shortest Path  tool via  Ctrl + Select Mouse .   f*cked up geometry   Note  Note, that the 2 vertices at the end of the selected edges will not be changed, they are only used internally to setup the implicit spline curve.",
+            "title": "Selection"
+        },
+        {
+            "location": "/unfuck/index.html#using-unfck",
+            "text": "",
+            "title": "Using Unf*ck"
+        },
+        {
+            "location": "/turn_corner/index.html",
+            "text": "Turn Corner\n\n\nshortcut\n \nQWERTY\n \nxt\n, \nQWERTZ\n \nyt\n\n\nThe \nTurn Corner\n tool is used to re-direct the flow of a chamfer.\n\n\nSelection\n\n\nCorner quad where 3 chamfers meet.\n\n\n\n\nUsing Turn Corner",
+            "title": "Turn Corner"
+        },
+        {
+            "location": "/turn_corner/index.html#turn-corner",
+            "text": "shortcut   QWERTY   xt ,  QWERTZ   yt  The  Turn Corner  tool is used to re-direct the flow of a chamfer.",
+            "title": "Turn Corner"
+        },
+        {
+            "location": "/turn_corner/index.html#selection",
+            "text": "Corner quad where 3 chamfers meet.",
+            "title": "Selection"
+        },
+        {
+            "location": "/turn_corner/index.html#using-turn-corner",
+            "text": "",
+            "title": "Using Turn Corner"
+        },
+        {
+            "location": "/quad_corner/index.html",
+            "text": "Quad Corner\n\n\nshortcut\n \nQWERTY\n \nxq\n, \nQWERTZ\n \nyq\n\n\nThe \nQuad Corner\n tool is used to convert a \ntriangular bevel corner\n into a \nquad corner\n.  \n\n\nSelection\n\n\nCorner polygons with three corner vertices. \n\n\n\n\npolgons of a triangular corner\n\n\nUsing Quad Corner",
+            "title": "Quad Corner"
+        },
+        {
+            "location": "/quad_corner/index.html#quad-corner",
+            "text": "shortcut   QWERTY   xq ,  QWERTZ   yq  The  Quad Corner  tool is used to convert a  triangular bevel corner  into a  quad corner .",
+            "title": "Quad Corner"
+        },
+        {
+            "location": "/quad_corner/index.html#selection",
+            "text": "Corner polygons with three corner vertices.    polgons of a triangular corner",
+            "title": "Selection"
+        },
+        {
+            "location": "/quad_corner/index.html#using-quad-corner",
+            "text": "",
+            "title": "Using Quad Corner"
+        },
+        {
+            "location": "/mark_loop/index.html",
+            "text": "Mark Loop\n\n\n\n\n\nThe \nMark Loop\n tool can be used to add fine grained control to the \nFuse\n tool.\n\nA marked edge, will either forcibly be used to guide a fuse surface, or will be ignored, depending on the presence of other edges.\n\n\n\n\nNote\n\n\nMarking loop edges currently just uses Blender's ability to mark freestyle edges.\n\nIn the future, I want to remove this tool and create custom manipulators for the fuse tool, which allow for more interactive loop edge manipulation.\n\n\n\n\nUsing Mark Loop\n\n\n\n\n\n\n\n\n\n\n\nClear Loop\n\n\nUse \nClear Loop\n to 'unmark' loop edges.",
+            "title": "Mark Loop"
+        },
+        {
+            "location": "/mark_loop/index.html#mark-loop",
+            "text": "The  Mark Loop  tool can be used to add fine grained control to the  Fuse  tool. \nA marked edge, will either forcibly be used to guide a fuse surface, or will be ignored, depending on the presence of other edges.   Note  Marking loop edges currently just uses Blender's ability to mark freestyle edges. \nIn the future, I want to remove this tool and create custom manipulators for the fuse tool, which allow for more interactive loop edge manipulation.",
+            "title": "Mark Loop"
+        },
+        {
+            "location": "/mark_loop/index.html#using-mark-loop",
+            "text": "",
+            "title": "Using Mark Loop"
+        },
+        {
+            "location": "/mark_loop/index.html#clear-loop",
+            "text": "Use  Clear Loop  to 'unmark' loop edges.",
+            "title": "Clear Loop"
+        },
+        {
+            "location": "/plugs_introduction/index.html",
+            "text": "Plugs Introduction\n\n\nThe \nPlug\n tool is used to quickly add prepared details to a model.\n\n\nSelection\n\n\nIn object mode, select a single plug handle, not a plug mesh, and the target model you want to plug into.  \n\n\nIf a plug is brought into the scene from a plug library, the handle will be selected automatically.\n\nSurface snapping and alignment will be set up as well.\n\nThis way you can use the translate tool \ng\n and with it active, hold down \nCTRL\n to snap the plug to a surface.\n\nAll that is left to do is \nshift\n select the target object, followed by running the plug tool.\n\n\n\n\nplug handle and target sphere, which is active\n\n\nUsing Plugs",
+            "title": "Plugs Introduction"
+        },
+        {
+            "location": "/plugs_introduction/index.html#plugs-introduction",
+            "text": "The  Plug  tool is used to quickly add prepared details to a model.",
+            "title": "Plugs Introduction"
+        },
+        {
+            "location": "/plugs_introduction/index.html#selection",
+            "text": "In object mode, select a single plug handle, not a plug mesh, and the target model you want to plug into.    If a plug is brought into the scene from a plug library, the handle will be selected automatically. \nSurface snapping and alignment will be set up as well. \nThis way you can use the translate tool  g  and with it active, hold down  CTRL  to snap the plug to a surface. \nAll that is left to do is  shift  select the target object, followed by running the plug tool.   plug handle and target sphere, which is active",
+            "title": "Selection"
+        },
+        {
+            "location": "/plugs_introduction/index.html#using-plugs",
+            "text": "",
+            "title": "Using Plugs"
+        },
+        {
+            "location": "/plug_libraries/index.html",
+            "text": "Plug Libraries\n\n\nPlug Libraries\n are folders filled with plug blend files and icons.\n\nYou can organize your own plugs into different libraries and you can share, sell and buy plug libraries.\n\n\nUsing Plug Libraries\n\n\n\n\n\n\n\n\n\n\n\n3rd Party Plug Libraries\n\n\nThe following plug libraries are not a part of MESHmachine itself and have been created by their respective authors.  \n\n\nAbstractScape Vol. 1\n\n\n\nby \nTAGAPAW\n\n\nMultifunction Plugs\n\n\n\nby \nOleg\n\n\nPlugs for MESHmachine\n\n\n\nby \nNew Media Supply",
+            "title": "Plug Libraries"
+        },
+        {
+            "location": "/plug_libraries/index.html#plug-libraries",
+            "text": "Plug Libraries  are folders filled with plug blend files and icons. \nYou can organize your own plugs into different libraries and you can share, sell and buy plug libraries.",
+            "title": "Plug Libraries"
+        },
+        {
+            "location": "/plug_libraries/index.html#using-plug-libraries",
+            "text": "",
+            "title": "Using Plug Libraries"
+        },
+        {
+            "location": "/plug_libraries/index.html#3rd-party-plug-libraries",
+            "text": "The following plug libraries are not a part of MESHmachine itself and have been created by their respective authors.",
+            "title": "3rd Party Plug Libraries"
+        },
+        {
+            "location": "/plug_libraries/index.html#abstractscape-vol-1",
+            "text": "by  TAGAPAW",
+            "title": "AbstractScape Vol. 1"
+        },
+        {
+            "location": "/plug_libraries/index.html#multifunction-plugs",
+            "text": "by  Oleg",
+            "title": "Multifunction Plugs"
+        },
+        {
+            "location": "/plug_libraries/index.html#plugs-for-meshmachine",
+            "text": "by  New Media Supply",
+            "title": "Plugs for MESHmachine"
+        },
+        {
+            "location": "/plug_creation/index.html",
+            "text": "Plug Creation\n\n\nThe \nCreate Plug\n tool is used to create a complete plug from one or multiple mesh objects.\n\n\nEvery plug consists of exactly one plug mesh and one plug handle.\n\nOptionally, there can be any number of secondaray subset mesh objects.\n\n\nSelection\n\n\nIn object mode, select one or multiple mesh objeects. The active (last selected) object will become the plug mesh, any additional objects will become plug subets.\n\nThe \nCreate Plug\n tool will then create the plug handle from the plug mesh, but only in part.\n\nYou will have to finish the plug handle yourself, taking care to create roughly even topology and to avoid ngons.\n\n\n\n\n\n\n\n\nUsing Create Plug\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nValidate Plug\n\n\nThe \nValidate Plug\n tool is used to check a plug for errors and confirm everything is in order.\n\nIt will analyze and list all a plug contents and properties.\n\n\nIn addtion, it can hide support objects such as Deformers and Occluders and generate new UUIDs.\n\n\n\n\nSelection\n\n\nAny object can be selected. For the tool to find all a plug's components, you should select the plug handle however.\n\n\nAdd Plug to Library\n\n\nOnce a plug is confirmed to be working, it can be added to any Plug library, that isn't locked, using the \nAdd Plug to Library\n tool.\n\n\n\n\nSelection\n\n\nSelect the plug handle.",
+            "title": "Plug Creation"
+        },
+        {
+            "location": "/plug_creation/index.html#plug-creation",
+            "text": "The  Create Plug  tool is used to create a complete plug from one or multiple mesh objects.  Every plug consists of exactly one plug mesh and one plug handle. \nOptionally, there can be any number of secondaray subset mesh objects.",
+            "title": "Plug Creation"
+        },
+        {
+            "location": "/plug_creation/index.html#selection",
+            "text": "In object mode, select one or multiple mesh objeects. The active (last selected) object will become the plug mesh, any additional objects will become plug subets. \nThe  Create Plug  tool will then create the plug handle from the plug mesh, but only in part. \nYou will have to finish the plug handle yourself, taking care to create roughly even topology and to avoid ngons.",
+            "title": "Selection"
+        },
+        {
+            "location": "/plug_creation/index.html#using-create-plug",
+            "text": "",
+            "title": "Using Create Plug"
+        },
+        {
+            "location": "/plug_creation/index.html#validate-plug",
+            "text": "The  Validate Plug  tool is used to check a plug for errors and confirm everything is in order. \nIt will analyze and list all a plug contents and properties.  In addtion, it can hide support objects such as Deformers and Occluders and generate new UUIDs.",
+            "title": "Validate Plug"
+        },
+        {
+            "location": "/plug_creation/index.html#selection_1",
+            "text": "Any object can be selected. For the tool to find all a plug's components, you should select the plug handle however.",
+            "title": "Selection"
+        },
+        {
+            "location": "/plug_creation/index.html#add-plug-to-library",
+            "text": "Once a plug is confirmed to be working, it can be added to any Plug library, that isn't locked, using the  Add Plug to Library  tool.",
+            "title": "Add Plug to Library"
+        },
+        {
+            "location": "/plug_creation/index.html#selection_2",
+            "text": "Select the plug handle.",
+            "title": "Selection"
+        },
+        {
+            "location": "/advanced_plug_creation/index.html",
+            "text": "Advanced Plug Creation\n\n\nPlugs can consist of more components than just the plug mesh, the plug handle and plug subsets.\n\n\nDeformers\n\n\nFor instance, you can add a deformer, which is a support object that unlocks an alternative deformation approach, usually producing better results.\n\n\n\n\n\n\n\n\n\n\n\nOccluders\n\n\nOccluders are another type of support objects, unlike Deformers, they don't contribute anything to the plugging itself.\n\nThey are used to properly render a plug thumbnail, in case the plug has a significant under structure.\n\n\n\n\n\n\n\n\n\n\n\nHook Plugs\n\n\nHook Plugs are dynamic plugs and allow for geometry manipulation via hook modifiers, before plugging.\n\nAs a hook plug is expanded, no new geometry is added. Keep that in mind, because it can affect how well the plug can deform.\n\n\n\n\n\n\n\n\n\n\n\nArray Plugs\n\n\nArray Plugs are dynamic plugs, that do add new geometry, as the plug is expaned.\n\nThis is done via Blender's array modifier.\nArray plugs are the most complex type of plug so far.\n\n\n\n\n\n\n\n\n\n\n\nSet and Clear Plug Properties\n\n\nPlug components carry certain propeties, which are used internally by MESHmachine.\n\nThis is how MESHmachine knows what the plug mesh is, what object the handle or deformer is, etc.\n\n\nAdvanced Plug Creation especially requires you to set some of these properties manually.\n\nThis is done via the \nSet Plug Props\n tool.\n\nSelect an object, run the tool and change the properties in the redo panel.\n\n\nThe \nClear Plug Props\n tool is used to completely reset an object and remove all its plug properties.\n\nThis is useful, if you want to start afresh, without loosing what you have modeled already.\n\nAnd It's necessary for array cap objects.\n\nSince the caps are created from the same objects as the plug mesh, handle or deformer, they carry the same properties.\n\nIf you don't clear the cap props, MESHmachine doesn't know which is the real mesh, handle or deformer.",
+            "title": "Advanced Plug Creation"
+        },
+        {
+            "location": "/advanced_plug_creation/index.html#advanced-plug-creation",
+            "text": "Plugs can consist of more components than just the plug mesh, the plug handle and plug subsets.",
+            "title": "Advanced Plug Creation"
+        },
+        {
+            "location": "/advanced_plug_creation/index.html#deformers",
+            "text": "For instance, you can add a deformer, which is a support object that unlocks an alternative deformation approach, usually producing better results.",
+            "title": "Deformers"
+        },
+        {
+            "location": "/advanced_plug_creation/index.html#occluders",
+            "text": "Occluders are another type of support objects, unlike Deformers, they don't contribute anything to the plugging itself. \nThey are used to properly render a plug thumbnail, in case the plug has a significant under structure.",
+            "title": "Occluders"
+        },
+        {
+            "location": "/advanced_plug_creation/index.html#hook-plugs",
+            "text": "Hook Plugs are dynamic plugs and allow for geometry manipulation via hook modifiers, before plugging. \nAs a hook plug is expanded, no new geometry is added. Keep that in mind, because it can affect how well the plug can deform.",
+            "title": "Hook Plugs"
+        },
+        {
+            "location": "/advanced_plug_creation/index.html#array-plugs",
+            "text": "Array Plugs are dynamic plugs, that do add new geometry, as the plug is expaned. \nThis is done via Blender's array modifier.\nArray plugs are the most complex type of plug so far.",
+            "title": "Array Plugs"
+        },
+        {
+            "location": "/advanced_plug_creation/index.html#set-and-clear-plug-properties",
+            "text": "Plug components carry certain propeties, which are used internally by MESHmachine. \nThis is how MESHmachine knows what the plug mesh is, what object the handle or deformer is, etc.  Advanced Plug Creation especially requires you to set some of these properties manually. \nThis is done via the  Set Plug Props  tool. \nSelect an object, run the tool and change the properties in the redo panel.  The  Clear Plug Props  tool is used to completely reset an object and remove all its plug properties. \nThis is useful, if you want to start afresh, without loosing what you have modeled already. \nAnd It's necessary for array cap objects. \nSince the caps are created from the same objects as the plug mesh, handle or deformer, they carry the same properties. \nIf you don't clear the cap props, MESHmachine doesn't know which is the real mesh, handle or deformer.",
+            "title": "Set and Clear Plug Properties"
+        },
+        {
+            "location": "/remove_plugs/index.html",
+            "text": "Remove Plugs\n\n\nThe \nRemove Plugs\n option, is used to remove individual plugs from a library and hard drive, directly from inside Blender.  \n\n\n\n\nKeep in mind\n\n\nThis completely deletes a plug and cannot be undone.\n\n\n\n\nUsing Remove Plugs\n\n\n\n\nEnable the \nRemove Plugs\n checkbox in the \nPlug Libraries\n sub menu.\n\nThen procceed to select a plug, as if you were to bring it into the scene.  \n\n\n\n\nA confirmation dialog will appear. You cann abort this via \nESC\n or by clicking outside of it.\n\nIf you confirm by pressing OK, the plug will be deleted.\n\n\nIf you are done, uncheck the \nRemove Plug\n checkbox again.\n\n\n\n\nNote\n\n\nIf you want to \nremove a larger number of plugs\n, a better way may be to do it directly in the file browser.\n\nNavigate to the plug library and delete the matching plug blends and icons accordingly.",
+            "title": "Remove Plugs"
+        },
+        {
+            "location": "/remove_plugs/index.html#remove-plugs",
+            "text": "The  Remove Plugs  option, is used to remove individual plugs from a library and hard drive, directly from inside Blender.     Keep in mind  This completely deletes a plug and cannot be undone.",
+            "title": "Remove Plugs"
+        },
+        {
+            "location": "/remove_plugs/index.html#using-remove-plugs",
+            "text": "Enable the  Remove Plugs  checkbox in the  Plug Libraries  sub menu. \nThen procceed to select a plug, as if you were to bring it into the scene.     A confirmation dialog will appear. You cann abort this via  ESC  or by clicking outside of it. \nIf you confirm by pressing OK, the plug will be deleted.  If you are done, uncheck the  Remove Plug  checkbox again.   Note  If you want to  remove a larger number of plugs , a better way may be to do it directly in the file browser. \nNavigate to the plug library and delete the matching plug blends and icons accordingly.",
+            "title": "Using Remove Plugs"
+        },
+        {
+            "location": "/boolean_cleanup/index.html",
+            "text": "Boolean Cleanup\n\n\nThe \nBoolean Cleanup\n tool is used to merge vertices at the intersection of boolean operations.\n\nIt does that by sorting vertices according to the edgeson each side.\n\nOften with boolean operations, you want to maintain the vertices from one of the operators, and merge the other verts to those.\n\n\nSelection\n\n\nSelect a loop of edges or vertices. In the context of booleans, this will be a closed loop, a cyclic selection, but the tool will also work on non-cyclic selections.\n\n\n\n\nedge or vertex loop, cyclic or non-cyclic\n\n\nUsing Boolean Cleanup",
+            "title": "Boolean Cleanup"
+        },
+        {
+            "location": "/boolean_cleanup/index.html#boolean-cleanup",
+            "text": "The  Boolean Cleanup  tool is used to merge vertices at the intersection of boolean operations. \nIt does that by sorting vertices according to the edgeson each side. \nOften with boolean operations, you want to maintain the vertices from one of the operators, and merge the other verts to those.",
+            "title": "Boolean Cleanup"
+        },
+        {
+            "location": "/boolean_cleanup/index.html#selection",
+            "text": "Select a loop of edges or vertices. In the context of booleans, this will be a closed loop, a cyclic selection, but the tool will also work on non-cyclic selections.   edge or vertex loop, cyclic or non-cyclic",
+            "title": "Selection"
+        },
+        {
+            "location": "/boolean_cleanup/index.html#using-boolean-cleanup",
+            "text": "",
+            "title": "Using Boolean Cleanup"
+        },
+        {
+            "location": "/chamfer/index.html",
+            "text": "Chamfer\n\n\nThe \nChamfer\n tool is used to create a chamfer or flat bevel at the intersection of boolean operators.\n\nIt is \nnot a general purpose chamfer\n tool, like blenders bevel tool is.  \n\n\nChamfer\n can deal with tricky geometry overlaps and significantly reduce manual cleanup work as a result of these overlaps.\nIt also as independent, per-side loop slide properties.\n\n\n\n\nNote\n\n\nIt is wise to run \nBooleanCleanup\n before using the Chamfer tool.\n\n\n\n\nSelection\n\n\nSelect a loop of edges or vertices. It should be a cyclic selection, otherwise non-manifold geometry will be created.\n\n\n\n\ncyclic edge loop at boolean intersection, a vert loop is fine as well\n\n\nUsing Chamfer",
+            "title": "Chamfer"
+        },
+        {
+            "location": "/chamfer/index.html#chamfer",
+            "text": "The  Chamfer  tool is used to create a chamfer or flat bevel at the intersection of boolean operators. \nIt is  not a general purpose chamfer  tool, like blenders bevel tool is.    Chamfer  can deal with tricky geometry overlaps and significantly reduce manual cleanup work as a result of these overlaps.\nIt also as independent, per-side loop slide properties.   Note  It is wise to run  BooleanCleanup  before using the Chamfer tool.",
+            "title": "Chamfer"
+        },
+        {
+            "location": "/chamfer/index.html#selection",
+            "text": "Select a loop of edges or vertices. It should be a cyclic selection, otherwise non-manifold geometry will be created.   cyclic edge loop at boolean intersection, a vert loop is fine as well",
+            "title": "Selection"
+        },
+        {
+            "location": "/chamfer/index.html#using-chamfer",
+            "text": "",
+            "title": "Using Chamfer"
+        },
+        {
+            "location": "/offset/index.html",
+            "text": "Offset\n\n\nThe \nOffset\n tool is used to duplicate and offset an edge loop at the intersection of boolean operators.\n\nThis way clean topology in the form of a perimeter loop is established in the periphery of the boolean operation.\n\nIt is \nnot a general purpose offset\n tool.\n\n\nOffset\n can deal with tricky geometry overlaps and significantly reduce manual cleanup work as a result of these overlaps.\n\n\n\n\nNote\n\n\nIt is wise to run \nBooleanCleanup\n before using the Offset tool.\n\n\n\n\nSelection\n\n\nSelect a loop of edges or vertices. It should be a cyclic selection, otherwise non-manifold geometry will be created.\n\n\n\n\ncyclic edge loop at boolean intersection or chamfer, a vert loop is fine as well\n\n\nUsing Offset",
+            "title": "Offset"
+        },
+        {
+            "location": "/offset/index.html#offset",
+            "text": "The  Offset  tool is used to duplicate and offset an edge loop at the intersection of boolean operators. \nThis way clean topology in the form of a perimeter loop is established in the periphery of the boolean operation. \nIt is  not a general purpose offset  tool.  Offset  can deal with tricky geometry overlaps and significantly reduce manual cleanup work as a result of these overlaps.   Note  It is wise to run  BooleanCleanup  before using the Offset tool.",
+            "title": "Offset"
+        },
+        {
+            "location": "/offset/index.html#selection",
+            "text": "Select a loop of edges or vertices. It should be a cyclic selection, otherwise non-manifold geometry will be created.   cyclic edge loop at boolean intersection or chamfer, a vert loop is fine as well",
+            "title": "Selection"
+        },
+        {
+            "location": "/offset/index.html#using-offset",
+            "text": "",
+            "title": "Using Offset"
+        },
+        {
+            "location": "/create_stash/index.html",
+            "text": "Create Stash (Stash it/them)\n\n\nshortcut\n \nQWERTY\n \nxs\n, \nQWERTZ\n \nys\n\n\nStashes can be thought of as backups of objects. These backups can then be brought back at any time, or referenced/used by other tools, such as \nConform\n or \nNormal Transfer\n.\nStash objects do not clutter your scene, because they don't exist in any scene. They are only stored in the blend file itself.\n\n\nThe \nCreate Stash\n tool is used to create a stash, either \nfrom\n the currently active object, or if multiple objects are selected, \nto\n the active object.\n\n\n\n\nNote\n\n\nThe \nCreate Stash\n tool appears as \nStash it\n or \nStash them\n in the menu.\n\n\n\n\nSelection\n\n\nOne or multiple objects can be selected, one has to be active.\n\nYou can \nstash\n in object and edit mode.\n\n\n\n\n\nUsing Create Stash",
+            "title": "Create Stash"
+        },
+        {
+            "location": "/create_stash/index.html#create-stash-stash-itthem",
+            "text": "shortcut   QWERTY   xs ,  QWERTZ   ys  Stashes can be thought of as backups of objects. These backups can then be brought back at any time, or referenced/used by other tools, such as  Conform  or  Normal Transfer .\nStash objects do not clutter your scene, because they don't exist in any scene. They are only stored in the blend file itself.  The  Create Stash  tool is used to create a stash, either  from  the currently active object, or if multiple objects are selected,  to  the active object.   Note  The  Create Stash  tool appears as  Stash it  or  Stash them  in the menu.",
+            "title": "Create Stash (Stash it/them)"
+        },
+        {
+            "location": "/create_stash/index.html#selection",
+            "text": "One or multiple objects can be selected, one has to be active. \nYou can  stash  in object and edit mode.",
+            "title": "Selection"
+        },
+        {
+            "location": "/create_stash/index.html#using-create-stash",
+            "text": "",
+            "title": "Using Create Stash"
+        },
+        {
+            "location": "/view_stashes/index.html",
+            "text": "View Stashes\n\n\nshortcut\n \nQWERTY\n \nxv\n, \nQWERTZ\n \nyv\n\n\nThe \nView Stashes\n tool is used to view and retrieve the stashes associated with an object.\n\n\nSelection\n\n\nAn object carrying stashes.\n\n\n\n\nthis sphere has 2 stashes, as indicated by the stash counter at the top of the 3d view\n\n\nUsing View Stashes",
+            "title": "View and Retrieve Stashes"
+        },
+        {
+            "location": "/view_stashes/index.html#view-stashes",
+            "text": "shortcut   QWERTY   xv ,  QWERTZ   yv  The  View Stashes  tool is used to view and retrieve the stashes associated with an object.",
+            "title": "View Stashes"
+        },
+        {
+            "location": "/view_stashes/index.html#selection",
+            "text": "An object carrying stashes.   this sphere has 2 stashes, as indicated by the stash counter at the top of the 3d view",
+            "title": "Selection"
+        },
+        {
+            "location": "/view_stashes/index.html#using-view-stashes",
+            "text": "",
+            "title": "Using View Stashes"
+        },
+        {
+            "location": "/clear_stashes/index.html",
+            "text": "Clear Stashes\n\n\nshortcut\n \nQWERTY\n \nxc\n, \nQWERTZ\n \nyc\n, \nonly in object mode\n\n\nThe \nClear Stash\n tool is used to remove a stash from an object.\n\nThis does not delete the stash completely, it only removes the association with the current object.  \n\n\nIf the cleared stash is not associated with any other object, it becomes an \nOrphan stash\n.\n\n\nSelection\n\n\nAn object carrying stashes.\n\n\n\n\nthis sphere has 2 stashes, as indicated by the stash counter at the top of the 3d view\n\n\nUsing View Stashes",
+            "title": "Clear Stashes"
+        },
+        {
+            "location": "/clear_stashes/index.html#clear-stashes",
+            "text": "shortcut   QWERTY   xc ,  QWERTZ   yc ,  only in object mode  The  Clear Stash  tool is used to remove a stash from an object. \nThis does not delete the stash completely, it only removes the association with the current object.    If the cleared stash is not associated with any other object, it becomes an  Orphan stash .",
+            "title": "Clear Stashes"
+        },
+        {
+            "location": "/clear_stashes/index.html#selection",
+            "text": "An object carrying stashes.   this sphere has 2 stashes, as indicated by the stash counter at the top of the 3d view",
+            "title": "Selection"
+        },
+        {
+            "location": "/clear_stashes/index.html#using-view-stashes",
+            "text": "",
+            "title": "Using View Stashes"
+        },
+        {
+            "location": "/transfer_stashes/index.html",
+            "text": "Transfer Stashes\n\n\nshortcut\n \nQWERTY\n \nxt\n, \nQWERTZ\n \nyt\n, \nonly in object mode\n\n\nThe \nTransfer Stashes\n tool is used to copy stashes from one object to another one.\n\nExisting stashes on the target object will not be overwritten. The transfered stashes will simply be added to the existing collection.\n\n\nSelection\n\n\nExcatly two objects, where the inactive object carries stashes.\n\n\n\n\nthe sphere one the left is active and will receive stashes from the sphere on the right, which was selected first\n\n\nUsing View Stashes",
+            "title": "Transfer Stashes"
+        },
+        {
+            "location": "/transfer_stashes/index.html#transfer-stashes",
+            "text": "shortcut   QWERTY   xt ,  QWERTZ   yt ,  only in object mode  The  Transfer Stashes  tool is used to copy stashes from one object to another one. \nExisting stashes on the target object will not be overwritten. The transfered stashes will simply be added to the existing collection.",
+            "title": "Transfer Stashes"
+        },
+        {
+            "location": "/transfer_stashes/index.html#selection",
+            "text": "Excatly two objects, where the inactive object carries stashes.   the sphere one the left is active and will receive stashes from the sphere on the right, which was selected first",
+            "title": "Selection"
+        },
+        {
+            "location": "/transfer_stashes/index.html#using-view-stashes",
+            "text": "",
+            "title": "Using View Stashes"
+        },
+        {
+            "location": "/orphan_stashes/index.html",
+            "text": "View and Remove Orphan Stashes\n\n\nOprhan Stashes are stashes, that are no longer referenced by any scene objects.\n\n\nThe \nView Oprhans\n tool is essentially the same as the \nViewStashes\n tool, except it accessed orphan stashes, instead of object stashes.\n\n\nThe \nRemove Orphans\n tool is used to permantly remove orphan stashes from the blend file.\n\nOnce this is done, the stash object is lost, and can't be retrieved anymore.\n\n\nSelection\n\n\nThe tools do not require any selection, only the presence of orphan stashes in the blend file.\n\n\nUsing Orphan Stashes",
+            "title": "Orphan Stashes"
+        },
+        {
+            "location": "/orphan_stashes/index.html#view-and-remove-orphan-stashes",
+            "text": "Oprhan Stashes are stashes, that are no longer referenced by any scene objects.  The  View Oprhans  tool is essentially the same as the  ViewStashes  tool, except it accessed orphan stashes, instead of object stashes.  The  Remove Orphans  tool is used to permantly remove orphan stashes from the blend file. \nOnce this is done, the stash object is lost, and can't be retrieved anymore.",
+            "title": "View and Remove Orphan Stashes"
+        },
+        {
+            "location": "/orphan_stashes/index.html#selection",
+            "text": "The tools do not require any selection, only the presence of orphan stashes in the blend file.",
+            "title": "Selection"
+        },
+        {
+            "location": "/orphan_stashes/index.html#using-orphan-stashes",
+            "text": "",
+            "title": "Using Orphan Stashes"
+        },
+        {
+            "location": "/conform/index.html",
+            "text": "Conform\n\n\nshortcut\n \nQWERTY\n \nxm\n, \nQWERTZ\n \nym\n\n\nThe \nConform\n tool provides convenient access to the shrinkwrap modifier, while being in edit mode.\n\nIt shrinkwraps the selected geometry to a chosen \nstash object\n.\n\n\nSelection\n\n\nVerts, edges or faces, on an object carrying stashes.\n\n\n\n\nUsing Conform",
+            "title": "Conform"
+        },
+        {
+            "location": "/conform/index.html#conform",
+            "text": "shortcut   QWERTY   xm ,  QWERTZ   ym  The  Conform  tool provides convenient access to the shrinkwrap modifier, while being in edit mode. \nIt shrinkwraps the selected geometry to a chosen  stash object .",
+            "title": "Conform"
+        },
+        {
+            "location": "/conform/index.html#selection",
+            "text": "Verts, edges or faces, on an object carrying stashes.",
+            "title": "Selection"
+        },
+        {
+            "location": "/conform/index.html#using-conform",
+            "text": "",
+            "title": "Using Conform"
+        },
+        {
+            "location": "/normal_flatten_straighten/index.html",
+            "text": "Normal Flatten and Straighten\n\n\n\n\n\nThe \nNormal Flatten\n tool is similar to Blender's \nSet Normals from Faces\n tool.\n\nBoth set normals based on face selections, and so 'flatten' the shading.\n\nThe difference is \nNormal Flatten\n respects the presence of sharp edges and can also be used with an angle threshold.\n\n\n\n\nleft: before flattening, right: after flattening\n\n\nSelection\n\n\nOne or multiple faces. The faces should be flat geometrically for best results.\n\n\n\n\n\n\nThe \nNormal Straighten\n tool is used to straigthen out the shading on straight fillet sections or cylindrical or conical meshes.\n\n\n\n\nleft: before straightening, right: after straightening\n\n\nSelection\n\n\nPolystrip across straight fillet or cylindrical sections.\n\nYou can select multiple islands the the same time, but they shouldn't be directly next to each other.\n\n\n\n\nUsing Normal Flatten and Straighten",
+            "title": "Normal Flatten and Straighten"
+        },
+        {
+            "location": "/normal_flatten_straighten/index.html#normal-flatten-and-straighten",
+            "text": "The  Normal Flatten  tool is similar to Blender's  Set Normals from Faces  tool. \nBoth set normals based on face selections, and so 'flatten' the shading. \nThe difference is  Normal Flatten  respects the presence of sharp edges and can also be used with an angle threshold.   left: before flattening, right: after flattening",
+            "title": "Normal Flatten and Straighten"
+        },
+        {
+            "location": "/normal_flatten_straighten/index.html#selection",
+            "text": "One or multiple faces. The faces should be flat geometrically for best results.    The  Normal Straighten  tool is used to straigthen out the shading on straight fillet sections or cylindrical or conical meshes.   left: before straightening, right: after straightening",
+            "title": "Selection"
+        },
+        {
+            "location": "/normal_flatten_straighten/index.html#selection_1",
+            "text": "Polystrip across straight fillet or cylindrical sections. \nYou can select multiple islands the the same time, but they shouldn't be directly next to each other.",
+            "title": "Selection"
+        },
+        {
+            "location": "/normal_flatten_straighten/index.html#using-normal-flatten-and-straighten",
+            "text": "",
+            "title": "Using Normal Flatten and Straighten"
+        },
+        {
+            "location": "/normal_transfer/index.html",
+            "text": "Normal Transfer\n\n\n\n\n\nThe \nNormal Transfer\n tool provides convenient access to the data transfer modifier, while being in edit mode.\n\nIt transfers normals from the chosen \nstash object\n to the selected geometry.\n\n\nSelection\n\n\nVerts, edges or faces, on an object carrying stashes.\n\n\n\n\nUsing Normal Transfer",
+            "title": "Normal Transfer"
+        },
+        {
+            "location": "/normal_transfer/index.html#normal-transfer",
+            "text": "The  Normal Transfer  tool provides convenient access to the data transfer modifier, while being in edit mode. \nIt transfers normals from the chosen  stash object  to the selected geometry.",
+            "title": "Normal Transfer"
+        },
+        {
+            "location": "/normal_transfer/index.html#selection",
+            "text": "Verts, edges or faces, on an object carrying stashes.",
+            "title": "Selection"
+        },
+        {
+            "location": "/normal_transfer/index.html#using-normal-transfer",
+            "text": "",
+            "title": "Using Normal Transfer"
+        },
+        {
+            "location": "/normal_clear/index.html",
+            "text": "Normal Clear\n\n\n\n\n\nThe \nNormal Clear tool\n can be used to selectively clear custom normals.\n\nThis is different from Blenders \nClear Custom Split Normals Data\n which clears the entire model.\n\n\nSelection\n\n\nFaces, edges or verts with custom noamls.\n\n\nUsing Normal Clear",
+            "title": "Normal Clear"
+        },
+        {
+            "location": "/normal_clear/index.html#normal-clear",
+            "text": "The  Normal Clear tool  can be used to selectively clear custom normals. \nThis is different from Blenders  Clear Custom Split Normals Data  which clears the entire model.",
+            "title": "Normal Clear"
+        },
+        {
+            "location": "/normal_clear/index.html#selection",
+            "text": "Faces, edges or verts with custom noamls.",
+            "title": "Selection"
+        },
+        {
+            "location": "/normal_clear/index.html#using-normal-clear",
+            "text": "",
+            "title": "Using Normal Clear"
+        },
+        {
+            "location": "/symmetrize/index.html",
+            "text": "Symmetrize\n\n\nshortcut\n \nAlt + x\n, \nAlt + y\n, \nAlt + z\n\n\nThe \nSymmetrize\n tool extends blender's native \nSymmetrize\n with the ability to mirror custom normals.\n\n\n\n\nNote\n\n\nMirroring custom normals can be very tricky on the center edge loop.\n\nMESHmachine's Symmetrize provides options to deal with this, but they are imperfect and often custom normals will need to be fixed manually in the center region.\n\n\n\n\nSelection\n\n\nNo selection required, you only need to be in edit mode.\n\n\nUsing Symmetrize",
+            "title": "Symmetrize"
+        },
+        {
+            "location": "/symmetrize/index.html#symmetrize",
+            "text": "shortcut   Alt + x ,  Alt + y ,  Alt + z  The  Symmetrize  tool extends blender's native  Symmetrize  with the ability to mirror custom normals.   Note  Mirroring custom normals can be very tricky on the center edge loop. \nMESHmachine's Symmetrize provides options to deal with this, but they are imperfect and often custom normals will need to be fixed manually in the center region.",
+            "title": "Symmetrize"
+        },
+        {
+            "location": "/symmetrize/index.html#selection",
+            "text": "No selection required, you only need to be in edit mode.",
+            "title": "Selection"
+        },
+        {
+            "location": "/symmetrize/index.html#using-symmetrize",
+            "text": "",
+            "title": "Using Symmetrize"
+        },
+        {
+            "location": "/real_mirror/index.html",
+            "text": "Real Mirror\n\n\nshortcut\n \nQWERTY\n \nxr\n, \nQWERTZ\n \nyr\n, \nonly in object mode\n\n\nThe \nReal Mirror\n tool is used to turn the results of the mirror modifer into real geometry.\n\n\nThis is done for two main reasons:\n\n\n\n\nTo get a proper origin for the mirrored part, so object space texturing works as expected.\n\n\nTo mirror custom normals, which the mirror modifier can't do.\n\n\n\n\nSelection\n\n\nOne or multiple objects, with one or multiple mirror modifiers, that are visible and renderable and have at least one mirror axis checked.\n\n\n\n\nUsing Real Mirror",
+            "title": "Real Mirror"
+        },
+        {
+            "location": "/real_mirror/index.html#real-mirror",
+            "text": "shortcut   QWERTY   xr ,  QWERTZ   yr ,  only in object mode  The  Real Mirror  tool is used to turn the results of the mirror modifer into real geometry.  This is done for two main reasons:   To get a proper origin for the mirrored part, so object space texturing works as expected.  To mirror custom normals, which the mirror modifier can't do.",
+            "title": "Real Mirror"
+        },
+        {
+            "location": "/real_mirror/index.html#selection",
+            "text": "One or multiple objects, with one or multiple mirror modifiers, that are visible and renderable and have at least one mirror axis checked.",
+            "title": "Selection"
+        },
+        {
+            "location": "/real_mirror/index.html#using-real-mirror",
+            "text": "",
+            "title": "Using Real Mirror"
+        },
+        {
+            "location": "/vselect/index.html",
+            "text": "Vselect\n\n\n\n\n\nThe \nVSelect\n tool can be used to quickly select geometry based on vertex group membership.\n\n\nSelection\n\n\nIf nothing is selected, all vertex groups of the mesh will be cyclced through.\n\nOtherwise only the vertex groups the selected verts, edges or faces belong to will be availble to choose from..\n\n\nUsing VSelect",
+            "title": "VSelect"
+        },
+        {
+            "location": "/vselect/index.html#vselect",
+            "text": "The  VSelect  tool can be used to quickly select geometry based on vertex group membership.",
+            "title": "Vselect"
+        },
+        {
+            "location": "/vselect/index.html#selection",
+            "text": "If nothing is selected, all vertex groups of the mesh will be cyclced through. \nOtherwise only the vertex groups the selected verts, edges or faces belong to will be availble to choose from..",
+            "title": "Selection"
+        },
+        {
+            "location": "/vselect/index.html#using-vselect",
+            "text": "",
+            "title": "Using VSelect"
+        },
+        {
+            "location": "/circle_relax/index.html",
+            "text": "Circle and Relax\n\n\n\n\n\nThe \nCircle\n and \nRelax\n tools are modal wrappers around Looptools Circle and Relax tools.\n\n\n\n\nkeep in mind\n\n\nLooptools\n is an addon, supplied by default with Blender 2.79, but it needs to be activated first, before MESHmachine's wrappers are available.\n\n\n\n\nSelection\n\n\nVertex or Edge loops.\n\n\n\n\n\nUsing Circle and Relax",
+            "title": "Circle and Relax"
+        },
+        {
+            "location": "/circle_relax/index.html#circle-and-relax",
+            "text": "The  Circle  and  Relax  tools are modal wrappers around Looptools Circle and Relax tools.   keep in mind  Looptools  is an addon, supplied by default with Blender 2.79, but it needs to be activated first, before MESHmachine's wrappers are available.",
+            "title": "Circle and Relax"
+        },
+        {
+            "location": "/circle_relax/index.html#selection",
+            "text": "Vertex or Edge loops.",
+            "title": "Selection"
+        },
+        {
+            "location": "/circle_relax/index.html#using-circle-and-relax",
+            "text": "",
+            "title": "Using Circle and Relax"
+        },
+        {
+            "location": "/tape/index.html",
+            "text": "Tape\n\n\nshortcut\n \nQWERTY\n \nxd\n, \nQWERTZ\n \nyd\n, \nonly in object mode\n\n\nThe \nTape\n tool is used to draw straight projected lines on curved surfaces, which Blenders Grease Pencil line tool cannot do.\n\n\nUsing Tape",
+            "title": "Tape"
+        },
+        {
+            "location": "/tape/index.html#tape",
+            "text": "shortcut   QWERTY   xd ,  QWERTZ   yd ,  only in object mode  The  Tape  tool is used to draw straight projected lines on curved surfaces, which Blenders Grease Pencil line tool cannot do.",
+            "title": "Tape"
+        },
+        {
+            "location": "/tape/index.html#using-tape",
+            "text": "",
+            "title": "Using Tape"
+        },
+        {
+            "location": "/changelog/index.html",
+            "text": "v0.6\n\n\n\n\n2018-10-31\n\n\n\n\n\n\nFuse\n\n\nonly draw self.capholes in HUD, if not self.cyclic\n\n\n\n\n\n\nRefuse\n\n\nadd force_projected_loop support\n\n\n\n\n\n\nFlatten\n\n\nadd 1,2 scrolling\n\n\n\n\n\n\nUnchamfer\n\n\nadd bweight and bweights props in draw()\n\n\n\n\n\n\nUnfuck()\n\n\nfix issue where the handle1co and handle2co wouldn't update properly when the width is changed, because the original end points were used for intersect_point_line() instead of the adjustted start1co and start2co\n\n\n\n\n\n\nTurnCorner\n\n\nset smoothing based on initially selected face\n\n\n\n\n\n\nQuadCorner\n\n\nlower width min prop\n\n\nonly draw self.tension in HUD, if not self.single\n\n\n\n\n\n\nPlug and DrawPlug\n\n\nuse utils.normal.normal_clear_across_sharps() instaed of various vertex group ops, to clear normals acress sharps\n\n\nhide plug type selection in draw()\n\n\n\n\n\n\nfix issue with cointain amount not taking into account plug and target scale\n\n\n\n\n\n\nMyPlugs library\n\n\nfix contain issue in 001_Blender plug, as a result of the latest Plug() changes\n\n\n\n\n\n\nCreateStash\n\n\nfix exception when pressing d in modal(), when stash has not been created from other object, and so sources was not defined\n\n\nallow d key presses to pass through, if there are no sources or if alt, shift, ctrl is pressed\n\n\nset MM.isstashobj prop\n\n\n\n\n\n\nViewStashes\n\n\nwhen retrieving a stashe, only transfer stashes when the stash matrix == target matrix at the time the stash was created\n\n\nundo stash naming when retrieving a stash\n\n\nunset MM.isstashobj prop when retrieving\n\n\n\n\n\n\nTransferStashes\n\n\nmove retrieve and restashing to utils.stash.transfer_stashes()\n\n\nadd prop to enable retieval and restashing\n\n\nuseful for transfering stashes to plug subsets\n\n\nalso useful for transfering stashes to duplicate object with applied scale/rotation\n\n\n\n\n\n\n\n\n\n\nClearStashes and RemoveOrphanStashes\n\n\nadd deletion counter title\n\n\n\n\n\n\nConform\n\n\nmake sure stashobjs matrix == active obj's matrix\n\n\nthis means you can move and rotate an object with stashes, and conform will keep working\n\n\n\n\n\n\n\n\n\n\nadd ViewOrphanStashes()\n\n\nview and retrieve orphan stashes\n\n\n\n\n\n\nadd RemoveOrphanStashes()\n\n\nremoves objects with MM.isstashobj prop and use_face_user props being True and users prop being 1\n\n\n\n\n\n\nBooleanCleanup\n\n\nadd poll()\n\n\nadd 1,2 scrolling\n\n\n\n\n\n\nChamfer\n\n\nrename Normal Transfer VGroup stuff to just Vertex Group\n\n\nname the actual vgroup \"chamfer\"\n\n\nadd 1,2 scrolling\n\n\n\n\n\n\nOffset\n\n\nrename Normal Transfer VGroup stuff to just Vertex Group\n\n\nname the actual vgroup \"offset\"\n\n\nadd 1,2 scrolling\n\n\n\n\n\n\nNormalTransfer\n\n\nautomatically clear normals across sharp edges, if limit_by_sharps props is True\n\n\nexperimental\n\n\n\n\n\n\n\n\n\n\nNormalClear\n\n\nchange prevent_sharp_edges to limit_to_selection\n\n\n\n\n\n\nSymmetrize\n\n\nredo normal transfer without stashes\n\n\n\n\n\n\nReal Mirror\n\n\nfix parenting issues by simplifiying using matrix math\n\n\n\n\n\n\nLooptools Wrappers\n\n\nremove UP_ARROW and DOWN_ARROW\n\n\n\n\n\n\nVSelect\n\n\nadd ONE and TWO keys\n\n\n\n\n\n\nproperties.py\n\n\nsave stash matrix in object.MM.stashmx and stash target matrix in object.MM.stashtargetmx instead of on the stashes\n\n\nthis is necessary for the retrieval of orphan stashes\n\n\nremove obsolete location, rotation and scale props for stashes, it's all done via matrices now\n\n\nrename MM.isstash to MM.isstashobj\n\n\n\n\n\n\nutils.core.init_sweeps()\n\n\nfix \"mark loop\"/freestyle issue, where single loop edges weren't expluded when marked\n\n\n\n\n\n\nutils.normal.py\n        - move normal functions from ops over here\n\n\nadd normal_transfer_from_obj() and normal_transfer_from_stash()\n\n\n\n\n\n\nutils.stash.create_stash()\n\n\nalways set the stashmx and stashtargetmx props\n\n\nthis way, you can properly retrieve orphan stashes at the location they were created at\n\n\n\n\n\n\nutils.stash.transfer_stashes()\n\n\nadd restash arg + logic\n\n\n\n\n\n\nutils.ui.py\n\n\nin draw_init() and draw_prop() support modal_hud_scale and user_preferences.view.ui_scale\n\n\n\n\n\n\nUI\n\n\nimprove stash idx HUD display in NormalTransfer(), Conform(), ViewStashes and ClearStashes()\n\n\nremove modal HUD positioning options\n\n\nadd modal_hud_scale prop\n\n\nremove adddon warning\n\n\n\n\n\n\n\n\nv0.5.16 \nlimited\n\n\n\n\n2018-07-13\n\n\n\n\n\n\nPlug\n\n\nadd \"global\" deformation toggle\n\n\nintended for cases, where you know you are working on flat geometry but the plugs are complex and have a deformer with use_deformer toggled on, perhaps even with subsets set to forcesubsetdeform\n\n\nyou can just toggle off all deformation in that case, even for fillet plugs and speed up the plug tool considerably\n\n\n\n\n\n\nstore handle scale\n\n\nstore local empty location\n\n\nadd simple subdivision to the cointainer, to avoid rare bug in negative corners, where faces to replace are found outisde the container cut\n\n\n\n\n\n\nInsertPlug\n\n\ncheck if plug scale is stored and set it accordingly\n\n\ncheck if empty locations are stored and set them accordingly\n\n\n\n\n\n\n\n\n\n\nValidatePlug\n\n\nadd flipped normals check\n\n\nalways automatically deselect handle polyons\n\n\nalways generate unique UUIDs for emtpies, when they aren't set\n\n\n\n\n\n\nAddPlugToLibrary\n\n\nadd mode selection and with it ability to replace existing plugs\n\n\nuseful to update plugs, without having to manually remove the previous version\n\n\n\n\n\n\n\n\n\n\nMyPlugs plugs\n\n\nadd Blender logo plug to previously empty library\n\n\n\n\n\n\n\n\nv0.5.15 \nlimited\n\n\n\n\n2018-07-04\n\n\n\n\n\n\npreferences\n\n\nadd plug creator property, useful for plug creators to attach their name, url or email or any other text string to a plug\n\n\n\n\n\n\nPlug\n\n\nre-shuffle ui in the redo panel and introduce separate deformation box\n\n\nsupport deformers for array plugs\n\n\nsupport deformers for subsets\n\n\nexpose deformer related plug precision and subset precision properties\n        - for arrays with deformers especially, higher values seem to be necessary with increasing length of the array\n\n\n\n\n\n\nmaintain hierarchy if subsets are paretned to other subsets\n\n\nmake deformer usage (mesh deform instead of surface deform) optional, not mandatory, if a deformer is present, using the \"Use Deformer\" property in the redo panel\n\n\nuse forcesubset property, to forceably deform specific subsets, even if \"deform subsets\" is turned off in the redo panel\n\n\n\n\n\n\ninfluence deformers via the offset property in addtion to the plug and handle\n\n\nimprove subset parenting and fix an issue, if target object is chlld of another object itself\n\n\nfix context.scene.tool_settings.vertex_group_weight related issue\n\n\n\n\n\n\nfix issue where hook or array plug was only correctly determined if hook or array mods where present on the handle, which doest not need to be the case\n\n\n\n\n\n\nCreatePlug\n\n\nclear all materials on the plug mesh\n\n\nkeep the subset origin and orientation, instead of aligning it to the plug\n\n\n\n\n\n\nSetPlugProps\n        - optionally set the default deformer precision value for plugs and subsets\n\n\nadd forcesubsetdeform property\n\n\nadd isplugoccluder property\n\n\n\n\n\n\nAddPlugToLibrary\n\n\nshow indicator for deformer plugs, a small d in the bottom right corner\n\n\nwhite: deformer use enabled by default\n\n\nblack: deformer use is disabled by default\n\n\nmissing: no deformer present\n\n\nsupport occluders, objects that help rendering icons of plugs that have significant underhangs\n\n\n\n\n\n\nValidatePlug (previously DebugPlugProperties)\n\n\nadd summary dialog\n\n\nthere's basically no need anymore for checking the temrinal, except in cases where you want to actually debug individual plug components/objects\n\n\n\n\n\n\nadd handle n-gon check\n\n\noptionally set visibility and renderability of deformer and occluders and others(array caps) if present\n\n\nshow new plug creator property\n\n\nadd abolity to generate new UUID (UUIDs are for future proofing and are not currently used, it's just a unique id to mark a specific plug design)\n\n\n\n\n\n\nExample Plugs\n\n\nfix plug 003\n\n\nadd deformers to a few plugs\n\n\nset creator property for all of them\n\n\n\n\n\n\nadd forcesubsetdeform plug\n\n\nand occluder example plug\n\n\nredo all icons\n\n\n\n\n\n\n\n\n\n\nplug_icon_render.blend\n\n\nupdate lighting witha a 3rd light source\n\n\nadd deformer indicator\n\n\n\n\n\n\n\n\nv0.5.14 \nlimited\n\n\n\n\n2018-06-27\n\n\n\n\n\n\nPlug\n\n\npolystein like detail insertion tool\n\n\ndoes not use boolean, inetead replaces faces directly\n\n\nunlike polystein, it does not require any special face selection either\n\n\ncleanup and organize\n\n\nexpose props, as redo seems to work now\n\n\nadd limited dissolve as a cleanup step, beofre doing tris-to-quads\n\n\ncreate deformation plane and add surface deform mod\n\n\nallows existing chamfers/bevels to perfectly be alligned to surface\n\n\nthis also corrects any misalginments of the plug due to low res curvatur of the target surface\n\n\n\n\n\n\nthis plane method and face fill function will be used as a fall back method\n\n\nthe prefered method will be using custom grid/deformation planes per plug:\n\n\nthese, instead of the border verts of the plug, will be used to find the faces on the target to replace\n\n\nthey will also used for the surfac deform\n\n\nthey shold make the current face fill obsolete\n\n\nand so insertions shold become less topology intrusive\n\n\n\n\n\n\nswitch to custom per plug deformation plane system\n\n\nthe deformation plane is called the handle and is also the parent object of the plug\n\n\nthe plug is the mesh that is embedded\n\n\nthe plug and the handle can have children, which will be recognized as subsets\n\n\nremove end in edit mode prop\n\n\nproperly error check initial selection\n\n\nthis could likey be made redundant with proper plug scene insertion (via DM style asset loaders)\n\n\n\n\n\n\ncreate stash when non are present and normal_transfer is True\n\n\nunparent subsets and plug from handle\n\n\nseparately do plug vertex projection and handle based target face finding\n\n\nadd handle subdivision based on precision prop\n\n\nmove add_vgroup() and unparent() to utils.support\n\n\nadd draw()\n\n\nfix issue with dissolve_limited() dissolving beyond the seection border\n\n\nturns out it needs to be run in FACE mode!\n\n\n\n\n\n\nensure only the bridged faces and nothing else is selected before running cleanup()\n\n\nhide various debug output if debug is False\n\n\ncontrol offset loop reach for the plug and the handle\n\n\ninitialize precision, dissolve_angle and offset_amnt in MESHmachine menu\n\n\nadd rotation prop, useful to finetune placement/mesh integration\n\n\ncontain prop, used to limit the face replacement\n\n\nit's a bit slow, but necessary on big flat polys and long ones such as on cylinders or bevels\n\n\n\n\n\n\nadd more vertex groups to simplify selections\n\n\nuse bmesh to create them(assign the verts) and select verts from vgroups\n\n\ncheck for presense of conform vgroup at the beginning\n\n\nbenchmark\n\n\nfix missing faces issue when contain is True\n\n\nfix tiny triangle at border issue when contain is True\n\n\nfix issue in merge where sometimes edges would be in the border and boundary group when contain is True\n\n\ninrease the polygon selection for normal transfer when contain is True\n\n\nre-format draw()\n\n\ncreate normal_transfer vgroups\n\n\ndo it even if normal transfer prop is False\n\n\n\n\n\n\nadd deform prop, to choose whether the plug obj is deformed\n\n\ndiabling will only work properly with plugs, that don't have a hard edge (no bevel/fuse)\n\n\nif disabled a normal transfer will also not be done, as it would only smooth across the hard edge, which is undesired\n\n\n\n\n\n\nadd deform_subsets prop, which may be desired in some cases\n\n\nupdate testing scene\n\n\nadd sharp edge plugs\n\n\n\n\n\n\ndo normal transfer without bpy.ops\n\n\ndo stash creation without bpy.ops\n\n\nfor EDGE mode, clear the normals so theres no smoothing across the hard edge caused by the data trasnfer mod\n\n\nadd filletoredge enum prop\n\n\nFILLET always aplies modifier based deformation and does not do vertex proximity offsets\n\n\nEDGE optionally optionally oes modifier based deformation and always does vertex proximity offsets\n\n\nthis differentiation now also allows tiny bevels to be properly deforemed, when before the vertex proximity offsets would damage them\n\n\n\n\n\n\nparent and unparent without bpy.ops\n\n\nmodal, fading wire drawing of the edges relevant to the integration - the same as in the normal transver vgroup verts\n\n\nits drawn in a similar fashion as symmetrize, as the plug op is not a modal\n\n\nadd fading_wire prop in draw()\n\n\nadd support for Hooks\n\n\nfix redo issue in apply_hooks_and_arrays()(previously apply_hooks()) caused by lack of scene.update()\n\n\nadd support for mesh_deform, through an additional deformer mesh\n\n\nit turns out the surface deform mod has some limitations, like underhangs\n\n\nthe mod will either not bind or in some cases the bind is messy and produces offshooting verts\n\n\nthe mesh deformer mod seems to handle these cases fine, but setting a plug with a deformer up requires additional effort\n\n\nif a deformer is found a mesh deform of the plug is done, by tying the deformer mesh with a surface deform to the shrinkwrapped handle\n\n\n\n\n\n\nadd hidden deform_interpolation_falloff prop, beldner sets this value to 4, but it was insufficient for the 2 dimensional array plug\n\n\nincreasing it to 16 seems to fix the issue and does not seem to affect other plugs negatively\n\n\n\n\n\n\nalways add a stash if no stash is present, not just when normal transfer is checked\n\n\nallow plugging on plugs (before they are plugged)\n\n\nautomatically set FILLET or EDGE on first run based on object.MM.hasfillet prop\n\n\nsolve the vertex group issue in 2 dimensional array plugs, by first applying the array mods on the caps of the second plug array mod\n\n\n\n\n\n\nDrawPlug\n\n\nfix issue in DrawPlug which would weirdly cause props in Plug to jump when dragged in a redo panel\n\n\nto add to the weird, the fix was to track time handlers like the draw handlers, and remove them before creating new ones\n\n\nunfortunately this sometimes leads to the drawing not fading out and sticking around for a while\n\n\npluggin again, toggling ao or xray or going into edit mode and out again seems to remove it\n\n\nthis should be done properly at some point, just not sure how right now\n\n\n\n\n\n\n\n\n\n\nPlug Libraries\n\n\nadd Plugs assets folder\n\n\ncreate Examples and MyPlugs libraries\n\n\nExamples is force-locked, won't be available for plug creation\n\n\nMyPlugs is the startnig library for new user plugs, it contains only 2 blender plugs\n\n\n\n\n\n\n\n\n\n\nCreatePlug\n\n\ncreates plug from selected object or objects\n\n\nthe active will be the plug mesh, any others will be subsets\n\n\n\n\n\n\ncreates plug handle and enters EDIT mode to finish of the handle\n\n\nthe handle mesh should be relatively evenly subdividable\n\n\ntriangles are fine, n-gons not (as they dont subdivide)\n\n\n\n\n\n\nsets isplug and isplughandle object props\n\n\noffsets outer edges slightly\n\n\nsets xray and wire rendendering\n\n\nadd uuid object prop\n\n\nmay be useful in future\n\n\n\n\n\n\nadd isplugsubset prop\n\n\nmake handle invisible to render\n\n\nthis way it doesnt need to be done for icon rendering\n\n\nfix issue where the handle location is not properly updated due to the hooks\n\n\nautomatically set the object.MM.hasfillet prop on the plug object\n\n\n\n\n\n\nadd AddPlugToLibrary\n\n\nallows plug library selection and optionally setting plug name\n\n\nfigures out new plug index and builds blend and icon path\n\n\nsave currentblend to be loaded again at the end\n\n\nrender icon by appending the scene from plug_icon_render.blend\n\n\ndelete everything but the plug objs and save the plug blend\n\n\nadd indicator HUD support and props to toggle them in draw()\n\n\nfix issue where the handle location is not properly updated due to the hooks\n\n\nautomatically focus viewport on handle in case you open the plug blend manually\n\n\n\n\n\n\nSetPlugProps\n\n\nmanually checks and sets plug props of selected object\n\n\npoll whether 1 object is selected\n\n\n\n\n\n\nDebugPlugProps\n\n\ncheck the active objec for plug props\n\n\nchecks the actives children as well\n\n\nso, ideally, you'd select the handle and run the tool, as the handle is the most parent object of a plug\n\n\n\n\n\n\n\n\nClearPlugProps\n        - useful for array plug creation when the caps of the array are created from plug meshes, that already have their props\n\n\n\n\nadd alsoclearvgroups prop, it defaults to True\n\n\n\n\n\n\n\n\nFuse\n\n\n\n\nsave force_projected_loop prop\n\n\n\n\n\n\nChamfer\n\n\noptionally create normal transfer vertex groups\n\n\n\n\n\n\nOffset\n\n\noptionally create normal transfer vertex group\n\n\n\n\n\n\nCreateStash\n\n\nseparate out create_stash() from operator class\n\n\n\n\n\n\nNormalTransfer\n\n\nhide various debug outpuf debug is False\n\n\nseparate out normal_transfer() and add_normal_transfer_mod() from operater class\n\n\n\n\n\n\nNormalClear\n\n\nseparate out normal_clear() from operator class\n\n\n\n\n\n\nReal Mirror\n\n\nconverts mirror mods into real independent objects\n\n\ndoes proper mirrored origin, orientation and custom normals\n\n\nadd poll checking for active mirror mods\n\n\nfix 180 degree rotation issue\n\n\nallow empty targets(mirroring across itself)\n\n\nsupport multiple axes\n\n\nsupport multiple mirror mods\n\n\nadd optional uv offset on the mirrored objects\n\n\noptionally create group for the mirrored objects\n\n\noptionally apply data transfer mods for the mirrored objects\n\n\nfix issue if obj received custom normals from applying data transfer\n\n\nin this case the loop/normal data needs to be received from the mirror object, not from the original\n\n\n\n\n\n\n\n\n\n\nVSelect\n\n\nit's like select linked for vertex groups\n\n\nselect vert/edge/polygon\n\n\nrun VSelect and the enite vertex group the selections belongs to will be selected\n\n\nif there are multiple, you can scroll through them\n\n\n\n\n\n\nif nothing is selected you can scroll through all of the vertex groups of the object\n\n\nunlike select similar set to VGROUP, this works on all selection types, and supports mulitple vgroups per selection\n\n\nkeep it all in edit mode bmesh instead of mode switching\n\n\nmake it modal\n\n\ndrawHUD and drawVIEW3D\n\n\nindividual group toggle\n\n\nall group toggle/invert\n\n\ninstead of returning the vgroups common to all selected elements, return all vgroups in the selection\n\n\nthis allows for easily selecting multiple specific groups by using on vert/edge/poly per group, coupled with the A modal toggle\n\n\n\n\n\n\nDrawSymmetrize\n\n\nget the vert ids by importing from symmetrize.py instead of passing them in as an str argumment\n\n\n\n\n\n\nutils.registration.py\n\n\nregisters, unregisters and reloads plug libraries\n\n\nchange insert function template in utils.registration to support plug removal via modal dialog operator RemovePlug()\n\n\nadd bpy.types.Scene.newpllugidx prop\n\n\nautomatically set bpy.context.scene.newplugidx when bpy.context.scene.pluglibs is changed\n\n\n\n\n\n\n\n\n\n\nutils.append.py\n\n\nhas methods for group, world and scene appending (turned out only scene was needed for plug icon rendering)\n\n\n\n\n\n\nutils.devloper.Benchmark\n\n\nprints time for each Benchmark.meassure()\n\n\nprints total time via Benchmark.total()\n\n\ncompares time to previous tool run execution\n\n\nadd do_benchmark toggle\n\n\n\n\n\n\nutils.support.add_vgroup()\n\n\ncreate vgroup and make it active using bpy.ops, if no vertex id list is passed in\n\n\n\n\n\n\nutils.support.py\n\n\nadd .parent() and unparent()\n\n\n\n\n\n\nproperties.py\n\n\nintroduce isstash, isplug and isplughandle props\n\n\nadd isplugdeformer object property\n\n\n\n\n\n\npreferences\n\n\nadd showplugcount prop\n\n\nadd plugfadingwire prop\n\n\nbe default this is off and so the fading wire option will not be available\n\n\nthis is because a weird crash to desktop bug appeared\n\n\nit happens if you plug the only object in a scene and change the wire/fading fire options\n\n\nif you comment out the fading wire code, the issue vanishes, so it is related to this\n\n\nthe weird part is, if you add a stash or a second object to the scene, verything is fine\n\n\n\n\n\n\n\n\n\n\nadd pluglibsCOL and pluglibsIDX\n\n\ncreate Plugs tab\n\n\nadd plugsinlibraryscale, showpluglabels and plugxraypreview prefs\n\n\nadd plurgremovemode prop to menu\n\n\nadd showplugbutton and showplugbuttonname props to prefs\n\n\n\n\n\n\ninit.py\n\n\nadd PlugLibsCollection() and PLugLibsUIList() to init.py\n\n\nUI\n\n\nadd check() to all ops that have a draw function\n\n\nthis ensures redrawing when props change\n\n\n\n\n\n\nadd Plug tool\n\n\nadd Plug Libraries\n\n\nadd plurgremovemode prop to menu\n\n\ncreate Plug Utils submenu\n\n\nadd Create Plug, Set Plug Props, Clear Plug Props and Debug Plug Props\n\n\n\n\n\n\n\n\n\n\n\n\nv0.5.13\n\n\n\n\n2018-06-02\n\n\n\n\n\n\nFuse\n\n\nadd Fuse prop \u201cProjected Loop\u201d\n\n\nforces rails to not be aligned with existing loop edges\n\n\n\n\n\n\n\n\n\n\nadd Conform tool\n\n\nshrink wrap with stash as target\n\n\nconform selection to stash object\n\n\n\n\n\n\nadd Boolean Cleanup tool\n\n\nused to fix verts of an edge loop in place based on connected edges on the selected side\n\n\nmerge the other verts based on a threshold\n\n\ncan be used on cyclic and non-cyclic edge selections\n\n\n\n\n\n\nadd Chamfer tool\n\n\nper side loop slide toggle\n\n\n2 face methods:\n\n\nREBUILD with the optional Merge Perimeter prop\n\n\nREPLACE with the Reach prop\n\n\n\n\n\n\nthe methods are different ways of dealing with geometry outside of the chamfer, which the chamfer may overlap depending on the width\n\n\nREBUILD should be used if the chamfer doesnt or only minimally overlaps\n\n\nREPLACE can be used if the chamfer overlaps a lot\n\n\n\n\n\n\nadd Offset tool\n\n\nsimilar to Chamfer, but offsets an edge in the chosen direction\n\n\n\n\n\n\nadd LoopTools modal wrappers for Circle and Relax\n\n\nonly availble the LoopTools addon is activated\n\n\n\n\n\n\nSymmetrize()\n\n\nfix exception when fix center seam is turned on, but there aren\u2019t any center verts\n\n\n\n\n\n\nadd version string to registration terminal output\n\n\n\n\nv0.5.12\n\n\n\n\n2018-05-22\n\n\n\n\n\n\nadded Merge option to Unf*ck\n\n\nAdded Stashes (states of an object at a user set time)\n\n\nCreate Stash\n\n\nfrom active\n\n\nfrom other(s) to active\n\n\n\n\n\n\nView Stashes\n\n\nyou can also retrieve stashes\n\n\n\n\n\n\nClear Stashes\n\n\nindividual or all\n\n\n\n\n\n\nTransfer Stashes\n\n\nfrom other to active\n\n\n\n\n\n\nthere\u2019s a persistent HUD for stashes (top of the screen)\n\n\nshows stashes count and invalid stashes count\n\n\n\n\n\n\n\n\n\n\nadded NormalTrasnfer tool\n\n\ntransfers normals from a stash\n\n\nstash normals can be flipped from the tool\u2019s modal using F\n\n\nthe stash can also be smoothed if you have stashed an unsmoothed obj, using S in the modal, this has no ui representation yet, as I\u2019m not sure what to display\n\n\n\n\n\n\nadded Symmetrize tool\n\n\nit\u2019s Blender\u2019s symmetrize op, with the added ability to mirror custom normals\n\n\ndefault keymaps are Alt + X, Alt + Y and Alt + Y\n\n\nchange in prefs\n\n\n\n\n\n\ndefault directions is + to - for X and Z, and - to + for Y\n\n\nchange in prefs (unfold the keymap)\n\n\n\n\n\n\nwhen symmetrizing meshes with custom normals, Symmetrize will creates a pre-symmetrize stash\n\n\nthis is because of the clear center seam Transfer option, you may want to use\n\n\nyou probably want to regularly clean out those stashes if they accumulate\n\n\nalthough you don\u2019t have to, a good strategy is probably to leave all the normal manipulation and transferig to the end, just remember to stash you model before you mess up the surfaces and you will be good\n\n\n\n\n\n\n\n\n\n\nMESHmachine menu:\n\n\nloops and normal tools have been put in sub menus\n\n\nstash tools are available from edit and object mode\n\n\n\n\n\n\nchange mouse_wrap to hopefully fix a bug, that I can\u2019t reproduce\n\n\n\n\nv0.5.11\n\n\n\n\n2018-05-14\n\n\n\n\n\n\nadded Normal Flatten tool\n\n\nused to fix shading issues, especially for ngons, that should be flat\n\n\nhas angle threshold value and presets\n\n\nonly boundary faces angled below the threshold are taken into account\n\n\nboundary faces separated by a sharp edge are also ignored\n\n\nhas \u201cclear existing normals\u201d toggle, which is as if the the Normal Clear tool were to be run before running Normal Flatten\n\n\n\n\n\n\nadded Normal Straighten tool\n\n\nused to fix angular shading on straight sections of Fuse/Bevel/Bridge surfaces\n\n\nits effect is less noticable than Normal Flatten, but its something hat can be done in the pursuit of normal perfection\n\n\n\n\n\n\nadded Normal Clear tool\n\n\ndoes not remove split normal data completely like Blender\u2019ss customdata_custom_splitnormals_clear() operator does\n\n\ninstead works on the selection only\n\n\n\n\n\n\nimproved handling of an issue in Unfuse\n\n\n\n\nv0.5.10\n\n\n\n\n2018-05-08\n\n\n\n\n\n\nfix HUD offsets, Tape offsets and mousewrap issues with some layouts\n\n\nadd Tape stroke undo/redo (ctrl + z/ctrl + shift + z, F1/F2)\n\n\nadd flatten face/vert mode to subtitle in HUD\n\n\nQuadCorner slipped through the cracks:\n\n\nadd mouse wrap\n\n\nadd pen tablet support\n\n\n\n\n\n\n\n\nv0.5.9\n\n\n\n\n2018-05-06\n\n\n\n\n\n\nmake Flatten, Unbvel, Unchamfer and Unfuse modals too\n\n\nadd ability to toggle modal behavior per tool\n\n\nfix issue in Unbevel, in LOOP mode, if reverse was enabled, which\n\n\ndon't show mesh split or delete in the special menu\n\n\n\n\nv0.5.8\n\n\n\n\n2018-05-03\n\n\n\n\n\n\nmake Flatten, Unbvel, Unchamfer and Unfuse modals too\n\n\nadd ability to toggle modal behavior per tool\n\n\nfix issue in Unbevel, in LOOP mode, if reverse was enabled, which\n\n\ndon't show mesh split or delete in the special menu\n\n\n\n\nv0.5.7\n\n\n\n\n2018-05-02\n\n\n\n\n\n\n\n\nFuse + Refuse\n\n\n\n\nfix crash to desktop bug in modal Fuse/Renfuse, when the initial run caused an exception\n\n\nturn off show_modal_ops (in the menu) by default\n\n\n\n\n\n\n\n\nUI:\n\n\n\n\nadd viewport contolls while in a modal, by using PASSING_THROUGH when MIDDLEMOUSE is pressed\n\n\n\n\n\n\n\n\nv0.5.6\n\n\n\n\n2018-05-01\n\n\n\n\n\n\nimprove error handling\n\n\nimprove modals and HUDs\n\n\nrename the NEW/v0.6 handle method to FACE and the OLD/v0.5 handle method to LOOP\n\n\nbasically, switch to LOOP when FACE fails\n\n\nimprove modal performance\n\n\nfix projected_loop edge case, where the loop woud go in the wrong direction\n\n\nadd HUD Corner position\n\n\n\n\nv0.5.5\n\n\n\n\n2018-04-30\n\n\n\n\n\n\nadd Average Tension setting for Fuse/Refuse\n\n\nimprove intersection handles (NEW/v.0.6)\n\n\nadd modal Fuse, Refuse, QuadCorner, Unf*ck\n\n\nadd modal HUDs\n\n\nadd Mark/Clear Loop, these are just freestyle edges for now\n\n\nused to force certain edges as loop edges (if one is marked)\n\n\nused to exclude certain edges from loop edges (if more than one is marked)\n\n\n\n\n\n\nlower Unf*ck minimium vert count by one\n\n\nsupport QWERTY/QWERTZ keyboard layouts\n\n\nQWERTY: x key used for the MESHmachine menu\n\n\nXX for delete\n\n\n\n\n\n\nQWERTZ: y key used for the MESHmachine menu\n\n\nYY for mesh split\n\n\n\n\n\n\nmodals can be turned on/off in the prefs\n\n\ncan also be turned on/off in the MESHmachine menu, if enabled\n\n\nHUD position can be FIXED or FLOATING\n\n\nHUD color can be changed in prefs\n\n\nHUD hints can be turned on/off in prefs\n\n\n\n\nv0.5.4\n\n\n\n\n2018-04-26\n\n\n\n\n\n\nadd \u2018Modal Operators\u2019 toggle to prefs and MESHmachine menu\n\n\ndefault ON\n\n\n\n\n\n\nmodal Change Width\n\n\nmouse Left/Right for width\n\n\nR key for reverse (on single polygon chamfers)\n\n\n\n\n\n\nmodal Turn Corner\n\n\nmouse Left/Right for width of \u201cshort side\u201d\n\n\nmouse wheel up/down to select one of two corner orientations\n\n\nS key to set sharps (default ON)\n\n\nB key to set bweights (default OFF)\n\n\n\n\n\n\nadd sharps and bweight to TurnCorner()\n\n\n\n\nv0.5.3\n\n\n\n\n2018-04-24\n* fix issue in QuadCorner caused by recently introduced intersection handles\n\n\n\n\nv0.5.2\n\n\n\n\n2018-04-24\n\n\n\n\n\n\nUnfuse\n\n\nproperly set boundary sharps for Unfuse()\n\n\nadd set Sharps and Beweights options to Unbevel() and Unfuse()\n\n\n\n\n\n\nRefuse\n\n\nfix bweights not being properly set based on loop edges\n\n\n\n\n\n\n\n\nUnbevel\n\n\n\n\nadd the new intersection method to Unbevel\n\n\nset sharps when unbeveling\n\n\n\n\n\n\n\n\nfix exception when running ChangeWidth(), Fuse() and Unchamfer() on cyclic fuse selections\n\n\n\n\nfix leaving edit mode when running those same ops on non chamfer selections\n\n\n\n\nv0.5.1\n\n\n\n\n2018-04-23\n\n\n\n\n\n\nadd alternative handle creation method create_intersection_handles(), based on projected loops interecting implicit faces create from the average normals of v.link_faces\n\n\nadd alternative unchamfer() utilizing the intersection handles\n\n\nadd unchamfer method selection\n\n\nmake new unchamfer method primary\n\n\ndisable force_projected in get_loops() for the new method\n\n\nadd fallback to create_intersection_handles() which uses the old create_handles() for each failing caseA\n\n\nremap the average/center value used to lerp between the two handle locations in unchamfer_intersection()\n\n\noptionally add MESHmache menu to Specials menu\n\n\nadd the new handle method for fuse and unfuse\n\n\nremove boundary rail bweigths and set sweep beweights according to biggest value of loop edges\n\n\nmove segments > 0 check to the beginning\n\n\nfix issue when trying to sett beweight, while both loop edges were projected (and so no longer exist)\n\n\nbreak out of biggles_angle_loop() if the two top angles are too close together\n\n\n\n\nv0.5\n\n\n\n\n2018-04-18\n\n\n\n\n\n\ninitial release",
+            "title": "Changelog"
+        },
+        {
+            "location": "/changelog/index.html#v06",
+            "text": "2018-10-31    Fuse  only draw self.capholes in HUD, if not self.cyclic    Refuse  add force_projected_loop support    Flatten  add 1,2 scrolling    Unchamfer  add bweight and bweights props in draw()    Unfuck()  fix issue where the handle1co and handle2co wouldn't update properly when the width is changed, because the original end points were used for intersect_point_line() instead of the adjustted start1co and start2co    TurnCorner  set smoothing based on initially selected face    QuadCorner  lower width min prop  only draw self.tension in HUD, if not self.single    Plug and DrawPlug  use utils.normal.normal_clear_across_sharps() instaed of various vertex group ops, to clear normals acress sharps  hide plug type selection in draw()    fix issue with cointain amount not taking into account plug and target scale    MyPlugs library  fix contain issue in 001_Blender plug, as a result of the latest Plug() changes    CreateStash  fix exception when pressing d in modal(), when stash has not been created from other object, and so sources was not defined  allow d key presses to pass through, if there are no sources or if alt, shift, ctrl is pressed  set MM.isstashobj prop    ViewStashes  when retrieving a stashe, only transfer stashes when the stash matrix == target matrix at the time the stash was created  undo stash naming when retrieving a stash  unset MM.isstashobj prop when retrieving    TransferStashes  move retrieve and restashing to utils.stash.transfer_stashes()  add prop to enable retieval and restashing  useful for transfering stashes to plug subsets  also useful for transfering stashes to duplicate object with applied scale/rotation      ClearStashes and RemoveOrphanStashes  add deletion counter title    Conform  make sure stashobjs matrix == active obj's matrix  this means you can move and rotate an object with stashes, and conform will keep working      add ViewOrphanStashes()  view and retrieve orphan stashes    add RemoveOrphanStashes()  removes objects with MM.isstashobj prop and use_face_user props being True and users prop being 1    BooleanCleanup  add poll()  add 1,2 scrolling    Chamfer  rename Normal Transfer VGroup stuff to just Vertex Group  name the actual vgroup \"chamfer\"  add 1,2 scrolling    Offset  rename Normal Transfer VGroup stuff to just Vertex Group  name the actual vgroup \"offset\"  add 1,2 scrolling    NormalTransfer  automatically clear normals across sharp edges, if limit_by_sharps props is True  experimental      NormalClear  change prevent_sharp_edges to limit_to_selection    Symmetrize  redo normal transfer without stashes    Real Mirror  fix parenting issues by simplifiying using matrix math    Looptools Wrappers  remove UP_ARROW and DOWN_ARROW    VSelect  add ONE and TWO keys    properties.py  save stash matrix in object.MM.stashmx and stash target matrix in object.MM.stashtargetmx instead of on the stashes  this is necessary for the retrieval of orphan stashes  remove obsolete location, rotation and scale props for stashes, it's all done via matrices now  rename MM.isstash to MM.isstashobj    utils.core.init_sweeps()  fix \"mark loop\"/freestyle issue, where single loop edges weren't expluded when marked    utils.normal.py\n        - move normal functions from ops over here  add normal_transfer_from_obj() and normal_transfer_from_stash()    utils.stash.create_stash()  always set the stashmx and stashtargetmx props  this way, you can properly retrieve orphan stashes at the location they were created at    utils.stash.transfer_stashes()  add restash arg + logic    utils.ui.py  in draw_init() and draw_prop() support modal_hud_scale and user_preferences.view.ui_scale    UI  improve stash idx HUD display in NormalTransfer(), Conform(), ViewStashes and ClearStashes()  remove modal HUD positioning options  add modal_hud_scale prop  remove adddon warning",
+            "title": "v0.6"
+        },
+        {
+            "location": "/changelog/index.html#v0516-limited",
+            "text": "2018-07-13    Plug  add \"global\" deformation toggle  intended for cases, where you know you are working on flat geometry but the plugs are complex and have a deformer with use_deformer toggled on, perhaps even with subsets set to forcesubsetdeform  you can just toggle off all deformation in that case, even for fillet plugs and speed up the plug tool considerably    store handle scale  store local empty location  add simple subdivision to the cointainer, to avoid rare bug in negative corners, where faces to replace are found outisde the container cut    InsertPlug  check if plug scale is stored and set it accordingly  check if empty locations are stored and set them accordingly      ValidatePlug  add flipped normals check  always automatically deselect handle polyons  always generate unique UUIDs for emtpies, when they aren't set    AddPlugToLibrary  add mode selection and with it ability to replace existing plugs  useful to update plugs, without having to manually remove the previous version      MyPlugs plugs  add Blender logo plug to previously empty library",
+            "title": "v0.5.16 limited"
+        },
+        {
+            "location": "/changelog/index.html#v0515-limited",
+            "text": "2018-07-04    preferences  add plug creator property, useful for plug creators to attach their name, url or email or any other text string to a plug    Plug  re-shuffle ui in the redo panel and introduce separate deformation box  support deformers for array plugs  support deformers for subsets  expose deformer related plug precision and subset precision properties\n        - for arrays with deformers especially, higher values seem to be necessary with increasing length of the array    maintain hierarchy if subsets are paretned to other subsets  make deformer usage (mesh deform instead of surface deform) optional, not mandatory, if a deformer is present, using the \"Use Deformer\" property in the redo panel  use forcesubset property, to forceably deform specific subsets, even if \"deform subsets\" is turned off in the redo panel    influence deformers via the offset property in addtion to the plug and handle  improve subset parenting and fix an issue, if target object is chlld of another object itself  fix context.scene.tool_settings.vertex_group_weight related issue    fix issue where hook or array plug was only correctly determined if hook or array mods where present on the handle, which doest not need to be the case    CreatePlug  clear all materials on the plug mesh  keep the subset origin and orientation, instead of aligning it to the plug    SetPlugProps\n        - optionally set the default deformer precision value for plugs and subsets  add forcesubsetdeform property  add isplugoccluder property    AddPlugToLibrary  show indicator for deformer plugs, a small d in the bottom right corner  white: deformer use enabled by default  black: deformer use is disabled by default  missing: no deformer present  support occluders, objects that help rendering icons of plugs that have significant underhangs    ValidatePlug (previously DebugPlugProperties)  add summary dialog  there's basically no need anymore for checking the temrinal, except in cases where you want to actually debug individual plug components/objects    add handle n-gon check  optionally set visibility and renderability of deformer and occluders and others(array caps) if present  show new plug creator property  add abolity to generate new UUID (UUIDs are for future proofing and are not currently used, it's just a unique id to mark a specific plug design)    Example Plugs  fix plug 003  add deformers to a few plugs  set creator property for all of them    add forcesubsetdeform plug  and occluder example plug  redo all icons      plug_icon_render.blend  update lighting witha a 3rd light source  add deformer indicator",
+            "title": "v0.5.15 limited"
+        },
+        {
+            "location": "/changelog/index.html#v0514-limited",
+            "text": "2018-06-27    Plug  polystein like detail insertion tool  does not use boolean, inetead replaces faces directly  unlike polystein, it does not require any special face selection either  cleanup and organize  expose props, as redo seems to work now  add limited dissolve as a cleanup step, beofre doing tris-to-quads  create deformation plane and add surface deform mod  allows existing chamfers/bevels to perfectly be alligned to surface  this also corrects any misalginments of the plug due to low res curvatur of the target surface    this plane method and face fill function will be used as a fall back method  the prefered method will be using custom grid/deformation planes per plug:  these, instead of the border verts of the plug, will be used to find the faces on the target to replace  they will also used for the surfac deform  they shold make the current face fill obsolete  and so insertions shold become less topology intrusive    switch to custom per plug deformation plane system  the deformation plane is called the handle and is also the parent object of the plug  the plug is the mesh that is embedded  the plug and the handle can have children, which will be recognized as subsets  remove end in edit mode prop  properly error check initial selection  this could likey be made redundant with proper plug scene insertion (via DM style asset loaders)    create stash when non are present and normal_transfer is True  unparent subsets and plug from handle  separately do plug vertex projection and handle based target face finding  add handle subdivision based on precision prop  move add_vgroup() and unparent() to utils.support  add draw()  fix issue with dissolve_limited() dissolving beyond the seection border  turns out it needs to be run in FACE mode!    ensure only the bridged faces and nothing else is selected before running cleanup()  hide various debug output if debug is False  control offset loop reach for the plug and the handle  initialize precision, dissolve_angle and offset_amnt in MESHmachine menu  add rotation prop, useful to finetune placement/mesh integration  contain prop, used to limit the face replacement  it's a bit slow, but necessary on big flat polys and long ones such as on cylinders or bevels    add more vertex groups to simplify selections  use bmesh to create them(assign the verts) and select verts from vgroups  check for presense of conform vgroup at the beginning  benchmark  fix missing faces issue when contain is True  fix tiny triangle at border issue when contain is True  fix issue in merge where sometimes edges would be in the border and boundary group when contain is True  inrease the polygon selection for normal transfer when contain is True  re-format draw()  create normal_transfer vgroups  do it even if normal transfer prop is False    add deform prop, to choose whether the plug obj is deformed  diabling will only work properly with plugs, that don't have a hard edge (no bevel/fuse)  if disabled a normal transfer will also not be done, as it would only smooth across the hard edge, which is undesired    add deform_subsets prop, which may be desired in some cases  update testing scene  add sharp edge plugs    do normal transfer without bpy.ops  do stash creation without bpy.ops  for EDGE mode, clear the normals so theres no smoothing across the hard edge caused by the data trasnfer mod  add filletoredge enum prop  FILLET always aplies modifier based deformation and does not do vertex proximity offsets  EDGE optionally optionally oes modifier based deformation and always does vertex proximity offsets  this differentiation now also allows tiny bevels to be properly deforemed, when before the vertex proximity offsets would damage them    parent and unparent without bpy.ops  modal, fading wire drawing of the edges relevant to the integration - the same as in the normal transver vgroup verts  its drawn in a similar fashion as symmetrize, as the plug op is not a modal  add fading_wire prop in draw()  add support for Hooks  fix redo issue in apply_hooks_and_arrays()(previously apply_hooks()) caused by lack of scene.update()  add support for mesh_deform, through an additional deformer mesh  it turns out the surface deform mod has some limitations, like underhangs  the mod will either not bind or in some cases the bind is messy and produces offshooting verts  the mesh deformer mod seems to handle these cases fine, but setting a plug with a deformer up requires additional effort  if a deformer is found a mesh deform of the plug is done, by tying the deformer mesh with a surface deform to the shrinkwrapped handle    add hidden deform_interpolation_falloff prop, beldner sets this value to 4, but it was insufficient for the 2 dimensional array plug  increasing it to 16 seems to fix the issue and does not seem to affect other plugs negatively    always add a stash if no stash is present, not just when normal transfer is checked  allow plugging on plugs (before they are plugged)  automatically set FILLET or EDGE on first run based on object.MM.hasfillet prop  solve the vertex group issue in 2 dimensional array plugs, by first applying the array mods on the caps of the second plug array mod    DrawPlug  fix issue in DrawPlug which would weirdly cause props in Plug to jump when dragged in a redo panel  to add to the weird, the fix was to track time handlers like the draw handlers, and remove them before creating new ones  unfortunately this sometimes leads to the drawing not fading out and sticking around for a while  pluggin again, toggling ao or xray or going into edit mode and out again seems to remove it  this should be done properly at some point, just not sure how right now      Plug Libraries  add Plugs assets folder  create Examples and MyPlugs libraries  Examples is force-locked, won't be available for plug creation  MyPlugs is the startnig library for new user plugs, it contains only 2 blender plugs      CreatePlug  creates plug from selected object or objects  the active will be the plug mesh, any others will be subsets    creates plug handle and enters EDIT mode to finish of the handle  the handle mesh should be relatively evenly subdividable  triangles are fine, n-gons not (as they dont subdivide)    sets isplug and isplughandle object props  offsets outer edges slightly  sets xray and wire rendendering  add uuid object prop  may be useful in future    add isplugsubset prop  make handle invisible to render  this way it doesnt need to be done for icon rendering  fix issue where the handle location is not properly updated due to the hooks  automatically set the object.MM.hasfillet prop on the plug object    add AddPlugToLibrary  allows plug library selection and optionally setting plug name  figures out new plug index and builds blend and icon path  save currentblend to be loaded again at the end  render icon by appending the scene from plug_icon_render.blend  delete everything but the plug objs and save the plug blend  add indicator HUD support and props to toggle them in draw()  fix issue where the handle location is not properly updated due to the hooks  automatically focus viewport on handle in case you open the plug blend manually    SetPlugProps  manually checks and sets plug props of selected object  poll whether 1 object is selected    DebugPlugProps  check the active objec for plug props  checks the actives children as well  so, ideally, you'd select the handle and run the tool, as the handle is the most parent object of a plug     ClearPlugProps\n        - useful for array plug creation when the caps of the array are created from plug meshes, that already have their props   add alsoclearvgroups prop, it defaults to True     Fuse   save force_projected_loop prop    Chamfer  optionally create normal transfer vertex groups    Offset  optionally create normal transfer vertex group    CreateStash  separate out create_stash() from operator class    NormalTransfer  hide various debug outpuf debug is False  separate out normal_transfer() and add_normal_transfer_mod() from operater class    NormalClear  separate out normal_clear() from operator class    Real Mirror  converts mirror mods into real independent objects  does proper mirrored origin, orientation and custom normals  add poll checking for active mirror mods  fix 180 degree rotation issue  allow empty targets(mirroring across itself)  support multiple axes  support multiple mirror mods  add optional uv offset on the mirrored objects  optionally create group for the mirrored objects  optionally apply data transfer mods for the mirrored objects  fix issue if obj received custom normals from applying data transfer  in this case the loop/normal data needs to be received from the mirror object, not from the original      VSelect  it's like select linked for vertex groups  select vert/edge/polygon  run VSelect and the enite vertex group the selections belongs to will be selected  if there are multiple, you can scroll through them    if nothing is selected you can scroll through all of the vertex groups of the object  unlike select similar set to VGROUP, this works on all selection types, and supports mulitple vgroups per selection  keep it all in edit mode bmesh instead of mode switching  make it modal  drawHUD and drawVIEW3D  individual group toggle  all group toggle/invert  instead of returning the vgroups common to all selected elements, return all vgroups in the selection  this allows for easily selecting multiple specific groups by using on vert/edge/poly per group, coupled with the A modal toggle    DrawSymmetrize  get the vert ids by importing from symmetrize.py instead of passing them in as an str argumment    utils.registration.py  registers, unregisters and reloads plug libraries  change insert function template in utils.registration to support plug removal via modal dialog operator RemovePlug()  add bpy.types.Scene.newpllugidx prop  automatically set bpy.context.scene.newplugidx when bpy.context.scene.pluglibs is changed      utils.append.py  has methods for group, world and scene appending (turned out only scene was needed for plug icon rendering)    utils.devloper.Benchmark  prints time for each Benchmark.meassure()  prints total time via Benchmark.total()  compares time to previous tool run execution  add do_benchmark toggle    utils.support.add_vgroup()  create vgroup and make it active using bpy.ops, if no vertex id list is passed in    utils.support.py  add .parent() and unparent()    properties.py  introduce isstash, isplug and isplughandle props  add isplugdeformer object property    preferences  add showplugcount prop  add plugfadingwire prop  be default this is off and so the fading wire option will not be available  this is because a weird crash to desktop bug appeared  it happens if you plug the only object in a scene and change the wire/fading fire options  if you comment out the fading wire code, the issue vanishes, so it is related to this  the weird part is, if you add a stash or a second object to the scene, verything is fine      add pluglibsCOL and pluglibsIDX  create Plugs tab  add plugsinlibraryscale, showpluglabels and plugxraypreview prefs  add plurgremovemode prop to menu  add showplugbutton and showplugbuttonname props to prefs    init.py  add PlugLibsCollection() and PLugLibsUIList() to init.py  UI  add check() to all ops that have a draw function  this ensures redrawing when props change    add Plug tool  add Plug Libraries  add plurgremovemode prop to menu  create Plug Utils submenu  add Create Plug, Set Plug Props, Clear Plug Props and Debug Plug Props",
+            "title": "v0.5.14 limited"
+        },
+        {
+            "location": "/changelog/index.html#v0513",
+            "text": "2018-06-02    Fuse  add Fuse prop \u201cProjected Loop\u201d  forces rails to not be aligned with existing loop edges      add Conform tool  shrink wrap with stash as target  conform selection to stash object    add Boolean Cleanup tool  used to fix verts of an edge loop in place based on connected edges on the selected side  merge the other verts based on a threshold  can be used on cyclic and non-cyclic edge selections    add Chamfer tool  per side loop slide toggle  2 face methods:  REBUILD with the optional Merge Perimeter prop  REPLACE with the Reach prop    the methods are different ways of dealing with geometry outside of the chamfer, which the chamfer may overlap depending on the width  REBUILD should be used if the chamfer doesnt or only minimally overlaps  REPLACE can be used if the chamfer overlaps a lot    add Offset tool  similar to Chamfer, but offsets an edge in the chosen direction    add LoopTools modal wrappers for Circle and Relax  only availble the LoopTools addon is activated    Symmetrize()  fix exception when fix center seam is turned on, but there aren\u2019t any center verts    add version string to registration terminal output",
+            "title": "v0.5.13"
+        },
+        {
+            "location": "/changelog/index.html#v0512",
+            "text": "2018-05-22    added Merge option to Unf*ck  Added Stashes (states of an object at a user set time)  Create Stash  from active  from other(s) to active    View Stashes  you can also retrieve stashes    Clear Stashes  individual or all    Transfer Stashes  from other to active    there\u2019s a persistent HUD for stashes (top of the screen)  shows stashes count and invalid stashes count      added NormalTrasnfer tool  transfers normals from a stash  stash normals can be flipped from the tool\u2019s modal using F  the stash can also be smoothed if you have stashed an unsmoothed obj, using S in the modal, this has no ui representation yet, as I\u2019m not sure what to display    added Symmetrize tool  it\u2019s Blender\u2019s symmetrize op, with the added ability to mirror custom normals  default keymaps are Alt + X, Alt + Y and Alt + Y  change in prefs    default directions is + to - for X and Z, and - to + for Y  change in prefs (unfold the keymap)    when symmetrizing meshes with custom normals, Symmetrize will creates a pre-symmetrize stash  this is because of the clear center seam Transfer option, you may want to use  you probably want to regularly clean out those stashes if they accumulate  although you don\u2019t have to, a good strategy is probably to leave all the normal manipulation and transferig to the end, just remember to stash you model before you mess up the surfaces and you will be good      MESHmachine menu:  loops and normal tools have been put in sub menus  stash tools are available from edit and object mode    change mouse_wrap to hopefully fix a bug, that I can\u2019t reproduce",
+            "title": "v0.5.12"
+        },
+        {
+            "location": "/changelog/index.html#v0511",
+            "text": "2018-05-14    added Normal Flatten tool  used to fix shading issues, especially for ngons, that should be flat  has angle threshold value and presets  only boundary faces angled below the threshold are taken into account  boundary faces separated by a sharp edge are also ignored  has \u201cclear existing normals\u201d toggle, which is as if the the Normal Clear tool were to be run before running Normal Flatten    added Normal Straighten tool  used to fix angular shading on straight sections of Fuse/Bevel/Bridge surfaces  its effect is less noticable than Normal Flatten, but its something hat can be done in the pursuit of normal perfection    added Normal Clear tool  does not remove split normal data completely like Blender\u2019ss customdata_custom_splitnormals_clear() operator does  instead works on the selection only    improved handling of an issue in Unfuse",
+            "title": "v0.5.11"
+        },
+        {
+            "location": "/changelog/index.html#v0510",
+            "text": "2018-05-08    fix HUD offsets, Tape offsets and mousewrap issues with some layouts  add Tape stroke undo/redo (ctrl + z/ctrl + shift + z, F1/F2)  add flatten face/vert mode to subtitle in HUD  QuadCorner slipped through the cracks:  add mouse wrap  add pen tablet support",
+            "title": "v0.5.10"
+        },
+        {
+            "location": "/changelog/index.html#v059",
+            "text": "2018-05-06    make Flatten, Unbvel, Unchamfer and Unfuse modals too  add ability to toggle modal behavior per tool  fix issue in Unbevel, in LOOP mode, if reverse was enabled, which  don't show mesh split or delete in the special menu",
+            "title": "v0.5.9"
+        },
+        {
+            "location": "/changelog/index.html#v058",
+            "text": "2018-05-03    make Flatten, Unbvel, Unchamfer and Unfuse modals too  add ability to toggle modal behavior per tool  fix issue in Unbevel, in LOOP mode, if reverse was enabled, which  don't show mesh split or delete in the special menu",
+            "title": "v0.5.8"
+        },
+        {
+            "location": "/changelog/index.html#v057",
+            "text": "2018-05-02     Fuse + Refuse   fix crash to desktop bug in modal Fuse/Renfuse, when the initial run caused an exception  turn off show_modal_ops (in the menu) by default     UI:   add viewport contolls while in a modal, by using PASSING_THROUGH when MIDDLEMOUSE is pressed",
+            "title": "v0.5.7"
+        },
+        {
+            "location": "/changelog/index.html#v056",
+            "text": "2018-05-01    improve error handling  improve modals and HUDs  rename the NEW/v0.6 handle method to FACE and the OLD/v0.5 handle method to LOOP  basically, switch to LOOP when FACE fails  improve modal performance  fix projected_loop edge case, where the loop woud go in the wrong direction  add HUD Corner position",
+            "title": "v0.5.6"
+        },
+        {
+            "location": "/changelog/index.html#v055",
+            "text": "2018-04-30    add Average Tension setting for Fuse/Refuse  improve intersection handles (NEW/v.0.6)  add modal Fuse, Refuse, QuadCorner, Unf*ck  add modal HUDs  add Mark/Clear Loop, these are just freestyle edges for now  used to force certain edges as loop edges (if one is marked)  used to exclude certain edges from loop edges (if more than one is marked)    lower Unf*ck minimium vert count by one  support QWERTY/QWERTZ keyboard layouts  QWERTY: x key used for the MESHmachine menu  XX for delete    QWERTZ: y key used for the MESHmachine menu  YY for mesh split    modals can be turned on/off in the prefs  can also be turned on/off in the MESHmachine menu, if enabled  HUD position can be FIXED or FLOATING  HUD color can be changed in prefs  HUD hints can be turned on/off in prefs",
+            "title": "v0.5.5"
+        },
+        {
+            "location": "/changelog/index.html#v054",
+            "text": "2018-04-26    add \u2018Modal Operators\u2019 toggle to prefs and MESHmachine menu  default ON    modal Change Width  mouse Left/Right for width  R key for reverse (on single polygon chamfers)    modal Turn Corner  mouse Left/Right for width of \u201cshort side\u201d  mouse wheel up/down to select one of two corner orientations  S key to set sharps (default ON)  B key to set bweights (default OFF)    add sharps and bweight to TurnCorner()",
+            "title": "v0.5.4"
+        },
+        {
+            "location": "/changelog/index.html#v053",
+            "text": "2018-04-24\n* fix issue in QuadCorner caused by recently introduced intersection handles",
+            "title": "v0.5.3"
+        },
+        {
+            "location": "/changelog/index.html#v052",
+            "text": "2018-04-24    Unfuse  properly set boundary sharps for Unfuse()  add set Sharps and Beweights options to Unbevel() and Unfuse()    Refuse  fix bweights not being properly set based on loop edges     Unbevel   add the new intersection method to Unbevel  set sharps when unbeveling     fix exception when running ChangeWidth(), Fuse() and Unchamfer() on cyclic fuse selections   fix leaving edit mode when running those same ops on non chamfer selections",
+            "title": "v0.5.2"
+        },
+        {
+            "location": "/changelog/index.html#v051",
+            "text": "2018-04-23    add alternative handle creation method create_intersection_handles(), based on projected loops interecting implicit faces create from the average normals of v.link_faces  add alternative unchamfer() utilizing the intersection handles  add unchamfer method selection  make new unchamfer method primary  disable force_projected in get_loops() for the new method  add fallback to create_intersection_handles() which uses the old create_handles() for each failing caseA  remap the average/center value used to lerp between the two handle locations in unchamfer_intersection()  optionally add MESHmache menu to Specials menu  add the new handle method for fuse and unfuse  remove boundary rail bweigths and set sweep beweights according to biggest value of loop edges  move segments > 0 check to the beginning  fix issue when trying to sett beweight, while both loop edges were projected (and so no longer exist)  break out of biggles_angle_loop() if the two top angles are too close together",
+            "title": "v0.5.1"
+        },
+        {
+            "location": "/changelog/index.html#v05",
+            "text": "2018-04-18    initial release",
+            "title": "v0.5"
+        }
+    ]
+}

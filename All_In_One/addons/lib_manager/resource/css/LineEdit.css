@@ -1,0 +1,9 @@
+QLineEdit,QPlainTextEdit{
+  background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:1 rgb(100, 100,100),
+                      stop:0.5 rgb(120, 120, 120) ,stop:0 rgb(120, 120, 120));
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(50, 50, 50);
+  border-radius: 4px;
+  padding: 3px;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<i>Index</i>
+<a href="#element">Element</a>
+<a href="#constitutive">Constitutive</a>
+<p></p>
+<a name="element">Element</a>:
+<p></p>
+<i>Index</i>
+<a href="#body">Body</a>
+<a href="#structural_force">Structural force</a>:
+<p></p>
+<p>
+The elements section is enclosed in the cards:
+begin : elements ;
+end : elements ;
+where elem_type is one of the following:
+• structural elements:
+– automatic structural
+– beam
+– body
+– couple
+– gravity
+– joint
+– joint regularization
+– plate
+• aerodynamic elements:
+– aerodynamic beam2
+– aerodynamic beam3
+– aerodynamic body
+– aeromodal
+– aircraft instruments
+– air properties
+– induced velocity
+• electric elements:
+– electric
+• hydraulic elements:
+– hydraulic
+• thermal elements:
+– TODO . . .
+• output elements:
+– RTAI output
+– stream output
+– stream motion output
+• generic elements:
+– bind
+– bulk
+– force
+– genel
+– loadable
+– user defined
+• miscellaneous element cards
+</p>
+
+<a name="body">Body</a>:
+<p>
+The body element describes a lumped rigid body when connected to a regular, 6 degree of freedom
+structural node, or a point mass when connected to a rotationless, 3 degree of freedom structural node.
+If only one mass is defined, the first method should be used. Otherwise, many masses can be referred
+to the same element by means of the keyword condense, followed by the number of expected masses
+num_masses. The format of each sub-mass is the same as for the single mass input (actually, when
+condense is not supplied, num_masses is assumed to be 1).
+The inertia_matrix is always referred to the center of mass of the mass that is being added. It
+can be rotated locally by means of the extra orientation_matrix supplied after the (optional) keyword
+inertial. The keyword node corresponds to the default, i.e. the inertia matrix is assumed to be input
+in the node reference frame.
+</p>
+
+<a name="structural_force">Structural force</a>:
+<p>
+The force element is a general means to introduce a right-hand side to the equations, i.e. an explicit
+contribution to the equations. There is a basic distinction between abstract and structural forces: abstract
+forces apply to arbitrary equations, while structural forces (and couples) are specific to structural
+nodes and have a spatial characterization. Essentially, structural forces have three components that may
+depend on arbitrary parameters (usually the simulated time), and a location in space. Structural couples
+have three parameter-dependent components.
+</p>
+
+<a name="constitutive">Constitutive</a>
+<p>
+Implements the type ConstitutiveLaw. Every time a “deformable”
+entity requires a constitutive law, a template constitutive law is read. This has been implemented by
+means of C++ templates in order to allow the definition of a general constitutive law when possible.
+The “deformable” elements at present are:
+• rod and genel spring and related elements (1D);
+• deformable hinge and deformable displacement joint elements (3D);
+• deformable joint and beam elements (6D).
+Constitutive laws are also used in non-structural components, to allow some degree of generality in
+defining input/output relationships. Some constitutive laws are meaningful only when related to some
+precise dimensionality. In some special cases, general purpose (genel) elements use 1D constitutive laws
+to express an arbitrary dependence of some value on a scalar state of the system. Table 2.7 shows the
+availability of each constitutive law.
+The meaning of the input and output parameters of a constitutive law is dictated by the entity that
+uses it. In general, the user should refer to the element the constitutive law is being instantiated for in
+order to understand what the input and the output parameters are supposed to be
+
+</p>
+
+</body>
+</html>
+

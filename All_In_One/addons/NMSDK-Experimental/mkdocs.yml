@@ -1,0 +1,16 @@
+theme:
+  name: readthedocs
+site_name: NMSDK
+site_dir: html_docs/site/
+nav:
+    - Home: index.md
+    - Setup: setup.md
+    - Importing a Scene:
+      - Importing: importing/importing.md
+    - Exporting a Scene:
+      - Setting up: exporting/exporting.md
+      - Adding Entities: exporting/entities.md
+      - Making a proc-gen scene: exporting/proc_gen.md
+      - Creating Action Triggers: exporting/action_triggers.md
+      - Shader Setup: exporting/shader_nodes.md
+    - API guide: api.md

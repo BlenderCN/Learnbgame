@@ -1,0 +1,2 @@
+filename = "/full/path/to/myscript.py"
+exec(compile(open(filename).read(), filename, 'exec'))

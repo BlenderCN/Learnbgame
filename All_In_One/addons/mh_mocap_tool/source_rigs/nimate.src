@@ -1,0 +1,29 @@
+#
+#
+#	bone	 	MHX bone	twist
+
+Name:	Ni-Mate
+
+Armature:
+	torso		Root		0
+	head		Head		0 
+
+	shoulder.l	Clavicle_L	0
+	arm.l		UpArm_L		0 
+	forearm.l	LoArm_L		0
+	hand.l		Hand_L		0 
+
+	shoulder.r	Clavicle_R	0
+	arm.r		UpArm_R		0 
+	forearm.r	LoArm_R		0
+	hand.r		Hand_R		0
+
+	hip.l		None		0
+	thigh.l		UpLeg_L		0 
+	leg.l		LoLeg_L		0 
+	foot.l		Foot_L		0 
+
+	hip.r		None		0
+	thigh.r		UpLeg_R		0
+	leg.r		LoLeg_R		0 
+	foot.r		Foot_R		0 

@@ -1,0 +1,73 @@
+attrs:
+ max_local_cells:
+  type: Int
+  name: "Max Local Cells"
+  description: Max number of cells per processor during refinement
+  default: 100000
+ max_global_cells:
+  type: Int
+  name: "Max Global Cells"
+  description: Overall cell limit during refinement before removal
+  default: 0
+  default: 2000000
+ min_refinement_cells:
+  type: Int
+  name: "Min Refinement Cells"
+  description: Cause refinement to stop
+  default: 0
+ max_load_unbalance:
+  type: Float
+  name: "Max Load Unbalance"
+  description: Level of imbalance during refining
+  default: 0.10
+ n_cells_between_levels:
+  type: Int
+  name: Cells Between Levels
+  description: Number of layers of cells between successive refinement levels
+  defaul: 2
+ resolve_feature_angle:
+  type: Float
+  name: Feature Angle
+  description: Apply this angle to cells which see greater intersection angle
+  default: 30
+  subtype: ANGLE
+ allow_free_standing_zones:
+  type: Bool
+  name: "Allow Free Standing Zones:"
+  description: "Allow Free Standing Zones"
+  default: false
+
+gui:
+ - box:
+    - row:
+      - label:
+         text: Max Local Cells
+      - prop:
+         scene_attr: max_local_cells
+    - row:
+      - label:
+         text: Max Global Cells
+      - prop:
+         scene_attr: max_global_cells
+    - row:
+      - label:
+         text: Min Refinement Cells
+      - prop:
+         scene_attr: min_refinement_cells
+    - row:
+      - label:
+         text: Max Load Unbalance
+      - prop:
+         scene_attr: max_load_unbalance
+    - row:
+      - label:
+         text: Cells Between Levels
+      - prop:
+         scene_attr: n_cells_between_levels
+    - row:
+      - label:
+         text: Resolve Feature Angle
+      - prop:
+         scene_attr: resolve_feature_angle
+    - prop:
+       scene_attr: allow_free_standing_zones

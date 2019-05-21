@@ -1,0 +1,72 @@
+# MIT License
+
+# Copyright (c) 2017 GiveMeAllYourCats
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the 'Software'), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+language: python
+cache:
+  apt: true
+  pip: true
+
+python:
+  # Use the Python version that comes with blender 2.79
+  - "3.5.3"
+
+before_install:
+  - sudo apt-get update -qq
+  # install blender from official sources.
+  # This will most propably install an outdated blender version,
+  # but it will resolve all system dependencies blender has to be able to run.
+  - sudo apt-get install blender
+  - sudo apt-get install unzip
+
+install:
+  # Then update blender
+  - mkdir tmp && cd tmp
+  - wget https://download.blender.org/release/Blender2.79/blender-2.79-linux-glibc219-x86_64.tar.bz2
+  - tar jxf blender-2.79-linux-glibc219-x86_64.tar.bz2
+  - mv blender-2.79-linux-glibc219-x86_64 blender
+
+  - cd ..
+
+  # Make sure to install mmd_tools plugin
+  - wget https://github.com/powroupi/blender_mmd_tools/archive/dev_test.zip
+  - unzip dev_test.zip
+  - cd blender_mmd_tools-dev_test
+  - mv mmd_tools/ ../tmp/blender/2.79/scripts/addons
+
+  - cd ..
+
+  # make sure to install cats plugin
+  - sudo ln -s ${PWD} ${PWD}/tmp/blender/2.79/scripts/addons/cats
+
+# Start unit testing
+script:
+  - python tests/run.py -b ./tmp/blender/blender -c True
+
+notifications:
+  webhooks:
+    urls:
+      - http://159.89.91.52:7778/webhook
+    on_success: always # default: always
+    on_failure: always # default: always
+    on_start: always   # default: never
+    on_cancel: always # default: always
+    on_error: always # default: always

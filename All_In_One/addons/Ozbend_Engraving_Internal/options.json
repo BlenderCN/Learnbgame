@@ -1,0 +1,28 @@
+{
+	"resolution_x":	512,
+	"resolution_y": 512,
+	"samples": 10,
+	"source_obj_dir": "/tmp/SourceOBJ/",
+	"rendered_obj_dir": "/tmp/Rendered/",
+	"dest_dir": "/tmp/Dest/",
+	"correction": {
+		"scale": {
+			"X": 1.0,
+			"Y": 1.0,
+			"Z": 1.0
+		},
+		"translate": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0
+		},
+		"rotate": {
+			"X": 0,
+			"Y": 0,
+			"Z": 0
+		}
+	},
+	"cameras": [],
+	"engine": "cycles",
+	"gravi_mesh_name": "Gravi"
+}

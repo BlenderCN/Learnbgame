@@ -1,0 +1,21 @@
+### --- REGISTER ---
+
+# register, unregister = bpy.utils.register_classes_factory(classes)
+
+def register():
+    if not bpy.app.background:
+        for cls in classes:
+            bpy.utils.register_class(cls)
+
+        register_keymaps()
+
+def unregister():
+    if not bpy.app.background:
+        unregister_keymaps()
+
+        for cls in reversed(classes):
+            bpy.utils.unregister_class(cls)
+
+
+if __name__ == "__main__":
+    register()

@@ -1,0 +1,1 @@
+copy "y:\GIT-repository\BlenderAddons\rounded_objects\roundedprofile\*.py" "c:\Users\Komi\AppData\Roaming\Blender Foundation\Blender\2.76\scripts\addons\roundedprofile\*.py"

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<material name="triple_positive" view_color="rgb(0.80000, 0.80000, 0.80000)" sample_lamp="True">
+	<nodes>
+		<node type="LAYER_WEIGHT" blend="0.90000" node_height="100" node_width="140" width_hidden="42" loc="-824, -40" />
+		<node type="VALTORGB" interpolation="EASE" fac="0.5" stops="6" stop1="0.0|rgba(1.0, 1.0, 1.0, 1.0)" stop2="0.19999|rgba(0.0, 0.0, 0.0, 1.0)" stop3="0.39999|rgba(0.70289, 0.70289, 0.70289, 1.0)" stop4="0.60000|rgba(0.0, 0.0, 0.0, 1.0)" stop5="0.80000|rgba(0.36000, 0.36000, 0.36000, 1.0)" stop6="1.0|rgba(0.0, 0.0, 0.0, 1.0)" node_height="100" node_width="240" width_hidden="42" loc="-491, 52" />
+		<node type="MIX_RGB" blend_type="ADD" use_clamp="False" fac="1.0" color1="rgba(0.5, 0.5, 0.5, 1.0)" color2="rgba(1.0, 1.0, 1.0, 1.0)" node_height="100" node_width="140" width_hidden="42" loc="-209, 51" />
+		<node type="OUTPUT_MATERIAL" node_height="100" node_width="140" width_hidden="42" loc="526, 97" />
+		<node type="BSDF_REFRACTION" distribution="SHARP" color="rgba(1.0, 1.0, 1.0, 1.0)" roughness="0.0" ior="1.45000" node_height="100" node_width="150" width_hidden="42" loc="332, 59" />
+		<node type="MATH" operation="POWER" use_clamp="False" value1="0.5" value2="1.0" node_height="100" node_width="140" width_hidden="42" loc="-27, 43" />
+		<node type="MATH" operation="POWER" use_clamp="False" value1="0.5" value2="1.5" node_height="100" node_width="140" width_hidden="42" loc="148, 251" />
+	</nodes>
+	<links>
+		<link to="2" input="1" from="1" output="0" />
+		<link to="1" input="0" from="0" output="1" />
+		<link to="3" input="0" from="4" output="0" />
+		<link to="5" input="0" from="2" output="0" />
+		<link to="4" input="2" from="5" output="0" />
+		<link to="6" input="0" from="5" output="0" />
+		<link to="4" input="0" from="6" output="0" />
+	</links>
+</material>

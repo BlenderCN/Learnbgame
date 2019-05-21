@@ -1,0 +1,7 @@
+modifier blender_data [[string widget="node", string label="Data", string category="Input"]](
+	string path="" [[string label="Path"]],
+	output any result [[string label="Value"]]
+)
+{
+	result = bdata("bdata." + path);
+}

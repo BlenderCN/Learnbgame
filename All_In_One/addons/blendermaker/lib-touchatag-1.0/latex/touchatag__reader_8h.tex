@@ -1,0 +1,402 @@
+\hypertarget{touchatag__reader_8h}{
+\section{src/touchatag\_\-reader.h File Reference}
+\label{touchatag__reader_8h}\index{src/touchatag\_\-reader.h@{src/touchatag\_\-reader.h}}
+}
+
+
+This header file contains every function related with readers and their attributes.  
+
+
+{\ttfamily \#include \char`\"{}libusb.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}touchatag\_\-tag.h\char`\"{}}\par
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structreader__s}{reader\_\-s}
+\item 
+struct \hyperlink{structnotes__s}{notes\_\-s}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{touchatag__reader_8h_ad0c1de5c99a05bf1018b5acbea94c0b6}{
+\#define {\bfseries idVendor}~0x072f}
+\label{touchatag__reader_8h_ad0c1de5c99a05bf1018b5acbea94c0b6}
+
+\item 
+\hypertarget{touchatag__reader_8h_a52ab9a709344fc0dbaaafda921148686}{
+\#define {\bfseries idProduct}~0x90cc}
+\label{touchatag__reader_8h_a52ab9a709344fc0dbaaafda921148686}
+
+\item 
+\hypertarget{touchatag__reader_8h_a4c6f910e8668dbee248e42a7f5603337}{
+\#define {\bfseries FIRMWARE\_\-SIZE}~15}
+\label{touchatag__reader_8h_a4c6f910e8668dbee248e42a7f5603337}
+
+\item 
+\hypertarget{touchatag__reader_8h_a0c44939791c8939293fe6e9e04f6b7ec}{
+\#define {\bfseries ID\_\-READER\_\-SIZE}~7}
+\label{touchatag__reader_8h_a0c44939791c8939293fe6e9e04f6b7ec}
+
+\item 
+\hypertarget{touchatag__reader_8h_a115328b0efe927daee8c41172bc6836f}{
+\#define {\bfseries ID\_\-SAM\_\-SIZE}~6}
+\label{touchatag__reader_8h_a115328b0efe927daee8c41172bc6836f}
+
+\item 
+\hypertarget{touchatag__reader_8h_a77ae9480acc576ec31e883f4002a1a04}{
+\#define {\bfseries SN\_\-SAM\_\-SIZE}~8}
+\label{touchatag__reader_8h_a77ae9480acc576ec31e883f4002a1a04}
+
+\item 
+\hypertarget{touchatag__reader_8h_ae54f3392c5fb7dec3240a5383e531684}{
+\#define {\bfseries RECV\_\-BUF\_\-SIZE}~64}
+\label{touchatag__reader_8h_ae54f3392c5fb7dec3240a5383e531684}
+
+\item 
+\hypertarget{touchatag__reader_8h_a5e1e7b5f1c06413974f021a239433b4b}{
+\#define {\bfseries NOTE\_\-SIZE}~48}
+\label{touchatag__reader_8h_a5e1e7b5f1c06413974f021a239433b4b}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{touchatag__reader_8h_ac1af143bb6258e3048630eb8f3efb8fa}{
+typedef struct \hyperlink{structreader__s}{reader\_\-s} {\bfseries reader\_\-t}}
+\label{touchatag__reader_8h_ac1af143bb6258e3048630eb8f3efb8fa}
+
+\item 
+\hypertarget{touchatag__reader_8h_ab437454e0ced6f2fba4e4b071a24a83f}{
+typedef struct \hyperlink{structnotes__s}{notes\_\-s} {\bfseries notes\_\-t}}
+\label{touchatag__reader_8h_ab437454e0ced6f2fba4e4b071a24a83f}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{touchatag__reader_8h_ad1a25dcf7663416dfde79477ebbb4e20}{touchatag\_\-scan\_\-bus} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb)
+\begin{DoxyCompactList}\small\item\em Searches for touchatag readers. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_a82b22a7682bc11e8c776d734b0b4842a}{touchatag\_\-reader\_\-init\_\-all} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\begin{DoxyCompactList}\small\item\em Initializes the connection with the readers. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_a9e20d3166921c63405b9d32273784669}{touchatag\_\-reader\_\-power\_\-off\_\-all} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\begin{DoxyCompactList}\small\item\em This function switches off the voltage. Touchatag readers -\/$>$ OFF. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__reader_8h_aae5e046f1dad1ef1e37ef56e2c48f5a9}{touchatag\_\-command} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, char $\ast$command, int command\_\-len, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader, int response\_\-len, int target)
+\begin{DoxyCompactList}\small\item\em Exchanges commands with the reader. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__reader_8h_a109733992770ee989cb139431d6f26fd}{touchatag\_\-reader\_\-polling\_\-all\_\-readers} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader, \hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Commands a polling action on all touchatag readers connected. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__reader_8h_a559345125388168f13d1314c291deb27}{touchatag\_\-reader\_\-polling\_\-target\_\-reader} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader, \hyperlink{structtag__s}{tag\_\-t} $\ast$tag, char $\ast$ID)
+\begin{DoxyCompactList}\small\item\em Commands a polling action on the target touchatag reader. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__reader_8h_ac8778042af375369e17ccbb979a5d43d}{touchatag\_\-reader\_\-write\_\-touchtag\_\-ultralight} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader, \hyperlink{structtag__s}{tag\_\-t} $\ast$tag, char $\ast$notes, char $\ast$ID)
+\begin{DoxyCompactList}\small\item\em Writes on a touchatag tag's memory (last 4 bytes). \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__reader_8h_a3a773ccea68d0d2c6b5f5f9327508c9c}{touchatag\_\-reader\_\-write\_\-mifare\_\-ultralight} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader, \hyperlink{structtag__s}{tag\_\-t} $\ast$tag, \hyperlink{structnotes__s}{notes\_\-t} $\ast$notes, char $\ast$ID)
+\begin{DoxyCompactList}\small\item\em Writes on Read/Write tag's memory (only MIFARE ULTRALIGHT are allowed). \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__reader_8h_a396674180be720d36d4b8a1dc57a6b79}{touchatag\_\-reader\_\-get\_\-tag\_\-uid} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader, \hyperlink{structtag__s}{tag\_\-t} $\ast$tag, int target)
+\begin{DoxyCompactList}\small\item\em Gets tag UID and saves it in the given tag structure. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_afa600c31bbf136cc1a5e8dfd7fe273ab}{touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-id} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\begin{DoxyCompactList}\small\item\em Gets all reader IDs saves them. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__reader_8h_aaed9497dd4481f6cc23390dce4b6bfd3}{touchatag\_\-reader\_\-get\_\-reader\_\-id} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader, int target)
+\begin{DoxyCompactList}\small\item\em Gets target reader ID and saves it in the given reader structure. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_a3cf4388643e4b7d0636fe0cd5d645fdf}{touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-sam\_\-code} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\begin{DoxyCompactList}\small\item\em Gets both SAM's identification code and serial number of each reader, saving them in the given reader structure. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_a6aef6f28b96acf78dedfacaf35ff370e}{touchatag\_\-reader\_\-get\_\-all\_\-firmware} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\begin{DoxyCompactList}\small\item\em Gets reader firmwares and saves them. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__reader_8h_aa505172318af02a889bfc1a03f94ac23}{touchatag\_\-reader\_\-get\_\-target\_\-firmware} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader, char $\ast$ID)
+\begin{DoxyCompactList}\small\item\em Gets reader's firmware and saves it in the given reader structure. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_a23b14ad06d740aec20cf1e07f8040684}{touchatag\_\-reader\_\-set\_\-time} (int time, int rate)
+\begin{DoxyCompactList}\small\item\em Sets polling time. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__reader_8h_a95d926132b04697ab01375817973a7d0}{touchatag\_\-reader\_\-get\_\-all\_\-data} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader, \hyperlink{structtag__s}{tag\_\-t} $\ast$tag, int target)
+\begin{DoxyCompactList}\small\item\em Gets all tag data. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_afe15f713b23bed470d9fd986818d2436}{touchatag\_\-reader\_\-led\_\-blink\_\-all\_\-readers} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\begin{DoxyCompactList}\small\item\em Blinks every reader leds. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_a3fd2c59f658c41f31176c9bf9468c21a}{touchatag\_\-reader\_\-led\_\-blink\_\-target\_\-reader} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader, char $\ast$ID)
+\begin{DoxyCompactList}\small\item\em Blinks target reader led. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_a05e678dc9555fd55f3184638badcd8cd}{touchatag\_\-reader\_\-led\_\-blink\_\-set} (char colour, int repetition, int time1, int time2)
+\begin{DoxyCompactList}\small\item\em Sets reader blinking parameters. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_aadbd091ae14668a14ddcce2284ef67e2}{touchatag\_\-reader\_\-set\_\-writing\_\-notes} (int size, int start, char $\ast$note, \hyperlink{structnotes__s}{notes\_\-t} $\ast$notes)
+\begin{DoxyCompactList}\small\item\em Sets the parameters for writing operationsù. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_ad701a7749a7bc9dcaa6df71044b840a8}{touchatag\_\-reader\_\-print\_\-reader\_\-id} (\hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\begin{DoxyCompactList}\small\item\em Prints reader ID. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__reader_8h_ad897b95d3248c97e07e87b32e37c42c6}{touchatag\_\-reader\_\-link\_\-id\_\-reader\_\-usb\_\-handler} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader, char $\ast$ID)
+\begin{DoxyCompactList}\small\item\em Returns the number of the handle linked to a reader. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_adac1552f09f2d8c9c2a583862e57a02c}{touchatag\_\-reader\_\-power\_\-off\_\-target\_\-reader} (\hyperlink{structlibusb__s}{libusb\_\-t} $\ast$libusb, \hyperlink{structreader__s}{reader\_\-t} $\ast$reader, char $\ast$ID)
+\begin{DoxyCompactList}\small\item\em Switches off the target reader. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_ae77277f83b75f882368247cb09acd7f1}{touchatag\_\-reader\_\-print\_\-firmware} (\hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\begin{DoxyCompactList}\small\item\em Prints reader's firmware. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_a4268486cb70159950c76093d3cb9a434}{touchatag\_\-reader\_\-print\_\-reader\_\-identification\_\-sam} (\hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\begin{DoxyCompactList}\small\item\em Prints reader's SAM identification number. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__reader_8h_a48c8f3041c43055ffcd1dc6bba217bea}{touchatag\_\-reader\_\-print\_\-reader\_\-serial\_\-sam} (\hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\begin{DoxyCompactList}\small\item\em Prints reader's SAM serial number. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{touchatag__reader_8h_aa3221e186fd462c32d163412f47580a0}{touchatag\_\-reader\_\-return\_\-reader\_\-firmware} (\hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\begin{DoxyCompactList}\small\item\em Returns reader's firmware (in ASCII). \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{touchatag__reader_8h_af967bb77dc6734715c897a48710e14e4}{touchatag\_\-reader\_\-return\_\-reader\_\-id} (\hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\item 
+char $\ast$ \hyperlink{touchatag__reader_8h_a40f8cc11f4caf882a9365a4525e6d9c1}{touchatag\_\-reader\_\-return\_\-reader\_\-identification\_\-sam} (\hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\item 
+char $\ast$ \hyperlink{touchatag__reader_8h_a8c447cea2cf92d783a12d5be974c0f1c}{touchatag\_\-reader\_\-return\_\-reader\_\-serial\_\-sam} (\hyperlink{structreader__s}{reader\_\-t} $\ast$reader)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This header file contains every function related with readers and their attributes. 
+
+\subsection{Function Documentation}
+\hypertarget{touchatag__reader_8h_aae5e046f1dad1ef1e37ef56e2c48f5a9}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-command@{touchatag\_\-command}}
+\index{touchatag\_\-command@{touchatag\_\-command}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-command}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-command ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  char $\ast$ {\em command}, \/  int {\em command\_\-len}, \/  {\bf reader\_\-t} $\ast$ {\em reader}, \/  int {\em response\_\-len}, \/  int {\em target})}}
+\label{touchatag__reader_8h_aae5e046f1dad1ef1e37ef56e2c48f5a9}
+
+
+Exchanges commands with the reader. 
+
+This is an internal function; it sends the hexadecimal given command to the reader and writes the answer in reader\_\-recvbuf \hypertarget{touchatag__reader_8h_a95d926132b04697ab01375817973a7d0}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-get\_\-all\_\-data@{touchatag\_\-reader\_\-get\_\-all\_\-data}}
+\index{touchatag\_\-reader\_\-get\_\-all\_\-data@{touchatag\_\-reader\_\-get\_\-all\_\-data}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-get\_\-all\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-reader\_\-get\_\-all\_\-data ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader}, \/  {\bf tag\_\-t} $\ast$ {\em tag}, \/  int {\em target})}}
+\label{touchatag__reader_8h_a95d926132b04697ab01375817973a7d0}
+
+
+Gets all tag data. 
+
+This function gets all tag data and saves it in the tag structure. \hypertarget{touchatag__reader_8h_a6aef6f28b96acf78dedfacaf35ff370e}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-get\_\-all\_\-firmware@{touchatag\_\-reader\_\-get\_\-all\_\-firmware}}
+\index{touchatag\_\-reader\_\-get\_\-all\_\-firmware@{touchatag\_\-reader\_\-get\_\-all\_\-firmware}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-get\_\-all\_\-firmware}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-get\_\-all\_\-firmware ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_a6aef6f28b96acf78dedfacaf35ff370e}
+
+
+Gets reader firmwares and saves them. 
+
+This function gets all reader FIRMWAREs saving them. \hypertarget{touchatag__reader_8h_afa600c31bbf136cc1a5e8dfd7fe273ab}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-id@{touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-id}}
+\index{touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-id@{touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-id}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-id ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_afa600c31bbf136cc1a5e8dfd7fe273ab}
+
+
+Gets all reader IDs saves them. 
+
+This function gets all the IDs of the connected readers. \hypertarget{touchatag__reader_8h_a3cf4388643e4b7d0636fe0cd5d645fdf}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-sam\_\-code@{touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-sam\_\-code}}
+\index{touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-sam\_\-code@{touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-sam\_\-code}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-sam\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-get\_\-all\_\-reader\_\-sam\_\-code ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_a3cf4388643e4b7d0636fe0cd5d645fdf}
+
+
+Gets both SAM's identification code and serial number of each reader, saving them in the given reader structure. 
+
+This function gets both SAM's identification code and serial number of each reader, saving them in the given reader structure. \hypertarget{touchatag__reader_8h_aaed9497dd4481f6cc23390dce4b6bfd3}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-get\_\-reader\_\-id@{touchatag\_\-reader\_\-get\_\-reader\_\-id}}
+\index{touchatag\_\-reader\_\-get\_\-reader\_\-id@{touchatag\_\-reader\_\-get\_\-reader\_\-id}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-get\_\-reader\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-reader\_\-get\_\-reader\_\-id ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader}, \/  int {\em target})}}
+\label{touchatag__reader_8h_aaed9497dd4481f6cc23390dce4b6bfd3}
+
+
+Gets target reader ID and saves it in the given reader structure. 
+
+This function gets the target reader ID and saves it into the given reader data struct. \hypertarget{touchatag__reader_8h_a396674180be720d36d4b8a1dc57a6b79}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-get\_\-tag\_\-uid@{touchatag\_\-reader\_\-get\_\-tag\_\-uid}}
+\index{touchatag\_\-reader\_\-get\_\-tag\_\-uid@{touchatag\_\-reader\_\-get\_\-tag\_\-uid}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-get\_\-tag\_\-uid}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-reader\_\-get\_\-tag\_\-uid ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader}, \/  {\bf tag\_\-t} $\ast$ {\em tag}, \/  int {\em target})}}
+\label{touchatag__reader_8h_a396674180be720d36d4b8a1dc57a6b79}
+
+
+Gets tag UID and saves it in the given tag structure. 
+
+This function gets tag UID and saves it in the given tag structure. Call it only if a tag is found. \hypertarget{touchatag__reader_8h_aa505172318af02a889bfc1a03f94ac23}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-get\_\-target\_\-firmware@{touchatag\_\-reader\_\-get\_\-target\_\-firmware}}
+\index{touchatag\_\-reader\_\-get\_\-target\_\-firmware@{touchatag\_\-reader\_\-get\_\-target\_\-firmware}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-get\_\-target\_\-firmware}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-reader\_\-get\_\-target\_\-firmware ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader}, \/  char $\ast$ {\em ID})}}
+\label{touchatag__reader_8h_aa505172318af02a889bfc1a03f94ac23}
+
+
+Gets reader's firmware and saves it in the given reader structure. 
+
+This function gets reader firmware and saves it in the given reader structure. \hypertarget{touchatag__reader_8h_a82b22a7682bc11e8c776d734b0b4842a}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-init\_\-all@{touchatag\_\-reader\_\-init\_\-all}}
+\index{touchatag\_\-reader\_\-init\_\-all@{touchatag\_\-reader\_\-init\_\-all}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-init\_\-all}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-init\_\-all ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_a82b22a7682bc11e8c776d734b0b4842a}
+
+
+Initializes the connection with the readers. 
+
+It switches on the voltage of the usb ports where a touchatag reader is found, after that the function implements the first signals exchanges with the reader. \hypertarget{touchatag__reader_8h_afe15f713b23bed470d9fd986818d2436}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-led\_\-blink\_\-all\_\-readers@{touchatag\_\-reader\_\-led\_\-blink\_\-all\_\-readers}}
+\index{touchatag\_\-reader\_\-led\_\-blink\_\-all\_\-readers@{touchatag\_\-reader\_\-led\_\-blink\_\-all\_\-readers}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-led\_\-blink\_\-all\_\-readers}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-led\_\-blink\_\-all\_\-readers ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_afe15f713b23bed470d9fd986818d2436}
+
+
+Blinks every reader leds. 
+
+This function makes start the blinking operation with the parameters setted with touchatag\_\-reader\_\-led\_\-blink\_\-set. If they aren't setted yet, default settings are used. \hypertarget{touchatag__reader_8h_a05e678dc9555fd55f3184638badcd8cd}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-led\_\-blink\_\-set@{touchatag\_\-reader\_\-led\_\-blink\_\-set}}
+\index{touchatag\_\-reader\_\-led\_\-blink\_\-set@{touchatag\_\-reader\_\-led\_\-blink\_\-set}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-led\_\-blink\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-led\_\-blink\_\-set (char {\em colour}, \/  int {\em repetition}, \/  int {\em time1}, \/  int {\em time2})}}
+\label{touchatag__reader_8h_a05e678dc9555fd55f3184638badcd8cd}
+
+
+Sets reader blinking parameters. 
+
+Colour can be: 'r' -\/$>$ red 'g' -\/$>$ green 'o' -\/$>$ orange \char`\"{}Repetition\char`\"{} sets the number blinks. \char`\"{}Time1\char`\"{} and \char`\"{}time2\char`\"{} sets the on/off frequency. \hypertarget{touchatag__reader_8h_a3fd2c59f658c41f31176c9bf9468c21a}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-led\_\-blink\_\-target\_\-reader@{touchatag\_\-reader\_\-led\_\-blink\_\-target\_\-reader}}
+\index{touchatag\_\-reader\_\-led\_\-blink\_\-target\_\-reader@{touchatag\_\-reader\_\-led\_\-blink\_\-target\_\-reader}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-led\_\-blink\_\-target\_\-reader}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-led\_\-blink\_\-target\_\-reader ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader}, \/  char $\ast$ {\em ID})}}
+\label{touchatag__reader_8h_a3fd2c59f658c41f31176c9bf9468c21a}
+
+
+Blinks target reader led. 
+
+This function makes start the blinking operation for a single reader with the parameters setted with touchatag\_\-reader\_\-led\_\-blink\_\-set. If They aren't setted yet, default settings are used. \hypertarget{touchatag__reader_8h_ad897b95d3248c97e07e87b32e37c42c6}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-link\_\-id\_\-reader\_\-usb\_\-handler@{touchatag\_\-reader\_\-link\_\-id\_\-reader\_\-usb\_\-handler}}
+\index{touchatag\_\-reader\_\-link\_\-id\_\-reader\_\-usb\_\-handler@{touchatag\_\-reader\_\-link\_\-id\_\-reader\_\-usb\_\-handler}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-link\_\-id\_\-reader\_\-usb\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-reader\_\-link\_\-id\_\-reader\_\-usb\_\-handler ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader}, \/  char $\ast$ {\em ID})}}
+\label{touchatag__reader_8h_ad897b95d3248c97e07e87b32e37c42c6}
+
+
+Returns the number of the handle linked to a reader. 
+
+This function returns the number of the handle linked to a reader. This internal function is used from the library to link reader's uid to its handle (converts ID to TARGET). \hypertarget{touchatag__reader_8h_a109733992770ee989cb139431d6f26fd}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-polling\_\-all\_\-readers@{touchatag\_\-reader\_\-polling\_\-all\_\-readers}}
+\index{touchatag\_\-reader\_\-polling\_\-all\_\-readers@{touchatag\_\-reader\_\-polling\_\-all\_\-readers}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-polling\_\-all\_\-readers}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-reader\_\-polling\_\-all\_\-readers ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader}, \/  {\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__reader_8h_a109733992770ee989cb139431d6f26fd}
+
+
+Commands a polling action on all touchatag readers connected. 
+
+This function Commands a polling action on all touchatag readers connected. If a tag is found, functions touchatag\_\-reader\_\-get\_\-tag\_\-uid and touchatag\_\-reader\_\-get\_\-all\_\-data are used. If two tags are found, it only takes both tags uid. Returns found tag number. \hypertarget{touchatag__reader_8h_a559345125388168f13d1314c291deb27}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-polling\_\-target\_\-reader@{touchatag\_\-reader\_\-polling\_\-target\_\-reader}}
+\index{touchatag\_\-reader\_\-polling\_\-target\_\-reader@{touchatag\_\-reader\_\-polling\_\-target\_\-reader}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-polling\_\-target\_\-reader}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-reader\_\-polling\_\-target\_\-reader ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader}, \/  {\bf tag\_\-t} $\ast$ {\em tag}, \/  char $\ast$ {\em ID})}}
+\label{touchatag__reader_8h_a559345125388168f13d1314c291deb27}
+
+
+Commands a polling action on the target touchatag reader. 
+
+This function commands a polling action on the target touchatag reader. If a tag is found, functions touchatag\_\-reader\_\-get\_\-tag\_\-uid and touchatag\_\-reader\_\-get\_\-all\_\-data are used. If two tags are found, it only takes both tags' uid. Returns found tag number \hypertarget{touchatag__reader_8h_a9e20d3166921c63405b9d32273784669}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-power\_\-off\_\-all@{touchatag\_\-reader\_\-power\_\-off\_\-all}}
+\index{touchatag\_\-reader\_\-power\_\-off\_\-all@{touchatag\_\-reader\_\-power\_\-off\_\-all}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-power\_\-off\_\-all}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-power\_\-off\_\-all ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_a9e20d3166921c63405b9d32273784669}
+
+
+This function switches off the voltage. Touchatag readers -\/$>$ OFF. 
+
+This function switches off the voltage of the usb ports where a reader in connected. \hypertarget{touchatag__reader_8h_adac1552f09f2d8c9c2a583862e57a02c}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-power\_\-off\_\-target\_\-reader@{touchatag\_\-reader\_\-power\_\-off\_\-target\_\-reader}}
+\index{touchatag\_\-reader\_\-power\_\-off\_\-target\_\-reader@{touchatag\_\-reader\_\-power\_\-off\_\-target\_\-reader}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-power\_\-off\_\-target\_\-reader}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-power\_\-off\_\-target\_\-reader ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader}, \/  char $\ast$ {\em ID})}}
+\label{touchatag__reader_8h_adac1552f09f2d8c9c2a583862e57a02c}
+
+
+Switches off the target reader. 
+
+This function switches off the voltage of the usb ports where the target reader is connected. \hypertarget{touchatag__reader_8h_ae77277f83b75f882368247cb09acd7f1}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-print\_\-firmware@{touchatag\_\-reader\_\-print\_\-firmware}}
+\index{touchatag\_\-reader\_\-print\_\-firmware@{touchatag\_\-reader\_\-print\_\-firmware}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-print\_\-firmware}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-print\_\-firmware ({\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_ae77277f83b75f882368247cb09acd7f1}
+
+
+Prints reader's firmware. 
+
+This function prints the reader firmware of the given reader. \hypertarget{touchatag__reader_8h_ad701a7749a7bc9dcaa6df71044b840a8}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-print\_\-reader\_\-id@{touchatag\_\-reader\_\-print\_\-reader\_\-id}}
+\index{touchatag\_\-reader\_\-print\_\-reader\_\-id@{touchatag\_\-reader\_\-print\_\-reader\_\-id}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-print\_\-reader\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-print\_\-reader\_\-id ({\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_ad701a7749a7bc9dcaa6df71044b840a8}
+
+
+Prints reader ID. 
+
+This function prints reader ID. \hypertarget{touchatag__reader_8h_a4268486cb70159950c76093d3cb9a434}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-print\_\-reader\_\-identification\_\-sam@{touchatag\_\-reader\_\-print\_\-reader\_\-identification\_\-sam}}
+\index{touchatag\_\-reader\_\-print\_\-reader\_\-identification\_\-sam@{touchatag\_\-reader\_\-print\_\-reader\_\-identification\_\-sam}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-print\_\-reader\_\-identification\_\-sam}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-print\_\-reader\_\-identification\_\-sam ({\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_a4268486cb70159950c76093d3cb9a434}
+
+
+Prints reader's SAM identification number. 
+
+This function prints the reader SAM identification number of the given reader. \hypertarget{touchatag__reader_8h_a48c8f3041c43055ffcd1dc6bba217bea}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-print\_\-reader\_\-serial\_\-sam@{touchatag\_\-reader\_\-print\_\-reader\_\-serial\_\-sam}}
+\index{touchatag\_\-reader\_\-print\_\-reader\_\-serial\_\-sam@{touchatag\_\-reader\_\-print\_\-reader\_\-serial\_\-sam}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-print\_\-reader\_\-serial\_\-sam}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-print\_\-reader\_\-serial\_\-sam ({\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_a48c8f3041c43055ffcd1dc6bba217bea}
+
+
+Prints reader's SAM serial number. 
+
+This function prints the reader SAM serial number of the given reader. \hypertarget{touchatag__reader_8h_aa3221e186fd462c32d163412f47580a0}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-return\_\-reader\_\-firmware@{touchatag\_\-reader\_\-return\_\-reader\_\-firmware}}
+\index{touchatag\_\-reader\_\-return\_\-reader\_\-firmware@{touchatag\_\-reader\_\-return\_\-reader\_\-firmware}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-return\_\-reader\_\-firmware}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ touchatag\_\-reader\_\-return\_\-reader\_\-firmware ({\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_aa3221e186fd462c32d163412f47580a0}
+
+
+Returns reader's firmware (in ASCII). 
+
+Returns reader firmware (in ASCII). \hypertarget{touchatag__reader_8h_af967bb77dc6734715c897a48710e14e4}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-return\_\-reader\_\-id@{touchatag\_\-reader\_\-return\_\-reader\_\-id}}
+\index{touchatag\_\-reader\_\-return\_\-reader\_\-id@{touchatag\_\-reader\_\-return\_\-reader\_\-id}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-return\_\-reader\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ touchatag\_\-reader\_\-return\_\-reader\_\-id ({\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_af967bb77dc6734715c897a48710e14e4}
+Returns reader ID (as string). \hypertarget{touchatag__reader_8h_a40f8cc11f4caf882a9365a4525e6d9c1}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-return\_\-reader\_\-identification\_\-sam@{touchatag\_\-reader\_\-return\_\-reader\_\-identification\_\-sam}}
+\index{touchatag\_\-reader\_\-return\_\-reader\_\-identification\_\-sam@{touchatag\_\-reader\_\-return\_\-reader\_\-identification\_\-sam}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-return\_\-reader\_\-identification\_\-sam}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ touchatag\_\-reader\_\-return\_\-reader\_\-identification\_\-sam ({\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_a40f8cc11f4caf882a9365a4525e6d9c1}
+Returns reader SAM identification number. \hypertarget{touchatag__reader_8h_a8c447cea2cf92d783a12d5be974c0f1c}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-return\_\-reader\_\-serial\_\-sam@{touchatag\_\-reader\_\-return\_\-reader\_\-serial\_\-sam}}
+\index{touchatag\_\-reader\_\-return\_\-reader\_\-serial\_\-sam@{touchatag\_\-reader\_\-return\_\-reader\_\-serial\_\-sam}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-return\_\-reader\_\-serial\_\-sam}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ touchatag\_\-reader\_\-return\_\-reader\_\-serial\_\-sam ({\bf reader\_\-t} $\ast$ {\em reader})}}
+\label{touchatag__reader_8h_a8c447cea2cf92d783a12d5be974c0f1c}
+Returns reader SAM serial number. \hypertarget{touchatag__reader_8h_a23b14ad06d740aec20cf1e07f8040684}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-set\_\-time@{touchatag\_\-reader\_\-set\_\-time}}
+\index{touchatag\_\-reader\_\-set\_\-time@{touchatag\_\-reader\_\-set\_\-time}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-set\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-set\_\-time (int {\em time}, \/  int {\em rate})}}
+\label{touchatag__reader_8h_a23b14ad06d740aec20cf1e07f8040684}
+
+
+Sets polling time. 
+
+This function sets the default polling time of all the readers. \hypertarget{touchatag__reader_8h_aadbd091ae14668a14ddcce2284ef67e2}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-set\_\-writing\_\-notes@{touchatag\_\-reader\_\-set\_\-writing\_\-notes}}
+\index{touchatag\_\-reader\_\-set\_\-writing\_\-notes@{touchatag\_\-reader\_\-set\_\-writing\_\-notes}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-set\_\-writing\_\-notes}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-reader\_\-set\_\-writing\_\-notes (int {\em size}, \/  int {\em start}, \/  char $\ast$ {\em note}, \/  {\bf notes\_\-t} $\ast$ {\em notes})}}
+\label{touchatag__reader_8h_aadbd091ae14668a14ddcce2284ef67e2}
+
+
+Sets the parameters for writing operationsù. 
+
+This function is used to set the parameters for writing operations. \char`\"{}Size\char`\"{} describes the lenght of the string needed to write. \char`\"{}Start\char`\"{} is the number of the byte from which writing operation has to begin. \char`\"{}Note\char`\"{} is the array needed to write. The given parameters have to respect the settings needed from the chosen writing function. \hypertarget{touchatag__reader_8h_a3a773ccea68d0d2c6b5f5f9327508c9c}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-write\_\-mifare\_\-ultralight@{touchatag\_\-reader\_\-write\_\-mifare\_\-ultralight}}
+\index{touchatag\_\-reader\_\-write\_\-mifare\_\-ultralight@{touchatag\_\-reader\_\-write\_\-mifare\_\-ultralight}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-write\_\-mifare\_\-ultralight}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-reader\_\-write\_\-mifare\_\-ultralight ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader}, \/  {\bf tag\_\-t} $\ast$ {\em tag}, \/  {\bf notes\_\-t} $\ast$ {\em notes}, \/  char $\ast$ {\em ID})}}
+\label{touchatag__reader_8h_a3a773ccea68d0d2c6b5f5f9327508c9c}
+
+
+Writes on Read/Write tag's memory (only MIFARE ULTRALIGHT are allowed). 
+
+This function sends the write command to the reader device. The size attribute in notes has to be lower than 49 and the starting byte has to be correct too \hypertarget{touchatag__reader_8h_ac8778042af375369e17ccbb979a5d43d}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-reader\_\-write\_\-touchtag\_\-ultralight@{touchatag\_\-reader\_\-write\_\-touchtag\_\-ultralight}}
+\index{touchatag\_\-reader\_\-write\_\-touchtag\_\-ultralight@{touchatag\_\-reader\_\-write\_\-touchtag\_\-ultralight}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-reader\_\-write\_\-touchtag\_\-ultralight}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-reader\_\-write\_\-touchtag\_\-ultralight ({\bf libusb\_\-t} $\ast$ {\em libusb}, \/  {\bf reader\_\-t} $\ast$ {\em reader}, \/  {\bf tag\_\-t} $\ast$ {\em tag}, \/  char $\ast$ {\em notes}, \/  char $\ast$ {\em ID})}}
+\label{touchatag__reader_8h_ac8778042af375369e17ccbb979a5d43d}
+
+
+Writes on a touchatag tag's memory (last 4 bytes). 
+
+This function sends the write command to the reader device. It writes only in the 4 bytes (only the last 4 bytes are unlocked). \hypertarget{touchatag__reader_8h_ad1a25dcf7663416dfde79477ebbb4e20}{
+\index{touchatag\_\-reader.h@{touchatag\_\-reader.h}!touchatag\_\-scan\_\-bus@{touchatag\_\-scan\_\-bus}}
+\index{touchatag\_\-scan\_\-bus@{touchatag\_\-scan\_\-bus}!touchatag_reader.h@{touchatag\_\-reader.h}}
+\subsubsection[{touchatag\_\-scan\_\-bus}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-scan\_\-bus ({\bf libusb\_\-t} $\ast$ {\em libusb})}}
+\label{touchatag__reader_8h_ad1a25dcf7663416dfde79477ebbb4e20}
+
+
+Searches for touchatag readers. 
+
+This function scans the usb ports to find any linked touchatag devices. 

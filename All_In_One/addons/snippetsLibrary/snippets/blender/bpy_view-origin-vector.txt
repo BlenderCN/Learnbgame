@@ -1,0 +1,15 @@
+def get_view_origin_position():
+    #method 1
+    from bpy_extras import view3d_utils
+    region = bpy.context.region
+    rv3d = bpy.context.region_data
+    view_loc = view3d_utils.region_2d_to_origin_3d(region, rv3d, (region.width/2.0, region.height/2.0))
+    print("view_loc1", view_loc)#Dbg
+
+    #method 2
+    r3d = bpy.context.space_data.region_3d
+    view_loc2 = r3d.view_matrix.inverted().translation
+    print("view_loc2", view_loc2)#Dbg
+    if view_loc != view_loc2: print('there might be an errror when finding view coordinate')
+
+    return view_loc1

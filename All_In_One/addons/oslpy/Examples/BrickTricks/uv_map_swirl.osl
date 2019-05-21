@@ -1,0 +1,35 @@
+
+shader uv_map_swirl(
+	point Point = P,
+    float Scale = 5,
+    point Center = point(0.5,0.5,0),
+    float brickwidth = 1.0, 
+    float brickheight = 1.0,
+    output point UV = 0.0,
+    output point CellID = 0,
+    output point Position = 0.0,
+    output float brick_width = 1.0, 
+    output float brick_height = 1.0)
+{   
+    float x = Point[0]-Center[0];
+    float y = Point[1]-Center[1];
+    x = x *Scale;
+    y = y *Scale;
+    
+    float len = sqrt(x*x+y*y);
+    float a = atan2(y,x) / 6.283;
+    float Ix = a;
+    float Iy = len+a;
+    float Ic = ceil(Iy);
+    Ix-=Ic;
+    
+    Ix *= Ix * 3.1415926 * (3. - sqrt(5.));
+    UV = point(mod(Ix,brickwidth),mod(Iy,brickheight),0);
+    Iy-=Ic;
+    CellID = point(floor(Ix/brickwidth),floor(Iy/brickheight),0); 
+	Position = point(Ix,Iy,0); 
+    brick_width = brickwidth;
+    brick_height = brickheight;
+    
+}
+

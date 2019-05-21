@@ -1,0 +1,420 @@
+Index: source/gameengine/Physics/Bullet/CcdPhysicsController.cpp
+===================================================================
+--- source/gameengine/Physics/Bullet/CcdPhysicsController.cpp	(Revision 45447)
++++ source/gameengine/Physics/Bullet/CcdPhysicsController.cpp	(Arbeitskopie)
+@@ -168,6 +168,123 @@
+ #include "BulletSoftBody/btSoftBodyHelpers.h"
+ 
+ 
++void CcdPhysicsController::SetPose(bool bvolume, bool bframe)
++{
++	btSoftBody* sb = GetSoftBody();
++	if (sb != NULL && getConstructionInfo().m_bSoft)
++	{
++		//printf("CcdPhysicsController::setPose");
++		sb->setPose(bvolume, bframe);
++	}
++}
++
++void CcdPhysicsController::SetLJoint(CcdPhysicsController *ctrl)
++{
++	btSoftBody* sb = GetSoftBody();
++	btSoftBody* sb1 = ctrl->GetSoftBody();
++	printf("%p %p \n", sb, sb1);
++	printf("%i %i \n", getConstructionInfo().m_bSoft,
++					ctrl->getConstructionInfo().m_bSoft);
++
++	if ((sb != NULL && getConstructionInfo().m_bSoft) &&
++	     sb1 != NULL && ctrl->getConstructionInfo().m_bSoft)
++	{
++
++		printf("CcdPhysicsController::setLJoint\n");
++		btSoftBody::LJoint::Specs specs;
++		btVector3 diff = sb1->getWorldTransform().getOrigin() -
++						  sb->getWorldTransform().getOrigin();
++		specs.position = sb->getWorldTransform().getOrigin() + 0.5f * diff;
++		specs.cfm = 1;
++		specs.erp = 1;
++
++		sb->m_cfg.kDF = 1;
++		sb1->m_cfg.kDF = 1;
++		sb->appendLinearJoint(specs, sb1);
++	}
++}
++
++void CcdPhysicsController::CutJoint(CcdPhysicsController *ctrl)
++{
++	btSoftBody* sb = GetSoftBody();
++	btSoftBody* sb1 = ctrl->GetSoftBody();
++	for (int i = 0; i < sb->m_joints.size(); i++)
++	{
++		btSoftBody::Joint* j = sb->m_joints[i];
++		// should be at pos 1
++		if (sb1 == j->m_bodies[1].m_collisionObject)//|| sb1 == j.m_bodies[0]
++		{
++			sb->m_joints.remove(j);
++		}
++	}
++}
++
++//destroy links within radius....
++struct	ImplicitSphere : btSoftBody::ImplicitFn
++{
++	btVector3	center;
++	btScalar	sqradius;
++	ImplicitSphere() {}
++	ImplicitSphere(const btVector3& c,btScalar r) : center(c),sqradius(r*r) {}
++	btScalar	Eval(const btVector3& x)
++	{
++		return((x-center).length2()-sqradius);
++	}
++};
++
++void CcdPhysicsController::CutLink(btVector3* pos, btScalar radius)
++{
++	btSoftBody* sb = GetSoftBody();
++	const btVector3 impact = *pos;
++	ImplicitSphere* s = new ImplicitSphere(impact, radius);
++	sb->refine(s, 0.0001f, true);
++	sb->generateClusters(2, 64);
++
++//	btSoftBody::Node close;
++//	btScalar dist = 1000000.0f;  //hack, use maxfloat
++//	int j = -1;
++//	for (int i = 0; i < sb->m_nodes.size(); i++)
++//	{
++//		btSoftBody::Node n = sb->m_nodes[i];
++//		printf("Node: %f %f %f\n", n.m_x.x(), n.m_x.y(), n.m_x.z());
++//		btScalar distance = n.m_x.distance(*pos);
++//		if (distance < dist)
++//		{
++//			close = n;
++//			dist = distance;
++//			j = i;
++//		}
++//	}
++
++//	const btSoftBody::Node* closest = &close;
++
++//	int size = sb->m_nodes.size();
++//	for (int i = 0; i < size; i++)
++//	{
++//		btSoftBody::Node other = sb->m_nodes[i];
++//		if (i != j)
++//		{
++//			const btVector3 p = other.m_x;
++//			printf("Other: %f %f %f\n", other.m_x.x(), other.m_x.y(), other.m_x.z());
++//			printf("Closest: %f %f %f\n", closest->m_x.x(), closest->m_x.y(), closest->m_x.z());
++//			btScalar distance = closest->m_x.distance(p);
++//			printf("Dist/Radius: %f %f\n", distance, radius);
++
++
++
++//			if (distance < radius)
++//			{
++//				printf("Cutting Link\n");
++//				//const btSoftBody::Node* oth = &other;
++//				sb->cutLink(i, j, distance / 2 );
++//				sb->generateClusters(2, 64);
++//			}
++//		}
++//	}
++}
++
++
++
+ bool CcdPhysicsController::CreateSoftbody()
+ {
+ 	int shapeType = m_cci.m_collisionShape ? m_cci.m_collisionShape->getShapeType() : 0;
+Index: source/gameengine/Physics/Bullet/CcdPhysicsEnvironment.cpp
+===================================================================
+--- source/gameengine/Physics/Bullet/CcdPhysicsEnvironment.cpp	(Revision 45447)
++++ source/gameengine/Physics/Bullet/CcdPhysicsEnvironment.cpp	(Arbeitskopie)
+@@ -465,6 +465,7 @@
+ 		btVector3 inertia(0.0,0.0,0.0);
+ 		m_dynamicsWorld->removeCollisionObject(obj);
+ 		obj->setCollisionFlags(newCollisionFlags);
++
+ 		if (body)
+ 		{
+ 			if (newMass)
+Index: source/gameengine/Physics/Bullet/CcdPhysicsController.h
+===================================================================
+--- source/gameengine/Physics/Bullet/CcdPhysicsController.h	(Revision 45447)
++++ source/gameengine/Physics/Bullet/CcdPhysicsController.h	(Arbeitskopie)
+@@ -459,6 +459,13 @@
+ 		btCollisionShape*	GetCollisionShape() { 
+ 			return m_object->getCollisionShape();
+ 		}
++
++		virtual void SetPose(bool bVolume, bool bFrame);
++		virtual void SetLJoint(CcdPhysicsController *ctrl);
++		virtual void CutJoint(CcdPhysicsController* ctrl);
++		virtual void CutLink(btVector3* pos, btScalar radius);
++
++
+ 		////////////////////////////////////
+ 		// PHY_IPhysicsController interface
+ 		////////////////////////////////////
+Index: source/gameengine/Ketsji/KX_IPhysicsController.h
+===================================================================
+--- source/gameengine/Ketsji/KX_IPhysicsController.h	(Revision 45447)
++++ source/gameengine/Ketsji/KX_IPhysicsController.h	(Arbeitskopie)
+@@ -129,6 +129,17 @@
+ 	// call from scene graph to update
+ 	virtual bool Update(double time)=0;
+ 	void*	GetUserData() { return m_userdata;}
++
++	//permanent deformation
++	virtual void setSoftbodyPose(bool bVolume, bool bFrame)=0;
++
++	//connect / disconnect softbodies
++	virtual void setSoftbodyLJoint(KX_IPhysicsController* obj)=0;
++	virtual void cutSoftbodyJoint(KX_IPhysicsController* obj)=0;
++
++	//destroy softbodies themselves
++	virtual void cutSoftbodyLink(MT_Vector3* pos, MT_Scalar radius)=0;
++
+ 	
+ 	
+ #ifdef WITH_CXX_GUARDEDALLOC
+Index: source/gameengine/Ketsji/KX_BulletPhysicsController.cpp
+===================================================================
+--- source/gameengine/Ketsji/KX_BulletPhysicsController.cpp	(Revision 45447)
++++ source/gameengine/Ketsji/KX_BulletPhysicsController.cpp	(Arbeitskopie)
+@@ -60,6 +60,33 @@
+ 	//	KX_IPhysicsController interface
+ 	////////////////////////////////////
+ 
++void KX_BulletPhysicsController::setSoftbodyPose(bool bVolume, bool bFrame)
++{
++	//printf("KX_BulletPhysicsController::setPose");
++	((CcdPhysicsController*)this)->SetPose(bVolume, bFrame);
++}
++
++void KX_BulletPhysicsController::setSoftbodyLJoint(KX_IPhysicsController *obj)
++{
++	printf("KX_IPhysicsController::setSoftbodyLJoint\n");
++	KX_BulletPhysicsController* ctrl = (KX_BulletPhysicsController*)obj;
++	((CcdPhysicsController*)this)->SetLJoint((CcdPhysicsController*)ctrl);
++}
++
++void KX_BulletPhysicsController::cutSoftbodyJoint(KX_IPhysicsController *obj)
++{
++	printf("KX_IPhysicsController::cutSoftbodyJoint\n");
++	((CcdPhysicsController*)this)->CutJoint((CcdPhysicsController*)obj);
++}
++
++void KX_BulletPhysicsController::cutSoftbodyLink(MT_Vector3 *pos, MT_Scalar radius)
++{
++	btVector3 *p = new btVector3(pos->x(), pos->y(), pos->z());
++	btScalar r = (float)radius;
++	printf("KX_IPhysicsController::cutSoftbodyLink %f %f %f\n", pos->x(), pos->y(), pos->z());
++	((CcdPhysicsController*)this)->CutLink(p, r);
++}
++
+ void	KX_BulletPhysicsController::applyImpulse(const MT_Point3& attach, const MT_Vector3& impulse)
+ {
+ 		CcdPhysicsController::applyImpulse(attach[0],attach[1],attach[2],impulse[0],impulse[1],impulse[2]);
+Index: source/gameengine/Ketsji/KX_GameObject.cpp
+===================================================================
+--- source/gameengine/Ketsji/KX_GameObject.cpp	(Revision 45447)
++++ source/gameengine/Ketsji/KX_GameObject.cpp	(Arbeitskopie)
+@@ -229,6 +229,42 @@
+ 	return m_pPhysicsController1;
+ }
+ 
++void KX_GameObject::SetSoftbodyPose(bool bVolume, bool bFrame)
++{
++	if (m_pPhysicsController1 != NULL)
++	{
++		//printf("KX_GameObject::setPose");
++		m_pPhysicsController1->setSoftbodyPose(bVolume, bFrame);
++	}
++}
++
++void KX_GameObject::SetSoftbodyLJoint(KX_GameObject *obj)
++{
++	KX_IPhysicsController* ctrl = obj->GetPhysicsController();
++	if ((m_pPhysicsController1 != NULL) && (ctrl != NULL))
++	{
++		printf("KX_GameObject::setSoftbodyLJoint\n");
++		m_pPhysicsController1->setSoftbodyLJoint(ctrl);
++	}
++}
++
++void KX_GameObject::CutSoftbodyJoint(KX_GameObject *obj)
++{
++	KX_IPhysicsController* ctrl = obj->GetPhysicsController();
++	if ((m_pPhysicsController1 != NULL) && (ctrl != NULL))
++	{
++		m_pPhysicsController1->cutSoftbodyJoint(ctrl);
++	}
++}
++
++void KX_GameObject::CutSoftbodyLink(MT_Vector3 *pos, MT_Scalar radius)
++{
++	if (m_pPhysicsController1 != NULL)
++	{
++		m_pPhysicsController1->cutSoftbodyLink(pos, radius);
++	}
++}
++
+ KX_GameObject* KX_GameObject::GetParent()
+ {
+ 	KX_GameObject* result = NULL;
+@@ -248,6 +284,7 @@
+ 	
+ }
+ 
++
+ void KX_GameObject::SetParent(KX_Scene *scene, KX_GameObject* obj, bool addToCompound, bool ghost)
+ {
+ 	// check on valid node in case a python controller holds a reference to a deleted object
+@@ -1608,6 +1645,12 @@
+ 	{"replaceMesh",(PyCFunction) KX_GameObject::sPyReplaceMesh, METH_VARARGS},
+ 	{"endObject",(PyCFunction) KX_GameObject::sPyEndObject, METH_NOARGS},
+ 	{"reinstancePhysicsMesh", (PyCFunction)KX_GameObject::sPyReinstancePhysicsMesh,METH_VARARGS},
++
++    // Bullet Softbody Access
++    {"setSoftbodyPose", (PyCFunction)KX_GameObject::sPySetSoftbodyPose, METH_VARARGS},
++    {"setSoftbodyLJoint", (PyCFunction)KX_GameObject::sPySetSoftbodyLJoint, METH_VARARGS},
++    {"cutSoftbodyJoint", (PyCFunction)KX_GameObject::sPyCutSoftbodyJoint, METH_VARARGS},
++    {"cutSoftbodyLink", (PyCFunction)KX_GameObject::sPyCutSoftbodyLink, METH_VARARGS},
+ 	
+ 	KX_PYMETHODTABLE(KX_GameObject, rayCastTo),
+ 	KX_PYMETHODTABLE(KX_GameObject, rayCast),
+@@ -2451,6 +2494,63 @@
+ {
+ 	return KX_PythonSeq_CreatePyObject((static_cast<KX_GameObject*>(self_v))->m_proxy, KX_PYGENSEQ_OB_TYPE_ACTUATORS);
+ }
++
++PyObject* KX_GameObject::PySetSoftbodyPose(PyObject* args)
++{
++	int bFrame=1, bVolume=1;
++
++	if (!PyArg_ParseTuple(args,"|ii:setSoftbodyPose", &bVolume, &bFrame)) {
++		return NULL; // Python sets a simple error
++	}
++
++	this->SetSoftbodyPose(bVolume, bFrame);
++	Py_RETURN_NONE;
++}
++
++PyObject* KX_GameObject::PySetSoftbodyLJoint(PyObject *args)
++{
++	KX_GameObject* obj;
++	PyObject* pyobj;
++	if (!PyArg_ParseTuple(args,"|O:setSoftbodyLJoint", &pyobj)) {
++		return NULL; // Python sets a simple error
++	}
++
++	if (!ConvertPythonToGameObject(pyobj, &obj, true, "gameOb.setSoftbodyLJoint(obj): KX_GameObject"))
++		return NULL;
++	this->SetSoftbodyLJoint(obj);
++	Py_RETURN_NONE;
++}
++
++PyObject* KX_GameObject::PyCutSoftbodyJoint(PyObject *args)
++{
++	KX_GameObject* obj;
++	PyObject* pyobj;
++	if (!PyArg_ParseTuple(args,"|O:cutSoftbodyJoint", &pyobj)) {
++		return NULL; // Python sets a simple error
++	}
++
++	if (!ConvertPythonToGameObject(pyobj, &obj, true, "gameOb.cutSoftbodyJoint(obj): KX_GameObject"))
++		return NULL;
++	this->CutSoftbodyJoint(obj);
++	Py_RETURN_NONE;
++}
++
++PyObject* KX_GameObject::PyCutSoftbodyLink(PyObject *args)
++{
++	PyObject* pyvect;
++	MT_Scalar radius;
++	if (PyArg_ParseTuple(args,"O|d:cutSoftbodyLink", &pyvect, &radius)) {
++		MT_Vector3 pos;
++		if (PyVecTo(pyvect, pos)) {
++			this->CutSoftbodyLink(&pos, radius);
++		}
++
++	}
++	return NULL; // Python sets a simple error
++
++	//Py_RETURN_NONE;
++}
++
+ /* End experimental */
+ 
+ PyObject* KX_GameObject::pyattr_get_children(void *self_v, const KX_PYATTRIBUTE_DEF *attrdef)
+Index: source/gameengine/Ketsji/KX_BulletPhysicsController.h
+===================================================================
+--- source/gameengine/Ketsji/KX_BulletPhysicsController.h	(Revision 45447)
++++ source/gameengine/Ketsji/KX_BulletPhysicsController.h	(Arbeitskopie)
+@@ -90,6 +90,16 @@
+ 		// intentionally empty
+ 	};
+ 
++	//permanent deformation
++	virtual void setSoftbodyPose(bool bVolume, bool bFrame);
++
++	//connect / disconnect softbodies
++	virtual void setSoftbodyLJoint(KX_IPhysicsController* obj);
++	virtual void cutSoftbodyJoint(KX_IPhysicsController* obj);
++
++	//destroy softbodies themselves
++	virtual void cutSoftbodyLink(MT_Vector3* pos, MT_Scalar radius);
++
+ 	
+ #ifdef WITH_CXX_GUARDEDALLOC
+ public:
+Index: source/gameengine/Ketsji/KX_GameObject.h
+===================================================================
+--- source/gameengine/Ketsji/KX_GameObject.h	(Revision 45447)
++++ source/gameengine/Ketsji/KX_GameObject.h	(Arbeitskopie)
+@@ -207,6 +207,11 @@
+ 	 */			
+ 	void RemoveParent(KX_Scene *scene);
+ 
++	void SetSoftbodyPose(bool bVolume, bool bFrame);
++	void SetSoftbodyLJoint(KX_GameObject *obj);
++	void CutSoftbodyJoint(KX_GameObject *obj);
++	void CutSoftbodyLink(MT_Vector3 *pos, MT_Scalar radius);
++
+ 	/*********************************
+ 	 * Animation API
+ 	 *********************************/
+@@ -936,6 +941,12 @@
+ 	KX_PYMETHOD_DOC_VARARGS(KX_GameObject, sendMessage);
+ 	KX_PYMETHOD_VARARGS(KX_GameObject, ReinstancePhysicsMesh);
+ 
++	//Bullet Softbody Access
++	KX_PYMETHOD_VARARGS(KX_GameObject,SetSoftbodyPose);
++	KX_PYMETHOD_VARARGS(KX_GameObject,SetSoftbodyLJoint);
++	KX_PYMETHOD_VARARGS(KX_GameObject,CutSoftbodyJoint);
++	KX_PYMETHOD_VARARGS(KX_GameObject,CutSoftbodyLink);
++
+ 	KX_PYMETHOD_DOC(KX_GameObject, playAction);
+ 	KX_PYMETHOD_DOC(KX_GameObject, stopAction);
+ 	KX_PYMETHOD_DOC(KX_GameObject, getActionFrame);
+Index: extern/bullet2/src/BulletSoftBody/btSoftBody.cpp
+===================================================================
+--- extern/bullet2/src/BulletSoftBody/btSoftBody.cpp	(Revision 45447)
++++ extern/bullet2/src/BulletSoftBody/btSoftBody.cpp	(Arbeitskopie)
+@@ -18,6 +18,7 @@
+ #include "BulletSoftBody/btSoftBodySolvers.h"
+ #include "btSoftBodyData.h"
+ #include "LinearMath/btSerializer.h"
++//#include <stdio.h>
+ 
+ //
+ btSoftBody::btSoftBody(btSoftBodyWorldInfo*	worldInfo,int node_count,  const btVector3* x,  const btScalar* m)
+@@ -2405,6 +2406,7 @@
+ 			const btVector3		w=(drift?c.m_dimpulses[1]:c.m_vimpulses[1])*m_sst.sdt;
+ 			for(int j=0;j<c.m_nodes.size();++j)
+ 			{
++				//printf("before index %p %p\n", c.m_nodes[j], &m_nodes[0]);
+ 				const int			idx=int(c.m_nodes[j]-&m_nodes[0]);
+ 				const btVector3&	x=c.m_nodes[j]->m_x;
+ 				const btScalar		q=c.m_masses[j];

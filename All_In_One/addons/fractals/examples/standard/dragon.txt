@@ -1,0 +1,5 @@
+start: A;
+rules:
+A: d1 X;
+X: X r90 Y d1 r90;
+Y: r-90 d1 X r-90 Y;

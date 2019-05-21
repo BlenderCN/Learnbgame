@@ -1,0 +1,743 @@
+[
+    {
+        "slide": [
+            {
+                "auto_size": "None",
+                "height": 188.0,
+                "left": 120.0,
+                "marginBottom": 3.6,
+                "marginLeft": 7.2,
+                "marginRight": 7.2,
+                "marginTop": 3.6,
+                "name": "Title 1",
+                "paragraphs": [
+                    {
+                        "alignment": "None",
+                        "font": {},
+                        "level": 0,
+                        "runs": [
+                            {
+                                "font": {
+                                    "color": {},
+                                    "fill": {
+                                        "fore_color": {}
+                                    }
+                                },
+                                "text": "Asdf "
+                            },
+                            {
+                                "font": {
+                                    "color": {},
+                                    "fill": {
+                                        "fore_color": {}
+                                    }
+                                },
+                                "text": "asdf"
+                            },
+                            {
+                                "font": {
+                                    "color": {},
+                                    "fill": {
+                                        "fore_color": {}
+                                    }
+                                },
+                                "text": " asd"
+                            }
+                        ],
+                        "text": "Asdf asdf asd"
+                    }
+                ],
+                "rotation": 0.0,
+                "shape_type": "PLACEHOLDER (14)",
+                "text": "Asdf asdf asd",
+                "top": 88.37503937007874,
+                "width": 720.0
+            },
+            {
+                "auto_size": "TEXT_TO_FIT_SHAPE (2)",
+                "height": 130.37496062992125,
+                "left": 120.0,
+                "marginBottom": 3.6,
+                "marginLeft": 7.2,
+                "marginRight": 7.2,
+                "marginTop": 3.6,
+                "name": "Subtitle 2",
+                "paragraphs": [
+                    {
+                        "alignment": "None",
+                        "font": {},
+                        "level": 0,
+                        "runs": [
+                            {
+                                "font": {
+                                    "color": {},
+                                    "fill": {
+                                        "fore_color": {}
+                                    }
+                                },
+                                "text": "A sdfasdf"
+                            },
+                            {
+                                "font": {
+                                    "color": {},
+                                    "fill": {
+                                        "fore_color": {}
+                                    }
+                                },
+                                "text": " "
+                            },
+                            {
+                                "font": {
+                                    "color": {},
+                                    "fill": {
+                                        "fore_color": {}
+                                    }
+                                },
+                                "text": "asdf asdf"
+                            }
+                        ],
+                        "text": "A sdfasdf asdf asdf"
+                    }
+                ],
+                "rotation": 0.0,
+                "shape_type": "PLACEHOLDER (14)",
+                "text": "A sdfasdf asdf asdf",
+                "top": 283.62503937007875,
+                "width": 720.0
+            },
+            {
+                "contenttype": "image/jpeg",
+                "fileext": "jpg",
+                "filename": "image.jpeg",
+                "height": 144.0444094488189,
+                "left": 56.166614173228346,
+                "name": "Picture 3",
+                "rotation": 26.0,
+                "shape_type": "PICTURE (13)",
+                "top": 287.97779527559055,
+                "width": 216.0
+            },
+            {
+                "height": 232.0004724409449,
+                "left": 128.33330708661418,
+                "name": "Table 4",
+                "rotation": 0.0,
+                "rows": [
+                    {
+                        "cells": [
+                            {
+                                "fill": {},
+                                "margin_bottom": 3.6,
+                                "margin_left": 7.2,
+                                "margin_right": 7.2,
+                                "margin_top": 3.6,
+                                "text": {
+                                    "margin_bottom": 3.6,
+                                    "margin_left": 7.2,
+                                    "margin_right": 7.2,
+                                    "margin_top": 3.6,
+                                    "paragraphs": [
+                                        {
+                                            "alignment": "None",
+                                            "font": {},
+                                            "level": 0,
+                                            "runs": [
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": "A sdasd "
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {
+                                                            "brightness": 0,
+                                                            "rgb": [
+                                                                237,
+                                                                125,
+                                                                49
+                                                            ],
+                                                            "theme_color": "NOT_THEME_COLOR (0)"
+                                                        },
+                                                        "fill": {
+                                                            "fore_color": {
+                                                                "brightness": 0,
+                                                                "rgb": [
+                                                                    237,
+                                                                    125,
+                                                                    49
+                                                                ],
+                                                                "theme_color": "NOT_THEME_COLOR (0)"
+                                                            }
+                                                        }
+                                                    },
+                                                    "text": "a adsf "
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {
+                                                            "brightness": 0,
+                                                            "rgb": [
+                                                                237,
+                                                                125,
+                                                                49
+                                                            ],
+                                                            "theme_color": "NOT_THEME_COLOR (0)"
+                                                        },
+                                                        "fill": {
+                                                            "fore_color": {
+                                                                "brightness": 0,
+                                                                "rgb": [
+                                                                    237,
+                                                                    125,
+                                                                    49
+                                                                ],
+                                                                "theme_color": "NOT_THEME_COLOR (0)"
+                                                            }
+                                                        }
+                                                    },
+                                                    "text": "asdlfj"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {
+                                                            "brightness": 0,
+                                                            "rgb": [
+                                                                237,
+                                                                125,
+                                                                49
+                                                            ],
+                                                            "theme_color": "NOT_THEME_COLOR (0)"
+                                                        },
+                                                        "fill": {
+                                                            "fore_color": {
+                                                                "brightness": 0,
+                                                                "rgb": [
+                                                                    237,
+                                                                    125,
+                                                                    49
+                                                                ],
+                                                                "theme_color": "NOT_THEME_COLOR (0)"
+                                                            }
+                                                        }
+                                                    },
+                                                    "text": " "
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {
+                                                            "brightness": 0,
+                                                            "rgb": [
+                                                                237,
+                                                                125,
+                                                                49
+                                                            ],
+                                                            "theme_color": "NOT_THEME_COLOR (0)"
+                                                        },
+                                                        "fill": {
+                                                            "fore_color": {
+                                                                "brightness": 0,
+                                                                "rgb": [
+                                                                    237,
+                                                                    125,
+                                                                    49
+                                                                ],
+                                                                "theme_color": "NOT_THEME_COLOR (0)"
+                                                            }
+                                                        }
+                                                    },
+                                                    "text": "al"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": "sdf"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": " asdf "
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": "alsdf"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": " asdf "
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": "lasdf"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": " "
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": "jalskdf"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": " "
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": "jalskdfj"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": " "
+                                                }
+                                            ],
+                                            "text": "A sdasd a adsf asdlfj alsdf asdf alsdf asdf lasdf jalskdf jalskdfj "
+                                        },
+                                        {
+                                            "alignment": "None",
+                                            "font": {},
+                                            "level": 0,
+                                            "text": ""
+                                        },
+                                        {
+                                            "alignment": "None",
+                                            "font": {},
+                                            "level": 0,
+                                            "runs": [
+                                                {
+                                                    "font": {
+                                                        "color": {
+                                                            "brightness": 0,
+                                                            "rgb": [
+                                                                91,
+                                                                155,
+                                                                213
+                                                            ],
+                                                            "theme_color": "NOT_THEME_COLOR (0)"
+                                                        },
+                                                        "fill": {
+                                                            "fore_color": {
+                                                                "brightness": 0,
+                                                                "rgb": [
+                                                                    91,
+                                                                    155,
+                                                                    213
+                                                                ],
+                                                                "theme_color": "NOT_THEME_COLOR (0)"
+                                                            }
+                                                        }
+                                                    },
+                                                    "text": "A "
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {
+                                                            "brightness": 0,
+                                                            "rgb": [
+                                                                91,
+                                                                155,
+                                                                213
+                                                            ],
+                                                            "theme_color": "NOT_THEME_COLOR (0)"
+                                                        },
+                                                        "fill": {
+                                                            "fore_color": {
+                                                                "brightness": 0,
+                                                                "rgb": [
+                                                                    91,
+                                                                    155,
+                                                                    213
+                                                                ],
+                                                                "theme_color": "NOT_THEME_COLOR (0)"
+                                                            }
+                                                        }
+                                                    },
+                                                    "text": "sdkfa"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {
+                                                            "brightness": 0,
+                                                            "rgb": [
+                                                                91,
+                                                                155,
+                                                                213
+                                                            ],
+                                                            "theme_color": "NOT_THEME_COLOR (0)"
+                                                        },
+                                                        "fill": {
+                                                            "fore_color": {
+                                                                "brightness": 0,
+                                                                "rgb": [
+                                                                    91,
+                                                                    155,
+                                                                    213
+                                                                ],
+                                                                "theme_color": "NOT_THEME_COLOR (0)"
+                                                            }
+                                                        }
+                                                    },
+                                                    "text": " "
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {
+                                                            "brightness": 0,
+                                                            "rgb": [
+                                                                91,
+                                                                155,
+                                                                213
+                                                            ],
+                                                            "theme_color": "NOT_THEME_COLOR (0)"
+                                                        },
+                                                        "fill": {
+                                                            "fore_color": {
+                                                                "brightness": 0,
+                                                                "rgb": [
+                                                                    91,
+                                                                    155,
+                                                                    213
+                                                                ],
+                                                                "theme_color": "NOT_THEME_COLOR (0)"
+                                                            }
+                                                        }
+                                                    },
+                                                    "text": "skdfl"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {
+                                                            "brightness": 0,
+                                                            "rgb": [
+                                                                91,
+                                                                155,
+                                                                213
+                                                            ],
+                                                            "theme_color": "NOT_THEME_COLOR (0)"
+                                                        },
+                                                        "fill": {
+                                                            "fore_color": {
+                                                                "brightness": 0,
+                                                                "rgb": [
+                                                                    91,
+                                                                    155,
+                                                                    213
+                                                                ],
+                                                                "theme_color": "NOT_THEME_COLOR (0)"
+                                                            }
+                                                        }
+                                                    },
+                                                    "text": " "
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {
+                                                            "brightness": 0,
+                                                            "rgb": [
+                                                                91,
+                                                                155,
+                                                                213
+                                                            ],
+                                                            "theme_color": "NOT_THEME_COLOR (0)"
+                                                        },
+                                                        "fill": {
+                                                            "fore_color": {
+                                                                "brightness": 0,
+                                                                "rgb": [
+                                                                    91,
+                                                                    155,
+                                                                    213
+                                                                ],
+                                                                "theme_color": "NOT_THEME_COLOR (0)"
+                                                            }
+                                                        }
+                                                    },
+                                                    "text": "ajsdfj"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {
+                                                            "brightness": 0,
+                                                            "rgb": [
+                                                                91,
+                                                                155,
+                                                                213
+                                                            ],
+                                                            "theme_color": "NOT_THEME_COLOR (0)"
+                                                        },
+                                                        "fill": {
+                                                            "fore_color": {
+                                                                "brightness": 0,
+                                                                "rgb": [
+                                                                    91,
+                                                                    155,
+                                                                    213
+                                                                ],
+                                                                "theme_color": "NOT_THEME_COLOR (0)"
+                                                            }
+                                                        }
+                                                    },
+                                                    "text": " "
+                                                }
+                                            ],
+                                            "text": "A sdkfa skdfl ajsdfj "
+                                        },
+                                        {
+                                            "alignment": "None",
+                                            "font": {},
+                                            "level": 0,
+                                            "runs": [
+                                                {
+                                                    "font": {
+                                                        "color": {
+                                                            "brightness": 0,
+                                                            "rgb": [
+                                                                91,
+                                                                155,
+                                                                213
+                                                            ],
+                                                            "theme_color": "NOT_THEME_COLOR (0)"
+                                                        },
+                                                        "fill": {
+                                                            "fore_color": {
+                                                                "brightness": 0,
+                                                                "rgb": [
+                                                                    91,
+                                                                    155,
+                                                                    213
+                                                                ],
+                                                                "theme_color": "NOT_THEME_COLOR (0)"
+                                                            }
+                                                        }
+                                                    },
+                                                    "text": "S dfasdf as dfasdf kaljsd"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": "kf jas dfjlasdkfjasldkfj "
+                                                }
+                                            ],
+                                            "text": "S dfasdf as dfasdf kaljsdkf jas dfjlasdkfjasldkfj "
+                                        },
+                                        {
+                                            "alignment": "None",
+                                            "font": {},
+                                            "level": 0,
+                                            "runs": [
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": "Sd"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": " fkalsj fdaksdfsd fasd"
+                                                }
+                                            ],
+                                            "text": "Sd fkalsj fdaksdfsd fasd"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "fill": {},
+                                "margin_bottom": 3.6,
+                                "margin_left": 7.2,
+                                "margin_right": 7.2,
+                                "margin_top": 3.6,
+                                "text": {
+                                    "margin_bottom": 3.6,
+                                    "margin_left": 7.2,
+                                    "margin_right": 7.2,
+                                    "margin_top": 3.6,
+                                    "paragraphs": [
+                                        {
+                                            "alignment": "None",
+                                            "font": {},
+                                            "level": 0,
+                                            "runs": [
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": "Asd "
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": "asd d"
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": " asdf "
+                                                },
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": "asdf"
+                                                }
+                                            ],
+                                            "text": "Asd asd d asdf asdf"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "cells": [
+                            {
+                                "fill": {},
+                                "margin_bottom": 3.6,
+                                "margin_left": 7.2,
+                                "margin_right": 7.2,
+                                "margin_top": 3.6,
+                                "text": {
+                                    "margin_bottom": 3.6,
+                                    "margin_left": 7.2,
+                                    "margin_right": 7.2,
+                                    "margin_top": 3.6,
+                                    "paragraphs": [
+                                        {
+                                            "alignment": "None",
+                                            "font": {},
+                                            "level": 0,
+                                            "runs": [
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": "Asdf asd"
+                                                }
+                                            ],
+                                            "text": "Asdf asd"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "fill": {},
+                                "margin_bottom": 3.6,
+                                "margin_left": 7.2,
+                                "margin_right": 7.2,
+                                "margin_top": 3.6,
+                                "text": {
+                                    "margin_bottom": 3.6,
+                                    "margin_left": 7.2,
+                                    "margin_right": 7.2,
+                                    "margin_top": 3.6,
+                                    "paragraphs": [
+                                        {
+                                            "alignment": "None",
+                                            "font": {},
+                                            "level": 0,
+                                            "runs": [
+                                                {
+                                                    "font": {
+                                                        "color": {},
+                                                        "fill": {
+                                                            "fore_color": {}
+                                                        }
+                                                    },
+                                                    "text": " Asdf asd"
+                                                }
+                                            ],
+                                            "text": " Asdf asd"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "shape_type": "TABLE (19)",
+                "top": 9.166614173228346,
+                "width": 672.7960629921259
+            }
+        ]
+    }
+]

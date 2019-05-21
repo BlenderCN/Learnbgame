@@ -1,0 +1,9 @@
+start: X;
+define:
+_L: r-25;
+_R: r25;
+rules:
+X: F push _L X pop push X pop F push _L X pop _R F X;
+F: F F;
+final:
+F: d1;

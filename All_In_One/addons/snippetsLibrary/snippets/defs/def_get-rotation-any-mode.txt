@@ -1,0 +1,16 @@
+def get_rotation(ob):
+    Rotation ={
+    'rotation_euler' : ['ZYX','ZXY','YZX','YXZ','XZY','XYZ'],
+    'rotation_quaternion' : ['QUATERNION'],
+    'rotation_axis_angle' : ['AXIS_ANGLE'],
+    }
+
+    rotation_mode = ob.rotation_mode
+
+    for key,val in Rotation.items():
+        if rotation_mode in val :
+            prop = key
+            rotation_value = getattr(ob,prop)[:]
+            break
+
+    return (prop,rotation_value)

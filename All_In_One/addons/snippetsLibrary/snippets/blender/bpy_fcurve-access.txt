@@ -1,0 +1,33 @@
+reg = re.compile(r'(?<=\[\").*(?=\"\])') #get group(0)
+def fname(fcu):
+    global reg
+    return reg.search(fcu.data_path).group(0), fcu.data_path.rsplit('.',1)[1]
+
+act = C.object.animation_data.action
+for i, fcu in enumerate(act.fcurves):
+
+    ##access modifiers
+    if fcu.modifiers:
+        print(i, fname(fcu))
+        for j, mod in enumerate(fcu.modifiers):
+            print(mod.type)
+            if mod.mute:
+                print('|-> is disabled')
+            #if mod.type == 'STEPPED':
+                ## mute (will not be evalueted)
+                # mod.mute = not mod.mute
+
+                ## remove modifier
+                # fcu.modifiers.remove(mod)
+    '''
+    ##access keyframes of the curve:
+    for k in fcu.keyframe_points:
+        ##[0] or x is time/frame, [1] or y is space/value
+        k.co[0]
+        k.handle_left[0]
+        k.handle_right[0]
+
+        ##change handler type ([‘FREE’, ‘VECTOR’, ‘ALIGNED’, ‘AUTO’, ‘AUTO_CLAMPED’], default ‘FREE’)
+        #k.handle_left_type = 'AUTO_CLAMPED'
+        #k.handle_right_type = 'AUTO_CLAMPED'
+    '''

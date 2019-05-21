@@ -1,0 +1,217 @@
+\hypertarget{touchatag__tag_8h}{
+\section{src/touchatag\_\-tag.h File Reference}
+\label{touchatag__tag_8h}\index{src/touchatag\_\-tag.h@{src/touchatag\_\-tag.h}}
+}
+
+
+This header file contains every function related with tags and their attributes.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtag__s}{tag\_\-s}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{touchatag__tag_8h_a0ff680614e795d6ac694b971446806cf}{
+\#define {\bfseries UID\_\-TAG\_\-SIZE}~7}
+\label{touchatag__tag_8h_a0ff680614e795d6ac694b971446806cf}
+
+\item 
+\hypertarget{touchatag__tag_8h_a69394d83189a717ae839f5f3a50f04b2}{
+\#define {\bfseries DATA\_\-TAG\_\-SIZE}~64}
+\label{touchatag__tag_8h_a69394d83189a717ae839f5f3a50f04b2}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{touchatag__tag_8h_a2e448e9ab83c69c6a6d4a54035c93edd}{
+typedef struct \hyperlink{structtag__s}{tag\_\-s} {\bfseries tag\_\-t}}
+\label{touchatag__tag_8h_a2e448e9ab83c69c6a6d4a54035c93edd}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{touchatag__tag_8h_a364a721e8ac6db0768cafc09006bf2e4}{touchatag\_\-tag\_\-print\_\-tag\_\-uid} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Prints tag UID. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__tag_8h_ab97a0b7db43ca01779115f8dfd746994}{touchatag\_\-tag\_\-print\_\-touchatag\_\-link} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Prints touchatag tag link. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__tag_8h_af9230deffc9b0a89745685e79f743bd6}{touchatag\_\-tag\_\-print\_\-hex\_\-lbytes} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Prints in hexadecimal characters the values of the two locking bytes. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__tag_8h_a28b5b9c40fbad7648d53314a026a3d96}{touchatag\_\-tag\_\-print\_\-lbits} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Prints the values of the 16 locking bits. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__tag_8h_aba05f772be62e20a4b1537de2da2daed}{touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-otp} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Prints in hexadecimal characters the data in tag's otp memory (page 4). \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__tag_8h_a8c66bb194f2d8782ab54ebdd11f69064}{touchatag\_\-tag\_\-print\_\-otps} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Prints the values of the 32 otp bits (page 4). \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__tag_8h_aeb28f9a6653abf61b165f51df803772c}{touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-mem} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Prints in hexadecimal characters the data in tag's Read/Write memory (from page 5 to page 16). \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__tag_8h_a848f3d32212b71f48be5157a36e73939}{touchatag\_\-tag\_\-print\_\-ascii\_\-data\_\-mem} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Prints in char format the data in tag's Read/Write memory (from page 5 to page 16). \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__tag_8h_a416f10017247fd99512740e7dddc3c63}{touchatag\_\-tag\_\-print\_\-hex\_\-all\_\-data\_\-mem} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Prints in hexadecimal characters every data in tag's memory. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__tag_8h_a9de0489c846bc2dfa1391e07b074df3d}{touchatag\_\-tag\_\-print\_\-ascii\_\-all\_\-data\_\-mem} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Prints in char format every data in tag's memory. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{touchatag__tag_8h_afd813f15f1cf788e8cfbc5573d8a23bf}{touchatag\_\-taglist\_\-return\_\-tag\_\-uid} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Returns tag UID. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{touchatag__tag_8h_a49cb4200e5e2b6c7e31c96bedf729eed}{touchatag\_\-tag\_\-return\_\-hex\_\-all\_\-data\_\-mem} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Returns all tag HEX DATA. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{touchatag__tag_8h_abde73f4bf3165e14e6da805376b4caec}{touchatag\_\-tag\_\-return\_\-hex\_\-data\_\-mem} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Returns free tag HEX DATA. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{touchatag__tag_8h_a8ece39a9f093be5cb1df1adee710b8db}{touchatag\_\-tag\_\-return\_\-ascii\_\-data\_\-mem} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Returns free tag ASCII DATA. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{touchatag__tag_8h_ac1afe7682f8a275d66eb1895667bcfaa}{touchatag\_\-tag\_\-return\_\-touchatag\_\-link} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Returns touchatag tag link. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{touchatag__tag_8h_a60d607ddc7edcab7e09020d21596bede}{touchatag\_\-tag\_\-return\_\-tag\_\-uid} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This header file contains every function related with tags and their attributes. 
+
+\subsection{Function Documentation}
+\hypertarget{touchatag__tag_8h_a9de0489c846bc2dfa1391e07b074df3d}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-print\_\-ascii\_\-all\_\-data\_\-mem@{touchatag\_\-tag\_\-print\_\-ascii\_\-all\_\-data\_\-mem}}
+\index{touchatag\_\-tag\_\-print\_\-ascii\_\-all\_\-data\_\-mem@{touchatag\_\-tag\_\-print\_\-ascii\_\-all\_\-data\_\-mem}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-print\_\-ascii\_\-all\_\-data\_\-mem}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-tag\_\-print\_\-ascii\_\-all\_\-data\_\-mem ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_a9de0489c846bc2dfa1391e07b074df3d}
+
+
+Prints in char format every data in tag's memory. 
+
+This function prints in char format every data in tag's memory. \hypertarget{touchatag__tag_8h_a848f3d32212b71f48be5157a36e73939}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-print\_\-ascii\_\-data\_\-mem@{touchatag\_\-tag\_\-print\_\-ascii\_\-data\_\-mem}}
+\index{touchatag\_\-tag\_\-print\_\-ascii\_\-data\_\-mem@{touchatag\_\-tag\_\-print\_\-ascii\_\-data\_\-mem}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-print\_\-ascii\_\-data\_\-mem}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-tag\_\-print\_\-ascii\_\-data\_\-mem ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_a848f3d32212b71f48be5157a36e73939}
+
+
+Prints in char format the data in tag's Read/Write memory (from page 5 to page 16). 
+
+This function prints in char format the data in tag's Read/Write memory (from page 5 to page 16). \hypertarget{touchatag__tag_8h_a416f10017247fd99512740e7dddc3c63}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-print\_\-hex\_\-all\_\-data\_\-mem@{touchatag\_\-tag\_\-print\_\-hex\_\-all\_\-data\_\-mem}}
+\index{touchatag\_\-tag\_\-print\_\-hex\_\-all\_\-data\_\-mem@{touchatag\_\-tag\_\-print\_\-hex\_\-all\_\-data\_\-mem}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-print\_\-hex\_\-all\_\-data\_\-mem}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-tag\_\-print\_\-hex\_\-all\_\-data\_\-mem ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_a416f10017247fd99512740e7dddc3c63}
+
+
+Prints in hexadecimal characters every data in tag's memory. 
+
+This function prints in hexadecimal characters every data in tag's memory. \hypertarget{touchatag__tag_8h_aeb28f9a6653abf61b165f51df803772c}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-mem@{touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-mem}}
+\index{touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-mem@{touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-mem}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-mem}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-mem ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_aeb28f9a6653abf61b165f51df803772c}
+
+
+Prints in hexadecimal characters the data in tag's Read/Write memory (from page 5 to page 16). 
+
+This function prints in hexadecimal characters the data in tag's Read/Write memory (from page 5 to page 16). \hypertarget{touchatag__tag_8h_aba05f772be62e20a4b1537de2da2daed}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-otp@{touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-otp}}
+\index{touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-otp@{touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-otp}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-otp}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-tag\_\-print\_\-hex\_\-data\_\-otp ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_aba05f772be62e20a4b1537de2da2daed}
+
+
+Prints in hexadecimal characters the data in tag's otp memory (page 4). 
+
+This function prints in hexadecimal characters the data in tag's otp memory (page 4). \hypertarget{touchatag__tag_8h_af9230deffc9b0a89745685e79f743bd6}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-print\_\-hex\_\-lbytes@{touchatag\_\-tag\_\-print\_\-hex\_\-lbytes}}
+\index{touchatag\_\-tag\_\-print\_\-hex\_\-lbytes@{touchatag\_\-tag\_\-print\_\-hex\_\-lbytes}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-print\_\-hex\_\-lbytes}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-tag\_\-print\_\-hex\_\-lbytes ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_af9230deffc9b0a89745685e79f743bd6}
+
+
+Prints in hexadecimal characters the values of the two locking bytes. 
+
+This function prints in hexadecimal characters the values of the two locking bytes of the given tag. \hypertarget{touchatag__tag_8h_a28b5b9c40fbad7648d53314a026a3d96}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-print\_\-lbits@{touchatag\_\-tag\_\-print\_\-lbits}}
+\index{touchatag\_\-tag\_\-print\_\-lbits@{touchatag\_\-tag\_\-print\_\-lbits}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-print\_\-lbits}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-tag\_\-print\_\-lbits ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_a28b5b9c40fbad7648d53314a026a3d96}
+
+
+Prints the values of the 16 locking bits. 
+
+This function prints the values of the 16 locking bits of the given tag. \hypertarget{touchatag__tag_8h_a8c66bb194f2d8782ab54ebdd11f69064}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-print\_\-otps@{touchatag\_\-tag\_\-print\_\-otps}}
+\index{touchatag\_\-tag\_\-print\_\-otps@{touchatag\_\-tag\_\-print\_\-otps}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-print\_\-otps}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-tag\_\-print\_\-otps ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_a8c66bb194f2d8782ab54ebdd11f69064}
+
+
+Prints the values of the 32 otp bits (page 4). 
+
+This function prints the values of the 32 otp bits (page 4). \hypertarget{touchatag__tag_8h_a364a721e8ac6db0768cafc09006bf2e4}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-print\_\-tag\_\-uid@{touchatag\_\-tag\_\-print\_\-tag\_\-uid}}
+\index{touchatag\_\-tag\_\-print\_\-tag\_\-uid@{touchatag\_\-tag\_\-print\_\-tag\_\-uid}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-print\_\-tag\_\-uid}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-tag\_\-print\_\-tag\_\-uid ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_a364a721e8ac6db0768cafc09006bf2e4}
+
+
+Prints tag UID. 
+
+This function prints the UID of the given tag. \hypertarget{touchatag__tag_8h_ab97a0b7db43ca01779115f8dfd746994}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-print\_\-touchatag\_\-link@{touchatag\_\-tag\_\-print\_\-touchatag\_\-link}}
+\index{touchatag\_\-tag\_\-print\_\-touchatag\_\-link@{touchatag\_\-tag\_\-print\_\-touchatag\_\-link}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-print\_\-touchatag\_\-link}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-tag\_\-print\_\-touchatag\_\-link ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_ab97a0b7db43ca01779115f8dfd746994}
+
+
+Prints touchatag tag link. 
+
+This function prints the link written in the \char`\"{}touchatag tag\char`\"{} memory of the given tag. \hypertarget{touchatag__tag_8h_a8ece39a9f093be5cb1df1adee710b8db}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-return\_\-ascii\_\-data\_\-mem@{touchatag\_\-tag\_\-return\_\-ascii\_\-data\_\-mem}}
+\index{touchatag\_\-tag\_\-return\_\-ascii\_\-data\_\-mem@{touchatag\_\-tag\_\-return\_\-ascii\_\-data\_\-mem}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-return\_\-ascii\_\-data\_\-mem}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ touchatag\_\-tag\_\-return\_\-ascii\_\-data\_\-mem ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_a8ece39a9f093be5cb1df1adee710b8db}
+
+
+Returns free tag ASCII DATA. 
+
+This function returns free tag ASCII DATA. \hypertarget{touchatag__tag_8h_a49cb4200e5e2b6c7e31c96bedf729eed}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-return\_\-hex\_\-all\_\-data\_\-mem@{touchatag\_\-tag\_\-return\_\-hex\_\-all\_\-data\_\-mem}}
+\index{touchatag\_\-tag\_\-return\_\-hex\_\-all\_\-data\_\-mem@{touchatag\_\-tag\_\-return\_\-hex\_\-all\_\-data\_\-mem}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-return\_\-hex\_\-all\_\-data\_\-mem}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ touchatag\_\-tag\_\-return\_\-hex\_\-all\_\-data\_\-mem ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_a49cb4200e5e2b6c7e31c96bedf729eed}
+
+
+Returns all tag HEX DATA. 
+
+This function returns all tag HEX DATA. \hypertarget{touchatag__tag_8h_abde73f4bf3165e14e6da805376b4caec}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-return\_\-hex\_\-data\_\-mem@{touchatag\_\-tag\_\-return\_\-hex\_\-data\_\-mem}}
+\index{touchatag\_\-tag\_\-return\_\-hex\_\-data\_\-mem@{touchatag\_\-tag\_\-return\_\-hex\_\-data\_\-mem}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-return\_\-hex\_\-data\_\-mem}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ touchatag\_\-tag\_\-return\_\-hex\_\-data\_\-mem ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_abde73f4bf3165e14e6da805376b4caec}
+
+
+Returns free tag HEX DATA. 
+
+This function returns free tag HEX DATA. \hypertarget{touchatag__tag_8h_a60d607ddc7edcab7e09020d21596bede}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-return\_\-tag\_\-uid@{touchatag\_\-tag\_\-return\_\-tag\_\-uid}}
+\index{touchatag\_\-tag\_\-return\_\-tag\_\-uid@{touchatag\_\-tag\_\-return\_\-tag\_\-uid}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-return\_\-tag\_\-uid}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ touchatag\_\-tag\_\-return\_\-tag\_\-uid ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_a60d607ddc7edcab7e09020d21596bede}
+Returns tag UID (as string). \hypertarget{touchatag__tag_8h_ac1afe7682f8a275d66eb1895667bcfaa}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-tag\_\-return\_\-touchatag\_\-link@{touchatag\_\-tag\_\-return\_\-touchatag\_\-link}}
+\index{touchatag\_\-tag\_\-return\_\-touchatag\_\-link@{touchatag\_\-tag\_\-return\_\-touchatag\_\-link}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-tag\_\-return\_\-touchatag\_\-link}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ touchatag\_\-tag\_\-return\_\-touchatag\_\-link ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_ac1afe7682f8a275d66eb1895667bcfaa}
+
+
+Returns touchatag tag link. 
+
+This function returns the link written in the touchatag tag. \hypertarget{touchatag__tag_8h_afd813f15f1cf788e8cfbc5573d8a23bf}{
+\index{touchatag\_\-tag.h@{touchatag\_\-tag.h}!touchatag\_\-taglist\_\-return\_\-tag\_\-uid@{touchatag\_\-taglist\_\-return\_\-tag\_\-uid}}
+\index{touchatag\_\-taglist\_\-return\_\-tag\_\-uid@{touchatag\_\-taglist\_\-return\_\-tag\_\-uid}!touchatag_tag.h@{touchatag\_\-tag.h}}
+\subsubsection[{touchatag\_\-taglist\_\-return\_\-tag\_\-uid}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ touchatag\_\-taglist\_\-return\_\-tag\_\-uid ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__tag_8h_afd813f15f1cf788e8cfbc5573d8a23bf}
+
+
+Returns tag UID. 
+
+This function returns tag UID. 

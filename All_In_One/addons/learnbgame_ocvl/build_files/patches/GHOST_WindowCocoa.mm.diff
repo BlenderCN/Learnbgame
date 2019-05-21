@@ -1,0 +1,22 @@
+diff --git a/intern/ghost/intern/GHOST_WindowCocoa.mm b/intern/ghost/intern/GHOST_WindowCocoa.mm
+index a73c818297c..e40055012e9 100644
+--- a/intern/ghost/intern/GHOST_WindowCocoa.mm
++++ b/intern/ghost/intern/GHOST_WindowCocoa.mm
+@@ -672,7 +672,7 @@ void GHOST_WindowCocoa::setTitle(const STR_String &title)
+   NSString *windowTitle = [[NSString alloc] initWithCString:title encoding:NSUTF8StringEncoding];
+ 
+   //Set associated file if applicable
+-  if (windowTitle && [windowTitle hasPrefix:@"Blender"]) {
++  if (windowTitle && [windowTitle hasPrefix:@"OpenCV Laboratory"]) {
+     NSRange fileStrRange;
+     NSString *associatedFileName;
+     int len;
+@@ -1102,7 +1102,7 @@ GHOST_TSuccess GHOST_WindowCocoa::setProgressBar(float progress)
+ static void postNotification()
+ {
+   NSUserNotification *notification = [[NSUserNotification alloc] init];
+-  notification.title = @"Blender progress notification";
++  notification.title = @"OpenCV Laboratory progress notification";
+   notification.informativeText = @"Calculation is finished";
+   notification.soundName = NSUserNotificationDefaultSoundName;
+   [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];

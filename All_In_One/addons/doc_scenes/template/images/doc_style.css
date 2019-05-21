@@ -1,0 +1,64 @@
+BODY {		FONT: 11px arial, verdana, sans-serif;
+		scrollbar-base-color: #909099;
+		scrollbar-track-color: #909099;
+		scrollbar-face-color: #909099;
+		scrollbar-highlight-color: #FFFFFF;
+		scrollbar-3dlight-color: #4E172A;
+		scrollbar-darkshadow-color: #4E172A;
+		scrollbar-shadow-color: #FFFFFF;
+		scrollbar-arrow-color: #FFFFFF; }
+
+
+a:link		{
+	color: #3333CC;
+	text-decoration: none;
+	border: 0;
+}
+
+a:visited	{ color: #3333CC; text-decoration: none }
+
+a:active	{ color: #3333CC; text-decoration: none }
+
+a:hover		{
+	color: #990000;
+	text-decoration: none;
+}
+TD {		FONT: 12px arial, verdana, sans-serif;}
+
+.copyright	{ COLOR: #000000; FONT: 9px geneva, verdana, arial, sans-serif }
+
+.smalltitle 	{ COLOR: #000000; FONT: 11px verdana, arial, sans-serif; font-weight: bold }
+.header {
+	text-align: left;
+	font-size: medium;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.top_area {
+	font-family: Arial;
+	font-size: medium;
+	text-align: right;
+	background-image: url('top_area.png');
+	vertical-align: bottom;
+}
+.mid_area {
+	background-image: url('mid_area.png');
+}
+.bottom_area {
+	background-image: url('bottom_area.png');
+}
+.header_table {
+
+	text-align: left;
+	font-size: small;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.medtitle {
+        COLOR: #000000; 
+        FONT: bold 12px verdana, arial, sans-serif
+}
+.box {
+	border: thin solid #000000;
+	vertical-align: top;
+}

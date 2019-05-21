@@ -1,0 +1,48 @@
+#include "helpers.h"
+
+float hex(point p, point UV) {
+    float p0 = p[0] * 0.57735*2.0;
+    float p1 = p[1] + mod(floor(p0), 2.0)*0.5;
+    float p2x = abs((mod(p0, 1.0) - 0.5));
+    float p2y = abs((mod(p1, 1.0) - 0.5));
+    float t = p2x*1.5 + p2y;
+    float ca = p2x >0 ? 1 : 0;
+    float cb = p2y > 0 ? 0 : 1;
+    float fx = p0-floor(p0);
+    float fy = p1-floor(p1);
+    float ma_x = fx > fy ? 1: 0;
+    float ma_y =  1 -ma_x;
+    float t2 = p2y*2.0;
+    float dbg=0;
+    UV = point(floor(p0),floor(p1),0);
+    if (max(t, t2) - 1.0 > 0)
+    {   
+        float ofx = mod(p0, 1.0) - 0.5;
+        UV = point(floor(p0+ca*ofx),floor(p1+ca*ofx),0);
+        dbg = (mod(p0, 2.0) > 0.5 ? 0 : 1) ;
+        if (dbg)
+        {
+        UV = point(UV[0],UV[1]+1,0);
+        }
+        dbg = mod(p0, 2.0) >1 && mod(p0, 1.0) >0.5;
+        if (dbg)
+        {
+        UV = point(UV[0],UV[1]-1,0);
+        }
+
+        
+    }
+    return abs(max(t, t2) - 1.0);
+}
+
+shader bonus_hexagon(
+	point Vector = P,
+    float scale = 5.0,
+    float feather = 0.1, 
+	output float Value = 0.0,output point CellID = 0)
+{ 
+    point p1 = point(Vector[0]*scale, Vector[1]*scale,0);
+	Value = _step(0,feather,hex(p1,CellID));
+}
+
+

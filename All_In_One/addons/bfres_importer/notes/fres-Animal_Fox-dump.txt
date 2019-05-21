@@ -1,0 +1,1482 @@
+  FRES "Animal_Fox"/"Animal_Fox": Version: 3,5, Size: 0x01E5A0, Endian: big, Align: 0x00D00000
+    Unk24: 0x00000000 UnkCA: 0x0000 0x0000 0x0000
+    [4mObject│Cnt │Offset  │DictOffs[0m
+    FMDL  │0001│000000D0│000001F0
+    FSKA  │0000│00000000│00000000
+    FMAA  │0001│00000148│00000218
+    FVIS  │0000│00000000│00000000
+    FSHU  │0000│00000000│00000000
+    EMBED │0001│000001E0│00000240
+    Buffer│ ?? │0001E000│000001C0
+    StrTab│N/A │00009E7C│N/A     │size=0x003636 num_strs=602
+    RelTab│N/A │0001E300│N/A     |data=0x00E000 unk04=1E300 5 0  0 0 0 D49E  0 3D 0 0
+    Models: 1
+    Model "Fox":    2 FVTXs,    2 FSHPs,    2 FMATs,    0 Udatas, 1634 total vtxs
+      FVTX index  0:   8 attrs,   4 buffers, 1504 vtxs; Skin weight influence: 3
+        Unk04: 0x00000000 0x00000000 0x00000000
+        Unk10: 0x0001E000 0x00001C10 0x00001DD0
+        Attrib Array: 0x001B90, Dict:   0x001DF0
+        Attrib Dict:   Dict,   9 items, unk00 = 0x0
+          [4mNode│Search  │Left│Rght│DataOffs│Name[0m
+             0│FFFFFFFF│   6│   0│00000000│""
+             1│00000004│   0│   5│00000000│"_p0"
+             2│00000009│   3│   4│00000000│"_n0"
+             3│0000000A│   1│   3│00000000│"_t0"
+             4│0000000A│   4│   2│00000000│"_b0"
+             5│00000008│   2│   8│00000000│"_u0"
+             6│00000000│   1│   6│00000000│"_u1"
+             7│0000000A│   7│   5│00000000│"_i0"
+             8│00000009│   7│   8│00000000│"_w0"
+        Attribute Dump:
+          [4m#  │Idx│BufOfs│Format       │Unk04   │Attr Name[0m
+            0│  0│000000│1505 half[4] │00000000│"_p0"
+            1│  2│000000│0E02 10bit   │00000000│"_n0"
+            2│  2│000004│0B02 u8[4]   │00000000│"_t0"
+            3│  3│000000│0B02 u8[4]   │00000000│"_b0"
+            4│  2│000008│1201 u16     │00000000│"_u0"
+            5│  2│00000C│1201 u16     │00000000│"_u1"
+            6│  1│000004│0B03 u8[4]   │00000000│"_i0"
+            7│  1│000000│0B01 u8[4]   │00000000│"_w0"
+        Buffer Array: 0x000000, Data:   0x0020E8
+        BufSiz Array: 0x001D30, Stride: 0x001D70
+          [4mOffset│Size│Strd│Buffer data[0m
+          0100E8│2F00│0008│88 25 FE 38  7D 39 00 3C  AF 24 23 39  74 39 00 3C  
+          012FE8│2F00│0008│FF 00 00 FF  0B 0B 0B 01  FF 00 00 FF  0B 0B 0B 01  
+          015EE8│5E00│0010│22 A9 E3 55  5B AA EE 7F  2D 0D C0 97  45 A3 92 C9  
+          01BCE8│1780│0004│33 48 A5 7F  47 4B B6 7F  0C 31 8B 7F  B0 DE A3 81  
+      FVTX index  1:   7 attrs,   4 buffers,   24 vtxs; Skin weight influence: 2
+        Unk04: 0x00000000 0x00000000 0x00000000
+        Unk10: 0x0001E000 0x00001EF8 0x000020B8
+        Attrib Array: 0x001E88, Dict:   0x0020D8
+        Attrib Dict:   Dict,   8 items, unk00 = 0x0
+          [4mNode│Search  │Left│Rght│DataOffs│Name[0m
+             0│FFFFFFFF│   1│   0│00000000│""
+             1│00000004│   0│   5│00000000│"_p0"
+             2│00000009│   3│   4│00000000│"_n0"
+             3│0000000A│   1│   3│00000000│"_t0"
+             4│0000000A│   4│   2│00000000│"_b0"
+             5│00000008│   2│   7│00000000│"_u0"
+             6│0000000A│   6│   5│00000000│"_i0"
+             7│00000009│   6│   7│00000000│"_w0"
+        Attribute Dump:
+          [4m#  │Idx│BufOfs│Format       │Unk04   │Attr Name[0m
+            0│  0│000000│1505 half[4] │00000000│"_p0"
+            1│  2│000000│0E02 10bit   │00000000│"_n0"
+            2│  2│000004│0B02 u8[4]   │00000000│"_t0"
+            3│  3│000000│0B02 u8[4]   │00000000│"_b0"
+            4│  2│000008│0901 u8[2]   │00000000│"_u0"
+            5│  1│000002│0903 u8[2]   │00000000│"_i0"
+            6│  1│000000│0901 u8[2]   │00000000│"_w0"
+        Buffer Array: 0x000000, Data:   0x00F468
+        BufSiz Array: 0x002018, Stride: 0x002058
+          [4mOffset│Size│Strd│Buffer data[0m
+          01D468│00C0│0008│4C 29 37 39  56 39 00 3C  52 26 06 39  67 39 00 3C  
+          01D528│0060│0004│FF 00 0B 0B  FF 00 0B 0B  FF 00 0B 0B  FF 00 0B 0B  
+          01D588│0120│000C│25 C9 31 59  66 D4 C2 7F  33 68 00 00  12 85 41 5A  
+          01D6A8│0060│0004│15 74 D0 7F  13 77 D8 7F  14 74 D0 7F  0F 71 C8 7F  
+      FMAT 0:
+      Render params:
+          [4mParam                           │Type │Cnt│Value[0m
+          gsys_pass                       │str  │  1│['no_setting']
+          gsys_dynamic_depth_shadow       │str  │  1│['1']
+          gsys_dynamic_depth_shadow_only  │str  │  1│['0']
+          gsys_static_depth_shadow        │str  │  0│[]
+          gsys_static_depth_shadow_only   │str  │  0│[]
+          gsys_cube_map                   │str  │  1│['0']
+          gsys_cube_map_only              │str  │  1│['0']
+          gsys_dynamic_reflection         │str  │  1│['1']
+          gsys_multi_filter               │str  │  0│[]
+          gsys_priority_hint              │str  │  1│['npc']
+          gsys_priority                   │?    │  1│['00 00 00 00 00 00 C8 42']
+          gsys_env_obj_set                │str  │  1│['Default']
+          uking_edit_sky_occlusion        │str  │  1│['0']
+          gsys_bake_group                 │str  │  1│['group1']
+          gsys_bake_texel_param           │float│  1│[100.0]
+          gsys_bake_uv_unite              │str  │  1│['none']
+          gsys_bake_option                │str  │  1│['none']
+          gsys_render_state_mode          │str  │  1│['opaque']
+          gsys_render_state_display_face  │str  │  1│['front']
+          gsys_render_state_blend_mode    │str  │  1│['none']
+          gsys_depth_test_enable          │str  │  1│['true']
+          gsys_depth_test_write           │str  │  1│['true']
+          gsys_depth_test_func            │str  │  1│['lequal']
+          gsys_color_blend_rgb_src_func   │str  │  1│['src_alpha']
+          gsys_color_blend_rgb_dst_func   │str  │  1│['one_minus_src_alpha']
+          gsys_color_blend_rgb_op         │str  │  1│['add']
+          gsys_color_blend_alpha_src_func │str  │  1│['one']
+          gsys_color_blend_alpha_dst_func │str  │  1│['zero']
+          gsys_color_blend_alpha_op       │str  │  1│['add']
+          gsys_alpha_test_enable          │str  │  1│['false']
+          gsys_alpha_test_func            │str  │  1│['gequal']
+          gsys_color_blend_const_color    │float│  4│[0.0, 0.0, 0.0, 0.0]
+          gsys_alpha_test_value           │float│  1│[0.5]
+        Shader params:
+          [4mParam                                   │Type  │Size│Offset│Idx0│Idx1│Unk00│Unk14│Data[0m
+          uk_user_data                            │   ptr│   4│000000│   0│   0│    0│   -1│(0,)
+          uk_user_data1                           │   ptr│   4│000004│   1│   1│    0│   -1│(0,)
+          uking_wind_vtx_transform_intensity      │ float│   4│000008│   2│   2│    0│   -1│(0.10000000149011612,)
+          uking_wind_vtx_transform_lie_intensity  │ float│   4│00000C│   3│   3│    0│   -1│(3.0,)
+          uking_wind_vtx_transform_lie_height     │ float│   4│000010│   4│   4│    0│   -1│(0.5,)
+          uking_lumberjack_height_eps             │ float│   4│000014│   5│   5│    0│   -1│(0.10000000149011612,)
+          uking_lumberjack_canopy_radius          │ float│   4│000018│   6│   6│    0│   -1│(0.5,)
+          uking_lumberjack_uv_scale               │ float│   4│00001C│   7│   7│    0│   -1│(1.0,)
+          const_value7                            │ float│   4│000020│   8│   8│    0│   -1│(1.0,)
+          const_value3                            │ float│   4│000024│   9│   9│    0│   -1│(1.0,)
+          uk_kari_mottled_ratio                   │ float│   4│000028│  10│  10│    0│   -1│(0.0,)
+          uk_mottled_scale                        │ float│   4│00002C│  11│  11│    0│   -1│(1.0,)
+          uk_cook_ratio                           │ float│   4│000030│  12│  12│    0│   -1│(0.0,)
+          uk_kari_chemical_ice_ratio0             │ float│   4│000034│  13│  13│    0│   -1│(0.0,)
+          uk_model_tree_scale                     │ float│   4│000038│  14│  14│    0│   -1│(1.0,)
+          uk_object_attribute                     │ float│   4│00003C│  15│  15│    0│   -1│(0.0,)
+          uk_special_effect_A                     │ float│   4│000040│  16│  16│    0│   -1│(0.0,)
+          uk_special_effect_B                     │ float│   4│000044│  17│  17│    0│   -1│(0.0,)
+          texture_array_index0                    │ float│   4│000048│  18│  18│    0│   -1│(0.0,)
+          uk_special_effect_C                     │ float│   4│00004C│  19│  19│    0│   -1│(0.0,)
+          texture_array_index1                    │ float│   4│000050│  20│  20│    0│   -1│(0.0,)
+          uk_mimicly_ratio                        │ float│   4│000054│  21│  21│    0│   -1│(0.0,)
+          texture_array_index2                    │ float│   4│000058│  22│  22│    0│   -1│(0.0,)
+          gsys_xlu_zprepass_alpha                 │ float│   4│00005C│  23│  23│    0│   -1│(1.0,)
+          texture_array_index3                    │ float│   4│000060│  24│  24│    0│   -1│(0.0,)
+          uk_bounding_radius                      │ float│   4│000064│  25│  25│    0│   -1│(1.0,)
+          texture_array_index4                    │ float│   4│000068│  26│  26│    0│   -1│(0.0,)
+          uk_shadow_alpha                         │ float│   4│00006C│  27│  27│    0│   -1│(1.0,)
+          texture_array_index5                    │ float│   4│000070│  28│  28│    0│   -1│(0.0,)
+          uk_proc_discard                         │ float│   4│000074│  29│  29│    0│   -1│(1.0,)
+          uking_edit_proc_discard_scale           │ float│   4│000078│  30│  30│    0│   -1│(1.0,)
+          gsys_alpha_test_ref_value               │ float│   4│00007C│  31│  31│    0│   -1│(0.5,)
+          const_value0                            │ float│   4│000080│  32│  32│    0│   -1│(1.0,)
+          const_value1                            │ float│   4│000084│  33│  33│    0│   -1│(1.0,)
+          const_value2                            │ float│   4│000088│  34│  34│    0│   -1│(1.0,)
+          const_value4                            │ float│   4│00008C│  35│  35│    0│   -1│(1.0,)
+          const_value5                            │ float│   4│000090│  36│  36│    0│   -1│(1.0,)
+          const_value6                            │ float│   4│000094│  37│  37│    0│   -1│(1.0,)
+          indirect_scale0                         │ Vec2f│   8│000098│  38│  38│    0│   -1│(1.0, 1.0)
+          indirect_scale1                         │ Vec2f│   8│0000A0│  39│  39│    0│   -1│(1.0, 1.0)
+          indirect_scale2                         │ Vec2f│   8│0000A8│  40│  40│    0│   -1│(1.0, 1.0)
+          indirect_scale3                         │ Vec2f│   8│0000B0│  41│  41│    0│   -1│(1.0, 1.0)
+          indirect_scale4                         │ Vec2f│   8│0000B8│  42│  42│    0│   -1│(1.0, 1.0)
+          indirect_scale5                         │ Vec2f│   8│0000C0│  43│  43│    0│   -1│(1.0, 1.0)
+          gsys_bake_light_scale                   │ Vec3f│  12│0000C8│  44│  44│    0│   -1│(1.0, 1.0, 1.0)
+          gsys_bake_st0                           │ Vec4f│  16│0000D4│  45│  45│    0│   -1│(0.0, 0.0, 0.0, 0.0)
+          const_color0                            │ Vec4f│  16│0000E4│  46│  46│    0│   -1│(1.0, 1.0, 1.0, 1.0)
+          const_color1                            │ Vec4f│  16│0000F4│  47│  47│    0│   -1│(1.0, 1.0, 1.0, 1.0)
+          gsys_bake_st1                           │ Vec4f│  16│000104│  48│  48│    0│   -1│(0.0, 0.0, 0.0, 0.0)
+          const_color3                            │ Vec4f│  16│000114│  49│  49│    0│   -1│(1.0, 1.0, 1.0, 1.0)
+          const_color2                            │ Vec4f│  16│000124│  50│  50│    0│   -1│(1.0, 1.0, 1.0, 1.0)
+          const_vector0                           │ Vec4f│  16│000134│  51│  51│    0│   -1│(0.0, 0.0, -1.0, 0.0)
+          const_vector1                           │ Vec4f│  16│000144│  52│  52│    0│   -1│(0.0, 0.0, 0.0, 0.0)
+          const_color4                            │ Vec4f│  16│000154│  53│  53│    0│   -1│(1.0, 1.0, 1.0, 1.0)
+          const_color5                            │ Vec4f│  16│000164│  54│  54│    0│   -1│(1.0, 1.0, 1.0, 1.0)
+          uk_damage_color                         │ Vec4f│  16│000174│  55│  55│    0│   -1│(0.0, 0.0, 0.0, 0.0)
+          tex_srt0                                │texSRT│  24│000184│  56│  56│    0│   -1│(0, 1.0, 1.0, 0.0, 0.0, 0.0)
+          tex_srt1                                │texSRT│  24│00019C│  57│  57│    0│   -1│(0, 1.0, 1.0, 0.0, 0.0, 0.0)
+          tex_srt2                                │texSRT│  24│0001B4│  58│  58│    0│   -1│(0, 1.0, 1.0, 0.0, 0.0, 0.0)
+          tex_srt3                                │texSRT│  24│0001CC│  59│  59│    0│   -1│(0, 170.0, 170.0, 0.6981316804885864, 0.0, 0.0)
+          tex_srt4                                │texSRT│  24│0001E4│  60│  60│    0│   -1│(0, 1.0, 1.0, 0.0, 0.0, 0.0)
+          tex_srt5                                │texSRT│  24│0001FC│  61│  61│    0│   -1│(0, 1.0, 1.0, 0.0, 0.0, 0.0)
+        Textures:
+          [4mIdx│Slot│Name[0m
+            0│  -1│Fox_Alb.0
+            1│  -1│Fox_Nrm
+            2│  -1│Fox_Spm
+        Samplers:
+          [4mIdx│Slot│Data[0m
+            0│  -1│00020000 00290100 00000000 41500000 BF800000 00000000 00000000 00000000
+            1│  -1│00020000 00290100 00000000 41500000 00000000 00000000 00000000 00000000
+            2│  -1│00020000 00290100 00000000 41500000 00000000 00000000 00000000 00000000
+        Material Parameters:
+          uking_enable_hide_normal_pass                :    0
+          uking_reverse_polygon_offset                 :    0
+          uking_edit_expand_depthshadow_far            :    0
+          uking_enable_map_rendering                   :    0
+          uking_map_layer_id                           :    0
+          uking_sampler_use_array                      :    0
+          uking_texture0_texcoord                      :    0
+          uking_texture0_decode                        :    0
+          uking_enable_proctexture0                    :    0
+          uking_enable_indirect0                       :    0
+          uking_texture0_post                          :    0
+          uking_proctexture0_type                      :    0
+          uking_proctexture0_param_A                   :    0
+          uking_proctexture0_param_B                   :    0
+          uking_indirect0_texcoord                     :    0
+          uking_enable_indirect0_world_scaling         :    0
+          uking_indirect0_signed_fetch                 :    1
+          uking_indirect0_type                         :    0
+          uking_texture_array_texture0                 :   -1
+          uking_texture1_texcoord                      :    1
+          uking_texture1_decode                        :    0
+          uking_enable_proctexture1                    :    0
+          uking_enable_indirect1                       :    0
+          uking_texture1_post                          :    0
+          uking_proctexture1_type                      :    0
+          uking_proctexture1_param_A                   :    0
+          uking_proctexture1_param_B                   :    0
+          uking_indirect1_texcoord                     :    0
+          uking_enable_indirect1_world_scaling         :    0
+          uking_indirect1_signed_fetch                 :    1
+          uking_indirect1_type                         :    0
+          uking_texture_array_texture1                 :   -1
+          uking_texture2_texcoord                      :    1
+          uking_texture2_decode                        :    0
+          uking_enable_proctexture2                    :    0
+          uking_enable_indirect2                       :    0
+          uking_texture2_post                          :    0
+          uking_proctexture2_type                      :    0
+          uking_proctexture2_param_A                   :    0
+          uking_proctexture2_param_B                   :    0
+          uking_indirect2_texcoord                     :    0
+          uking_enable_indirect2_world_scaling         :    0
+          uking_indirect2_signed_fetch                 :    1
+          uking_indirect2_type                         :    0
+          uking_texture_array_texture2                 :   -1
+          uking_texture3_texcoord                      :    0
+          uking_texture3_decode                        :    0
+          uking_enable_proctexture3                    :    0
+          uking_enable_indirect3                       :    0
+          uking_texture3_post                          :    0
+          uking_proctexture3_type                      :    0
+          uking_proctexture3_param_A                   :    0
+          uking_proctexture3_param_B                   :    0
+          uking_indirect3_texcoord                     :    0
+          uking_enable_indirect3_world_scaling         :    0
+          uking_indirect3_signed_fetch                 :    1
+          uking_indirect3_type                         :    0
+          uking_texture_array_texture3                 :   -1
+          uking_texture4_texcoord                      :    0
+          uking_texture4_decode                        :    0
+          uking_enable_proctexture4                    :    0
+          uking_enable_indirect4                       :    0
+          uking_texture4_post                          :    0
+          uking_proctexture4_type                      :    0
+          uking_proctexture4_param_A                   :    0
+          uking_proctexture4_param_B                   :    0
+          uking_indirect4_texcoord                     :    0
+          uking_enable_indirect4_world_scaling         :    0
+          uking_indirect4_signed_fetch                 :    1
+          uking_indirect4_type                         :    0
+          uking_texture_array_texture4                 :   -1
+          uking_texture5_texcoord                      :    0
+          uking_texture5_decode                        :    0
+          uking_enable_proctexture5                    :    0
+          uking_enable_indirect5                       :    0
+          uking_texture5_post                          :    0
+          uking_proctexture5_type                      :    0
+          uking_proctexture5_param_A                   :    0
+          uking_proctexture5_param_B                   :    0
+          uking_indirect5_texcoord                     :    0
+          uking_enable_indirect5_world_scaling         :    0
+          uking_indirect5_signed_fetch                 :    1
+          uking_indirect5_type                         :    0
+          uking_texture_array_texture5                 :   -1
+          uking_texture6_texture                       :    0
+          uking_texture6_texcoord                      :    0
+          uking_texture6_decode                        :    0
+          uking_texture7_texture                       :    0
+          uking_texture7_texcoord                      :    0
+          uking_texture7_decode                        :    0
+          gsys_enable_color_buffer                     :    0
+          uking_texture_scene_color_post               :    0
+          uking_texture_scene_color0_texcoord          :    0
+          uking_enable_scene_color0_fog                :    0
+          uking_enable_scene_color0_edge_stop          :    0
+          uking_enable_scene_color0_edge_stop_magic_N  :    1
+          uking_texture_scene_color1_texcoord          :    0
+          uking_enable_scene_color1_fog                :    0
+          uking_enable_depth_buffer                    :    0
+          uking_texture_scene_depth_post               :    0
+          uking_texture_scene_depth0_texcoord          :    0
+          uking_texture_scene_depth1_texcoord          :    0
+          uking_enable_scene_color0_depthdiff1_effect  :    0
+          uking_depth_diff_scale_to_scene_color0       :    1
+          uking_enable_calc_color0                     :    0
+          uking_color0_calc_type                       :    0
+          uking_color0_clamp01                         :    0
+          uking_color0_before_normal                   :    0
+          uking_color0_A                               :    0
+          uking_color0_A_channel                       :    0
+          uking_color0_B                               :    0
+          uking_color0_B_channel                       :    0
+          uking_color0_C                               :    0
+          uking_color0_C_channel                       :    0
+          uking_color0_D                               :    0
+          uking_color0_D_channel                       :    0
+          uking_enable_calc_color1                     :    0
+          uking_color1_calc_type                       :    0
+          uking_color1_clamp01                         :    0
+          uking_color1_before_normal                   :    0
+          uking_color1_A                               :    0
+          uking_color1_A_channel                       :    0
+          uking_color1_B                               :    0
+          uking_color1_B_channel                       :    0
+          uking_color1_C                               :    0
+          uking_color1_C_channel                       :    0
+          uking_color1_D                               :    0
+          uking_color1_D_channel                       :    0
+          uking_enable_calc_color2                     :    0
+          uking_color2_calc_type                       :    0
+          uking_color2_clamp01                         :    0
+          uking_color2_before_normal                   :    0
+          uking_color2_A                               :    0
+          uking_color2_A_channel                       :    0
+          uking_color2_B                               :    0
+          uking_color2_B_channel                       :    0
+          uking_color2_C                               :    0
+          uking_color2_C_channel                       :    0
+          uking_color2_D                               :    0
+          uking_color2_D_channel                       :    0
+          uking_enable_calc_color3                     :    0
+          uking_color3_calc_type                       :    0
+          uking_color3_clamp01                         :    0
+          uking_color3_before_normal                   :    0
+          uking_color3_A                               :    0
+          uking_color3_A_channel                       :    0
+          uking_color3_B                               :    0
+          uking_color3_B_channel                       :    0
+          uking_color3_C                               :    0
+          uking_color3_C_channel                       :    0
+          uking_color3_D                               :    0
+          uking_color3_D_channel                       :    0
+          uking_enable_calc_color4                     :    0
+          uking_color4_calc_type                       :    0
+          uking_color4_clamp01                         :    0
+          uking_color4_before_normal                   :    0
+          uking_color4_A                               :    0
+          uking_color4_A_channel                       :    0
+          uking_color4_B                               :    0
+          uking_color4_B_channel                       :    0
+          uking_color4_C                               :    0
+          uking_color4_C_channel                       :    0
+          uking_color4_D                               :    0
+          uking_color4_D_channel                       :    0
+          uking_enable_calc_color5                     :    0
+          uking_color5_calc_type                       :    0
+          uking_color5_clamp01                         :    0
+          uking_color5_before_normal                   :    0
+          uking_color5_A                               :    0
+          uking_color5_A_channel                       :    0
+          uking_color5_B                               :    0
+          uking_color5_B_channel                       :    0
+          uking_color5_C                               :    0
+          uking_color5_C_channel                       :    0
+          uking_color5_D                               :    0
+          uking_color5_D_channel                       :    0
+          uking_enable_calc_color6                     :    0
+          uking_color6_calc_type                       :    0
+          uking_color6_clamp01                         :    0
+          uking_color6_before_normal                   :    0
+          uking_color6_A                               :    0
+          uking_color6_A_channel                       :    0
+          uking_color6_B                               :    0
+          uking_color6_B_channel                       :    0
+          uking_color6_C                               :    0
+          uking_color6_C_channel                       :    0
+          uking_color6_D                               :    0
+          uking_color6_D_channel                       :    0
+          uking_enable_calc_color7                     :    0
+          uking_color7_calc_type                       :    0
+          uking_color7_clamp01                         :    0
+          uking_color7_before_normal                   :    0
+          uking_color7_A                               :    0
+          uking_color7_A_channel                       :    0
+          uking_color7_B                               :    0
+          uking_color7_B_channel                       :    0
+          uking_color7_C                               :    0
+          uking_color7_C_channel                       :    0
+          uking_color7_D                               :    0
+          uking_color7_D_channel                       :    0
+          uking_enable_calc_color8                     :    0
+          uking_color8_calc_type                       :    0
+          uking_color8_clamp01                         :    0
+          uking_color8_before_normal                   :    0
+          uking_color8_A                               :    0
+          uking_color8_A_channel                       :    0
+          uking_color8_B                               :    0
+          uking_color8_B_channel                       :    0
+          uking_color8_C                               :    0
+          uking_color8_C_channel                       :    0
+          uking_color8_D                               :    0
+          uking_color8_D_channel                       :    0
+          uking_enable_calc_color9                     :    0
+          uking_color9_calc_type                       :    0
+          uking_color9_clamp01                         :    0
+          uking_color9_before_normal                   :    0
+          uking_color9_A                               :    0
+          uking_color9_A_channel                       :    0
+          uking_color9_B                               :    0
+          uking_color9_B_channel                       :    0
+          uking_color9_C                               :    0
+          uking_color9_C_channel                       :    0
+          uking_color9_D                               :    0
+          uking_color9_D_channel                       :    0
+          uking_enable_calc_color10                    :    0
+          uking_color10_calc_type                      :    0
+          uking_color10_clamp01                        :    0
+          uking_color10_before_normal                  :    0
+          uking_color10_A                              :    0
+          uking_color10_A_channel                      :    0
+          uking_color10_B                              :    0
+          uking_color10_B_channel                      :    0
+          uking_color10_C                              :    0
+          uking_color10_C_channel                      :    0
+          uking_color10_D                              :    0
+          uking_color10_D_channel                      :    0
+          uking_enable_calc_color11                    :    0
+          uking_color11_calc_type                      :    0
+          uking_color11_clamp01                        :    0
+          uking_color11_before_normal                  :    0
+          uking_color11_A                              :    0
+          uking_color11_A_channel                      :    0
+          uking_color11_B                              :    0
+          uking_color11_B_channel                      :    0
+          uking_color11_C                              :    0
+          uking_color11_C_channel                      :    0
+          uking_color11_D                              :    0
+          uking_color11_D_channel                      :    0
+          uking_enable_calc_color12                    :    0
+          uking_color12_calc_type                      :    0
+          uking_color12_clamp01                        :    0
+          uking_color12_before_normal                  :    0
+          uking_color12_A                              :    0
+          uking_color12_A_channel                      :    0
+          uking_color12_B                              :    0
+          uking_color12_B_channel                      :    0
+          uking_color12_C                              :    0
+          uking_color12_C_channel                      :    0
+          uking_color12_D                              :    0
+          uking_color12_D_channel                      :    0
+          uking_enable_calc_color13                    :    0
+          uking_color13_calc_type                      :    0
+          uking_color13_clamp01                        :    0
+          uking_color13_before_normal                  :    0
+          uking_color13_A                              :    0
+          uking_color13_A_channel                      :    0
+          uking_color13_B                              :    0
+          uking_color13_B_channel                      :    0
+          uking_color13_C                              :    0
+          uking_color13_C_channel                      :    0
+          uking_color13_D                              :    0
+          uking_color13_D_channel                      :    0
+          uking_enable_replace_albedo                  :    0
+          uking_replace_albedo_color                   :    0
+          uking_enable_emission_cubemap                :    0
+          uking_emission_color_cubemap                 :    0
+          gsys_gbuffer_after_fx                        :    0
+          uking_enable_fresnel_cheat                   :    1
+          uking_enable_output_object_attribute         :    1
+          uking_pass_object_attribute                  :    0
+          uking_edit_disable_actor_id                  :    0
+          uking_inner_material                         :    0
+          gsys_deferred_shading_material               :    1
+          uking_vtx_calc_type                          :    0
+          uking_vtx_texture0                           :    0
+          uking_vtx_texture0_texcoord                  :    0
+          uking_modify_position_type                   :    0
+          uking_vtx_position_modify_calc_type          :    2
+          uking_vtx_position_modify_shadow_only        :    1
+          uking_vtx_position_modify_clamp              :    0
+          uking_vtx_position_modify_vector             :  114
+          uking_vtx_position_modify_A                  :  300
+          uking_vtx_position_modify_A_channel          :    1
+          uking_vtx_position_modify_B                  :  106
+          uking_vtx_position_modify_B_channel          :    0
+          uking_vtx_position_modify_C                  :  100
+          uking_vtx_position_modify_C_channel          :    0
+          uking_vtx_position_modify_D                  :  100
+          uking_vtx_position_modify_D_channel          :    0
+          uking_modify_normal_type                     :    0
+          uking_vtx_normal_modify_A                    :  100
+          uking_enable_wind_vtx_transform              :    0
+          uking_wind_vtx_transform_channel             :   10
+          uking_enable_wind_vtx_transform_coreinfo     :    0
+          uking_enable_wind_vtx_transform_normal_lock  :    0
+          uking_enable_wind_vtx_transform_lie          :    0
+          uking_enable_wind_vtx_transform_height       :    0
+          uking_edit_enable_wind_vtx_transform_scale   :    0
+          uking_enable_lumberjack                      :    0
+          uking_enable_lumberjack_trunk                :    0
+          uking_enable_lumberjack_canopy               :    0
+          uking_lumberjack_annual_ring_albedo_color    :    0
+          uking_lumberjack_side_texcoord               :    0
+          uking_enable_inner_light                     :    0
+          uking_inner_light_mode                       :    0
+          uking_inner_light_source_position            :  100
+          uking_inner_light_source_radius              :    0
+          uking_inner_light_diffusivity                :    0
+          uking_enable_inner_light_line                :    0
+          uking_inner_light_source_position_end        :  100
+          uking_inner_light_source_radius_end          :    0
+          uking_force_export_normal                    :    0
+          uking_force_export_localpos                  :    0
+          uking_force_export_viewpos                   :    0
+          uking_force_export_vtx_color                 :    0
+          gsys_dynamic_force_zprepass                  :    0
+          gsys_gbuffer_xlu                             :    0
+          gsys_force_zprepass                          :    0
+          uking_enable_gbuffer_xlu_blend               :    1
+          gsys_gbuffer_xlu_opa                         :    0
+          enable_bake_texture                          :    0
+          uking_map_color                              :    0
+          uking_map_enable_fragment_normal             :    0
+          uking_enable_texcoord0                       :    1
+          uking_texcoord0_mapping                      :    0
+          uking_texcoord0_srt                          :   -1
+          uking_texcoord0_offset_srt                   :   -1
+          uking_enable_texcoord1                       :    1
+          uking_texcoord1_mapping                      :    1
+          uking_texcoord1_srt                          :   -1
+          uking_texcoord1_offset_srt                   :   -1
+          uking_enable_texcoord2                       :    0
+          uking_texcoord2_mapping                      :    0
+          uking_texcoord2_srt                          :   -1
+          uking_texcoord2_offset_srt                   :   -1
+          uking_enable_texcoord3                       :    0
+          uking_texcoord3_mapping                      :    0
+          uking_texcoord3_srt                          :   -1
+          uking_texcoord3_offset_srt                   :   -1
+          uking_enable_texcoord4                       :    0
+          uking_texcoord4_mapping                      :    0
+          uking_texcoord4_srt                          :   -1
+          uking_texcoord4_offset_srt                   :   -1
+          uking_enable_texcoord5                       :    0
+          uking_texcoord5_mapping                      :    0
+          uking_texcoord5_srt                          :   -1
+          uking_texcoord5_offset_srt                   :   -1
+          uking_texcoord_toon_spec_mapping             :    1
+          uking_texcoord_toon_spec_srt                 :    3
+          uking_texcoord_toon_spec_offset_srt          :   -1
+          uking_enable_proctexcoord0                   :    0
+          uking_proctexcoord0_mapping                  :    0
+          uking_enable_proctexcoord1                   :    0
+          uking_proctexcoord1_mapping                  :    0
+          uking_enable_proctexcoord2                   :    0
+          uking_proctexcoord2_mapping                  :    0
+          uking_common_texcoord                        :    0
+          uking_enable_normalmap                       :    1
+          uking_normal_color                           :    2
+          uking_enable_decode_normalmap                :    1
+          uking_enable_normalmap2                      :    0
+          uking_enable_backface_modify                 :    0
+          uking_enable_calc_binormal_vertex            :    0
+          uking_normal_color2                          :    3
+          uking_normalmap_blend_ratio                  :  104
+          uking_normalmap_blend_channel                :    0
+          uking_normalmap_blend_method                 :    0
+          uking_material_attribute                     :    0
+          uking_material_behave                        :    0
+          uking_chara_size                             :    2
+          uking_metal_color                            :    3
+          uking_metal_channel                          :   10
+          uking_albedo_color                           :    0
+          uking_specmask_scaler                        :    1
+          uking_specular_channel                       :   10
+          uking_specular_hair                          :    1
+          uking_specular_hair_channel                  :   10
+          uking_enable_emission                        :    0
+          uking_emission_color                         :    0
+          uking_enable_transmission                    :    0
+          uking_transmission_color                     :    0
+          uking_transmission_channel                   :   10
+          uking_enable_ao                              :    0
+          uking_ao_color                               :    0
+          uking_ao_channel                             :   10
+          uking_grossy_color                           :  402
+          uking_grossy_channel                         :    0
+          uking_grossy_intensity                       :    2
+          uking_transparency_color                     :    0
+          uking_transparency_channel                   :   40
+          uking_albedo_old                             :    0
+          bake_shadow_type                             :   -1
+          bake_light_type                              :   -1
+          gsys_renderstate                             :    0
+          gsys_pass                                    :    0
+          gsys_alpha_test_func                         :    0
+          gsys_alpha_test_enable                       :    0
+        Texture Attributes: _a0, _s0, _n0
+        Vertex  Attributes: _p0, _n0, _t0, _w0, _i0, _u0, _u1
+      FMAT 1:
+      Render params:
+          [4mParam                           │Type │Cnt│Value[0m
+          gsys_pass                       │str  │  1│['no_setting']
+          gsys_dynamic_depth_shadow       │str  │  1│['0']
+          gsys_dynamic_depth_shadow_only  │str  │  1│['0']
+          gsys_static_depth_shadow        │str  │  1│['0']
+          gsys_static_depth_shadow_only   │str  │  1│['0']
+          gsys_cube_map                   │str  │  1│['0']
+          gsys_cube_map_only              │str  │  1│['0']
+          gsys_dynamic_reflection         │str  │  1│['0']
+          gsys_multi_filter               │str  │  1│['0']
+          gsys_priority_hint              │str  │  1│['npc']
+          gsys_priority                   │?    │  1│['00 00 00 00 00 00 C8 42']
+          gsys_env_obj_set                │str  │  1│['Default']
+          uking_edit_sky_occlusion        │str  │  1│['0']
+          gsys_bake_group                 │str  │  1│['group1']
+          gsys_bake_texel_param           │float│  1│[100.0]
+          gsys_bake_uv_unite              │str  │  1│['none']
+          gsys_bake_option                │str  │  1│['none']
+          gsys_render_state_mode          │str  │  1│['opaque']
+          gsys_render_state_display_face  │str  │  1│['front']
+          gsys_render_state_blend_mode    │str  │  1│['none']
+          gsys_depth_test_enable          │str  │  1│['true']
+          gsys_depth_test_write           │str  │  1│['true']
+          gsys_depth_test_func            │str  │  1│['lequal']
+          gsys_color_blend_rgb_src_func   │str  │  1│['src_alpha']
+          gsys_color_blend_rgb_dst_func   │str  │  1│['one_minus_src_alpha']
+          gsys_color_blend_rgb_op         │str  │  1│['add']
+          gsys_color_blend_alpha_src_func │str  │  1│['one']
+          gsys_color_blend_alpha_dst_func │str  │  1│['zero']
+          gsys_color_blend_alpha_op       │str  │  1│['add']
+          gsys_alpha_test_enable          │str  │  1│['false']
+          gsys_alpha_test_func            │str  │  1│['gequal']
+          gsys_color_blend_const_color    │float│  4│[0.0, 0.0, 0.0, 0.0]
+          gsys_alpha_test_value           │float│  1│[0.5]
+        Shader params:
+          [4mParam                                   │Type  │Size│Offset│Idx0│Idx1│Unk00│Unk14│Data[0m
+          uk_user_data                            │   ptr│   4│000000│   0│   0│    0│   -1│(0,)
+          uk_user_data1                           │   ptr│   4│000004│   1│   1│    0│   -1│(0,)
+          uking_wind_vtx_transform_intensity      │ float│   4│000008│   2│   2│    0│   -1│(0.10000000149011612,)
+          uking_wind_vtx_transform_lie_intensity  │ float│   4│00000C│   3│   3│    0│   -1│(3.0,)
+          uking_wind_vtx_transform_lie_height     │ float│   4│000010│   4│   4│    0│   -1│(0.5,)
+          uking_lumberjack_height_eps             │ float│   4│000014│   5│   5│    0│   -1│(0.10000000149011612,)
+          uking_lumberjack_canopy_radius          │ float│   4│000018│   6│   6│    0│   -1│(0.5,)
+          uking_lumberjack_uv_scale               │ float│   4│00001C│   7│   7│    0│   -1│(1.0,)
+          const_value7                            │ float│   4│000020│   8│   8│    0│   -1│(4.0,)
+          const_value3                            │ float│   4│000024│   9│   9│    0│   -1│(0.0,)
+          uk_kari_mottled_ratio                   │ float│   4│000028│  10│  10│    0│   -1│(0.0,)
+          uk_mottled_scale                        │ float│   4│00002C│  11│  11│    0│   -1│(1.0,)
+          uk_cook_ratio                           │ float│   4│000030│  12│  12│    0│   -1│(0.0,)
+          uk_kari_chemical_ice_ratio0             │ float│   4│000034│  13│  13│    0│   -1│(0.0,)
+          uk_model_tree_scale                     │ float│   4│000038│  14│  14│    0│   -1│(1.0,)
+          uk_object_attribute                     │ float│   4│00003C│  15│  15│    0│   -1│(0.0,)
+          uk_special_effect_A                     │ float│   4│000040│  16│  16│    0│   -1│(0.0,)
+          uk_special_effect_B                     │ float│   4│000044│  17│  17│    0│   -1│(0.0,)
+          texture_array_index0                    │ float│   4│000048│  18│  18│    0│   -1│(0.0,)
+          uk_special_effect_C                     │ float│   4│00004C│  19│  19│    0│   -1│(0.0,)
+          texture_array_index1                    │ float│   4│000050│  20│  20│    0│   -1│(0.0,)
+          uk_mimicly_ratio                        │ float│   4│000054│  21│  21│    0│   -1│(0.0,)
+          texture_array_index2                    │ float│   4│000058│  22│  22│    0│   -1│(0.0,)
+          gsys_xlu_zprepass_alpha                 │ float│   4│00005C│  23│  23│    0│   -1│(1.0,)
+          texture_array_index3                    │ float│   4│000060│  24│  24│    0│   -1│(0.0,)
+          uk_bounding_radius                      │ float│   4│000064│  25│  25│    0│   -1│(1.0,)
+          texture_array_index4                    │ float│   4│000068│  26│  26│    0│   -1│(0.0,)
+          uk_shadow_alpha                         │ float│   4│00006C│  27│  27│    0│   -1│(1.0,)
+          texture_array_index5                    │ float│   4│000070│  28│  28│    0│   -1│(0.0,)
+          uk_proc_discard                         │ float│   4│000074│  29│  29│    0│   -1│(1.0,)
+          uking_edit_proc_discard_scale           │ float│   4│000078│  30│  30│    0│   -1│(1.0,)
+          gsys_alpha_test_ref_value               │ float│   4│00007C│  31│  31│    0│   -1│(0.5,)
+          const_value0                            │ float│   4│000080│  32│  32│    0│   -1│(0.10000000149011612,)
+          const_value1                            │ float│   4│000084│  33│  33│    0│   -1│(1.0,)
+          const_value2                            │ float│   4│000088│  34│  34│    0│   -1│(1.399999976158142,)
+          const_value4                            │ float│   4│00008C│  35│  35│    0│   -1│(2.0,)
+          const_value5                            │ float│   4│000090│  36│  36│    0│   -1│(1.0,)
+          const_value6                            │ float│   4│000094│  37│  37│    0│   -1│(1.0,)
+          indirect_scale0                         │ Vec2f│   8│000098│  38│  38│    0│   -1│(1.0, 1.0)
+          indirect_scale1                         │ Vec2f│   8│0000A0│  39│  39│    0│   -1│(1.0, 1.0)
+          indirect_scale2                         │ Vec2f│   8│0000A8│  40│  40│    0│   -1│(1.0, 1.0)
+          indirect_scale3                         │ Vec2f│   8│0000B0│  41│  41│    0│   -1│(1.0, 1.0)
+          indirect_scale4                         │ Vec2f│   8│0000B8│  42│  42│    0│   -1│(1.0, 1.0)
+          indirect_scale5                         │ Vec2f│   8│0000C0│  43│  43│    0│   -1│(1.0, 1.0)
+          gsys_bake_light_scale                   │ Vec3f│  12│0000C8│  44│  44│    0│   -1│(1.0, 1.0, 1.0)
+          gsys_bake_st0                           │ Vec4f│  16│0000D4│  45│  45│    0│   -1│(0.0, 0.0, 0.0, 0.0)
+          const_color0                            │ Vec4f│  16│0000E4│  46│  46│    0│   -1│(0.0, 1.0, 0.3059999942779541, 1.0)
+          const_color1                            │ Vec4f│  16│0000F4│  47│  47│    0│   -1│(1.0, 1.0, 1.0, 1.0)
+          gsys_bake_st1                           │ Vec4f│  16│000104│  48│  48│    0│   -1│(0.0, 0.0, 0.0, 0.0)
+          const_color3                            │ Vec4f│  16│000114│  49│  49│    0│   -1│(1.0, 1.0, 1.0, 1.0)
+          const_color2                            │ Vec4f│  16│000124│  50│  50│    0│   -1│(1.0, 1.0, 1.0, 1.0)
+          const_vector0                           │ Vec4f│  16│000134│  51│  51│    0│   -1│(0.0, 0.0, 0.0, 0.0)
+          const_vector1                           │ Vec4f│  16│000144│  52│  52│    0│   -1│(0.0, 0.0, 0.0, 0.0)
+          const_color4                            │ Vec4f│  16│000154│  53│  53│    0│   -1│(1.399999976158142, 1.0, 0.0, 0.0)
+          const_color5                            │ Vec4f│  16│000164│  54│  54│    0│   -1│(2.799999952316284, 5.0, 1.0, 0.0)
+          uk_damage_color                         │ Vec4f│  16│000174│  55│  55│    0│   -1│(0.0, 0.0, 0.0, 0.0)
+          tex_srt0                                │texSRT│  24│000184│  56│  56│    0│   -1│(0, 1.0, 1.0, 0.0, 0.0, 0.0)
+          tex_srt1                                │texSRT│  24│00019C│  57│  57│    0│   -1│(0, 1.0, 1.0, 0.0, 0.0, 0.0)
+          tex_srt2                                │texSRT│  24│0001B4│  58│  58│    0│   -1│(0, 1.0, 1.0, 0.0, 0.0, 0.0)
+          tex_srt3                                │texSRT│  24│0001CC│  59│  59│    0│   -1│(1, 30.0, 30.0, 0.0, 0.15000000596046448, -0.09000000357627869)
+          tex_srt4                                │texSRT│  24│0001E4│  60│  60│    0│   -1│(0, 1.0, 1.0, 0.0, 0.0, 0.0)
+          tex_srt5                                │texSRT│  24│0001FC│  61│  61│    0│   -1│(0, 1.0, 1.0, 0.0, 0.0, 0.0)
+        Textures:
+          [4mIdx│Slot│Name[0m
+            0│  -1│Fox_Eye_Alb
+            1│  -1│Fox_Eye_Nrm
+            2│  -1│Fox_Eye_Spm
+        Samplers:
+          [4mIdx│Slot│Data[0m
+            0│  -1│00020000 00290100 00000000 41500000 BF800000 00000000 00000000 00000000
+            1│  -1│00020000 00290100 00000000 41500000 00000000 00000000 00000000 00000000
+            2│  -1│00020000 00290100 00000000 41500000 00000000 00000000 00000000 00000000
+        Material Parameters:
+          uking_enable_hide_normal_pass                :    0
+          uking_reverse_polygon_offset                 :    0
+          uking_edit_expand_depthshadow_far            :    0
+          uking_enable_map_rendering                   :    0
+          uking_map_layer_id                           :    0
+          uking_sampler_use_array                      :    0
+          uking_texture0_texcoord                      :    0
+          uking_texture0_decode                        :    0
+          uking_enable_proctexture0                    :    0
+          uking_enable_indirect0                       :    0
+          uking_texture0_post                          :    0
+          uking_proctexture0_type                      :    0
+          uking_proctexture0_param_A                   :    0
+          uking_proctexture0_param_B                   :    0
+          uking_indirect0_texcoord                     :    0
+          uking_enable_indirect0_world_scaling         :    0
+          uking_indirect0_signed_fetch                 :    1
+          uking_indirect0_type                         :    0
+          uking_texture_array_texture0                 :   -1
+          uking_texture1_texcoord                      :    0
+          uking_texture1_decode                        :    0
+          uking_enable_proctexture1                    :    0
+          uking_enable_indirect1                       :    0
+          uking_texture1_post                          :    0
+          uking_proctexture1_type                      :    0
+          uking_proctexture1_param_A                   :    0
+          uking_proctexture1_param_B                   :    0
+          uking_indirect1_texcoord                     :    0
+          uking_enable_indirect1_world_scaling         :    0
+          uking_indirect1_signed_fetch                 :    1
+          uking_indirect1_type                         :    0
+          uking_texture_array_texture1                 :   -1
+          uking_texture2_texcoord                      :    0
+          uking_texture2_decode                        :    0
+          uking_enable_proctexture2                    :    0
+          uking_enable_indirect2                       :    0
+          uking_texture2_post                          :    0
+          uking_proctexture2_type                      :    0
+          uking_proctexture2_param_A                   :    0
+          uking_proctexture2_param_B                   :    0
+          uking_indirect2_texcoord                     :    0
+          uking_enable_indirect2_world_scaling         :    0
+          uking_indirect2_signed_fetch                 :    1
+          uking_indirect2_type                         :    0
+          uking_texture_array_texture2                 :   -1
+          uking_texture3_texcoord                      :    0
+          uking_texture3_decode                        :    0
+          uking_enable_proctexture3                    :    0
+          uking_enable_indirect3                       :    0
+          uking_texture3_post                          :    0
+          uking_proctexture3_type                      :    0
+          uking_proctexture3_param_A                   :    0
+          uking_proctexture3_param_B                   :    0
+          uking_indirect3_texcoord                     :    0
+          uking_enable_indirect3_world_scaling         :    0
+          uking_indirect3_signed_fetch                 :    1
+          uking_indirect3_type                         :    0
+          uking_texture_array_texture3                 :   -1
+          uking_texture4_texcoord                      :    6
+          uking_texture4_decode                        :    0
+          uking_enable_proctexture4                    :    1
+          uking_enable_indirect4                       :    0
+          uking_texture4_post                          :    0
+          uking_proctexture4_type                      :  100
+          uking_proctexture4_param_A                   :  104
+          uking_proctexture4_param_B                   :  105
+          uking_indirect4_texcoord                     :    0
+          uking_enable_indirect4_world_scaling         :    0
+          uking_indirect4_signed_fetch                 :    1
+          uking_indirect4_type                         :    0
+          uking_texture_array_texture4                 :   -1
+          uking_texture5_texcoord                      :    6
+          uking_texture5_decode                        :    0
+          uking_enable_proctexture5                    :    1
+          uking_enable_indirect5                       :    0
+          uking_texture5_post                          :    0
+          uking_proctexture5_type                      :  100
+          uking_proctexture5_param_A                   :  106
+          uking_proctexture5_param_B                   :  107
+          uking_indirect5_texcoord                     :    0
+          uking_enable_indirect5_world_scaling         :    0
+          uking_indirect5_signed_fetch                 :    1
+          uking_indirect5_type                         :    0
+          uking_texture_array_texture5                 :   -1
+          uking_texture6_texture                       :    0
+          uking_texture6_texcoord                      :    0
+          uking_texture6_decode                        :    0
+          uking_texture7_texture                       :    0
+          uking_texture7_texcoord                      :    0
+          uking_texture7_decode                        :    0
+          gsys_enable_color_buffer                     :    0
+          uking_texture_scene_color_post               :    0
+          uking_texture_scene_color0_texcoord          :    0
+          uking_enable_scene_color0_fog                :    0
+          uking_enable_scene_color0_edge_stop          :    0
+          uking_enable_scene_color0_edge_stop_magic_N  :    1
+          uking_texture_scene_color1_texcoord          :    0
+          uking_enable_scene_color1_fog                :    0
+          uking_enable_depth_buffer                    :    0
+          uking_texture_scene_depth_post               :    0
+          uking_texture_scene_depth0_texcoord          :    0
+          uking_texture_scene_depth1_texcoord          :    0
+          uking_enable_scene_color0_depthdiff1_effect  :    0
+          uking_depth_diff_scale_to_scene_color0       :    1
+          uking_enable_calc_color0                     :    0
+          uking_color0_calc_type                       :    2
+          uking_color0_clamp01                         :    0
+          uking_color0_before_normal                   :    0
+          uking_color0_A                               :    0
+          uking_color0_A_channel                       :    0
+          uking_color0_B                               :    3
+          uking_color0_B_channel                       :    0
+          uking_color0_C                               :    0
+          uking_color0_C_channel                       :    0
+          uking_color0_D                               :    0
+          uking_color0_D_channel                       :    0
+          uking_enable_calc_color1                     :    1
+          uking_color1_calc_type                       :    2
+          uking_color1_clamp01                         :    0
+          uking_color1_before_normal                   :    0
+          uking_color1_A                               :    4
+          uking_color1_A_channel                       :    0
+          uking_color1_B                               :  106
+          uking_color1_B_channel                       :    0
+          uking_color1_C                               :    0
+          uking_color1_C_channel                       :    0
+          uking_color1_D                               :    0
+          uking_color1_D_channel                       :    0
+          uking_enable_calc_color2                     :    1
+          uking_color2_calc_type                       :    2
+          uking_color2_clamp01                         :    1
+          uking_color2_before_normal                   :    0
+          uking_color2_A                               :  508
+          uking_color2_A_channel                       :    0
+          uking_color2_B                               :  111
+          uking_color2_B_channel                       :    0
+          uking_color2_C                               :  108
+          uking_color2_C_channel                       :    2
+          uking_color2_D                               :  400
+          uking_color2_D_channel                       :    0
+          uking_enable_calc_color3                     :    1
+          uking_color3_calc_type                       :    2
+          uking_color3_clamp01                         :    1
+          uking_color3_before_normal                   :    0
+          uking_color3_A                               :  202
+          uking_color3_A_channel                       :    1
+          uking_color3_B                               :  108
+          uking_color3_B_channel                       :    0
+          uking_color3_C                               :  110
+          uking_color3_C_channel                       :    0
+          uking_color3_D                               :  507
+          uking_color3_D_channel                       :    1
+          uking_enable_calc_color4                     :    1
+          uking_color4_calc_type                       :   11
+          uking_color4_clamp01                         :    0
+          uking_color4_before_normal                   :    0
+          uking_color4_A                               :  203
+          uking_color4_A_channel                       :    0
+          uking_color4_B                               :  100
+          uking_color4_B_channel                       :    0
+          uking_color4_C                               :  110
+          uking_color4_C_channel                       :    0
+          uking_color4_D                               :  507
+          uking_color4_D_channel                       :    1
+          uking_enable_calc_color5                     :    1
+          uking_color5_calc_type                       :    2
+          uking_color5_clamp01                         :    0
+          uking_color5_before_normal                   :    0
+          uking_color5_A                               :  204
+          uking_color5_A_channel                       :    0
+          uking_color5_B                               :    1
+          uking_color5_B_channel                       :    0
+          uking_color5_C                               :    0
+          uking_color5_C_channel                       :    0
+          uking_color5_D                               :    0
+          uking_color5_D_channel                       :    0
+          uking_enable_calc_color6                     :    0
+          uking_color6_calc_type                       :    0
+          uking_color6_clamp01                         :    0
+          uking_color6_before_normal                   :    0
+          uking_color6_A                               :    0
+          uking_color6_A_channel                       :    0
+          uking_color6_B                               :    0
+          uking_color6_B_channel                       :    0
+          uking_color6_C                               :    0
+          uking_color6_C_channel                       :    0
+          uking_color6_D                               :    0
+          uking_color6_D_channel                       :    0
+          uking_enable_calc_color7                     :    0
+          uking_color7_calc_type                       :    0
+          uking_color7_clamp01                         :    0
+          uking_color7_before_normal                   :    0
+          uking_color7_A                               :    0
+          uking_color7_A_channel                       :    0
+          uking_color7_B                               :    0
+          uking_color7_B_channel                       :    0
+          uking_color7_C                               :    0
+          uking_color7_C_channel                       :    0
+          uking_color7_D                               :    0
+          uking_color7_D_channel                       :    0
+          uking_enable_calc_color8                     :    0
+          uking_color8_calc_type                       :    0
+          uking_color8_clamp01                         :    0
+          uking_color8_before_normal                   :    0
+          uking_color8_A                               :    0
+          uking_color8_A_channel                       :    0
+          uking_color8_B                               :    0
+          uking_color8_B_channel                       :    0
+          uking_color8_C                               :    0
+          uking_color8_C_channel                       :    0
+          uking_color8_D                               :    0
+          uking_color8_D_channel                       :    0
+          uking_enable_calc_color9                     :    0
+          uking_color9_calc_type                       :    0
+          uking_color9_clamp01                         :    0
+          uking_color9_before_normal                   :    0
+          uking_color9_A                               :    0
+          uking_color9_A_channel                       :    0
+          uking_color9_B                               :    0
+          uking_color9_B_channel                       :    0
+          uking_color9_C                               :    0
+          uking_color9_C_channel                       :    0
+          uking_color9_D                               :    0
+          uking_color9_D_channel                       :    0
+          uking_enable_calc_color10                    :    0
+          uking_color10_calc_type                      :    0
+          uking_color10_clamp01                        :    0
+          uking_color10_before_normal                  :    0
+          uking_color10_A                              :    0
+          uking_color10_A_channel                      :    0
+          uking_color10_B                              :    0
+          uking_color10_B_channel                      :    0
+          uking_color10_C                              :    0
+          uking_color10_C_channel                      :    0
+          uking_color10_D                              :    0
+          uking_color10_D_channel                      :    0
+          uking_enable_calc_color11                    :    0
+          uking_color11_calc_type                      :    0
+          uking_color11_clamp01                        :    0
+          uking_color11_before_normal                  :    0
+          uking_color11_A                              :    0
+          uking_color11_A_channel                      :    0
+          uking_color11_B                              :    0
+          uking_color11_B_channel                      :    0
+          uking_color11_C                              :    0
+          uking_color11_C_channel                      :    0
+          uking_color11_D                              :    0
+          uking_color11_D_channel                      :    0
+          uking_enable_calc_color12                    :    0
+          uking_color12_calc_type                      :    0
+          uking_color12_clamp01                        :    0
+          uking_color12_before_normal                  :    0
+          uking_color12_A                              :    0
+          uking_color12_A_channel                      :    0
+          uking_color12_B                              :    0
+          uking_color12_B_channel                      :    0
+          uking_color12_C                              :    0
+          uking_color12_C_channel                      :    0
+          uking_color12_D                              :    0
+          uking_color12_D_channel                      :    0
+          uking_enable_calc_color13                    :    0
+          uking_color13_calc_type                      :    0
+          uking_color13_clamp01                        :    0
+          uking_color13_before_normal                  :    0
+          uking_color13_A                              :    0
+          uking_color13_A_channel                      :    0
+          uking_color13_B                              :    0
+          uking_color13_B_channel                      :    0
+          uking_color13_C                              :    0
+          uking_color13_C_channel                      :    0
+          uking_color13_D                              :    0
+          uking_color13_D_channel                      :    0
+          uking_enable_replace_albedo                  :    0
+          uking_replace_albedo_color                   :    0
+          uking_enable_emission_cubemap                :    0
+          uking_emission_color_cubemap                 :    0
+          gsys_gbuffer_after_fx                        :    0
+          uking_enable_fresnel_cheat                   :    1
+          uking_enable_output_object_attribute         :    1
+          uking_pass_object_attribute                  :    0
+          uking_edit_disable_actor_id                  :    0
+          uking_inner_material                         :    0
+          gsys_deferred_shading_material               :    1
+          uking_vtx_calc_type                          :    0
+          uking_vtx_texture0                           :    0
+          uking_vtx_texture0_texcoord                  :    0
+          uking_modify_position_type                   :    0
+          uking_vtx_position_modify_calc_type          :    0
+          uking_vtx_position_modify_shadow_only        :    0
+          uking_vtx_position_modify_clamp              :    0
+          uking_vtx_position_modify_vector             :  100
+          uking_vtx_position_modify_A                  :  100
+          uking_vtx_position_modify_A_channel          :    0
+          uking_vtx_position_modify_B                  :  100
+          uking_vtx_position_modify_B_channel          :    0
+          uking_vtx_position_modify_C                  :  100
+          uking_vtx_position_modify_C_channel          :    0
+          uking_vtx_position_modify_D                  :  100
+          uking_vtx_position_modify_D_channel          :    0
+          uking_modify_normal_type                     :    0
+          uking_vtx_normal_modify_A                    :  100
+          uking_enable_wind_vtx_transform              :    0
+          uking_wind_vtx_transform_channel             :   10
+          uking_enable_wind_vtx_transform_coreinfo     :    0
+          uking_enable_wind_vtx_transform_normal_lock  :    0
+          uking_enable_wind_vtx_transform_lie          :    0
+          uking_enable_wind_vtx_transform_height       :    0
+          uking_edit_enable_wind_vtx_transform_scale   :    0
+          uking_enable_lumberjack                      :    0
+          uking_enable_lumberjack_trunk                :    0
+          uking_enable_lumberjack_canopy               :    0
+          uking_lumberjack_annual_ring_albedo_color    :    0
+          uking_lumberjack_side_texcoord               :    0
+          uking_enable_inner_light                     :    0
+          uking_inner_light_mode                       :    0
+          uking_inner_light_source_position            :  100
+          uking_inner_light_source_radius              :    0
+          uking_inner_light_diffusivity                :    0
+          uking_enable_inner_light_line                :    0
+          uking_inner_light_source_position_end        :  100
+          uking_inner_light_source_radius_end          :    0
+          uking_force_export_normal                    :    0
+          uking_force_export_localpos                  :    0
+          uking_force_export_viewpos                   :    0
+          uking_force_export_vtx_color                 :    0
+          gsys_dynamic_force_zprepass                  :    0
+          gsys_gbuffer_xlu                             :    0
+          gsys_force_zprepass                          :    0
+          uking_enable_gbuffer_xlu_blend               :    1
+          gsys_gbuffer_xlu_opa                         :    0
+          enable_bake_texture                          :    0
+          uking_map_color                              :    0
+          uking_map_enable_fragment_normal             :    0
+          uking_enable_texcoord0                       :    1
+          uking_texcoord0_mapping                      :    0
+          uking_texcoord0_srt                          :    0
+          uking_texcoord0_offset_srt                   :   -1
+          uking_enable_texcoord1                       :    0
+          uking_texcoord1_mapping                      :    0
+          uking_texcoord1_srt                          :   -1
+          uking_texcoord1_offset_srt                   :   -1
+          uking_enable_texcoord2                       :    0
+          uking_texcoord2_mapping                      :    0
+          uking_texcoord2_srt                          :   -1
+          uking_texcoord2_offset_srt                   :   -1
+          uking_enable_texcoord3                       :    1
+          uking_texcoord3_mapping                      :   20
+          uking_texcoord3_srt                          :    3
+          uking_texcoord3_offset_srt                   :   -1
+          uking_enable_texcoord4                       :    0
+          uking_texcoord4_mapping                      :    0
+          uking_texcoord4_srt                          :   -1
+          uking_texcoord4_offset_srt                   :   -1
+          uking_enable_texcoord5                       :    0
+          uking_texcoord5_mapping                      :    0
+          uking_texcoord5_srt                          :   -1
+          uking_texcoord5_offset_srt                   :   -1
+          uking_texcoord_toon_spec_mapping             :   20
+          uking_texcoord_toon_spec_srt                 :    3
+          uking_texcoord_toon_spec_offset_srt          :   -1
+          uking_enable_proctexcoord0                   :    0
+          uking_proctexcoord0_mapping                  :    0
+          uking_enable_proctexcoord1                   :    0
+          uking_proctexcoord1_mapping                  :    0
+          uking_enable_proctexcoord2                   :    0
+          uking_proctexcoord2_mapping                  :    0
+          uking_common_texcoord                        :    0
+          uking_enable_normalmap                       :    1
+          uking_normal_color                           :    2
+          uking_enable_decode_normalmap                :    1
+          uking_enable_normalmap2                      :    0
+          uking_enable_backface_modify                 :    0
+          uking_enable_calc_binormal_vertex            :    0
+          uking_normal_color2                          :    3
+          uking_normalmap_blend_ratio                  :  104
+          uking_normalmap_blend_channel                :    0
+          uking_normalmap_blend_method                 :    0
+          uking_material_attribute                     :    0
+          uking_material_behave                        :  104
+          uking_chara_size                             :    2
+          uking_metal_color                            :  201
+          uking_metal_channel                          :   10
+          uking_albedo_color                           :    0
+          uking_specmask_scaler                        :    1
+          uking_specular_channel                       :   10
+          uking_specular_hair                          :    1
+          uking_specular_hair_channel                  :   10
+          uking_enable_emission                        :    1
+          uking_emission_color                         :  205
+          uking_enable_transmission                    :    0
+          uking_transmission_color                     :    0
+          uking_transmission_channel                   :   10
+          uking_enable_ao                              :    0
+          uking_ao_color                               :    0
+          uking_ao_channel                             :   10
+          uking_grossy_color                           :  402
+          uking_grossy_channel                         :    0
+          uking_grossy_intensity                       :    2
+          uking_transparency_color                     :    0
+          uking_transparency_channel                   :   40
+          uking_albedo_old                             :    0
+          bake_shadow_type                             :   -1
+          bake_light_type                              :   -1
+          gsys_renderstate                             :    0
+          gsys_pass                                    :    0
+          gsys_alpha_test_func                         :    0
+          gsys_alpha_test_enable                       :    0
+        Texture Attributes: _a0, _s0, _n0
+        Vertex  Attributes: _p0, _n0, _t0, _w0, _i0, _u0
+      FSHP   0: Flags: 0x00000002, Idx: 0x0000, FmatIdx: 0x0000, SingleBind: 0x0000, LODs:   2
+      FSHP   1: Flags: 0x00000006, Idx: 0x0001, FmatIdx: 0x0001, SingleBind: 0x0000, LODs:   2
+      [4mFSHP│LOD│Mshs│IdxB│PrimType                     │IdxTp│IdxCt│VisGp│Unk08   │Unk10   │Unk34   [0m
+         0│  0│   1│0D14│0003 line_strip              │01 <H│ 3348│    0│0001E000│000018B8│00000001[0m
+      [4m   0│  1│   1│0330│0003 line_strip              │01 <H│  816│ 1097│0001E000│00001938│00000001[0m
+         1│  0│   1│0018│0003 line_strip              │01 <H│   24│    0│0001E000│00001A98│00000001[0m
+      [4m   1│  1│   1│0018│0003 line_strip              │01 <H│   24│   12│0001E000│00001B18│00000001[0m
+    Skeleton:
+      Size: 0x000098F0 / 0x000098F0
+      Bone Idx Group Offs: 0x00001520
+      Bone Array Offs: 0x000005C0
+      Smooth Idx Offs: 0x00000F70
+      Smooth Mtx Offs: 0x00000FB0
+      Unk30: 0x00000000
+      Flags: {'_raw': 4608, 'SCALE_STD': False, 'SCALE_MAYA': True, 'SCALE_SOFTIMAGE': False, 'EULER': True}
+      Bones:  31
+      Smooth Idxs:  29
+      Rigid Idxs:   0
+      Extras:   0
+      Unk44:  0x00000000
+      Bone #  0 'Root':
+        Position:  0.00,  0.00,  0.00
+        Rotation:  0.00,  0.00,  0.00,  1.00 (  0,   0,   0,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  -1
+        Smooth Mtx Idx:  -1
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, NO_ROTATION, NO_TRANSLATION, SCALE_VOL_1, UNIFORM_SCALE, VISIBLE
+      Bone #  1 'Skl_Root':
+        Position:  0.00,  0.58, -0.14
+        Rotation:  1.57,  0.00,  0.00,  1.00 ( 90,   0,   0,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:   0
+        Smooth Mtx Idx:  -1
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, UNIFORM_SCALE, VISIBLE
+      Bone #  2 'Spine_1':
+        Position:  0.00,  0.00,  0.00
+        Rotation: -1.57,  0.00,  1.57,  1.00 (-90,   0,  90,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:   1
+        Smooth Mtx Idx:   0
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, NO_TRANSLATION, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone #  3 'Spine_2':
+        Position:  0.29,  0.00,  0.00
+        Rotation:  0.00,  0.00,  0.00,  1.00 (  0,   0,   0,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:   2
+        Smooth Mtx Idx:   1
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, NO_ROTATION, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone #  4 'Arm_1_L':
+        Position:  0.15, -0.09, -0.08
+        Rotation:  0.00,  0.00, -2.04,  1.00 (  0,   0, -116,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:   3
+        Smooth Mtx Idx:   2
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone #  5 'Arm_2_L':
+        Position:  0.15,  0.00,  0.00
+        Rotation:  0.00,  0.00,  0.47,  1.00 (  0,   0,  26,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:   4
+        Smooth Mtx Idx:   3
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone #  6 'Wrist_L':
+        Position:  0.27,  0.00,  0.00
+        Rotation:  0.00,  0.00,  0.21,  1.00 (  0,   0,  12,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:   5
+        Smooth Mtx Idx:   4
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone #  7 'Toe_1_FL':
+        Position:  0.07,  0.00,  0.00
+        Rotation:  0.00,  0.00,  1.33,  1.00 (  0,   0,  75,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:   6
+        Smooth Mtx Idx:   5
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone #  8 'Arm_1_R':
+        Position:  0.15, -0.09,  0.08
+        Rotation:  0.00,  0.00,  1.10,  1.00 (  0,   0,  62,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:   3
+        Smooth Mtx Idx:   6
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone #  9 'Arm_2_R':
+        Position: -0.15,  0.00,  0.00
+        Rotation:  0.00,  0.00,  0.47,  1.00 (  0,   0,  26,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:   8
+        Smooth Mtx Idx:   7
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 10 'Wrist_R':
+        Position: -0.27,  0.00,  0.00
+        Rotation:  0.00,  0.00,  0.21,  1.00 (  0,   0,  12,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:   9
+        Smooth Mtx Idx:   8
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 11 'Toe_1_FR':
+        Position: -0.06,  0.00,  0.00
+        Rotation:  0.00,  0.00,  1.33,  1.00 (  0,   0,  75,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  10
+        Smooth Mtx Idx:   9
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 12 'Neck_1':
+        Position:  0.16, -0.03,  0.00
+        Rotation:  0.00,  0.00,  0.47,  1.00 (  0,   0,  26,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:   3
+        Smooth Mtx Idx:  10
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 13 'Head':
+        Position:  0.20,  0.00,  0.00
+        Rotation:  0.00,  0.00, -0.59,  1.00 (  0,   0, -33,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  12
+        Smooth Mtx Idx:  11
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SEG_SCALE_COMPENSATE, VISIBLE
+      Bone # 14 'Chin':
+        Position:  0.05, -0.05,  0.00
+        Rotation:  0.00,  0.00, -0.17,  1.00 (  0,   0,  -9,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  13
+        Smooth Mtx Idx:  12
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SEG_SCALE_COMPENSATE, VISIBLE
+      Bone # 15 'Ear_L':
+        Position:  0.03,  0.06, -0.07
+        Rotation:  1.57,  0.44,  1.26,  1.00 ( 90,  25,  72,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  13
+        Smooth Mtx Idx:  13
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 16 'Ear_R':
+        Position:  0.03,  0.06,  0.07
+        Rotation:  1.57,  0.44, -1.88,  1.00 ( 90,  25, -108,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  13
+        Smooth Mtx Idx:  14
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 17 'Eyelid_L':
+        Position:  0.14,  0.01, -0.03
+        Rotation:  0.35,  0.52,  0.70,  1.00 ( 20,  30,  40,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  13
+        Smooth Mtx Idx:  15
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 18 'Eyelid_R':
+        Position:  0.14,  0.01,  0.03
+        Rotation:  0.35,  0.52, -2.44,  1.00 ( 20,  30, -139,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  13
+        Smooth Mtx Idx:  16
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 19 'Waist':
+        Position:  0.00,  0.00,  0.00
+        Rotation: -1.57,  0.00, -1.57,  1.00 (-90,   0, -90,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:   1
+        Smooth Mtx Idx:  17
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, NO_TRANSLATION, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 20 'Leg_1_L':
+        Position:  0.14, -0.04,  0.08
+        Rotation: -3.14,  0.00, -2.01,  1.00 (-180,   0, -115,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  19
+        Smooth Mtx Idx:  18
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 21 'Leg_2_L':
+        Position:  0.22,  0.00,  0.00
+        Rotation:  0.00,  0.00, -1.52,  1.00 (  0,   0, -87,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  20
+        Smooth Mtx Idx:  19
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 22 'Ankle_L':
+        Position:  0.24,  0.00,  0.00
+        Rotation:  0.00,  0.00,  1.06,  1.00 (  0,   0,  61,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  21
+        Smooth Mtx Idx:  20
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 23 'Toe_1_BL':
+        Position:  0.19,  0.00,  0.00
+        Rotation:  0.00,  0.00,  1.27,  1.00 (  0,   0,  72,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  22
+        Smooth Mtx Idx:  21
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 24 'Leg_1_R':
+        Position:  0.14, -0.04, -0.08
+        Rotation: -3.14,  0.00,  1.13,  1.00 (-180,   0,  65,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  19
+        Smooth Mtx Idx:  22
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 25 'Leg_2_R':
+        Position: -0.22,  0.00,  0.00
+        Rotation:  0.00,  0.00, -1.52,  1.00 (  0,   0, -86,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  24
+        Smooth Mtx Idx:  23
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 26 'Ankle_R':
+        Position: -0.24,  0.00,  0.00
+        Rotation:  0.00,  0.00,  1.06,  1.00 (  0,   0,  61,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  25
+        Smooth Mtx Idx:  24
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 27 'Toe_1_BR':
+        Position: -0.19,  0.00,  0.00
+        Rotation:  0.00,  0.00,  1.27,  1.00 (  0,   0,  72,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  26
+        Smooth Mtx Idx:  25
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 28 'Tail_1':
+        Position:  0.19,  0.00,  0.00
+        Rotation:  0.00,  0.00,  0.00,  1.00 (  0,   0,   0,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  19
+        Smooth Mtx Idx:  26
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, NO_ROTATION, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 29 'Tail_2':
+        Position:  0.27,  0.00,  0.00
+        Rotation:  0.00,  0.00,  0.00,  1.00 (  0,   0,   0,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  28
+        Smooth Mtx Idx:  27
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, NO_ROTATION, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+      Bone # 30 'Tail_3':
+        Position:  0.32,  0.00,  0.00
+        Rotation:  0.00,  0.00,  0.00,  1.00 (  0,   0,   0,  57°)
+        Scale:     1.00,  1.00,  1.00
+        Unk04: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+        Parent     Idx:  29
+        Smooth Mtx Idx:  28
+        Rigid  Mtx Idx:  -1
+        Billboard  Idx:  -1
+        Udata count:      0
+        Flags: EULER, NO_ROTATION, SCALE_VOL_1, SEG_SCALE_COMPENSATE, UNIFORM_SCALE, VISIBLE
+    Animations: 0
+    Buffers: 0
+    Embedded Files: 1
+      [4mOffset│Size  │Name            |ASCII dump[0m
+      01E200│000001│TexInfo.txt     │7

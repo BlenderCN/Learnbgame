@@ -1,0 +1,973 @@
+Index: blender/release/scripts/startup/bl_ui/properties_data_modifier.py
+===================================================================
+--- blender/release/scripts/startup/bl_ui/properties_data_modifier.py	(revision 51011)
++++ blender/release/scripts/startup/bl_ui/properties_data_modifier.py	(working copy)
+@@ -658,6 +658,14 @@
+ 
+     def SOFT_BODY(self, layout, ob, md):
+         layout.label(text="Settings can be found inside the Physics context")
++    
++    def DESTRUCT(self, layout, ob, md):
++        layout.prop(md, "mode")
++        layout.prop(md, "count")
++        layout.prop(md, "crack_type")
++        layout.prop(md, "roughness")
++        layout.prop(md, "seed")
++        layout.prop(md, "scale")
+ 
+     def SOLIDIFY(self, layout, ob, md):
+         split = layout.split()
+Index: blender/source/blender/blenkernel/intern/object.c
+===================================================================
+--- blender/source/blender/blenkernel/intern/object.c	(revision 51011)
++++ blender/source/blender/blenkernel/intern/object.c	(working copy)
+@@ -297,7 +297,11 @@
+ void BKE_object_free(Object *ob)
+ {
+ 	int a;
+-	
++    
++    //simple null check wont harm
++    //if (!ob)
++    //    return
++        
+ 	BKE_object_free_display(ob);
+ 	
+ 	/* disconnect specific data */
+Index: blender/source/blender/modifiers/intern/MOD_destruct.c
+===================================================================
+--- blender/source/blender/modifiers/intern/MOD_destruct.c	(revision 0)
++++ blender/source/blender/modifiers/intern/MOD_destruct.c	(revision 0)
+@@ -0,0 +1,675 @@
++/*
++ * ***** BEGIN GPL LICENSE BLOCK *****
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software  Foundation,
++ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++ *
++ * The Original Code is Copyright (C) 2005 by the Blender Foundation.
++ * All rights reserved.
++ *
++ * Contributor(s): scorpion81
++ *
++ * ***** END GPL LICENSE BLOCK *****
++ *
++ */
++
++/** \file blender/modifiers/intern/MOD_destruct.c
++ *  \ingroup modifiers
++ */
++
++#include <stdio.h>
++
++#include "DNA_scene_types.h"
++#include "DNA_Mesh_types.h"
++
++#include "BLI_utildefines.h"
++
++#include "BKE_cdderivedmesh.h"
++#include "BKE_particle.h"
++
++#include "MOD_modifiertypes.h"
++
++//create new cutter objects with this
++#include "BKE_object.h"
++#include "BKE_mesh.h"
++#include "bmesh.h"
++#include "BLI_math_matrix.h"
++#include "BLI_math.h"
++#include "BLI_rand.h"
++//CAUTION, time.h is OS dependent !!!
++#include <time.h>
++#include "MOD_boolean_util.h"
++#include "MEM_guardedalloc.h"
++#include "BKE_main.h"
++#include "BKE_global.h"
++#include "RNA_Types.h"
++#include "BKE_library.h"
++#include "../../editors/include/ED_object.h"
++#include "../../editors/mesh/mesh_intern.h"
++#include "BKE_tessmesh.h"
++#include <math.h>
++#include <string.h>
++
++static void initData(ModifierData *md)
++{
++    DestructModifierData *dmd = (DestructModifierData*)md;
++    dmd->mode = eDestructModifierMode_Boolean;
++    dmd->count = 2;
++    dmd->crack_type = eBooleanCrackType_Flat;
++    dmd->roughness = 0.5f;
++    dmd->seed = 0;//BLI_rand();
++    dmd->scale = 0.75f;
++}
++
++static void copyData(ModifierData* md, ModifierData* target)
++{
++    DestructModifierData *dmd = (DestructModifierData *) md;
++	DestructModifierData *tmd = (DestructModifierData *) target;
++    
++	tmd->count = dmd->count;
++	tmd->mode = dmd->mode;
++    tmd->seed = dmd->seed;
++}
++
++static void deformVerts(ModifierData *md, Object *ob,
++                        DerivedMesh *UNUSED(derivedData),
++                        float (*vertexCos)[3],
++                        int numVerts,
++                        ModifierApplyFlag UNUSED(flag))
++{
++// sbObjectStep(md->scene, ob, (float)md->scene->r.cfra, vertexCos, numVerts);
++    return;
++}
++
++static int dependsOnTime(ModifierData *UNUSED(md))
++{
++	return 1;
++}
++
++static ExplodeModifierData *findPrecedingExplo(Object *ob, ModifierData *emd)
++{
++	ModifierData *md;
++	ExplodeModifierData *emmd = NULL;
++    
++	for (md = ob->modifiers.first; emd != md; md = md->next) {
++		if (md->type == eModifierType_Explode)
++			emmd = (ExplodeModifierData *) md;
++	}
++	return emmd;
++}
++
++
++static float maxDim(Object* o)
++{
++    Mesh* m = (Mesh*)o->data;
++    //looks like its needed to be recalculated, since it seem to miss ?
++    //BKE_mesh_boundbox_calc(m, NULL, NULL);
++    BoundBox* bb = BKE_mesh_boundbox_get(o);
++    float x, y, z = 0;
++    
++    x = bb->vec[4][0] - bb->vec[0][0];
++    y = bb->vec[3][1] - bb->vec[0][1];
++    z = bb->vec[1][2] - bb->vec[0][2];
++    return x + y + z;
++    
++}
++
++//find out the base for the object
++static Base* findBase(Scene* scene, Object* o)
++{
++    static Base* b = NULL;
++    for (b = scene->base.first; b; b = b->next)
++    {
++        if (b->object == o)
++        {
++            return b;
++        }
++    }
++    return NULL;
++}
++
++static float rnd(void)
++{
++    //unsigned int t = (unsigned int)time(NULL);
++   // BLI_srandom(t);
++   // srand(t);
++    float r = ((float)(rand()) / (float)(INT32_MAX));
++   // printf("RAND %f \n", r);
++    return r;
++   // return BLI_frand();
++}
++
++static Base* create_cutter(DestructModifierData* dmd, Scene* scene, Object* orig) /*Materialname ?*/
++{
++    Object* ob = NULL;
++    Mesh* m = NULL;
++    BMesh* bm = NULL;
++    Base* bas = NULL;
++    float matrix[4][4], trans[4][4], rot[4][4];
++    float angle_x, angle_y, angle_z, size, x, y, z;
++    int crack_type = dmd->crack_type;
++    float roughness = dmd->roughness;
++    int seed = dmd->seed;
++    
++    //add a empty object to scene
++   // ob = findObject(scene, "MESH");
++   // if (!ob)
++        //ob = BKE_object_add(scene, OB_MESH);
++    ob = BKE_object_add_only_object(OB_MESH, "Cutter");
++    ob->data = BKE_object_obdata_add_from_type(OB_MESH);
++    bas = ED_object_scene_link(scene, ob);
++    m = (Mesh*)ob->data;
++    
++    //create new Bmesh
++    bm = BM_mesh_create(&bm_mesh_chunksize_default);
++    BMO_op_callf(bm, BMO_FLAG_DEFAULTS, "mesh_to_bmesh mesh=%p object=%p set_shapekey=%b", m, ob, FALSE);
++    
++    //unsigned int t = (unsigned int)time(NULL);
++    //BLI_srand(t);
++    //srand(seed);
++    
++    
++    BMVert* v;
++    BMIter iter;
++    Mesh* me = orig->data;
++    BMesh* temp = BM_mesh_create(&bm_mesh_chunksize_default);
++    float cent[3], cent_neg[3];
++    zero_v3(cent);
++    //recenter the mesh first to median
++    BMO_op_callf(temp, BMO_FLAG_DEFAULTS, "mesh_to_bmesh mesh=%p object=%p set_shapekey=%b", me, orig, FALSE);
++    const float total_div = 1.0f / (float)temp->totvert;
++    BM_ITER_MESH (v, &iter, temp , BM_VERTS_OF_MESH) {
++        madd_v3_v3fl(cent, v->co, total_div);
++    }
++    BM_mesh_free(temp);
++    
++//    BKE_mesh_center_median(me, cent);
++//    negate_v3_v3(cent_neg, cent);
++//    BKE_mesh_translate(me, cent_neg, 1);
++
++    
++    //prepare a manipulation matrix
++    size = maxDim(orig);// rnd() * maxDim(orig) + maxDim(orig); //avoid zero size
++    
++    unit_m4(matrix);
++    x = (rnd()-0.5f) * size * dmd->scale;
++    y = (rnd()-0.5f) * size * dmd->scale;
++    z = (rnd()-0.5f) * size * dmd->scale;
++   // printf("Trans: %f %f %f %f\n", x,  y, z, size);
++    translate_m4(matrix, cent[0] + x, cent[1] + y, cent[2]+ z);
++  //  copy_m4_m4(trans, matrix);
++    
++    //randomize (rotation of) matrix here directly,
++    angle_x = rnd() * 2 * M_PI;
++    angle_y = rnd() * 2 * M_PI;
++    angle_z = rnd() * 2 * M_PI;
++        
++    rotate_m4(matrix, 'X', angle_x);
++    rotate_m4(matrix, 'Y', angle_y);
++    rotate_m4(matrix, 'Z', angle_z);
++    
++  //  translate_m4(matrix, cent[0] + x, cent[1] + y, cent[2] + z);
++  //  scale_m4_fl(matrix, dmd->scale);
++    
++  //  copy_m4_m4(rot, matrix);
++    
++  //  mult_m4_m4m4(matrix, trans, rot);
++  //  translate_m4(matrix, -(cent[0] + x), -(cent[1]/* + y*/), -(cent[2]/*+z*/));
++                
++    if (crack_type == eBooleanCrackType_Flat || crack_type == eBooleanCrackType_FlatRough)
++    {
++        BMO_op_callf(bm, BMO_FLAG_DEFAULTS, "create_cube mat=%m4 size=%f", &matrix, size*dmd->scale);
++        
++        if (crack_type == eBooleanCrackType_FlatRough)
++        {
++            BM_mesh_elem_hflag_enable_all(bm, BM_VERT | BM_EDGE | BM_FACE, BM_ELEM_SELECT, TRUE);
++            BM_mesh_esubdivide(bm, BM_ELEM_SELECT, 0.0f, 0.0f, 0.0f, 10,
++                               SUBDIV_SELECT_ORIG, SUBD_STRAIGHT_CUT,
++                               FALSE, TRUE, 0);
++        }
++    }
++    
++    if (crack_type == eBooleanCrackType_Sphere || crack_type == eBooleanCrackType_SphereRough)
++    {
++        BMO_op_callf(bm, BMO_FLAG_DEFAULTS, "create_icosphere mat=%m4 diameter=%f subdivisions=%i", &matrix, size*dmd->scale/2.0f, 4);
++    }
++
++    if (crack_type == eBooleanCrackType_FlatRough || crack_type == eBooleanCrackType_SphereRough)
++    {
++        BMVert *v;
++        BMIter iter;
++        
++        BM_ITER_MESH (v, &iter, bm, BM_VERTS_OF_MESH) {
++            //jiggle the vertices around a bit
++            v->co[0] += roughness * size * 0.1f * (rnd() - 0.5f);
++            v->co[1] += roughness * size * 0.1f * (rnd() - 0.5f);
++            v->co[2] += roughness * size * 0.1f * (rnd() - 0.5f);
++            //BMO_elem_flag_disable(bm, v, CD_FLAG_NOFREE);
++        }
++    }
++    
++    //copy back bmesh to mesh
++    BMO_op_callf(bm, BMO_FLAG_DEFAULTS, "bmesh_to_mesh mesh=%p object=%p notessellation=%b", m, ob, FALSE);
++    
++    //reset matrix
++   // unit_m4(matrix);
++    //free unnecessary(?) bmesh object
++    BM_mesh_free(bm);
++    return bas;
++}
++
++#define SELECT 1
++#define VERT_MARK 2
++
++ //a simple double linked list
++typedef struct obListElem
++{
++    struct obListElem* prev;
++    struct obListElem* next;
++    struct Base* ob;
++} obListElem;
++
++typedef struct obList
++{
++    obListElem* first;
++    obListElem* last;
++    int count;
++} obList;
++
++
++static obList* init(Base* ob)
++{
++    obList *list = (obList*)malloc(sizeof(obList));
++    obListElem *elem = (obListElem*)malloc(sizeof(obListElem));
++    elem->ob = ob;
++    list->first = elem;
++    list->last = elem;
++    elem->next = NULL;
++    elem->prev = list->last;
++    
++    list->count = 1;
++    return list;
++}
++
++static void add(obList* list, Base* ob)
++{
++    obListElem* elem = (obListElem*)malloc(sizeof(obListElem));
++    elem->ob = ob;
++    elem->next = NULL;
++    elem->prev = list->last;
++    list->last->next = elem;
++    list->last = elem;
++    list->count += 1;
++}
++
++static void del(obList* list, Base* b)
++{
++    obListElem* el = NULL;
++    obListElem* e = NULL;
++    for (e = list->first; e ; e = e->next)
++    {
++        if (e->ob == b)
++        {
++            el = e;
++            break;
++        }
++    }
++    
++    //divert pointers
++    if ((el == list->first) && (el != list->last))
++        list->first = el->next;
++    if ((el == list->last) && (el != list->first))
++        list->last = el->prev;
++    
++    if (el->prev)
++        el->prev->next = e->next;
++    if (el->next)
++        el->next->prev = e->prev;
++    
++    list->count -= 1;
++    
++    if (list->count == 0)
++    {
++        list->first = NULL;
++        list->last = NULL;
++    }
++    
++    el->next = NULL;
++    el->ob = NULL;
++    el->prev = NULL;
++    //free(el);
++    el = NULL;
++}
++
++static Base* shuffle(obList* list)
++{
++    // try to select the biggest objects always to get more regular cuts
++    obListElem* ptr = NULL;
++//    Base* maxOb = list->first->ob;
++//    float maxd = 0.0f;
++//    for (ptr = list->first; ptr; ptr = ptr->next)
++//    {
++//        float dim = maxDim(ptr->ob->object);
++//        if (dim > maxd)
++//        {
++//            maxd = dim;
++//            maxOb = ptr->ob;
++//        }
++//    }
++    
++//    return maxOb;
++    int index = (int)(rnd() * (float)list->count);
++    int i = 0;
++    for (ptr = list->first; ptr; ptr = ptr->next)
++    {
++        if (i == index)
++        {
++            return ptr->ob;
++        }
++        i += 1;
++    }
++    
++    return NULL; //shouldnt happen...
++}
++
++static int inList(obList* list, Base* ob)
++{
++    obListElem* ptr = NULL;
++    for (ptr = list->first; ptr; ptr = ptr->next)
++    {
++        if (ptr->ob == ob)
++        {
++            return TRUE;
++        }
++    }
++    return FALSE;
++}
++
++static DerivedMesh* merge(DerivedMesh* target, DerivedMesh* source, Scene* scene, Main* bmain)
++{
++    BMesh* bm_source = DM_to_bmesh(source);
++    BMesh* bm_target = DM_to_bmesh(target);
++    DerivedMesh* result = NULL;
++    
++    //store temporary result
++    Object* ob_temp = BKE_object_add_only_object(OB_MESH, "Temp");
++    ob_temp->data = BKE_object_obdata_add_from_type(OB_MESH);
++    Base* bas_temp = ED_object_scene_link(scene, ob_temp);
++    
++    BMFace* f;
++    BMIter iter;
++    
++    BM_ITER_MESH (f, &iter, bm_source, BM_FACES_OF_MESH) {
++        //copy faces to bm_int
++        BMFace* cf = NULL;
++        cf = BM_face_copy(bm_target, f, TRUE, TRUE);
++        
++        BMIter iter2;
++        BMVert* v;
++        
++        BM_ITER_ELEM(v, &iter2, cf, BM_VERTS_OF_FACE) {
++            BMO_elem_flag_enable(bm_target, v, VERT_MARK);
++        }
++    }
++    
++    BMO_op_callf(bm_target, BMO_FLAG_DEFAULTS, "remove_doubles verts=%fv dist=%f", VERT_MARK, 0.00001f);
++    
++    
++    BM_ITER_MESH (f, &iter, bm_source, BM_FACES_OF_MESH) {
++        
++        BMIter iter2;
++        BMVert* v;
++        
++        BM_ITER_ELEM(v, &iter2, f, BM_VERTS_OF_FACE) {
++            BMO_elem_flag_disable(bm_source, v, VERT_MARK);
++        }
++    }
++    
++    
++    BMO_op_callf(bm_target, BMO_FLAG_DEFAULTS, "bmesh_to_mesh mesh=%p object=%p notessellation=%b", ob_temp->data, ob_temp, FALSE);
++    result = CDDM_from_mesh(ob_temp->data, ob_temp);
++    
++    //get rid of temporaries here
++    BKE_object_free(ob_temp);
++    ED_base_object_free_and_unlink(bmain, scene, bas_temp);
++  //  BMEdit_Free(bm_source);
++  //  MEM_freeN(bm_source);
++  //  BMEdit_Free(bm_target);
++  //  MEM_freeN(bm_target);
++    BM_mesh_free(bm_source);
++    BM_mesh_free(bm_target);
++    return result;
++}
++
++static void split_loose(Base* bas, obList* list, Main* bmain, Scene* scene)
++{
++    Mesh* m = bas->object->data;
++    Base* b = NULL;
++    BMesh* bm = BM_mesh_create(&bm_mesh_chunksize_default);
++    BMO_op_callf(bm, BMO_FLAG_DEFAULTS, "mesh_to_bmesh mesh=%p object=%p set_shapekey=%b", m, bas->object, FALSE);
++    
++ //   for (b = scene->base.first; b; b = b->next)
++ //   {
++        //if (b != scene->basact)
++ //       ED_base_object_select(b, BA_DESELECT);
++ //   }
++    
++    mesh_separate_loose(bmain, scene, bas, bm);
++    int added = FALSE;
++    char* start = strtok(bas->object->id.name, ".");
++    for (b = scene->base.first; b; b = b->next)
++    {
++      //  if (b->object->flag & BA_SELECT)
++        if (strstr(b->object->id.name, start) && !inList(list, b))
++        {
++            added = TRUE;
++            add(list, b);
++           // ED_base_object_select(b, BA_DESELECT);
++        }
++    }
++    
++    if (!added && (bm->totvert > 0))
++    {
++        //no splittable mesh but has verts, add the whole mesh's base instead
++        add(list, bas);
++        BMO_op_callf(bm, BMO_FLAG_DEFAULTS, "bmesh_to_mesh mesh=%p object=%p notessellation=%b", m, bas->object, FALSE);
++    }
++    else if (!added)
++    {   // delete empty useless objects here
++        BKE_object_free(bas->object);
++        ED_base_object_free_and_unlink(bmain, scene, bas);
++    }
++    else
++        BMO_op_callf(bm, BMO_FLAG_DEFAULTS, "bmesh_to_mesh mesh=%p object=%p notessellation=%b", m, bas->object, FALSE);
++    
++    BM_mesh_free(bm);
++}
++
++static void doBoolean(ModifierData* md, obList* list, DerivedMesh* derived, Object* ob, Main* bmain)
++{
++    
++    DestructModifierData *dmd = (DestructModifierData *)md;
++    Base* cutter = NULL;
++    DerivedMesh* int_result = NULL;
++    DerivedMesh* diff_result = NULL;
++    DerivedMesh* dm = NULL;
++    DerivedMesh* derivedData = NULL;
++    
++    //do the same in C as the fracture addon does in python, use boolean ops)
++    //create a cutter object/mesh (better object)
++        
++    //get boolean Modifier Data from somewhere, maybe add a mod to stack
++    //and apply it with cutter object as selected object
++    //do this several times on same object's derivedData ? possible ?
++    
++    //pick random
++    Base* bas = shuffle(list);
++    
++    cutter = create_cutter(dmd, md->scene, bas->object);
++    dm = CDDM_from_mesh(cutter->object->data, cutter->object);
++    if (!derived)
++    {
++        derivedData = CDDM_from_mesh(bas->object->data, bas->object);
++    }
++    else
++    {
++        derivedData = derived;
++    }
++    
++    DM_ensure_tessface(dm);
++    DM_ensure_tessface(derivedData);
++        
++    int_result = NewBooleanDerivedMesh(dm, cutter->object, derivedData, bas->object, 1+eBooleanModifierOp_Intersect);
++    diff_result = NewBooleanDerivedMesh(dm, cutter->object, derivedData, bas->object, 1+eBooleanModifierOp_Difference);
++    
++    if (int_result)
++    {
++        Object* ob_int = BKE_object_add_only_object(OB_MESH, "Intersect");
++        ob_int->data = BKE_object_obdata_add_from_type(OB_MESH);
++        DM_to_mesh(int_result, ob_int->data, ob_int);
++        Base* bas_int = ED_object_scene_link(md->scene, ob_int);
++        split_loose(bas_int, list, bmain, md->scene);
++    }
++    
++    if (diff_result)
++    {
++        Object* ob_diff = BKE_object_add_only_object(OB_MESH, "Difference");
++        ob_diff->data = BKE_object_obdata_add_from_type(OB_MESH);
++        DM_to_mesh(diff_result, ob_diff->data, ob_diff);
++        Base* bas_diff = ED_object_scene_link(md->scene, ob_diff);
++        split_loose(bas_diff, list, bmain, md->scene);
++    }
++    
++    //old object is split, so needs to be removed from temp list
++    if ((bas->object != ob) && (int_result || diff_result))
++    {
++        //remove temporaries here
++        del(list, bas);
++        BKE_object_free(bas->object);
++        ED_base_object_free_and_unlink(bmain, md->scene, bas);
++    }
++    else if ((int_result) || (diff_result))
++        del(list, bas);
++    
++    dm->release(dm);
++    if (int_result)
++        int_result->release(int_result);
++    if (diff_result)
++        diff_result->release(diff_result);
++        
++    BKE_object_free(cutter->object);
++    ED_base_object_free_and_unlink(bmain, md->scene, cutter);
++}
++
++
++static struct DerivedMesh *applyModifier(struct ModifierData *md, struct Object *ob,
++                                     struct DerivedMesh *derivedData,
++                                     ModifierApplyFlag flag)
++{
++    DestructModifierData* dmd = (DestructModifierData*) md;
++    DerivedMesh* result = NULL;
++    Main* bmain = G.main;
++    
++    if (dmd->mode == eDestructModifierMode_Boolean)
++    {
++        srand(dmd->seed);
++        Base* b = findBase(md->scene, ob);
++        obList* list = init(b);
++        //add(list, b);
++        
++        //first step -> use original derived mesh
++        int i = 0;
++        //doBoolean(md, list, NULL, ob,  bmain);
++        for ( i = 0; i < dmd->count-1; i++)
++        {
++            doBoolean(md, list, NULL, ob, bmain);
++        }
++        
++       // printf("LEN %d \n", list->count);
++
++        Base* bas = list->first->ob;
++        result = CDDM_from_mesh(bas->object->data, bas->object);
++        //result = merge(result, derivedData, md->scene, bmain);
++       // DM_to_mesh(result, ob->data, ob);
++        
++        
++        BKE_object_free(bas->object);
++        ED_base_object_free_and_unlink(bmain, md->scene, bas);
++        del(list, bas);
++        
++        obListElem* ptr = NULL;
++        if (list->count > 0)
++        {
++            for (ptr = list->first; ptr ; ptr = ptr->next)
++            {
++                bas = ptr->ob;
++                DerivedMesh* temp = CDDM_from_mesh(bas->object->data, bas->object);
++                result = merge(result, temp, md->scene, bmain);
++               // DM_to_mesh(result, ob->data, ob);
++            
++                temp->release(temp);
++                BKE_object_free(bas->object);
++                ED_base_object_free_and_unlink(bmain, md->scene, bas);
++               // del(list, bas);
++            }
++            
++        }
++        
++        ptr = list->first;
++        while (ptr)
++        {
++            del(list, list->first->ob);
++            ptr = ptr->next;
++        }
++        
++        if (list->count == 0)
++        {
++            //free(list);
++            list = NULL;
++        }
++                            
++        return result;
++        
++    }
++    else
++    {
++        return derivedData;
++    }
++}
++
++ModifierTypeInfo modifierType_Destruct = {
++	/* name */              "Destruct",
++	/* structName */        "DestructModifierData",
++	/* structSize */        sizeof(DestructModifierData),
++	/* type */              eModifierTypeType_Constructive,
++	/* flags */             eModifierTypeFlag_AcceptsMesh,
++
++	/* copyData */          copyData,
++	/* deformVerts */       NULL,
++	/* deformMatrices */    NULL,
++	/* deformVertsEM */     NULL,
++	/* deformMatricesEM */  NULL,
++	/* applyModifier */     applyModifier,
++	/* applyModifierEM */   NULL,
++	/* initData */          initData,
++	/* requiredDataMask */  NULL,
++	/* freeData */          NULL,
++	/* isDisabled */        NULL,
++	/* updateDepgraph */    NULL,
++	/* dependsOnTime */     NULL,
++	/* dependsOnNormals */	NULL,
++	/* foreachObjectLink */ NULL,
++	/* foreachIDLink */     NULL,
++	/* foreachTexLink */    NULL,
++};
+Index: blender/source/blender/modifiers/intern/MOD_util.c
+===================================================================
+--- blender/source/blender/modifiers/intern/MOD_util.c	(revision 51011)
++++ blender/source/blender/modifiers/intern/MOD_util.c	(working copy)
+@@ -277,5 +277,6 @@
+ 	INIT_TYPE(DynamicPaint);
+ 	INIT_TYPE(Remesh);
+ 	INIT_TYPE(Skin);
++    INIT_TYPE(Destruct);
+ #undef INIT_TYPE
+ }
+Index: blender/source/blender/modifiers/MOD_modifiertypes.h
+===================================================================
+--- blender/source/blender/modifiers/MOD_modifiertypes.h	(revision 51011)
++++ blender/source/blender/modifiers/MOD_modifiertypes.h	(working copy)
+@@ -75,6 +75,7 @@
+ extern ModifierTypeInfo modifierType_DynamicPaint;
+ extern ModifierTypeInfo modifierType_Remesh;
+ extern ModifierTypeInfo modifierType_Skin;
++extern ModifierTypeInfo modifierType_Destruct;
+ 
+ /* MOD_util.c */
+ void modifier_type_init(ModifierTypeInfo *types[]);
+Index: blender/source/blender/modifiers/CMakeLists.txt
+===================================================================
+--- blender/source/blender/modifiers/CMakeLists.txt	(revision 51011)
++++ blender/source/blender/modifiers/CMakeLists.txt	(working copy)
+@@ -38,6 +38,9 @@
+ 	../render/extern/include
+ 	../../../intern/elbeem/extern
+ 	../../../intern/guardedalloc
++    ../../editors/include
++    ../../editors/mesh
++    ../../windowmanager
+ )
+ 
+ set(INC_SYS
+@@ -56,6 +59,7 @@
+ 	intern/MOD_collision.c
+ 	intern/MOD_curve.c
+ 	intern/MOD_decimate.c
++    intern/MOD_destruct.c
+ 	intern/MOD_displace.c
+ 	intern/MOD_dynamicpaint.c
+ 	intern/MOD_edgesplit.c
+@@ -99,6 +103,8 @@
+ 	intern/MOD_util.h
+ 	intern/MOD_weightvg_util.h
+ )
++#target_link_libraries(bf_modifiers bf_editor_mesh)
++#setup_liblinks(bf_modifiers)
+ 
+ if(WITH_MOD_BOOLEAN)
+ 	add_definitions(-DWITH_MOD_BOOLEAN)
+Index: blender/source/blender/makesdna/DNA_modifier_types.h
+===================================================================
+--- blender/source/blender/makesdna/DNA_modifier_types.h	(revision 51011)
++++ blender/source/blender/makesdna/DNA_modifier_types.h	(working copy)
+@@ -78,6 +78,7 @@
+ 	eModifierType_DynamicPaint      = 40,
+ 	eModifierType_Remesh            = 41,
+ 	eModifierType_Skin              = 42,
++    eModifierType_Destruct          = 43,
+ 	NUM_MODIFIER_TYPES
+ } ModifierType;
+ 
+@@ -466,6 +467,7 @@
+ 	ModifierData modifier;
+ } SoftbodyModifierData;
+ 
++
+ typedef struct ClothModifierData {
+ 	ModifierData		modifier;
+ 
+@@ -520,6 +522,7 @@
+ 	int operation, pad;
+ } BooleanModifierData;
+ 
++
+ #define MOD_MDEF_INVERT_VGROUP	(1<<0)
+ #define MOD_MDEF_DYNAMIC_BIND	(1<<1)
+ 
+@@ -1095,4 +1098,25 @@
+ 	MOD_SKIN_SMOOTH_SHADING = 1
+ };
+ 
++typedef enum {
++    eDestructModifierMode_Boolean = 0,
++    eDestructModifierMode_Explo = 1,
++    eDestructModifierMode_Voronoi = 2,
++    eDestructModifierMode_Children = 3,
++} DestructModifierMode;
++
++typedef enum {
++    eBooleanCrackType_Flat = 0,
++    eBooleanCrackType_FlatRough = 1,
++    eBooleanCrackType_Sphere = 2,
++    eBooleanCrackType_SphereRough = 3,
++} BooleanCrackType;
++
++typedef struct DestructModifierData {
++    ModifierData modifier;
++    int count, mode, crack_type, seed;
++    float roughness, scale;
++    
++} DestructModifierData;
++
+ #endif
+Index: blender/source/blender/makesrna/intern/rna_modifier.c
+===================================================================
+--- blender/source/blender/makesrna/intern/rna_modifier.c	(revision 51011)
++++ blender/source/blender/makesrna/intern/rna_modifier.c	(working copy)
+@@ -78,6 +78,7 @@
+ 	{eModifierType_Skin, "SKIN", ICON_MOD_SKIN, "Skin", ""},
+ 	{eModifierType_Solidify, "SOLIDIFY", ICON_MOD_SOLIDIFY, "Solidify", ""},
+ 	{eModifierType_Subsurf, "SUBSURF", ICON_MOD_SUBSURF, "Subdivision Surface", ""},
++    {eModifierType_Destruct, "DESTRUCT", ICON_MOD_EXPLODE, "Destruct", ""}, 
+ 	{0, "", 0, N_("Deform"), ""},
+ 	{eModifierType_Armature, "ARMATURE", ICON_MOD_ARMATURE, "Armature", ""},
+ 	{eModifierType_Cast, "CAST", ICON_MOD_CAST, "Cast", ""},
+@@ -210,6 +211,8 @@
+ 			return &RNA_RemeshModifier;
+ 		case eModifierType_Skin:
+ 			return &RNA_SkinModifier;
++        case eModifierType_Destruct:
++            return &RNA_DestructModifier;
+ 		default:
+ 			return &RNA_Modifier;
+ 	}
+@@ -3250,6 +3253,71 @@
+ 	RNA_def_property_update(prop, 0, "rna_Modifier_update");
+ }
+ 
++static void rna_def_modifier_destruct(BlenderRNA *brna)
++{
++    
++    static EnumPropertyItem prop_mode_items[] = {
++		{eDestructModifierMode_Boolean, "BOOLEAN", 0, "Boolean Fracture", "Integrated version of former boolean fracture addon"},
++		{eDestructModifierMode_Explo, "EXPLO", 0, "Explosion Modifier", "Use results of an Explosion Modifier to generate objects"},
++		{eDestructModifierMode_Voronoi, "VORONOI", 0, "Voronoi Fracture", "Perform a voronoi decomposition of the object"},
++        {eDestructModifierMode_Children, "CHILDREN", 0, "Children", "Decompose object into its children" }, 
++		{0, NULL, 0, NULL, NULL}
++	};
++    
++    static EnumPropertyItem prop_crack_type_items[] = {
++		{eBooleanCrackType_Flat, "FLAT", 0, "Flat", "Creates linear cuts"},
++		{eBooleanCrackType_FlatRough, "FLAT_ROUGH", 0, "Flat Rough", "Creates linear, jagged cuts"},
++		{eBooleanCrackType_Sphere, "SPHERE", 0, "Sphere", "Creates round cuts"},
++        {eBooleanCrackType_SphereRough, "SPHERE_ROUGH", 0, "Sphere Rough", "Creates round, jagged cuts" },
++		{0, NULL, 0, NULL, NULL}
++	};
++
++
++    StructRNA *srna;
++    PropertyRNA *prop;
++    
++    srna= RNA_def_struct(brna, "DestructModifier", "Modifier");
++    RNA_def_struct_ui_text(srna, "Destruct Modifier", "Destroy an object");
++    RNA_def_struct_sdna(srna, "DestructModifierData");
++    RNA_def_struct_ui_icon(srna, ICON_MOD_EXPLODE);
++    
++	prop = RNA_def_property(srna, "count", PROP_INT, PROP_NONE);
++	RNA_def_property_ui_text(prop, "Shard count", "How many shards should be generated");
++	RNA_def_property_flag(prop, PROP_EDITABLE | PROP_ID_SELF_CHECK);
++	RNA_def_property_update(prop, 0, "rna_Modifier_dependency_update");
++    RNA_def_property_range(prop, 2, 1000);
++    //limit shard count !!!
++    
++	prop = RNA_def_property(srna, "mode", PROP_ENUM, PROP_NONE);
++	RNA_def_property_enum_items(prop, prop_mode_items);
++	RNA_def_property_ui_text(prop, "Mode", "Mode of destruction");
++	RNA_def_property_update(prop, 0, "rna_Modifier_update");
++    
++    prop = RNA_def_property(srna, "crack_type", PROP_ENUM, PROP_NONE);
++	RNA_def_property_enum_items(prop, prop_crack_type_items);
++	RNA_def_property_ui_text(prop, "Crack Type", "Type of cracks");
++	RNA_def_property_update(prop, 0, "rna_Modifier_update");
++    
++    prop = RNA_def_property(srna, "roughness", PROP_FLOAT, PROP_NONE);
++	RNA_def_property_ui_text(prop, "Roughness", "How jaggy the cuts should become");
++	RNA_def_property_flag(prop, PROP_EDITABLE | PROP_ID_SELF_CHECK);
++	RNA_def_property_update(prop, 0, "rna_Modifier_dependency_update");
++    RNA_def_property_range(prop, 0.0, 1.0);
++    
++	prop = RNA_def_property(srna, "seed", PROP_INT, PROP_NONE);
++	RNA_def_property_ui_text(prop, "Seed", "Seed for randomizing the cracks");
++	RNA_def_property_flag(prop, PROP_EDITABLE | PROP_ID_SELF_CHECK);
++	RNA_def_property_update(prop, 0, "rna_Modifier_dependency_update");
++    
++    
++    prop = RNA_def_property(srna, "scale", PROP_FLOAT, PROP_NONE);
++	RNA_def_property_ui_text(prop, "Scale", "Cutter object scale factor");
++	RNA_def_property_flag(prop, PROP_EDITABLE | PROP_ID_SELF_CHECK);
++	RNA_def_property_update(prop, 0, "rna_Modifier_dependency_update");
++    RNA_def_property_range(prop, 0.0, 2.0);
++
++}
++
+ void RNA_def_modifier(BlenderRNA *brna)
+ {
+ 	StructRNA *srna;
+@@ -3356,6 +3424,7 @@
+ 	rna_def_modifier_ocean(brna);
+ 	rna_def_modifier_remesh(brna);
+ 	rna_def_modifier_skin(brna);
++    rna_def_modifier_destruct(brna);
+ }
+ 
+ #endif
+Index: blender/source/blender/makesrna/RNA_access.h
+===================================================================
+--- blender/source/blender/makesrna/RNA_access.h	(revision 51011)
++++ blender/source/blender/makesrna/RNA_access.h	(working copy)
+@@ -195,6 +195,7 @@
+ extern StructRNA RNA_DampedTrackConstraint;
+ extern StructRNA RNA_DecimateModifier;
+ extern StructRNA RNA_DelaySensor;
++extern StructRNA RNA_DestructModifier;
+ extern StructRNA RNA_DisplaceModifier;
+ extern StructRNA RNA_DistortedNoiseTexture;
+ extern StructRNA RNA_DomainFluidSettings;
+Index: blender/source/blender/editors/mesh/mesh_intern.h
+===================================================================
+--- blender/source/blender/editors/mesh/mesh_intern.h	(revision 51011)
++++ blender/source/blender/editors/mesh/mesh_intern.h	(working copy)
+@@ -221,5 +221,8 @@
+ void MESH_OT_navmesh_reset(struct wmOperatorType *ot);
+ void MESH_OT_navmesh_clear(struct wmOperatorType *ot);
+ 
++/* ******************* editmesh_tools.c*/
++int mesh_separate_loose(struct Main *bmain, struct Scene *scene, struct Base *base_old, struct BMesh *bm_old);
++
+ #endif // __MESH_INTERN_H__
+ 
+Index: blender/source/blender/editors/mesh/editmesh_tools.c
+===================================================================
+--- blender/source/blender/editors/mesh/editmesh_tools.c	(revision 51011)
++++ blender/source/blender/editors/mesh/editmesh_tools.c	(working copy)
+@@ -72,6 +72,9 @@
+ 
+ #include "mesh_intern.h"
+ 
++//access to some tool functions
++//#include "editmesh_tools.h"
++
+ /* allow accumulated normals to form a new direction but don't
+  * accept direct opposite directions else they will cancel each other out */
+ static void add_normal_aligned(float nor[3], const float add[3])
+@@ -2980,7 +2983,7 @@
+ 	return result;
+ }
+ 
+-static int mesh_separate_loose(Main *bmain, Scene *scene, Base *base_old, BMesh *bm_old)
++int mesh_separate_loose(Main *bmain, Scene *scene, Base *base_old, BMesh *bm_old)
+ {
+ 	int i;
+ 	BMEdge *e;

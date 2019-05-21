@@ -1,0 +1,8 @@
+start: A;
+rules:
+A: M push B pop A;
+B: r({-135, -45}) M A;
+B: r({45, 135}) M A;
+M: d1 M;
+final:
+M: d0.05;

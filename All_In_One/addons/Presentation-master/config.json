@@ -1,0 +1,6 @@
+{
+    "composite": "composite.json",
+    "environment": "environment.json",
+    "scene": "scene.json",
+    "billboardComposite": "billboardComposite.json"
+}

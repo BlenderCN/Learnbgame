@@ -1,0 +1,198 @@
+{
+    "settings": {
+        "RenderEngine": "CYCLES",
+        "Device": "GPU",
+        "use_animated_seed": true,
+        "sample_clamp_direct": 0,
+        "sample_clamp_indirect": 0,
+        "aa_samples": 100,
+        "progressive": "BRANCHED_PATH",
+        "diffuse_samples": 14,
+        "glossy_samples": 2,
+        "transmission_samples": 2,
+        "ao_samples": 1,
+        "mesh_light_samples": 1,
+        "subsurface_samples": 1,
+        "volume_samples": 1,
+        "sampling_pattern": "SOBOL",
+        "transparent_max_bounces": 8,
+        "transparent_min_bounces": 8,
+        "use_transparent_shadows": true,
+        "caustics_reflective": false,
+        "caustics_refractive": false,
+        "blur_glossy": 0,
+        "max_bounces": 10,
+        "min_bounces": 3,
+        "diffuse_bounces": 3,
+        "glossy_bounces": 7,
+        "transmission_bounces": 9,
+        "volume_bounces": 4,
+        "use_compositing": true,
+        "use_sequencer": true,
+        "FrameEnd": 100,
+        "file_format": "OPEN_EXR_MULTILAYER",
+        "color_mode": "RGBA",
+        "color_depth": "32",
+        "exr_codec": "NONE",
+        "Objects": {},
+        "Materials": {
+            "Materials": [
+                {
+                    "file": "D:\\dev\\Python\\Blender\\Presentation\\test_configs\\mat_comp_4.json"
+                }
+            ]
+        }
+    },
+    "scenes": [
+        {
+            "name": "Scene",
+            "world": "World",
+            "stage": {
+                "File": "D:\\Render\\Presenatation\\Test\\3\\untitled1.blend",
+                "Group": "Stage"
+            },
+            "composite": {
+                "file": "D:\\dev\\Python\\Blender\\Presentation\\test_configs\\mat_comp_4.json"
+            },
+            "objects": [
+                {
+                    "name": "default_camera",
+                    "type": "camera"
+                },
+                {
+                    "name": "lamp",
+                    "strength": 51,
+                    "type": "lamp",
+                    "light": "POINT"
+                },
+                {
+                    "name": "default_empty",
+                    "type": "empty"
+                },
+                {
+                    "name": "text",
+                    "type": "text",
+                    "value": "test \n 1",
+                    "font": "mriamc",
+                    "align": "CENTER",
+                    "extrude": 0.1,
+                    "material": "LowLightRed"
+                },
+                {
+                    "name": "text2",
+                    "type": "text",
+                    "value": "test 2",
+                    "font": "mriamc",
+                    "align": "CENTER",
+                    "extrude": 0.1,
+                    "material": "LowLightRed"
+                },
+                {
+                    "name": "text3",
+                    "type": "text",
+                    "align": "CENTER",
+                    "value": "test 3",
+                    "font": "mriamc",
+                    "extrude": 0.1,
+                    "material": "LowLightRed"
+                },
+                {
+                    "name": "text4",
+                    "type": "text",
+                    "value": "test 4",
+                    "font": "mriamc",
+                    "align": "CENTER",
+                    "extrude": 0.1,
+                    "material": "MedLightBlue"
+                },
+                {
+                    "name": "text5",
+                    "type": "text",
+                    "align": "RIGHT",
+                    "value": "test 5",
+                    "font": "mriamc",
+                    "extrude": 0.1,
+                    "material": "MedLightBlue"
+                },
+                {
+                    "name": "image_2",
+                    "fileName": "PT_hero_42_153645159.jpg",
+                    "type": "image",
+                    "directory": "D:\\dev\\Python\\Blender\\Presentation\\test_configs"
+                }
+            ],
+            "keyframes": [
+                {
+                    "frame": 1,
+                    "objects": [
+                        {
+                            "name": "default_camera",
+                            "position": {
+                                "x": 0,
+                                "y": 2,
+                                "z": 0
+                            },
+                            "target": "default_empty"
+                        },
+                        {
+                            "name": "lamp",
+                            "position": {
+                                "x": 0,
+                                "y": 2,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "default_empty",
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "text",
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "text2",
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "text3",
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "text4",
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "text5",
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

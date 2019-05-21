@@ -1,0 +1,6 @@
+[submodule "blend2bam/blend2gltf/blendergltf"]
+	path = blend2bam/blend2gltf/blendergltf
+	url = https://github.com/Kupoman/blendergltf.git
+[submodule "blend2bam/gltf2bam/panda3d-gltf"]
+	path = blend2bam/gltf2bam/panda3d-gltf
+	url = https://github.com/Moguri/panda3d-gltf.git

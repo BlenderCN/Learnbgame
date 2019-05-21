@@ -1,0 +1,10 @@
+UVs
+UVs are the XYZ equivalents in a 2D plane. It's the internal distribution of faces in two dimensions, which allows you to define how a texture will be projected onto the 3D Surface.
+
+This process is referred to as "unwrapping", because it usually requires to mark "seams", and then unfold (unwrap) the mesh to achieve a flat version of the model. This doesn't affect the 3D shape, it happens in a paralell 2D view.
+
+One of the keys of UVs when working for games is that edges marked as sharp also have to be seams, so this addon offers you an option to quickly convert all sharp edges into seams automatically.
+
+After that, you have to refine and add seams wherever needed (typically in hidden areas and corners, to avoid having "cuts" in the texture when it's projected on the model), and continue with the unwrapping process.
+
+The last part of making good UVs is the "packing": taking all of the UVs and placing them in the UV Editor making the best use of the space available.

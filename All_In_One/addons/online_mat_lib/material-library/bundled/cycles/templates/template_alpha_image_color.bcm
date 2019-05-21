@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<material name="template_alpha_image_color" view_color="rgb(0.80000, 0.05392, 0.0)" sample_lamp="True">
+	<nodes>
+		<node type="OUTPUT_MATERIAL" node_height="100" node_width="120" width_hidden="42" loc="546, 1" />
+		<node type="MIX_SHADER" fac="0.5" node_height="100" node_width="150" width_hidden="42" loc="357, -1" />
+		<node type="BSDF_DIFFUSE" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" roughness="0.0" node_height="100" node_width="150" width_hidden="42" loc="129, -66" />
+		<node type="BSDF_TRANSPARENT" color="rgba(1.0, 1.0, 1.0, 0.0)" node_height="100" node_width="150" width_hidden="42" loc="127, -194" />
+		<node type="TEX_COORD" dupli="False" node_height="100" node_width="150" width_hidden="42" loc="-661, 124" />
+		<node type="RGB" color="rgba(1.0, 0.0, 0.06486, 1.0)" node_height="100" node_width="140" width_hidden="42" loc="-441, 337" />
+		<node type="GROUP" node_tree="TintingNode" group="0" node_height="100" node_width="200" width_hidden="42" loc="-204, 249" />
+		<node type="TEX_IMAGE" image="" color_space="COLOR" projection="FLAT" node_height="100" node_width="150" width_hidden="42" loc="-458, 126" />
+	</nodes>
+	<links>
+		<link to="1" input="2" from="2" output="0" />
+		<link to="7" input="0" from="4" output="0" />
+		<link to="0" input="0" from="1" output="0" />
+		<link to="1" input="0" from="7" output="1" />
+		<link to="1" input="1" from="3" output="0" />
+		<link to="6" input="0" from="5" output="0" />
+		<link to="6" input="1" from="7" output="0" />
+		<link to="2" input="0" from="6" output="0" />
+	</links>
+	<groups>
+		<group name="TintingNode" id="0">
+			<groupnodes>
+				<groupnode type="SEPRGB" image="rgba(0.80000, 0.80000, 0.80000, 1.0)" node_height="100" node_width="80" width_hidden="42" loc="-208, 71" />
+				<groupnode type="MATH" operation="MULTIPLY" use_clamp="True" value1="0.5" value2="0.5" node_height="100" node_width="120" width_hidden="42" loc="68, 178" />
+				<groupnode type="MATH" operation="MULTIPLY" use_clamp="True" value1="0.5" value2="0.5" node_height="100" node_width="120" width_hidden="42" loc="72, 18" />
+				<groupnode type="MATH" operation="MULTIPLY" use_clamp="True" value1="0.5" value2="0.5" node_height="100" node_width="120" width_hidden="42" loc="70, -139" />
+				<groupnode type="RGBTOBW" color="rgba(0.21586, 0.21586, 0.21586, 1.0)" node_height="100" node_width="80" width_hidden="42" loc="-291, -178" />
+				<groupnode type="MATH" operation="MULTIPLY" use_clamp="False" value1="0.5" value2="1.0" node_height="100" node_width="120" width_hidden="42" loc="-175, -141" />
+				<groupnode type="COMBRGB" red="0.0" green="0.0" blue="0.0" node_height="100" node_width="80" width_hidden="42" loc="291, 21" />
+				<groupnode type="GROUP_INPUT" node_height="100" node_width="140" width_hidden="42" loc="-413, -82" />
+				<groupnode type="GROUP_OUTPUT" node_height="100" node_width="140" width_hidden="42" loc="413, 21" />
+			</groupnodes>
+			<groupinputs>
+				<groupinput name="Tint" type="RGBA" value="rgba(0.80000, 0.80000, 0.80000, 1.0)" />
+				<groupinput name="Texture" type="RGBA" value="rgba(0.21586, 0.21586, 0.21586, 1.0)" />
+				<groupinput name="Power" type="VALUE" value="1.0" />
+			</groupinputs>
+			<groupoutputs>
+				<groupoutput name="Color" type="RGBA" value="rgba(0.0, 0.0, 0.0, 1.0)" />
+			</groupoutputs>
+			<grouplinks>
+				<grouplink to="1" input="0" from="0" output="0" />
+				<grouplink to="6" input="0" from="1" output="0" />
+				<grouplink to="6" input="1" from="2" output="0" />
+				<grouplink to="2" input="0" from="0" output="1" />
+				<grouplink to="3" input="0" from="0" output="2" />
+				<grouplink to="6" input="2" from="3" output="0" />
+				<grouplink to="5" input="0" from="4" output="0" />
+				<grouplink to="1" input="1" from="5" output="0" />
+				<grouplink to="2" input="1" from="5" output="0" />
+				<grouplink to="3" input="1" from="5" output="0" />
+				<grouplink to="4" input="0" from="7" output="1" />
+				<grouplink to="5" input="1" from="7" output="2" />
+				<grouplink to="0" input="0" from="7" output="0" />
+				<grouplink to="8" input="0" from="6" output="0" />
+			</grouplinks>
+		</group>
+	</groups>
+</material>

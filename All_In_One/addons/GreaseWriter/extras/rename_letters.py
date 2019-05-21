@@ -1,0 +1,127 @@
+import bpy
+
+def get_char_name(char):
+    character_dict = {
+        "!": "exclamation",
+        "#": "pound",
+        "$": "dollar",
+        "%": "percentage",
+        "&": "ampersand",
+        "'": "quotesingle",
+        "(": "parenthesisleft",
+        ")": "parenthesisright",
+        "*": "asterisk",
+        "+": "plus",
+        ",": "comma",
+        "-": "minus",
+        ".": "period",
+        "/": "slash",
+        "0": "0",
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        ":": "colon",
+        ";": "semicolon",
+        "<": "lessthan",
+        "=": "equal",
+        ">": "greaterthan",
+        "?": "question",
+        "@": "at",
+        "A": "a-uppercase",
+        "B": "b-uppercase",
+        "C": "c-uppercase",
+        "D": "d-uppercase",
+        "E": "e-uppercase",
+        "F": "f-uppercase",
+        "G": "g-uppercase",
+        "H": "h-uppercase",
+        "I": "i-uppercase",
+        "J": "j-uppercase",
+        "K": "k-uppercase",
+        "L": "l-uppercase",
+        "M": "m-uppercase",
+        "N": "n-uppercase",
+        "O": "o-uppercase",
+        "P": "p-uppercase",
+        "Q": "q-uppercase",
+        "R": "r-uppercase",
+        "S": "s-uppercase",
+        "T": "t-uppercase",
+        "U": "u-uppercase",
+        "V": "v-uppercase",
+        "W": "w-uppercase",
+        "X": "x-uppercase",
+        "Y": "y-uppercase",
+        "Z": "z-uppercase",
+        "[": "bracketleft",
+        "\\": "backslash",
+        "]": "bracketright",
+        "^": "caret",
+        "_": "underscore",
+        "`": "grave",
+        "a": "a-lowercase",
+        "b": "b-lowercase",
+        "c": "c-lowercase",
+        "d": "d-lowercase",
+        "e": "e-lowercase",
+        "f": "f-lowercase",
+        "g": "g-lowercase",
+        "h": "h-lowercase",
+        "i": "i-lowercase",
+        "j": "j-lowercase",
+        "k": "k-lowercase",
+        "l": "l-lowercase",
+        "m": "m-lowercase",
+        "n": "n-lowercase",
+        "o": "o-lowercase",
+        "p": "p-lowercase",
+        "q": "q-lowercase",
+        "r": "r-lowercase",
+        "s": "s-lowercase",
+        "t": "t-lowercase",
+        "u": "u-lowercase",
+        "v": "v-lowercase",
+        "w": "w-lowercase",
+        "x": "x-lowercase",
+        "y": "y-lowercase",
+        "z": "z-lowercase",
+        "{": "curlyleft",
+        "|": "verticalbar",
+        "}": "curlyright",
+        "~": "tilde",
+        "Δ": "delta",
+        "←": "arrowleft",
+        "↑": "arrowup",
+        "→": "arrowright",
+        "↓": "arrowdown",
+        "☐": "box",
+        "♀": "female",
+        "♂": "male",
+        '"': "quotedouble",
+        "°": "degree",
+    }
+    try:
+        return character_dict[char]
+    except KeyError:
+        return character_dict['☐']
+
+def rename_letters():
+    chars = """0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!$&()+-?:",./;'"""
+    objs = list(bpy.data.objects)
+    for obj in objs:
+        bpy.ops.object.select_all(action='DESELECT')
+        bpy.context.view_layer.objects.active = obj
+        obj.select_set(True)
+        bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY')
+        
+    objs.sort(key=lambda o: o.location[0])
+    for i in range(len(objs)):
+        objs[i].name = get_char_name(chars[i])
+
+rename_letters()

@@ -1,0 +1,1041 @@
+{
+	"Brush Particles": {
+		"b_painter_stencil_texture": "None",
+		"use_pressure_strength": true,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.5,
+		"b_painter_hardness": 0.800000011920929,
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_particle.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"spacing": 50,
+		"jitter": 1.0,
+		"blend": "MIX",
+		"use_pressure_jitter": false,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 0.7853981852531433,
+			"angle": 0.0,
+			"use_rake": true,
+			"use_random": true
+		},
+		"b_painter_invert_stencil_mask": true,
+		"use_primary_overlay": false,
+		"use_smooth_stroke": false,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"stroke_method": "SPACE",
+		"b_painter_use_mask": true,
+		"texture_overlay_alpha": 30,
+		"b_painter_multi_layer_brush": false,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"b_painter_brush_order": 4,
+		"use_pressure_spacing": false,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.8700000047683716,
+				0.6700000166893005
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"use_custom_icon": true,
+		"b_painter_brush_texture": "star.png",
+		"b_painter_ramp_tonemap_r": 0.32568806409835815,
+		"image_tool": "DRAW",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_cursor_overlay": false,
+		"b_painter_ramp_tonemap_l": 0.0,
+		"smooth_stroke_radius": 10
+	},
+	"Brush Smudge": {
+		"b_painter_stencil_texture": "None",
+		"b_painter_multi_layer_brush": false,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.800000011920929,
+		"use_cursor_overlay": false,
+		"b_painter_hardness": 0.5,
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_smudge.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"spacing": 20,
+		"jitter": 0.0,
+		"b_painter_ramp_tonemap_l": 0.0,
+		"b_painter_brush_order": 10,
+		"b_painter_brush_texture": "None",
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 6.2831854820251465,
+			"angle": 1.5707963705062866,
+			"use_rake": false,
+			"use_random": true
+		},
+		"use_gradient": false,
+		"gradient": null,
+		"b_painter_invert_stencil_mask": true,
+		"use_smooth_stroke": false,
+		"image_tool": "SMEAR",
+		"stroke_method": "SPACE",
+		"b_painter_use_mask": true,
+		"texture_overlay_alpha": 30,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"gradient_fill_mode": "LINEAR",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_pressure_strength": true,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"use_pressure_spacing": true,
+		"use_primary_overlay": false,
+		"use_custom_icon": true,
+		"blend": "MIX",
+		"b_painter_ramp_tonemap_r": 1.0,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"use_pressure_jitter": false,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.675000011920929,
+				0.550000011920929
+			],
+			[
+				1.0,
+				0.0
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"smooth_stroke_radius": 10
+	},
+	"Brush Clone": {
+		"b_painter_hardness": 0.800000011920929,
+		"b_painter_multi_layer_brush": false,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.800000011920929,
+		"use_cursor_overlay": false,
+		"b_painter_stencil_texture": "None",
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_clone.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"use_smooth_stroke": false,
+		"jitter": 0.0,
+		"b_painter_ramp_tonemap_l": 0.0,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"b_painter_brush_order": 11,
+		"b_painter_brush_texture": "None",
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 6.2831854820251465,
+			"angle": 1.5707963705062866,
+			"use_rake": false,
+			"use_random": true
+		},
+		"use_gradient": false,
+		"gradient": null,
+		"b_painter_invert_stencil_mask": true,
+		"smooth_stroke_radius": 10,
+		"stroke_method": "SPACE",
+		"texture_overlay_alpha": 30,
+		"b_painter_use_mask": true,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"gradient_fill_mode": "LINEAR",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_pressure_strength": true,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"use_custom_icon": true,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"use_pressure_spacing": false,
+		"use_primary_overlay": false,
+		"spacing": 20,
+		"blend": "MIX",
+		"b_painter_ramp_tonemap_r": 1.0,
+		"image_tool": "CLONE",
+		"use_pressure_jitter": false,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.8700000047683716,
+				0.6700000166893005
+			],
+			[
+				1.0,
+				0.0
+			]
+		]
+	},
+	"Eraser": {
+		"b_painter_stencil_texture": "None",
+		"b_painter_multi_layer_brush": false,
+		"b_painter_invert_mask": false,
+		"b_painter_invert_stencil_mask": true,
+		"use_cursor_overlay": false,
+		"b_painter_hardness": 0.4000000059604645,
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "eraser_icon_default.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"spacing": 15,
+		"blend": "ERASE_ALPHA",
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"b_painter_brush_order": 12,
+		"b_painter_brush_texture": "None",
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 6.2831854820251465,
+			"angle": 1.5707963705062866,
+			"use_rake": false,
+			"use_random": true
+		},
+		"use_gradient": false,
+		"gradient": null,
+		"smooth_stroke_factor": 0.800000011920929,
+		"smooth_stroke_radius": 10,
+		"use_smooth_stroke": false,
+		"stroke_method": "SPACE",
+		"b_painter_use_mask": true,
+		"texture_overlay_alpha": 30,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"gradient_fill_mode": "LINEAR",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_pressure_strength": true,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"use_pressure_spacing": false,
+		"use_primary_overlay": false,
+		"use_custom_icon": true,
+		"jitter": 0.0,
+		"b_painter_ramp_tonemap_r": 1.0,
+		"image_tool": "DRAW",
+		"use_pressure_jitter": false,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.6100000143051147,
+				0.5099999904632568
+			],
+			[
+				1.0,
+				0.0
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"b_painter_ramp_tonemap_l": 0.0
+	},
+	"Brush Hair": {
+		"b_painter_stencil_texture": "None",
+		"use_pressure_strength": true,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.8999999761581421,
+		"b_painter_hardness": 0.699999988079071,
+		"cursor_overlay_alpha": 33,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_hair.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"spacing": 20,
+		"jitter": 0.0,
+		"blend": "MIX",
+		"use_pressure_jitter": false,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 0.0,
+			"angle": 0.0,
+			"use_rake": true,
+			"use_random": false
+		},
+		"b_painter_invert_stencil_mask": true,
+		"use_primary_overlay": false,
+		"use_smooth_stroke": false,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"stroke_method": "SPACE",
+		"b_painter_use_mask": true,
+		"texture_overlay_alpha": 10,
+		"b_painter_multi_layer_brush": false,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"b_painter_brush_order": 2,
+		"use_pressure_spacing": false,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.8050000071525574,
+				0.6299999952316284
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"use_custom_icon": true,
+		"b_painter_brush_texture": "brush_shape_01.png",
+		"b_painter_ramp_tonemap_r": 1.0,
+		"image_tool": "DRAW",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_cursor_overlay": false,
+		"b_painter_ramp_tonemap_l": 0.0,
+		"smooth_stroke_radius": 75
+	},
+	"Brush Tiled": {
+		"b_painter_stencil_texture": "None",
+		"use_pressure_strength": true,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.8999999761581421,
+		"b_painter_hardness": 0.800000011920929,
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_tiled.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"spacing": 30,
+		"jitter": 0.20000000298023224,
+		"blend": "MIX",
+		"use_pressure_jitter": false,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"texture_slot": {
+			"tex_paint_map_mode": "TILED",
+			"random_angle": 6.2831854820251465,
+			"angle": 0.0,
+			"use_rake": false,
+			"use_random": true
+		},
+		"b_painter_invert_stencil_mask": true,
+		"use_primary_overlay": false,
+		"use_smooth_stroke": false,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"stroke_method": "SPACE",
+		"b_painter_use_mask": true,
+		"texture_overlay_alpha": 5,
+		"b_painter_multi_layer_brush": false,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"b_painter_brush_order": 6,
+		"use_pressure_spacing": false,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.8700000047683716,
+				0.6700000166893005
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"use_custom_icon": true,
+		"b_painter_brush_texture": "brush_shape_02.png",
+		"b_painter_ramp_tonemap_r": 1.0,
+		"image_tool": "DRAW",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_cursor_overlay": false,
+		"b_painter_ramp_tonemap_l": 0.15737704932689667,
+		"smooth_stroke_radius": 75
+	},
+	"Brush Default": {
+		"b_painter_stencil_texture": "None",
+		"use_pressure_strength": true,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.800000011920929,
+		"b_painter_hardness": 0.800000011920929,
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_default.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"spacing": 20,
+		"jitter": 0.0,
+		"blend": "MIX",
+		"use_pressure_jitter": false,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 6.2831854820251465,
+			"angle": 1.5707963705062866,
+			"use_rake": false,
+			"use_random": true
+		},
+		"b_painter_invert_stencil_mask": true,
+		"use_primary_overlay": false,
+		"use_smooth_stroke": false,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"stroke_method": "SPACE",
+		"b_painter_use_mask": true,
+		"texture_overlay_alpha": 30,
+		"b_painter_multi_layer_brush": false,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"b_painter_brush_order": 0,
+		"use_pressure_spacing": true,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.8700000047683716,
+				0.6700000166893005
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"use_custom_icon": true,
+		"b_painter_brush_texture": "None",
+		"b_painter_ramp_tonemap_r": 1.0,
+		"image_tool": "DRAW",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_cursor_overlay": false,
+		"b_painter_ramp_tonemap_l": 0.0,
+		"smooth_stroke_radius": 10
+	},
+	"Brush Default Soft": {
+		"b_painter_stencil_texture": "None",
+		"use_pressure_strength": true,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.800000011920929,
+		"b_painter_hardness": 0.0,
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_default_soft.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"spacing": 15,
+		"jitter": 0.0,
+		"blend": "MIX",
+		"use_pressure_jitter": false,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 6.2831854820251465,
+			"angle": 1.5707963705062866,
+			"use_rake": false,
+			"use_random": true
+		},
+		"b_painter_invert_stencil_mask": true,
+		"use_primary_overlay": false,
+		"use_smooth_stroke": false,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"stroke_method": "SPACE",
+		"b_painter_use_mask": true,
+		"texture_overlay_alpha": 30,
+		"b_painter_multi_layer_brush": false,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"b_painter_brush_order": 1,
+		"use_pressure_spacing": true,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.3499999940395355,
+				0.3499999940395355
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"use_custom_icon": true,
+		"b_painter_brush_texture": "None",
+		"b_painter_ramp_tonemap_r": 1.0,
+		"image_tool": "DRAW",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_cursor_overlay": false,
+		"b_painter_ramp_tonemap_l": 0.0,
+		"smooth_stroke_radius": 10
+	},
+	"Brush Mask": {
+		"b_painter_stencil_texture": "None",
+		"use_pressure_strength": true,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.800000011920929,
+		"b_painter_hardness": 0.800000011920929,
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_mask.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"spacing": 30,
+		"jitter": 0.0,
+		"blend": "MIX",
+		"use_pressure_jitter": false,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 6.2831854820251465,
+			"angle": 1.5707963705062866,
+			"use_rake": false,
+			"use_random": true
+		},
+		"b_painter_invert_stencil_mask": true,
+		"use_primary_overlay": false,
+		"use_smooth_stroke": false,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"stroke_method": "SPACE",
+		"b_painter_use_mask": true,
+		"texture_overlay_alpha": 30,
+		"b_painter_multi_layer_brush": false,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"b_painter_brush_order": 8,
+		"use_pressure_spacing": false,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.8700000047683716,
+				0.6700000166893005
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"use_custom_icon": true,
+		"b_painter_brush_texture": "None",
+		"b_painter_ramp_tonemap_r": 1.0,
+		"image_tool": "MASK",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_cursor_overlay": false,
+		"b_painter_ramp_tonemap_l": 0.0,
+		"smooth_stroke_radius": 10
+	},
+	"Brush Structure": {
+		"b_painter_stencil_texture": "None",
+		"use_pressure_strength": true,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.5,
+		"b_painter_hardness": 0.30000001192092896,
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_scatter.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"spacing": 30,
+		"jitter": 0.0,
+		"blend": "MIX",
+		"use_pressure_jitter": false,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 6.2831854820251465,
+			"angle": 1.5707963705062866,
+			"use_rake": false,
+			"use_random": true
+		},
+		"b_painter_invert_stencil_mask": true,
+		"use_primary_overlay": false,
+		"use_smooth_stroke": false,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"stroke_method": "SPACE",
+		"b_painter_use_mask": true,
+		"texture_overlay_alpha": 30,
+		"b_painter_multi_layer_brush": false,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"b_painter_brush_order": 3,
+		"use_pressure_spacing": false,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.5450000166893005,
+				0.4699999988079071
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"use_custom_icon": true,
+		"b_painter_brush_texture": "grunge_02.png",
+		"b_painter_ramp_tonemap_r": 0.6650943756103516,
+		"image_tool": "DRAW",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_cursor_overlay": false,
+		"b_painter_ramp_tonemap_l": 0.18867924809455872,
+		"smooth_stroke_radius": 10
+	},
+	"Brush Line": {
+		"b_painter_stencil_texture": "None",
+		"use_pressure_strength": true,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.800000011920929,
+		"b_painter_hardness": 0.800000011920929,
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_straight_line.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"spacing": 20,
+		"jitter": 0.0,
+		"blend": "MIX",
+		"use_pressure_jitter": false,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 6.2831854820251465,
+			"angle": 0.0,
+			"use_rake": true,
+			"use_random": false
+		},
+		"b_painter_invert_stencil_mask": true,
+		"use_primary_overlay": false,
+		"use_smooth_stroke": false,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"stroke_method": "LINE",
+		"b_painter_use_mask": true,
+		"texture_overlay_alpha": 30,
+		"b_painter_multi_layer_brush": false,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"b_painter_brush_order": 5,
+		"use_pressure_spacing": false,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.8700000047683716,
+				0.6700000166893005
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"use_custom_icon": true,
+		"b_painter_brush_texture": "None",
+		"b_painter_ramp_tonemap_r": 1.0,
+		"image_tool": "DRAW",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_cursor_overlay": false,
+		"b_painter_ramp_tonemap_l": 0.0,
+		"smooth_stroke_radius": 10
+	},
+	"Brush Blur": {
+		"b_painter_hardness": 0.5,
+		"b_painter_multi_layer_brush": false,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.800000011920929,
+		"b_painter_stencil_texture": "None",
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_blur.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"use_smooth_stroke": false,
+		"jitter": 0.0,
+		"blend": "MIX",
+		"b_painter_brush_order": 10,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 6.2831854820251465,
+			"angle": 1.5707963705062866,
+			"use_rake": false,
+			"use_random": true
+		},
+		"use_gradient": false,
+		"gradient": null,
+		"b_painter_invert_stencil_mask": true,
+		"smooth_stroke_radius": 10,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"stroke_method": "SPACE",
+		"texture_overlay_alpha": 30,
+		"b_painter_use_mask": true,
+		"use_cursor_overlay": false,
+		"gradient_fill_mode": "LINEAR",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_pressure_strength": true,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"use_custom_icon": true,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"use_pressure_spacing": true,
+		"use_primary_overlay": false,
+		"spacing": 20,
+		"b_painter_brush_texture": "None",
+		"b_painter_ramp_tonemap_r": 1.0,
+		"image_tool": "SOFTEN",
+		"use_pressure_jitter": false,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.675000011920929,
+				0.550000011920929
+			],
+			[
+				1.0,
+				0.0
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"b_painter_ramp_tonemap_l": 0.0
+	},
+	"Brush Anchored": {
+		"b_painter_stencil_texture": "None",
+		"use_pressure_strength": true,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.5,
+		"b_painter_hardness": 1.0,
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_anchored.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"spacing": 60,
+		"jitter": 0.0,
+		"blend": "MIX",
+		"use_pressure_jitter": false,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 6.2831854820251465,
+			"angle": 0.0,
+			"use_rake": false,
+			"use_random": true
+		},
+		"b_painter_invert_stencil_mask": true,
+		"use_primary_overlay": false,
+		"use_smooth_stroke": false,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"stroke_method": "ANCHORED",
+		"b_painter_use_mask": true,
+		"texture_overlay_alpha": 30,
+		"b_painter_multi_layer_brush": false,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"b_painter_brush_order": 7,
+		"use_pressure_spacing": false,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.9990000128746033,
+				0.75
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"use_custom_icon": true,
+		"b_painter_brush_texture": "brush_shape_03.png",
+		"b_painter_ramp_tonemap_r": 1.0,
+		"image_tool": "DRAW",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_cursor_overlay": false,
+		"b_painter_ramp_tonemap_l": 0.0,
+		"smooth_stroke_radius": 10
+	},
+	"Brush Fill": {
+		"b_painter_stencil_texture": "None",
+		"b_painter_multi_layer_brush": false,
+		"b_painter_invert_mask": false,
+		"smooth_stroke_factor": 0.800000011920929,
+		"b_painter_hardness": 0.800000011920929,
+		"cursor_overlay_alpha": 30,
+		"use_pressure_size": false,
+		"b_painter_stencil_ramp_tonemap_r": 1.0,
+		"icon_filepath": "brush_icon_fill.png",
+		"use_alpha": true,
+		"secondary_color": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"use_cursor_overlay_override": false,
+		"use_smooth_stroke": false,
+		"jitter": 0.0,
+		"blend": "MIX",
+		"b_painter_brush_order": 9,
+		"color": [
+			1.0,
+			1.0,
+			1.0
+		],
+		"texture_slot": {
+			"tex_paint_map_mode": "VIEW_PLANE",
+			"random_angle": 6.2831854820251465,
+			"angle": 1.5707963705062866,
+			"use_rake": false,
+			"use_random": true
+		},
+		"use_gradient": true,
+		"gradient": {
+			"hue_interpolation": "NEAR",
+			"colors": [
+				[
+					[
+						0.2535340189933777,
+						0.040980469435453415,
+						0.09771697223186493,
+						2.0
+					],
+					0.0
+				]
+			],
+			"color_mode": "HSV"
+		},
+		"b_painter_invert_stencil_mask": true,
+		"use_primary_overlay": false,
+		"spacing": 20,
+		"image_tool": "FILL",
+		"stroke_method": "SPACE",
+		"b_painter_use_mask": true,
+		"texture_overlay_alpha": 30,
+		"gradient_fill_mode": "LINEAR",
+		"b_painter_tex_brush_categories": "Brush Textures",
+		"use_pressure_strength": true,
+		"use_primary_overlay_override": false,
+		"use_relative_jitter": true,
+		"b_painter_stencil_ramp_tonemap_l": 0.0,
+		"use_pressure_spacing": true,
+		"curve": [
+			[
+				0.0,
+				1.0
+			],
+			[
+				0.8700000047683716,
+				0.6700000166893005
+			],
+			[
+				1.0,
+				0.0
+			],
+			[
+				1.0,
+				0.0
+			]
+		],
+		"use_custom_icon": true,
+		"b_painter_brush_texture": "None",
+		"b_painter_ramp_tonemap_r": 1.0,
+		"mask_texture_slot": {
+			"mask_map_mode": "STENCIL"
+		},
+		"use_pressure_jitter": false,
+		"use_cursor_overlay": false,
+		"b_painter_ramp_tonemap_l": 0.0,
+		"smooth_stroke_radius": 10
+	}
+}

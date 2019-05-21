@@ -1,0 +1,7 @@
+RETOPOLOGY
+The first stop once we have our high resolution model ready is to generate a lower resolution model that resembles the high resolution shape. This process is known as "Retopology" or "Retopo", and it consists on creating a new topology (geometry surface) on top of the high resolution model.
+
+There are many specific techniques, tricks, tools... but the main 3 ways in which you'll generate the new mesh are:
+    1. Reusing the high resolution model: taking subdivisions away and deleting unnecessary geometry (like support loops), decimating (in the case of a sculpt without subdivisions, for example) or merging elements.
+    2. Using the snap tools to model while the new mesh is automatically projected on the original (very common and especially useful with organic models.
+    3. Modeling on top of the original shape to create similar shapes (but keeping the control that snapping takes away - useful for hard-surface models).

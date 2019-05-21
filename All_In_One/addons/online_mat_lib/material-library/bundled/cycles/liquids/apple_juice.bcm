@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<material name="apple_juice" view_color="rgb(0.37574, 0.10557, 0.0)" sample_lamp="True">
+	<nodes>
+		<node type="GROUP" node_tree="GL_AbsGlass" group="0" node_height="107" node_width="185" width_hidden="42" loc="-228, 99" />
+		<node type="OUTPUT_MATERIAL" node_height="100" node_width="120" width_hidden="42" loc="75, 48" />
+	</nodes>
+	<links>
+		<link to="1" input="0" from="0" output="0" />
+	</links>
+	<groups>
+		<group name="GL_AbsGlass" id="0">
+			<groupnodes>
+				<groupnode type="MATH" operation="MULTIPLY" use_clamp="False" value1="0.5" value2="0.5" node_height="100" node_width="120" width_hidden="42" loc="-76, -128" />
+				<groupnode type="MATH" operation="MULTIPLY" use_clamp="False" value1="0.5" value2="-1.0" node_height="100" node_width="120" width_hidden="42" loc="-421, -141" />
+				<groupnode type="MATH" operation="MULTIPLY" use_clamp="False" value1="0.5" value2="0.5" node_height="100" node_width="120" width_hidden="42" loc="-78, -400" />
+				<groupnode type="LIGHT_PATH" node_height="100" node_width="150" width_hidden="42" loc="-269, 23" />
+				<groupnode type="MATH" operation="MULTIPLY" use_clamp="False" value1="0.5" value2="-1.0" node_height="100" node_width="120" width_hidden="42" loc="-418, -277" />
+				<groupnode type="MATH" operation="MULTIPLY" use_clamp="False" value1="0.5" value2="0.5" node_height="100" node_width="120" width_hidden="42" loc="-80, -268" />
+				<groupnode type="COMBRGB" red="0.0" green="0.0" blue="0.0" node_height="100" node_width="80" width_hidden="42" loc="309, -265" />
+				<groupnode type="MATH" operation="POWER" use_clamp="False" value1="2.71799" value2="0.5" node_height="100" node_width="120" width_hidden="42" loc="91, -128" />
+				<groupnode type="MATH" operation="POWER" use_clamp="False" value1="2.71799" value2="0.5" node_height="100" node_width="120" width_hidden="42" loc="89, -273" />
+				<groupnode type="MATH" operation="POWER" use_clamp="False" value1="2.71799" value2="0.5" node_height="100" node_width="120" width_hidden="42" loc="89, -403" />
+				<groupnode type="MATH" operation="MULTIPLY" use_clamp="False" value1="0.5" value2="-1.0" node_height="100" node_width="120" width_hidden="42" loc="-420, -407" />
+				<groupnode type="MATH" operation="MULTIPLY" use_clamp="False" value1="0.5" value2="-1.0" node_height="100" node_width="120" width_hidden="42" loc="-664, -511" />
+				<groupnode type="NEW_GEOMETRY" node_height="100" node_width="120" width_hidden="42" loc="275, 11" />
+				<groupnode type="MIX_SHADER" fac="0.5" node_height="100" node_width="150" width_hidden="42" loc="685, -214" />
+				<groupnode type="BSDF_GLASS" distribution="BECKMANN" color="rgba(1.0, 1.0, 1.0, 1.0)" roughness="0.0" ior="1.45000" node_height="100" node_width="150" width_hidden="42" loc="433, -262" />
+				<groupnode type="BSDF_GLASS" distribution="BECKMANN" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" roughness="0.0" ior="1.45000" node_height="100" node_width="150" width_hidden="42" loc="424, -443" />
+				<groupnode type="GROUP_INPUT" node_height="100" node_width="140" width_hidden="42" loc="-786, -343" />
+				<groupnode type="GROUP_OUTPUT" node_height="100" node_width="140" width_hidden="42" loc="807, -214" />
+			</groupnodes>
+			<groupinputs>
+				<groupinput name="Red" type="VALUE" value="0.0" />
+				<groupinput name="Green" type="VALUE" value="0.0" />
+				<groupinput name="Blue" type="VALUE" value="0.0" />
+				<groupinput name="Scale" type="VALUE" value="1.0" />
+				<groupinput name="IOR" type="VALUE" value="1.45000" />
+				<groupinput name="Roughness" type="VALUE" value="0.0" />
+			</groupinputs>
+			<groupoutputs>
+				<groupoutput name="Shader" type="SHADER" />
+			</groupoutputs>
+			<grouplinks>
+				<grouplink to="0" input="0" from="3" output="7" />
+				<grouplink to="7" input="1" from="0" output="0" />
+				<grouplink to="5" input="0" from="3" output="7" />
+				<grouplink to="0" input="1" from="1" output="0" />
+				<grouplink to="2" input="1" from="10" output="0" />
+				<grouplink to="2" input="0" from="3" output="7" />
+				<grouplink to="5" input="1" from="4" output="0" />
+				<grouplink to="1" input="0" from="16" output="0" />
+				<grouplink to="4" input="0" from="16" output="1" />
+				<grouplink to="10" input="0" from="16" output="2" />
+				<grouplink to="8" input="1" from="5" output="0" />
+				<grouplink to="9" input="1" from="2" output="0" />
+				<grouplink to="6" input="0" from="7" output="0" />
+				<grouplink to="6" input="1" from="8" output="0" />
+				<grouplink to="6" input="2" from="9" output="0" />
+				<grouplink to="15" input="0" from="6" output="0" />
+				<grouplink to="11" input="0" from="16" output="3" />
+				<grouplink to="10" input="1" from="11" output="0" />
+				<grouplink to="4" input="1" from="11" output="0" />
+				<grouplink to="1" input="1" from="11" output="0" />
+				<grouplink to="13" input="0" from="12" output="6" />
+				<grouplink to="13" input="2" from="15" output="0" />
+				<grouplink to="13" input="1" from="14" output="0" />
+				<grouplink to="15" input="2" from="16" output="4" />
+				<grouplink to="14" input="2" from="16" output="4" />
+				<grouplink to="14" input="1" from="16" output="5" />
+				<grouplink to="15" input="1" from="16" output="5" />
+				<grouplink to="17" input="0" from="13" output="0" />
+			</grouplinks>
+		</group>
+	</groups>
+</material>

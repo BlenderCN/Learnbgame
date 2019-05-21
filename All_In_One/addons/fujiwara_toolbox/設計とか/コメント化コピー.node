@@ -1,0 +1,64 @@
+﻿
+        <div class="nodeholder text_Horizontal">
+        <div class="NodeUnit">
+	<div class="NodeMain depth0" contenteditable="false"></div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth1" style="width: 780px;" contenteditable="false"></div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth1" contenteditable="false" style="width: 80px;">機能</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 50px;">名前</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 200px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 50px;">説明</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 200px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 50px;">入力</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 50px;">処理</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 50px;">出力</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth1" contenteditable="false" style="width: 80px;">データ</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 80px;">名前</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 230px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 80px;">説明</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 230px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 80px;">内容</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 230px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth1" contenteditable="false" style="width: 80px;">分岐</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 80px;">条件</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 530px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 80px;">True</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 530px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 80px;">False</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 530px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth0" contenteditable="false" style="width: 30px;"></div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth1" contenteditable="false" style="width: 30px;"></div><div class="NodeContainer"><div class="NodeUnit selected">
+	<div class="NodeMain depth2" contenteditable="false" style="background-color: lavender; width: 1050px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div></div>
+    

@@ -1,0 +1,5 @@
+shader passthrough(color Cin = 1,
+                   output color Cout = 1) 
+{
+  Cout = Cin;
+}		   

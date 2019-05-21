@@ -1,0 +1,12 @@
+modifier switch [[string widget="node", string label="Switch", string category="Logic"]](
+	bool condition=false [[string label="Condition"]],
+	mesh mesh_false [[string label="False"]],
+	mesh mesh_true [[string label="True"]],
+	output mesh mesh_out [[string label="Result"]]
+)
+{
+	if (condition)
+		mesh_out = mesh_true;
+	else
+		mesh_out = mesh_false;
+}

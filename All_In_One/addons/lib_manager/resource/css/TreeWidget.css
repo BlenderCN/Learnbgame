@@ -1,0 +1,24 @@
+QTreeView {
+    alternate-background-color: rgb(85,85,85);
+    background: rgb(80,80,80);
+    color : rgb(160,160,160);
+    border : none;
+}
+
+QTreeView::branch:open {
+    image: url(RESOURCE/icons/ICON_DISCLOSURE_TRI_DOWN.png);
+}
+
+QTreeView::branch:closed:has-children {
+    image: url(RESOURCE/icons/ICON_DISCLOSURE_TRI_RIGHT.png);
+}
+
+QTreeWidget::item {
+    margin : 1px;
+}
+
+QTreeWidget::item:hover,QTreeWidget::item:selected {
+  background: rgb(95,95,95);
+  color : rgb(190,190,190);
+
+}

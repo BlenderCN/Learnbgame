@@ -1,0 +1,4 @@
+Duhiky.png     --> 00022000.mat
+Basicmetal.tga --> 00022001.mat
+424242.jpg     --> 00424242.mat
+

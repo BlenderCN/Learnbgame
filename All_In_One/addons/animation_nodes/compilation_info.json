@@ -1,0 +1,15 @@
+{
+  "Cython.__version__": "0.29.7",
+  "date": 1558155302,
+  "os.name": "posix",
+  "sys.api_version": 1013,
+  "sys.platform": "linux",
+  "sys.version": "3.7.3rc1 (default, Mar 13 2019, 11:01:15) \n[GCC 8.3.0]",
+  "sys.version_info": [
+    3,
+    7,
+    3,
+    "candidate",
+    1
+  ]
+}

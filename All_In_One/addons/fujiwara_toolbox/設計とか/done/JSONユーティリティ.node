@@ -1,0 +1,126 @@
+﻿
+        <div class="nodeholder text_Horizontal">
+        <div class="NodeUnit">
+	<div class="NodeMain depth0" contenteditable="false"></div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth1" style="width: 780px;" contenteditable="false"></div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain bgclr-sunflower depth1" contenteditable="false" style="width: 80px;">機能</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain bgclr-turquoise depth2" contenteditable="false" style="width: 50px;">名前</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 200px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain bgclr-greensea depth2" contenteditable="false" style="width: 50px;">説明</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 200px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain bgclr-peterriver depth2" contenteditable="false" style="width: 50px;">入力</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain bgclr-carrot depth2" contenteditable="false" style="width: 50px;">処理</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain bgclr-alizarin depth2" contenteditable="false" style="width: 50px;">出力</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain bgclr-peterriver depth1" contenteditable="false" style="width: 80px;">データ</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain bgclr-turquoise depth2" contenteditable="false" style="width: 80px;">名前</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 230px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain bgclr-greensea depth2" contenteditable="false" style="width: 80px;">説明</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 230px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain bgclr-peterriver depth2" contenteditable="false" style="width: 80px;">内容</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 230px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain bgclr-belizehole depth1" contenteditable="false" style="width: 80px;">分岐</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain bgclr-turquoise depth2" contenteditable="false" style="width: 80px;">条件</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 530px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain bgclr-orange depth2" contenteditable="false" style="width: 80px;">True</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 530px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain bgclr-peterriver depth2" contenteditable="false" style="width: 80px;">False</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 530px;"></div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth1" contenteditable="false"></div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth1" contenteditable="false"></div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth1" contenteditable="false"></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth0" contenteditable="false" style="width: 30px;"></div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth1" contenteditable="false" style="width: 180px;">JSONユーティリティ</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 250px;">データ</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;">filepath</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 450px;">文字列</div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;">dict</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 450px;">辞書</div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">json</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 450px;">文字列</div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 450px;">データが二つあると同期が問題になるからjsonデータは常に辞書から生成したほうがいい</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 250px;">パブリックメソッド</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;">init</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 400px;">filepathを受け取ってそのまま開くまで実行する。<br></div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 400px;">もしくはjson文字列を受け取ってデータを展開する。</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 400px;">っていらない？</div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 400px;">もしくは辞書を受け取る</div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;">開く</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 550px;">指定パスのデータを読み込んで辞書化する</div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;">保存</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 450px;">辞書データがあればそれをjson化して保存</div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;">データから値取得<br>val(datapath)<br></div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 500px;">タプル？URI的なのとかいいかも？<br>URI形式で文字列を打ち込んでそれを多層辞書からとってくる。<br></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;">データパスで値をセット<br>set(datapath)</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 300px;">実装考える必要がある</div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 300px;">keys = datapath.split("/")</div><div class="NodeContainer"><div class="NodeUnit selected">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 400px; background-color: lavender;">キーが見つかるまで探索<br></div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 400px;">見つからないキーから先は新規作成<br>デフォルトは値<br></div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 400px;">見つかったキーに新規作成データを入れる</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 250px;">プライベートメソッド</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;">辞書データからjson文字列生成<br>load_dict<br></div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;">json文字列から辞書データ生成<br>load_json<br></div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div></div>
+</div></div>
+    

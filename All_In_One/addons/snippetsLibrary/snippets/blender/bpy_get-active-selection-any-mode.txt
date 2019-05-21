@@ -1,0 +1,22 @@
+def get_selection():
+    m = bpy.context.mode
+    if m == 'POSE':
+        return bpy.context.selected_pose_bones
+    elif m == 'EDIT_ARMATURE':
+        return bpy.context.selected_bones
+    else:
+        return bpy.context.selected_objects
+
+def get_active():
+    m = bpy.context.mode
+    if m == 'POSE':
+        return bpy.context.active_pose_bone
+    elif m == 'EDIT_ARMATURE':
+        return bpy.context.active_bone
+    else:
+        return bpy.context.active_object
+
+
+act = get_active()
+selection = get_selection()
+other = [ob for ob in get_selection() if ob != act]

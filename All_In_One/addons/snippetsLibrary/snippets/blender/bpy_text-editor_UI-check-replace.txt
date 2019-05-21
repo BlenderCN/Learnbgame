@@ -1,0 +1,51 @@
+def getinfos():
+    '''Return or create info text'''
+    for text in bpy.data.texts:
+         if text.name == "infos" or text.name == "info":
+             return (text)
+    #info not exist so create
+    info = bpy.data.texts.new('info')
+    print ("infos text block created")
+    return (info)
+
+def check_texts_editors(name='info'):
+    '''
+    check text editors in UI for specific text name
+    if found with wnanted text - return 'ok' (True)
+    if text editor in UI but not wanted text - set wanted text in first tex editor found
+    if no text editor or no text data - return False
+    '''
+
+    #check if text exists
+    if not bpy.data.texts.get(name):
+        print("text block '{}' not exists".format(name))
+        return
+
+    ct = 0
+    for window in bpy.context.window_manager.windows:
+        screen = window.screen
+        for area in screen.areas:
+            if area.type == 'TEXT_EDITOR':
+                ct += 1
+                for space in area.spaces:
+                    if space.type == 'TEXT_EDITOR':
+                        if space.text and space.text.name == name:
+                            print("Text '{}' found in UI".format(name))#Dbg
+                            return ('ok')
+
+        #change text in zone if found
+        if ct:
+            print(ct, 'text editor found')
+            for area in screen.areas:
+                if area.type == 'TEXT_EDITOR':
+                    for space in area.spaces:
+                        if space.type == 'TEXT_EDITOR':
+                            space.text = bpy.data.texts[name]
+                            print("Text '{}' placed in UI".format(name))#Dbg
+                            return ('ok')
+
+    #no text UI found:
+    print('no text editor UI found')#Dbg
+    return False
+
+check_texts_editors(name='info')

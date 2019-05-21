@@ -1,0 +1,142 @@
+/* I took wave's lead and renamed starfield to KMCyclone.sl -- tal AT renderman DOT org */
+
+
+/*
+ * cyclone.sl - surface for a semi-opaque cloud layer to be put on an
+ *              earth-like planetary model to model clouds and a cyclone.
+ *
+ * DESCRIPTION:
+ *      When put on a sphere, sets the color & opacity of the sphere to
+ *   make it look like the clouds surrounding an Earth-like planet, with
+ *   a big cyclone.
+ *      The shader works by creating a fractal turbulence function over
+ *   the surface, then modulating the opacity based on this function in
+ *   a way that looks like clouds on a planetary scale.
+ *
+ *
+ * PARAMETERS:
+ *    Ka, Kd - the usual meaning
+ *    cloudcolor - the color of the clouds, usually white
+ *    max_radius
+ *    twist - controls the twisting of the clouds due to the cyclone.
+ *    offset, scale - control the linear scaling of the cloud value.
+ *    omega, octaves - controls the fractal characteristics of the clouds
+ *
+ *
+ * HINTS:
+ *    See the "planetclouds" shader for hints which apply equally well
+ *    to this shader.
+ *
+ *
+ * AUTHOR: Ken Musgrave
+ *    Conversion to Shading Language and other minor changes by Larry Gritz.
+ *
+ * REFERENCES:
+ *    _Texturing and Modeling: A Procedural Approach_, by David S. Ebert, ed.,
+ *    F. Kenton Musgrave, Darwyn Peachey, Ken Perlin, and Steven Worley.
+ *    Academic Press, 1994.  ISBN 0-12-228760-6.
+ *
+ * HISTORY:
+ *    ???? - original texture developed by Ken Musgrave.
+ *    Feb 1994 - Conversion to Shading Language by L. Gritz
+ *
+ * last modified 1 March 1994 by lg
+ */
+
+
+
+
+
+
+#define TWOPI (2*M_PI)
+
+
+/* Use signed Perlin noise */
+//#define snoise(x) ((2*noise(x))-1)
+//#define DNoise(p) (2*(point noise(p)) - point(1,1,1))
+//#define VLNoise(Pt,scale) (snoise(DNoise(Pt)+(scale*Pt)))
+#define VERY_SMALL (0.001)
+
+
+point snoise(point pt) {
+    point sn; 
+    sn=( 2 * noise(pt))-1; 
+    return sn;}
+
+
+point DNoise(point pt) {
+    point DN; 
+    DN=(2 * (noise(pt)) - point(1,1,1)); 
+    return DN;}
+
+
+float VLNoise(point Pt, float scale){
+    float VLN;
+    VLN = snoise(DNoise(Pt)+(scale*Pt));
+    return VLN;}
+
+
+
+
+shader
+KMCyclone (
+     float max_radius = 1,
+     float twist = 0.5,
+     float scale = .7,
+     float offset = .5,
+     float omega = 0.675,
+     float octaves = 4,
+    output float CloudValue = 0)
+{
+  float radius, dist, angle, sine, cosine, eye_weight, value;
+  point Pt;                 /* Point in texture space */
+  point PN;                 /* Normalized vector in texture space */
+  point PP;                 /* Point after distortion */
+  float l, o, a, i;         /* Loop control for fractal sum */
+
+
+  /* Transform to texture coordinates */
+  Pt = transform ("shader", P);
+
+
+  /* Rotate hit point to "cyclone space" */
+  PN = normalize (Pt);
+  radius = sqrt (PN[0]*PN[0] + PN[1]*PN[1]);
+
+
+  if (radius < max_radius) {   /* inside of cyclone */
+      /* invert distance from center */
+      dist = pow (max_radius - radius, 3);
+      angle = M_PI + twist * TWOPI * (max_radius-dist) / max_radius;
+      sine = sin (angle);
+      cosine = cos (angle);
+      PP = point (Pt[0]*cosine - Pt[1]*sine,
+          Pt[0]*sine + Pt[1]*cosine,
+          Pt[2]);
+      /* Subtract out "eye" of storm */
+      if (radius < 0.05*max_radius) {  /* if in "eye" */
+      eye_weight = (.1*max_radius - radius) * 10;   /* normalize */
+      /* invert and make nonlinear */
+      eye_weight = pow (1 - eye_weight, 4);
+    }
+      else eye_weight = 1;
+    }
+  else PP = Pt;
+
+
+  if (eye_weight > 0) {   /* if in "storm" area */
+      /* Compute VLfBm */
+      l = 1;  o = 1;  a = 0;
+      for (i = 0;  i < octaves  &&  o >= VERY_SMALL;  i += 1) {
+      a += o * VLNoise (PP * l, 1);
+      l *= 2;
+      o *= omega;
+    }
+      value = abs (eye_weight * (offset + scale * a));
+    }
+  else value = 0;
+
+
+  /* Thin the density of the clouds */
+  CloudValue = abs(value);
+}

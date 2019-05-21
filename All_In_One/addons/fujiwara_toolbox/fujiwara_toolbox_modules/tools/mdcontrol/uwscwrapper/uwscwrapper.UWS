@@ -1,0 +1,68 @@
+//UWSCWRAPPER
+PUBLIC CMD
+CMD = PARAM_STR[0]
+//MSGBOX(CMD)
+
+//ウィンドウのアクティブ化
+IF CMD = "ActivateWindow" THEN
+    WINDOW = GETID(PARAM_STR[1]) 
+    CTRLWIN(WINDOW, ACTIVATE)
+    //ウィンドウ位置にカーソルを移動しておく
+    MOUSEORG(WINDOW)
+    MMV(10,10)
+    EXITEXIT
+ENDIF
+
+//カーソル下ウィンドウの取得
+//アクティブウィンドウはどうしても、ソフト起動時に非アクティブになってしまう。
+//カーソル位置指定などはlackeyなどから行う。
+PUBLIC WINDOW = GETID(GET_FROMPOINT_WIN)
+
+//アイテム位置にカーソル移動 アイテム名
+IF CMD = "MovetoItem" THEN
+    CLKITEM(WINDOW, PARAM_STR[1],CLK_MUSMOVE)
+ENDIF
+
+//カーソルを移動
+IF CMD = "MovetoRelPos" THEN
+    MOUSEORG(WINDOW)
+    MMV(VAL(PARAM_STR[1]),VAL(PARAM_STR[2]))
+ENDIF
+
+//アクティブウィンドウのスクリーン中心からの座標に移動 WindowName,OffsetX,OffsetY
+IF CMD = "MovetoScreenCenter" THEN
+    DIM SCR_N = STATUS(WINDOW,ST_MONITOR)
+    MSGBOX(SCR_N)
+    DIM _MON_X = MONITOR(SCR_N, MON_X)
+    DIM _MON_Y = MONITOR(SCR_N, MON_Y)
+    DIM _MON_WIDTH = MONITOR(SCR_N, MON_WIDTH)
+    DIM _MON_HEIGHT = MONITOR(SCR_N, MON_HEIGHT)
+    CENTER_X = _MON_X + _MON_WIDTH/2
+    CENTER_Y = _MON_Y + _MON_HEIGHT/2
+    BTN_X = CENTER_X + VAL(PARAM_STR[1])
+    BTN_Y = CENTER_Y + VAL(PARAM_STR[2])
+    MOUSEORG(0)
+    MMV(BTN_X,BTN_Y)
+ENDIF
+
+//アクティブウィンドウ座標でのクリック X,Y
+IF CMD = "ClickRelPos" THEN
+    MOUSEORG(WINDOW)
+    BTN(LEFT,CLICK,VAL(PARAM_STR[1]),VAL(PARAM_STR[2]),0)
+ENDIF
+
+IF CMD = "MOUSELDOWN" THEN
+    BTN(LEFT,DOWN)
+ENDIF
+
+IF CMD = "MOUSELUP" THEN
+    BTN(LEFT,UP)
+ENDIF
+
+//ウィンドウ状態の変更 X,Y,Width,Height
+IF CMD = "SetWindowAbs" THEN
+    MOUSEORG(0)
+    ACW(WINDOW, VAL(PARAM_STR[1]), VAL(PARAM_STR[2]), VAL(PARAM_STR[3]), VAL(PARAM_STR[4]), 0)
+ENDIF
+
+EXITEXIT

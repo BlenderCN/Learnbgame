@@ -1,0 +1,78 @@
+Index: blender/source/blender/makesdna/DNA_space_types.h
+===================================================================
+--- blender/source/blender/makesdna/DNA_space_types.h	(revision 50424)
++++ blender/source/blender/makesdna/DNA_space_types.h	(working copy)
+@@ -816,6 +816,9 @@
+ 	char pad[6];
+ 
+ 	void *drawcache; /* cache for faster drawing */
++    
++    float cursor_pos[2]; /*location of the text cursor*/
++    
+ } SpaceText;
+ 
+ 
+Index: blender/source/blender/makesrna/intern/rna_space.c
+===================================================================
+--- blender/source/blender/makesrna/intern/rna_space.c	(revision 50424)
++++ blender/source/blender/makesrna/intern/rna_space.c	(working copy)
+@@ -713,6 +713,15 @@
+ 		WM_main_add_notifier(NC_TEXT | NA_EDITED, st->text);
+ }
+ 
++static void rna_SpaceTextEditor_cursor_location_get(PointerRNA *ptr, float *values)
++{
++	SpaceText *st = (SpaceText *)ptr->data;
++	
++	if (st) {
++		values[0] = st->cursor_pos[0];
++		values[1] = st->cursor_pos[1];
++	}
++}
+ 
+ /* Space Properties */
+ 
+@@ -2314,6 +2323,14 @@
+ 	RNA_def_property_string_sdna(prop, NULL, "replacestr");
+ 	RNA_def_property_ui_text(prop, "Replace Text", "Text to replace selected text with using the replace tool");
+ 	RNA_def_property_update(prop, NC_SPACE | ND_SPACE_TEXT, NULL);
++    
++    prop = RNA_def_property(srna, "cursor_location", PROP_FLOAT, PROP_XYZ);
++    RNA_def_property_array(prop, 2);
++    RNA_def_property_float_sdna(prop, NULL, "cursor_pos");
++	RNA_def_property_float_funcs(prop, "rna_SpaceTextEditor_cursor_location_get",
++	                             NULL, NULL);
++	RNA_def_property_ui_text(prop, "Text Cursor Location", "Text cursor location for this view");
++	RNA_def_property_update(prop, NC_SPACE | ND_SPACE_TEXT, NULL);
+ }
+ 
+ static void rna_def_space_dopesheet(BlenderRNA *brna)
+Index: blender/source/blender/editors/space_text/text_draw.c
+===================================================================
+--- blender/source/blender/editors/space_text/text_draw.c	(revision 50424)
++++ blender/source/blender/editors/space_text/text_draw.c	(working copy)
+@@ -1879,6 +1879,7 @@
+ 	Text *text;
+ 	ARegion *ar = NULL;
+ 	int i, x, winx = 0;
++    int cursor_x, cursor_y, index = 0;
+ 
+ 	if (ELEM3(NULL, st, st->text, st->text->curl)) return;
+ 
+@@ -1916,6 +1917,16 @@
+ 
+ 	if (st->top < 0) st->top = 0;
+ 	if (st->left < 0) st->left = 0;
++    
++    cursor_x = (text->curc - st->left) * st->cwidth;
++    index = txt_get_span(text->lines.first, text->curl);
++    cursor_y = sa->winy - ((index - st->top) * st->lheight);
++    st->cursor_pos[0] = (float)(cursor_x);
++    st->cursor_pos[1] = (float)(cursor_y);
++    
++/*  printf("Left: %d Top: %d \n", st->left, st->top);
++    printf("Row: %d Col: %d \n", x, index);
++    printf("Cursor_x : %f Cursor_y: %f \n", st->cursor_pos[0], st->cursor_pos[1]);*/
+ }
+ 
+ void text_update_cursor_moved(bContext *C)

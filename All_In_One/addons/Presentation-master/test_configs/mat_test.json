@@ -1,0 +1,705 @@
+{
+    "settings": {
+        "RenderEngine": "CYCLES",
+        "Device": "GPU",
+        "use_animated_seed": true,
+        "sample_clamp_direct": 0,
+        "sample_clamp_indirect": 0,
+        "aa_samples": 100,
+        "progressive": "BRANCHED_PATH",
+        "diffuse_samples": 14,
+        "glossy_samples": 2,
+        "transmission_samples": 2,
+        "ao_samples": 1,
+        "mesh_light_samples": 1,
+        "subsurface_samples": 1,
+        "volume_samples": 1,
+        "sampling_pattern": "SOBOL",
+        "transparent_max_bounces": 8,
+        "transparent_min_bounces": 8,
+        "use_transparent_shadows": true,
+        "caustics_reflective": false,
+        "caustics_refractive": false,
+        "blur_glossy": 0,
+        "max_bounces": 10,
+        "min_bounces": 3,
+        "diffuse_bounces": 3,
+        "glossy_bounces": 7,
+        "transmission_bounces": 9,
+        "volume_bounces": 4,
+        "use_compositing": true,
+        "use_sequencer": true,
+        "FrameEnd": 100,
+        "Objects": {
+            "File": "D:\\dev\\Python\\Blender\\Presentation\\v1\\Presenation.Blender\\Presenation.Blender\\objects.blend",
+            "Names": [
+                "OrbLight"
+            ],
+            "Files": [
+                "D:\\UberResources\\Environments\\Grid_Material.blend"
+            ]
+        },
+        "Materials": {
+            "File": "D:\\dev\\Python\\Blender\\Presentation\\Material\\mat.blend",
+            "Names": [
+                "White",
+                "Green",
+                "Red"
+            ],
+            "Materials": [
+                {
+                    "file": "D:\\dev\\Python\\Blender\\Presentation\\mat_comp.json"
+                },
+                {
+                    "file": "D:\\dev\\Python\\Blender\\Presentation\\mat_comp_2.json"
+                },
+                {
+                    "name": "blue_light_custom",
+                    "value": {
+                        "nodes": [
+                            {
+                                "_type": "ShaderNodeEmission",
+                                "_name": "emission",
+                                "_animation": [
+                                    {
+                                        "name": "target1",
+                                        "index": 0
+                                    }
+                                ],
+                                "inputs": [
+                                    {
+                                        "index": 0,
+                                        "value": [
+                                            0,
+                                            1,
+                                            1,
+                                            1
+                                        ]
+                                    },
+                                    {
+                                        "index": 1,
+                                        "value": 5
+                                    }
+                                ]
+                            },
+                            {
+                                "_type": "ShaderNodeOutputMaterial",
+                                "_name": "output"
+                            }
+                        ],
+                        "links": [
+                            {
+                                "from": {
+                                    "name": "emission",
+                                    "port": 0
+                                },
+                                "to": {
+                                    "name": "output",
+                                    "port": 0
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "scenes": [
+        {
+            "name": "environment",
+            "RenderEngine": "BLENDER_RENDER",
+            "groups": [
+                {
+                    "name": "ARandomGroup",
+                    "file": "D:\\dev\\git\\PresentationMaterials\\blend\\Test.blend",
+                    "position": {
+                        "x": 1,
+                        "y": 1,
+                        "z": 1
+                    },
+                    "rotation": {
+                        "x": 51,
+                        "y": 10,
+                        "z": 31
+                    },
+                    "scale": {
+                        "x": 2,
+                        "y": 2,
+                        "z": 2
+                    }
+                }
+            ],
+            "objects": [
+                {
+                    "name": "cube_smoke",
+                    "type": "cube",
+                    "material": "smoke_"
+                },
+                {
+                    "name": "image1",
+                    "fileName": "PT_hero_42_153645159.jpg",
+                    "type": "image",
+                    "directory": "D:\\dev\\Python\\Blender\\Presentation"
+                }
+            ],
+            "keyframes": [
+                {
+                    "frame": 1,
+                    "objects": [
+                        {
+                            "name": "cube_smoke",
+                            "position": {
+                                "x": 0,
+                                "y": 2,
+                                "z": 0
+                            },
+                            "scale": {
+                                "x": 2,
+                                "y": 2,
+                                "z": 2
+                            }
+                        },
+                        {
+                            "name": "image1",
+                            "position": {
+                                "x": 2,
+                                "y": 1,
+                                "z": 0
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "secondscene",
+            "RenderEngine": "CYCLES",
+            "composite": {
+                "file": "D:\\dev\\Python\\Blender\\Presentation\\mat_comp.json"
+            },
+            "materialframes": [
+                {
+                    "frame": 1,
+                    "objects": [
+                        {
+                            "material": "blue_light_custom",
+                            "name": "target1",
+                            "value": [
+                                0,
+                                1,
+                                1,
+                                1
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "frame": 20,
+                    "objects": [
+                        {
+                            "material": "blue_light_custom",
+                            "name": "target1",
+                            "value": [
+                                1,
+                                1,
+                                0,
+                                1
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "objects": [
+                {
+                    "name": "floor",
+                    "group": "floor",
+                    "type": "custom"
+                },
+                {
+                    "name": "second_scene",
+                    "type": "text",
+                    "align": "RIGHT",
+                    "value": "test 5",
+                    "font": "mriamc",
+                    "extrude": 0.1,
+                    "material": "ShinyMetal"
+                },
+                {
+                    "name": "custom_mat_obj",
+                    "type": "text",
+                    "align": "RIGHT",
+                    "value": "Custom Mat Object",
+                    "font": "mriamc",
+                    "extrude": 0.1,
+                    "material": "blue_light_custom"
+                }
+            ],
+            "keyframes": [
+                {
+                    "frame": 1,
+                    "objects": [
+                        {
+                            "name": "second_scene",
+                            "position": {
+                                "x": 0,
+                                "y": 2,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "floor",
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "custom_mat_obj",
+                            "position": {
+                                "x": 2,
+                                "y": 3,
+                                "z": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Scene",
+            "stage": {
+                "File": "D:\\Render\\Presenatation\\Test\\3\\untitled1.blend",
+                "Group": "Stage"
+            },
+            "armatures": [
+                {
+                    "name": "test1",
+                    "chain": [
+                        "text",
+                        "text2",
+                        "text3"
+                    ],
+                    "origin": {
+                        "x": 10,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "arrange": "line",
+                    "grid": {
+                        "x": 4,
+                        "y": 4,
+                        "z": 4
+                    }
+                },
+                {
+                    "name": "test2",
+                    "chain": [
+                        "text4",
+                        "text5"
+                    ],
+                    "origin": {
+                        "x": 0,
+                        "y": 3,
+                        "z": 0
+                    },
+                    "arrange": "line",
+                    "grid": {
+                        "x": 4,
+                        "y": 4,
+                        "z": 4
+                    }
+                }
+            ],
+            "objects": [
+                {
+                    "name": "default_camera",
+                    "type": "camera"
+                },
+                {
+                    "name": "lamp",
+                    "strength": 51,
+                    "type": "lamp",
+                    "light": "POINT"
+                },
+                {
+                    "name": "default_empty",
+                    "type": "empty"
+                },
+                {
+                    "name": "text",
+                    "type": "text",
+                    "value": "test \n 1",
+                    "font": "mriamc",
+                    "align": "CENTER",
+                    "extrude": 0.1,
+                    "material": "LowLightRed"
+                },
+                {
+                    "name": "text2",
+                    "type": "text",
+                    "value": "test 2",
+                    "font": "mriamc",
+                    "align": "CENTER",
+                    "extrude": 0.1,
+                    "material": "LowLightRed"
+                },
+                {
+                    "name": "text3",
+                    "type": "text",
+                    "align": "CENTER",
+                    "value": "test 3",
+                    "font": "mriamc",
+                    "extrude": 0.1,
+                    "material": "LowLightRed"
+                },
+                {
+                    "name": "text4",
+                    "type": "text",
+                    "value": "test 4",
+                    "font": "mriamc",
+                    "align": "CENTER",
+                    "extrude": 0.1,
+                    "material": "MedLightBlue"
+                },
+                {
+                    "name": "text5",
+                    "type": "text",
+                    "align": "RIGHT",
+                    "value": "test 5",
+                    "font": "mriamc",
+                    "extrude": 0.1,
+                    "material": "MedLightBlue"
+                },
+                {
+                    "name": "image_2",
+                    "fileName": "PT_hero_42_153645159.jpg",
+                    "type": "image",
+                    "directory": "D:\\dev\\Python\\Blender\\Presentation"
+                }
+            ],
+            "armatureframes": [],
+            "keyframes": [
+                {
+                    "frame": 1,
+                    "objects": [
+                        {
+                            "name": "default_camera",
+                            "position": {
+                                "x": 0,
+                                "y": 2,
+                                "z": 0
+                            },
+                            "target": "default_empty"
+                        },
+                        {
+                            "name": "lamp",
+                            "position": {
+                                "x": 0,
+                                "y": 2,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "default_empty",
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "text",
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "text2",
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "text3",
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "text4",
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        {
+                            "name": "text5",
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "frame": 10,
+                    "objects": [
+                        {
+                            "name": "default_camera",
+                            "position_rel": {
+                                "target": "text",
+                                "position": "top",
+                                "distance": 8,
+                                "offset": {
+                                    "x": 0,
+                                    "y": -5,
+                                    "z": 0
+                                }
+                            }
+                        },
+                        {
+                            "name": "lamp",
+                            "position_rel": {
+                                "target": "text",
+                                "position": "top",
+                                "distance": 11
+                            }
+                        },
+                        {
+                            "name": "default_empty",
+                            "position_rel": {
+                                "target": "text",
+                                "position": "center"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "frame": 35,
+                    "objects": [
+                        {
+                            "name": "default_camera",
+                            "position_rel": {
+                                "target": "text",
+                                "position": "top",
+                                "offset": {
+                                    "x": 0,
+                                    "y": -5,
+                                    "z": 0
+                                },
+                                "distance": 8
+                            }
+                        },
+                        {
+                            "name": "image_2",
+                            "position": {
+                                "x": 2,
+                                "y": 1,
+                                "z": 0
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        },
+                        {
+                            "name": "lamp",
+                            "position_rel": {
+                                "target": "text",
+                                "position": "top",
+                                "distance": 11
+                            }
+                        },
+                        {
+                            "name": "default_empty",
+                            "position_rel": {
+                                "target": "text",
+                                "position": "center"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "frame": 40,
+                    "objects": [
+                        {
+                            "name": "default_camera",
+                            "position_rel": {
+                                "target": "text3",
+                                "position": "top",
+                                "distance": 8,
+                                "offset": {
+                                    "x": 0,
+                                    "y": -5,
+                                    "z": 0
+                                }
+                            }
+                        },
+                        {
+                            "name": "lamp",
+                            "position_rel": {
+                                "target": "text3",
+                                "position": "top",
+                                "distance": 11
+                            }
+                        },
+                        {
+                            "name": "default_empty",
+                            "position_rel": {
+                                "target": "text3",
+                                "position": "center"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "frame": 130,
+                    "objects": [
+                        {
+                            "name": "default_camera",
+                            "position_rel": {
+                                "target": "text3",
+                                "position": "top",
+                                "distance": 8,
+                                "offset": {
+                                    "x": 0,
+                                    "y": -5,
+                                    "z": 0
+                                }
+                            }
+                        },
+                        {
+                            "name": "lamp",
+                            "position_rel": {
+                                "target": "text3",
+                                "position": "top",
+                                "distance": 11
+                            }
+                        },
+                        {
+                            "name": "default_empty",
+                            "position_rel": {
+                                "target": "text3",
+                                "position": "center"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "frame": 140,
+                    "objects": [
+                        {
+                            "name": "default_camera",
+                            "position_rel": {
+                                "target": "text2",
+                                "position": "top",
+                                "distance": 8,
+                                "offset": {
+                                    "x": 0,
+                                    "y": -5,
+                                    "z": 0
+                                }
+                            }
+                        },
+                        {
+                            "name": "lamp",
+                            "position_rel": {
+                                "target": "text2",
+                                "position": "top",
+                                "distance": 11
+                            }
+                        },
+                        {
+                            "name": "default_empty",
+                            "position_rel": {
+                                "target": "text2",
+                                "position": "center"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "frame": 210,
+                    "objects": [
+                        {
+                            "name": "default_camera",
+                            "position_rel": {
+                                "target": "text2",
+                                "position": "top",
+                                "distance": 8,
+                                "offset": {
+                                    "x": 0,
+                                    "y": -5,
+                                    "z": 0
+                                }
+                            }
+                        },
+                        {
+                            "name": "lamp",
+                            "position_rel": {
+                                "target": "text2",
+                                "position": "top",
+                                "distance": 11
+                            }
+                        },
+                        {
+                            "name": "default_empty",
+                            "position_rel": {
+                                "target": "text2",
+                                "position": "center"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "frame": 220,
+                    "objects": [
+                        {
+                            "name": "default_camera",
+                            "position_rel": {
+                                "target": "text4",
+                                "position": "top",
+                                "distance": 8,
+                                "offset": {
+                                    "x": 0,
+                                    "y": -5,
+                                    "z": 0
+                                }
+                            }
+                        },
+                        {
+                            "name": "lamp",
+                            "position_rel": {
+                                "target": "text4",
+                                "position": "top",
+                                "distance": 11
+                            }
+                        },
+                        {
+                            "name": "default_empty",
+                            "position_rel": {
+                                "target": "text4",
+                                "position": "center"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

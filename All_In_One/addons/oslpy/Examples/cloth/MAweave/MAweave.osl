@@ -1,0 +1,67 @@
+/*
+ * MAWeave.osl by Michel J. Anders (c)2012
+ * from https://github.com/sambler/osl-shaders
+ *
+ * license: cc-by-sa
+ *
+ * original script from -
+ * http://blenderthings.blogspot.com.au/2012/12/a-fabric-osl-shader-for-blender-cycles.html
+ *
+ */
+
+shader MAweave(
+        vector Vector = vector(0),
+        color WarpColor = color(0.8,0,0),
+        color WeftColor = color(0,0.8,0),
+        int skip = 1,
+        int nx = 1,
+        int underrun = 1,
+        int overrun = 1,
+        float WarpWidth = 0.8,
+        float WeftWidth = 0.8,
+        output color Color = 0,
+        output int Index = 0,
+        output float Dist = 0)
+{
+    int ny = underrun + overrun;
+    
+    float x = mod(Vector[0],1.0);
+    float y = mod(Vector[1],1.0);
+    
+    int ix = int(floor(x*nx));
+    int iy = int(floor(y*ny));
+    
+    float cx = mod(x*nx,1.0);
+    float cy = mod(y*ny,1.0);
+    
+    int top;
+    top = ((iy+skip*ix)%ny) < overrun;
+    
+    float lx = (1-WarpWidth)/2;
+    float hx = 1-lx;
+    float ly = (1-WeftWidth)/2;
+    float hy = 1-lx;
+    
+    if (top) {
+        if ( cx > lx && cx < hx ){
+            Index = 1;
+            Color = WarpColor;
+            Dist = abs(0.5-cx);
+        } else if (cy > ly && cy < hy ){
+            Index = 2;
+            Color = WeftColor;
+            Dist = abs(0.5-cy);
+        }
+    } else {
+        if (cy > ly && cy < hy ){
+            Index = 2;
+            Color = WeftColor;
+            Dist = abs(0.5-cy); 
+        } else if ( cx > lx && cx < hx ){
+            Index = 1;
+            Color = WarpColor;
+            Dist = abs(0.5-cx); 
+        }
+    }
+}
+

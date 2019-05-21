@@ -1,0 +1,33 @@
+May 22 2018
+
+* added Merge option to Unf*ck
+* Added Stashes (states of an object at a user set time)
+	- Create Stash
+		- from active
+		- from other(s) to active
+	- View Stashes
+		- you can also retrieve stashes
+	- Clear Stashes
+		- individual or all
+	- Transfer Stashes
+		- from other to active
+	- there’s a persistent HUD for stashes (top of the screen)
+		- shows stashes count and invalid stashes count
+* added NormalTrasnfer tool
+	- transfers normals from a stash
+	- stash normals can be flipped from the tool’s modal using F
+	- the stash can also be smoothed if you have stashed an unsmoothed obj, using S in the modal, this has no ui representation yet, as I’m not sure what to display
+* added Symmetrize tool
+	- it’s Blender’s symmetrize op, with the added ability to mirror custom normals
+	- default keymaps are Alt + X, Alt + Y and Alt + Y
+		- change in prefs
+	- default directions is + to - for X and Z, and - to + for Y
+		- change in prefs (unfold the keymap)
+	- when symmetrizing meshes with custom normals, Symmetrize will creates a pre-symmetrize stash
+		- this is because of the clear center seam Transfer option, you may want to use
+		- you probably want to regularly clean out those stashes if they accumulate
+		- although you don’t have to, a good strategy is probably to leave all the normal manipulation and transferig to the end, just remember to stash you model before you mess up the surfaces and you will be good
+* MESHmachine menu:
+	- loops and normal tools have been put in sub menus
+	- stash tools are available from edit and object mode
+* change mouse_wrap to hopefully fix a bug, that I can’t reproduce

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<material name="molten" view_color="rgb(0.80000, 0.80000, 0.80000)" sample_lamp="True">
+	<nodes>
+		<node type="BLACKBODY" temperature="1500.0" node_height="100" node_width="156" width_hidden="42" loc="376, 239" />
+		<node type="VALTORGB" interpolation="LINEAR" fac="0.5" stops="2" stop1="0.51818|rgba(0.0, 0.0, 0.0, 1.0)" stop2="1.0|rgba(1.0, 1.0, 1.0, 1.0)" node_height="100" node_width="240" width_hidden="42" loc="376, 148" />
+		<node type="EMISSION" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" strength="0.49999" node_height="100" node_width="140" width_hidden="42" loc="716, 126" />
+		<node type="OUTPUT_MATERIAL" node_height="100" node_width="140" width_hidden="42" loc="1206, 44" />
+		<node type="BUMP" strength="0.45454" node_height="100" node_width="140" width_hidden="42" loc="376, -76" />
+		<node type="MIX_SHADER" fac="0.39090" node_height="100" node_width="140" width_hidden="42" loc="966, 57" />
+		<node type="MATH" operation="MULTIPLY" use_clamp="False" value1="0.5" value2="2500.0" node_height="100" node_width="140" width_hidden="42" loc="136, 73" />
+		<node type="BSDF_GLOSSY" distribution="GGX" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" roughness="0.59166" node_height="100" node_width="150" width_hidden="42" loc="716, 14" />
+		<node type="MIX_RGB" blend_type="MIX" use_clamp="False" fac="0.19090" color1="rgba(0.5, 0.5, 0.5, 1.0)" color2="rgba(0.5, 0.5, 0.5, 1.0)" node_height="100" node_width="140" width_hidden="42" loc="-683, 83" />
+		<node type="TEX_COORD" dupli="False" node_height="100" node_width="142" width_hidden="42" loc="-1346, 115" />
+		<node type="MAPPING" translation="Vector(0.0, 0.0, 0.0)" rotation="Vector(0.0, -0.0, 0.0)" scale="Vector(1.0, 1.0, 1.0)" use_min="False" use_max="False" vector="Vector(0.0, 0.0, 0.0)" node_height="100" node_width="320" width_hidden="42" loc="-1103, 222" />
+		<node type="TEX_NOISE" scale="3.10000" detail="7.60000" distortion="2.89999" node_height="100" node_width="140" width_hidden="42" loc="-1103, -68" />
+		<node type="TEX_NOISE" scale="2.49999" detail="16.0" distortion="0.0" node_height="100" node_width="140" width_hidden="42" loc="-443, 79" />
+		<node type="VALTORGB" interpolation="LINEAR" fac="0.5" stops="2" stop1="0.23181|rgba(0.0, 0.0, 0.0, 1.0)" stop2="0.59999|rgba(1.0, 1.0, 1.0, 1.0)" node_height="100" node_width="240" width_hidden="42" loc="-203, 103" />
+	</nodes>
+	<links>
+		<link to="13" input="0" from="12" output="0" />
+		<link to="0" input="0" from="6" output="0" />
+		<link to="6" input="0" from="13" output="0" />
+		<link to="5" input="1" from="2" output="0" />
+		<link to="2" input="0" from="0" output="0" />
+		<link to="10" input="0" from="9" output="3" />
+		<link to="1" input="0" from="13" output="0" />
+		<link to="2" input="1" from="1" output="0" />
+		<link to="8" input="1" from="10" output="0" />
+		<link to="3" input="0" from="5" output="0" />
+		<link to="5" input="2" from="7" output="0" />
+		<link to="7" input="2" from="4" output="0" />
+		<link to="4" input="2" from="6" output="0" />
+		<link to="12" input="0" from="8" output="0" />
+		<link to="8" input="2" from="11" output="0" />
+		<link to="11" input="0" from="9" output="3" />
+	</links>
+</material>

@@ -1,0 +1,54 @@
+July 4 2018
+
+* preferences
+        - add plug creator property, useful for plug creators to attach their name, url or email or any other text string to a plug
+
+* Plug
+	- re-shuffle ui in the redo panel and introduce separate deformation box
+        - support deformers for array plugs
+        - support deformers for subsets
+        - expose deformer related plug precision and subset precision properties
+                - for arrays with deformers especially, higher values seem to be necessary with increasing length of the array
+	- maintain hierarchy if subsets are paretned to other subsets
+	- make deformer usage (mesh deform instead of surface deform) optional, not mandatory, if a deformer is present, using the "Use Deformer" property in the redo panel
+        - use forcesubset property, to forceably deform specific subsets, even if "deform subsets" is turned off in the redo panel
+	- influence deformers via the offset property in addtion to the plug and handle
+	- improve subset parenting and fix an issue, if target object is chlld of another object itself
+        - fix context.scene.tool_settings.vertex_group_weight related issue
+	- fix issue where hook or array plug was only correctly determined if hook or array mods where present on the handle, which doest not need to be the case
+* CreatePlug
+        - clear all materials on the plug mesh
+        - keep the subset origin and orientation, instead of aligning it to the plug
+* SetPlugProps 
+        - optionally set the default deformer precision value for plugs and subsets
+	- add forcesubsetdeform property
+	- add isplugoccluder property
+
+* AddPlugToLibrary
+        - show indicator for deformer plugs, a small d in the bottom right corner
+		- white: deformer use enabled by default
+		- black: deformer use is disabled by default
+		- missing: no deformer present
+	- support occluders, objects that help rendering icons of plugs that have significant underhangs
+
+* ValidatePlug (previously DebugPlugProperties)
+        - add summary dialog
+                - there's basically no need anymore for checking the temrinal, except in cases where you want to actually debug individual plug components/objects
+        - add handle n-gon check
+        - optionally set visibility and renderability of deformer and occluders and others(array caps) if present
+        - show new plug creator property
+        - add abolity to generate new UUID (UUIDs are for future proofing and are not currently used, it's just a unique id to mark a specific plug design)
+
+* Example Plugs
+	- fix plug 003
+        - add deformers to a few plugs
+        - set creator property for all of them
+	- add forcesubsetdeform plug
+	- and occluder example plug
+        - redo all icons
+
+* plug_icon_render.blend
+        - update lighting witha a 3rd light source
+        - add deformer indicator
+
+* various improvements and internal changes

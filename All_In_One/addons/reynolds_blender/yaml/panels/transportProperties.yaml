@@ -1,0 +1,45 @@
+attrs:
+ tp_dt_type:
+  type: Enum
+  name: "DT transport properties type"
+  description: "DT transport properties type"
+  items: 
+    -
+     - nu
+     - nu
+     - ""
+    -
+     - DT
+     - DT 
+     - ""
+ tp_dt_scalar_elt1:
+  type: String
+  name: "Transport properties scalar el1"
+  description: "Transport properties scalar el1"
+  default: ""
+  maxlen: 1024
+ tp_dt_scalar_elt2:
+  type: Float
+  name: "Transport properties scalar el1"
+  description: "Transport properties scalar el1"
+  default: 0.0
+ 
+gui:
+ - box:
+   - row: 
+     - col: 
+        - prop:
+           scene_attr: tp_dt_type
+        - separator:
+           nums: 1
+        - row:
+          - label:
+             text : Dimensioned scalar
+          - prop:
+             scene_attr: tp_dt_scalar_elt1
+          - separator:
+             nums: 1
+        - prop:
+           scene_attr: tp_dt_scalar_elt2
+        - separator:
+           nums: 1

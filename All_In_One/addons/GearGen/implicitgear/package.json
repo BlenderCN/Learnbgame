@@ -1,0 +1,16 @@
+{
+  "name": "implicitgear",
+  "version": "0.0.1",
+  "description": "",
+  "main": "nodemain.js",
+  "dependencies": {
+    "requirejs": "^2.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "gearcache_version": 0.2
+}

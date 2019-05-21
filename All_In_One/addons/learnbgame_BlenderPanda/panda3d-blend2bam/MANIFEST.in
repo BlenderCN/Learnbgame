@@ -1,0 +1,7 @@
+include *.md
+include LICENSE.txt
+graft blend2bam/
+prune blend2bam/blend2gltf/blendergltf/tests
+
+global-exclude __pycache__
+global-exclude *.py[co]

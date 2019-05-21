@@ -1,0 +1,45 @@
+# MB 
+#	bone	 	MHX bone	twist
+
+Name:	MB
+
+Armature:
+	hips		Root		0 
+	lowerback	Spine1		0
+	spine		Spine2		0 
+	spine1		Spine3		0
+	neck		Neck		0
+	neck1		Head		0 
+	head		None		0
+
+	leftshoulder	Clavicle_L	0
+	leftarm		UpArm_L		0 
+	leftforearm	LoArm_L		0
+	lefthand	Hand_L		0
+	lefthandindex1	None		0
+	leftfingerbase	None		0
+	lfingers	None		0
+	lthumb		None		0 
+
+	rightshoulder	Clavicle_R	0 
+	rightarm	UpArm_R		0 
+	rightforearm	LoArm_R		0
+	righthand	Hand_R		0
+	righthandindex1	None		0
+	rightfingerbase	None		0
+	rfingers	None		0
+	rthumb		None		0 
+
+	lhipjoint	None		0 
+	leftupleg	UpLeg_L		-20
+	leftleg		LoLeg_L		-20 
+	leftfoot	Foot_L		-20 
+	lefttoebase	Toe_L		-20
+
+	rhipjoint	None		0 
+	rightupleg	UpLeg_R		20
+	rightleg	LoLeg_R		20 
+	rightfoot	Foot_R		20 
+	righttoebase	Toe_R		20
+
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<material name="Dirt_ADv" view_color="rgb(0.80000, 0.80000, 0.80000)" sample_lamp="True" preview_type="MONKEY">
+	<nodes>
+		<node type="BSDF_DIFFUSE" color="rgba(0.13734, 0.07755, 0.04891, 1.0)" roughness="0.0" node_height="100" node_width="150" width_hidden="42" loc="148, 141" />
+		<node type="BSDF_DIFFUSE" color="rgba(0.03511, 0.02117, 0.01424, 1.0)" roughness="0.0" node_height="100" node_width="150" width_hidden="42" loc="148, 7" />
+		<node type="MIX_SHADER" fac="0.5" node_height="100" node_width="140" width_hidden="42" loc="398, 215" />
+		<node type="INVERT" fac="1.0" color="rgba(0.0, 0.0, 0.0, 1.0)" node_height="100" node_width="140" width_hidden="42" loc="-92, 64" />
+		<node type="REROUTE" node_height="100" node_width="16" width_hidden="42" loc="148, 177" />
+		<node type="BUMP" strength="0.30000" node_height="100" node_width="140" width_hidden="42" loc="-332, 83" />
+		<node type="REROUTE" node_height="100" node_width="16" width_hidden="42" loc="148, -125" />
+		<node type="REROUTE" node_height="100" node_width="16" width_hidden="42" loc="-92, -48" />
+		<node type="MAPPING" translation="Vector(0.0, 0.0, 0.0)" rotation="Vector(0.0, 0.0, 0.0)" scale="Vector(1.0, 1.0, 1.0)" use_min="False" use_max="False" vector="Vector(0.0, 0.0, 0.0)" node_height="100" node_width="240" width_hidden="42" loc="-1038, 135" />
+		<node type="TEX_COORD" dupli="False" node_height="100" node_width="140" width_hidden="42" loc="-1278, 116" />
+		<node type="REROUTE" node_height="100" node_width="16" width_hidden="42" loc="148, -161" />
+		<node type="REROUTE" node_height="100" node_width="16" width_hidden="42" loc="-698, 8" />
+		<node type="REROUTE" node_height="100" node_width="16" width_hidden="42" loc="898, -59" />
+		<node type="TEX_MUSGRAVE" musgrave="FBM" scale="5.0" detail="14.0" dimension="0.10000" lacunarity="4.5" offset="0.0" gain="1.0" node_height="100" node_width="150" width_hidden="42" loc="-582, 126" />
+		<node type="TEX_MUSGRAVE" musgrave="FBM" scale="7.0" detail="7.0" dimension="1.20000" lacunarity="4.5" offset="0.0" gain="1.0" node_height="100" node_width="150" width_hidden="42" loc="398, -80" />
+		<node type="MATH" operation="MULTIPLY" use_clamp="False" value1="0.5" value2="4.0" node_height="100" node_width="140" width_hidden="42" loc="648, -162" />
+		<node type="FRESNEL" ior="1.20000" node_height="100" node_width="140" width_hidden="42" loc="398, 327" />
+		<node type="OUTPUT_MATERIAL" node_height="100" node_width="140" width_hidden="42" loc="1138, 44" />
+		<node type="MIX_SHADER" fac="0.5" node_height="100" node_width="140" width_hidden="42" loc="648, 196" />
+		<node type="MIX_SHADER" fac="0.30000" node_height="100" node_width="140" width_hidden="42" loc="898, 75" />
+		<node type="FRESNEL" ior="1.45000" node_height="100" node_width="140" width_hidden="42" loc="648, 308" />
+		<node type="SUBSURFACE_SCATTERING" falloff="CUBIC" color="rgba(0.13734, 0.07755, 0.04891, 1.0)" scale="1.0" radius="Vector(1.0, 1.0, 1.0)" sharpness="0.0" textureBlur="0.0" node_height="100" node_width="150" width_hidden="42" loc="648, 62" />
+		<node type="BSDF_GLOSSY" distribution="GGX" color="rgba(0.70374, 0.56684, 0.39796, 1.0)" roughness="0.40000" node_height="100" node_width="150" width_hidden="42" loc="398, 81" />
+	</nodes>
+	<links>
+		<link to="2" input="1" from="0" output="0" />
+		<link to="13" input="0" from="11" output="0" />
+		<link to="8" input="0" from="9" output="0" />
+		<link to="18" input="2" from="22" output="0" />
+		<link to="18" input="1" from="2" output="0" />
+		<link to="2" input="2" from="1" output="0" />
+		<link to="2" input="0" from="4" output="0" />
+		<link to="3" input="1" from="13" output="0" />
+		<link to="4" input="0" from="3" output="0" />
+		<link to="5" input="2" from="13" output="0" />
+		<link to="0" input="2" from="7" output="0" />
+		<link to="7" input="0" from="5" output="0" />
+		<link to="1" input="2" from="7" output="0" />
+		<link to="22" input="2" from="6" output="0" />
+		<link to="6" input="0" from="7" output="0" />
+		<link to="11" input="0" from="8" output="0" />
+		<link to="14" input="0" from="10" output="0" />
+		<link to="10" input="0" from="11" output="0" />
+		<link to="17" input="2" from="12" output="0" />
+		<link to="12" input="0" from="15" output="0" />
+		<link to="15" input="0" from="14" output="0" />
+		<link to="19" input="1" from="18" output="0" />
+		<link to="18" input="0" from="16" output="0" />
+		<link to="19" input="2" from="21" output="0" />
+		<link to="21" input="0" from="2" output="0" />
+		<link to="17" input="0" from="19" output="0" />
+		<link to="19" input="0" from="20" output="0" />
+	</links>
+</material>

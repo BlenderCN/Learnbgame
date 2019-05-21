@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Pixie_Core build="False" compile="False" dependencies="" enabled="False" filepath="pixie_core.rmp" filter="PIXIE_CORE" library="" version="0.0">
+
+    <python_scripts>
+    </python_scripts>
+
+    <shader_sources>
+    </shader_sources>
+
+    <shader_panels filter="SHADER">
+    </shader_panels>
+
+    <utility_panels filter="UTILITY">
+        <Framebuffer_Display delete="False" description="" duplicate="False" enabled="False" filter="" register="True" type="DISPLAY" windows="RENDER">
+            <read target="">
+            </read>
+            <begin target="">
+Display "+@[EVAL:.pass_output:]@" "framebuffer" "rgb"
+
+            </begin>
+            <end target="">
+            </end>
+            <regexes target="">
+            </regexes>
+            <properties>
+            </properties>
+            <layout>
+            </layout>
+        </Framebuffer_Display>
+        <File_Display delete="False" description="" duplicate="False" enabled="True" filter="" register="True" type="DISPLAY" windows="RENDER">
+            <read target="">
+            </read>
+            <begin target="">
+Display "+@[EVAL:.pass_output:]@" "file" "rgb"
+
+            </begin>
+            <end target="">
+            </end>
+            <regexes target="">
+            </regexes>
+            <properties>
+            </properties>
+            <layout>
+            </layout>
+        </File_Display>
+        <Multi_Display delete="False" description="" duplicate="False" enabled="False" filter="" register="True" type="DISPLAY" windows="RENDER">
+            <read target="">
+            </read>
+            <begin target="">
+Display "+@[EVAL:.pass_output:]@" "exr" "rgba" "string layername" "RenderLayer.Combined" "string exrpixeltype" "float" "quantize" [ 0 0 0 0 ] "string image_metadata:BlenderMultiChannel" "Blender V2.57 and newer"
+Display "+@[EVAL:.pass_output:]@" "exr" "float _z" "string layername" "RenderLayer.Depth" "string[1] channelnames" [ "Z" ] "string exrpixeltype" "float" "quantize" [ 0 0 0 0 ]
+
+            </begin>
+            <end target="">
+            </end>
+            <regexes target="">
+            </regexes>
+            <properties>
+            </properties>
+            <layout>
+            </layout>
+        </Multi_Display>
+    </utility_panels>
+
+    <command_panels filter="COMMAND">
+        <Optimize delete="False" description="" duplicate="False" enabled="True" execute="True" extension=".sh.bat" filter="" register="True" type="OPTIMIZE" windows="SCENE">
+            <begin target="">
+echo "Starting optimization..."
+texmake "@[EVAL:.target_path:]@@[EVAL:.target_name:]@"
+
+            </begin>
+            <middle target="">
+            </middle>
+            <end target="">
+echo "Optimizing complete"
+
+            </end>
+            <regexes target="">
+            </regexes>
+            <properties>
+            </properties>
+            <layout>
+            </layout>
+        </Optimize>
+
+        <Render delete="False" description="" duplicate="False" enabled="True" execute="True" extension=".sh.bat" filter="" register="True" type="RENDER" windows="SCENE">
+            <begin target="">
+echo "Starting render..."
+rndr "@[EVAL:.target_path:]@@[EVAL:.target_name:]@"
+
+            </begin>
+            <middle target="">
+            </middle>
+            <end target="">
+echo "Render complete"
+
+            </end>
+            <regexes target="">
+            </regexes>
+            <properties>
+            </properties>
+            <layout>
+            </layout>
+        </Render>
+
+        <Compile delete="False" description="" duplicate="False" enabled="True" execute="True" extension=".sh.bat" filter="" register="True" type="COMPILE" windows="SCENE">
+            <begin target="">
+echo "Starting compile..."
+cd @[EVAL:.target_path:STR]@
+
+            </begin>
+            <middle target="*.sl">
+sdrc @[EVAL:.target_name:STR]@
+
+            </middle>
+            <end target="">
+echo "Compile complete"
+
+            </end>
+            <regexes target="">
+            </regexes>
+            <properties>
+            </properties>
+            <layout>
+            </layout>
+        </Compile>
+
+        <Info delete="False" description="" duplicate="False" enabled="True" execute="True" extension=".sh.bat" filter="" register="True" type="INFO" windows="SCENE">
+            <begin target="">
+echo "Starting info..."
+cd @[EVAL:.target_path:STR]@
+
+            </begin>
+            <middle target="*.sdr">
+sdrinfo @[EVAL:.target_name:STR]@ &gt; @[EVAL:.target_name.replace(".sdr",".slmeta"):STR]@
+
+            </middle>
+            <end target="">
+echo "Info complete"
+
+            </end>
+            <regexes target="*.slmeta">
+                <head_name matches="1" regex=" &quot;" replace="&quot; name=&quot;" />
+                <head_ext matches="1" regex=".sdr" replace="" />
+                <head_close matches="1" regex="$" replace="&gt;" />
+                <xml_start matches="1" regex="\A" replace="&lt;?xml version=&quot;1.0&quot; ?&gt;\n&lt;k3dml&gt;\n\t&lt;shaders&gt;\n\t\t&lt;shader type=&quot;" />
+                <xml_close matches="1" regex="\Z" replace="\t\t&lt;/shader&gt;\n\t&lt;/shaders&gt;\n&lt;/k3dml&gt;\n" />
+                <para_name matches="0" regex="^\t&quot;" replace="\t\t\t&lt;argument name=&quot;" />
+                <para_output matches="0" regex="&quot;output " replace="output=&quot;true&quot; storage_class=&quot;" />
+                <para_class matches="0" regex="&quot; &quot;" replace="&quot; output=&quot;false&quot; storage_class=&quot;" />
+                <para_type matches="0" regex=" (color|float|point|vector|normal|matrix|string)(?=&quot;|\[)" replace="&quot; type=&quot;\1&quot; extended_type=&quot;\1PARA_ARRAY" />
+                <para_muldim matches="0" regex="PARA_ARRAY\[(\d+)\]&quot;" replace="&quot; array_count=&quot;\1&quot;" />
+                <para_onedim matches="0" regex="PARA_ARRAY&quot;\n" replace="&quot; array_count=&quot;1&quot;\n" />
+                <para_spaces matches="0" regex=" &quot;(shader|current|object|world|camera|screen|raster|NDC|rgb|hsv|hsl|xyz|XYZ)&quot; \[" replace=" [" />
+                <para_default matches="0" regex="\n\t\tDefault value: ((.|\s(?!\t\t\t&lt;))*)" replace=" default_value=&quot;\1" />
+                <para_curlys matches="0" regex="(?&lt;!&quot;1&quot; )default_value=&quot;(.*)" replace="default_value=&quot;{\1}" />
+                <para_commas matches="0" regex="(?&lt;=\d) (?=\d)" replace="," />
+                <para_escapes matches="0" regex="((?&lt;=,|{)&quot;)|(&quot;(?=,|}))" replace="&amp;quot;" />
+                <para_lblock matches="0" regex="\[" replace="(" />
+                <para_rblock matches="0" regex="\]" replace=")" />
+                <para_close matches="0" regex="$(?&lt;!&gt;)(?&lt;!\n)" replace="&quot;/&gt;" />
+                <para_trailspaces matches="0" regex=" &quot;/&gt;" replace="&quot;/&gt;" />
+                <para_doublequote matches="0" regex="&quot;&quot;" replace="&quot;" />
+                <para_fixquote matches="0" regex="=&quot;/&gt;" replace="=&quot;&quot;/&gt;" />
+            </regexes>
+            <properties>
+            </properties>
+            <layout>
+            </layout>
+        </Info>
+    </command_panels>
+</Pixie_Core>

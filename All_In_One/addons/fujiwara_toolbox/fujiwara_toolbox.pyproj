@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{30f53555-f437-4e5d-992a-488ce35b38b6}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>conf.py</StartupFile>
+    <SearchPath>..\..\..\..\..\..\..\..\..\..\Program Files\Blender Foundation\Blender\2.78\scripts\modules</SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="conf.py" />
+    <Compile Include="developer_utils.py" />
+    <Compile Include="fjw.py" />
+    <Compile Include="modules\asset_sketcher_helper.py" />
+    <Compile Include="modules\fjw_RoomTools.py" />
+    <Compile Include="modules\fjw_subsurfmodelingtools.py" />
+    <Compile Include="modules\main\fjw_cameratools.py" />
+    <Compile Include="modules\main\fjw_greasepenciltools.py" />
+    <Compile Include="modules\main\fjw_maintools.py" />
+    <Compile Include="modules\main\fjw_pageutils.py" />
+    <Compile Include="modules\main\fjw_QuickMeshDelDiss.py" />
+    <Compile Include="modules\main\templates\fjw_template.py" />
+    <Compile Include="modules\main\utils\autoMDAvatar.py" />
+    <Compile Include="modules\main\utils\fullrender.py" />
+    <Compile Include="modules\main\utils\pagerender.py" />
+    <Compile Include="modules\main\__init__.py" />
+    <Compile Include="modules\tmp\キーシリンダセットアップ.py" />
+    <Compile Include="modules\tmp\キー流し込みスクリプト.py" />
+    <Compile Include="modules\__init__.py" />
+    <Compile Include="__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="documents\img\20170712-022450_blender.jpg" />
+    <Content Include="documents\img\20170712-023715_blender.jpg" />
+    <Content Include="documents\img\20170712-025319_blender.jpg" />
+    <Content Include="documents\img\20170712-030910_blender.jpg" />
+    <Content Include="documents\img\20170712-031321_blender.jpg" />
+    <Content Include="documents\img\20170712-031653_blender.jpg" />
+    <Content Include="documents\img\20170712-031850_blender.jpg" />
+    <Content Include="documents\img\rendermanager.png" />
+    <Content Include="UIutils\jquery-1.8.2.min.js" />
+    <Content Include="UIutils\UIカテゴリ生成.html" />
+    <Content Include="UIutils\ボタン生成.html" />
+    <Content Include="テンプレート\3Dページ作業用テンプレ\pages\000ページフォルダテンプレ\background.png" />
+    <Content Include="テンプレート\3Dページ作業用テンプレ\作業メモ.txt" />
+    <Content Include="参考\blenrigのボーン名一覧.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="documents\" />
+    <Folder Include="documents\img" />
+    <Folder Include="modules" />
+    <Folder Include="modules\main" />
+    <Folder Include="modules\main\templates" />
+    <Folder Include="modules\main\utils" />
+    <Folder Include="modules\tmp" />
+    <Folder Include="UIutils" />
+    <Folder Include="テンプレート\" />
+    <Folder Include="テンプレート\3Dページ作業用テンプレ" />
+    <Folder Include="テンプレート\3Dページ作業用テンプレ\pages\" />
+    <Folder Include="テンプレート\3Dページ作業用テンプレ\pages\000ページフォルダテンプレ" />
+    <Folder Include="参考" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>

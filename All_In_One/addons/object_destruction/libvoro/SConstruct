@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+
+env = Environment()
+Export('env')
+SConscript("SConscript")

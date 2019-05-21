@@ -1,0 +1,4 @@
+pylint
+git_archive_all
+--extra-index-url https://archive.panda3d.org/branches/master
+panda3d

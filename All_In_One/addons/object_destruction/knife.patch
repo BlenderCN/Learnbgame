@@ -1,0 +1,51 @@
+Index: source/blender/blenkernel/intern/context.c
+===================================================================
+--- source/blender/blenkernel/intern/context.c	(Revision 44136)
++++ source/blender/blenkernel/intern/context.c	(Arbeitskopie)
+@@ -213,11 +213,6 @@
+ 	return C->wm.area;
+ }
+ 
+-SpaceLink *CTX_wm_space_data(const bContext *C)
+-{
+-	return (C->wm.area)? C->wm.area->spacedata.first: NULL;
+-}
+-
+ ARegion *CTX_wm_region(const bContext *C)
+ {
+ 	return C->wm.region;
+@@ -503,6 +498,21 @@
+ 	return NULL;
+ }
+ 
++SpaceLink *CTX_wm_space_data(bContext *C)
++{
++	/*set correct area and region, if available*/
++	ScrArea* area = ctx_data_pointer_get(C, "area");
++	ARegion* region = ctx_data_pointer_get(C, "region");
++	if ((area != NULL) && (region != NULL))
++	{
++		C->wm.area = area;
++		C->wm.region = region;
++	}
++
++	return (C->wm.area)? C->wm.area->spacedata.first: NULL;
++}
++
++
+ static int ctx_data_pointer_verify(const bContext *C, const char *member, void **pointer)
+ {
+ 	bContextDataResult result;
+Index: source/blender/blenkernel/BKE_context.h
+===================================================================
+--- source/blender/blenkernel/BKE_context.h	(Revision 44136)
++++ source/blender/blenkernel/BKE_context.h	(Arbeitskopie)
+@@ -136,7 +136,7 @@
+ struct wmWindow *CTX_wm_window(const bContext *C);
+ struct bScreen *CTX_wm_screen(const bContext *C);
+ struct ScrArea *CTX_wm_area(const bContext *C);
+-struct SpaceLink *CTX_wm_space_data(const bContext *C);
++struct SpaceLink *CTX_wm_space_data(/*const*/ bContext *C);
+ struct ARegion *CTX_wm_region(const bContext *C);
+ void *CTX_wm_region_data(const bContext *C);
+ struct ARegion *CTX_wm_menu(const bContext *C);

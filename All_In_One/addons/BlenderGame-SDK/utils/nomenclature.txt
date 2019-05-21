@@ -1,0 +1,6 @@
+BL = blender
+GFI = game framework interface
+GE = game engine
+WS = workspace
+PKG = package
+MD = module

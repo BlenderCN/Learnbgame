@@ -1,0 +1,33 @@
+point rotate_point(float cx,float cy,float angle,point p,float clamp_values)
+{
+  float s = sin(radians(angle));
+  float c = cos(radians(angle));
+
+  // translate point back to origin:
+  
+  float tx = p[0] - cx;
+  float ty = p[1] - cy;
+
+  // rotate point
+  float xnew = tx * c - ty * s;
+  float ynew = tx * s + ty * c;
+
+  // translate point back:
+  tx = xnew + cx;
+  ty = ynew + cy;
+ if (clamp_values >0)
+      return point(clamp(tx,0.0,cx*2),clamp(ty,0.0,cy*2),0);
+  else
+      return point(tx,ty,0);
+}
+
+shader uv_map_rotate(
+	point Vector = P,
+	float brick_width =1.0,
+	float brick_height =1.0,
+    float Angle = 0,
+    float Clamp = 0,
+	output point RotatedVector = 0)
+{   
+    RotatedVector = rotate_point(brick_width/2.0,brick_height/2.0, Angle,Vector,Clamp);
+}

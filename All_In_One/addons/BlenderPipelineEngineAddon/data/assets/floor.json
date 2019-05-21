@@ -1,0 +1,58 @@
+{
+  "scene": "test 1",
+  "directory": "data/assets/",
+  "geometries": [
+    {"name": "x40x40", "file": "x40x40.obj"},
+    {"name": "x10x20", "file": "x10x20.obj"},
+    {"name": "x10x30", "file": "x10x30.obj"}
+  ],
+  "textures": [
+    {"name": "blue", "file": "block_blue.tga"},
+    {"name": "purple", "file": "block_purple.tga"},
+    {"name": "teal", "file": "block_teal.tga"}
+  ],
+  "materials": [
+    {"name": "blue", "diffuse_texture":"blue"},
+    {"name": "purple", "diffuse_texture":"purple"},
+    {"name": "teal", "diffuse_texture":"teal"}
+  ],
+  "lights": [
+    {
+      "name": "Light 1",
+      "position": [100,100,100],
+      "color": [1,1,1]
+    }
+  ],
+  "entities":[ 
+    {
+      "name": "x10x30_slope1",
+      "geometry": "x10x30",
+      "material": "purple",
+      "transform": {
+        "translate": [26.1,2.5,15],
+        "rotate":[0,0,-21.55],
+        "scale":[1,1,1]
+      },
+      "collider": {
+        "type": "Box",
+        "center": [0, 0.125, 0],
+        "halfwidth": [15, 0.125, 5]
+      }
+    },
+    {
+      "name": "x10x30_slope2",
+      "geometry": "x10x30",
+      "material": "purple",
+      "transform": {
+        "translate": [-26.1,2.5,-15],
+        "rotate":[0,0,21.55],
+        "scale":[1,1,1]
+      },
+      "collider": {
+        "type": "Box",
+        "center": [0, 0.125, 0],
+        "halfwidth": [15, 0.125, 5]
+      }
+    }
+  ]
+}

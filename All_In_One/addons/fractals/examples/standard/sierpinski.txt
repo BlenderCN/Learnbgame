@@ -1,0 +1,10 @@
+start: A;
+define:
+_L: r-60;
+_R: r60;
+rules:
+A: _R B _L A _L B _R;
+B: _L A _R B _R A _L;
+final:
+A: d0.1;
+B: d0.1;

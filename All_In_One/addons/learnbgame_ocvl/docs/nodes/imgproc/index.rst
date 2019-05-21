@@ -1,0 +1,77 @@
+*******
+imgproc
+*******
+
+.. toctree::
+   :maxdepth: 2
+
+   GaussianBlur
+   HoughLines
+   HoughLinesP
+   Laplacian
+   Scharr
+   Sobel
+   adaptiveThreshold
+   approxPolyDP
+   arcLength
+   arrowedLine
+   bilateralFilter
+   blur
+   boundingRect
+   boxFilter
+   boxPoints
+   canny
+   circle
+   clipLine
+   contourArea
+   convertMaps
+   convertScaleAbs
+   convexHull
+   copyMakeBorder
+   cornerHarris
+   cvtColor
+   dilate
+   distanceTransform
+   drawContours
+   ellipse
+   ellipse2Poly
+   equalizeHist
+   erode
+   filter2D
+   findContours
+   fitEllipse
+   fitLine
+   floodFill
+   getAffineTransform
+   getDefaultNewCameraMatrix
+   getDerivKernels
+   getGaussianKernel
+   getPerspectiveTransform
+   getRectSubPix
+   getRotationMatrix2D
+   getTextSize
+   initUndistortRectifyMap
+   integral
+   integral2
+   integral3
+   invertAffineTransform
+   isContourConvex
+   line
+   matchTemplate
+   minAreaRect
+   minEnclosingCircle
+   moments
+   morphologyEx
+   polylines
+   putText
+   pyrDown
+   pyrUp
+   rectangle
+   remap
+   resize
+   sepFilter2D
+   threshold
+   undistort
+   undistortPoints
+   warpAffine
+   warpPerspective

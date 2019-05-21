@@ -1,0 +1,34 @@
+#access pref in code
+    user_preferences = bpy.context.user_preferences
+    addon_prefs = user_preferences.addons[__name__].preferences
+
+    addon_prefs.mkmouse_invert_buttons
+
+#class property and panel draw for prefs
+class My_addon_pref(bpy.types.AddonPreferences):
+    bl_idname = __name__
+
+    mkmouse_invert_buttons = bpy.props.BoolProperty(
+        name="Invert buttons everywhere",
+        default=False,
+        )
+
+    def draw(self, context):
+        layout = self.layout
+        layout.label(
+            text="In all editor :")
+        layout.label(
+            text="Customization (save settings and restart Blender to apply changes)")
+        layout.prop(self, "mkmouse_invert_buttons")
+
+
+#insertion order in register (if keymap, else use register (__modules__) )
+def register():
+    if not bpy.app.background:
+        bpy.utils.register_class(My_addon_pref)
+        register_keymaps()
+
+def unregister():
+    if not bpy.app.background:
+        unregister_keymaps()
+        bpy.utils.unregister_class(My_addon_pref)

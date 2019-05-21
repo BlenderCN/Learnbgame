@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups>
+	<group name="BW_FabricII">
+		<groupnodes>
+			<groupnode type="FRAME" label="bwide.wordpress.com" name="Frame" node_height="146" node_width="200" width_hidden="42" loc="0, 60" />
+			<groupnode type="FRESNEL" ior="1.25" node_height="100" node_width="150" width_hidden="42" loc="-495, 182" />
+			<groupnode type="BRIGHTCONTRAST" color="rgba(1.0, 1.0, 1.0, 1.0)" bright="-0.09999" contrast="0.29999" node_height="100" node_width="140" width_hidden="42" loc="-11, 63" />
+			<groupnode type="MIX_RGB" blend_type="OVERLAY" use_clamp="False" fac="0.5" color1="rgba(0.5, 0.5, 0.5, 1.0)" color2="rgba(0.5, 0.5, 0.5, 1.0)" node_height="100" node_width="100" width_hidden="42" loc="164, 174" />
+			<groupnode type="NORMAL_MAP" space="OBJECT" uv_map="" strength="0.40000" color="rgba(0.5, 0.5, 1.0, 1.0)" node_height="100" node_width="250" width_hidden="42" loc="56, -80" />
+			<groupnode type="BSDF_TRANSPARENT" color="rgba(1.0, 1.0, 1.0, 1.0)" node_height="100" node_width="150" width_hidden="42" loc="386, -309" />
+			<groupnode type="REROUTE" node_height="100" node_width="16" width_hidden="42" loc="-397, -87" />
+			<groupnode type="VALTORGB" custom_color="rgb(0.60799, 0.45599, 0.0)" label="Transparency Control" interpolation="LINEAR" fac="0.5" stops="2" stop1="0.04090|rgba(0.0, 0.0, 0.0, 1.0)" stop2="0.20454|rgba(1.0, 1.0, 1.0, 1.0)" node_height="100" node_width="240" width_hidden="42" loc="27, -281" />
+			<groupnode type="EMISSION" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" strength="1.0" node_height="100" node_width="140" width_hidden="42" loc="671, -378" />
+			<groupnode type="MIX_SHADER" fac="0.69999" node_height="100" node_width="150" width_hidden="42" loc="662, -198" />
+			<groupnode type="BSDF_GLOSSY" hide="True" distribution="BECKMANN" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" roughness="0.60000" node_height="100" node_width="150" width_hidden="42" loc="331, 84" />
+			<groupnode type="MIX_RGB" blend_type="MIX" use_clamp="False" fac="0.5" color1="rgba(0.37342, 0.03495, 0.04053, 1.0)" color2="rgba(0.5, 0.5, 0.5, 1.0)" node_height="100" node_width="100" width_hidden="42" loc="-196, 206" />
+			<groupnode type="BSDF_VELVET" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" sigma="1.0" node_height="100" node_width="140" width_hidden="42" loc="298, 433" />
+			<groupnode type="MIX_SHADER" fac="0.39999" node_height="100" node_width="150" width_hidden="42" loc="684, 204" />
+			<groupnode type="MIX_SHADER" fac="0.0" node_height="100" node_width="150" width_hidden="42" loc="501, 377" />
+			<groupnode type="BSDF_DIFFUSE" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" roughness="1.0" node_height="100" node_width="150" width_hidden="42" loc="299, 309" />
+			<groupnode type="GROUP_INPUT" node_height="100" node_width="140" width_hidden="42" loc="-611, 45" />
+			<groupnode type="GROUP_OUTPUT" node_height="100" node_width="140" width_hidden="42" parent="Frame" loc="946, -262" />
+		</groupnodes>
+		<groupinputs>
+			<groupinput name="Fabric Image" type="RGBA" value="rgba(0.0, 0.0, 0.0, 1.0)" />
+			<groupinput name="Velvet/Diffuse" type="VALUE" value="0.0" />
+			<groupinput name="Glossy" type="VALUE" value="0.39999" />
+		</groupinputs>
+		<groupoutputs>
+			<groupoutput name="Shader" type="SHADER" />
+			<groupoutput name="Transparency Control" type="SHADER" />
+		</groupoutputs>
+		<grouplinks>
+			<grouplink to="11" input="0" from="1" output="0" />
+			<grouplink to="4" input="1" from="6" output="0" />
+			<grouplink to="3" input="2" from="11" output="0" />
+			<grouplink to="10" input="0" from="3" output="0" />
+			<grouplink to="2" input="0" from="6" output="0" />
+			<grouplink to="15" input="0" from="11" output="0" />
+			<grouplink to="11" input="1" from="6" output="0" />
+			<grouplink to="3" input="1" from="2" output="0" />
+			<grouplink to="7" input="0" from="6" output="0" />
+			<grouplink to="9" input="0" from="7" output="0" />
+			<grouplink to="9" input="1" from="5" output="0" />
+			<grouplink to="10" input="2" from="4" output="0" />
+			<grouplink to="15" input="2" from="4" output="0" />
+			<grouplink to="13" input="2" from="10" output="0" />
+			<grouplink to="17" input="0" from="9" output="0" />
+			<grouplink to="6" input="0" from="16" output="0" />
+			<grouplink to="8" input="0" from="7" output="0" />
+			<grouplink to="17" input="1" from="8" output="0" />
+			<grouplink to="12" input="0" from="11" output="0" />
+			<grouplink to="9" input="2" from="13" output="0" />
+			<grouplink to="14" input="1" from="12" output="0" />
+			<grouplink to="13" input="0" from="16" output="2" />
+			<grouplink to="13" input="1" from="14" output="0" />
+			<grouplink to="14" input="2" from="15" output="0" />
+			<grouplink to="14" input="0" from="16" output="1" />
+		</grouplinks>
+	</group>
+</groups>

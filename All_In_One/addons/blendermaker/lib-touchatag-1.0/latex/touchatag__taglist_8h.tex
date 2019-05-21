@@ -1,0 +1,269 @@
+\hypertarget{touchatag__taglist_8h}{
+\section{src/touchatag\_\-taglist.h File Reference}
+\label{touchatag__taglist_8h}\index{src/touchatag\_\-taglist.h@{src/touchatag\_\-taglist.h}}
+}
+
+
+This header file contains every function related with tags SQLite database.  
+
+
+{\ttfamily \#include \char`\"{}touchatag\_\-tag.h\char`\"{}}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$sqlite3.h$>$}\par
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structlist__s}{list\_\-s}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{touchatag__taglist_8h_ad6c61d6ae0dc638a75e9e55bd88bdfef}{
+\#define {\bfseries TAGLIST\_\-ACTION\_\-SIZE}~101}
+\label{touchatag__taglist_8h_ad6c61d6ae0dc638a75e9e55bd88bdfef}
+
+\item 
+\hypertarget{touchatag__taglist_8h_a7a97c843251d4d3b37b00d4b158c016f}{
+\#define {\bfseries TAGLIST\_\-DATA\_\-SIZE}~101}
+\label{touchatag__taglist_8h_a7a97c843251d4d3b37b00d4b158c016f}
+
+\item 
+\hypertarget{touchatag__taglist_8h_a504002a05e68329ac3d74c8c94176d82}{
+\#define {\bfseries TAGLIST\_\-UID\_\-SIZE}~14}
+\label{touchatag__taglist_8h_a504002a05e68329ac3d74c8c94176d82}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{touchatag__taglist_8h_a3b55f1cd33b93f9cc32dbe31f95e22ed}{
+typedef struct \hyperlink{structlist__s}{list\_\-s} {\bfseries list\_\-t}}
+\label{touchatag__taglist_8h_a3b55f1cd33b93f9cc32dbe31f95e22ed}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{touchatag__taglist_8h_a79beb2ddb992a7eed0b9fa115ddea1c0}{touchatag\_\-taglist\_\-sqlite3\_\-init} ()
+\begin{DoxyCompactList}\small\item\em Creates the database. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_a04c7320a7d12b83c253f19a9ac2f08ee}{touchatag\_\-taglist\_\-sqlite3\_\-add} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag, char $\ast$act)
+\begin{DoxyCompactList}\small\item\em Adds tag's data to a new row in the database table. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_a2920621eaf89de789db558aec7d7320f}{touchatag\_\-taglist\_\-sqlite3\_\-action\_\-update} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag, char $\ast$act)
+\begin{DoxyCompactList}\small\item\em Allocates a new action linked to the tag given This function uses attributes of the given tag structure and the array pointed to act to change the action linked to a tag with another contained in act. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_a136950d7a2b28f970cc2ead7345ad3e8}{touchatag\_\-touchatag\_\-sqlite3\_\-search} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Searches in the table a row with the given tag's uid (struct). \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_a35b3942d395771214317f2cc878d2abe}{touchatag\_\-taglist\_\-sqlite3\_\-search\_\-from\_\-uid} (char $\ast$tag\_\-uid)
+\begin{DoxyCompactList}\small\item\em Searches in the table a row with the given tag's uid (as char$\ast$). \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_ae0d1484dd03e0a3294e40f16fe5ea39a}{touchatag\_\-taglist\_\-sqlite3\_\-update\_\-counter\_\-tag} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Increments the value of the CONT section refered to the given tag (if the tag UID is in the DB). \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_adaa5b5d4a3b510b2f852f7508796eacc}{touchatag\_\-taglist\_\-sqlite3\_\-return\_\-counter\_\-tag} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Returns the value of CONT. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_a99725d9f25afd1514845fa106f1eacdc}{touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag)
+\begin{DoxyCompactList}\small\item\em Deletes a row of the table. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_a26d4669179406dcb44e85b0e10524bce}{touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag\_\-from\_\-uid} (char $\ast$tag\_\-uid)
+\begin{DoxyCompactList}\small\item\em Deletes a row of the table. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_a04f161692fa30d7c4f8d67c8fbb373f9}{touchatag\_\-taglist\_\-sqlite3\_\-reset\_\-db} ()
+\begin{DoxyCompactList}\small\item\em Deletes the entire content of the table. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_acbe60b52beba3c0952de1b951799ac6b}{touchatag\_\-taglist\_\-sqlite3\_\-show\_\-all} ()
+\begin{DoxyCompactList}\small\item\em Prints the entire content of the table. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_a2b555c9562e73cb251e8a69f240c03b4}{touchatag\_\-taglist\_\-sqlite3\_\-copy\_\-action} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag, char $\ast$res)
+\begin{DoxyCompactList}\small\item\em Copies the action's value of a row into the given array. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_ab4b458a5f921032d2b44e09d7073b893}{touchatag\_\-taglist\_\-sqlite3\_\-save\_\-all} (\hyperlink{structlist__s}{list\_\-t} $\ast$lists)
+\begin{DoxyCompactList}\small\item\em Copies every rows of the table in a list\_\-t type's array. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_aeabb58d026e0cfc22aa2a0b95792d03e}{touchatag\_\-taglist\_\-sqlite3\_\-number\_\-rows} ()
+\begin{DoxyCompactList}\small\item\em Returns how many rows are saved in the table. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_aac48ed1481a72bc5181da74acbedfc5f}{touchatag\_\-taglist\_\-execute\_\-action0} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag, char $\ast$user)
+\begin{DoxyCompactList}\small\item\em Executes the tag \char`\"{}action\char`\"{}. \item\end{DoxyCompactList}\item 
+int \hyperlink{touchatag__taglist_8h_a37ced951f499c2fce34520e667f22e77}{touchatag\_\-taglist\_\-sqlite3\_\-save\_\-info\_\-tag} (char $\ast$tag\_\-uid, \hyperlink{structlist__s}{list\_\-t} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Saves tag's data in the given struct. \item\end{DoxyCompactList}\item 
+void \hyperlink{touchatag__taglist_8h_ac45f54054960f14a49aa1178cb09fa7f}{touchatag\_\-sconvert} (\hyperlink{structtag__s}{tag\_\-t} $\ast$tag, char $\ast$dest1, char $\ast$dest2)
+\begin{DoxyCompactList}\small\item\em Internal function. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This header file contains every function related with tags SQLite database. 
+
+\subsection{Function Documentation}
+\hypertarget{touchatag__taglist_8h_ac45f54054960f14a49aa1178cb09fa7f}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-sconvert@{touchatag\_\-sconvert}}
+\index{touchatag\_\-sconvert@{touchatag\_\-sconvert}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-sconvert}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-sconvert ({\bf tag\_\-t} $\ast$ {\em tag}, \/  char $\ast$ {\em dest1}, \/  char $\ast$ {\em dest2})}}
+\label{touchatag__taglist_8h_ac45f54054960f14a49aa1178cb09fa7f}
+
+
+Internal function. 
+
+This function generates from 1 hexadecimal character, 2 equivalent chars. \hypertarget{touchatag__taglist_8h_aac48ed1481a72bc5181da74acbedfc5f}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-execute\_\-action0@{touchatag\_\-taglist\_\-execute\_\-action0}}
+\index{touchatag\_\-taglist\_\-execute\_\-action0@{touchatag\_\-taglist\_\-execute\_\-action0}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-execute\_\-action0}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-execute\_\-action0 ({\bf tag\_\-t} $\ast$ {\em tag}, \/  char $\ast$ {\em user})}}
+\label{touchatag__taglist_8h_aac48ed1481a72bc5181da74acbedfc5f}
+
+
+Executes the tag \char`\"{}action\char`\"{}. 
+
+This function executes the action written in the row with the given tag UID.
+
+Returns 1 if everything is done. Returns -\/1 in event of errors. \hypertarget{touchatag__taglist_8h_a2920621eaf89de789db558aec7d7320f}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-action\_\-update@{touchatag\_\-taglist\_\-sqlite3\_\-action\_\-update}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-action\_\-update@{touchatag\_\-taglist\_\-sqlite3\_\-action\_\-update}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-action\_\-update}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-action\_\-update ({\bf tag\_\-t} $\ast$ {\em tag}, \/  char $\ast$ {\em act})}}
+\label{touchatag__taglist_8h_a2920621eaf89de789db558aec7d7320f}
+
+
+Allocates a new action linked to the tag given This function uses attributes of the given tag structure and the array pointed to act to change the action linked to a tag with another contained in act. 
+
+Returns 1 if the row has been added. Returns -\/1 in event of errors \hypertarget{touchatag__taglist_8h_a04c7320a7d12b83c253f19a9ac2f08ee}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-add@{touchatag\_\-taglist\_\-sqlite3\_\-add}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-add@{touchatag\_\-taglist\_\-sqlite3\_\-add}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-add ({\bf tag\_\-t} $\ast$ {\em tag}, \/  char $\ast$ {\em act})}}
+\label{touchatag__taglist_8h_a04c7320a7d12b83c253f19a9ac2f08ee}
+
+
+Adds tag's data to a new row in the database table. 
+
+This function uses attributes of the given tag's structure and the array pointed by act to add a row to the table
+
+Returns 1 if the row has been added. Returns 0 a row with the same uid already exist (in this case the function does nothing). Returns -\/1 in event of errors. \hypertarget{touchatag__taglist_8h_a2b555c9562e73cb251e8a69f240c03b4}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-copy\_\-action@{touchatag\_\-taglist\_\-sqlite3\_\-copy\_\-action}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-copy\_\-action@{touchatag\_\-taglist\_\-sqlite3\_\-copy\_\-action}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-copy\_\-action}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-copy\_\-action ({\bf tag\_\-t} $\ast$ {\em tag}, \/  char $\ast$ {\em res})}}
+\label{touchatag__taglist_8h_a2b555c9562e73cb251e8a69f240c03b4}
+
+
+Copies the action's value of a row into the given array. 
+
+This function copies into the given array the action's value of the row with the given tag UID.
+
+Returns 1 if the tag UID is found and the action copied. Returns 0 if the tag UID is NOT found. Returns -\/1 in event of errors. \hypertarget{touchatag__taglist_8h_a99725d9f25afd1514845fa106f1eacdc}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag@{touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag@{touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__taglist_8h_a99725d9f25afd1514845fa106f1eacdc}
+
+
+Deletes a row of the table. 
+
+This function deletes the row with the UID of the given tag.
+
+Returns 1 if the tag UID is found and the row is deleted. Returns 0 if the tag UID is NOT found. Returns -\/1 in case of errors. \hypertarget{touchatag__taglist_8h_a26d4669179406dcb44e85b0e10524bce}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag\_\-from\_\-uid@{touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag\_\-from\_\-uid}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag\_\-from\_\-uid@{touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag\_\-from\_\-uid}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag\_\-from\_\-uid}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-delete\_\-tag\_\-from\_\-uid (char $\ast$ {\em tag\_\-uid})}}
+\label{touchatag__taglist_8h_a26d4669179406dcb44e85b0e10524bce}
+
+
+Deletes a row of the table. 
+
+This function deletes the row with the UID of the given char data.
+
+Returns 1 if the tag UID is found and the row is deleted. Returns 0 if the tag UID is NOT found. Returns -\/1 in case of errors. \hypertarget{touchatag__taglist_8h_a79beb2ddb992a7eed0b9fa115ddea1c0}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-init@{touchatag\_\-taglist\_\-sqlite3\_\-init}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-init@{touchatag\_\-taglist\_\-sqlite3\_\-init}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-init ()}}
+\label{touchatag__taglist_8h_a79beb2ddb992a7eed0b9fa115ddea1c0}
+
+
+Creates the database. 
+
+This function tries to create the database touchatag\_\-db and a table named tag in the database named touchatag\_\-db. This table is composed by 5 columns: UID, DATA, ACTION, CONT, NUM (as struct list\_\-t).
+
+Returns 0 if the table has been created. Returns -\/1 in event of troubles or if the table already exist. \hypertarget{touchatag__taglist_8h_aeabb58d026e0cfc22aa2a0b95792d03e}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-number\_\-rows@{touchatag\_\-taglist\_\-sqlite3\_\-number\_\-rows}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-number\_\-rows@{touchatag\_\-taglist\_\-sqlite3\_\-number\_\-rows}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-number\_\-rows}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-number\_\-rows ()}}
+\label{touchatag__taglist_8h_aeabb58d026e0cfc22aa2a0b95792d03e}
+
+
+Returns how many rows are saved in the table. 
+
+This function simply returns the number of row saved in the table.
+
+Returns -\/1 in event of errors. \hypertarget{touchatag__taglist_8h_a04f161692fa30d7c4f8d67c8fbb373f9}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-reset\_\-db@{touchatag\_\-taglist\_\-sqlite3\_\-reset\_\-db}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-reset\_\-db@{touchatag\_\-taglist\_\-sqlite3\_\-reset\_\-db}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-reset\_\-db}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-reset\_\-db ()}}
+\label{touchatag__taglist_8h_a04f161692fa30d7c4f8d67c8fbb373f9}
+
+
+Deletes the entire content of the table. 
+
+This function deletes the entire content of the table but not the table itself.
+
+Returns 1 if everything is done. Returns -\/1 in event of errors. \hypertarget{touchatag__taglist_8h_adaa5b5d4a3b510b2f852f7508796eacc}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-return\_\-counter\_\-tag@{touchatag\_\-taglist\_\-sqlite3\_\-return\_\-counter\_\-tag}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-return\_\-counter\_\-tag@{touchatag\_\-taglist\_\-sqlite3\_\-return\_\-counter\_\-tag}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-return\_\-counter\_\-tag}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-return\_\-counter\_\-tag ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__taglist_8h_adaa5b5d4a3b510b2f852f7508796eacc}
+
+
+Returns the value of CONT. 
+
+This function returns the count value of the the given tag.
+
+Returns -\/2 if the tag UID is NOT found. Returns -\/1 in event of errors \hypertarget{touchatag__taglist_8h_ab4b458a5f921032d2b44e09d7073b893}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-save\_\-all@{touchatag\_\-taglist\_\-sqlite3\_\-save\_\-all}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-save\_\-all@{touchatag\_\-taglist\_\-sqlite3\_\-save\_\-all}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-save\_\-all}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-save\_\-all ({\bf list\_\-t} $\ast$ {\em lists})}}
+\label{touchatag__taglist_8h_ab4b458a5f921032d2b44e09d7073b893}
+
+
+Copies every rows of the table in a list\_\-t type's array. 
+
+This function copies every rows of the table in a list\_\-t type's array
+
+Returns 1 if everything is done. Returns -\/1 in event of errors. \hypertarget{touchatag__taglist_8h_a37ced951f499c2fce34520e667f22e77}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-save\_\-info\_\-tag@{touchatag\_\-taglist\_\-sqlite3\_\-save\_\-info\_\-tag}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-save\_\-info\_\-tag@{touchatag\_\-taglist\_\-sqlite3\_\-save\_\-info\_\-tag}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-save\_\-info\_\-tag}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-save\_\-info\_\-tag (char $\ast$ {\em tag\_\-uid}, \/  {\bf list\_\-t} $\ast$ {\em list})}}
+\label{touchatag__taglist_8h_a37ced951f499c2fce34520e667f22e77}
+
+
+Saves tag's data in the given struct. 
+
+This function saves in the given struct all the data belonging to the tag\_\-uid given. \hypertarget{touchatag__taglist_8h_a35b3942d395771214317f2cc878d2abe}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-search\_\-from\_\-uid@{touchatag\_\-taglist\_\-sqlite3\_\-search\_\-from\_\-uid}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-search\_\-from\_\-uid@{touchatag\_\-taglist\_\-sqlite3\_\-search\_\-from\_\-uid}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-search\_\-from\_\-uid}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-search\_\-from\_\-uid (char $\ast$ {\em tag\_\-uid})}}
+\label{touchatag__taglist_8h_a35b3942d395771214317f2cc878d2abe}
+
+
+Searches in the table a row with the given tag's uid (as char$\ast$). 
+
+This function looks for the given tag (as char $\ast$) into the database.
+
+Returns 1 if the tag UID is found. Returns 0 if the tag UID is NOT found. Returns -\/1 in event of errors \hypertarget{touchatag__taglist_8h_acbe60b52beba3c0952de1b951799ac6b}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-show\_\-all@{touchatag\_\-taglist\_\-sqlite3\_\-show\_\-all}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-show\_\-all@{touchatag\_\-taglist\_\-sqlite3\_\-show\_\-all}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-show\_\-all}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-show\_\-all ()}}
+\label{touchatag__taglist_8h_acbe60b52beba3c0952de1b951799ac6b}
+
+
+Prints the entire content of the table. 
+
+This function prints the entire content of the table
+
+Returns 1 if everything is done. Returns -\/1 in event of errors. \hypertarget{touchatag__taglist_8h_ae0d1484dd03e0a3294e40f16fe5ea39a}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-taglist\_\-sqlite3\_\-update\_\-counter\_\-tag@{touchatag\_\-taglist\_\-sqlite3\_\-update\_\-counter\_\-tag}}
+\index{touchatag\_\-taglist\_\-sqlite3\_\-update\_\-counter\_\-tag@{touchatag\_\-taglist\_\-sqlite3\_\-update\_\-counter\_\-tag}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-taglist\_\-sqlite3\_\-update\_\-counter\_\-tag}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-taglist\_\-sqlite3\_\-update\_\-counter\_\-tag ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__taglist_8h_ae0d1484dd03e0a3294e40f16fe5ea39a}
+
+
+Increments the value of the CONT section refered to the given tag (if the tag UID is in the DB). 
+
+This function increments the value of the CONT section refered to the given tag (if the tag UID is in the DB)
+
+Returns 1 if the tag UID is found. Returns 0 if the tag UID is NOT found. Returns -\/1 in event of errors. \hypertarget{touchatag__taglist_8h_a136950d7a2b28f970cc2ead7345ad3e8}{
+\index{touchatag\_\-taglist.h@{touchatag\_\-taglist.h}!touchatag\_\-touchatag\_\-sqlite3\_\-search@{touchatag\_\-touchatag\_\-sqlite3\_\-search}}
+\index{touchatag\_\-touchatag\_\-sqlite3\_\-search@{touchatag\_\-touchatag\_\-sqlite3\_\-search}!touchatag_taglist.h@{touchatag\_\-taglist.h}}
+\subsubsection[{touchatag\_\-touchatag\_\-sqlite3\_\-search}]{\setlength{\rightskip}{0pt plus 5cm}int touchatag\_\-touchatag\_\-sqlite3\_\-search ({\bf tag\_\-t} $\ast$ {\em tag})}}
+\label{touchatag__taglist_8h_a136950d7a2b28f970cc2ead7345ad3e8}
+
+
+Searches in the table a row with the given tag's uid (struct). 
+
+This function looks for the given tag (struct) into the database.
+
+Returns 1 if the tag UID is found. Returns 0 if the tag UID is NOT found. Returns -\/1 in event of errors 

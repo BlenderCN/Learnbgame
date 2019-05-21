@@ -1,0 +1,12 @@
+0 Stud Open with LEGO Logo - 3D with Sharp Top
+0 Name: stud2-logo3.dat
+0 Author: Toby Nelson [tnelson]
+0 !LDRAW_ORG Unofficial_Primitive
+0 !LICENSE Redistributable under CCAL version 2.0 : see CAreadme.txt
+
+0 BFC CERTIFY CCW
+
+0 !HISTORY 2016-06-06 [tnelson] Created 2016-06-06
+
+1 16 0 0 0 1 0 0 0 0.95 0 0 0 1 stud2-copy.dat
+1 16 0 0 0 0.7 0 0 0 0.7 0 0 0 0.7 logo3.dat

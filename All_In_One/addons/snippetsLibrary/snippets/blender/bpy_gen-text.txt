@@ -1,0 +1,29 @@
+def gen_text():
+    text_data = bpy.data.curves.new(name="text", type='FONT')
+    text_obj = bpy.data.objects.new(name="text", object_data=text_data)
+    bpy.context.scene.objects.link(text_obj)
+    return(text_obj)
+    '''
+    ### Place to a specified location
+    text_obj.location = (5.0, 5.0, 5.0)
+    ### select it make active
+    text_obj.select = True
+    scene.objects.active = text_obj
+    '''
+
+def gen_text_ops():
+    #optionnal method to create via ops
+    bpy.ops.object.text_add(view_align=False, enter_editmode=False, location=(0, 0, 0))
+    ob_text = bpy.context.active_object
+    print(ob_text.data.body)
+    return(ob_text)
+
+def hello_text():
+    ob_text = gen_text()
+    ob_text.data.body = 'Hello World !'
+    import math
+    ob_text.rotation_euler.x = math.radians(90)
+    ob_text.data.align_x = 'CENTER'
+    print("ob_text.data.align_x", ob_text.data.align_x)#Dbg
+
+hello_text()

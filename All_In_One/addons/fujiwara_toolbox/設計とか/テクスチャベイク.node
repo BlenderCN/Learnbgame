@@ -1,0 +1,132 @@
+﻿
+        <div class="nodeholder text_Horizontal">
+        <div class="NodeUnit">
+	<div class="NodeMain depth0" contenteditable="false"></div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth1" style="width: 780px;" contenteditable="false"></div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth1" contenteditable="false" style="width: 80px;"></div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 1050px;">マテリアル、テクスチャ、イメージの命名規則考える必要がある</div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">            <div class="NodeMain bgclr-peterriver depth1" contenteditable="false" style="width: 80px;">データ</div>            <div class="NodeContainer">                <div class="NodeUnit">                    <div class="NodeMain bgclr-turquoise depth2" contenteditable="false" style="width: 80px;">名前</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth3" contenteditable="false" style="width: 230px;">baketype</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-greensea depth2" contenteditable="false" style="width: 80px;">説明</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth3" contenteditable="false" style="width: 230px;">ベイクタイプ</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-peterriver depth2" contenteditable="false" style="width: 80px;">内容</div>                    <div class="NodeContainer">                        <div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;">フルレンダー<br>アンビエントオクルージョン<br>影<br>ノーマル<br>テクスチャ<br>ディスプレイスメント<br>微分マップ<br>頂点カラー<br>放射<br>アルファ<br>ミラー強度<br>ミラー色<br>スペキュラー強度<br>スペキュラー色<br></div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">Full Render<br>Ambient Occlusion<br>Shadow<br>Normals<br>Textures<br>Displacement<br>Derivative<br>Vertex Colors<br>Emission<br>Alpha<br>Mirror Intensity<br>Mirror Colors<br>Specular Intensity<br>Specular Colors<br></div><div class="NodeContainer"></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;">使うやつ</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">ノーマル</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Normals</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 200px;">normals</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">テクスチャ</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Textures</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 200px;">textures</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">アルファ</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Alpha</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 200px;">alpha</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">スペキュラー強度</div><div class="NodeContainer"><div class="NodeUnit selected">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px; background-color: lavender;">Specular Intensity</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 200px;">specular_intensity</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">ディスプレイスメント</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Displacement</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 200px;">displacement</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 250px;">使わないやつ</div><div class="NodeContainer minimize"><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">フルレンダー</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Full Render</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 1050px;">full_render</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">アンビエントオクルージョン</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Ambient Occlusion</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 1050px;">ambient_occlusion</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">影<br></div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Shadow</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 1050px;">shadow</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">微分マップ</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Derivative</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 1050px;">derivative</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">頂点カラー</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Vertex Colors</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 1050px;">vertex_colors</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">ミラー強度</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Mirror Intensity</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 1050px;">mirror_intensity</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">ミラー色</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Mirror Colors</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 1050px;">mirror_colors</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">放射</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Emission</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 1050px;">emission</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth4" contenteditable="false" style="width: 250px;">スペキュラー色</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">Specular Colors</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth6" contenteditable="false" style="width: 1050px;">specular_colors</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div></div>
+</div>                    </div>                </div>            </div>        </div><div class="NodeUnit">
+	<div class="NodeMain depth1" contenteditable="false" style="width: 80px;"></div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 300px;">マテリアルの扱いをどうするか<br>ターゲットオブジェクトのマテリアル<br><br></div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth2" contenteditable="false" style="width: 300px;">ベイク用マテリアルの割当</div><div class="NodeContainer"><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 750px;">ベイク用マテリアルの扱いどうする？</div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 750px;">毎回生成？<br>存在したらそれにテクスチャを割り当てる、でもいいか<br></div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 750px;">対象のベイクタイプのテクスチャがなかったら、新規に割り当てるみたいなかんじ<br>あったらそれに上書きする。<br></div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth3" contenteditable="false" style="width: 750px;">ということはgetベイクタイプイメージみたいな機能が必要</div><div class="NodeContainer"></div>
+</div></div>
+</div></div>
+</div>
+            <div class="NodeUnit">            <div class="NodeMain bgclr-orange depth1" contenteditable="false" style="width: 80px;">クラス</div>            <div class="NodeContainer">                <div class="NodeUnit">                    <div class="NodeMain bgclr-turquoise depth2" contenteditable="false" style="width: 80px;">名前</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth3" contenteditable="false" style="width: 200px;">TextureBaker</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-greensea depth2" contenteditable="false" style="width: 80px;">説明</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth3" contenteditable="false" style="width: 1050px;">テクスチャベイカー</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-peterriver depth2" contenteditable="false" style="width: 80px;">内容</div>                    <div class="NodeContainer">                        
+        
+        <div class="NodeUnit">            <div class="NodeMain bgclr-sunflower depth3" contenteditable="false" style="width: 80px;">機能</div>            <div class="NodeContainer">                <div class="NodeUnit">                    <div class="NodeMain bgclr-turquoise depth4" contenteditable="false" style="width: 80px;">名前</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 200px;">__init__</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-greensea depth4" contenteditable="false" style="width: 80px;">説明</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 200px;"></div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-peterriver depth4" contenteditable="false" style="width: 80px;">入力</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 250px;">ベイク先オブジェクト</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-carrot depth4" contenteditable="false" style="width: 80px;">処理</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-alizarin depth4" contenteditable="false" style="width: 80px;">出力</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>            </div>        </div>
+        <div class="NodeUnit">            <div class="NodeMain bgclr-sunflower depth3" contenteditable="false" style="width: 80px;">機能</div>            <div class="NodeContainer">                <div class="NodeUnit">                    <div class="NodeMain bgclr-turquoise depth4" contenteditable="false" style="width: 80px;">名前</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 200px;">get_bakeimage</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-greensea depth4" contenteditable="false" style="width: 80px;">説明</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 1050px;">baketypeのイメージを取得する。</div>                            <div class="NodeContainer"></div>                        </div><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 1050px;">ベイク先オブジェクトのマテリアルからbaketypeのテクスチャ、からイメージを取得する。<br>マテリアルがなければマテリアルを作成。テクスチャがなければテクスチャを作成。<br></div><div class="NodeContainer"></div>
+</div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-peterriver depth4" contenteditable="false" style="width: 80px;">入力</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 250px;">baketype</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-carrot depth4" contenteditable="false" style="width: 80px;">処理</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-alizarin depth4" contenteditable="false" style="width: 80px;">出力</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>            </div>        </div>        
+        <div class="NodeUnit">            <div class="NodeMain bgclr-sunflower depth3" contenteditable="false" style="width: 80px;">機能</div>            <div class="NodeContainer">                <div class="NodeUnit">                    <div class="NodeMain bgclr-turquoise depth4" contenteditable="false" style="width: 80px;">名前</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 200px;">assign_uv_face</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-greensea depth4" contenteditable="false" style="width: 80px;">説明</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 400px;">ベイク用のimageをuv_faceに割り当てる。</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-peterriver depth4" contenteditable="false" style="width: 80px;">入力</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 250px;">image</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-carrot depth4" contenteditable="false" style="width: 80px;">処理</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-alizarin depth4" contenteditable="false" style="width: 80px;">出力</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>            </div>        </div>        
+        <div class="NodeUnit">            <div class="NodeMain bgclr-sunflower depth3" contenteditable="false" style="width: 80px;">機能</div>            <div class="NodeContainer">                <div class="NodeUnit">                    <div class="NodeMain bgclr-turquoise depth4" contenteditable="false" style="width: 80px;">名前</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 200px;">bake</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-greensea depth4" contenteditable="false" style="width: 80px;">説明</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 200px;"></div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-peterriver depth4" contenteditable="false" style="width: 80px;">入力</div>                    <div class="NodeContainer">                        <div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">ベイクタイプ</div><div class="NodeContainer"></div>
+</div><div class="NodeUnit">
+	<div class="NodeMain depth5" contenteditable="false" style="width: 250px;">ベイク元オブジェクト群</div><div class="NodeContainer"></div>
+</div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-carrot depth4" contenteditable="false" style="width: 80px;">処理</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-alizarin depth4" contenteditable="false" style="width: 80px;">出力</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>            </div>        </div>                        
+                                    </div>                </div>            </div>        </div>        
+            <div class="NodeUnit">            <div class="NodeMain bgclr-orange depth1" contenteditable="false" style="width: 80px;">クラス</div>            <div class="NodeContainer">                <div class="NodeUnit">                    <div class="NodeMain bgclr-turquoise depth2" contenteditable="false" style="width: 80px;">名前</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth3" contenteditable="false" style="width: 300px;">TextureBakingUtils</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-greensea depth2" contenteditable="false" style="width: 80px;">説明</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth3" contenteditable="false" style="width: 300px;">テクスチャベイク用ユーティリティ</div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>                <div class="NodeUnit">                    <div class="NodeMain bgclr-peterriver depth2" contenteditable="false" style="width: 80px;">内容</div>                    <div class="NodeContainer">                        <div class="NodeUnit">                            <div class="NodeMain depth3" contenteditable="false" style="width: 100px;"></div>                            <div class="NodeContainer"></div>                        </div>                    </div>                </div>            </div>        </div>        </div>
+</div></div>
+    

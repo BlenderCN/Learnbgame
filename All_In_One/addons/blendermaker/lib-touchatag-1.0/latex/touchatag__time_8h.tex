@@ -1,0 +1,42 @@
+\hypertarget{touchatag__time_8h}{
+\section{src/touchatag\_\-time.h File Reference}
+\label{touchatag__time_8h}\index{src/touchatag\_\-time.h@{src/touchatag\_\-time.h}}
+}
+
+
+This header file contains every function related with timing.  
+
+
+{\ttfamily \#include $<$sys/timeb.h$>$}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{touchatag__time_8h_a739cbd893e50bb326efa26ac137aae3e}{touchatag\_\-time\_\-begin\_\-count} (struct timeb $\ast$time\_\-data)
+\begin{DoxyCompactList}\small\item\em Starts a time count. \item\end{DoxyCompactList}\item 
+long int \hyperlink{touchatag__time_8h_a9477298d35cbaf9c1414b0045abd2bb7}{touchatag\_\-time\_\-return\_\-count\_\-time} (struct timeb $\ast$time\_\-data)
+\begin{DoxyCompactList}\small\item\em Returns the difference between the time given and the current time. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This header file contains every function related with timing. 
+
+\subsection{Function Documentation}
+\hypertarget{touchatag__time_8h_a739cbd893e50bb326efa26ac137aae3e}{
+\index{touchatag\_\-time.h@{touchatag\_\-time.h}!touchatag\_\-time\_\-begin\_\-count@{touchatag\_\-time\_\-begin\_\-count}}
+\index{touchatag\_\-time\_\-begin\_\-count@{touchatag\_\-time\_\-begin\_\-count}!touchatag_time.h@{touchatag\_\-time.h}}
+\subsubsection[{touchatag\_\-time\_\-begin\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}void touchatag\_\-time\_\-begin\_\-count (struct timeb $\ast$ {\em time\_\-data})}}
+\label{touchatag__time_8h_a739cbd893e50bb326efa26ac137aae3e}
+
+
+Starts a time count. 
+
+This function starts a time count. It sets in timeb $\ast$time\_\-data the current time. \hypertarget{touchatag__time_8h_a9477298d35cbaf9c1414b0045abd2bb7}{
+\index{touchatag\_\-time.h@{touchatag\_\-time.h}!touchatag\_\-time\_\-return\_\-count\_\-time@{touchatag\_\-time\_\-return\_\-count\_\-time}}
+\index{touchatag\_\-time\_\-return\_\-count\_\-time@{touchatag\_\-time\_\-return\_\-count\_\-time}!touchatag_time.h@{touchatag\_\-time.h}}
+\subsubsection[{touchatag\_\-time\_\-return\_\-count\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}long int touchatag\_\-time\_\-return\_\-count\_\-time (struct timeb $\ast$ {\em time\_\-data})}}
+\label{touchatag__time_8h_a9477298d35cbaf9c1414b0045abd2bb7}
+
+
+Returns the difference between the time given and the current time. 
+
+Returns (in milliseconds) the difference between the time of timeb $\ast$time\_\-data and the current time. 

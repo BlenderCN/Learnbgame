@@ -1,0 +1,27 @@
+
+Lib-touchatag-1.0 is a library developed in order to use Touchatag RFId Readers (http://www.touchatag.com) with Linux based systems. By now, only MIFIRE ULTRALIGHT tags can be used.
+
+To succeed in using it you need to stop pcsc deamon (sudo /etc/init.d/pcscd stop).
+
+You have to run it with the "sudo" prefix (in order to comunicate with the usb interface).
+
+
+*****************
+Available samples
+*****************
+
+- main_reader_info: detects all the readers connected and prints out all the available info.
+
+- main_reader_blink: detects all the readers connected and blinks their leds.
+
+- main_polling_all: detects all the readers and looks for tags, printing reader ID, tag UID and DATA.
+
+Run them as: "sudo ./main_reader_info",  "sudo ./main_reader_blink" or "sudo ./main_polling_all".
+
+
+
+The maximum number of readers that can be used "at the same time" is 10.
+
+Read the Doxygen documentation to know all about the library and its functions.
+
+...work in progress!

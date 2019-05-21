@@ -1,0 +1,15 @@
+[package]
+name = "four-kb"
+version = "0.1.0"
+authors = ["Julian Goldsmith <shadow0813@gmail.com>"]
+
+[dependencies]
+gl = "0.6"
+glutin = "0.10"
+byteorder = "*"
+cgmath = "0.15"
+png = "0.7"
+time = "*"
+
+[build-dependencies]
+gl_generator = "0.5"

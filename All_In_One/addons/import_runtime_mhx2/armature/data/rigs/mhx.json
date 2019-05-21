@@ -1,0 +1,110 @@
+{
+    "name" : "MHX",
+
+    "description" : "An advanced rig intended for rendered applications.\nIt has muscle bones and corrective shapekeys.\nSome features only work with mhx export or not at all.",
+
+    "settings" : {
+    	"useMhx" : true,
+        "useMasterBone" : true,
+        "useHeadControl" : true,
+        "useReverseHip" : true,
+        "useSplitBones" : true,
+        "useDeformBones" : true,
+        "useFaceRig" : true,
+        "useSockets" : true,
+        "useIkArms" : true,
+        "useIkLegs" : true,
+        "useFingers" : true,
+        "useQuaternionsOnly" : false,
+        "useConstraints" : true,
+        "useLocks" : true,
+        "useBoneGroups" : true,
+        "useCorrectives": true
+    },
+    
+    "properties" : {
+         "MhaArmIk_L" : {
+         	"type" : "float",
+         	"default" : 0.0, 
+         	"description" : "Left arm FK/IK"
+         },
+         "MhaArmIk_R" : {
+         	"type" : "float",
+         	"default" : 0.0, 
+         	"description" : "Right arm FK/IK"
+         },
+
+         "MhaArmHinge_L" : {
+	        "type" : "bool",
+	        "default" : false, 
+	        "description" : "Left arm hinge"
+         },
+         "MhaLegHinge_L" : {
+         	"type" : "bool",
+         	"default" : false, 
+         	"description" : "Left leg hinge"
+         },         	
+         "MhaArmHinge_R" : {
+         	"type" : "bool",
+         	"default" : false, 
+         	"description" : "Right arm hinge"
+         },         	
+         "MhaLegHinge_R" : {
+         	"type" : "bool",
+         	"default" : false, 
+         	"description" : "Right leg hinge"
+         },         	
+
+         "MhaElbowPlant_L" : {
+         	"type" : "bool",
+         	"default" : false, 
+         	"description" : "Left elbow plant"
+         },
+         "MhaElbowPlant_R" : {
+         	"type" : "bool",
+         	"default" : false, 
+         	"description" : "Right elbow plant"
+         },
+
+         "MhaLegIk_L" : {
+         	"type" : "float",
+         	"default" : 0.0, 
+         	"description" : "Left leg FK/IK"
+         },
+         	
+         "MhaLegIkToAnkle_L" : {
+         	"type" : "bool",
+         	"default" : false, 
+         	"description" : "Left leg IK to ankle"
+         },         	
+         "MhaLegIk_R" : {
+         	"type" : "float",
+         	"default" : 0.0, 
+         	"description" : "Right leg FK/IK"
+         },         	
+         "MhaLegIkToAnkle_R" : {
+         	"type" : "bool",
+         	"default" : false, 
+         	"description" : "Right leg IK to ankle"
+         },
+         	
+         "MhaFingerControl_L" : {
+         	"type" : "bool",
+         	"default" : true, 
+         	"description" : "Left fingers controlled"
+         },
+         "MhaFingerControl_R" : {
+         	"type" : "bool",
+         	"default" : true, 
+         	"description" : "Right fingers controlled"
+         },
+
+    	"MhaGazeFollowsHead" : {
+    		"type" : "float",
+    		"default" : 1.0, 
+    		"description" : "Gaze follows world or head"
+   		}
+	}
+}
+
+

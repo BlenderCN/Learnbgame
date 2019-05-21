@@ -1,0 +1,45 @@
+attrs:
+ sphere_name: 
+  type: String
+  name: "Name"
+  description: ""
+  default: ""
+  maxlen: 1024
+ sphere_radius:
+  type: Float
+  name: Sphere Radius
+  description: Sphere Radius
+  default: 1
+ sphere_location:
+  type: FloatVector
+  name: Center
+  description: Sphere center
+  default: [0.0, 0.0, 0.0]
+
+operators:
+ reynolds.add_searchable_sphere:
+  operator_type: Operator
+  class_name: SHMDSearchableSphereOperator
+  label: Add searchable sphere
+  description: Add searchable sphere
+  execute_func: add_searchable_sphere
+
+gui:
+ - box:
+   - label:
+      text: Add searchable sphere
+   - row:
+      - prop:
+         scene_attr: sphere_name
+      - label:
+         text: Radius
+      - prop:
+         scene_attr: sphere_radius
+   - row:
+     - prop:
+        scene_attr: sphere_location
+   - row:
+     - operator:
+        id: reynolds.add_searchable_sphere
+        icon: MESH_UVSPHERE
+

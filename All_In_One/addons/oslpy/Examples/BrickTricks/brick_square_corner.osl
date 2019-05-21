@@ -1,0 +1,23 @@
+#include "helpers.h"
+
+shader brick_square_corner(
+    point Vector = P,
+    float brick_width = 1.0,
+    float brick_height = 1.0,
+    float border = 0.01,
+    float feather = 0.1,
+    output float Height = 0.0,
+    output float Mask = 1.0)
+{
+    float hb = border /2.0;
+    float hf = feather /2.0;
+    float hw = brick_width / 2.0;
+    float hh = brick_height / 2.0;
+    float x = abs(fmod(Vector[0], brick_width));
+    float y = abs(fmod(Vector[1], brick_height)); 
+    x = hw-abs(x-hw);
+    y = hh-abs(y-hh);
+    float dist = min(x,y);
+    Height = _step(hb,hb+(hf*(min(brick_width,brick_height)-hb)),dist);
+    Mask = dist > hb;
+}

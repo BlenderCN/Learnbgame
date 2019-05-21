@@ -1,0 +1,99 @@
+October 31 2018
+
+* Fuse
+	- only draw self.capholes in HUD, if not self.cyclic
+* Refuse
+	- add force_projected_loop support
+* Flatten
+	- add 1,2 scrolling
+* Unchamfer
+	- add bweight and bweights props in draw()
+* Unfuck()
+	- fix issue where the handle1co and handle2co wouldn't update properly when the width is changed, because the original end points were used for intersect_point_line() instead of the adjustted start1co and start2co
+* TurnCorner
+	- set smoothing based on initially selected face
+* QuadCorner
+	- lower width min prop
+	- only draw self.tension in HUD, if not self.single
+
+* Plug and DrawPlug
+	- use utils.normal.normal_clear_across_sharps() instaed of various vertex group ops, to clear normals acress sharps
+		- hide plug type selection in draw()
+	- fix issue with cointain amount not taking into account plug and target scale
+* MyPlugs library
+	- fix contain issue in 001_Blender plug, as a result of the latest Plug() changes
+
+* CreateStash
+	- fix exception when pressing d in modal(), when stash has not been created from other object, and so sources was not defined
+	- allow d key presses to pass through, if there are no sources or if alt, shift, ctrl is pressed
+	- set MM.isstashobj prop
+* ViewStashes
+	- when retrieving a stashe, only transfer stashes when the stash matrix == target matrix at the time the stash was created
+	- undo stash naming when retrieving a stash
+	- unset MM.isstashobj prop when retrieving
+* TransferStashes
+	- move retrieve and restashing to utils.stash.transfer_stashes()
+        - add prop to enable retieval and restashing
+		- useful for transfering stashes to plug subsets
+		- also useful for transfering stashes to duplicate object with applied scale/rotation
+* ClearStashes and RemoveOrphanStashes
+	- add deletion counter title
+* Conform
+	- make sure stashobjs matrix == active obj's matrix
+		- this means you can move and rotate an object with stashes, and conform will keep working
+* add ViewOrphanStashes()
+	- view and retrieve orphan stashes
+* add RemoveOrphanStashes()
+	- removes objects with MM.isstashobj prop and use_face_user props being True and users prop being 1
+
+* BooleanCleanup
+	- add poll()
+	- add 1,2 scrolling
+* Chamfer
+	- rename Normal Transfer VGroup stuff to just Vertex Group
+	- name the actual vgroup "chamfer"
+	- add 1,2 scrolling
+* Offset
+	- rename Normal Transfer VGroup stuff to just Vertex Group
+	- name the actual vgroup "offset"
+	- add 1,2 scrolling
+
+* NormalTransfer
+	- automatically clear normals across sharp edges, if limit_by_sharps props is True
+		- experimental
+* NormalClear
+	- change prevent_sharp_edges to limit_to_selection
+
+* Symmetrize
+	- redo normal transfer without stashes
+* Real Mirror
+	- fix parenting issues by simplifiying using matrix math
+  
+* Looptools Wrappers
+	- remove UP_ARROW and DOWN_ARROW
+* VSelect
+	- add ONE and TWO keys
+
+* properties.py
+	- save stash matrix in object.MM.stashmx and stash target matrix in object.MM.stashtargetmx instead of on the stashes
+	- this is necessary for the retrieval of orphan stashes
+	- remove obsolete location, rotation and scale props for stashes, it's all done via matrices now
+	- rename MM.isstash to MM.isstashobj
+* utils.core.init_sweeps()
+	- fix "mark loop"/freestyle issue, where single loop edges weren't expluded when marked
+* utils.normal.py
+       	- move normal functions from ops over here
+	- add normal_transfer_from_obj() and normal_transfer_from_stash()
+* utils.stash.create_stash()
+	- always set the stashmx and stashtargetmx props
+	- this way, you can properly retrieve orphan stashes at the location they were created at
+* utils.stash.transfer_stashes()
+	- add restash arg + logic
+ * utils.ui.py
+	- in draw_init() and draw_prop() support modal_hud_scale and user_preferences.view.ui_scale
+
+* UI
+	- improve stash idx HUD display in NormalTransfer(), Conform(), ViewStashes and ClearStashes()
+	- remove modal HUD positioning options
+	- add modal_hud_scale prop
+	- remove adddon warning

@@ -1,0 +1,2 @@
+class URDFException(Exception):
+    pass

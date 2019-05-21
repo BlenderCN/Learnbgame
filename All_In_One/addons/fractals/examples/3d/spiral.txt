@@ -1,0 +1,4 @@
+start: A;
+rules:
+A : X X X X X X X r(-45) r(0, -90) d0.1 r(0, 90) r(45) A;
+X: d1 r45;

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups>
+	<group name="BW_Chrome(brushed)">
+		<groupnodes>
+			<groupnode type="FRAME" label="Chromium(Cr)" name="Frame.012" node_height="509" node_width="292" width_hidden="42" loc="-362, 826" />
+			<groupnode type="FRAME" label="bwide.wordpress.com" name="Frame" node_height="125" node_width="200" width_hidden="42" loc="0, 60" />
+			<groupnode type="BSDF_ANISOTROPIC" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" roughness="0.19999" anisotropy="0.89999" rotation="7.45058" node_height="100" node_width="150" width_hidden="42" loc="267, -85" />
+			<groupnode type="MATH" hide="True" operation="DIVIDE" use_clamp="False" value1="90.0" value2="360.0" node_height="100" node_width="120" width_hidden="42" loc="67, -143" />
+			<groupnode type="TEX_NOISE" scale="3000.0" detail="0.0" distortion="0.0" node_height="100" node_width="150" width_hidden="42" loc="-411, 6" />
+			<groupnode type="TEX_NOISE" scale="1800.0" detail="0.0" distortion="0.0" node_height="100" node_width="150" width_hidden="42" loc="-412, 164" />
+			<groupnode type="MATH" hide="True" operation="MULTIPLY" use_clamp="False" value1="0.5" value2="2.0" node_height="100" node_width="120" width_hidden="42" loc="-521, -165" />
+			<groupnode type="TANGENT" custom_color="rgb(0.60799, 0.45599, 0.0)" direction="RADIAL" axis="X" node_height="100" node_width="150" width_hidden="42" loc="-265, -252" />
+			<groupnode type="TANGENT" custom_color="rgb(0.60799, 0.45599, 0.0)" direction="RADIAL" axis="Z" node_height="100" node_width="150" width_hidden="42" loc="-267, -464" />
+			<groupnode type="TANGENT" custom_color="rgb(0.60799, 0.45599, 0.0)" direction="RADIAL" axis="Y" node_height="100" node_width="150" width_hidden="42" loc="-266, -360" />
+			<groupnode type="MAPPING" custom_color="rgb(0.60799, 0.45599, 0.0)" translation="Vector(0.0, 0.0, 0.0)" rotation="Vector(0.0, 0.0, 0.0)" scale="Vector(0.10000, 0.10000, 60.0)" use_min="False" use_max="False" vector="Vector(0.0, 0.0, 0.0)" node_height="100" node_width="240" width_hidden="42" loc="-762, -893" />
+			<groupnode type="TEX_COORD" dupli="False" node_height="100" node_width="150" width_hidden="42" loc="-949, -347" />
+			<groupnode type="GROUP" group="34" node_tree="BW_Selector0-1" node_height="100" node_width="120" width_hidden="42" loc="-35, -299" />
+			<groupnode type="MAPPING" custom_color="rgb(0.60799, 0.45599, 0.0)" translation="Vector(0.0, 0.0, 0.0)" rotation="Vector(0.0, 0.0, 0.0)" scale="Vector(0.10000, 60.0, 0.10000)" use_min="False" use_max="False" vector="Vector(0.0, 0.0, 0.0)" node_height="100" node_width="240" width_hidden="42" loc="-758, -599" />
+			<groupnode type="MAPPING" custom_color="rgb(0.60799, 0.45599, 0.0)" translation="Vector(0.0, 0.0, 0.0)" rotation="Vector(0.0, 0.0, 0.0)" scale="Vector(60.0, 0.10000, 0.10000)" use_min="False" use_max="False" vector="Vector(0.0, 0.0, 0.0)" node_height="100" node_width="240" width_hidden="42" loc="-758, -313" />
+			<groupnode type="MIX_SHADER" fac="0.5" node_height="100" node_width="150" width_hidden="42" loc="475, -25" />
+			<groupnode type="GROUP" group="34" node_tree="BW_Selector0-1" node_height="100" node_width="120" width_hidden="42" loc="-445, -334" />
+			<groupnode type="GROUP_INPUT" node_height="100" node_width="140" width_hidden="42" loc="-698, -36" />
+			<groupnode type="MIX_RGB" blend_type="MIX" use_clamp="False" fac="0.5" color1="rgba(0.5, 0.5, 0.5, 1.0)" color2="rgba(0.5, 0.5, 0.5, 1.0)" node_height="100" node_width="100" width_hidden="42" loc="-176, 4" />
+			<groupnode type="BSDF_ANISOTROPIC" color="rgba(0.80000, 0.80000, 0.80000, 1.0)" roughness="0.19999" anisotropy="0.5" rotation="7.45058" node_height="100" node_width="150" width_hidden="42" loc="259, 116" />
+			<groupnode type="NORMAL_MAP" space="OBJECT" uv_map="" strength="0.02999" color="rgba(0.5, 0.5, 1.0, 1.0)" node_height="100" node_width="250" width_hidden="42" loc="-37, 20" />
+			<groupnode type="MIX_RGB" blend_type="OVERLAY" use_clamp="False" fac="1.0" color1="rgba(0.89999, 0.89999, 0.89999, 1.0)" color2="rgba(0.5, 0.5, 0.5, 1.0)" node_height="100" node_width="100" width_hidden="42" loc="50, 290" />
+			<groupnode type="GROUP" group="40" node_tree="CondFresnel.001" node_height="100" node_width="120" width_hidden="42" parent="Frame.012" loc="17, -96" />
+			<groupnode type="GROUP" group="40" node_tree="CondFresnel.001" node_height="100" node_width="120" width_hidden="42" parent="Frame.012" loc="14, -249" />
+			<groupnode type="COMBRGB" red="0.0" green="0.0" blue="0.0" node_height="100" node_width="80" width_hidden="42" parent="Frame.012" loc="167, -252" />
+			<groupnode type="GROUP_OUTPUT" node_height="100" node_width="140" width_hidden="42" parent="Frame" loc="688, -83" />
+			<groupnode type="GROUP" group="40" node_tree="CondFresnel.001" node_height="100" node_width="118" width_hidden="42" parent="Frame.012" loc="14, -402" />
+		</groupnodes>
+		<groupinputs>
+			<groupinput name="XYZ Selector" type="VALUE" value="0.09999" />
+			<groupinput name="Scale" type="VALUE" value="1800.0" />
+			<groupinput name="Normal" type="VALUE" value="0.02999" />
+			<groupinput name="Mix" type="VALUE" value="0.5" />
+			<groupinput name="Rotation °" type="VALUE" value="0.0" />
+			<groupinput name="Roughness1" type="VALUE" value="0.19999" />
+			<groupinput name="Anisotropy1" type="VALUE" value="0.5" />
+			<groupinput name="Roughness2" type="VALUE" value="0.19999" />
+			<groupinput name="Anisotropy2" type="VALUE" value="0.89999" />
+		</groupinputs>
+		<groupoutputs>
+			<groupoutput name="Shader" type="SHADER" />
+		</groupoutputs>
+		<grouplinks>
+			<grouplink to="15" input="2" from="2" output="0" />
+			<grouplink to="2" input="4" from="20" output="0" />
+			<grouplink to="2" input="0" from="21" output="0" />
+			<grouplink to="19" input="0" from="21" output="0" />
+			<grouplink to="19" input="4" from="20" output="0" />
+			<grouplink to="15" input="1" from="19" output="0" />
+			<grouplink to="2" input="3" from="3" output="0" />
+			<grouplink to="19" input="3" from="3" output="0" />
+			<grouplink to="18" input="1" from="5" output="1" />
+			<grouplink to="18" input="2" from="4" output="1" />
+			<grouplink to="20" input="1" from="18" output="0" />
+			<grouplink to="21" input="2" from="18" output="0" />
+			<grouplink to="4" input="1" from="6" output="0" />
+			<grouplink to="14" input="0" from="11" output="3" />
+			<grouplink to="12" input="1" from="7" output="0" />
+			<grouplink to="12" input="2" from="9" output="0" />
+			<grouplink to="12" input="3" from="8" output="0" />
+			<grouplink to="16" input="1" from="14" output="0" />
+			<grouplink to="16" input="2" from="13" output="0" />
+			<grouplink to="16" input="3" from="10" output="0" />
+			<grouplink to="13" input="0" from="11" output="3" />
+			<grouplink to="10" input="0" from="11" output="3" />
+			<grouplink to="4" input="0" from="16" output="0" />
+			<grouplink to="5" input="0" from="16" output="0" />
+			<grouplink to="19" input="5" from="12" output="0" />
+			<grouplink to="2" input="5" from="12" output="0" />
+			<grouplink to="15" input="0" from="17" output="3" />
+			<grouplink to="20" input="0" from="17" output="2" />
+			<grouplink to="19" input="1" from="17" output="5" />
+			<grouplink to="19" input="2" from="17" output="6" />
+			<grouplink to="2" input="1" from="17" output="7" />
+			<grouplink to="2" input="2" from="17" output="8" />
+			<grouplink to="3" input="0" from="17" output="4" />
+			<grouplink to="5" input="1" from="17" output="1" />
+			<grouplink to="6" input="0" from="17" output="1" />
+			<grouplink to="25" input="0" from="15" output="0" />
+			<grouplink to="16" input="0" from="17" output="0" />
+			<grouplink to="12" input="0" from="17" output="0" />
+			<grouplink to="24" input="0" from="22" output="0" />
+			<grouplink to="24" input="1" from="23" output="0" />
+			<grouplink to="24" input="2" from="26" output="0" />
+			<grouplink to="21" input="1" from="24" output="0" />
+		</grouplinks>
+	</group>
+</groups>

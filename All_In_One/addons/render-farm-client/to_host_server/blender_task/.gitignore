@@ -1,0 +1,5 @@
+*.blend
+toRemote
+blender_p.py
+*.pyc
+*.swp

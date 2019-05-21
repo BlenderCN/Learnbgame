@@ -1,0 +1,9 @@
+{
+    "keymaps": [
+        {
+            "keymaps": ["3D View"],
+            "value_type": "Middle Mouse: Any",
+            "any": true
+        }
+    ]
+}

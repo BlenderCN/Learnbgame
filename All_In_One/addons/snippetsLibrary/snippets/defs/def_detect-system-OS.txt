@@ -1,0 +1,23 @@
+from sys import platform
+
+def detect_OS():
+    """return str of os name : Linux, Windows, Mac (None if undetected)"""
+    myOS = platform
+
+    if myOS.startswith('linux') or myOS.startswith('freebsd'):# linux
+        print("operating system : Linux")
+        return ("Linux")
+
+    elif myOS.startswith('win'):# Windows
+        print("operating system : Windows")
+        return ("Windows")
+
+    elif myOS == "darwin":# OS X
+        print("operating system : Mac")
+        return ('Mac')
+
+    else:# undetected
+        print("Cannot detect OS, python 'sys.platform' give :", myOS)
+        return None
+
+detect_OS()

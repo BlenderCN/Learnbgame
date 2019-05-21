@@ -1,0 +1,3 @@
+﻿import bpy
+
+print('test')

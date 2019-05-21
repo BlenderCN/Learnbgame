@@ -1,0 +1,234 @@
+attrs:
+ relative_sizes:
+  type: Bool
+  name: Relative Sizes
+  description: Relative or Absoulte Sizes of  undistored size of a refined cell?
+  default: true 
+ layers_list:
+  type: UIList
+  coll_data_prop: shmd_layers
+  coll_data_index: shmd_lindex
+ layer_name:
+  type: String
+  name: Name
+  description: Layer name per patch
+  default: ""
+  maxlen: 1024
+ n_surface_layers:
+  type: Int
+  name: Surface layers
+  description: Surface layers per patch
+  default: 1
+ expansion_ratio:
+  type: Float
+  name: Expansion Ratio
+  description: Expansion factor for layer mesh
+  default: 1.0
+ final_layer_thickness:
+  type: Float
+  name: Final Layer Thickness
+  description: Thickness of final added cell layer
+  default: 0.3
+ min_layer_thickness:
+  type: Float
+  name: Min Thickness
+  description: Min Thickness of cell layer
+  default: 0.25
+ n_grow_layers:
+  type: Int
+  name: Grow Layers
+  description: Extrude points to nGrow layers of connected faces
+  default: 0
+ layer_feature_angle:
+  type: Float
+  name: Feature Angle
+  description: When not to extrude surface
+  default: 30.0
+  subtype: ANGLE
+ layer_n_relax_iter:
+  type: Int
+  name: Relax Iterations
+  description: Maximum number of snapping relaxation iterations
+  default: 3
+ layer_n_smooth_normal_iter:
+  type: Int
+  name: Smoothing Iterations of surface normals
+  description: Number of smoothing iterations of surface normals
+  default: 1
+ layer_n_smooth_iter:
+  type: Int
+  name: Smoothing Iterations
+  description: Number of smoothing iterations of interior mesh movement direction
+  default: 3
+ smooth_layer_thickness:
+  type: Float
+  name: Smooth layer thickness
+  description: Smooth layer thickness over surface patches
+  default: 10.0
+ max_face_thickness_ratio:
+  type: Float
+  name: Max Face Thickness Ratio
+  description: Stop layer growth on highly warped cells
+  default: 0.5
+ max_thickness_to_medial_ratio:
+  type: Float
+  name: Thickness to Medial Ratio
+  description: Reduce layer growth
+  default: 0.3
+ min_median_axis_angle:
+  type: Float
+  name: Min Median Axis Angle
+  description: Angle used to pick up media axis points
+  default: 90.0
+  subtype: ANGLE
+ n_buffer_cells_no_extrude:
+  type: Int
+  name: Buffer Cells No Extrude
+  description: Create buffer region for new layer terminations
+  default: 0
+ layer_n_add_iter:
+  type: Int
+  name: Addition Iterations
+  description: Max number of layer addition iterations
+  default: 50
+ layer_n_mesh_quality_iter:
+  type: Int
+  name: Smoothing Iterations
+  description: nRelaxedIter, itearations after which mesh quality controls get used
+  default: 20
+
+operators:
+ shmd_layers.list_action:
+  operator_type: ListOperator
+  class_name: LayersListActions
+  description: Layers List
+  label: Layers List
+  data_prop: shmd_layers
+  id_prop: shmd_lindex
+ reynolds.assign_layer:
+  operator_type: Operator
+  class_name: SHMDLayerAssignOperator
+  label: Assign Layer
+  description: Assingn Layer
+  execute_func: assign_layer
+ reynolds.remove_layer:
+  operator_type: Operator
+  class_name: SHMDLayerRemoveOperator
+  label: Remove Layer
+  description: Remove Layer
+  execute_func: remove_layer
+
+gui:
+ - box:
+   - prop:
+      scene_attr: relative_sizes
+   - row: 
+     - template_list: 
+        coll_data_propname: shmd_layers
+        coll_index_propname: shmd_lindex
+     - col: 
+       - operator: 
+          id: shmd_layers.list_action
+          icon: ZOOMIN
+          action: ADD
+       - operator: 
+          id: shmd_layers.list_action
+          icon: ZOOMOUT
+          action: REMOVE
+   - row:
+     - prop:
+        scene_attr: layer_name
+     - prop:
+        scene_attr: n_surface_layers
+   - row: 
+     - operator: 
+        id: reynolds.assign_layer
+        icon: VERTEXSEL
+     - operator: 
+        id: reynolds.remove_layer
+        icon: X
+   - separator: 
+      nums: 1
+   - row:
+      - label:
+         text: Expansion Ratio
+      - prop:
+         scene_attr: expansion_ratio
+   - row:
+      - label:
+         text: Final Layer Thickness
+      - prop:
+         scene_attr: final_layer_thickness
+   - row:
+      - label:
+         text: Min Layer Thickness
+      - prop:
+         scene_attr: min_layer_thickness
+   - row:
+      - label:
+         text: Grow Layers
+      - prop:
+         scene_attr: n_grow_layers
+   - separator:
+      nums: 1
+   - box:
+     - label:
+        text: Advanced Settings
+     - row:
+       - label:
+          text: Feature Angle
+       - prop:
+          scene_attr: layer_feature_angle
+     - row:
+       - label:
+          text: Smooth layer thickness
+       - prop:
+          scene_attr: smooth_layer_thickness
+     - row:
+       - label:
+          text: Max Face Thickness Ratio 
+       - prop:
+          scene_attr: max_face_thickness_ratio
+     - row:
+       - label:
+          text: Max Thickness to Medial Ratio
+       - prop:
+          scene_attr: max_thickness_to_medial_ratio
+     - row:
+       - label:
+          text: Min Median Axis Angle
+       - prop:
+          scene_attr: min_median_axis_angle
+     - row:
+       - label:
+          text: Buffer Cells No Extrude
+       - prop:
+          scene_attr: n_buffer_cells_no_extrude
+     - box:
+       - label:
+          text: Iterations
+       - row:
+         - label:
+            text: Relaxed
+         - prop:
+            scene_attr: layer_n_relax_iter
+       - row:
+         - label:
+            text: Smoothing Surface Normal 
+         - prop:
+            scene_attr: layer_n_smooth_normal_iter
+       - row:
+         - label:
+            text: Smoothing
+         - prop:
+            scene_attr: layer_n_smooth_iter
+       - row:
+         - label:
+            text: Layer Addition
+         - prop:
+            scene_attr: layer_n_add_iter
+       - row:
+         - label:
+            text: Use mesh quality after
+         - prop:
+            scene_attr: layer_n_mesh_quality_iter

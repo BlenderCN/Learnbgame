@@ -1,0 +1,254 @@
+diff --git a/source/creator/CMakeLists.txt b/source/creator/CMakeLists.txt
+index 0f7612abb0c..303b5c04a0d 100644
+--- a/source/creator/CMakeLists.txt
++++ b/source/creator/CMakeLists.txt
+@@ -231,9 +231,9 @@ if(WITH_BUILDINFO)
+   add_dependencies(buildinfoobj buildinfo)
+ endif()
+ 
+-add_cc_flags_custom_test(blender)
++add_cc_flags_custom_test(OpenCVLaboratory)
+ 
+-# message(STATUS "Configuring blender")
++# message(STATUS "Configuring OpenCVLaboratory")
+ if(WITH_PYTHON_MODULE)
+   add_definitions(-DWITH_PYTHON_MODULE)
+ 
+@@ -241,9 +241,9 @@ if(WITH_PYTHON_MODULE)
+   #
+   # note that 'SHARED' works on Linux and Windows,
+   # but not OSX which _must_ be 'MODULE'
+-  add_library(blender MODULE ${SRC})
++  add_library(OpenCVLaboratory MODULE ${SRC})
+   set_target_properties(
+-    blender
++    OpenCVLaboratory
+     PROPERTIES
+       PREFIX ""
+       OUTPUT_NAME bpy
+@@ -253,7 +253,7 @@ if(WITH_PYTHON_MODULE)
+ 
+   if(APPLE)
+     set_target_properties(
+-      blender
++      OpenCVLaboratory
+       PROPERTIES
+         MACOSX_BUNDLE TRUE
+         LINK_FLAGS_RELEASE "${PLATFORM_LINKFLAGS}"
+@@ -264,20 +264,20 @@ if(WITH_PYTHON_MODULE)
+   if(WIN32)
+     # python modules use this
+     set_target_properties(
+-      blender
++      OpenCVLaboratory
+       PROPERTIES
+       SUFFIX ".pyd"
+     )
+   endif()
+ 
+ else()
+-  add_executable(blender ${EXETYPE} ${SRC})
+-  WINDOWS_SIGN_TARGET(blender)
++  add_executable(OpenCVLaboratory ${EXETYPE} ${SRC})
++  #WINDOWS_SIGN_TARGET(OpenCVLaboratory)
+ endif()
+ 
+ if(WITH_BUILDINFO)
+   # explicitly say that the executable depends on the buildinfo
+-  add_dependencies(blender buildinfo)
++  add_dependencies(OpenCVLaboratory buildinfo)
+ endif()
+ 
+ 
+@@ -341,10 +341,10 @@ elseif(APPLE)
+   if(WITH_PYTHON_MODULE)
+     set(TARGETDIR_VER ${BLENDER_VERSION})
+   else()
+-    set(TARGETDIR_VER blender.app/Contents/Resources/${BLENDER_VERSION})
++    set(TARGETDIR_VER OpenCVLaboratory.app/Contents/Resources/${BLENDER_VERSION})
+   endif()
+   # Skip relinking on cpack / install
+-  set_target_properties(blender PROPERTIES BUILD_WITH_INSTALL_RPATH true)
++  set_target_properties(OpenCVLaboratory PROPERTIES BUILD_WITH_INSTALL_RPATH true)
+ endif()
+ 
+ 
+@@ -412,7 +412,7 @@ if(WITH_INTERNATIONAL)
+     locales
+     DEPENDS ${_all_mo_files})
+ 
+-  add_dependencies(blender locales)
++  add_dependencies(OpenCVLaboratory locales)
+ 
+   # Generate INSTALL rules
+   install(
+@@ -451,7 +451,7 @@ endif()
+ if("${CMAKE_GENERATOR}" MATCHES ".*Makefiles.*")
+   # message after building.
+   add_custom_command(
+-    TARGET blender POST_BUILD MAIN_DEPENDENCY blender
++    TARGET OpenCVLaboratory POST_BUILD MAIN_DEPENDENCY blender
+     COMMAND ${CMAKE_COMMAND} -E
+             echo 'now run: \"make install\" to copy runtime files and scripts to ${TARGETDIR_VER}'
+   )
+@@ -468,9 +468,9 @@ if(UNIX AND NOT APPLE)
+       add_custom_target(
+         blender_man_page ALL
+         COMMAND ${CMAKE_SOURCE_DIR}/doc/manpage/blender.1.py
+-                ${EXECUTABLE_OUTPUT_PATH}/blender
++                ${EXECUTABLE_OUTPUT_PATH}/ocvl
+                 ${CMAKE_CURRENT_BINARY_DIR}/blender.1)
+-      add_dependencies(blender_man_page blender)
++      add_dependencies(blender_man_page OpenCVLaboratory)
+     endif()
+   endif()
+ 
+@@ -478,19 +478,19 @@ if(UNIX AND NOT APPLE)
+   if(WITH_PYTHON_MODULE)
+     if(WITH_INSTALL_PORTABLE)
+       install(
+-        TARGETS blender
++        TARGETS OpenCVLaboratory
+         DESTINATION "."
+       )
+     else()
+       install(
+-        TARGETS blender
++        TARGETS OpenCVLaboratory
+         LIBRARY DESTINATION ${PYTHON_SITE_PACKAGES}
+       )
+     endif()
+     # none of the other files are needed currently
+   elseif(WITH_INSTALL_PORTABLE)
+     install(
+-      TARGETS blender
++      TARGETS OpenCVLaboratory
+       DESTINATION "."
+     )
+ 
+@@ -518,7 +518,7 @@ if(UNIX AND NOT APPLE)
+   else()
+     # main blender binary
+     install(
+-      TARGETS blender
++      TARGETS OpenCVLaboratory
+       DESTINATION bin
+     )
+     if(WITH_DOC_MANPAGE)
+@@ -582,7 +582,7 @@ if(UNIX AND NOT APPLE)
+         PATTERN "tkinter" EXCLUDE                   # ./tkinter
+         PATTERN "lib-dynload/_tkinter.*" EXCLUDE    # ./lib-dynload/_tkinter.co
+         PATTERN "idlelib" EXCLUDE                   # ./idlelib
+-        PATTERN "test" EXCLUDE                      # ./test
++        #PATTERN "test" EXCLUDE                      # ./test
+         PATTERN "turtledemo" EXCLUDE                # ./turtledemo
+         PATTERN "turtle.py" EXCLUDE                 # ./turtle.py
+       )
+@@ -612,7 +612,7 @@ if(UNIX AND NOT APPLE)
+           PATTERN "*.pyo" EXCLUDE                 # * any cache *
+           PATTERN "oldnumeric" EXCLUDE            # ./oldnumeric
+           PATTERN "doc" EXCLUDE                   # ./doc
+-          PATTERN "tests" EXCLUDE                 # ./tests
++          #PATTERN "tests" EXCLUDE                 # ./tests
+           PATTERN "f2py" EXCLUDE                  # ./f2py - fortran/python interface code, not for blender.
+           PATTERN "include" EXCLUDE               # include dirs all over, we wont use NumPy/CAPI
+           PATTERN "*.h" EXCLUDE                   # some includes are not in include dirs
+@@ -897,20 +897,20 @@ elseif(APPLE)
+       PATTERN "tkinter" EXCLUDE                   # ./tkinter
+       PATTERN "lib-dynload/_tkinter.*" EXCLUDE    # ./lib-dynload/_tkinter.co
+       PATTERN "idlelib" EXCLUDE                   # ./idlelib
+-      PATTERN "test" EXCLUDE                      # ./test
++      #PATTERN "test" EXCLUDE                      # ./test
+       PATTERN "turtledemo" EXCLUDE                # ./turtledemo
+       PATTERN "turtle.py" EXCLUDE                 # ./turtle.py
+     )
+   endmacro()
+ 
+-  set(OSX_APP_SOURCEDIR ${CMAKE_SOURCE_DIR}/release/darwin/blender.app)
++  set(OSX_APP_SOURCEDIR ${CMAKE_SOURCE_DIR}/release/darwin/OpenCVLaboratory.app)
+ 
+   # setup Info.plist
+   execute_process(COMMAND date "+%Y-%m-%d"
+                   OUTPUT_VARIABLE BLENDER_DATE
+                   OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 
+-  set_target_properties(blender PROPERTIES
++  set_target_properties(OpenCVLaboratory PROPERTIES
+     MACOSX_BUNDLE_INFO_PLIST ${OSX_APP_SOURCEDIR}/Contents/Info.plist
+     MACOSX_BUNDLE_SHORT_VERSION_STRING "${BLENDER_VERSION}${BLENDER_VERSION_CHAR}"
+     MACOSX_BUNDLE_LONG_VERSION_STRING "${BLENDER_VERSION}${BLENDER_VERSION_CHAR} ${BLENDER_DATE}")
+@@ -922,10 +922,10 @@ elseif(APPLE)
+ 
+   # Give the bundle actual creation/modification date
+   execute_process(COMMAND SetFile -d ${SETFILE_DATE} -m ${SETFILE_DATE}
+-                  ${EXECUTABLE_OUTPUT_PATH}/blender.app)
++                  ${EXECUTABLE_OUTPUT_PATH}/OpenCVLaboratory.app)
+ 
+   install(
+-    TARGETS blender
++    TARGETS OpenCVLaboratory
+     DESTINATION "."
+   )
+ 
+@@ -934,25 +934,25 @@ elseif(APPLE)
+ 
+   install(
+     FILES ${OSX_APP_SOURCEDIR}/Contents/PkgInfo
+-    DESTINATION blender.app/Contents
++    DESTINATION OpenCVLaboratory.app/Contents
+   )
+ 
+   install_dir(
+     ${OSX_APP_SOURCEDIR}/Contents/Resources
+-    blender.app/Contents/
++    OpenCVLaboratory.app/Contents/
+   )
+ 
+   if(WITH_OPENMP AND OPENMP_CUSTOM)
+     install(
+       FILES ${LIBDIR}/openmp/lib/libomp.dylib
+-      DESTINATION blender.app/Contents/Resources/lib
++      DESTINATION OpenCVLaboratory.app/Contents/Resources/lib
+     )
+   endif()
+ 
+   if(WITH_LLVM AND NOT LLVM_STATIC)
+     install(
+       FILES ${LIBDIR}/llvm/lib/libLLVM-3.4.dylib
+-      DESTINATION blender.app/Contents/MacOS
++      DESTINATION OpenCVLaboratory.app/Contents/MacOS
+     )
+   endif()
+ 
+@@ -1050,11 +1050,11 @@ install(
+ # -----------------------------------------------------------------------------
+ # Setup link libs
+ 
+-add_dependencies(blender makesdna)
+-target_link_libraries(blender ${LIB})
++add_dependencies(OpenCVLaboratory makesdna)
++target_link_libraries(OpenCVLaboratory ${LIB})
+ unset(LIB)
+ 
+-setup_liblinks(blender)
++setup_liblinks(OpenCVLaboratory)
+ 
+ 
+ # -----------------------------------------------------------------------------
+@@ -1062,13 +1062,13 @@ setup_liblinks(blender)
+ 
+ if(WIN32 AND NOT WITH_PYTHON_MODULE)
+   install(
+-    TARGETS blender
++    TARGETS OpenCVLaboratory
+     COMPONENT Blender
+     DESTINATION "."
+   )
+   set_target_properties(
+-    blender
++    OpenCVLaboratory
+     PROPERTIES
+-      VS_USER_PROPS "blender.Cpp.user.props"
++      VS_USER_PROPS "OpenCVLaboratory.Cpp.user.props"
+   )
+ endif()

@@ -1,0 +1,31 @@
+#
+# XYZ 
+#	Unknown source
+#
+#	bone	 	MHX bone	twist
+
+Name:	XYZ
+
+Armature:
+	hips		Root		0
+	chest		Spine3		0 
+	neck		Neck		0 
+	head		Head		0 
+
+	leftcollar	Clavicle_L	0
+	leftuparm	UpArm_L		90 
+	leftlowarm	LoArm_L		90
+	lefthand	Hand_L		90 
+
+	rightcollar	Clavicle_R	0
+	rightuparm	UpArm_R		-90 
+	rightlowarm	LoArm_R		-90
+	righthand	Hand_R		-90
+
+	leftupleg	UpLeg_L		0 
+	leftlowleg	LoLeg_L		0 
+	leftfoot	Foot_L		0 
+
+	rightupleg	UpLeg_R		0
+	rightlowleg	LoLeg_R		0 
+	rightfoot	Foot_R		0 

@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+# adding Cython/Python builder
+import sys
+import platform
+Import('env')
+
+if platform.architecture()[1] == "ELF":
+    #need to call python3 to correctly build, make this for linux first
+    executable = '/usr/bin/python3'
+else:
+    executable = sys.executable
+
+pybld = Builder(action='%s setup.py build_ext --inplace' % executable)
+env.Append(BUILDERS={'Cython': pybld})
+
+env.Cython('voronoi.pyx')

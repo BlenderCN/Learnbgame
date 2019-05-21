@@ -1,0 +1,33 @@
+#include "helpers.h"
+
+shader brick_rounded_corner(
+    point Vector = P,
+    float brick_width = 1.0, 
+    float brick_height = 1.0,
+    float border = 0.01,
+    float feather = 0.1,
+    float cornerRadius = 0.05,
+    output float Height = 0.0,
+    output float Mask = 1.0)
+{
+    float x = abs(fmod(Vector[0],brick_width));
+    float y = abs(fmod(Vector[1],brick_height));
+    float cr = max(cornerRadius,0.00001);
+    float actual_width = brick_width - border;
+    float half_actual_width = actual_width / 2;
+    float half_actual_width_minus_corner = (actual_width - (cr*2))/2;;
+    x = abs(x - half_actual_width - border/2);
+    x = max(x - half_actual_width_minus_corner,0);
+
+    float actual_height = brick_height - border;
+    float half_actual_height = actual_height / 2;
+    float half_actual_height_minus_corner = (actual_height - (cr*2))/2;;
+    y = abs(y - half_actual_height - border/2);
+    y = max(y - half_actual_height_minus_corner,0);
+    
+    float dist = (-sqrt(x*x + y*y))+cr;
+    Mask = dist >0;
+    
+    Height = _step(0,feather*cr,dist);
+}
+

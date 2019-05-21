@@ -1,0 +1,13 @@
+{
+  "scene": "minimal_cube",
+  "animation": {
+    "frames": 100
+  },
+  "resolution": {
+    "width": 800,
+    "height": 800,
+    "percentage": 100
+  },
+  "override": false,
+  "output_folder": "render"
+}

@@ -1,0 +1,189 @@
+attrs:
+ regions: 
+  type: PyDict
+ region_name: 
+  type: String
+  name: "Patch/Region Name"
+  description: ""
+  default: ""
+  maxlen: 1024
+ region_type: 
+  type: Enum
+  name: "Type:"
+  description: "Patch/Region Type"
+  items: 
+    -
+     - empty
+     - empty
+     - ""
+    -
+     - wall
+     - wall
+     - ""
+    -
+     - patch
+     - patch
+     - ""
+    -
+     - cyclic
+     - cyclic
+     - ""
+ regions_loaded:
+  type: Bool
+  name: ""
+  description: "Regions loaded"
+ select_front_face:
+  type: Bool
+  name: ""
+  description: "Front Face"
+ select_back_face:
+  type: Bool
+  name: ""
+  description: "Back Face"
+ select_top_face:
+  type: Bool
+  name: ""
+  description: "Top Face"
+ select_bottom_face:
+  type: Bool
+  name: ""
+  description: "Bottom Face"
+ select_left_face:
+  type: Bool
+  name: ""
+  description: "Left Face"
+ select_right_face:
+  type: Bool
+  name: ""
+  description: "Right Face"
+ regions_list: 
+  type: UIList
+  coll_data_prop: bmd_regions
+  coll_data_index: bmd_rindex
+
+operators:
+ regions.list_action:
+   operator_type: ListOperator
+   class_name: RegionsListActions
+   description: Regions List
+   label: Regions List
+   data_prop: bmd_regions
+   id_prop: bmd_rindex
+ reynolds.load_regions:
+  operator_type: Operator
+  class_name: BMDLoadRegionsOperator
+  label: Load Regions
+  description: Inital load of regions
+  execute_func: load_regions
+ reynolds.assign_region:
+  operator_type: Operator
+  class_name: BMDRegionsAssignOperator
+  label: Assign Region
+  description: Assign region to the label
+  execute_func: assign_region
+ reynolds.remove_region:
+  operator_type: Operator
+  class_name: BMDRegionsRemoveOperator
+  label: Remove Region
+  description: Remove region to the label
+  execute_func: remove_region
+ reynolds.assign_time_prop:
+  operator_type: Operator
+  class_name: BMDAssignTimePropOperator
+  label: Assign Time Property (p, U, T etc)
+  description: Assign time property to the region
+  execute_func: assign_time_prop
+
+gui:
+ - box: 
+   - row: 
+     - template_list: 
+        coll_data_propname: bmd_regions
+        coll_index_propname: bmd_rindex
+     - col: 
+       - operator: 
+          id: regions.list_action
+          icon: ZOOMIN
+          action: ADD
+       - operator: 
+          id: regions.list_action
+          icon: ZOOMOUT
+          action: REMOVE
+       - separator: 
+          nums: 1
+   - col: 
+     - row:
+       - prop: 
+          scene_attr: region_name
+       - prop: 
+          scene_attr: region_type
+     - row:
+       - box:
+         - label:
+            text: Select faces
+         - row:
+           - label:
+              text: Front
+           - prop:
+              scene_attr: select_front_face
+           - label:
+              text: Back
+           - prop:
+              scene_attr: select_back_face
+         - row:
+           - label:
+              text: Top
+           - prop:
+              scene_attr: select_top_face
+           - label:
+              text: Bottom
+           - prop:
+              scene_attr: select_bottom_face
+         - row:
+           - label:
+              text: Left
+           - prop:
+              scene_attr: select_left_face
+           - label:
+              text: Right
+           - prop:
+              scene_attr: select_right_face
+         - separator: 
+            nums: 1
+     - row:
+       - box:
+         - label:
+            text: Assign time properties
+         - row:
+           - label:
+              text: Dimensions
+           - prop:
+              scene_attr: time_prop_dimensions
+         - row:
+           - label:
+              text: Internal field
+           - prop:
+              scene_attr: time_prop_internal_field
+         - row:
+           - prop:
+              scene_attr: time_prop_type
+         - row:
+           - prop:
+              scene_attr: time_prop_patch_type
+         - row:
+           - prop:
+              scene_attr: time_prop_value
+         - separator: 
+            nums: 1
+   - row: 
+     - operator: 
+        id: reynolds.assign_region
+        icon: VERTEXSEL
+     - operator: 
+        id: reynolds.remove_region
+        icon: X
+     - separator: 
+        nums: 1
+     - operator: 
+        id: reynolds.assign_time_prop
+        icon: X

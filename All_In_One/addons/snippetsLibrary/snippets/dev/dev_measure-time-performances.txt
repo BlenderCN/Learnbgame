@@ -1,0 +1,2 @@
+import timeit
+timeit.timeit('"-".join(str(n) for n in range(100))', number=10000)#lauch 10000 times

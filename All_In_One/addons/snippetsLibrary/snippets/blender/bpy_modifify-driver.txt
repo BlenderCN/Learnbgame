@@ -1,0 +1,27 @@
+## exemple path to first target of the first variable of the first driver.
+##ob.animation_data.drivers[0].driver.variables['var'].targets[0].id
+for ob in objs:
+    print('\n'+ob.name, "drivers")
+    for dr in ob.animation_data.drivers:
+        for var in dr.driver.variables: 
+            if var.type == 'SINGLE_PROP':
+                ## id : objet ou rig contenant la propertie, data_path : le chemin
+
+                # direct datapath modification
+                #var.targets[0].data_path == 'pose.bones["hide"]["hide"]'
+
+                #ex: change data_path if not good
+                if var.targets[0].data_path == 'pose.bones["walk"]["hide"]':
+                    print(var.name, "changing data_path")
+                    var.targets[0].data_path = 'pose.bones["walk"]["head"]'
+
+            if var.type == 'TRANSFORMS':
+                ## change target according to previous
+                ## with transform : id wait for an object, bone_target wait for str
+
+                ##compare with previous target name
+                #if var.targets[0].id.name == 'oscar_yeux-bandes_rig':
+                print(var.name)
+                if var.targets[0].bone_target in ('head_slider','head_up_down_slider'):
+                    print("changing bone target")
+                    var.targets[0].id = bpy.data.objects['oscar_rig']

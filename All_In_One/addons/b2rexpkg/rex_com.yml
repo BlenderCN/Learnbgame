@@ -1,0 +1,93 @@
+Components:
+  FSM:
+    - channel: {
+       type: integer,
+       default: 0
+    }
+    - msg: {
+       type: string,
+       default: foo
+    }
+  EC_Script:
+    - type: {
+       type: hardcoded,
+       default: js,
+       internal_name: Type
+    }
+    - onload: {
+       type: boolean,
+       default: true,
+       internal_name: Run on load
+    }
+    - script: {
+       type: jsscript,
+       internal_name: Script ref
+    }
+  EC_HoveringText:
+    - text: {
+       type: string,
+       internal_name: Text
+    }
+    - font: {
+       type: string,
+       internal_name: Font,
+       default: Arial
+    }
+    - font_size: {
+       type: integer,
+       internal_name: Font Size,
+       default: 100
+    }
+    - font_color: {
+       type: string,
+       internal_name: Font Color,
+       default: 0 0 0 0
+    }
+    - background_color: {
+       type: string,
+       internal_name: Background Color,
+       default: 1 1 1 0
+    }
+    - border_color: {
+       type: string,
+       internal_name: Border Color,
+       default: 0 0 0 0
+    }
+    - border_thickness: {
+       type: integer,
+       internal_name: Border Thickness,
+       default: 0
+    }
+    - position: {
+       type: string,
+       internal_name: Position,
+       default: 0 0 1
+    }
+    - use_gradient: {
+       type: boolean,
+       internal_name: Use Gradient,
+       default: false
+    }
+    - gradient_start: {
+       type: string,
+       internal_name: Gradient Start,
+       default: 0 0 0 1
+    }
+    - gradient_end: {
+       type: string,
+       internal_name: Gradient End,
+       default: 1 1 1 1
+    }
+  EC_RigidBody: {}
+  EC_EnvironmentLight: {}
+  EC_RttTarget: {}
+  EC_3DCanvasSource: {}
+  EC_WaterPlane: {}
+  EC_AnimationController:
+    - anim_state: {
+       type: string,
+       internal_name: Animation state
+    }
+  EC_DynamicComponent: {}
+  EC_Touchable: {}
+  

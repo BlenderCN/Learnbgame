@@ -1,0 +1,127 @@
+INSTRUCTIONS:
+
+    This text file contains connection information for use with ssh and rsync to
+remote servers. DO NOT MODIFY LINES CONTAINING "###", as these lines are used to
+accurately parse the text file.
+
+    Below, you'll find the SSH username, host server, SSH connection extension
+(optional), and remote server dictionary that will be loaded on startup. Your
+computer will be communicating to the remote servers by running the
+'blender_task.py' script on the host server. It will be connecting to the host
+server with the following bash call:
+
+$ ssh ${username}@${hostServer}${extension}
+
+where '${username}', '${hostServer}', and '${extension}' are defined below. The
+addon will also communicate with each of the remote servers using the following
+bash call:
+
+$ ssh ${username}@${serversDictionary[groupName][index]}${extension}
+
+where 'serversDictionary[groupName][index]' is the remote server name at any
+existing index within the 'groupName' list.
+
+    The remote servers dictionary defined below must be a valid dictionary
+of server names (extra white space and new line characters will be removed).
+Please follow the following formatting guidelines while defining the remote
+servers dictionary:
+
+    - The dictionary must begin with a starting brace '{' and end with an ending
+    brace '}'
+    - The dictionary keys define remote server groups; you can name these
+    whatever you like (must be valid strings).
+    - The dictionary values must be valid lists of server name strings.
+    - NOTE: Valid strings are be surrounded by double or single quotes - single
+    quotes are converted to double quotes by the addon.
+    - Double check your dictionary formatting before committing your changes!
+
+if you'd like to learn more about dictionaries, read the Python documentation on
+dictionaries at the following URL:
+
+https://docs.python.org/3/tutorial/datastructures.html#dictionaries
+
+If you have any questions or if you'd like to report a bug, feel free to email
+me at chris@bblanimation.com.
+
+    Once you've finished making changes to the information below, save the
+changes to this file (Text > Save), and switch back to the 3D viewport. Now
+you're ready to render on your remote servers!
+
+***DO NOT MODIFY LINES CONTAINING "###"***
+
+
+
+### BEGIN SSH USERNAME ###
+cgearhar
+### END SSH USERNAME ###
+
+
+
+### BEGIN HOST SERVER ###
+matt
+### END HOST SERVER ###
+
+
+
+### BEGIN EXTENSION ###
+.cse.taylor.edu
+### END EXTENSION ###
+
+
+
+### BEGIN HOST SERVER PATH ###
+/tmp/renderFarm-$username$/
+### END HOST SERVER PATH ###
+
+
+
+### BEGIN REMOTE SERVERS DICTIONARY ###
+{'cse217': [
+            "cse21701","cse21702","cse21703","cse21704","cse21705","cse21706",
+            "cse21707","cse21709","cse21710","cse21712","cse21713","cse21714",
+            "cse21715","cse21716"
+],'cse218': [
+            "cse21801","cse21802", "cse21803","cse21804","cse21806","cse21808",
+            "cse21809","cse21811","cse21812","cse21814"
+],'cse217+18': [
+            "cse21701","cse21702","cse21703","cse21704","cse21705","cse21706",
+            "cse21707","cse21709","cse21710","cse21712","cse21713","cse21714",
+            "cse21715","cse21716",
+            "cse21801","cse21802","cse21803","cse21804","cse21806","cse21808",
+            "cse21809","cse21811","cse21812","cse21814"
+],'cse201': [
+            "cse20101","cse20102","cse20103","cse20104","cse20105","cse20106",
+            "cse20107","cse20108","cse20109","cse20110","cse20111","cse20112",
+            "cse20113","cse20114","cse20115","cse20116","cse20117","cse20118",
+            "cse20119","cse20120","cse20121","cse20122","cse20123","cse20124"
+],'cse103': [
+            "cse10301","cse10302","cse10303","cse10304","cse10305","cse10306",
+            "cse10307","cse10308","cse10309","cse10310","cse10311","cse10312",
+            "cse10313","cse10314","cse10315","cse10316","cse10317","cse10318",
+            "cse10319","cse103podium"
+]}
+### END REMOTE SERVERS DICTIONARY ###
+
+
+### NOTES (everything below this line will be ignored) ###
+
+
+1: 4-6.5
+2: 6.5-10
+3: 10-14
+
+217 in order:
+            "cse21701","cse21702","cse21703","cse21705","cse21707","cse21710","cse21712","cse21713","cse21715"
+            "cse21706","cse21716",
+            "cse21708","cse21711",
+            unchecked: 4, 9, 14
+218 in order:
+            unchecked: 1,2,3,4,5,6,7,8,9,10,11,12,13,14
+
+],'cse201': [
+            "cse20101","cse20102","cse20103","cse20104","cse20105","cse20106",
+            "cse20107","cse20108","cse20109","cse20110","cse20111","cse20112",
+            "cse20113","cse20114","cse20115","cse20116","cse20117","cse20118",
+            "cse20119","cse20120","cse20121","cse20122","cse20123","cse20124",
+            
+"cse21807","cse21810","cse21813","cse21814","cse21805"

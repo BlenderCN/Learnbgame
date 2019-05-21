@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<material name="glass_glaze_G" view_color="rgb(0.80000, 0.80000, 0.80000)" sample_lamp="True">
+	<nodes>
+		<node type="MAPPING" translation="Vector(0.0, 0.0, 0.0)" rotation="Vector(0.0, 0.0, 0.0)" scale="Vector(3.0, 3.0, 3.0)" use_min="False" use_max="False" vector="Vector(0.0, 0.0, 0.0)" node_height="100" node_width="320" width_hidden="42" loc="-295, 116" />
+		<node type="TEX_COORD" dupli="False" node_height="100" node_width="140" width_hidden="42" loc="-541, 112" />
+		<node type="OUTPUT_MATERIAL" node_height="100" node_width="140" width_hidden="42" loc="350, 53" />
+		<node type="GROUP" node_tree="ST_Glaze" group="0" node_height="100" node_width="172" width_hidden="42" loc="100, 73" />
+	</nodes>
+	<links>
+		<link to="2" input="0" from="3" output="0" />
+		<link to="0" input="0" from="1" output="0" />
+		<link to="3" input="1" from="0" output="0" />
+	</links>
+	<groups>
+		<group name="ST_Glaze" id="0">
+			<groupnodes>
+				<groupnode type="BSDF_DIFFUSE" color="rgba(0.0, 0.0, 0.0, 1.0)" roughness="0.0" node_height="100" node_width="150" width_hidden="42" loc="175, 35" />
+				<groupnode type="MIX_SHADER" fac="0.5" node_height="100" node_width="140" width_hidden="42" loc="791, -104" />
+				<groupnode type="BSDF_GLOSSY" distribution="BECKMANN" color="rgba(1.0, 1.0, 1.0, 1.0)" roughness="0.02999" node_height="100" node_width="150" width_hidden="42" loc="539, -212" />
+				<groupnode type="BUMP" strength="0.10000" node_height="100" node_width="140" width_hidden="42" loc="308, -283" />
+				<groupnode type="BSDF_DIFFUSE" color="rgba(0.14050, 0.0, 0.00631, 1.0)" roughness="0.0" node_height="100" node_width="150" width_hidden="42" loc="175, -135" />
+				<groupnode type="MIX_SHADER" fac="0.5" node_height="100" node_width="140" width_hidden="42" loc="533, -38" />
+				<groupnode type="GROUP_OUTPUT" node_height="100" node_width="140" width_hidden="42" loc="991, 0" />
+				<groupnode type="MIX_RGB" blend_type="MIX" use_clamp="False" fac="0.5" color1="rgba(0.5, 0.5, 0.5, 1.0)" color2="rgba(0.5, 0.5, 0.5, 1.0)" node_height="100" node_width="140" width_hidden="42" loc="-130, -71" />
+				<groupnode type="GROUP_INPUT" node_height="100" node_width="140" width_hidden="42" loc="-991, 0" />
+				<groupnode type="FRESNEL" ior="1.87999" node_height="100" node_width="140" width_hidden="42" loc="539, 77" />
+				<groupnode type="LAYER_WEIGHT" blend="0.75" node_height="100" node_width="140" width_hidden="42" loc="-341, -25" />
+				<groupnode type="BRIGHTCONTRAST" color="rgba(1.0, 1.0, 1.0, 1.0)" bright="-0.19999" contrast="0.0" node_height="100" node_width="140" width_hidden="42" loc="-589, -153" />
+				<groupnode type="BRIGHTCONTRAST" color="rgba(1.0, 1.0, 1.0, 1.0)" bright="1.5" contrast="15.0" node_height="100" node_width="140" width_hidden="42" loc="-135, 134" />
+				<groupnode type="TEX_NOISE" scale="25.0" detail="5.0" distortion="0.0" node_height="100" node_width="140" width_hidden="42" loc="-416, 163" />
+			</groupnodes>
+			<groupinputs>
+				<groupinput name="Color" type="RGBA" value="rgba(0.14050, 0.0, 0.00631, 1.0)" />
+				<groupinput name="Vector" type="VECTOR" value="Vector(0.0, 0.0, 0.0)" />
+			</groupinputs>
+			<groupoutputs>
+				<groupoutput name="Shader" type="SHADER" />
+			</groupoutputs>
+			<grouplinks>
+				<grouplink to="5" input="1" from="0" output="0" />
+				<grouplink to="5" input="2" from="4" output="0" />
+				<grouplink to="12" input="0" from="13" output="0" />
+				<grouplink to="5" input="0" from="12" output="0" />
+				<grouplink to="1" input="2" from="2" output="0" />
+				<grouplink to="1" input="0" from="9" output="0" />
+				<grouplink to="2" input="2" from="3" output="0" />
+				<grouplink to="6" input="0" from="1" output="0" />
+				<grouplink to="1" input="1" from="5" output="0" />
+				<grouplink to="3" input="2" from="12" output="0" />
+				<grouplink to="7" input="1" from="8" output="0" />
+				<grouplink to="4" input="0" from="7" output="0" />
+				<grouplink to="11" input="0" from="8" output="0" />
+				<grouplink to="7" input="2" from="11" output="0" />
+				<grouplink to="7" input="0" from="10" output="1" />
+				<grouplink to="13" input="0" from="8" output="1" />
+			</grouplinks>
+		</group>
+	</groups>
+</material>

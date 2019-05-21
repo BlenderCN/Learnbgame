@@ -1,0 +1,2259 @@
+{
+"lighting_setups": [
+	{
+		"ID":"Subtle Symmetry",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Deep Shadow",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Shadow Play",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Calm Side Light",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Moonlight Glow",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Solar Glow",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Punch Light",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Soft Feeling",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Ye Old Portrait",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Profile Glow",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Bounce Lighting",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Dan W",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Anthony M",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Jacek P",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"John T",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Peter L",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Brian D",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Jill G",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Tony C",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Terry R",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Paolo R",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Timothy H",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Kait R",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Jeremy C",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Joe M",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Gavin H",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"Irving P",
+		"blend":"lighting_setup4.blend"
+	},
+	{
+		"ID":"The One Who Knocks",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Office Worker",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Gravitation",
+		"blend":"Movie_lighting_setups.blend"
+	},
+	{
+		"ID":"Monologue",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Antagonist",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"The Turing Test",
+		"blend":"Movie_lighting_setups.blend"
+	},
+	{
+		"ID":"Tyler Burden",
+		"blend":"Movie_lighting_setups.blend"
+	},
+	{
+		"ID":"Guardians of the Viewport",
+		"blend":"Movie_lighting_setups.blend"
+	},
+	{
+		"ID":"Kill Phil",
+		"blend":"Movie_lighting_setups.blend"
+	},
+	{
+		"ID":"Mad Maximizer",
+		"blend":"Movie_lighting_setups.blend"
+	},
+	{
+		"ID":"Nightscroller",
+		"blend":"Movie_lighting_setups.blend"
+	},
+	{
+		"ID":"Only Ton Forgives",
+		"blend":"Movie_lighting_setups.blend"
+	},
+	{
+		"ID":"Sinful City",
+		"blend":"Movie_lighting_setups.blend"
+	},
+	{
+		"ID":"What do you see",
+		"blend":"Movie_lighting_setups.blend"
+	},
+	{
+		"ID":"Jacked In",
+		"blend":"Movie_lighting_setups.blend"
+	},
+	{
+		"ID":"X-Man",
+		"blend":"Movie_lighting_setups.blend"
+	},
+	{
+		"ID":"Anger",
+		"blend":"mood_driven_setups.blend"
+	},
+	{
+		"ID":"Happiness",
+		"blend":"mood_driven_setups.blend"
+	},
+	{
+		"ID":"Sadness",
+		"blend":"mood_driven_setups.blend"
+	},
+	{
+		"ID":"Fear",
+		"blend":"mood_driven_setups.blend"
+	},
+	{
+		"ID":"Lust",
+		"blend":"mood_driven_setups.blend"
+	},
+	{
+		"ID":"Innocence",
+		"blend":"mood_driven_setups.blend"
+	},
+	{
+		"ID":"Love",
+		"blend":"mood_driven_setups.blend"
+	},
+	{
+		"ID":"Strength",
+		"blend":"mood_driven_setups.blend"
+	},
+	{
+		"ID":"Discomfort",
+		"blend":"mood_driven_setups.blend"
+	},
+	{
+		"ID":"Blues and Reds",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Clown Crown",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Hot Rim",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Red Break",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Cool and Warm",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Cold Pink",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Glowing Point",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Deep Blue",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Soft Gold",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Red Hot Chili",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Golden Illumination",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Red Complement",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Pocket Holes",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Through the Blinds",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Acid",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Urban Light",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Future Mode",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Text Shadow",
+		"blend":"Experimental_lighting_setups.blend"
+	},
+	{
+		"ID":"Blue & Red Silhouette",
+		"blend":"lighting_setup3.blend"
+	},
+	{
+		"ID":"Diffused Plane",
+		"blend":"car_traditional.blend"
+	},
+	{
+		"ID":"Touchdown",
+		"blend":"car_traditional.blend"
+	},
+	{
+		"ID":"Plain lighting",
+		"blend":"car_traditional.blend"
+	},
+	{
+		"ID":"Broken Plane",
+		"blend":"car_traditional.blend"
+	},
+	{
+		"ID":"Multiple Octabox",
+		"blend":"car_traditional.blend"
+	},
+	{
+		"ID":"Diffusion sheet",
+		"blend":"car_traditional.blend"
+	},
+	{
+		"ID":"Reflect board",
+		"blend":"car_traditional.blend"
+	},
+	{
+		"ID":"Balanced Light",
+		"blend":"car_traditional.blend"
+	},
+	{
+		"ID":"Frontal Symmetry",
+		"blend":"car_traditional.blend"
+	},
+	{
+		"ID":"3-Point",
+		"blend":"car_traditional.blend"
+	},
+	{
+		"ID":"2-Point",
+		"blend":"car_traditional.blend"
+	},
+	{
+		"ID":"Halogen light",
+		"blend":"car_creative.blend"
+	},
+	{
+		"ID":"Future Blue",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Fluorescent Blaze",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Stripes Illumination",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Silhouette Illumination",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Purple Lightning",
+		"blend":"car_creative.blend"
+	},
+	{
+		"ID":"Street Parking",
+		"blend":"car_creative.blend"
+	},
+	{
+		"ID":"Color Duo",
+		"blend":"car_creative.blend"
+	},
+	{
+		"ID":"Sundown",
+		"blend":"car_creative.blend"
+	},
+	{
+		"ID":"Arch Lighting",
+		"blend":"car_creative.blend"
+	},
+	{
+		"ID":"Sunrise",
+		"blend":"car_creative.blend"
+	},
+	{
+		"ID":"Grimm Light",
+		"blend":"car_creative.blend"
+	},
+	{
+		"ID":"Led Circle",
+		"blend":"car_creative.blend"
+	},
+	{
+		"ID":"Warehouse Lights",
+		"blend":"car_creative.blend"
+	},
+	{
+		"ID":"Linear Lights",
+		"blend":"car_creative.blend"
+	},
+	{
+		"ID":"Halogen Lines",
+		"blend":"car_creative.blend"
+	},
+	{
+		"ID":"Wavy lines",
+		"blend":"car_experimental.blend"
+	},
+	{
+		"ID":"Futuristic neon",
+		"blend":"car_experimental.blend"
+	},
+	{
+		"ID":"Disco light",
+		"blend":"car_experimental.blend"
+	},
+	{
+		"ID":"Halo light",
+		"blend":"car_experimental.blend"
+	},
+	{
+		"ID":"Blue tunnel",
+		"blend":"car_experimental.blend"
+	},
+	{
+		"ID":"Bottom illumination",
+		"blend":"car_experimental.blend"
+	},
+	{
+		"ID":"Light Grid",
+		"blend":"car_experimental.blend"
+	},
+	{
+		"ID":"Multiple lights",
+		"blend":"car_experimental.blend"
+	},
+	{
+		"ID":"City lights",
+		"blend":"car_experimental.blend"
+	},
+	{
+		"ID":"Edgy",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Three-Point Lighting",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Squiggly Lights",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Heavy Glow",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Key Light",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Blue Glow",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Cross Light",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Frontal Light",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Side Lighting",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Top Illumination",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Spot Accent",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Soft Reflections",
+		"blend":"lighting_setups_cars1.blend"
+	},
+	{
+		"ID":"Soft Box",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Top light",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Window shaped light",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Calm White",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"One side vertical lighting",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Single point light",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"White Diffused",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Three point",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Backlighting",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Heavy Contrast",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Rembrandt",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Silhouette Light",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Two sided light",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Front light",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Blue spot light",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Diffused Warm",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Orange accent",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Oblique soft",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Blue & Yellow Rim",
+		"blend":"Still_life_light_setups.blend"
+	},
+	{
+		"ID":"Magnetic",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Sun accent",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Frozen",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Mystery Window",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Warm Rim",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Colored Flavour",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Blue Urban",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Night Styx",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Pink morning",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Dark Night",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Fairy Tale",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Green Gambit",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Dual Slant",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Soft Key",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Warm View",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"White Slice",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Purple Point",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Color Bite",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Contrasted Rim",
+		"blend":"Still_Life_Creative.blend"
+	},
+	{
+		"ID":"Fairy dust",
+		"blend":"Still_Life_Experimental.blend"
+	},
+	{
+		"ID":"Shadow Stripes",
+		"blend":"Still_Life_Experimental.blend"
+	},
+	{
+		"ID":"Heven & Hell",
+		"blend":"Still_Life_Experimental.blend"
+	},
+	{
+		"ID":"Monumental Glow",
+		"blend":"Still_Life_Experimental.blend"
+	},
+	{
+		"ID":"Copper Glow",
+		"blend":"Still_Life_Experimental.blend"
+	},
+	{
+		"ID":"Frost Bite",
+		"blend":"Still_Life_Experimental.blend"
+	},
+	{
+		"ID":"Pillars of Light",
+		"blend":"Still_Life_Experimental.blend"
+	}
+],
+"light_categories":{
+	"Character":[
+		"Subtle Symmetry",
+		"Deep Shadow",
+		"Shadow Play",
+		"Calm Side Light",
+		"Moonlight Glow",
+		"Solar Glow",
+		"Punch Light",
+		"Soft Feeling",
+		"Ye Old Portrait",
+		"Profile Glow",
+		"Bounce Lighting",
+		"Dan W",
+		"Anthony M",
+		"Jacek P",
+		"John T",
+		"Peter L",
+		"Brian D",
+		"Jill G",
+		"Tony C",
+		"Terry R",
+		"Paolo R",
+		"Timothy H",
+		"Kait R",
+		"Jeremy C",
+		"Joe M",
+		"Gavin H",
+		"Irving P",
+		"The One Who Knocks",
+		"Office Worker",
+		"Gravitation",
+		"Monologue",
+		"Antagonist",
+		"The Turing Test",
+		"Tyler Burden",
+		"Guardians of the Viewport",
+		"Kill Phil",
+		"Mad Maximizer",
+		"Nightscroller",
+		"Only Ton Forgives",
+		"Sinful City",
+		"What do you see",
+		"Jacked In",
+		"X-Man",
+		"Anger",
+		"Happiness",
+		"Sadness",
+		"Fear",
+		"Lust",
+		"Innocence",
+		"Love",
+		"Strength",
+		"Discomfort",
+		"Blues and Reds",
+		"Clown Crown",
+		"Hot Rim",
+		"Red Break",
+		"Cool and Warm",
+		"Cold Pink",
+		"Glowing Point",
+		"Deep Blue",
+		"Soft Gold",
+		"Red Hot Chili",
+		"Golden Illumination",
+		"Red Complement",
+		"Pocket Holes",
+		"Through the Blinds",
+		"Acid",
+		"Urban Light",
+		"Future Mode",
+		"Text Shadow",
+		"Blue & Red Silhouette"
+	],
+	"Vehicle":[
+		"Diffused Plane",
+		"Touchdown",
+		"Plain lighting",
+		"Broken Plane",
+		"Multiple Octabox",
+		"Diffusion sheet",
+		"Reflect board",
+		"Balanced Light",
+		"Frontal Symmetry",
+		"3-Point",
+		"2-Point",
+		"Halogen light",
+		"Purple Lightning",
+		"Street Parking",
+		"Color Duo",
+		"Sundown",
+		"Arch Lighting",
+		"Sunrise",
+		"Grimm Light",
+		"Led Circle",
+		"Warehouse Lights",
+		"Linear Lights",
+		"Halogen Lines",
+		"Wavy lines",
+		"Futuristic neon",
+		"Disco light",
+		"Halo light",
+		"Blue tunnel",
+		"Bottom illumination",
+		"Light Grid",
+		"Multiple lights",
+		"City lights",
+		"Future Blue",
+		"Edgy",
+		"Three-Point Lighting",
+		"Squiggly Lights",
+		"Heavy Glow",
+		"Key Light",
+		"Blue Glow",
+		"Fluorescent Blaze",
+		"Cross Light",
+		"Stripes Illumination",
+		"Frontal Light",
+		"Side Lighting",
+		"Top Illumination",
+		"Spot Accent",
+		"Silhouette Illumination",
+		"Soft Reflections"
+	],
+	"Object":[
+		"Soft Box",
+		"Backlighting",
+		"Top light",
+		"Window shaped light",
+		"Heavy Contrast",
+		"Rembrandt",
+		"Silhouette Light",
+		"Two sided light",
+		"Front light",
+		"Blue spot light",
+		"Diffused Warm",
+		"Orange accent",
+		"Calm White",
+		"One side vertical lighting",
+		"Single point light",
+		"White Diffused",
+		"Oblique soft",
+		"Three point",
+		"Blue & Yellow Rim",
+		"Magnetic",
+		"Sun accent",
+		"Frozen",
+		"Mystery Window",
+		"Warm Rim",
+		"Colored Flavour",
+		"Blue Urban",
+		"Night Styx",
+		"Pink morning",
+		"Dark Night",
+		"Fairy Tale",
+		"Green Gambit",
+		"Dual Slant",
+		"Soft Key",
+		"Warm View",
+		"White Slice",
+		"Purple Point",
+		"Color Bite",
+		"Contrasted Rim",
+		"Fairy dust",
+		"Shadow Stripes",
+		"Heven & Hell",
+		"Monumental Glow",
+		"Copper Glow",
+		"Frost Bite",
+		"Pillars of Light"
+	]
+},
+"light_filters":{
+	"Traditional":[
+		["Character","Vehicle","Object"],
+		"Subtle Symmetry",
+		"Deep Shadow",
+		"Shadow Play",
+		"Calm Side Light",
+		"Moonlight Glow",
+		"Solar Glow",
+		"Punch Light",
+		"Soft Feeling",
+		"Ye Old Portrait",
+		"Profile Glow",
+		"Bounce Lighting",
+		"Diffused Plane",
+		"Touchdown",
+		"Plain lighting",
+		"Broken Plane",
+		"Multiple Octabox",
+		"Diffusion sheet",
+		"Reflect board",
+		"Balanced Light",
+		"Frontal Symmetry",
+		"3-Point",
+		"2-Point",
+		"Halogen light",
+		"Soft Box",
+		"Top light",
+		"Window shaped light",
+		"Calm White",
+		"One side vertical lighting",
+		"Single point light",
+		"White Diffused",
+		"Three point"
+	],
+	"Signature":[
+		["Character"],
+		"Dan W",
+		"Anthony M",
+		"Jacek P",
+		"John T",
+		"Peter L",
+		"Brian D",
+		"Jill G",
+		"Tony C",
+		"Terry R",
+		"Paolo R",
+		"Timothy H",
+		"Kait R",
+		"Jeremy C",
+		"Joe M",
+		"Gavin H",
+		"Irving P"
+	],
+	"Spicy":[
+		["Vehicle","Object"],
+		"Future Blue",
+		"Fluorescent Blaze",
+		"Stripes Illumination",
+		"Silhouette Illumination",
+		"Backlighting",
+		"Heavy Contrast",
+		"Rembrandt",
+		"Silhouette Light",
+		"Two sided light",
+		"Front light",
+		"Blue spot light",
+		"Diffused Warm",
+		"Orange accent",
+		"Oblique soft"
+	],
+	"Cinematic":[
+		["Character"],
+		"The One Who Knocks",
+		"Office Worker",
+		"Gravitation",
+		"Monologue",
+		"Antagonist",
+		"The Turing Test",
+		"Tyler Burden",
+		"Guardians of the Viewport",
+		"Kill Phil",
+		"Mad Maximizer",
+		"Nightscroller",
+		"Only Ton Forgives",
+		"Sinful City",
+		"What do you see",
+		"Jacked In",
+		"X-Man"
+	],
+	"Emotional":[
+		["Character"],
+		"Anger",
+		"Happiness",
+		"Sadness",
+		"Fear",
+		"Lust",
+		"Innocence",
+		"Love",
+		"Strength",
+		"Discomfort"
+	],
+	"Creative":[
+		["Character","Vehicle","Object"],
+		"Blues and Reds",
+		"Clown Crown",
+		"Hot Rim",
+		"Red Break",
+		"Cool and Warm",
+		"Cold Pink",
+		"Glowing Point",
+		"Deep Blue",
+		"Soft Gold",
+		"Red Hot Chili",
+		"Golden Illumination",
+		"Red Complement",
+		"Purple Lightning",
+		"Street Parking",
+		"Color Duo",
+		"Sundown",
+		"Arch Lighting",
+		"Sunrise",
+		"Grimm Light",
+		"Led Circle",
+		"Warehouse Lights",
+		"Linear Lights",
+		"Halogen Lines",
+		"Magnetic",
+		"Sun accent",
+		"Frozen",
+		"Mystery Window",
+		"Warm Rim",
+		"Colored Flavour",
+		"Blue Urban",
+		"Night Styx",
+		"Pink morning",
+		"Dark Night",
+		"Fairy Tale",
+		"Green Gambit",
+		"Dual Slant",
+		"Soft Key",
+		"Warm View",
+		"White Slice",
+		"Purple Point",
+		"Color Bite",
+		"Contrasted Rim",
+		"Blue & Yellow Rim"
+	],
+	"Experimental":[
+		["Character","Vehicle","Object"],
+		"Pocket Holes",
+		"Through the Blinds",
+		"Acid",
+		"Urban Light",
+		"Future Mode",
+		"Text Shadow",
+		"Blue & Red Silhouette",
+		"Wavy lines",
+		"Futuristic neon",
+		"Disco light",
+		"Halo light",
+		"Blue tunnel",
+		"Bottom illumination",
+		"Light Grid",
+		"Multiple lights",
+		"City lights",
+		"Fairy dust",
+		"Shadow Stripes",
+		"Heven & Hell",
+		"Monumental Glow",
+		"Copper Glow",
+		"Frost Bite",
+		"Pillars of Light"
+		],
+	"Specialized":[
+		["Vehicle"],
+		"Edgy",
+		"Three-Point Lighting",
+		"Squiggly Lights",
+		"Heavy Glow",
+		"Key Light",
+		"Blue Glow",
+		"Cross Light",
+		"Frontal Light",
+		"Side Lighting",
+		"Top Illumination",
+		"Spot Accent",
+		"Soft Reflections"
+	]
+},
+"floors": [
+	{
+		"ID":"Circle",
+		"blend":"builtin-floors.blend"
+	},
+	{
+		"ID":"Square",
+		"blend":"builtin-floors.blend"
+	},
+	{
+		"ID":"Backdrop",
+		"blend":"builtin-floors.blend"
+	},
+	{
+		"ID":"Pedestal",
+		"blend":"builtin-floors.blend"
+	}
+],
+"reflections": [
+	{
+		"ID":"simple 01.jpg",
+		"thumb":"simple 01_thumb.jpg"
+	},
+	{
+		"ID":"simple 02.jpg",
+		"thumb":"simple 02_thumb.jpg"
+	},
+	{
+		"ID":"simple 03.jpg",
+		"thumb":"simple 03_thumb.jpg"
+	},
+	{
+		"ID":"simple 04.jpg",
+		"thumb":"simple 04_thumb.jpg"
+	},
+	{
+		"ID":"simple 05.jpg",
+		"thumb":"simple 05_thumb.jpg"
+	},
+	{
+		"ID":"simple 06.jpg",
+		"thumb":"simple 06_thumb.jpg"
+	},
+	{
+		"ID":"simple 07.jpg",
+		"thumb":"simple 07_thumb.jpg"
+	},
+	{
+		"ID":"simple 08.jpg",
+		"thumb":"simple 08_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 01.jpg",
+		"thumb":"Abstract 01_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 02.jpg",
+		"thumb":"Abstract 02_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 03.jpg",
+		"thumb":"Abstract 03_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 04.jpg",
+		"thumb":"Abstract 04_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 05.jpg",
+		"thumb":"Abstract 05_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 06.jpg",
+		"thumb":"Abstract 06_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 07.jpg",
+		"thumb":"Abstract 07_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 08.jpg",
+		"thumb":"Abstract 08_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 09.jpg",
+		"thumb":"Abstract 09_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 10.jpg",
+		"thumb":"Abstract 10_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 11.jpg",
+		"thumb":"Abstract 11_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 12.jpg",
+		"thumb":"Abstract 12_thumb.jpg"
+	},
+	{
+		"ID":"Abstract 13.jpg",
+		"thumb":"Abstract 13_thumb.jpg"
+	},
+	{
+		"ID":"abstract 14.jpg",
+		"thumb":"abstract 14_thumb.jpg"
+	},
+	{
+		"ID":"abstract 15.jpg",
+		"thumb":"abstract 15_thumb.jpg"
+	},
+	{
+		"ID":"abstract 16.jpg",
+		"thumb":"abstract 16_thumb.jpg"
+	},
+	{
+		"ID":"abstract 17.jpg",
+		"thumb":"abstract 17_thumb.jpg"
+	},
+	{
+		"ID":"Real 01.jpg",
+		"thumb":"Real 01_thumb.jpg"
+	},
+	{
+		"ID":"Real 02.jpg",
+		"thumb":"Real 02_thumb.jpg"
+	},
+	{
+		"ID":"Real 03.jpg",
+		"thumb":"Real 03_thumb.jpg"
+	},
+	{
+		"ID":"Real 04.jpg",
+		"thumb":"Real 04_thumb.jpg"
+	},
+	{
+		"ID":"Real 05.jpg",
+		"thumb":"Real 05_thumb.jpg"
+	},
+	{
+		"ID":"Real 06.jpg",
+		"thumb":"Real 06_thumb.jpg"
+	},
+	{
+		"ID":"Real 07.jpg",
+		"thumb":"Real 07_thumb.jpg"
+	},
+	{
+		"ID":"Real 08.jpg",
+		"thumb":"Real 08_thumb.jpg"
+	},
+	{
+		"ID":"Real 09.jpg",
+		"thumb":"Real 09_thumb.jpg"
+	},
+	{
+		"ID":"Real 10.jpg",
+		"thumb":"Real 10_thumb.jpg"
+	},
+	{
+		"ID":"Real 11.jpg",
+		"thumb":"Real 11_thumb.jpg"
+	},
+	{
+		"ID":"Real 12.jpg",
+		"thumb":"Real 12_thumb.jpg"
+	},
+	{
+		"ID":"Real 13.jpg",
+		"thumb":"Real 13_thumb.jpg"
+	},
+	{
+		"ID":"Real 14.jpg",
+		"thumb":"Real 14_thumb.jpg"
+	},
+	{
+		"ID":"Real 15.jpg",
+		"thumb":"Real 15_thumb.jpg"
+	},
+	{
+		"ID":"Real 16.jpg",
+		"thumb":"Real 16_thumb.jpg"
+	},
+	{
+		"ID":"Real 17.jpg",
+		"thumb":"Real 17_thumb.jpg"
+	},
+	{
+		"ID":"Real 18.jpg",
+		"thumb":"Real 18_thumb.jpg"
+	},
+	{
+		"ID":"Real 19.jpg",
+		"thumb":"Real 19_thumb.jpg"
+	},
+	{
+		"ID":"Real 20.jpg",
+		"thumb":"Real 20_thumb.jpg"
+	},
+	{
+		"ID":"Real 21.jpg",
+		"thumb":"Real 21_thumb.jpg"
+	},
+	{
+		"ID":"Skies 01.jpg",
+		"thumb":"Skies 01_thumb.jpg"
+	},
+	{
+		"ID":"Skies 02.jpg",
+		"thumb":"Skies 02_thumb.jpg"
+	},
+	{
+		"ID":"Skies 03.jpg",
+		"thumb":"Skies 03_thumb.jpg"
+	}
+],
+"textures": [
+	{
+		"ID":"Metallic Clay.jpg",
+		"thumb":"Metallic Clay_Thumb.jpg",
+		"normal":"Metallic Clay_normal.jpg",
+		"specular":"Metallic Clay_REFL.jpg"
+	},
+	{
+		"ID":"Painted Concrete.jpg",
+		"thumb":"Painted Concrete_Thumb.jpg",
+		"normal":"Painted Concrete_Normal.jpg",
+		"specular":"Painted Concrete_Spec.jpg"
+	},
+	{
+		"ID":"Ground Clay.jpg",
+		"thumb":"Ground Clay_Thumb.jpg",
+		"normal":"Ground Clay_NRM.jpg",
+		"specular":"Ground Clay_Spec.jpg"
+	},
+	{
+		"ID":"Clay.jpg",
+		"thumb":"Clay_Thumb.jpg",
+		"normal":"Clay_Normal.jpg",
+		"specular":"Clay_Spec.jpg"
+	},
+	{
+		"ID":"Steel Floor 1.jpg",
+		"thumb":"Steel Floor 1_Thumb.jpg",
+		"normal":"Steel Floor 1_nrm.jpg",
+		"specular":"Steel Floor 1_Refl.jpg"
+	},
+	{
+		"ID":"Concrete Floor 1.jpg",
+		"thumb":"Concrete Floor 1_Thumb.jpg",
+		"normal":"Concrete Floor 1_NRM.jpg",
+		"specular":"Concrete Floor 1_Refl.jpg"
+	},
+	{
+		"ID":"Road.jpg",
+		"thumb":"Road_Thumb.jpg",
+		"normal":"Road_nrm.jpg",
+		"specular":"Road_refl.jpg"
+	},
+	{
+		"ID":"Gravel 1.jpg",
+		"thumb":"Gravel 1_thumb.jpg",
+		"normal":"Gravel 1_nrm.jpg",
+		"specular":"Gravel 1_relf.jpg"
+	},
+	{
+		"ID":"Steel Floor 2.jpg",
+		"thumb":"Steel Floor 2_Thumb.jpg",
+		"normal":"Steel Floor 2_nrm.jpg",
+		"specular":"Steel Floor 2_refl.jpg"
+	},
+	{
+		"ID":"Scratches.jpg",
+		"thumb":"Scratches_Thumb.jpg",
+		"normal":"Scratches_nrm.jpg",
+		"specular":"Scratches_spec.jpg"
+	},
+	{
+		"ID":"Wooden Table.jpg",
+		"thumb":"Wooden Table_thumb.jpg",
+		"normal":"Wooden Table_nrm.jpg",
+		"specular":"Wooden Table_refl.jpg"
+	},
+	{
+		"ID":"Wooden.jpg",
+		"thumb":"Wooden_thumb.jpg",
+		"normal":"Wooden_nrm.jpg",
+		"specular":"Wooden_spec.jpg"
+	},
+	{
+		"ID":"Concrete With Oil.jpg",
+		"thumb":"Concrete With Oil_thumb.jpg",
+		"normal":"Concrete With Oil_nrm.jpg",
+		"specular":"concrete with oil_spec.jpg"
+	},
+	{
+		"ID":"Burnout.jpg",
+		"thumb":"Burnout_Thumb.jpg",
+		"normal":"Burnout_nrm.jpg",
+		"specular":"Burnout_spec.jpg"
+	},
+	{
+		"ID":"Mud.jpg",
+		"thumb":"Mud_thumb.jpg",
+		"normal":"Mud_nrm.jpg",
+		"specular":"Mud_ref.jpg"
+	},
+	{
+		"ID":"Wet Concrete.jpg",
+		"thumb":"Wet Concrete_thumb.jpg",
+		"normal":"Wet Concrete_nrm.jpg",
+		"specular":"Wet Concrete_spec.jpg"
+	},
+	{
+		"ID":"Concrete 1.jpg",
+		"thumb":"Concrete 1_Thumb.jpg"
+	},
+	{
+		"ID":"Concrete 2.jpg",
+		"thumb":"Concrete 2_Thumb.jpg"
+	},
+	{
+		"ID":"Concrete 3.jpg",
+		"thumb":"Concrete 3_Thumb.jpg"
+	},
+	{
+		"ID":"Paint Splat 1.jpg",
+		"thumb":"Paint Splat 1_Thumb.jpg"
+	},
+	{
+		"ID":"Paint Splat 2.jpg",
+		"thumb":"Paint Splat 2_Thumb.jpg"
+	},
+	{
+		"ID":"Paint Splat 3.jpg",
+		"thumb":"Paint Splat 3_Thumb.jpg"
+	},
+	{
+		"ID":"Paint Splat 4.jpg",
+		"thumb":"Paint Splat 4_Thumb.jpg"
+	},
+	{
+		"ID":"Paint Splat 5.jpg",
+		"thumb":"Paint Splat 5_Thumb.jpg"
+	},
+	{
+		"ID":"Rain.jpg",
+		"thumb":"Rain_Thumb.jpg"
+	},
+	{
+		"ID":"Camouflage.jpg",
+		"thumb":"Camouflage_Thumb.jpg"
+	},
+	{
+		"ID":"Floral Pattern 1.jpg",
+		"thumb":"Floral Pattern 1_Thumb.jpg"
+	},
+	{
+		"ID":"Floral Pattern 2.jpg",
+		"thumb":"Floral Pattern 2_Thumb.jpg"
+	},
+	{
+		"ID":"Gypsum 1.jpg",
+		"thumb":"Gypsum 1_Thumb.jpg"
+	},
+	{
+		"ID":"Gypsum 2.jpg",
+		"thumb":"Gypsum 2_Thumb.jpg"
+	},
+	{
+		"ID":"Plaster 1.jpg",
+		"thumb":"Plaster 1_Thumb.jpg"
+	},
+	{
+		"ID":"Plaster 2.jpg",
+		"thumb":"Plaster 2_Thumb.jpg"
+	},
+	{
+		"ID":"Concrete Plates.jpg",
+		"thumb":"Concrete Plates_Thumb.jpg"
+	},
+	{
+		"ID":"Rust.jpg",
+		"thumb":"Rust_Thumb.jpg"
+	},
+	{
+		"ID":"Smoke 1.jpg",
+		"thumb":"Smoke 1_thumb.jpg"
+	},
+	{
+		"ID":"City 1.jpg",
+		"thumb":"City 1_Thumb.jpg"
+	},
+	{
+		"ID":"City 2.jpg",
+		"thumb":"City 2_Thumb.JPG"
+	},
+	{
+		"ID":"Dark Forest.jpg",
+		"thumb":"Dark Forest_Thumb.jpg"
+	},
+	{
+		"ID":"Dirty Lens.jpg",
+		"thumb":"Dirty Lens_Thumb.jpg"
+	},
+	{
+		"ID":"Flying Embers 1.jpg",
+		"thumb":"Flying Embers 1_Thumb.jpg"
+	},
+	{
+		"ID":"Flying Embers 2.jpg",
+		"thumb":"Flying Embers 2_Thumb.jpg"
+	},
+	{
+		"ID":"Dust.jpg",
+		"thumb":"Dust_Thumb.jpg"
+	},
+	{
+		"ID":"Glowy Fog.jpg",
+		"thumb":"Glowy Fog_Thumb.jpg"
+	},
+	{
+		"ID":"Futuristic Grid.jpg",
+		"thumb":"Futuristic Grid_Thumb.jpg"
+	},
+	{
+		"ID":"Futuristic Dust.jpg",
+		"thumb":"Futuristic Dust_Thumb.jpg"
+	},
+	{
+		"ID":"Debris.jpg",
+		"thumb":"Debris_thumb.jpg"
+	}
+],
+"masks": [
+	{
+		"ID":"Mask Round.jpg",
+		"thumb":"mask_round_thumb.jpg",
+		"name":"Round"
+	},
+	{
+		"ID":"Horizontal Gradient Mask 2.jpg",
+		"thumb":"Horizontal Gradient Mask 2_Thumb.jpg",
+		"name":"Linear"
+	},
+	{
+		"ID":"Horizontal Gradient Mask 1.jpg",
+		"thumb":"Horizontal Gradient Mask 1_Thumb.jpg",
+		"name":"Horizontal Gradient"
+	},
+	{
+		"ID":"Gradient Mask.jpg",
+		"thumb":"Gradient Mask_thumb.jpg",
+		"name":"Vertical Gradient"
+	},
+	{
+		"ID":"Lamp Glow Mask.jpg",
+		"thumb":"Lamp Glow Mask_Thumb.jpg",
+		"name":"Lamp Glow"
+	},
+	{
+		"ID":"Glow Mask.jpg",
+		"thumb":"Glow Mask_thumb.jpg",
+		"name":"Center Flare"
+	},
+	{
+		"ID":"Upper Glow Mask.jpg",
+		"thumb":"Upper Glow Mask_thumb.jpg",
+		"name":"Top Flare"
+	},
+	{
+		"ID":"Flare Mask.jpg",
+		"thumb":"Flare Mask_thumb.jpg",
+		"name":"Side Flare"
+	},
+	{
+		"ID":"Bottom Beam Mask.jpg",
+		"thumb":"Bottom Beam Mask_thumb.jpg",
+		"name":"Bottom Flare"
+	},
+	{
+		"ID":"Debris Mask.jpg",
+		"thumb":"Debris Mask_thumb.jpg",
+		"name":"Debris"
+	},
+	{
+		"ID":"Abstract Mask.jpg",
+		"thumb":"Abstract Mask_thumb.jpg",
+		"name":"Abstract"
+	},
+	{
+		"ID":"Scratch Mask.jpg",
+		"thumb":"Scratch Mask_thumb.jpg",
+		"name":"Scratch"
+	},
+	{
+		"ID":"Shatter Mask.jpg",
+		"thumb":"Shatter Mask_thumb.jpg",
+		"name":"Shatter"
+	}
+],
+"floor-default":[
+	{	"ID":"Metallic Clay.jpg",
+		"opacity":1,
+		"saturation":1,
+		"scale":10,
+		"reflectivity":2,
+		"roughness":0.05,
+		"normal":0.15,
+		"specular":0.9,
+		"fresnel":true
+	},
+	{	"ID":"Painted Concrete.jpg",
+		"opacity":0.85,
+		"saturation":1,
+		"scale":6,
+		"reflectivity":0.1,
+		"roughness":0.08,
+		"normal":0.06,
+		"specular":0.95,
+		"fresnel":true
+	},
+	{	"ID":"Ground Clay.jpg",
+		"opacity":1,
+		"saturation":0,
+		"scale":12,
+		"reflectivity":0.2,
+		"roughness":0.15,
+		"normal":0.3,
+		"specular":0.98,
+		"fresnel":true
+	},
+	{	"ID":"Steel Floor 1.jpg",
+		"opacity":1,
+		"saturation":1,
+		"scale":30,
+		"reflectivity":0.5,
+		"roughness":0.02,
+		"normal":0.8,
+		"specular":0.95,
+		"fresnel":true
+	},
+	{	"ID":"Steel Floor 2.jpg",
+		"opacity":1,
+		"saturation":1,
+		"scale":15,
+		"reflectivity":0.5,
+		"roughness":0.02,
+		"normal":0.8,
+		"specular":0.95,
+		"fresnel":true
+	},
+	{	"ID":"Concrete Floor 1.jpg",
+		"opacity":1,
+		"saturation":1,
+		"scale":6,
+		"reflectivity":0.2,
+		"roughness":0.1,
+		"normal":0.2,
+		"specular":0.96,
+		"fresnel":true
+	},
+	{	"ID":"Road.jpg",
+		"opacity":1,
+		"saturation":1,
+		"scale":7,
+		"reflectivity":0.1,
+		"roughness":0.08,
+		"normal":0.2,
+		"specular":1,
+		"fresnel":true
+	},
+	{	"ID":"Gravel 1.jpg",
+		"opacity":1,
+		"saturation":1,
+		"scale":26,
+		"reflectivity":0.2,
+		"roughness":0.05,
+		"normal":0.7,
+		"specular":1,
+		"fresnel":true
+	},
+	{	"ID":"Clay.jpg",
+		"opacity":0.97,
+		"saturation":1,
+		"scale":10,
+		"reflectivity":0.2,
+		"roughness":0.03,
+		"normal":0.2,
+		"specular":0.95,
+		"fresnel":true
+	},
+	{	"ID":"Scratches.jpg",
+		"opacity":0.955,
+		"saturation":1,
+		"scale":25,
+		"reflectivity":0.2,
+		"roughness":0.04,
+		"normal":0.1,
+		"specular":0.9,
+		"fresnel":true
+	},
+	{	"ID":"Wooden Table.jpg",
+		"opacity":1,
+		"saturation":1,
+		"scale":16,
+		"reflectivity":0.4,
+		"roughness":0.2,
+		"normal":0.5,
+		"specular":0.95,
+		"fresnel":true
+	},
+	{	"ID":"Wooden.jpg",
+		"opacity":1,
+		"saturation":1,
+		"scale":25,
+		"reflectivity":0.35,
+		"roughness":0.1,
+		"normal":0.15,
+		"specular":0.95,
+		"fresnel":true
+	},
+	{	"ID":"Concrete With Oil.jpg",
+		"opacity":1,
+		"saturation":1,
+		"scale":12,
+		"reflectivity":0.8,
+		"roughness":0.06,
+		"normal":0.1,
+		"specular":1,
+		"fresnel":true
+	},
+	{	"ID":"Burnout.jpg",
+		"opacity":0.97,
+		"saturation":0,
+		"scale":3,
+		"reflectivity":0.3,
+		"roughness":0.05,
+		"normal":0.1,
+		"specular":1,
+		"fresnel":true
+	},
+	{	"ID":"Mud.jpg",
+		"opacity":1,
+		"saturation":0,
+		"scale":16,
+		"reflectivity":0.04,
+		"roughness":0.05,
+		"normal":0.6,
+		"specular":1,
+		"fresnel":true
+	},
+	{	"ID":"Wet Concrete.jpg",
+		"opacity":1,
+		"saturation":1,
+		"scale":12,
+		"reflectivity":0.8,
+		"roughness":0.05,
+		"normal":0.05,
+		"specular":1,
+		"fresnel":true
+	}
+],
+"background-default":[
+	{
+		"ID":"Concrete 1.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.3,
+		"rotation":0
+	},
+	{
+		"ID":"Concrete 2.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Concrete 3.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Paint Splat 1.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.4,
+		"rotation":0
+	},
+	{
+		"ID":"Paint Splat 2.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Paint Splat 3.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":2,
+		"rotation":0
+	},
+	{
+		"ID":"Paint Splat 4.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":2.2,
+		"rotation":0
+	},
+	{
+		"ID":"Paint Splat 5.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.9,
+		"rotation":0
+	},
+	{
+		"ID":"Rain.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Camouflage.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Floral Pattern 1.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Floral Pattern 2.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Gypsum 1.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Gypsum 2.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Plaster 1.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Plaster 2.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.3,
+		"rotation":0
+	},
+	{
+		"ID":"Concrete Plates.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.2,
+		"rotation":0
+	},
+	{
+		"ID":"Rust.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.6,
+		"rotation":0
+	},
+	{
+		"ID":"Smoke 1.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"City 1.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"City 2.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Dark Forest.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Dirty Lens.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.2,
+		"rotation":0
+	},
+	{
+		"ID":"Flying Embers 1.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.3,
+		"rotation":0
+	},
+	{
+		"ID":"Flying Embers 2.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.3,
+		"rotation":0
+	},
+	{
+		"ID":"Dust.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.1,
+		"rotation":0
+	},
+	{
+		"ID":"Glowy Fog.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.7,
+		"rotation":0
+	},
+	{
+		"ID":"Futuristic Grid.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.6,
+		"rotation":0
+	},
+	{
+		"ID":"Futuristic Dust.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1,
+		"rotation":0
+	},
+	{
+		"ID":"Debris.jpg",
+		"mix":1,
+		"brightness":1,
+		"saturation":1,
+		"scale":1.4,
+		"rotation":0
+	}
+],
+"background-presets":[
+	{
+		"ID":"Flying Embers",
+		"background_color":[0.27,0.397,0.503],
+		"use_background_mask":true,
+		"background_mask":"Mask Round.jpg",
+		"background_mask_opacity":100,
+		"background_mask_scale":0.6,
+		"background_mask_rotation":0,
+		"background_mask_x":0.06,
+		"background_mask_y":0.09,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Flying Embers 1.jpg",
+		"background_texture_opacity":98,
+		"background_texture_scale":0.8,
+		"background_brightness":2,
+		"background_saturation":1,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"Paint Gradient",
+		"background_color":[0.38,0.38,0.38],
+		"use_background_mask":true,
+		"background_mask":"Mask Round.jpg",
+		"background_mask_opacity":100,
+		"background_mask_scale":0.45,
+		"background_mask_rotation":0,
+		"background_mask_x":0.18,
+		"background_mask_y":-0.006,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Paint Splat 2.jpg",
+		"background_texture_opacity":100,
+		"background_texture_scale":0.73,
+		"background_brightness":2,
+		"background_saturation":1,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"Portrait Set",
+		"background_color":[0.228,0.271,0.269],
+		"use_background_mask":true,
+		"background_mask":"Mask Round.jpg",
+		"background_mask_opacity":100,
+		"background_mask_scale":0.52,
+		"background_mask_rotation":0,
+		"background_mask_x":0,
+		"background_mask_y":-0.07,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Gypsum 1.jpg",
+		"background_texture_opacity":86,
+		"background_texture_scale":1,
+		"background_brightness":0.16,
+		"background_saturation":1,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"Focus",
+		"background_color":[0.077,0.116,0.133],
+		"use_background_mask":true,
+		"background_mask":"Mask Round.jpg",
+		"background_mask_opacity":100,
+		"background_mask_scale":0.85,
+		"background_mask_rotation":0,
+		"background_mask_x":0,
+		"background_mask_y":0,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Dirty Lens.jpg",
+		"background_texture_opacity":69,
+		"background_texture_scale":1.2,
+		"background_brightness":0.5,
+		"background_saturation":1,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"Gambit",
+		"background_color":[0.214,0.214,0.214],
+		"use_background_mask":true,
+		"background_mask":"Flare Mask.jpg",
+		"background_mask_opacity":90,
+		"background_mask_scale":0.5,
+		"background_mask_rotation":0,
+		"background_mask_x":0,
+		"background_mask_y":-0.03,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Flying Embers 2.jpg",
+		"background_texture_opacity":97,
+		"background_texture_scale":1.3,
+		"background_brightness":1,
+		"background_saturation":1,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"Sun Ray",
+		"background_color":[0.496,0.432,0.448],
+		"use_background_mask":true,
+		"background_mask":"Flare Mask.jpg",
+		"background_mask_opacity":85,
+		"background_mask_scale":0.88,
+		"background_mask_rotation":0,
+		"background_mask_x":0,
+		"background_mask_y":0,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Dust.jpg",
+		"background_texture_opacity":95,
+		"background_texture_scale":1.1,
+		"background_brightness":2.58,
+		"background_saturation":0,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"The Wall",
+		"background_color":[0.264,0.27,0.257],
+		"use_background_mask":true,
+		"background_mask":"Gradient Mask.jpg",
+		"background_mask_opacity":100,
+		"background_mask_scale":0.75,
+		"background_mask_rotation":0,
+		"background_mask_x":-0.02,
+		"background_mask_y":0,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Plaster 2.jpg",
+		"background_texture_opacity":62,
+		"background_texture_scale":0.85,
+		"background_brightness":1,
+		"background_saturation":0.5,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"Future Gradient",
+		"background_color":[0.448,0.448,0.448],
+		"use_background_mask":true,
+		"background_mask":"Horizontal Gradient Mask 1.jpg",
+		"background_mask_opacity":100,
+		"background_mask_scale":1.15,
+		"background_mask_rotation":5,
+		"background_mask_x":0,
+		"background_mask_y":0.06,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Futuristic Dust.jpg",
+		"background_texture_opacity":100,
+		"background_texture_scale":1.15,
+		"background_brightness":1.6,
+		"background_saturation":1.15,
+		"background_texture_rotation":-8,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"Tension",
+		"background_color":[0.502,0.502,0.502],
+		"use_background_mask":true,
+		"background_mask":"Bottom Beam Mask.jpg",
+		"background_mask_opacity":100,
+		"background_mask_scale":0.45,
+		"background_mask_rotation":0,
+		"background_mask_x":0.02,
+		"background_mask_y":0.04,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Debris.jpg",
+		"background_texture_opacity":100,
+		"background_texture_scale":1,
+		"background_brightness":2,
+		"background_saturation":0.94,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"Cold Slice",
+		"background_color":[0.338,0.433,0.501],
+		"use_background_mask":true,
+		"background_mask":"Gradient Mask.jpg",
+		"background_mask_opacity":100,
+		"background_mask_scale":0.69,
+		"background_mask_rotation":45,
+		"background_mask_x":0,
+		"background_mask_y":0,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Concrete 3.jpg",
+		"background_texture_opacity":40,
+		"background_texture_scale":1.6,
+		"background_brightness":2,
+		"background_saturation":0,
+		"background_texture_rotation":45,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"Rainy Nights",
+		"background_color":[0.122,0.294,0.506],
+		"use_background_mask":true,
+		"background_mask":"Mask Round.jpg",
+		"background_mask_opacity":100,
+		"background_mask_scale":0.56,
+		"background_mask_rotation":0,
+		"background_mask_x":0.11,
+		"background_mask_y":0.04,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Rain.jpg",
+		"background_texture_opacity":99,
+		"background_texture_scale":1,
+		"background_brightness":2,
+		"background_saturation":0.04,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"Solid Look",
+		"background_color":[0.457,0.421,0.342],
+		"use_background_mask":true,
+		"background_mask":"Bottom Beam Mask.jpg",
+		"background_mask_opacity":100,
+		"background_mask_scale":0.25,
+		"background_mask_rotation":0,
+		"background_mask_x":-0.02,
+		"background_mask_y":0.01,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Concrete 1.jpg",
+		"background_texture_opacity":95,
+		"background_texture_scale":1.3,
+		"background_brightness":2,
+		"background_saturation":1,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"Dark Corner",
+		"background_color":[0.416,0.416,0.416],
+		"use_background_mask":true,
+		"background_mask":"Abstract Mask.jpg",
+		"background_mask_opacity":85,
+		"background_mask_scale":1.05,
+		"background_mask_rotation":180,
+		"background_mask_x":0.03,
+		"background_mask_y":0.03,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Concrete 2.jpg",
+		"background_texture_opacity":100,
+		"background_texture_scale":0.6,
+		"background_brightness":0.04,
+		"background_saturation":0,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	},
+	{
+		"ID":"Soft Pink",
+		"background_color":[0.044,0.012,0.027],
+		"use_background_mask":true,
+		"background_mask":"Mask Round.jpg",
+		"background_mask_opacity":100,
+		"background_mask_scale":0.54,
+		"background_mask_rotation":0,
+		"background_mask_x":0,
+		"background_mask_y":0.05,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Gypsum 2.jpg",
+		"background_texture_opacity":100,
+		"background_texture_scale":0.6,
+		"background_brightness":0.75,
+		"background_saturation":1,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":true
+	},
+	{
+		"ID":"Smoky",
+		"background_color":[0.248,0.345,0.481],
+		"use_background_mask":true,
+		"background_mask":"Mask Round.jpg",
+		"background_mask_opacity":100,
+		"background_mask_scale":0.55,
+		"background_mask_rotation":0,
+		"background_mask_x":0,
+		"background_mask_y":0,
+		"background_invert_mask":false,
+		"background_static_texture":true,
+		"use_background_texture":true,
+		"background_texture":"Smoke 1.jpg",
+		"background_texture_opacity":100,
+		"background_texture_scale":1.09,
+		"background_brightness":3,
+		"background_saturation":0,
+		"background_texture_rotation":0,
+		"mask_flip_x":false,
+		"mask_flip_y":false
+	}
+]
+}

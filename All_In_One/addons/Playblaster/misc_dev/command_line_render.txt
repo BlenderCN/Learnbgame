@@ -1,0 +1,9 @@
+"C:\Users\tonton\Documents\BLENDER_2_8\blender-2.80.0-git.79f67acccb36-windows64\blender" -b "C:\Users\tonton\Desktop\test_playblaster\playblaster.blend" -a
+
+"C:\Users\tonton\Documents\BLENDER_2_8\blender-2.80.0-git.79f67acccb36-windows64\blender" -b "C:\Users\tonton\Desktop\test_playblaster\playblaster.blend" -E BLENDER_WORKBENCH -a
+
+
+blender -b file.blend -E BLENDER_WORKBENCH -a
+
+BLENDER_WORKBENCH
+BLENDER_EEVEE

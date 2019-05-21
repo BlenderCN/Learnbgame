@@ -1,0 +1,55 @@
+diff --git a/source/blender/windowmanager/intern/wm_window.c b/source/blender/windowmanager/intern/wm_window.c
+index 2dbe738dd86..e249aaa60a4 100644
+--- a/source/blender/windowmanager/intern/wm_window.c
++++ b/source/blender/windowmanager/intern/wm_window.c
+@@ -615,14 +615,14 @@ void wm_window_title(wmWindowManager *wm, wmWindow *win)
+       char str[sizeof(((Main *)NULL)->name) + 24];
+       BLI_snprintf(str,
+                    sizeof(str),
+-                   "Blender%s [%s%s]",
++                   "OCVL%s [%s%s]",
+                    wm->file_saved ? "" : "*",
+                    BKE_main_blendfile_path_from_global(),
+                    G_MAIN->recovered ? " (Recovered)" : "");
+       GHOST_SetTitle(win->ghostwin, str);
+     }
+     else {
+-      GHOST_SetTitle(win->ghostwin, "Blender");
++      GHOST_SetTitle(win->ghostwin, "OpenCVLaboratory");
+     }
+ 
+     /* Informs GHOST of unsaved changes, to set window modified visual indicator (macOS)
+@@ -854,7 +854,7 @@ void wm_window_ghostwindows_ensure(wmWindowManager *wm)
+         win->cursor = CURSOR_STD;
+       }
+ 
+-      wm_window_ghostwindow_add(wm, "Blender", win);
++      wm_window_ghostwindow_add(wm, "OpenCVLaboratory", win);
+     }
+     /* happens after fileread */
+     wm_window_ensure_eventstate(win);
+@@ -1042,19 +1042,19 @@ wmWindow *WM_window_open_temp(bContext *C, int x, int y, int sizex, int sizey, i
+   }
+ 
+   if (sa->spacetype == SPACE_IMAGE) {
+-    title = IFACE_("Blender Render");
++    title = IFACE_("OCVL Render");
+   }
+   else if (ELEM(sa->spacetype, SPACE_OUTLINER, SPACE_USERPREF)) {
+-    title = IFACE_("Blender Preferences");
++    title = IFACE_("OCVL Preferences");
+   }
+   else if (sa->spacetype == SPACE_FILE) {
+-    title = IFACE_("Blender File View");
++    title = IFACE_("OCVL File View");
+   }
+   else if (sa->spacetype == SPACE_GRAPH) {
+-    title = IFACE_("Blender Drivers Editor");
++    title = IFACE_("OCVL Drivers Editor");
+   }
+   else {
+-    title = "Blender";
++    title = "OCVL";
+   }
+ 
+   if (win->ghostwin) {

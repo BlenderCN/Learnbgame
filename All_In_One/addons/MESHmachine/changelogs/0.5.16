@@ -1,0 +1,25 @@
+July 13 2018
+
+* Plug()
+        - add "global" deformation toggle
+                - intended for cases, where you know you are working on flat geometry but the plugs are complex and have a deformer with use_deformer toggled on, perhaps even with subsets set to forcesubsetdeform
+                - you can just toggle off all deformation in that case, even for fillet plugs and speed up the plug tool considerably 
+        - store handle scale
+        - store local empty location
+        - add simple subdivision to the cointainer, to avoid rare bug in negative corners, where faces to replace are found outisde the container cut
+
+* InsertPlug()
+	- check if plug scale is stored and set it accordingly
+        - check if empty locations are stored and set them accordingly
+
+* ValidatePlug()
+        - add flipped normals check
+        - always automatically deselect handle polyons
+        - always generate unique UUIDs for emtpies, when they aren't set
+
+* AddPlugToLibrary()
+        - add mode selection and with it ability to replace existing plugs
+                - useful to update plugs, without having to manually remove the previous version
+
+* MyPlugs plugs
+	- add Blender logo plug to previously empty library

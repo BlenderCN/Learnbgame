@@ -1,0 +1,49 @@
+modifier scalar_math (
+	string operation="ADD" [[string display="none"]],
+	float a=0.0 [[string label="Value"]],
+	float b=0.0 [[string label="Value"]],
+	output float rf=0.0 [[string label="Result"]],
+	output bool rb=false [[string label="Result"]]
+)
+{
+	if (operation == "ADD")
+		rf = a + b;
+	else if (operation == "SUB")
+		rf = a - b;
+	else if (operation == "MUL")
+		rf = a * b;
+	else if (operation == "DIV")
+		rf = a / b;
+	else if (operation == "SIN")
+		rf = sin(a);
+	else if (operation == "COS")
+		rf = cos(a);
+	else if (operation == "TAN")
+		rf = tan(a);
+	else if (operation == "ASIN")
+		rf = asin(a);
+	else if (operation == "ACOS")
+		rf = acos(a);
+	else if (operation == "ATAN")
+		rf = atan(a);
+	else if (operation == "ATAN2")
+		rf = atan2(b, a);
+	else if (operation == "POW")
+		rf = pow(a, b);
+	else if (operation == "LOG")
+		rf = log(a, b);
+	else if (operation == "ROUND")
+		rf = round(a);
+	else if (operation == "FLOOR")
+		rf = floor(a);
+	else if (operation == "CEIL")
+		rf = ceil(a);
+	else if (operation == "GREATER")
+		rb = a > b;
+	else if (operation == "LESS")
+		rb = a < b;
+	else if (operation == "MIN")
+		rf = min(a, b);
+	else if (operation == "MAX")
+		rf = max(a, b);
+}

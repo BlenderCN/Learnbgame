@@ -1,0 +1,6 @@
+$gpl
+$bl_info
+$imports
+$operators
+$ui_panels
+$registration

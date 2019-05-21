@@ -1,0 +1,56 @@
+#include "helpers.h"
+
+shader uv_map_circle(
+    point Vector = P,
+    float scale = 1.0,
+    float CircleRadius = 0.2,
+    float brick_width = 1.0,
+    float brick_height = 1.0,
+    float feather = 0.1,
+    float border = 0.1, 
+    output point UV =0,
+    output point CellID =0,
+    output float Height = 0.0,
+    output float Tile_Mask = 0.0,
+    output float Border_Mask = 0.0,
+    output float BrickWidth = 1.0,
+    output float BrickHeight = 1.0,
+    )
+{
+    float hb = border/2.0;
+    float hf = feather/2.0;
+    float sx = (Vector[0]*scale);
+    float sy = (Vector[1]*scale);
+    float x= smod(sx,brick_width);
+    float y = smod(sy,brick_height);
+    UV = point(x,y,0);
+    point CellIDTile = point((int)(sx/brick_width), (int) (sy/brick_height),0);
+    CellID = CellIDTile;
+    float hx = min(x, brick_width-x);
+    float hy = min(y, brick_height-y);
+    float tx = abs((x - brick_width/2) );
+    float ty = abs((y - brick_height/2));
+    float dist = sqrt(hx*hx+hy*hy);
+    float ht = min(min(hx,hy),dist-CircleRadius);
+    Border_Mask = ht < hb; 
+    float HeightTile = _step(hb,hb+(min(brick_width, brick_height)-hb)*hf, ht);
+    float HeightCircle = 0;
+    Height = HeightTile;
+    
+    point CellIDCircle = point(0,0,0);
+    if (dist < CircleRadius)
+    {
+        float lh = x < CircleRadius ? -1 : 1;
+        float th = y < CircleRadius ? -1 : 1;
+        CellIDCircle = point((int)(sx/brick_width)+(lh*0.5), (int) (sy/brick_height)+(0.5*th),0);
+        CellID = CellIDCircle;
+        HeightCircle = _step(hb,hb+((CircleRadius-hb)*feather),CircleRadius-dist);
+        Tile_Mask = 1;
+        Border_Mask = 0;
+        Height = HeightCircle;
+        UV = point(fmod(x + brick_width - CircleRadius,brick_width),
+                   fmod(y + brick_height - CircleRadius,brick_height),
+                   0);
+    
+    }
+}

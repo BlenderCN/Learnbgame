@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<material name="silver_planet" view_color="rgb(0.80000, 0.80000, 0.80000)" sample_lamp="True">
+	<nodes>
+		<node type="OUTPUT_MATERIAL" node_height="100" node_width="120" width_hidden="42" loc="805, 44" />
+		<node type="BRIGHTCONTRAST" color="rgba(1.0, 1.0, 1.0, 1.0)" bright="0.0" contrast="-0.89999" node_height="100" node_width="140" width_hidden="42" loc="555, -11" />
+		<node type="MIX_SHADER" fac="0.5" node_height="100" node_width="150" width_hidden="42" loc="555, 123" />
+		<node type="BSDF_GLOSSY" distribution="BECKMANN" color="rgba(0.99829, 1.0, 1.0, 1.0)" roughness="0.10000" node_height="100" node_width="150" width_hidden="42" loc="305, 44" />
+		<node type="BSDF_GLOSSY" distribution="BECKMANN" color="rgba(1.0, 1.0, 1.0, 1.0)" roughness="0.10000" node_height="100" node_width="150" width_hidden="42" loc="305, 208" />
+		<node type="INVERT" fac="1.0" color="rgba(0.0, 0.0, 0.0, 1.0)" node_height="100" node_width="90" width_hidden="42" loc="305, -118" />
+		<node type="MIX_RGB" blend_type="MIX" use_clamp="False" fac="0.5" color1="rgba(0.5, 0.5, 0.5, 1.0)" color2="rgba(0.5, 0.5, 0.5, 1.0)" node_height="100" node_width="100" width_hidden="42" loc="105, 82" />
+		<node type="INVERT" fac="1.0" color="rgba(0.0, 0.0, 0.0, 1.0)" node_height="100" node_width="90" width_hidden="42" loc="-85, 102" />
+		<node type="VALTORGB" interpolation="B_SPLINE" fac="0.5" stops="2" stop1="0.34090|rgba(0.0, 0.0, 0.0, 1.0)" stop2="0.78636|rgba(1.0, 1.0, 1.0, 1.0)" node_height="100" node_width="240" width_hidden="42" loc="-425, 192" />
+		<node type="TEX_MUSGRAVE" musgrave="FBM" scale="2.0" detail="25.0" dimension="2.0" lacunarity="1.0" offset="0.0" gain="1.0" node_height="100" node_width="150" width_hidden="42" loc="-675, 123" />
+		<node type="TEX_NOISE" scale="5.0" detail="2.0" distortion="0.0" node_height="100" node_width="150" width_hidden="42" loc="-925, 76" />
+		<node type="INVERT" fac="1.0" color="rgba(0.0, 0.0, 0.0, 1.0)" node_height="100" node_width="90" width_hidden="42" loc="-85, -9" />
+		<node type="TEX_NOISE" scale="100.0" detail="2.0" distortion="0.0" node_height="100" node_width="150" width_hidden="42" loc="-425, -33" />
+	</nodes>
+	<links>
+		<link to="8" input="0" from="9" output="0" />
+		<link to="1" input="0" from="5" output="0" />
+		<link to="5" input="1" from="6" output="0" />
+		<link to="6" input="2" from="8" output="0" />
+		<link to="11" input="1" from="12" output="0" />
+		<link to="7" input="1" from="8" output="0" />
+		<link to="6" input="0" from="7" output="0" />
+		<link to="9" input="0" from="10" output="0" />
+		<link to="0" input="0" from="2" output="0" />
+		<link to="2" input="0" from="6" output="0" />
+		<link to="2" input="1" from="4" output="0" />
+		<link to="2" input="2" from="3" output="0" />
+		<link to="0" input="2" from="1" output="0" />
+		<link to="6" input="1" from="11" output="0" />
+	</links>
+</material>

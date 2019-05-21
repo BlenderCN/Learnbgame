@@ -1,0 +1,102 @@
+<data>
+  <category name="Alien">
+    <material name="Alien chrome"/>
+  </category>
+  <category name="Rocks">
+    <material name="Amber"/>
+  </category>
+  <category name="Food">
+    <material name="Apple"/>
+    <material name="Organic_greenapple"/>
+    <material name="Organic_redapple"/>
+  </category>
+  <category name="Paints">
+    <material name="CarPaint_1"/>
+    <material name="CarPaint_2"/>
+    <material name="CarPaint_Best"/>
+    <material name="CarPaint_Fleck"/>
+    <material name="CarPaint_Flip1"/>
+    <material name="CarPaint_RampMat"/>
+    <material name="CarPaint_flip 1"/>
+    <material name="CarPaint_node"/>
+  </category>
+  <category name="Nature">
+    <material name="Earth_seawater"/>
+  </category>
+  <category name="Glass">
+    <material name="Acrylic glass"/>
+    <material name="Glass"/>
+    <material name="Glass_CG001"/>
+    <material name="Glass_Head light "/>
+    <material name="Glass_Mirror"/>
+    <material name="Glass_Ray glass 3"/>
+    <material name="Glass_TFInterference"/>
+    <material name="Glass_Vetro crown"/>
+    <material name="Glass_ice"/>
+    <material name="Glass_special"/>
+    <material name="Glass_thinglass"/>
+    <material name="Sandblasted glass"/>
+  </category>
+  <category name="Wood">
+    <material name="Wood_Cherry"/>
+  </category>
+  <category name="Metals">
+    <material name="Brass"/>
+    <material name="Bronze"/>
+    <material name="Brushed Aluminium"/>
+    <material name="Gold"/>
+    <material name="Alloy"/>
+    <material name="Metal_Chrome 2"/>
+    <material name="Metal_PM004"/>
+    <material name="Metal_UGM006"/>
+    <material name="Metal_brass"/>
+    <material name="Metal_Bling chrome"/>
+    <material name="Metal_copperoxide"/>
+    <material name="Metal_ironoxide"/>
+    <material name="Metal_rough"/>
+    <material name="Metal_rust"/>
+    <material name="PM001"/>
+    <material name="PM002"/>
+    <material name="PM003"/>
+    <material name="PM004"/>
+    <material name="PM006"/>
+    <material name="PM007"/>
+    <material name="PM008"/>
+    <material name="PM009"/>
+    <material name="PM010"/>
+  </category>
+  <category name="Stone">
+    <material name="Stone_Opal"/>
+    <material name="Stone_Stone1"/>
+    <material name="Stone_marble_rowan"/>
+    <material name="Stone_sandstone"/>
+    <material name="Stone_Clay"/>
+    <material name="Stone_LapisLazuli"/>
+    <material name="Stone_MarbleRough"/>
+    <material name="Stone_AmethystMilky"/>
+    <material name="Stone_Anchient"/>
+  </category>
+  <category name="Textiles">
+    <material name="Textile1"/>
+    <material name="Textile2"/>
+    <material name="Textile3"/>
+    <material name="Textile_ColouredCloth"/>
+    <material name="Textile_Tartan"/>
+    <material name="Textile_blackvelvet"/>
+    <material name="Textile_my_tyartan"/>
+    <material name="Textile_quilt"/>
+  </category>
+  <category name="Organic">
+    <material name="Organic_Heart"/>
+    <material name="Organic_Orange"/>
+    <material name="Organic_Slime"/>
+    <material name="Organic_avocado1"/>
+    <material name="Organic_brain"/>
+    <material name="Skin_Organic_Leather"/>
+    <material name="Skin_Organic_Skin"/>
+    <material name="Skin_skin"/>
+  </category>
+  <category name="Fx">
+    <material name="Electric Bolts"/>
+  </category>
+</data>

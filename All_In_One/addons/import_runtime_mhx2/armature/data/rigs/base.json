@@ -1,0 +1,13 @@
+{
+    "name" : "Base",
+
+    "description" :
+        "The base rig. Use this for weighting.",
+
+    "settings" : {
+        "useConstraints" : true,
+        "useCorrectives": false
+	}
+}
+
+

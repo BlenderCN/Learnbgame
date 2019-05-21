@@ -1,0 +1,43 @@
+{
+    "$schema" : "http://json-schema.org/draft-04/schema",
+    "title" : "physics",
+    "type" : "object",
+    "description" : "Rigid body physics properties for a node",
+    "allOf" : [ { "$ref" : "glTFChildOfRootProperty.schema.json" } ],
+    "properties" : {
+        "collisionShapes": {
+            "description": "Shapes a simulation should use to represent the node",
+            "type": "array",
+            "items": {
+                "$ref": "node.BLENDER_physics.shape.schema.json"
+            }
+            "minItems": 1
+        },
+        "mass" : {
+            "description": "The 'weight', irrespective of gravity, of the node",
+            "type": "number",
+            "default": 1.0
+        },
+        "static" : {
+            "description": "Whether or not the Node should be moved by physics simulations",
+            "type": "boolean",
+            "default": false
+        },
+        "collisionGroups": {
+            "type": "integer",
+            "description": "A 32-bit bit field representing the node's group membership",
+            "minimum": 0,
+            "maximum": 4294967296,
+            "default": 1
+        },
+        "collisionMasks": {
+            "type": "integer",
+            "description": "A 32-bit bit field representing what groups the node can collide with",
+            "minimum": 0,
+            "maximum": 4294967296,
+            "default": 1
+        }
+    },
+    "additionalProperties" : false,
+    "required" : ["collisionShapes"]
+}

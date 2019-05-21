@@ -1,0 +1,66 @@
+    let checkmesh = () => {
+      let lastth = undefined;
+      let vec1 = new Vector3(), vec2 = new Vector3();
+      
+      for (let i=0; i<sortlist.length-2; i++) {
+        let v1 = sortlist[i], v2 = sortlist[i+1], v3 = sortlist[i+2];
+        let ok = true;
+        
+        if (v1.vectorDistance(v2) == 0) {
+          console.log("zero length edge detected")
+          
+          delVert(i);
+          ok = false;
+        }
+        
+        if (0&&ok) {
+          vec1.load(v1).sub(v2).normalize();
+          vec2.load(v3).sub(v2).normalize();
+          
+          let th = vec1[0]*vec2[1] - vec1[1]*vec2[0];
+          
+          if (lastth !== undefined) {
+            let diff = Math.abs(th - lastth);
+            //console.log(diff.toFixed(3));
+            
+            if (diff > 0.5) {
+              console.log("Excessive curvature change detected!");
+              
+              delVert(i);
+              ok = false;
+            }
+          }
+          lastth = th;
+        }
+        
+        let isects = [];
+        
+        for (let j=0; ok && j<sortlist.length; j++) {
+          if (i >= j-1 && i <= j+1) continue;
+
+          let v3 = sortlist[j], v4 = sortlist[j+1];
+          
+          if (math.line_line_cross(v1, v2, v3, v4, 0.0001)) {
+            console.log("self intersection detected!");
+            
+            //ok = false;
+            //delVert(i);
+            
+            let isect = math.line_line_isect(v1, v2, v3, v4);
+            
+            isects.push(isect);
+            v1.load(isect);
+            
+            break;
+          }
+        }
+        
+        console.log(isects.length)
+        
+        if (!ok) {
+          i -= 1;
+        }
+      }
+    }
+  
+    checkmesh();

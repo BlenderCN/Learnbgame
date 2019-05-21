@@ -1,0 +1,36 @@
+attrs:
+ blockmesh_executed:
+  type: Bool
+  name: "blockMesh executed"
+  description: "blockMesh executed"
+  default: false
+
+operators:
+ reynolds.generate_bmd:
+  operator_type: Operator
+  class_name: BMDGenerateDictOperator
+  label: Generate Dict
+  description: Generate block mesh dict
+  execute_func: generate_blockmeshdict
+ reynolds.block_mesh_runner:
+  operator_type: Operator
+  class_name: BMDBlockMeshRunnerOperator
+  label: Run
+  description: Run blockMesh command
+  execute_func: run_blockmesh
+ reynolds.generate_time_props:
+  operator_type: Operator
+  class_name: BMDTimePropsOperator
+  label: Generate Time Props
+  description: Generate time props 
+  execute_func: generate_time_props
+
+gui:
+ - box: 
+   - row: 
+     - operator: 
+        id: reynolds.block_mesh_runner
+        icon: FILE_TEXT
+     - operator: 
+        id: reynolds.generate_time_props
+        icon: FILE_TEXT

@@ -1,0 +1,33 @@
+
+float fract(float f)
+{
+return f - floor(f);
+}
+
+shader uv_map_tile_pattern_1(
+	point Vector = P,
+	float scale = 1.0, 
+	output point UV = 0,
+    output point cellID = 0,
+    output float brick_width = 0.5, 
+    output float brick_height = 0.25,
+	output float tile_mask = 0,)
+{   
+    UV = Vector;
+    float x = fract(Vector[0] * scale);
+    float y = fract(Vector[1] * scale);
+    float i1 = x <0.5;
+    float i2 = y < 0.5;
+    if (i1==i2)
+    {
+       UV = point(0.5-fmod(y,0.5),fmod(x,0.25),0.0);
+       cellID = point(floor(Vector[0]/0.25), floor(Vector[1]/0.5),0);
+       tile_mask=1;
+    }
+    else 
+    {
+       UV = point(fmod(x,0.5),fmod(y,0.25),0);
+       cellID = point(floor(Vector[0]/0.5), floor(Vector[1]/0.25),0);
+    }
+}
+

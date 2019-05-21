@@ -1,0 +1,63 @@
+diff --git a/intern/ghost/intern/GHOST_SystemCocoa.mm b/intern/ghost/intern/GHOST_SystemCocoa.mm
+index 903fe4a6e8d..78afd51bbf0 100644
+--- a/intern/ghost/intern/GHOST_SystemCocoa.mm
++++ b/intern/ghost/intern/GHOST_SystemCocoa.mm
+@@ -450,19 +450,19 @@ extern "C" int GHOST_HACK_getFirstFile(char buf[FIRSTFILEBUFLG])
+ }
+ 
+ // The purpose of this function is to make sure closing "About" window does not
+-// leave Blender with no key windows. This is needed due to a custom event loop
++// leave OpenCV Laboratory with no key windows. This is needed due to a custom event loop
+ // nature of the application: for some reason only using [NSApp run] will ensure
+ // correct behavior in this case.
+ //
+ // This is similar to an issue solved in SDL:
+ //   https://bugzilla.libsdl.org/show_bug.cgi?id=1825
+ //
+-// Our solution is different, since we want Blender to keep track of what is
++// Our solution is different, since we want OpenCV Laboratory to keep track of what is
+ // the key window during normal operation. In order to do so we exploit the
+ // fact that "About" window is never in the orderedWindows array: we only force
+ // key window from here if the closing one is not in the orderedWindows. This
+ // saves lack of key windows when closing "About", but does not interfere with
+-// Blender's window manager when closing Blender's windows.
++// OpenCV Laboratory's window manager when closing OpenCV Laboratory's windows.
+ - (void)windowWillClose:(NSNotification *)notification
+ {
+   NSWindow *closing_window = (NSWindow *)[notification object];
+@@ -568,14 +568,14 @@ GHOST_TSuccess GHOST_SystemCocoa::init()
+       NSMenu *appMenu;
+ 
+       //Create the application menu
+-      appMenu = [[NSMenu alloc] initWithTitle:@"Blender"];
++      appMenu = [[NSMenu alloc] initWithTitle:@"OpenCV Laboratory"];
+ 
+-      [appMenu addItemWithTitle:@"About Blender"
++      [appMenu addItemWithTitle:@"About OpenCV Laboratory"
+                          action:@selector(orderFrontStandardAboutPanel:)
+                   keyEquivalent:@""];
+       [appMenu addItem:[NSMenuItem separatorItem]];
+ 
+-      menuItem = [appMenu addItemWithTitle:@"Hide Blender"
++      menuItem = [appMenu addItemWithTitle:@"Hide OpenCV Laboratory"
+                                     action:@selector(hide:)
+                              keyEquivalent:@"h"];
+       [menuItem setKeyEquivalentModifierMask:NSCommandKeyMask];
+@@ -589,7 +589,7 @@ GHOST_TSuccess GHOST_SystemCocoa::init()
+                          action:@selector(unhideAllApplications:)
+                   keyEquivalent:@""];
+ 
+-      menuItem = [appMenu addItemWithTitle:@"Quit Blender"
++      menuItem = [appMenu addItemWithTitle:@"Quit OpenCV Laboratory"
+                                     action:@selector(terminate:)
+                              keyEquivalent:@"q"];
+       [menuItem setKeyEquivalentModifierMask:NSCommandKeyMask];
+@@ -1349,7 +1349,7 @@ GHOST_TUns8 GHOST_SystemCocoa::handleQuitRequest()
+   //Check open windows if some changes are not saved
+   if (m_windowManager->getAnyModifiedState()) {
+     int shouldQuit = NSRunAlertPanel(
+-        @"Exit Blender",
++        @"Exit OpenCV Laboratory",
+         @"Some changes have not been saved.\nDo you really want to quit?",
+         @"Cancel",
+         @"Quit Anyway",

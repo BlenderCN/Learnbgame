@@ -1,0 +1,1219 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .TextEdit {
+            /*width: 400px;*/
+            width: 100%;
+            height: calc(100% - 30px);
+            /*height: calc(100% - 180px);*/
+            /*height:100px;*/
+            font-size: large;
+            padding: 10px;
+            /*width:300px;
+        height:100%;
+        position:fixed;
+        top:0px;
+        left:0px;*/
+            /*float:right;*/
+        }
+
+        .namecontrol {
+            display: none;
+            position: fixed;
+            right: 5px;
+            bottom: 30px;
+            /*background-color:azure;*/
+            border: 1px solid black;
+            /*width:30%;
+    height:3%;*/
+        }
+
+        .pageholder {
+            box-sizing: content-box;
+            width: 1205px;
+        }
+
+        .pageunit {
+            /*width:1250px;*/
+            padding: 0px;
+            margin-bottom: 10px;
+            white-space: nowrap;
+            display: block;
+            background-color: white;
+        }
+
+        .page {
+            box-sizing: content-box;
+            /* 内枠サイズ　2:3 */
+            width: 600px;
+            height: 900px;
+            border: 1px solid black;
+            overflow: hidden;
+            margin: 0px;
+            padding: 0px;
+            float: right;
+            background-color: white;
+            position: relative;
+        }
+
+        .cell {
+            box-sizing: border-box;
+            width: 202px;
+            height: 302px;
+            float: right;
+            border: 1px solid black;
+            margin: -1px;
+            /*display: inline-flex;*/
+            -ms-writing-mode: tb-rl;
+            /* for MS IE8+ */
+            writing-mode: vertical-rl;
+            /*flex-direction: row-reverse;*/
+            font-size: 13pt;
+            /*14→16*/
+            line-height: 17pt;
+            /*padding: 10px;*/
+            padding: 0px;
+            vertical-align: top;
+            overflow: auto;
+            background-color: white;
+            word-wrap: break-word;
+            white-space: normal;
+
+        }
+
+        .cellselected {
+            background-color: lightsteelblue;
+        }
+
+        .summary {
+            border: 1px solid black;
+            width: 100%;
+            height: 150px;
+            display: none;
+        }
+
+        .scene {
+            box-sizing: content-box;
+            width: 1205px;
+            display: block;
+            background-color: white;
+
+        }
+
+        .sceneholder {
+            box-sizing: content-box;
+            width: 1205px;
+        }
+
+        .MinimizeNodeMain {
+            width: 50px;
+            -ms-writing-mode: tb-rl;
+            /* for MS IE8+ */
+        }
+
+        .MaximizeNodeMain {
+            width: 1205px;
+        }
+
+        .CommandNodePage {
+            writing-mode: vertical-rl;
+        }
+
+        .vertical {
+            writing-mode: vertical-rl;
+        }
+
+        body {
+            /*font-size:small;*/
+            line-height: 30px;
+            font-family: "メイリオ", Meiryo;
+            overflow: scroll;
+        }
+
+        div {
+            box-sizing: border-box;
+        }
+
+        button {
+            line-height: 17px;
+            background-color: cornflowerblue;
+            color: white;
+            border: none;
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+
+        .DBG {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+        }
+
+        .control {
+            /*width: 100%;*/
+            font-size: small;
+            /*line-height:10px;*/
+            display: none;
+        }
+
+
+        .panel {
+            /*background-color:coral;*/
+            /*position:fixed;
+        top:0px;*/
+            /*width: 150px;*/
+            max-height: 95%;
+            /*height: 100%;*/
+            /*float: right;*/
+            position: fixed;
+            top: 5px;
+            right: 25px;
+            text-align: right;
+            vertical-align: top;
+            overflow: auto;
+            text-shadow: 0px 0px 10px 10px white;
+        }
+
+        /* https://w3g.jp/blog/css3_calc_function */
+
+        .container {
+            height: 100%;
+            /*width: calc(100% - 150px);*/
+            width: 100%;
+            float: right;
+            /*background-color:cyan;*/
+        }
+
+        .nodeholder {
+            padding: 50px;
+            /*width:1300px;*/
+        }
+
+        .text_Vertical {
+            writing-mode: tb-rl;
+            vertical-align: top;
+            text-align: end;
+        }
+
+        .text_Horizontal {
+            writing-mode: lr-tb;
+        }
+
+        .NodeUnit {
+            margin: 0px;
+            border-top: 1px solid gainsboro;
+            border-left: 1px solid black;
+            /*border-right:1px solid black;*/
+            /*border:1px solid black;*/
+            /*border-left:1px solid black;*/
+            /*border-bottom:1px solid black;*/
+            display: block;
+            /*background-color:chartreuse;*/
+            white-space: nowrap;
+            vertical-align: top;
+        }
+
+        .NodeMain {
+            margin: 0px;
+            padding: 5px;
+            /*border:1px solid black;*/
+            display: inline-block;
+            vertical-align: top;
+            margin: 0px;
+            min-width: 30px;
+            min-height: 30px;
+            word-wrap: break-word;
+            white-space: normal;
+            /*border-top:1px solid gainsboro;*/
+            border-right: 1px solid gainsboro;
+            border-bottom: none;
+            border-left: none;
+        }
+
+        .NM_Horizontal {
+            /*border-left:none;*/
+            border-right: 1px solid gainsboro;
+            border-bottom: none;
+        }
+
+        .NM_Vertical {
+            border-top: none;
+            border-left: none;
+        }
+
+        .NodeContainer {
+            margin: 0px;
+            /*border:1px solid black;*/
+            /*background-color:crimson;*/
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .minimize {
+            width: 3px;
+            height: 35px;
+            border: 1px solid hotpink;
+            overflow: hidden;
+        }
+
+        .CommandNode {
+            background-color: khaki;
+        }
+
+        .CommandNodePage {
+            background-color: hsl( 144, 100%, 95%);
+        }
+
+        .CommandNodeCharacter {
+            background-color: aquamarine;
+            /*font-weight:bold;*/
+            color: gray;
+        }
+
+        .CommandNodeMemo {
+            background-color: lightgoldenrodyellow;
+        }
+
+        .CommandNodeDone {
+            background-color: deepskyblue;
+        }
+
+        .selected {
+            background-color: lavender;
+            /*background-color:hsl(240, 50%, 95%);*/
+        }
+
+        p {
+            margin: 0px;
+        }
+
+        .character_namebox {
+            position: absolute;
+            bottom: 25px;
+            left: 5px;
+            display: none;
+            /*background-color:antiquewhite;*/
+        }
+
+        .tabletcontrol {
+            position: fixed;
+            bottom: 5px;
+            right: 5px;
+            display: none;
+        }
+
+
+        /* 背景色クラス */
+
+        /*
+    https://flatuicolors.com/palette/defo
+.bgclr-{
+    background-color: ;
+}
+*/
+
+        .bgclr-turquoise {
+            background-color: #1abc9c;
+        }
+
+        .bgclr-greensea {
+            background-color: #16a085;
+        }
+
+        .bgclr-emerald {
+            background-color: #2ecc71;
+        }
+
+        .bgclr-nephritis {
+            background-color: #27ae60;
+        }
+
+        .bgclr-peterriver {
+            background-color: #3498db;
+        }
+
+        .bgclr-belizehole {
+            background-color: #2980b9;
+        }
+
+        .bgclr-amethyst {
+            background-color: #9b59b6;
+        }
+
+        .bgclr-wisteria {
+            background-color: #8e44ad;
+        }
+
+        .bgclr-sunflower {
+            background-color: #f1c40f;
+        }
+
+        .bgclr-orange {
+            background-color: #f39c12;
+        }
+
+        .bgclr-carrot {
+            background-color: #e67e22;
+        }
+
+        .bgclr-pumpkin {
+            background-color: #d35400;
+        }
+
+        .bgclr-alizarin {
+            background-color: #e74c3c;
+        }
+
+        .bgclr-pomegranate {
+            background-color: #c0392b;
+        }
+
+        .bgclr-clouds {
+            background-color: #ecf0f1;
+        }
+
+        .bgclr-asbestos {
+            background-color: #95a5a6;
+        }
+
+
+
+
+
+
+        .CellLayerContainer {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .CellLayer {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+        }
+
+        .CellLayer_Serif {
+            z-index: calc(inherit + 200);
+        }
+
+        .CellLayer_Description {
+            z-index: calc(inherit + 100);
+        }
+
+        .CellLayer_Canvas {
+            z-index: calc(inherit + 10);
+        }
+
+        .Cell_Serif {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            padding: 5px;
+            display: inline-block;
+            width: fit-content;
+            height: fit-content;
+            border: 1px solid;
+            color: darkolivegreen;
+            border-color: darkolivegreen;
+
+        }
+
+        .floattext {
+            /*color: darkorange;
+    border: 1px solid black;
+    background-color: white;*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nodeholder text_Horizontal">
+        <div class="NodeUnit">
+            <div class="NodeMain depth0" contenteditable="false"></div>
+            <div class="NodeContainer">
+                <div class="NodeUnit">
+                    <div class="NodeMain depth1" contenteditable="false"></div>
+                    <div class="NodeContainer">
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 1050px;">空プロジェクタの設置、プロジェクタからの視点レンダ、あと立体使ったテクスチャ作成　カラーとノーマルマップとかの焼きだし
+                                <br>のためのblendファイル簡単生成とか&nbsp;そんでそれで作ったテクスチャのロード&nbsp;厚みmodをうまいこと使って多層化機能とか欲しいな
+                                <br>
+                            </div>
+                            <div class="NodeContainer"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="NodeUnit">
+                    <div class="NodeMain depth1" contenteditable="false"></div>
+                    <div class="NodeContainer">
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 280px;">空プロジェクタの設置</div>
+                            <div class="NodeContainer"></div>
+                        </div>
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 280px;">プロジェクタからの視点レンダ</div>
+                            <div class="NodeContainer">
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 430px;">作業用blendファイルとか作成する</div>
+                                    <div class="NodeContainer">
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain depth4" contenteditable="false" style="width: 280px;">立体使ったテクスチャ作成</div>
+                                            <div class="NodeContainer"></div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain depth4" contenteditable="false" style="width: 280px;">テクスチャを書き出す</div>
+                                            <div class="NodeContainer"></div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain depth4" contenteditable="false" style="width: 280px;">カラーとノーマルマップとかの焼きだし</div>
+                                            <div class="NodeContainer"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 430px;">背景画像に視点画像を使う</div>
+                                    <div class="NodeContainer"></div>
+                                </div>
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 430px;">書き出したテクスチャのプロジェクタへのロード</div>
+                                    <div class="NodeContainer"></div>
+                                </div>
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 430px;">jsonでプロジェクタ名を指定する？
+                                        <br>オブジェクトに乱数ID割り振っておいてもいいかも
+                                        <br>
+                                    </div>
+                                    <div class="NodeContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 280px;">UVマップ書き出し</div>
+                            <div class="NodeContainer">
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 280px;"></div>
+                                    <div class="NodeContainer">
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain depth4" contenteditable="false" style="width: 280px;">これも作業用blendファイル出したい。</div>
+                                            <div class="NodeContainer"></div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain depth4" contenteditable="false" style="width: 280px;">背景画像にUVマップ使う</div>
+                                            <div class="NodeContainer"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 280px;">作業ファイル作成</div>
+                                    <div class="NodeContainer"></div>
+                                </div>
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 280px;">UVマップ書き出し</div>
+                                    <div class="NodeContainer"></div>
+                                </div>
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 280px;">背景にUVマップ設定</div>
+                                    <div class="NodeContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 280px;">UVの方の結果読み込み</div>
+                            <div class="NodeContainer">
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 280px;">UVマップ名が必要</div>
+                                    <div class="NodeContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 280px;"></div>
+                            <div class="NodeContainer"></div>
+                        </div>
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 280px;">テクスチャ作業ファイル作成</div>
+                            <div class="NodeContainer">
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 230px;">ユニークID設定</div>
+                                    <div class="NodeContainer">
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-sunflower depth4" contenteditable="false" style="width: 80px;">機能</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-turquoise depth5" contenteditable="false" style="width: 50px;">名前</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">_set_fjwid</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">ユニークID設定</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-greensea depth5" contenteditable="false" style="width: 50px;">説明</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 1050px;">英数字16桁のユニークIDをオブジェクトに設定する
+                                                                <br>fjw_id
+                                                                <br>
+                                                            </div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-peterriver depth5" contenteditable="false" style="width: 50px;">入力</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">オブジェクト</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-carrot depth5" contenteditable="false" style="width: 50px;">処理</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 300px;">設定されてたらそれをそのまま返す</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-alizarin depth5" contenteditable="false" style="width: 50px;">出力</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">設定したID</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-sunflower depth4" contenteditable="false" style="width: 80px;">機能</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-turquoise depth5" contenteditable="false" style="width: 50px;">名前</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 300px;">fjwid</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 300px;">ユニークID取得</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-greensea depth5" contenteditable="false" style="width: 50px;">説明</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 300px;">ユニークIDを取得する。なかったら設定してそれを取得する。</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 300px;">呼び出しはこれだけでいいじゃん</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-peterriver depth5" contenteditable="false" style="width: 50px;">入力</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;"></div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-carrot depth5" contenteditable="false" style="width: 50px;">処理</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;"></div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-alizarin depth5" contenteditable="false" style="width: 50px;">出力</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;"></div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 230px;">テクスチャ作業ファイル</div>
+                                    <div class="NodeContainer">
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-sunflower depth4" contenteditable="false" style="width: 80px;">機能</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-turquoise depth5" contenteditable="false" style="width: 50px;">名前</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 300px;">make_texture_workingfile</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-greensea depth5" contenteditable="false" style="width: 50px;">説明</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 1050px;">テクスチャ作業用の作業ファイルを作る。</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 1050px;">部分的に保存したい。そのまま作業ファイルでの作業にうつっちゃうのが正解では？</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-peterriver depth5" contenteditable="false" style="width: 50px;">入力</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 200px;">オブジェクト</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-carrot depth5" contenteditable="false" style="width: 50px;">処理</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">ユニークID設定</div>
+                                                            <div class="NodeContainer">
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 450px;">IDをもってなければオブジェクトにユニークIDを設定する</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">現状保存</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">テクスチャフォルダパス</div>
+                                                            <div class="NodeContainer">
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 350px;">モデルと同じ階層のtexturesフォルダ</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 350px;">ってこれは普通に開いてるblendファイルから設定すればいいじゃん</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">テクスチャ作業フォルダパス</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">出力パス</div>
+                                                            <div class="NodeContainer">
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 300px;">テクスチャ作業パス/ユニークID/</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">ファイル出力</div>
+                                                            <div class="NodeContainer">
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 650px;">テクスチャ作業フォルダパスにblendファイルを保存する。</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 650px;">metadata.jsonを保存する</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 650px;">メタデータ、後の処理でいじりたかったりするのでは？
+                                                                        <br>jsonを返して必要なら保存とか？
+                                                                        <br>ていうか保存してから返して、なんかあったら変更してまた保存で問題ないじゃん。
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain bgclr-alizarin depth5" contenteditable="false" style="width: 50px;">出力</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">Blendファイルの出力先フォルダパス</div>
+                                                            <div class="NodeContainer">
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 550px;">これを返せばその後のユニークな処理ができる</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 550px;">セーブしてる時点で単にファイルパス取得すればいいのでは？</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 550px;">戻るコマンドいるかも</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 280px;"></div>
+                            <div class="NodeContainer">
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 280px;">テクスチャ作業</div>
+                                    <div class="NodeContainer">
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain depth4" contenteditable="false" style="width: 280px;">ユニークID</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 280px;">作業.blend</div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 280px;">メタデータ.json</div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 330px;">ユニークID</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 330px;">テクスチャ出力先</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 330px;">ベースblendファイルのディレクトリ
+                                                                <br>相対パス
+                                                                <br>
+                                                            </div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 330px;">メタデータにテクスチャ出力先をあらかじめ記述しておけばいいんじゃないの？？</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 280px;"></div>
+                            <div class="NodeContainer"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="NodeUnit">
+                    <div class="NodeMain depth1" contenteditable="false"></div>
+                    <div class="NodeContainer">
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 130px;">ファイル構造</div>
+                            <div class="NodeContainer">
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 130px;">データフォルダ</div>
+                                    <div class="NodeContainer">
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain depth4" contenteditable="false" style="width: 130px;">textures</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 180px;">fjw_generated
+                                                        <br>
+                                                    </div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 180px;">textures</div>
+                                                            <div class="NodeContainer">
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 180px;">作業.blendからの書き出しテクスチャ</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 180px;">カラー</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 180px;">ノーマル</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 180px;">ハイト</div>
+                                                                    <div class="NodeContainer"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain depth4" contenteditable="false" style="width: 130px;">fjw_work</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 180px;">作業データフォルダ的な何か
+                                                        <br>fjw_workとか？
+                                                        <br>
+                                                    </div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 180px;">オブジェクトID
+                                                        <br>16桁ぐらいにしとく？
+                                                        <br>
+                                                    </div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 180px;">metadata.json</div>
+                                                            <div class="NodeContainer">
+                                                                <div class="NodeUnit">
+                                                                    <div class="NodeMain depth7" contenteditable="false" style="width: 480px;">テクスチャの書き出し先とかここにかいといたらいいのでは</div>
+                                                                    <div class="NodeContainer">
+                                                                        <div class="NodeUnit">
+                                                                            <div class="NodeMain depth8" contenteditable="false" style="width: 480px;">データが非対称になったときとか困る？
+                                                                                <br>また生成すればいい？
+                                                                                <br>
+                                                                            </div>
+                                                                            <div class="NodeContainer"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 180px;">作業.blendファイル</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain depth4" contenteditable="false" style="width: 130px;">データ.blend</div>
+                                            <div class="NodeContainer"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 130px;"></div>
+                            <div class="NodeContainer">
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 1050px;">よくよく考えたらUV書き出しのことも考えたらこれじゃダメだ</div>
+                                    <div class="NodeContainer"></div>
+                                </div>
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 1050px;">最終出力に作業データまじるのダメじゃない？</div>
+                                    <div class="NodeContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="NodeUnit">
+                    <div class="NodeMain depth1" contenteditable="false" style="width: 30px;"></div>
+                    <div class="NodeContainer">
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 230px;">下絵指定機能は欲しい</div>
+                            <div class="NodeContainer">
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 580px;">指定画像を下絵にささっと設定する機能は欲しい。まとめておきたい。</div>
+                                    <div class="NodeContainer"></div>
+                                </div>
+                                <div class="NodeUnit">
+                                    <div class="NodeMain bgclr-sunflower depth3" contenteditable="false" style="width: 80px;">機能</div>
+                                    <div class="NodeContainer">
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-turquoise depth4" contenteditable="false" style="width: 50px;">名前</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 200px;">下絵設定</div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-greensea depth4" contenteditable="false" style="width: 50px;">説明</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 200px;"></div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-peterriver depth4" contenteditable="false" style="width: 50px;">入力</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 250px;">下絵用画像ファイルパス？</div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 250px;">表示軸
+                                                        <br>view_axis
+                                                        <br>
+                                                    </div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">LEFT</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">RIGHT</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">BACK</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">FRONT</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">BOTTOM</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">TOP</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">ALL</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">CAMERA</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 250px;">不透明度
+                                                        <br>opacity
+                                                        <br>
+                                                    </div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">0.0-1.0
+                                                                <br>
+                                                            </div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 250px;">前後
+                                                        <br>draw_depth
+                                                        <br>
+                                                    </div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">FRONT</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">BACK</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 250px;">フレームメソッド
+                                                        <br>frame_method
+                                                        <br>
+                                                    </div>
+                                                    <div class="NodeContainer">
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">STRETCH</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">FIT</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                        <div class="NodeUnit">
+                                                            <div class="NodeMain depth6" contenteditable="false" style="width: 250px;">CROP</div>
+                                                            <div class="NodeContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-carrot depth4" contenteditable="false" style="width: 50px;">処理</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-alizarin depth4" contenteditable="false" style="width: 50px;">出力</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="NodeUnit">
+                                    <div class="NodeMain bgclr-sunflower depth3" contenteditable="false" style="width: 80px;">機能</div>
+                                    <div class="NodeContainer">
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-turquoise depth4" contenteditable="false" style="width: 50px;">名前</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 200px;">get_backgroundimages</div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-greensea depth4" contenteditable="false" style="width: 50px;">説明</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 480px;">名前で下絵設定を検索して設定をいじるのがほしい</div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 480px;">名前で検索して、見つかったものをリストで返す。</div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-peterriver depth4" contenteditable="false" style="width: 50px;">入力</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-carrot depth4" contenteditable="false" style="width: 50px;">処理</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain bgclr-alizarin depth4" contenteditable="false" style="width: 50px;">出力</div>
+                                            <div class="NodeContainer">
+                                                <div class="NodeUnit">
+                                                    <div class="NodeMain depth5" contenteditable="false" style="width: 250px;"></div>
+                                                    <div class="NodeContainer"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 80px;"></div>
+                                    <div class="NodeContainer">
+                                        <div class="NodeUnit">
+                                            <div class="NodeMain depth4" contenteditable="false" style="width: 230px;">show_background_image</div>
+                                            <div class="NodeContainer"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 230px;">jsonユーティリティ</div>
+                            <div class="NodeContainer">
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 750px;">いろいろ情報をjsonにまとめとくのが楽だからユーティリティ作った方がいい</div>
+                                    <div class="NodeContainer"></div>
+                                </div>
+                                <div class="NodeUnit">
+                                    <div class="NodeMain depth3" contenteditable="false" style="width: 750px;">エラー処理しとかないと仕事でまずいかもな</div>
+                                    <div class="NodeContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="NodeUnit">
+                    <div class="NodeMain depth1" contenteditable="false"></div>
+                    <div class="NodeContainer"></div>
+                </div>
+                <div class="NodeUnit">
+                    <div class="NodeMain depth1" contenteditable="false"></div>
+                    <div class="NodeContainer"></div>
+                </div>
+                <div class="NodeUnit">
+                    <div class="NodeMain depth1" contenteditable="false"></div>
+                    <div class="NodeContainer"></div>
+                </div>
+                <div class="NodeUnit">
+                    <div class="NodeMain depth1" contenteditable="false"></div>
+                    <div class="NodeContainer"></div>
+                </div>
+                <div class="NodeUnit selected">
+                    <div class="NodeMain depth1" contenteditable="false" style="background-color: lavender;"></div>
+                    <div class="NodeContainer"></div>
+                </div>
+            </div>
+        </div>
+        <div class="NodeUnit">
+            <div class="NodeMain depth0" contenteditable="false" style="width: 30px;"></div>
+            <div class="NodeContainer">
+                <div class="NodeUnit">
+                    <div class="NodeMain depth1" contenteditable="false" style="width: 30px;"></div>
+                    <div class="NodeContainer">
+                        <div class="NodeUnit">
+                            <div class="NodeMain depth2" contenteditable="false" style="width: 1050px;"></div>
+                            <div class="NodeContainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

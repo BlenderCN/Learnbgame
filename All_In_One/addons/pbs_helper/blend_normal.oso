@@ -1,0 +1,20 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.9.9
+# options: -o /tmp/tmp8h4ch_eb.oso -I/home/ywaby/app/blender-2.80/2.80/scripts/addons/cycles/shader
+shader normal_blend
+param	float	fac	0.5		%read{0,1} %write{2147483647,-1}
+param	vector	normal1	0.5 0.5 1		%read{2,2} %write{2147483647,-1}
+param	vector	normal2	0.5 0.5 1		%read{0,0} %write{2147483647,-1}
+oparam	vector	Normal	0.5 0.5 1		%read{2147483647,-1} %write{3,3}
+temp	vector	$tmp1	%read{3,3} %write{0,0}
+const	float	$const1	1		%read{1,1} %write{2147483647,-1}
+temp	float	$tmp2	%read{2,2} %write{1,1}
+temp	vector	$tmp3	%read{3,3} %write{2,2}
+code ___main___
+# doc/../pbs_helper/blend_normal.osl:9
+# }
+	mul		$tmp1 normal2 fac 	%filename{"doc/../pbs_helper/blend_normal.osl"} %line{9} %argrw{"wrr"}
+	sub		$tmp2 $const1 fac 	%argrw{"wrr"}
+	mul		$tmp3 normal1 $tmp2 	%argrw{"wrr"}
+	add		Normal $tmp1 $tmp3 	%argrw{"wrr"}
+	end

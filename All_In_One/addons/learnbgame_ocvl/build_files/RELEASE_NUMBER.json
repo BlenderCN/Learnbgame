@@ -1,0 +1,20 @@
+{
+  "1.2.0":
+    {
+      "release_status": "beta",
+      "release_date": "2019-05-01",
+      "git_state_ocvl": "ab89e734e6760efb1abd9b39d8f2fe347418e2d7",
+      "git_state_blender": "d2f1705b15be406d5565e510ae82f07d27345af1",
+      "git_state_release/scripts/addons": "654d27c6ca7a9574ae03bb4666f4c4183e8798ec",
+      "git_state_release/scripts/addons_contrib": "9ec869231e08bbeab8a8d43297410a96e18d2efd",
+      "git_state_release/datafiles/locale": "2b81e2acc011a8b79232a18dad3c00b8e654ceee",
+      "git_state_source/tools": "4fad0d8ffc9a90e4c6660b3f7512f23cb4a086a7",
+      "change_log": [
+        "support Python 3.7",
+        "support Blender 2.8",
+        "support opencv-python-headless 3.4.2.17",
+        "support opencv-contrib-python-headless 3.4.2.17",
+        "binary available for Windows, Linux and OSX"
+      ]
+    }
+}

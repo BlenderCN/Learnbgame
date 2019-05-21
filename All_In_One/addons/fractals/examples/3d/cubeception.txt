@@ -1,0 +1,15 @@
+start: A;
+define:
+_Rectangle: Line r(90) Line r(90) Line r(90) Line r(90);
+_Cube: _Rectangle Move _Right _Rectangle Move _Right _Rectangle Move _Right _Rectangle Move _Right;
+_Up: r(90);
+_Down: r(-90);
+_Right: r(0, 90);
+_Left: r(0, -90);
+rules:
+A: push m1 _Right m1 _Left _Up m1 _Down A pop _Cube;
+Line: d1 Line d1;
+Move: m1 Move m1;
+final:
+Line: d1;
+Move: m1;

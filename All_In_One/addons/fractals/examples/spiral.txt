@@ -1,0 +1,10 @@
+start: Y;
+define:
+_Long: d2 A r90;
+_Short: d1 A r90;
+rules:
+Y: _Long _Long _Short _Short Y;
+X: A r90 X;
+A: d2 A;
+final:
+A: d2;

@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<Test_Panel build="False" compile="False" dependencies="" enabled="False" filepath="test_panel.rmp" filter="PANEL" library="" version="0.0">
+
+    <python_scripts>
+        <test_exec description="" filepath="">
+message = "This is a sample exec message dialog!"
+exec("data.@[PROP://Test_Panel/properties/test_string:]@ = 'forced string'")
+print("@[DATA://Test_Panel/properties/test_string:]@")
+print(message)
+output = message
+        </test_exec>
+    </python_scripts>
+
+    <shader_sources>
+    </shader_sources>
+
+    <shader_panels filter="SHADER">
+    </shader_panels>
+
+    <!-- type = general code categories (OPTION,ATTR,DISPLAY,FORMAT,RIB) -->
+    <!-- filter = comma separated filter name list -->
+    <!-- register = register this panel on pipeline load or manually -->
+    <!-- enabled = initial panel "enable" mode -->
+    <!-- delete = can this panel be deleted by user -->
+    <!-- duplicate = can this panel be duplicated by user -->
+    <!-- windows = windows the panel is available in (RENDER|SCENE|WORLD|OBJECT|CURVE|SURFACE|LAMP|CAMERA|MESH|META|MATERIAL|PARTICLE) -->
+    <utility_panels filter="UTILITY">
+        <Test_Panel delete="False" description="Test panel to work out all possible\nproperty, layout and control types" duplicate="False" enabled="True" filter="" register="True" type="RIB" windows="RENDER">
+            <read target="">
+            </read>
+            <begin target="">
+            </begin>
+            <end target="">
+            </end>
+            <regexes target="">
+            </regexes>
+            <!-- type = (INT,FLOAT,STRING,BOOL,ENUM,COLOR,VECTOR,POINT,NORMAL,HPOINT,MATRIX) -->
+            <!-- link = Blender property data path to link this control to -->
+            <properties>
+                <test_int type='INT' description="test integer" default="1" min="1" max="100" softmin="1" softmax="100" maxlen="" step="" precision="" items="" size="" link="" />
+                <test_float type='FLOAT' description="test float" default="0.1" min="0.001" max="100.0" softmin="" softmax="" maxlen="" step="1" precision="3" items="" size="" link="" />
+                <test_string type='STRING' description="test string" default="test" min="" max="" softmin="" softmax="" maxlen="255" step="" precision="" items="" size="" link="" />
+                <test_bool type='BOOL' description="test bool" default="False" min="" max="" softmin="" softmax="" maxlen="" step="" precision="" items="" size="" link="" />
+                <test_enum type='ENUM' description="test enumerator" default="1" min="" max="" softmin="" softmax="" maxlen="" step="" precision="" items="[('1', 'one', 'one desc'), ('2', 'two', 'two desc'), ('3', 'three', 'three desc')]" size="" link="" />
+                <test_color type='COLOR' description="test color" default="(0, 0, 1)" min="" max="" softmin="" softmax="" maxlen="" step="" precision="" items="" size="3" link="" />
+                <test_vector type='VECTOR' description="test vector" default="(1, 0, 1)" min="" max="" softmin="" softmax="" maxlen="" step="" precision="" items="" size="3" link="" />
+                <test_point type='POINT' description="test point" default="(1, 1, 1)" min="" max="" softmin="" softmax="" maxlen="" step="" precision="" items="" size="3" link="" />
+                <test_normal type='NORMAL' description="test normal" default="(1, 0, 0)" min="" max="" softmin="" softmax="" maxlen="" step="" precision="" items="" size="3" link="" />
+                <test_hpoint type='HPOINT' description="test hpoint" default="(1, 0, 1, 0)" min="" max="" softmin="" softmax="" maxlen="" step="" precision="" items="" size="4" link="" />
+                <test_matrix type='MATRIX' description="test matrix" default="(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)" min="" max="" softmin="" softmax="" maxlen="" step="" precision="" items="" size="16" link="" />
+            </properties>
+            <!-- type = type of layout element (ROW,COLUMN,SPLIT) -->
+            <!-- box = draw element as box -->
+            <!-- align = align buttons in element -->
+            <!-- percent = percentage to divide SPLIT layout type -->
+            <!-- enabled = should this layout be shown as enabled -->
+            <!-- active = should this layout be shown as active -->
+            <!-- visible = should this layout be visible -->
+            <layout>
+                <!-- type = (PROP,PROPSEARCH,BUTTON,LINK,INFO,FILE,SEP,LABEL) -->
+                <!-- prop = element name of property this widget represents -->
+                <!-- text = text for buttons label -->
+                <!-- expand = expand enum values into toggles -->
+                <!-- slider = draw int and float as slider -->
+                <!-- toggle = draw bool as toggle -->
+                <!-- icon = specify Blender icon used in button -->
+                <!-- trigger = pipeline link to trigger during special events (such as triggering script for buttons or specify property data path for collection, ect) -->
+                <column type="COLUMN" box="False" align="False" enabled="True" active="True" visible="True">
+                    <test_label1 type='LABEL' text="Test label 1" />
+                    <row0 type="ROW" box="True" align="False" enabled="True" active="True" visible="True">
+                        <column1 type="COLUMN" box="False" align="True" enabled="True" active="True" visible="True">
+                            <test_int1 type='PROP' prop="test_int" text="" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                            <test_int2 type='PROP' prop="test_int" text="" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                            <test_int3 type='PROP' prop="test_int" text="" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                            <test_int4 type='PROP' prop="test_int" text="" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                        </column1>
+                        <column2 type="COLUMN" box="False" align="True" enabled="True" active="True" visible="True">
+                            <test_int1 type='PROP' prop="test_int" text="" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                            <test_int2 type='PROP' prop="test_int" text="" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                            <test_int3 type='PROP' prop="test_int" text="" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                            <test_int4 type='PROP' prop="test_int" text="" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                        </column2>
+                    </row0>
+                    <test_sep1 type='SEP' />
+                    <column type="COLUMN" box="True" align="False" enabled="True" active="True" visible="True">
+                        <row1 type="ROW" box="False" align="False" enabled="True" active="True" visible="True">
+                            <test_enum1 type='PROP' prop="test_enum" text="" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                            <test_enum2 type='PROP' prop="test_enum" text="test enum" expand="True" slider="False" toggle="False" icon="" trigger="" />
+                        </row1>
+                        <row2 type="ROW" box="False" align="False" enabled="True" active="True" visible="True">
+                            <test_bool1 type='PROP' prop="test_bool" text="test bool" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                            <test_bool2 type='PROP' prop="test_bool" text="test bool" expand="False" slider="False" toggle="True" icon="" trigger="" />
+                        </row2>
+                        <row3 type="ROW" box="False" align="False" enabled="True" active="True" visible="True">
+                            <test_float1 type='PROP' prop="test_float" text="test float:" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                            <test_float2 type='PROP' prop="test_float" text="test float:" expand="False" slider="True" toggle="False" icon="" trigger="" />
+                        </row3>
+                        <row4 type="ROW" box="False" align="False" enabled="True" active="@[EVAL:not @[ATTR:///properties/test_string.link:STR]@:]@" visible="True">
+                            <test_string type='PROP' prop="test_string" text="test string:" expand="False" slider="False" toggle="False" icon="OOPS" trigger="" />
+                            <test_link type='LINK' text="" trigger="@[PATH:///properties/test_string:]@" />
+                        </row4>
+                        <split type="SPLIT" box="False" percent="0.8" align="False" enabled="True" active="True" visible="True">
+                            <test_string type='PROP' prop="test_string" text="test string:" expand="False" slider="False" toggle="False" icon="OOPS" trigger="" />
+                            <test_file type='FILE' text="..." icon='FILE' trigger="@[PROP:///properties/test_string:]@" />
+                        </split>
+                        <row5 type="ROW" box="False" align="False" enabled="True" active="True" visible="True">
+                            <test_string type='PROP' prop="test_string" text="test string:" expand="False" slider="False" toggle="False" icon="OOPS" trigger="" />
+                            <test_button type='BUTTON' text="Force String" trigger="@[EXEC://test_exec(data=self.pointer_datablock):]@" />
+                        </row5>
+                        <row6 type="ROW" box="False" align="False" enabled="True" active="True" visible="True">
+                            <test_collection type='PROPSEARCH' prop="test_string" text="test collection:" trigger="context.scene.render.layers" />
+                            <test_info type='INFO' text="test info" trigger="test information\nto see how the\ninfo dialog works!\n@[DATA:.render.filepath:STR]@" />
+                        </row6>
+                    </column>
+                    <test_sep2 type='SEP' />
+                    <test_label2 type='LABEL' text="Test label 2" />
+                    <row5 type="ROW" box="True" align="False" enabled="True" active="True" visible="self.pointer_datablock.@[PROP:///properties/test_bool:]@">
+                        <column type="COLUMN" box="False" align="False" enabled="True" active="True" visible="True">
+                            <test_color type='PROP' prop="test_color" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                            <row type="ROW" box="False" align="False" enabled="True" active="True" visible="True">
+                                <column1 type="COLUMN" box="False" align="False" enabled="True" active="True" visible="True">
+                                    <test_label1 type='LABEL' text="Test label 1" />
+                                    <column1 type="COLUMN" box="True" align="False" enabled="True" active="True" visible="True">
+                                        <test_vector type='PROP' prop="test_vector" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                                        <test_normal type='PROP' prop="test_normal" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                                        <test_point type='PROP' prop="test_point" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                                        <test_hpoint type='PROP' prop="test_hpoint" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                                    </column1>
+                                </column1>
+                                <column2 type="COLUMN" box="False" align="False" enabled="True" active="True" visible="True">
+                                    <test_label2 type='LABEL' text="Test label 2" />
+                                    <column2 type="COLUMN" box="True" align="False" enabled="True" active="True" visible="True">
+                                        <test_matrix type='PROP' prop="test_matrix" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                                    </column2>
+                                </column2>
+                            </row>
+                        </column>
+                    </row5>
+                    <spinner type='PROP' prop="test_int" text="" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                    <select1 type="ROW" box="False" align="False" enabled="True" active="True" visible="self.pointer_datablock.@[PROP:///properties/test_int:]@ &gt; 0">
+                        <test_float1 type='PROP' prop="test_float" text="test float:" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                        <test_float2 type='PROP' prop="test_float" text="test float:" expand="False" slider="True" toggle="False" icon="" trigger="" />
+                    </select1>
+                    <select2 type="ROW" box="False" align="False" enabled="True" active="True" visible="self.pointer_datablock.@[PROP:///properties/test_int:]@ &gt; 1">
+                        <test_float1 type='PROP' prop="test_float" text="test float:" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                        <test_float2 type='PROP' prop="test_float" text="test float:" expand="False" slider="True" toggle="False" icon="" trigger="" />
+                    </select2>
+                    <select3 type="ROW" box="False" align="False" enabled="True" active="True" visible="self.pointer_datablock.@[PROP:///properties/test_int:]@ &gt; 2">
+                        <test_float1 type='PROP' prop="test_float" text="test float:" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                        <test_float2 type='PROP' prop="test_float" text="test float:" expand="False" slider="True" toggle="False" icon="" trigger="" />
+                    </select3>
+                    <select4 type="ROW" box="False" align="False" enabled="True" active="True" visible="self.pointer_datablock.@[PROP:///properties/test_int:]@ &gt; 3">
+                        <test_float1 type='PROP' prop="test_float" text="test float:" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                        <test_float2 type='PROP' prop="test_float" text="test float:" expand="False" slider="True" toggle="False" icon="" trigger="" />
+                    </select4>
+                    <select5 type="ROW" box="False" align="False" enabled="True" active="True" visible="self.pointer_datablock.@[PROP:///properties/test_int:]@ &gt; 4">
+                        <test_float1 type='PROP' prop="test_float" text="test float:" expand="False" slider="False" toggle="False" icon="" trigger="" />
+                        <test_float2 type='PROP' prop="test_float" text="test float:" expand="False" slider="True" toggle="False" icon="" trigger="" />
+                    </select5>
+                </column>
+            </layout>
+        </Test_Panel>
+    </utility_panels>
+
+    <command_panels filter="COMMAND">
+    </command_panels>
+</Test_Panel>

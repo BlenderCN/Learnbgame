@@ -1,0 +1,7 @@
+nv 0 0 0
+0% purple
+20% blue
+40% aqua
+60% green
+80% yellow
+100% red
