@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Skyrmion",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 

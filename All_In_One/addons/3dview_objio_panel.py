@@ -31,7 +31,7 @@ bl_info = {"name": ".obj I/O Panel",
            "warning": "",
            "wiki_url": "",
            "tracker_url": "",
-           "category": "3D View"
+           "category": "Learnbgame",
            }
 
 

@@ -11,7 +11,7 @@ bl_info = {
     "blender": (2, 63, 0),
     "location": "File > Export",
     "warning": "", # used for warning icon and text in addons panel
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 #class GraLL2Panel(bpy.types.Panel):

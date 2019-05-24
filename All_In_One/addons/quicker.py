@@ -31,7 +31,7 @@ bl_info = {
     "support": "COMMUNITY",
     "wiki_url": "https://github.com/rn9dfj3/quicker/wiki",
     "tracker_url": "https://github.com/rn9dfj3/quicker/issues",
-    "category": "Add Curve"
+    "category": "Learnbgame",
 }
 PI = math.pi
 PI_H = PI * 0.5

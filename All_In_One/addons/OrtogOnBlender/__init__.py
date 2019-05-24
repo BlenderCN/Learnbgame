@@ -7,7 +7,7 @@ bl_info = {
     "description": "Planejamento de Cirurgia Ortognática no Blender",
     "warning": "",
     "wiki_url": "",
-    "category": "ortog",
+    "category": "Learnbgame",
     }
 
 if "bpy" in locals():

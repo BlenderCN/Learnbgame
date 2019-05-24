@@ -7,7 +7,7 @@ bl_info = {
     "location": "",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

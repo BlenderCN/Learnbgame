@@ -18,7 +18,7 @@ bl_info = {
     'version': (0, 3),
     'blender': (2, 75, 0),
     'location': 'Press [Space], search for "debugger"',
-    'category': 'Development',
+    "category": "Learnbgame",
 }
 
 import bpy

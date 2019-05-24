@@ -15,7 +15,7 @@ bl_info = {
         "blender": (2, 74, 0),
         "location": "File > Import",
         "warning": "",
-        "category": "Import-Export",
+        "category": "Learnbgame",
         }
 
 

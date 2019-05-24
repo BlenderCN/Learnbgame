@@ -26,7 +26,7 @@ bl_info = {
     "location": "bpy.app.handlers.load_pre",
     "description": "Prevent accidental losing of data by saving modified data",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """Prevent accidental losing of data by automatically saving session files"""

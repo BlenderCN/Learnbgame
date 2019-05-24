@@ -34,7 +34,7 @@ bl_info = {
     "support": "COMMUNITY",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/UV/Copy_Paste_UVs",
     "tracker_url": "https://developer.blender.org/T38460",
-    "category": "UV"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

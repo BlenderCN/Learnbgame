@@ -28,7 +28,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://wiki.tube.freefac.org/wiki/Particle_Baker",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

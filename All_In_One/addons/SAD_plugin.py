@@ -10,7 +10,7 @@ bl_info = {
     "location": "File > Import > Import SAD data",
     "warning": "", # used for warning icon and text in addons panel
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 class Import_SAD_Data(bpy.types.Operator):

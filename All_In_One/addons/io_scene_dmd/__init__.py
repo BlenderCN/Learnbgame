@@ -8,7 +8,7 @@
 
 bl_info = {
     "name": "Importer/Exporter DGLEngine DMD models",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "author": "Dmitry Pritykin",
     "version": (0, 2, 0),
     "blender": (2, 79, 0)

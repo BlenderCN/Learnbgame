@@ -7,7 +7,7 @@ bl_info = {
     "location": "File > Export",
     "warning": "", # used for warning icon and text in addons panel
     "wiki_url": "https://github.com/bartteunis/blender-gms-vbx/wiki",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # Required imports

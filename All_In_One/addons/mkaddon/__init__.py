@@ -21,7 +21,7 @@ bl_info = {
 "name":"mkaddon",
 "author":"Shams Kitz",
 "description":"This may or may not have been a good idea.",
-"category":"Development"
+"category": "Learnbgame",
 }
 
 import itertools

@@ -10,7 +10,7 @@ bl_info = {
     "description": "Saves all render slots",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

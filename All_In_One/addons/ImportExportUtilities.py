@@ -4,7 +4,7 @@ bl_info = {
         'version': (0, 3),
         'blender': (2, 80, 0),
         "description": "Import Obj Folder as Shape Keys, Export Shape Keys as Obj Folder, Batch Import Obj Folder, Batch Export Selected",
-        'category': 'Import-Export',
+        "category": "Learnbgame",
         'location': 'File > Import/Export',
         'wiki_url': ''}
 

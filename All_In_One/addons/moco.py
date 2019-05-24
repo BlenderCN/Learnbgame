@@ -6,7 +6,7 @@ bl_info = {
     "blender": (2, 76, 0),
     "location": "View3D > Animation > Tools",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

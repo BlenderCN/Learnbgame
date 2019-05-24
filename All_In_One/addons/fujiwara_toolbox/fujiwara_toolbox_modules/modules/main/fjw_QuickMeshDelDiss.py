@@ -17,7 +17,7 @@ bl_info = {
     "warning": "", # 警告アイコンとテキストのために使われます
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Mesh"
+    "category": "Learnbgame",
 }
 
 

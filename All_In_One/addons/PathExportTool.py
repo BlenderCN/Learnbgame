@@ -79,7 +79,7 @@ from send_receive import Receive, Send
 bl_info = {
     "name": "Light Painting Path Export Tool",
     "author": "Josh Sheldon",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "blender": (2, 7, 9)    
 }
 

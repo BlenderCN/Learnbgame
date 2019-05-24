@@ -4,7 +4,7 @@ bl_info = {
     'author': 'Pavel_Blend, igelbox',
     'version': (0, 0, 0),
     'blender': (2, 79, 0),
-    'category': 'Import-Export',
+    "category": "Learnbgame",
     'location': 'File > Import/Export'
 }
 

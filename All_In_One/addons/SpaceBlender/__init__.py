@@ -39,7 +39,7 @@ bl_info = {
     "description": "Import DEM, apply texture, and create flyover.",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 ############################## REGISTRATION #################################

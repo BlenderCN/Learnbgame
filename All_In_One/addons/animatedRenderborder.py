@@ -23,7 +23,7 @@ bl_info = {
     "version": (2, 1),
     "blender": (2, 76, 0),
     "location": "Properties> Render> Animated Render Border",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

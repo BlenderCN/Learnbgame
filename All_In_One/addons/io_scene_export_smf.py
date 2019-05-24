@@ -13,7 +13,7 @@ bl_info = {
     "location": "File > Import-Export",
     "description": "Export SMF mesh",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 def name(n):

@@ -29,7 +29,7 @@ bl_info = {
                 "Scripts/Import-Export/Export_Selected",
     "tracker_url": "http://projects.blender.org/tracker/"\
                    "?func=detail&aid=30942",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 #============================================================================#
 

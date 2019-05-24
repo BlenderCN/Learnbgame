@@ -14,7 +14,7 @@ bl_info = {
     "description": "Makes is easier to save rig presets to Rigify folder",
     "location": "Armature properties, Bone properties, View3d tools panel, Armature Add menu",
     "wiki_url": "https://github.com/schroef/rigify-save-presets",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

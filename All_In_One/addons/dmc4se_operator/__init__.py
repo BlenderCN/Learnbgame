@@ -5,7 +5,7 @@ bl_info = {
 	"location": "View3D -> Tool Shelf -> DMC4SE tool",
 	"description": "Tool that assists loading model & motion for DMC4SE.",
 	"warning": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 import os

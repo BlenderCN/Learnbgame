@@ -12,7 +12,7 @@
 bl_info = {
 	"name": "Extra Image List",
 	"author": "Miki (meshlogic) - Rombout Versluijs (updated panel)",
-	"category": "UV",
+	"category": "Learnbgame",
 	"description": "An alternative image list for UV/Image Editor.",
 	"location": "UV/Image Editor > Tools > Image List",
 	"version": (0, 2, 2),

@@ -26,7 +26,7 @@ bl_info = {
      "warning": "Alpha Version 0.5, maybe has a few problems...",
      "wiki_url": "",
      "tracker_url": "",
-     "category": "Learnbgame"
+     "category": "Learnbgame",
 }
 
 #Imports:

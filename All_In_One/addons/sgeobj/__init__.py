@@ -30,7 +30,7 @@ bl_info = {
                 "Scripts/Import-Export/Wavefront_OBJ",
     "tracker_url": "",
     "support": 'OFFICIAL',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

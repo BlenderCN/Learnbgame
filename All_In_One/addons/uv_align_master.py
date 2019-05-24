@@ -24,7 +24,8 @@ bl_info = {
     'api': 52859,
     'location': "IMAGE_EDITOR > UI",
     'description': "straightening UV-meshes",
-    'category': 'UV'}
+    "category": "Learnbgame",
+}
     
 import bpy 
 from bpy.props import *

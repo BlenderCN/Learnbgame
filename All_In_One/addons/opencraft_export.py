@@ -15,7 +15,7 @@ bl_info = {
 	"warning": "Work in progress.",
 	"wiki_url": "http://nowiki",
 	"tracker_url": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 def menu_func_export(self, context):

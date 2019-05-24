@@ -26,7 +26,7 @@ bl_info = {
     "wiki_url": "https://github.com/jiriKuba/blender.addons.ImageStripConsistency/blob/master/README.md",
     "tracker_url": "https://github.com/jiriKuba/blender.addons.ImageStripConsistency",
     "support": "COMMUNITY",
-    "category": "Sequencer",
+    "category": "Learnbgame",
 }
 
 import re

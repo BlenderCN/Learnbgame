@@ -22,7 +22,7 @@ bl_info = {
     "location": "timeline shift + ctrl/cmd + X/C/V, key_del = BACK_SPACE(Other Anime Editor Window), , Property Shelf > Display > PLAY & HIDE",
     "description": "current key frame CUT, COPY, PASTE, DELETE in Timeline",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 # import the basic library
 import bpy

@@ -8,7 +8,7 @@ bl_info = {
 	"warning": "This plugin is still being written, expect lots of bugs and crashes.",
 	"wiki_url": "https://github.com/techdude1996/Lego-Importer",
 	"support": 'TESTING',
-	"category": "Import-Export"
+	"category": "Learnbgame",
 }
 
 import bpy

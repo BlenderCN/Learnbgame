@@ -17,7 +17,7 @@ bl_info = {
     "description": "OSL PY",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 modulesNames = ['NodeGroupBuilder', 'Nodes','OpcodeBaseTypes','Opcodes','osl_py_addin','OSOInstruction','OSOReader','OSOVariable','StringBuilder']

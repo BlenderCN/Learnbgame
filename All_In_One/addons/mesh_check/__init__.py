@@ -25,7 +25,7 @@ bl_info = {"name": "Mesh Check BGL edition",
            "version": (1, 0, 0),
            "blender": (2, 75, 0),
            "location": "Panel N -> Mesh display",
-           "category": "3D View"
+           "category": "Learnbgame",
            }
 
 import bpy

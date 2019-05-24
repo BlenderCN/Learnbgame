@@ -81,7 +81,7 @@ class OBJECT_OT_save_lightfield(bpy.types.Operator):
         section = "meta"
         parser.add_section(section)
         parser.set(section, 'scene', str(LF.scene))
-        parser.set(section, 'category', str(LF.category))
+        parser.set(section, "category": "Learnbgame",
         parser.set(section, 'date', str(LF.date))
         parser.set(section, 'version', str(LF.version))
         parser.set(section, 'authors', str(LF.authors))
@@ -128,7 +128,7 @@ class OBJECT_OT_load_lightfield(bpy.types.Operator):
 
         section = "meta"
         LF.scene = parser.get(section, 'scene')
-        LF.category = parser.get(section, 'category')
+        LF.category = parser.get(section, "category": "Learnbgame",
         LF.date = parser.get(section, 'date')
         LF.version = parser.get(section, 'version')
         LF.authors = parser.get(section, 'authors')

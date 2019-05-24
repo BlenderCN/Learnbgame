@@ -28,7 +28,7 @@ bl_info = {
     "blender": (2, 76, 0),
     "location": "File > Import-Export",
     "warning": "", # used for warning icon and text in addons panel
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 class ImportMESH(bpy.types.Operator, ImportHelper):

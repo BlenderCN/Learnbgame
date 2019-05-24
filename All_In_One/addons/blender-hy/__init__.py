@@ -12,7 +12,7 @@ import main
 
 bl_info = {
     "name": "Blender Hy",
-    "category": "Development",
+    "category": "Learnbgame",
     "description": "hy lang integration kit"
 }
 

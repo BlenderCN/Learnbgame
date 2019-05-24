@@ -32,7 +32,7 @@ bl_info = {
     "description": "Import Vietcong BES files",
     "wiki_url"   : "https://github.com/OpenVietcong/blender-plugin-vietcong",
     "tracker_url": "https://github.com/OpenVietcong/blender-plugin-vietcong/issues",
-    "category"   : "Import-Export",
+    "category": "Learnbgame",
 }
 
 class BESError(Exception):

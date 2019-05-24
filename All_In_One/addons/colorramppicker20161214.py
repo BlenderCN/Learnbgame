@@ -29,7 +29,7 @@ bl_info = {
 	"warning": "",
 	"wiki_url": "https://cgcookiemarkets.com/vendor/varkenvarken/",
 	"tracker_url": "https://cgcookiemarkets.com/vendor/varkenvarken/",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 import bpy

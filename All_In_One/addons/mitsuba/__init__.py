@@ -24,7 +24,7 @@ bl_info = {
 	"version": (0, 2, 1),
 	"blender": (2, 67, 0),
 	"api": 56533,
-	"category": "Render",
+	"category": "Learnbgame",
 	"location": "Info header, render engine menu",
 	"description": "Mitsuba Renderer integration for Blender",
 	"warning": "",

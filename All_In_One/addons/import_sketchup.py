@@ -6,7 +6,7 @@ bl_info = {
     "blender": (2, 70, 0),
     "location": "File > Import-Export",
     "description": "Import SketchUp .dae and .kmz files",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 import bpy

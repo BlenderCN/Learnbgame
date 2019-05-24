@@ -26,7 +26,7 @@ bl_info = {
     "location": "Properties Editor, Render Context",
     "description": "Prepend presets for some of the Cycles Panels",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """Cycles Render Properties Editor Sampling Presets"""

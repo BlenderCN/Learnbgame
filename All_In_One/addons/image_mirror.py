@@ -3,7 +3,7 @@ import numpy
 
 bl_info = {
     'name': 'Image Mirror',
-    'category': 'UV',
+    "category": "Learnbgame",
     'author': 'Taremin',
     'location': 'UV > UI > Taremin',
     'description': "Image mirroring",

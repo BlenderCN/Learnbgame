@@ -23,7 +23,7 @@ bl_info = {
     "version": (1, 1),
     "blender": (2, 65, 0),
     "location": "View3D > Toolbar > NI mate Receiver & Game Engine",
-    "category": "Animation",
+    "category": "Learnbgame",
     'wiki_url': '',
     'tracker_url': ''
     }

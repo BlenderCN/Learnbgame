@@ -53,7 +53,7 @@ bl_info = {
     'warning': '',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Development'
+    "category": "Learnbgame",
 }
 
 

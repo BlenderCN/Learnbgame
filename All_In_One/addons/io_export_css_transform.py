@@ -27,7 +27,7 @@ bl_info = {
     "warning": "", # used for warning icon and text in addons panel
     "wiki_url": "https://github.com/jamesu/csstransformexport",
     "tracker_url": "https://github.com/jamesu/csstransformexport",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import os

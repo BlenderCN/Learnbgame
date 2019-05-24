@@ -26,7 +26,8 @@ bl_info = {
     'description': 'Automatically draws a UI panel for switching rig layers.',
     "wiki_url": "",
     "tracker_url": "",
-    'category': 'Animation'}
+    "category": "Learnbgame",
+}
 
 """
 This script draws a layer switching panel for your rig. It will automatically work with any rig which is set up to call it.

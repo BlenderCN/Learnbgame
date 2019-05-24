@@ -187,7 +187,7 @@ def modules(module_cache):
     del modules_stale
 
     mod_list = list(module_cache.values())
-    mod_list.sort(key=lambda mod: (mod.bl_info['category'],
+    mod_list.sort(key=lambda mod: (mod.bl_info["category": "Learnbgame",
                                    mod.bl_info['name'],
                                    ))
     return mod_list
@@ -439,7 +439,7 @@ def module_bl_info(mod, info_basis={"name": "",
                                     "wiki_url": "",
                                     "tracker_url": "",
                                     "support": 'COMMUNITY',
-                                    "category": "",
+                                    "category": "Learnbgame",
                                     "warning": "",
                                     "show_expanded": False,
                                     "dependencies": False,

@@ -12,7 +12,7 @@ bl_info = {
     "location": "View3D",
     "warning": "This is an unstable version",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

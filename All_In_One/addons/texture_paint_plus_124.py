@@ -9,7 +9,8 @@ bl_info = {
     'description': 'Several improvements for Texture Paint mode',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Material'}
+    "category": "Learnbgame",
+}
 
 
 import bgl

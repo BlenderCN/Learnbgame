@@ -88,7 +88,7 @@ bl_info = {
     "wiki_url": "https://github.com/dfki-ric/phobos/wiki",
     "support": "COMMUNITY",
     "tracker_url": "https://github.com/dfki-ric/phobos/issues",
-    "category": "Development",
+    "category": "Learnbgame",
 }
 
 # TODO rework yaml import: loading module twice if yaml is not found...

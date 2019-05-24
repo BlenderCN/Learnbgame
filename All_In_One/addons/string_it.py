@@ -52,7 +52,8 @@ bl_info = {
     'location': '',
     'description': 'Run a curve through each selected object in a scene.',
     'warning': '',  # used for warning icon and text in addons panel
-    'category': 'Add Curve'}
+    "category": "Learnbgame",
+}
 
 
 def makeBezier(spline, vertList):

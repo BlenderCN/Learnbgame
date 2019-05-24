@@ -26,7 +26,7 @@ bl_info = {
     "location": "Properties Editor : Render Context : Output Panel",
     "description": "Save preset consisting of properties from RenderSettings, ImageFormatSettings and FFmpegSettings",
     "warning": "",
-    "category": "Render"
+    "category": "Learnbgame",
 }
 
 import bpy

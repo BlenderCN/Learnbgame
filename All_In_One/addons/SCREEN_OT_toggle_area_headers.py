@@ -27,7 +27,7 @@ bl_info = {
     "location": "Bring up the Operator Search menu and type 'Toggle All Areas Header' ",
     "description": "Toggle area headers display in all the screen areas",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """Toggle Display of Screen Areas Header"""

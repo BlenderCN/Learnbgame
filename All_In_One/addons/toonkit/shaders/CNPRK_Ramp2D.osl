@@ -1,0 +1,13 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles v1.1
+/*   Ramp2D Mapper
+/*------------------------------------------*/
+
+shader Ramp2D(
+    float XDir= 0.0,
+    float YDir = 0.0,
+    output point Vector = point(0.0,0.0,1.0)
+    )
+{
+    Vector = point(clamp(XDir,0.0,1.0),clamp(YDir,0.0,1.0),1);
+}

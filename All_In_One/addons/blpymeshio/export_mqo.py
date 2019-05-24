@@ -30,7 +30,7 @@ Run this script from "File->Export" menu.
 """
 
 bl_addon_info = {
-        'category': 'Import/Export',
+        "category": "Learnbgame",
         'name': 'Export: Metasequioa Model Format (.mqo)',
         'author': 'ousttrue',
         'version': (2, 1),

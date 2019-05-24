@@ -8,7 +8,7 @@ bl_info = {
     'author'      : "miniukof",
     'description' : "Select by painting on the objects. Modo/Softimage style.",
     'location'    : "Add shortcut to `view3d.paint_select`",
-    'category'    : "Mesh",
+    "category": "Learnbgame",
     'blender'     : (2, 76, 11),
     'version'     : (0, 0, 2),
     'wiki_url'    : 'https://github.com/miniukof/bl-paint_select',

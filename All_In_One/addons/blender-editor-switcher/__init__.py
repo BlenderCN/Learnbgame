@@ -5,7 +5,7 @@ from .menu import EditorSwitcherPieMenu, EditorSwitcherPieMenuOptions
 bl_info = {
 	'name': 'Editor Switcher Pie Menu',
 	'description': 'Pie menu to quickly switch to a different editor type',
-	'category': 'User Interface',
+	"category": "Learnbgame",
 	'support': 'COMMUNITY',
 	# 'author': '...',
 	# 'version': (1, 0),

@@ -24,7 +24,7 @@ bl_info = {
     "author": "Landon Dou",
     "version": (2, 0, 0),
     "blender": (2, 79, 0),
-    "category": "Object",
+    "category": "Learnbgame",
     "location": "View3D > Toolshelf > Octanist",
 }
 

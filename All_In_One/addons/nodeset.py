@@ -25,7 +25,7 @@ bl_info = {
     "description": "Add a set of images and configure texture nodes based on names",
     "warning": "",
     "wiki_url": "",
-    "category": "Node",
+    "category": "Learnbgame",
 }
 
 import bpy, blf, bgl

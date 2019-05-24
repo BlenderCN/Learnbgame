@@ -35,7 +35,7 @@ bl_info = {
     "description": "Various new operator.",
     "warning": "",
     "wiki_url": "https://github.com/stilobique/Grid/wiki",
-    "category": "3D View",
+    "category": "Learnbgame",
     "tracker_url": "https://github.com/stilobique/Grid/issues",
 }
 

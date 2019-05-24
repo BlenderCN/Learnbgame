@@ -12,7 +12,7 @@ bl_info = {
 	"blender": (2, 78, 0),
 	"location": "View3D > Object > Chain selected objects",
 	"description": """Combine selected objects to a list of parent-child relations based on proximity""",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 def object_list(objects):

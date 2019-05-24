@@ -26,7 +26,7 @@ bl_info = {
     'description': '',
     'warning': '',
     'wiki_url': 'https://github.com/chromoly/regionruler',
-    'category': '3D View',
+    "category": "Learnbgame",
 }
 
 

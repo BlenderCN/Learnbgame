@@ -33,7 +33,7 @@ bl_info = {
         "Scripts/Game_Engine/BRIK_ragdolls",
     "tracker_url": "https://projects.blender.org/tracker/index.php?"\
         "func=detail&aid=24946",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

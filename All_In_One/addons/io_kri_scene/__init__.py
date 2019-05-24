@@ -10,7 +10,8 @@ bl_info = {
 	'description': 'Export the scene to KRI engine (.ron,.k3arm,.k3mesh)',
 	'warning': '',
 	'tracker_url': '',
-	'category': 'Import-Export'}
+	"category": "Learnbgame",
+}
 
 # To support reload properly, try to access a package var, if it's there, reload everything
 if 'bpy' in locals():

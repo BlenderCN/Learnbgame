@@ -22,7 +22,7 @@ bl_info = {
     "description": "Calculate the primary axis length of a set of mitochondria",
     "warning": "",  
     "tracker_url": "",  
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }  
   
 import bpy

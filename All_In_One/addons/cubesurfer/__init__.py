@@ -26,7 +26,7 @@ bl_info = {
     "warning": "",  # used for warning icon and text in addons panel
     "wiki_url": "http://pyroevil.com/",
     "tracker_url": "http://pyroevil.com/" ,
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 import bpy

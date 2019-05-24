@@ -35,7 +35,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://thearender.com/site/index.php/products/thea-for-blender.html",
     "tracker_url": "http://thearender.com/forum/viewforum.php?f=70&sid=5afab1703d99826f7cb8926cfe68b2b1",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

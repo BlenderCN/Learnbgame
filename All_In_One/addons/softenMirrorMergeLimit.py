@@ -19,7 +19,7 @@ def softenArrayModMergeLimit():
 ################### add on setting section###########################
 bl_info = {
     "name": "Soften Array Modifier Merge Limit ",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

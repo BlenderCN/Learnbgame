@@ -27,7 +27,7 @@ bl_info = {
     "location": "mesh.snap_utilities_line",
     "description": "Vertex or Center only Powerful snap Knife tool.",
     "wiki_url" : "http://blenderartists.org/forum/showthread.php?363859-Addon-CAD-Snap-Utilities",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

@@ -7,7 +7,8 @@ bl_info = {
     'blender': (2, 80, 0),
     'location': 'View3D > Toolshelf (T)',
     'description': 'Streamlined kit bash library with additional productivity tools',
-    'category': 'Learnbgame'}
+    "category": "Learnbgame",
+}
 
 import bpy
 

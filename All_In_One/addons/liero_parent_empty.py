@@ -6,7 +6,7 @@ bl_info = {
     "api": 33333,
     "location": "View3D > Tool Shelf",
     "description": "Parent selected objects to a new Empty",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

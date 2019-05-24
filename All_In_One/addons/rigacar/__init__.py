@@ -32,7 +32,7 @@ bl_info = {
     "description": "Adds a deformation rig for vehicules, generates animation rig and bake wheels animation.",
     "wiki_url": "http://digicreatures.net/articles/rigacar.html",
     "tracker_url": "https://github.com/digicreatures/rigacar/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

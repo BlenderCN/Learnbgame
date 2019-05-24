@@ -8,7 +8,7 @@ bl_info = {
     "warning": "Doesn't work with some vertical faces",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 	
 import bpy, math

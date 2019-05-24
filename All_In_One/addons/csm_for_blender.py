@@ -25,7 +25,7 @@ bl_info = {
     "blender": (2, 6, 1),
     "location": "View3D, Object, Edit Mesh, Edit Curve, Armature, Edit Armature, Pose >  Shift RMB",
     "description": "Context Sensitive Menu for Blender users",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

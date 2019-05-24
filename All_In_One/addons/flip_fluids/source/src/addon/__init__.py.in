@@ -24,7 +24,7 @@ bl_info = {
     "warning" : "",
     "wiki_url" : "https://github.com/rlguy/Blender-FLIP-Fluids-Beta/wiki",
     "tracker_url" : "https://github.com/rlguy/Blender-FLIP-Fluids-Beta/issues",
-    "category" : "Animation"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

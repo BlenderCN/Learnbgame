@@ -19,7 +19,7 @@ bl_info = {
     "warning": "Won't really export anything usefull yet",
     "wiki_url": "http://rimfrost.co.uk/fenrir.html",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 class FenrirExport(bpy.types.Operator, ExportHelper):

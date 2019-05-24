@@ -29,7 +29,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "blenderguru.com",
     "tracker_url": "http://www.blenderguru.com/contact/",
-    "category": "Node"
+    "category": "Learnbgame",
 }
 
 

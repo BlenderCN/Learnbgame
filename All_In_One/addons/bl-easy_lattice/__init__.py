@@ -11,7 +11,7 @@ bl_info = {
             "description": "Create a lattice for shape editing",
             "warning": "",
             "tracker_url": "https://bitbucket.org/kursad/blender_addons_easylattice/src",
-            "category": "Mesh"
+            "category": "Learnbgame",
 }
 
 

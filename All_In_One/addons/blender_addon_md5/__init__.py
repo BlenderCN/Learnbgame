@@ -25,7 +25,7 @@ bl_info = {
 	"description": "Import-Export *.md5mesh and *.md5anim files",
 	"warning": "",
 	"wiki_url": "",
-	"category": "Import-Export",
+	"category": "Learnbgame",
 	}
 
 if "bpy" in locals():

@@ -32,7 +32,7 @@ bl_info = {
     "wiki_url": "https://wiki.blender.org/index.php/Extensions:2.6/Py/"
                 "Scripts/Add_Mesh/Add_Space_Tree",
     "tracker_url": "https://developer.blender.org/maniphest/task/edit/form/2/",
-    "category": "Add Mesh"
+    "category": "Learnbgame",
 }
 
 import bpy

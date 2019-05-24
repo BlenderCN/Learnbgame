@@ -59,7 +59,7 @@ bl_info = {
     "description": "Various Previz Tools linked to the Sequencer",
     "warning": "",
     "wiki_url": "https://github.com/tin2tin/PrevizCameraTools/",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

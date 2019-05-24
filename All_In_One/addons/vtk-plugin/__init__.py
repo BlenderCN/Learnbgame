@@ -10,7 +10,7 @@ bl_info = {"name": "VTK-Importer",
         "version": (0, 0, 1),
         "location": "File > Import-Export",
         "description": "Import VTK unstructured grid",
-        "category": "Import-Export"
+        "category": "Learnbgame",
 }
 
 # Imports for readinf vtk

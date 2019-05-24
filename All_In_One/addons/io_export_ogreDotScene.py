@@ -90,7 +90,7 @@ bl_info = {
     "description": "Export to Ogre xml and binary formats",
     "wiki_url": "http://code.google.com/p/blender2ogre/w/list",
     "tracker_url": "http://code.google.com/p/blender2ogre/issues/list",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 ## Public API

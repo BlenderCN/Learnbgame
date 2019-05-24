@@ -23,7 +23,7 @@ bl_info = {
     "blender": (2,7,2),
     "description": "Better editor for coding",
     "author": "",
-    "category": "Text Editor",
+    "category": "Learnbgame",
 }
 
 import bpy

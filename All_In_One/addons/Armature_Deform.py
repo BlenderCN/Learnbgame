@@ -7,7 +7,7 @@ bl_info = {
     "description": "copies the deform bones of a rig into a deform armature with Copy Transforms Constraints applied. It also has an operator to bake all the actions into such (or any) armature",
     "warning": "",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Rigging/DeformArmature",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
       
 import bpy

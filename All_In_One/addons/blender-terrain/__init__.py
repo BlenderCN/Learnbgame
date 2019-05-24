@@ -9,7 +9,7 @@ bl_info = {
     "wiki_url": "https://github.com/vvoovv/blender-terrain/wiki/Documentation",
     "tracker_url": "https://github.com/vvoovv/blender-terrain/issues",
     "support": "COMMUNITY",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 import os,sys

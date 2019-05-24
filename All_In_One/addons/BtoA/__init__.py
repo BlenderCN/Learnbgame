@@ -9,7 +9,7 @@ bl_info = {
     "warning": "Still early alpha",
     "wiki_url": "https://github.com/fxjeane/BtoA",
     "tracker_url": "https://github.com/fxjeane/BtoA/issues?sort=created&direction=desc&state=open",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

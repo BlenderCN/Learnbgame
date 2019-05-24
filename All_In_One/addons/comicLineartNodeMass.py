@@ -404,7 +404,7 @@ def comicLineartNodeMass():
 ################### add on setting section###########################
 bl_info = {
     "name": "Convert Comic Lineart　Node Mass",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

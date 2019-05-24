@@ -12,7 +12,7 @@ bl_info = {
     "warning": "",  # used for warning icon and text in addons panel
     "wiki_url": "https://github.com/gnuton/MaterialPainter/wiki",
     "tracker_url": "https://github.com/gnuton/MaterialPainter/issues",
-    "category": "Texturing"
+    "category": "Learnbgame",
 }
 
 

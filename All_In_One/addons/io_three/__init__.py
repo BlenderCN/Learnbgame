@@ -47,7 +47,7 @@ bl_info = {
     'wiki_url': "https://github.com/mrdoob/three.js/tree/"\
         "master/utils/exporters/blender",
     'tracker_url':  "https://github.com/mrdoob/three.js/issues",
-    'category': 'Import-Export'
+    "category": "Learnbgame",
 }
 
 

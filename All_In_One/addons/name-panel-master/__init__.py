@@ -26,7 +26,7 @@ bl_info = {
   'description': 'In panel datablock name stack with shortcut and batch name tools.',
   'wiki_url': 'https://cgcookiemarkets.com/all-products/name-panel/?view=docs',
   'tracker_url': 'https://github.com/trentinfrederick/name-panel/issues',
-  'category': '3D View'
+  "category": "Learnbgame",
 }
 
 # imports

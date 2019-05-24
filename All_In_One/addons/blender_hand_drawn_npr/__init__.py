@@ -1,5 +1,5 @@
 bl_info = {"name": "Hand Drawn NPR",
-           "category": "Learnbgame"
+           "category": "Learnbgame",
 }
 
 if "bpy" in locals():

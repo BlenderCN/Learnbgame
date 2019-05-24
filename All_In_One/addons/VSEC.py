@@ -23,7 +23,7 @@ bl_info = {
     "blender": (2, 7, 3),
     "location": "VSE >> Properties Panel >> VSE Crossfade",
     "description": "Allows the user to select a directory, and it adds the files in the directory to the VSE with crossfades.",
-    "category": "Tools"
+    "category": "Learnbgame",
 }
 
 import bpy

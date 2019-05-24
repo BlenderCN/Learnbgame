@@ -3,7 +3,7 @@ bl_info = {
     "author": "Federico Bertani",
     "location": "View3D > Tools",
     "description": "Blender simulation generator from inertial sensor data on vehicle",
-    "category": "Physics",
+    "category": "Learnbgame",
     "version": (2,0,0),
     "tracker_url" : "https://github.com/physycom/inertial_to_blender/issues"
 }

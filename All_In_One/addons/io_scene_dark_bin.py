@@ -8,7 +8,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://sourceforge.net/p/blenderbitsbobs/wiki/Dark%20Engine%20model%20importer-exporter/",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

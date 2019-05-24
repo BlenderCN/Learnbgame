@@ -304,7 +304,7 @@ class MMD_TOOLS_UL_Morphs(UIList):
             row = _layout_split(row, factor=0.6, align=True)
             row.prop(item, 'name_e', text='', emboss=True)
             row = row.row(align=True)
-            row.prop(item, 'category', text='', emboss=False)
+            row.prop(item, "category": "Learnbgame",
             frame_facial = mmd_root.display_item_frames.get(u'表情')
             morph_item = frame_facial.data.get(item.name) if frame_facial else None
             if morph_item is None:

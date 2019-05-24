@@ -26,7 +26,8 @@ bl_info = {
 	'warning': '',
 	'wiki_url': 'http://',
 	'tracker_url': 'http://',
-	'category': 'Import-Export'}
+	"category": "Learnbgame",
+}
 
 import bpy
 from bpy.props import StringProperty, BoolProperty

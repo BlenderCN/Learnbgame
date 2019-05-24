@@ -31,7 +31,7 @@ bl_info = {
     "description": "Provides an MBDyn multibody dynamic model design and presentation environment.",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "BPY" in locals():

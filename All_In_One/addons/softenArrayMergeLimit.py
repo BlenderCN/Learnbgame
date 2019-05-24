@@ -19,7 +19,7 @@ def softenMirrorModMergeLimit():
 ################### add on setting section###########################
 bl_info = {
     "name": "Soften Mirror Modifier Merge Limit ",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

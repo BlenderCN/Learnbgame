@@ -34,7 +34,7 @@ bl_info = {
     "warning": "still under development and lacks documentation.",
     "wiki_url": "https://matt-lucas.itch.io/level-buddy",
     "tracker_url": "",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 

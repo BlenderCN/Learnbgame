@@ -40,7 +40,7 @@ bl_info = {
     "warning": "Might contain bugs, use at your own risk",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 def createCamera(camName):

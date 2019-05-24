@@ -22,7 +22,7 @@ bl_info = {
     "version": (0, 5, 1),
     "blender": (2, 6, 9),
     "location": "User Preferences > Input > assign 'brush.set_by_name'",
-    "category": "Paint"
+    "category": "Learnbgame",
 }
 
 # brush_selectbyname.py

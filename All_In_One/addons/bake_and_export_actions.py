@@ -7,7 +7,7 @@ bl_info = {
     "description": "Bake all actions from control to deform rig and export them",
     "warning": "",
     "wiki_url": "",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 from math import pi

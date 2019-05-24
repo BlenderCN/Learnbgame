@@ -65,7 +65,7 @@ bl_info = {
     "tracker_url": (
         "https://github.com/niftools/blender_nif_plugin/issues"),
     "support": "COMMUNITY",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

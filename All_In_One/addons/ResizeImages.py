@@ -3,7 +3,7 @@ bl_info = {
         'author': 'code of art, updated to 2.80 by bay raitt',
         'version': (0, 1),
         'blender': (2, 80, 0),
-        'category': 'View',
+        "category": "Learnbgame",
         'location': 'Image Editor > Image > Resize',
         'wiki_url': ''}
 

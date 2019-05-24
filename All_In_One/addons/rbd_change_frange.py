@@ -6,7 +6,7 @@ bl_info = {
     "location": "Operator Search Menu",
     "description": "Modify the scene frame range and rbd point cache frame range from one place",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """Modify frame range globally"""

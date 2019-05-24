@@ -28,7 +28,7 @@ bl_info = {
     #"warning": "This addon is still in development.",
     "wiki_url": "https://github.com/samytichadou/vcache/wiki",
     "tracker_url": "https://github.com/samytichadou/vcache/issues/new",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

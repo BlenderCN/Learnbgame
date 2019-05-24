@@ -6,7 +6,7 @@ bl_info = {
     'author': 'Bay Raitt',
     'version': (0, 1),
     'blender': (2, 80, 0),
-    'category': 'Animation',
+    "category": "Learnbgame",
     'location': 'Timeline  > Preview Toggle',
     'wiki_url': ''}
 

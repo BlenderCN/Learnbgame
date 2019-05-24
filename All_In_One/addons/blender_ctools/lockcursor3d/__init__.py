@@ -28,7 +28,7 @@ bl_info = {
     'warning': '',
     'wiki_url': 'https://github.com/chromoly/lock_cursor3d',
     'tracker_url': '',
-    'category': '3D View'
+    "category": "Learnbgame",
 }
 
 """

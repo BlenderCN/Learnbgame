@@ -29,7 +29,7 @@ bl_info = {
                 "Scripts/Render/Render to Print",
     "tracker_url": "https://projects.blender.org/tracker/index.php?"
                    "func=detail&aid=24219",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

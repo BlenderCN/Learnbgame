@@ -26,7 +26,7 @@ bl_info = {
     "location": "File > Import-Export",
     "description": "Import-Export Forsaken model data, Import Forsaken model data",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
   
 # -----------------------------------------------------------------------------

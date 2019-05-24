@@ -8,7 +8,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Object/Destructability",
     "tracker_url": "http://projects.blender.org/tracker/index.php?func=detail&aid=30567&group_id=153&atid=467",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

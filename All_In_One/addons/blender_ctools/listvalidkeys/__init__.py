@@ -26,7 +26,7 @@ bl_info = {
     'description': 'Print valid shortcut',
     'warning': '',
     'wiki_url': '',
-    'category': 'User Interface'
+    "category": "Learnbgame",
 }
 
 

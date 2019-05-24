@@ -10,7 +10,7 @@ bl_info = {
     "warning": "Very Alpha!",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

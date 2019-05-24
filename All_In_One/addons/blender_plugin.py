@@ -6,7 +6,7 @@ bl_info = {
     "location": "File > Import > JSON Model (.json)",
     "description": "Import JSON",
     "warning": "Alpha software",
-    "category": "Import",
+    "category": "Learnbgame",
 }
 
 import os

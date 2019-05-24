@@ -12,7 +12,7 @@
 bl_info = {
     "name": "Extra Material List",
     "author": "Miki (meshlogic),Bookyakuno",
-    "category": "Material",
+    "category": "Learnbgame",
     "description": "An alternative object/world material list for Node Editor.",
     "location": "Property > Material",
     "version": (0, 3),

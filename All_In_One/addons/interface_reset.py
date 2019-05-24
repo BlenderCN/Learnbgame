@@ -2,7 +2,7 @@ bl_info = {
     "name": "interface dafaulter",
     "version": (1, 0, 0),
     "blender": (2, 8, 0), 
-    "category": "3D View",
+    "category": "Learnbgame",
     "author": "nikitron",
     "location": "View3D > Tool Shelf > 1D interface",
     "description": "interface turn to default screen areas position and size",

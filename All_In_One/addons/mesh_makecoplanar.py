@@ -6,7 +6,7 @@ bl_info = {
 	"location": "View3D > Specials > Make Coplanar",
 	"Description": "Forces currently selected vertices into their average plane, and a second selection of vertices into that plane.",
 	"warning": "",
-	"category": "Mesh"
+	"category": "Learnbgame",
 }
 
 import bpy

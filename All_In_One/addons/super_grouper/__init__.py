@@ -25,7 +25,7 @@ bl_info = {
     "warning": "",
     "description": "Super Grouper",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

@@ -27,7 +27,7 @@ bl_info = {
     "description": "Sort selected objects by location and rename them",
     'wiki_url': 'https://github.com/agapas/sort-and-rename-selected#readme',
     "warning": "",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 # ------- TODO ----------------------

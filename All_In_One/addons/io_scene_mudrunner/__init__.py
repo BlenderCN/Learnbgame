@@ -27,7 +27,7 @@ bl_info = {
     "description": "Export model for Spintires MudRunner.",
     "wiki_url": "https://github.com/fred-rum/io_scene_mudrunner",
     "support": "TESTING",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

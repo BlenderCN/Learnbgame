@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Export Columbus Model Format (CMF) file",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 import bpy

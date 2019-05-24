@@ -11,7 +11,7 @@ bl_info = {
     "description": "Create edge sets to easily manage edge creases and bevel weights.",
     "warning": "",
     "wiki_url": "",
-    "category": "Mesh",
+    "category": "Learnbgame",
 }
 
 

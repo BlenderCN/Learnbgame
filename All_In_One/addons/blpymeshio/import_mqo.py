@@ -32,7 +32,7 @@ This script imports a mqo into Blender for editing.
 '''
 
 bl_addon_info = {
-        'category': 'Import/Export',
+        "category": "Learnbgame",
         'name': 'Import: Metasequioa Model Format (.mqo)',
         'author': 'ousttrue',
         'version': (2, 0),

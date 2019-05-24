@@ -27,7 +27,7 @@ bl_info = {
     "description": "Modeling and retopology tool.",
     "wiki_url": "http://www.bsurfaces.info",
     "tracker_url": "https://",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
         
 

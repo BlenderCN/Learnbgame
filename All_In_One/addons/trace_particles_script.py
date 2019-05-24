@@ -10,7 +10,7 @@ bl_info = {
     "blender": (2, 5, 7),
     "location": "View3D > Tool Shelf",
     "description": "Trace curves from the movement of each particle in active system",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

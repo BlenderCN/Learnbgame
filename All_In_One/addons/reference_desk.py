@@ -24,7 +24,8 @@ bl_info = {
     'location': 'View3D > Toolbar > Assets > Reference Desk',
     'description': 'Project Asset Linker',
     'url': 'http://urchn.org',
-    'category': 'Asset Management'}
+    "category": "Learnbgame",
+    }
 
 __bpydoc__ = """
 A tool for allowing easy linking of commonly used assets.

@@ -18,7 +18,7 @@ bl_info = {
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.7/Py/"
                 "Scripts/Import-Export/BND",
     "support": 'COMMUNITY',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

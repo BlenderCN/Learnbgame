@@ -22,7 +22,7 @@ bl_info = {
     "version": (0, 2, 0),
     "blender": (2, 6, 4),
     "location": "User Preferences > Input > view3d.view_straighten",
-    "category": "3D View"
+    "category": "Learnbgame",
 }
 
 # space_view3d_viewstraighten.py

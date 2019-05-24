@@ -3,7 +3,7 @@ bl_info = {
     'author':   'Vakhurin Sergey (igel)',
     'version':  (0, 0, 0),
     'blender':  (2, 68, 0),
-    'category': 'Import-Export',
+    "category": "Learnbgame",
     'location': 'File > Import/Export',
     'description': 'Import STALKER OGF files',
     'wiki_url': 'https://github.com/igelbox/blender-ogf',

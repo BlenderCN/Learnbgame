@@ -8,7 +8,7 @@ bl_info = {
     "version"    : (0, 0, 1),
     "blender"    : (2, 67, 0),
     "api"        : 57908,
-    "category"   : "Render",
+    "category": "Learnbgame",
     "location"   : "Info header > render engine menu",
     "warning"    : "Development version, may crash",
     "wiki_url"   : "",

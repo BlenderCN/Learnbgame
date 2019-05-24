@@ -7,7 +7,7 @@ bl_info = {
     "description": "Adds a new Mesh Object",
     "warning": "",
     "wiki_url": "",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
     }
 
 

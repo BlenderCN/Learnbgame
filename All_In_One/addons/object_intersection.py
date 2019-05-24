@@ -21,7 +21,7 @@ bl_info = {
     "version": (1, 2, 0),
     "blender": (2, 6, 3),
     "location": "View 3D > Specials [W-key] > Intersection",
-    "category": "Object",
+    "category": "Learnbgame",
     "description": "Adds to the mesh of active object its intersection with another mesh object",
     "warning": "",
     "wiki_url": "http://airplanes3d.net/scripts-253_e.xml",

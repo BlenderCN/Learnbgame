@@ -1,3 +1,5 @@
+
+
 #    NeuroMorph_Measurements.py (C) 2018,  Anne Jorstad, Biagio Nigro, Diego Marcos
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -23,7 +25,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

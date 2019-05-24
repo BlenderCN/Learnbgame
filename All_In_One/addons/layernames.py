@@ -25,7 +25,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://wiki.urchn.org/wiki/Layer_names",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

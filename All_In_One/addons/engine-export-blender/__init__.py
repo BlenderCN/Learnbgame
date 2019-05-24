@@ -19,7 +19,7 @@ bl_info = {
   "version":      (0,0,1),
   "location":     "File > Import-Export",
   "description":  "Export custom JSON format",
-  "category":     "Import-Export"
+  "category": "Learnbgame",
 }
 
 class ExportJSON(bpy.types.Operator, ExportHelper):

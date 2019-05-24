@@ -4,7 +4,7 @@ bl_info = {
 "version": (1, 0),
 "blender": (2, 65, 0),
 "description": "Adds a parent for the selected objects",
-"category": "Learnbgame"
+"category": "Learnbgame",
 }
 
 

@@ -31,7 +31,7 @@ bl_info = {
  "location": "Found in the properties shelf/ Brush options in tool shelf/ Press SPACE when available for menu",  
  "description": "Zero button texture painting by Blender Sensei. Full Functionality in Blender Render. Support for Cycles coming soon.",  
  "wiki_url": "http://blendersensei.com/zero-brush",  
- "category": "Learnbgame"
+ "category": "Learnbgame",
 }  
 
 import bpy

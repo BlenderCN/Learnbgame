@@ -8,7 +8,7 @@ bl_info = {
     "author": "0xFAIL",
     "version": (0, 5, 0),
     "blender": (2, 72, 0),
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "location": "File > Import/Export",
     "description": "Import SkullGirls stages"
 }

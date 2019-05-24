@@ -37,7 +37,7 @@ def clearObjects():
 ################### add on setting section###########################
 bl_info = {
     "name": "White Materialize",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -224,7 +224,7 @@ def comicLineartNode():
 ################### add on setting section###########################
 bl_info = {
     "name": "Convert Comic Lineart Node AO",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -9,7 +9,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://blenderartists.org/forum/showthread.php?236631-Addon-Simple-Box-UVW-Map-Modifier",
     "tracker_url": "https://projects.blender.org/tracker/index.php",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

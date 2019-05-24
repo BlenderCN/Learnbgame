@@ -8,7 +8,7 @@ bl_info = {
  "warning": "Beta testing",  
  "wiki_url": "www.mundrop.com", 
  "tracker_url": "info@mundrop.com",
- "category": "Animation",
+ "category": "Learnbgame",
  } 
 
 

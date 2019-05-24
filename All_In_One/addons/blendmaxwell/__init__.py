@@ -25,7 +25,7 @@ bl_info = {"name": "blendmaxwell",
            "warning": "Alpha",
            "wiki_url": "https://github.com/uhlik/blendmaxwell/wiki",
            "tracker_url": "https://github.com/uhlik/blendmaxwell/issues",
-           "category": "Learnbgame"
+           "category": "Learnbgame",
 }
 
 

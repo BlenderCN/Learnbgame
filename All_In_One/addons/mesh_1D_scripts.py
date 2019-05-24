@@ -24,7 +24,7 @@ bl_info = {
     "version": (0, 8, 8),
     "blender": (2, 7, 5),
     "location": "View3D > Toolbar",
-    "category": "Mesh"
+    "category": "Learnbgame",
 }  
 
 # http://dl.dropboxusercontent.com/u/59609328/Blender-Rus/1D_Scripts.py

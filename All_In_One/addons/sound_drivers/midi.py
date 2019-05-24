@@ -11,7 +11,7 @@ bl_info = {
     "tracker_url": "",
     "icon": 'MIDI',
     "support": 'TESTING',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

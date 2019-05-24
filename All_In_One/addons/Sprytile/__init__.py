@@ -8,7 +8,7 @@ bl_info = {
     "location": "View3D > UI panel > Sprytile",
     "wiki_url": "http://itch.sprytile.xyz",
     "tracker_url": "https://github.com/ChemiKhazi/Sprytile/issues",
-    "category": "Paint"
+    "category": "Learnbgame",
 }
 
 # Put Sprytile directory is sys.path so modules can be loaded

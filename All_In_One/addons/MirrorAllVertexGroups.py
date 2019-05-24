@@ -3,7 +3,7 @@ bl_info = {
 		'author': 'mathiasA, updated to 2.80 by bay raitt',
 		'version': (0, 1),
 		'blender': (2, 80, 0),	
-		'category': 'Animation',
+		"category": "Learnbgame",
 		'location': 'Mesh > Vertex Group Menu',
 		'wiki_url': ''}
 

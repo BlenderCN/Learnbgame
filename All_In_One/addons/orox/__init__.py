@@ -30,7 +30,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://wiki.tube.freefac.org/wiki/Orox",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

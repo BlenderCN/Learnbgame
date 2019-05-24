@@ -21,7 +21,7 @@ bl_info = {
     "location": "", 
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 	}
 
 #button definition for Blender UI

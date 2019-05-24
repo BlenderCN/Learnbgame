@@ -39,7 +39,7 @@ bl_info = {
     "author": "Simon Wendsche (B.Y.O.B.), Michael Klemm (neo2068), Philstix",
     "version": (2, 2),
     "blender": (2, 79, 0),
-    "category": "Render",
+    "category": "Learnbgame",
     "location": "Info header, render engine menu",
     "description": "LuxCore integration for Blender",
     "warning": "beta1",

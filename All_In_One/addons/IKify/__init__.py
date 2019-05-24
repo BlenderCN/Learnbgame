@@ -3,7 +3,7 @@ bl_info = {
     'name': 'IKify',
     'author': 'Aman Gupta',
     'location': 'View3D',
-    'category': 'Animation'
+    "category": "Learnbgame",
     }
     
 if "bpy" in locals():

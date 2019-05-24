@@ -7,7 +7,7 @@
     "api": 33411, #Not certain on the API version
     "location": "View3D > Add > Mesh > Airfoil",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 '''
 import math as M

@@ -30,7 +30,7 @@ bl_info = {
     "description": "Adds eval and chroma button.",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

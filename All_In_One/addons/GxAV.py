@@ -23,7 +23,7 @@ bl_info = {
     "blender": (2, 7, 1),
     "location": "Properties > Scene",
     "description": "Bake Spectrum Visualizer by sound file",
-    "category": "Animation",
+    "category": "Learnbgame",
     "wiki_url": "https://github.com/gethiox/GXAudioVisualisation/wiki",
     "tracker_url": "https://github.com/gethiox/GXAudioVisualisation/issues"}
 

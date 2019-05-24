@@ -6,7 +6,7 @@ bl_info = {
     "location": "Properties > object data",
     "warning": "",
     "description": "save a mesh data status in order to be reused if needed",
-    "category": "Mesh",
+    "category": "Learnbgame",
 }
 
 

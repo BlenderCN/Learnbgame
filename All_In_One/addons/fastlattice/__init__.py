@@ -22,7 +22,7 @@ bl_info = {
     'warning': 'Beta',
     # 'wiki_url': '',
     # 'tracker_url': '',
-    'category': 'Mesh'
+    "category": "Learnbgame",
 }
 
 import bpy

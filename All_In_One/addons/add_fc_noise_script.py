@@ -10,7 +10,7 @@ bl_info = {
     "blender": (2, 5, 7),
     "location": "View3D > Tool Shelf",
     "description": "Add noise modifiers to f-curves in all selected objects...",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy, random

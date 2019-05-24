@@ -19,7 +19,7 @@
 
 bl_info = {
 	"name": "Keying Tools",
-	"category": "Cenda Tools",
+	"category": "Learnbgame",
 	"author": "Cenek Strichel",
 	"version": (1, 0, 0),
 	"blender": (2, 79, 0),

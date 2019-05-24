@@ -40,7 +40,7 @@ bl_info = {
     "warning": '',
     "wiki_url": "https://github.com/jwandborg/blender-simpleexport",
     "tracker_url": "https://github.com/jwandborg/blender-simpleexport/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

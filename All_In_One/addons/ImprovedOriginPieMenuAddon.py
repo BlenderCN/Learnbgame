@@ -6,7 +6,7 @@ bl_info = {
     "location": "alt+ctrl+shift+c",
     "description": "Improved Origin Pie Menu",
     "warning": "Might brake undo functionality when used from edit mode.",
-    "category": "Pie Menus",
+    "category": "Learnbgame",
     }
 
 import bpy

@@ -22,7 +22,7 @@ bl_info = {
     'description': 'Display bound box indicators around selected objects.',
     # 'wiki_url': '',
     # 'tracker_url': '',
-    'category': '3D View'
+    "category": "Learnbgame",
 }
 
 # imports

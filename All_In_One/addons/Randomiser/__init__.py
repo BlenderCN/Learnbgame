@@ -28,7 +28,7 @@ bl_info = {
     #"warning": "",
     "wiki_url": "",
     "tracker_url": "https://github.com/BenSimonds/Randomiser/issues",
-    "category": "Object",
+    "category": "Learnbgame",
     }
 
 import bpy

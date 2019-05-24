@@ -27,7 +27,7 @@ bl_info = {
                    "cameras & lamps",
     "warning": "",
     "support": 'OFFICIAL',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 '''

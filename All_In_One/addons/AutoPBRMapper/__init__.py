@@ -24,7 +24,7 @@ bl_info = {
     "location": "View3D > Sidebar",
     "warning" : "",
     "wiki_url": "https://blog.xuite.net/ptsblog/news",
-    "category" : "Generic"
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -1,0 +1,2165 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.7.5
+# options: -o C:\Users\vitor\AppData\Local\Temp\tmpix6zux7o.oso -IC:\Program Files\Blender Foundation\Blender\2.79\scripts\addons\cycles\shader
+shader Cell
+param	string	LightData	""		%read{1,1} %write{2147483647,-1} %derivs
+param	normal	Normal	0 0 0		%read{2147483647,-1} %write{0,0} %initexpr
+oparam	color	Output	0 0 0		%read{118,868} %write{118,868}
+oparam	float	Mask	1		%read{84,862} %write{84,862}
+global	point	P	%read{55,853} %write{2147483647,-1} %derivs
+global	normal	N	%read{0,814} %write{2147483647,-1}
+local	string[12]	___342_splitedData	%read{19,843} %write{18,767} %derivs
+local	float	___342_useShadow	%read{21,770} %write{20,769}
+local	float	___342_smooth	%read{68,847} %write{26,775} %derivs
+local	string	___342_type	%read{52,801} %write{27,776}
+local	vector	___342_pos	%read{54,809} %write{34,783} %derivs
+local	string[3]	___342_colors	%read{37,790} %write{36,785}
+local	vector	___342_col	%read{44,798} %write{43,792}
+local	float	___342_lum	%read{86,864} %write{51,800}
+local	vector	___344_lightDir	%read{64,822} %write{63,812} %derivs
+local	float	___344_maxdist	%read{75,824} %write{64,813}
+local	float	___344_d	%read{2147483647,-1} %write{65,814}
+local	int	___344_result	%read{77,834} %write{66,831}
+local	vector	___344_disturb	%read{73,822} %write{72,821} %derivs
+local	string	___344_nameHit	%read{80,829} %write{78,828}
+local	int	___346_result	%read{106,863} %write{89,860}
+local	vector	___346_rot	%read{103,852} %write{96,845} %derivs
+local	vector	___346_disturb	%read{103,852} %write{102,851} %derivs
+local	string	___346_nameHit	%read{109,858} %write{107,857}
+local	string[9]	splitedLights	%read{2,766} %write{1,1} %derivs
+local	int	len	%read{2147483647,-1} %write{2,2}
+local	string[3]	ambColor	%read{5,9} %write{4,4}
+local	vector	ambCol	%read{868,868} %write{11,11}
+temp	int	$tmp1	%read{2147483647,-1} %write{1,1}
+const	string	$const1	";"		%read{1,1} %write{2147483647,-1}
+temp	int	$tmp2	%read{2147483647,-1} %write{4,4}
+const	int	$const2	0		%read{3,804} %write{2147483647,-1}
+temp	string	$tmp3	%read{4,4} %write{3,3}
+const	string	$const3	"|"		%read{4,785} %write{2147483647,-1}
+temp	float	$tmp4	%read{11,11} %write{6,6}
+temp	string	$tmp5	%read{6,6} %write{5,5}
+temp	float	$tmp6	%read{11,11} %write{8,8}
+const	int	$const4	1		%read{7,860} %write{2147483647,-1}
+temp	string	$tmp7	%read{8,8} %write{7,7}
+temp	float	$tmp8	%read{11,11} %write{10,10}
+const	int	$const5	2		%read{9,810} %write{2147483647,-1}
+temp	string	$tmp9	%read{10,10} %write{9,9}
+temp	int	$tmp10	%read{14,14} %write{13,13}
+temp	string	$tmp11	%read{13,13} %write{12,12}
+temp	int	$tmp12	%read{15,15} %write{14,14}
+temp	color	$tmp13	%read{118,118} %write{23,116}
+const	string	$const6	"CheckLight"		%read{16,765} %write{2147483647,-1}
+temp	int	$tmp14	%read{2147483647,-1} %write{18,18}
+temp	string	$tmp15	%read{18,18} %write{17,17} %derivs
+const	string	$const7	","		%read{18,767} %write{2147483647,-1}
+const	int	$const8	11		%read{19,768} %write{2147483647,-1}
+temp	string	$tmp16	%read{20,20} %write{19,19}
+const	float	$const9	0		%read{21,848} %write{2147483647,-1}
+temp	int	$tmp17	%read{22,22} %write{21,21}
+const	color	$const10	0 0 0		%read{23,772} %write{2147483647,-1}
+const	int	$const11	10		%read{25,774} %write{2147483647,-1}
+temp	string	$tmp18	%read{26,26} %write{25,25} %derivs
+temp	float	$tmp19	%read{34,34} %write{29,29} %derivs
+temp	string	$tmp20	%read{29,29} %write{28,28} %derivs
+temp	float	$tmp21	%read{34,34} %write{31,31} %derivs
+temp	string	$tmp22	%read{31,31} %write{30,30} %derivs
+temp	float	$tmp23	%read{34,34} %write{33,33} %derivs
+const	int	$const12	3		%read{32,781} %write{2147483647,-1}
+temp	string	$tmp24	%read{33,33} %write{32,32} %derivs
+temp	int	$tmp25	%read{2147483647,-1} %write{36,36}
+const	int	$const13	9		%read{35,784} %write{2147483647,-1}
+temp	string	$tmp26	%read{36,36} %write{35,35}
+temp	float	$tmp27	%read{43,43} %write{38,38}
+temp	string	$tmp28	%read{38,38} %write{37,37}
+temp	float	$tmp29	%read{43,43} %write{40,40}
+temp	string	$tmp30	%read{40,40} %write{39,39}
+temp	float	$tmp31	%read{43,43} %write{42,42}
+temp	string	$tmp32	%read{42,42} %write{41,41}
+const	float	$const14	0.21259999		%read{45,794} %write{2147483647,-1}
+temp	float	$tmp33	%read{45,45} %write{44,44}
+temp	float	$tmp34	%read{48,48} %write{45,45}
+const	float	$const15	0.71520001		%read{47,796} %write{2147483647,-1}
+temp	float	$tmp35	%read{47,47} %write{46,46}
+temp	float	$tmp36	%read{48,48} %write{47,47}
+temp	float	$tmp37	%read{51,51} %write{48,48}
+const	float	$const16	0.0722		%read{50,799} %write{2147483647,-1}
+temp	float	$tmp38	%read{50,50} %write{49,49}
+temp	float	$tmp39	%read{51,51} %write{50,50}
+const	string	$const17	"POINT"		%read{52,801} %write{2147483647,-1}
+temp	int	$tmp40	%read{53,53} %write{52,52}
+temp	float	$tmp41	%read{56,56} %write{54,54} %derivs
+temp	float	$tmp42	%read{56,56} %write{55,55} %derivs
+temp	float	$tmp43	%read{63,63} %write{56,56} %derivs
+temp	float	$tmp44	%read{59,59} %write{57,57} %derivs
+temp	float	$tmp45	%read{59,59} %write{58,58} %derivs
+temp	float	$tmp46	%read{63,63} %write{59,59} %derivs
+temp	float	$tmp47	%read{62,62} %write{60,60} %derivs
+temp	float	$tmp48	%read{62,62} %write{61,61} %derivs
+temp	float	$tmp49	%read{63,63} %write{62,62} %derivs
+temp	float	$tmp50	%read{72,72} %write{69,69} %derivs
+const	float	$const18	10		%read{68,817} %write{2147483647,-1}
+const	string	$const19	"clamp"		%read{67,846} %write{2147483647,-1}
+temp	float	$tmp51	%read{69,69} %write{68,68} %derivs
+temp	vector	$tmp52	%read{72,72} %write{71,71} %derivs
+const	string	$const20	"perlin"		%read{71,850} %write{2147483647,-1}
+const	float	$const21	10000		%read{70,849} %write{2147483647,-1}
+temp	point	$tmp53	%read{71,71} %write{70,70} %derivs
+temp	int	$tmp54	%read{76,76} %write{75,75}
+temp	vector	$tmp55	%read{75,75} %write{74,74} %derivs
+temp	vector	$tmp56	%read{74,74} %write{73,73} %derivs
+const	string	$const22	"maxdist"		%read{75,824} %write{2147483647,-1}
+temp	int	$tmp57	%read{77,77} %write{76,76}
+const	string	$const23	""		%read{78,856} %write{2147483647,-1}
+temp	int	$tmp58	%read{2147483647,-1} %write{79,79}
+const	string	$const24	"trace"		%read{79,857} %write{2147483647,-1}
+const	string	$const25	"geom:name"		%read{79,857} %write{2147483647,-1}
+temp	int	$tmp59	%read{81,81} %write{80,80}
+const	string	$const26	"-"		%read{80,858} %write{2147483647,-1}
+temp	float	$tmp60	%read{84,84} %write{83,83}
+temp	float	$tmp61	%read{87,87} %write{86,86}
+temp	float	$tmp62	%read{86,86} %write{85,85}
+temp	float	$tmp63	%read{96,96} %write{91,91} %derivs
+const	int	$const27	4		%read{90,839} %write{2147483647,-1}
+temp	string	$tmp64	%read{91,91} %write{90,90} %derivs
+temp	float	$tmp65	%read{96,96} %write{93,93} %derivs
+const	int	$const28	5		%read{92,841} %write{2147483647,-1}
+temp	string	$tmp66	%read{93,93} %write{92,92} %derivs
+temp	float	$tmp67	%read{96,96} %write{95,95} %derivs
+const	int	$const29	6		%read{94,843} %write{2147483647,-1}
+temp	string	$tmp68	%read{95,95} %write{94,94} %derivs
+temp	float	$tmp69	%read{102,102} %write{99,99} %derivs
+const	float	$const30	1		%read{98,847} %write{2147483647,-1}
+temp	float	$tmp70	%read{99,99} %write{98,98} %derivs
+temp	vector	$tmp71	%read{102,102} %write{101,101} %derivs
+temp	point	$tmp72	%read{101,101} %write{100,100} %derivs
+temp	int	$tmp73	%read{105,105} %write{104,104}
+temp	vector	$tmp74	%read{104,104} %write{103,103} %derivs
+temp	int	$tmp75	%read{106,106} %write{105,105}
+temp	int	$tmp76	%read{2147483647,-1} %write{108,108}
+temp	int	$tmp77	%read{110,110} %write{109,109}
+temp	float	$tmp78	%read{113,113} %write{112,112}
+temp	float	$tmp79	%read{116,116} %write{115,115}
+temp	float	$tmp80	%read{115,115} %write{114,114}
+temp	int	$tmp81	%read{121,121} %write{120,120}
+temp	string	$tmp82	%read{120,120} %write{119,119}
+temp	int	$tmp83	%read{122,122} %write{121,121}
+temp	color	$tmp84	%read{225,225} %write{130,223}
+temp	int	$tmp85	%read{2147483647,-1} %write{125,125}
+temp	string	$tmp86	%read{125,125} %write{124,124} %derivs
+temp	string	$tmp87	%read{127,127} %write{126,126}
+temp	int	$tmp88	%read{129,129} %write{128,128}
+temp	string	$tmp89	%read{133,133} %write{132,132} %derivs
+temp	float	$tmp90	%read{141,141} %write{136,136} %derivs
+temp	string	$tmp91	%read{136,136} %write{135,135} %derivs
+temp	float	$tmp92	%read{141,141} %write{138,138} %derivs
+temp	string	$tmp93	%read{138,138} %write{137,137} %derivs
+temp	float	$tmp94	%read{141,141} %write{140,140} %derivs
+temp	string	$tmp95	%read{140,140} %write{139,139} %derivs
+temp	int	$tmp96	%read{2147483647,-1} %write{143,143}
+temp	string	$tmp97	%read{143,143} %write{142,142}
+temp	float	$tmp98	%read{150,150} %write{145,145}
+temp	string	$tmp99	%read{145,145} %write{144,144}
+temp	float	$tmp100	%read{150,150} %write{147,147}
+temp	string	$tmp101	%read{147,147} %write{146,146}
+temp	float	$tmp102	%read{150,150} %write{149,149}
+temp	string	$tmp103	%read{149,149} %write{148,148}
+temp	float	$tmp104	%read{152,152} %write{151,151}
+temp	float	$tmp105	%read{155,155} %write{152,152}
+temp	float	$tmp106	%read{154,154} %write{153,153}
+temp	float	$tmp107	%read{155,155} %write{154,154}
+temp	float	$tmp108	%read{158,158} %write{155,155}
+temp	float	$tmp109	%read{157,157} %write{156,156}
+temp	float	$tmp110	%read{158,158} %write{157,157}
+temp	int	$tmp111	%read{160,160} %write{159,159}
+temp	float	$tmp112	%read{163,163} %write{161,161} %derivs
+temp	float	$tmp113	%read{163,163} %write{162,162} %derivs
+temp	float	$tmp114	%read{170,170} %write{163,163} %derivs
+temp	float	$tmp115	%read{166,166} %write{164,164} %derivs
+temp	float	$tmp116	%read{166,166} %write{165,165} %derivs
+temp	float	$tmp117	%read{170,170} %write{166,166} %derivs
+temp	float	$tmp118	%read{169,169} %write{167,167} %derivs
+temp	float	$tmp119	%read{169,169} %write{168,168} %derivs
+temp	float	$tmp120	%read{170,170} %write{169,169} %derivs
+temp	float	$tmp121	%read{179,179} %write{176,176} %derivs
+temp	float	$tmp122	%read{176,176} %write{175,175} %derivs
+temp	vector	$tmp123	%read{179,179} %write{178,178} %derivs
+temp	point	$tmp124	%read{178,178} %write{177,177} %derivs
+temp	int	$tmp125	%read{183,183} %write{182,182}
+temp	vector	$tmp126	%read{182,182} %write{181,181} %derivs
+temp	vector	$tmp127	%read{181,181} %write{180,180} %derivs
+temp	int	$tmp128	%read{184,184} %write{183,183}
+temp	int	$tmp129	%read{2147483647,-1} %write{186,186}
+temp	int	$tmp130	%read{188,188} %write{187,187}
+temp	float	$tmp131	%read{191,191} %write{190,190}
+temp	float	$tmp132	%read{194,194} %write{193,193}
+temp	float	$tmp133	%read{193,193} %write{192,192}
+temp	float	$tmp134	%read{203,203} %write{198,198} %derivs
+temp	string	$tmp135	%read{198,198} %write{197,197} %derivs
+temp	float	$tmp136	%read{203,203} %write{200,200} %derivs
+temp	string	$tmp137	%read{200,200} %write{199,199} %derivs
+temp	float	$tmp138	%read{203,203} %write{202,202} %derivs
+temp	string	$tmp139	%read{202,202} %write{201,201} %derivs
+temp	float	$tmp140	%read{209,209} %write{206,206} %derivs
+temp	float	$tmp141	%read{206,206} %write{205,205} %derivs
+temp	vector	$tmp142	%read{209,209} %write{208,208} %derivs
+temp	point	$tmp143	%read{208,208} %write{207,207} %derivs
+temp	int	$tmp144	%read{212,212} %write{211,211}
+temp	vector	$tmp145	%read{211,211} %write{210,210} %derivs
+temp	int	$tmp146	%read{213,213} %write{212,212}
+temp	int	$tmp147	%read{2147483647,-1} %write{215,215}
+temp	int	$tmp148	%read{217,217} %write{216,216}
+temp	float	$tmp149	%read{220,220} %write{219,219}
+temp	float	$tmp150	%read{223,223} %write{222,222}
+temp	float	$tmp151	%read{222,222} %write{221,221}
+temp	int	$tmp152	%read{228,228} %write{227,227}
+temp	string	$tmp153	%read{227,227} %write{226,226}
+temp	int	$tmp154	%read{229,229} %write{228,228}
+temp	color	$tmp155	%read{332,332} %write{237,330}
+temp	int	$tmp156	%read{2147483647,-1} %write{232,232}
+temp	string	$tmp157	%read{232,232} %write{231,231} %derivs
+temp	string	$tmp158	%read{234,234} %write{233,233}
+temp	int	$tmp159	%read{236,236} %write{235,235}
+temp	string	$tmp160	%read{240,240} %write{239,239} %derivs
+temp	float	$tmp161	%read{248,248} %write{243,243} %derivs
+temp	string	$tmp162	%read{243,243} %write{242,242} %derivs
+temp	float	$tmp163	%read{248,248} %write{245,245} %derivs
+temp	string	$tmp164	%read{245,245} %write{244,244} %derivs
+temp	float	$tmp165	%read{248,248} %write{247,247} %derivs
+temp	string	$tmp166	%read{247,247} %write{246,246} %derivs
+temp	int	$tmp167	%read{2147483647,-1} %write{250,250}
+temp	string	$tmp168	%read{250,250} %write{249,249}
+temp	float	$tmp169	%read{257,257} %write{252,252}
+temp	string	$tmp170	%read{252,252} %write{251,251}
+temp	float	$tmp171	%read{257,257} %write{254,254}
+temp	string	$tmp172	%read{254,254} %write{253,253}
+temp	float	$tmp173	%read{257,257} %write{256,256}
+temp	string	$tmp174	%read{256,256} %write{255,255}
+temp	float	$tmp175	%read{259,259} %write{258,258}
+temp	float	$tmp176	%read{262,262} %write{259,259}
+temp	float	$tmp177	%read{261,261} %write{260,260}
+temp	float	$tmp178	%read{262,262} %write{261,261}
+temp	float	$tmp179	%read{265,265} %write{262,262}
+temp	float	$tmp180	%read{264,264} %write{263,263}
+temp	float	$tmp181	%read{265,265} %write{264,264}
+temp	int	$tmp182	%read{267,267} %write{266,266}
+temp	float	$tmp183	%read{270,270} %write{268,268} %derivs
+temp	float	$tmp184	%read{270,270} %write{269,269} %derivs
+temp	float	$tmp185	%read{277,277} %write{270,270} %derivs
+temp	float	$tmp186	%read{273,273} %write{271,271} %derivs
+temp	float	$tmp187	%read{273,273} %write{272,272} %derivs
+temp	float	$tmp188	%read{277,277} %write{273,273} %derivs
+temp	float	$tmp189	%read{276,276} %write{274,274} %derivs
+temp	float	$tmp190	%read{276,276} %write{275,275} %derivs
+temp	float	$tmp191	%read{277,277} %write{276,276} %derivs
+temp	float	$tmp192	%read{286,286} %write{283,283} %derivs
+temp	float	$tmp193	%read{283,283} %write{282,282} %derivs
+temp	vector	$tmp194	%read{286,286} %write{285,285} %derivs
+temp	point	$tmp195	%read{285,285} %write{284,284} %derivs
+temp	int	$tmp196	%read{290,290} %write{289,289}
+temp	vector	$tmp197	%read{289,289} %write{288,288} %derivs
+temp	vector	$tmp198	%read{288,288} %write{287,287} %derivs
+temp	int	$tmp199	%read{291,291} %write{290,290}
+temp	int	$tmp200	%read{2147483647,-1} %write{293,293}
+temp	int	$tmp201	%read{295,295} %write{294,294}
+temp	float	$tmp202	%read{298,298} %write{297,297}
+temp	float	$tmp203	%read{301,301} %write{300,300}
+temp	float	$tmp204	%read{300,300} %write{299,299}
+temp	float	$tmp205	%read{310,310} %write{305,305} %derivs
+temp	string	$tmp206	%read{305,305} %write{304,304} %derivs
+temp	float	$tmp207	%read{310,310} %write{307,307} %derivs
+temp	string	$tmp208	%read{307,307} %write{306,306} %derivs
+temp	float	$tmp209	%read{310,310} %write{309,309} %derivs
+temp	string	$tmp210	%read{309,309} %write{308,308} %derivs
+temp	float	$tmp211	%read{316,316} %write{313,313} %derivs
+temp	float	$tmp212	%read{313,313} %write{312,312} %derivs
+temp	vector	$tmp213	%read{316,316} %write{315,315} %derivs
+temp	point	$tmp214	%read{315,315} %write{314,314} %derivs
+temp	int	$tmp215	%read{319,319} %write{318,318}
+temp	vector	$tmp216	%read{318,318} %write{317,317} %derivs
+temp	int	$tmp217	%read{320,320} %write{319,319}
+temp	int	$tmp218	%read{2147483647,-1} %write{322,322}
+temp	int	$tmp219	%read{324,324} %write{323,323}
+temp	float	$tmp220	%read{327,327} %write{326,326}
+temp	float	$tmp221	%read{330,330} %write{329,329}
+temp	float	$tmp222	%read{329,329} %write{328,328}
+temp	int	$tmp223	%read{335,335} %write{334,334}
+temp	string	$tmp224	%read{334,334} %write{333,333}
+temp	int	$tmp225	%read{336,336} %write{335,335}
+temp	color	$tmp226	%read{439,439} %write{344,437}
+temp	int	$tmp227	%read{2147483647,-1} %write{339,339}
+temp	string	$tmp228	%read{339,339} %write{338,338} %derivs
+temp	string	$tmp229	%read{341,341} %write{340,340}
+temp	int	$tmp230	%read{343,343} %write{342,342}
+temp	string	$tmp231	%read{347,347} %write{346,346} %derivs
+temp	float	$tmp232	%read{355,355} %write{350,350} %derivs
+temp	string	$tmp233	%read{350,350} %write{349,349} %derivs
+temp	float	$tmp234	%read{355,355} %write{352,352} %derivs
+temp	string	$tmp235	%read{352,352} %write{351,351} %derivs
+temp	float	$tmp236	%read{355,355} %write{354,354} %derivs
+temp	string	$tmp237	%read{354,354} %write{353,353} %derivs
+temp	int	$tmp238	%read{2147483647,-1} %write{357,357}
+temp	string	$tmp239	%read{357,357} %write{356,356}
+temp	float	$tmp240	%read{364,364} %write{359,359}
+temp	string	$tmp241	%read{359,359} %write{358,358}
+temp	float	$tmp242	%read{364,364} %write{361,361}
+temp	string	$tmp243	%read{361,361} %write{360,360}
+temp	float	$tmp244	%read{364,364} %write{363,363}
+temp	string	$tmp245	%read{363,363} %write{362,362}
+temp	float	$tmp246	%read{366,366} %write{365,365}
+temp	float	$tmp247	%read{369,369} %write{366,366}
+temp	float	$tmp248	%read{368,368} %write{367,367}
+temp	float	$tmp249	%read{369,369} %write{368,368}
+temp	float	$tmp250	%read{372,372} %write{369,369}
+temp	float	$tmp251	%read{371,371} %write{370,370}
+temp	float	$tmp252	%read{372,372} %write{371,371}
+temp	int	$tmp253	%read{374,374} %write{373,373}
+temp	float	$tmp254	%read{377,377} %write{375,375} %derivs
+temp	float	$tmp255	%read{377,377} %write{376,376} %derivs
+temp	float	$tmp256	%read{384,384} %write{377,377} %derivs
+temp	float	$tmp257	%read{380,380} %write{378,378} %derivs
+temp	float	$tmp258	%read{380,380} %write{379,379} %derivs
+temp	float	$tmp259	%read{384,384} %write{380,380} %derivs
+temp	float	$tmp260	%read{383,383} %write{381,381} %derivs
+temp	float	$tmp261	%read{383,383} %write{382,382} %derivs
+temp	float	$tmp262	%read{384,384} %write{383,383} %derivs
+temp	float	$tmp263	%read{393,393} %write{390,390} %derivs
+temp	float	$tmp264	%read{390,390} %write{389,389} %derivs
+temp	vector	$tmp265	%read{393,393} %write{392,392} %derivs
+temp	point	$tmp266	%read{392,392} %write{391,391} %derivs
+temp	int	$tmp267	%read{397,397} %write{396,396}
+temp	vector	$tmp268	%read{396,396} %write{395,395} %derivs
+temp	vector	$tmp269	%read{395,395} %write{394,394} %derivs
+temp	int	$tmp270	%read{398,398} %write{397,397}
+temp	int	$tmp271	%read{2147483647,-1} %write{400,400}
+temp	int	$tmp272	%read{402,402} %write{401,401}
+temp	float	$tmp273	%read{405,405} %write{404,404}
+temp	float	$tmp274	%read{408,408} %write{407,407}
+temp	float	$tmp275	%read{407,407} %write{406,406}
+temp	float	$tmp276	%read{417,417} %write{412,412} %derivs
+temp	string	$tmp277	%read{412,412} %write{411,411} %derivs
+temp	float	$tmp278	%read{417,417} %write{414,414} %derivs
+temp	string	$tmp279	%read{414,414} %write{413,413} %derivs
+temp	float	$tmp280	%read{417,417} %write{416,416} %derivs
+temp	string	$tmp281	%read{416,416} %write{415,415} %derivs
+temp	float	$tmp282	%read{423,423} %write{420,420} %derivs
+temp	float	$tmp283	%read{420,420} %write{419,419} %derivs
+temp	vector	$tmp284	%read{423,423} %write{422,422} %derivs
+temp	point	$tmp285	%read{422,422} %write{421,421} %derivs
+temp	int	$tmp286	%read{426,426} %write{425,425}
+temp	vector	$tmp287	%read{425,425} %write{424,424} %derivs
+temp	int	$tmp288	%read{427,427} %write{426,426}
+temp	int	$tmp289	%read{2147483647,-1} %write{429,429}
+temp	int	$tmp290	%read{431,431} %write{430,430}
+temp	float	$tmp291	%read{434,434} %write{433,433}
+temp	float	$tmp292	%read{437,437} %write{436,436}
+temp	float	$tmp293	%read{436,436} %write{435,435}
+temp	int	$tmp294	%read{442,442} %write{441,441}
+temp	string	$tmp295	%read{441,441} %write{440,440}
+temp	int	$tmp296	%read{443,443} %write{442,442}
+temp	color	$tmp297	%read{546,546} %write{451,544}
+temp	int	$tmp298	%read{2147483647,-1} %write{446,446}
+temp	string	$tmp299	%read{446,446} %write{445,445} %derivs
+temp	string	$tmp300	%read{448,448} %write{447,447}
+temp	int	$tmp301	%read{450,450} %write{449,449}
+temp	string	$tmp302	%read{454,454} %write{453,453} %derivs
+temp	float	$tmp303	%read{462,462} %write{457,457} %derivs
+temp	string	$tmp304	%read{457,457} %write{456,456} %derivs
+temp	float	$tmp305	%read{462,462} %write{459,459} %derivs
+temp	string	$tmp306	%read{459,459} %write{458,458} %derivs
+temp	float	$tmp307	%read{462,462} %write{461,461} %derivs
+temp	string	$tmp308	%read{461,461} %write{460,460} %derivs
+temp	int	$tmp309	%read{2147483647,-1} %write{464,464}
+temp	string	$tmp310	%read{464,464} %write{463,463}
+temp	float	$tmp311	%read{471,471} %write{466,466}
+temp	string	$tmp312	%read{466,466} %write{465,465}
+temp	float	$tmp313	%read{471,471} %write{468,468}
+temp	string	$tmp314	%read{468,468} %write{467,467}
+temp	float	$tmp315	%read{471,471} %write{470,470}
+temp	string	$tmp316	%read{470,470} %write{469,469}
+temp	float	$tmp317	%read{473,473} %write{472,472}
+temp	float	$tmp318	%read{476,476} %write{473,473}
+temp	float	$tmp319	%read{475,475} %write{474,474}
+temp	float	$tmp320	%read{476,476} %write{475,475}
+temp	float	$tmp321	%read{479,479} %write{476,476}
+temp	float	$tmp322	%read{478,478} %write{477,477}
+temp	float	$tmp323	%read{479,479} %write{478,478}
+temp	int	$tmp324	%read{481,481} %write{480,480}
+temp	float	$tmp325	%read{484,484} %write{482,482} %derivs
+temp	float	$tmp326	%read{484,484} %write{483,483} %derivs
+temp	float	$tmp327	%read{491,491} %write{484,484} %derivs
+temp	float	$tmp328	%read{487,487} %write{485,485} %derivs
+temp	float	$tmp329	%read{487,487} %write{486,486} %derivs
+temp	float	$tmp330	%read{491,491} %write{487,487} %derivs
+temp	float	$tmp331	%read{490,490} %write{488,488} %derivs
+temp	float	$tmp332	%read{490,490} %write{489,489} %derivs
+temp	float	$tmp333	%read{491,491} %write{490,490} %derivs
+temp	float	$tmp334	%read{500,500} %write{497,497} %derivs
+temp	float	$tmp335	%read{497,497} %write{496,496} %derivs
+temp	vector	$tmp336	%read{500,500} %write{499,499} %derivs
+temp	point	$tmp337	%read{499,499} %write{498,498} %derivs
+temp	int	$tmp338	%read{504,504} %write{503,503}
+temp	vector	$tmp339	%read{503,503} %write{502,502} %derivs
+temp	vector	$tmp340	%read{502,502} %write{501,501} %derivs
+temp	int	$tmp341	%read{505,505} %write{504,504}
+temp	int	$tmp342	%read{2147483647,-1} %write{507,507}
+temp	int	$tmp343	%read{509,509} %write{508,508}
+temp	float	$tmp344	%read{512,512} %write{511,511}
+temp	float	$tmp345	%read{515,515} %write{514,514}
+temp	float	$tmp346	%read{514,514} %write{513,513}
+temp	float	$tmp347	%read{524,524} %write{519,519} %derivs
+temp	string	$tmp348	%read{519,519} %write{518,518} %derivs
+temp	float	$tmp349	%read{524,524} %write{521,521} %derivs
+temp	string	$tmp350	%read{521,521} %write{520,520} %derivs
+temp	float	$tmp351	%read{524,524} %write{523,523} %derivs
+temp	string	$tmp352	%read{523,523} %write{522,522} %derivs
+temp	float	$tmp353	%read{530,530} %write{527,527} %derivs
+temp	float	$tmp354	%read{527,527} %write{526,526} %derivs
+temp	vector	$tmp355	%read{530,530} %write{529,529} %derivs
+temp	point	$tmp356	%read{529,529} %write{528,528} %derivs
+temp	int	$tmp357	%read{533,533} %write{532,532}
+temp	vector	$tmp358	%read{532,532} %write{531,531} %derivs
+temp	int	$tmp359	%read{534,534} %write{533,533}
+temp	int	$tmp360	%read{2147483647,-1} %write{536,536}
+temp	int	$tmp361	%read{538,538} %write{537,537}
+temp	float	$tmp362	%read{541,541} %write{540,540}
+temp	float	$tmp363	%read{544,544} %write{543,543}
+temp	float	$tmp364	%read{543,543} %write{542,542}
+temp	int	$tmp365	%read{549,549} %write{548,548}
+temp	string	$tmp366	%read{548,548} %write{547,547}
+temp	int	$tmp367	%read{550,550} %write{549,549}
+temp	color	$tmp368	%read{653,653} %write{558,651}
+temp	int	$tmp369	%read{2147483647,-1} %write{553,553}
+temp	string	$tmp370	%read{553,553} %write{552,552} %derivs
+temp	string	$tmp371	%read{555,555} %write{554,554}
+temp	int	$tmp372	%read{557,557} %write{556,556}
+temp	string	$tmp373	%read{561,561} %write{560,560} %derivs
+temp	float	$tmp374	%read{569,569} %write{564,564} %derivs
+temp	string	$tmp375	%read{564,564} %write{563,563} %derivs
+temp	float	$tmp376	%read{569,569} %write{566,566} %derivs
+temp	string	$tmp377	%read{566,566} %write{565,565} %derivs
+temp	float	$tmp378	%read{569,569} %write{568,568} %derivs
+temp	string	$tmp379	%read{568,568} %write{567,567} %derivs
+temp	int	$tmp380	%read{2147483647,-1} %write{571,571}
+temp	string	$tmp381	%read{571,571} %write{570,570}
+temp	float	$tmp382	%read{578,578} %write{573,573}
+temp	string	$tmp383	%read{573,573} %write{572,572}
+temp	float	$tmp384	%read{578,578} %write{575,575}
+temp	string	$tmp385	%read{575,575} %write{574,574}
+temp	float	$tmp386	%read{578,578} %write{577,577}
+temp	string	$tmp387	%read{577,577} %write{576,576}
+temp	float	$tmp388	%read{580,580} %write{579,579}
+temp	float	$tmp389	%read{583,583} %write{580,580}
+temp	float	$tmp390	%read{582,582} %write{581,581}
+temp	float	$tmp391	%read{583,583} %write{582,582}
+temp	float	$tmp392	%read{586,586} %write{583,583}
+temp	float	$tmp393	%read{585,585} %write{584,584}
+temp	float	$tmp394	%read{586,586} %write{585,585}
+temp	int	$tmp395	%read{588,588} %write{587,587}
+temp	float	$tmp396	%read{591,591} %write{589,589} %derivs
+temp	float	$tmp397	%read{591,591} %write{590,590} %derivs
+temp	float	$tmp398	%read{598,598} %write{591,591} %derivs
+temp	float	$tmp399	%read{594,594} %write{592,592} %derivs
+temp	float	$tmp400	%read{594,594} %write{593,593} %derivs
+temp	float	$tmp401	%read{598,598} %write{594,594} %derivs
+temp	float	$tmp402	%read{597,597} %write{595,595} %derivs
+temp	float	$tmp403	%read{597,597} %write{596,596} %derivs
+temp	float	$tmp404	%read{598,598} %write{597,597} %derivs
+temp	float	$tmp405	%read{607,607} %write{604,604} %derivs
+temp	float	$tmp406	%read{604,604} %write{603,603} %derivs
+temp	vector	$tmp407	%read{607,607} %write{606,606} %derivs
+temp	point	$tmp408	%read{606,606} %write{605,605} %derivs
+temp	int	$tmp409	%read{611,611} %write{610,610}
+temp	vector	$tmp410	%read{610,610} %write{609,609} %derivs
+temp	vector	$tmp411	%read{609,609} %write{608,608} %derivs
+temp	int	$tmp412	%read{612,612} %write{611,611}
+temp	int	$tmp413	%read{2147483647,-1} %write{614,614}
+temp	int	$tmp414	%read{616,616} %write{615,615}
+temp	float	$tmp415	%read{619,619} %write{618,618}
+temp	float	$tmp416	%read{622,622} %write{621,621}
+temp	float	$tmp417	%read{621,621} %write{620,620}
+temp	float	$tmp418	%read{631,631} %write{626,626} %derivs
+temp	string	$tmp419	%read{626,626} %write{625,625} %derivs
+temp	float	$tmp420	%read{631,631} %write{628,628} %derivs
+temp	string	$tmp421	%read{628,628} %write{627,627} %derivs
+temp	float	$tmp422	%read{631,631} %write{630,630} %derivs
+temp	string	$tmp423	%read{630,630} %write{629,629} %derivs
+temp	float	$tmp424	%read{637,637} %write{634,634} %derivs
+temp	float	$tmp425	%read{634,634} %write{633,633} %derivs
+temp	vector	$tmp426	%read{637,637} %write{636,636} %derivs
+temp	point	$tmp427	%read{636,636} %write{635,635} %derivs
+temp	int	$tmp428	%read{640,640} %write{639,639}
+temp	vector	$tmp429	%read{639,639} %write{638,638} %derivs
+temp	int	$tmp430	%read{641,641} %write{640,640}
+temp	int	$tmp431	%read{2147483647,-1} %write{643,643}
+temp	int	$tmp432	%read{645,645} %write{644,644}
+temp	float	$tmp433	%read{648,648} %write{647,647}
+temp	float	$tmp434	%read{651,651} %write{650,650}
+temp	float	$tmp435	%read{650,650} %write{649,649}
+temp	int	$tmp436	%read{656,656} %write{655,655}
+const	int	$const31	7		%read{654,659} %write{2147483647,-1}
+temp	string	$tmp437	%read{655,655} %write{654,654}
+temp	int	$tmp438	%read{657,657} %write{656,656}
+temp	color	$tmp439	%read{760,760} %write{665,758}
+temp	int	$tmp440	%read{2147483647,-1} %write{660,660}
+temp	string	$tmp441	%read{660,660} %write{659,659} %derivs
+temp	string	$tmp442	%read{662,662} %write{661,661}
+temp	int	$tmp443	%read{664,664} %write{663,663}
+temp	string	$tmp444	%read{668,668} %write{667,667} %derivs
+temp	float	$tmp445	%read{676,676} %write{671,671} %derivs
+temp	string	$tmp446	%read{671,671} %write{670,670} %derivs
+temp	float	$tmp447	%read{676,676} %write{673,673} %derivs
+temp	string	$tmp448	%read{673,673} %write{672,672} %derivs
+temp	float	$tmp449	%read{676,676} %write{675,675} %derivs
+temp	string	$tmp450	%read{675,675} %write{674,674} %derivs
+temp	int	$tmp451	%read{2147483647,-1} %write{678,678}
+temp	string	$tmp452	%read{678,678} %write{677,677}
+temp	float	$tmp453	%read{685,685} %write{680,680}
+temp	string	$tmp454	%read{680,680} %write{679,679}
+temp	float	$tmp455	%read{685,685} %write{682,682}
+temp	string	$tmp456	%read{682,682} %write{681,681}
+temp	float	$tmp457	%read{685,685} %write{684,684}
+temp	string	$tmp458	%read{684,684} %write{683,683}
+temp	float	$tmp459	%read{687,687} %write{686,686}
+temp	float	$tmp460	%read{690,690} %write{687,687}
+temp	float	$tmp461	%read{689,689} %write{688,688}
+temp	float	$tmp462	%read{690,690} %write{689,689}
+temp	float	$tmp463	%read{693,693} %write{690,690}
+temp	float	$tmp464	%read{692,692} %write{691,691}
+temp	float	$tmp465	%read{693,693} %write{692,692}
+temp	int	$tmp466	%read{695,695} %write{694,694}
+temp	float	$tmp467	%read{698,698} %write{696,696} %derivs
+temp	float	$tmp468	%read{698,698} %write{697,697} %derivs
+temp	float	$tmp469	%read{705,705} %write{698,698} %derivs
+temp	float	$tmp470	%read{701,701} %write{699,699} %derivs
+temp	float	$tmp471	%read{701,701} %write{700,700} %derivs
+temp	float	$tmp472	%read{705,705} %write{701,701} %derivs
+temp	float	$tmp473	%read{704,704} %write{702,702} %derivs
+temp	float	$tmp474	%read{704,704} %write{703,703} %derivs
+temp	float	$tmp475	%read{705,705} %write{704,704} %derivs
+temp	float	$tmp476	%read{714,714} %write{711,711} %derivs
+temp	float	$tmp477	%read{711,711} %write{710,710} %derivs
+temp	vector	$tmp478	%read{714,714} %write{713,713} %derivs
+temp	point	$tmp479	%read{713,713} %write{712,712} %derivs
+temp	int	$tmp480	%read{718,718} %write{717,717}
+temp	vector	$tmp481	%read{717,717} %write{716,716} %derivs
+temp	vector	$tmp482	%read{716,716} %write{715,715} %derivs
+temp	int	$tmp483	%read{719,719} %write{718,718}
+temp	int	$tmp484	%read{2147483647,-1} %write{721,721}
+temp	int	$tmp485	%read{723,723} %write{722,722}
+temp	float	$tmp486	%read{726,726} %write{725,725}
+temp	float	$tmp487	%read{729,729} %write{728,728}
+temp	float	$tmp488	%read{728,728} %write{727,727}
+temp	float	$tmp489	%read{738,738} %write{733,733} %derivs
+temp	string	$tmp490	%read{733,733} %write{732,732} %derivs
+temp	float	$tmp491	%read{738,738} %write{735,735} %derivs
+temp	string	$tmp492	%read{735,735} %write{734,734} %derivs
+temp	float	$tmp493	%read{738,738} %write{737,737} %derivs
+temp	string	$tmp494	%read{737,737} %write{736,736} %derivs
+temp	float	$tmp495	%read{744,744} %write{741,741} %derivs
+temp	float	$tmp496	%read{741,741} %write{740,740} %derivs
+temp	vector	$tmp497	%read{744,744} %write{743,743} %derivs
+temp	point	$tmp498	%read{743,743} %write{742,742} %derivs
+temp	int	$tmp499	%read{747,747} %write{746,746}
+temp	vector	$tmp500	%read{746,746} %write{745,745} %derivs
+temp	int	$tmp501	%read{748,748} %write{747,747}
+temp	int	$tmp502	%read{2147483647,-1} %write{750,750}
+temp	int	$tmp503	%read{752,752} %write{751,751}
+temp	float	$tmp504	%read{755,755} %write{754,754}
+temp	float	$tmp505	%read{758,758} %write{757,757}
+temp	float	$tmp506	%read{757,757} %write{756,756}
+temp	int	$tmp507	%read{763,763} %write{762,762}
+const	int	$const32	8		%read{761,766} %write{2147483647,-1}
+temp	string	$tmp508	%read{762,762} %write{761,761}
+temp	int	$tmp509	%read{764,764} %write{763,763}
+temp	color	$tmp510	%read{867,867} %write{772,865}
+temp	int	$tmp511	%read{2147483647,-1} %write{767,767}
+temp	string	$tmp512	%read{767,767} %write{766,766} %derivs
+temp	string	$tmp513	%read{769,769} %write{768,768}
+temp	int	$tmp514	%read{771,771} %write{770,770}
+temp	string	$tmp515	%read{775,775} %write{774,774} %derivs
+temp	float	$tmp516	%read{783,783} %write{778,778} %derivs
+temp	string	$tmp517	%read{778,778} %write{777,777} %derivs
+temp	float	$tmp518	%read{783,783} %write{780,780} %derivs
+temp	string	$tmp519	%read{780,780} %write{779,779} %derivs
+temp	float	$tmp520	%read{783,783} %write{782,782} %derivs
+temp	string	$tmp521	%read{782,782} %write{781,781} %derivs
+temp	int	$tmp522	%read{2147483647,-1} %write{785,785}
+temp	string	$tmp523	%read{785,785} %write{784,784}
+temp	float	$tmp524	%read{792,792} %write{787,787}
+temp	string	$tmp525	%read{787,787} %write{786,786}
+temp	float	$tmp526	%read{792,792} %write{789,789}
+temp	string	$tmp527	%read{789,789} %write{788,788}
+temp	float	$tmp528	%read{792,792} %write{791,791}
+temp	string	$tmp529	%read{791,791} %write{790,790}
+temp	float	$tmp530	%read{794,794} %write{793,793}
+temp	float	$tmp531	%read{797,797} %write{794,794}
+temp	float	$tmp532	%read{796,796} %write{795,795}
+temp	float	$tmp533	%read{797,797} %write{796,796}
+temp	float	$tmp534	%read{800,800} %write{797,797}
+temp	float	$tmp535	%read{799,799} %write{798,798}
+temp	float	$tmp536	%read{800,800} %write{799,799}
+temp	int	$tmp537	%read{802,802} %write{801,801}
+temp	float	$tmp538	%read{805,805} %write{803,803} %derivs
+temp	float	$tmp539	%read{805,805} %write{804,804} %derivs
+temp	float	$tmp540	%read{812,812} %write{805,805} %derivs
+temp	float	$tmp541	%read{808,808} %write{806,806} %derivs
+temp	float	$tmp542	%read{808,808} %write{807,807} %derivs
+temp	float	$tmp543	%read{812,812} %write{808,808} %derivs
+temp	float	$tmp544	%read{811,811} %write{809,809} %derivs
+temp	float	$tmp545	%read{811,811} %write{810,810} %derivs
+temp	float	$tmp546	%read{812,812} %write{811,811} %derivs
+temp	float	$tmp547	%read{821,821} %write{818,818} %derivs
+temp	float	$tmp548	%read{818,818} %write{817,817} %derivs
+temp	vector	$tmp549	%read{821,821} %write{820,820} %derivs
+temp	point	$tmp550	%read{820,820} %write{819,819} %derivs
+temp	int	$tmp551	%read{825,825} %write{824,824}
+temp	vector	$tmp552	%read{824,824} %write{823,823} %derivs
+temp	vector	$tmp553	%read{823,823} %write{822,822} %derivs
+temp	int	$tmp554	%read{826,826} %write{825,825}
+temp	int	$tmp555	%read{2147483647,-1} %write{828,828}
+temp	int	$tmp556	%read{830,830} %write{829,829}
+temp	float	$tmp557	%read{833,833} %write{832,832}
+temp	float	$tmp558	%read{836,836} %write{835,835}
+temp	float	$tmp559	%read{835,835} %write{834,834}
+temp	float	$tmp560	%read{845,845} %write{840,840} %derivs
+temp	string	$tmp561	%read{840,840} %write{839,839} %derivs
+temp	float	$tmp562	%read{845,845} %write{842,842} %derivs
+temp	string	$tmp563	%read{842,842} %write{841,841} %derivs
+temp	float	$tmp564	%read{845,845} %write{844,844} %derivs
+temp	string	$tmp565	%read{844,844} %write{843,843} %derivs
+temp	float	$tmp566	%read{851,851} %write{848,848} %derivs
+temp	float	$tmp567	%read{848,848} %write{847,847} %derivs
+temp	vector	$tmp568	%read{851,851} %write{850,850} %derivs
+temp	point	$tmp569	%read{850,850} %write{849,849} %derivs
+temp	int	$tmp570	%read{854,854} %write{853,853}
+temp	vector	$tmp571	%read{853,853} %write{852,852} %derivs
+temp	int	$tmp572	%read{855,855} %write{854,854}
+temp	int	$tmp573	%read{2147483647,-1} %write{857,857}
+temp	int	$tmp574	%read{859,859} %write{858,858}
+temp	float	$tmp575	%read{862,862} %write{861,861}
+temp	float	$tmp576	%read{865,865} %write{864,864}
+temp	float	$tmp577	%read{864,864} %write{863,863}
+code Normal
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:67
+#     //int Sampling = 1,
+	assign		Normal N 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{67} %argrw{"wr"}
+code ___main___
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:74
+#     int len = arraylength(splitedLights);
+	split		$tmp1 LightData splitedLights $const1 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{74} %argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:75
+#     
+	arraylength	len splitedLights 	%line{75} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:78
+#     vector ambCol = vector(stof(ambColor[0]),stof(ambColor[1]),stof(ambColor[2])); 
+	aref		$tmp3 splitedLights $const2 	%line{78} %argrw{"wrr"}
+	split		$tmp2 $tmp3 ambColor $const3 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:79
+#     
+	aref		$tmp5 ambColor $const2 	%line{79} %argrw{"wrr"}
+	stof		$tmp4 $tmp5 	%argrw{"wr"}
+	aref		$tmp7 ambColor $const4 	%argrw{"wrr"}
+	stof		$tmp6 $tmp7 	%argrw{"wr"}
+	aref		$tmp9 ambColor $const5 	%argrw{"wrr"}
+	stof		$tmp8 $tmp9 	%argrw{"wr"}
+	vector		ambCol $tmp4 $tmp6 $tmp8 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:82
+#         Output += CheckLight(1,splitedLights,Normal,Mask);
+	aref		$tmp11 splitedLights $const4 	%line{82} %argrw{"wrr"}
+	strlen		$tmp10 $tmp11 	%argrw{"wr"}
+	gt		$tmp12 $tmp10 $const2 	%argrw{"wrr"}
+	if		$tmp12 119 119 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:83
+#     }
+	functioncall	$const6 118 	%line{83} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:10
+#         
+	aref		$tmp15 splitedLights $const4 	%line{10} %argrw{"wrr"}
+	split		$tmp14 $tmp15 ___342_splitedData $const7 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:12
+#         if(useShadow == 0.0){
+	aref		$tmp16 ___342_splitedData $const8 	%line{12} %argrw{"wrr"}
+	stof		___342_useShadow $tmp16 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:13
+#             return color(0,0,0);
+	eq		$tmp17 ___342_useShadow $const9 	%line{13} %argrw{"wrr"}
+	if		$tmp17 25 25 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:14
+#         }
+	assign		$tmp13 $const10 	%line{14} %argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:17
+#         string type = splitedData[0];    
+	aref		$tmp18 ___342_splitedData $const11 	%line{17} %argrw{"wrr"}
+	stof		___342_smooth $tmp18 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:18
+#         vector pos = vector(stof(splitedData[1]),stof(splitedData[2]),stof(splitedData[3]));
+	aref		___342_type ___342_splitedData $const2 	%line{18} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:19
+# 
+	aref		$tmp20 ___342_splitedData $const4 	%line{19} %argrw{"wrr"}
+	stof		$tmp19 $tmp20 	%argrw{"wr"}
+	aref		$tmp22 ___342_splitedData $const5 	%argrw{"wrr"}
+	stof		$tmp21 $tmp22 	%argrw{"wr"}
+	aref		$tmp24 ___342_splitedData $const12 	%argrw{"wrr"}
+	stof		$tmp23 $tmp24 	%argrw{"wr"}
+	vector		___342_pos $tmp19 $tmp21 $tmp23 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:22
+#         vector col = vector(stof(colors[0]),stof(colors[1]),stof(colors[2]));
+	aref		$tmp26 ___342_splitedData $const13 	%line{22} %argrw{"wrr"}
+	split		$tmp25 $tmp26 ___342_colors $const3 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:23
+#         float lum = (0.2126*col[0] + 0.7152*col[1] + 0.0722*col[2]);
+	aref		$tmp28 ___342_colors $const2 	%line{23} %argrw{"wrr"}
+	stof		$tmp27 $tmp28 	%argrw{"wr"}
+	aref		$tmp30 ___342_colors $const4 	%argrw{"wrr"}
+	stof		$tmp29 $tmp30 	%argrw{"wr"}
+	aref		$tmp32 ___342_colors $const5 	%argrw{"wrr"}
+	stof		$tmp31 $tmp32 	%argrw{"wr"}
+	vector		___342_col $tmp27 $tmp29 $tmp31 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:24
+#         
+	compref		$tmp33 ___342_col $const2 	%line{24} %argrw{"wrr"}
+	mul		$tmp34 $const14 $tmp33 	%argrw{"wrr"}
+	compref		$tmp35 ___342_col $const4 	%argrw{"wrr"}
+	mul		$tmp36 $const15 $tmp35 	%argrw{"wrr"}
+	add		$tmp37 $tmp34 $tmp36 	%argrw{"wrr"}
+	compref		$tmp38 ___342_col $const5 	%argrw{"wrr"}
+	mul		$tmp39 $const16 $tmp38 	%argrw{"wrr"}
+	add		___342_lum $tmp37 $tmp39 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:26
+#             vector lightDir = vector(pos[0]-P[0],pos[1]-P[1],pos[2]-P[2]);
+	eq		$tmp40 ___342_type $const17 	%line{26} %argrw{"wrr"}
+	if		$tmp40 89 118 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:27
+#             float maxdist = length(lightDir);
+	compref		$tmp41 ___342_pos $const2 	%line{27} %argrw{"wrr"}
+	compref		$tmp42 P $const2 	%argrw{"wrr"}
+	sub		$tmp43 $tmp41 $tmp42 	%argrw{"wrr"}
+	compref		$tmp44 ___342_pos $const4 	%argrw{"wrr"}
+	compref		$tmp45 P $const4 	%argrw{"wrr"}
+	sub		$tmp46 $tmp44 $tmp45 	%argrw{"wrr"}
+	compref		$tmp47 ___342_pos $const5 	%argrw{"wrr"}
+	compref		$tmp48 P $const5 	%argrw{"wrr"}
+	sub		$tmp49 $tmp47 $tmp48 	%argrw{"wrr"}
+	vector		___344_lightDir $tmp43 $tmp46 $tmp49 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:28
+#             
+	length		___344_maxdist ___344_lightDir 	%line{28} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:30
+#             int result = 1;
+	dot		___344_d N ___344_lightDir 	%line{30} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:31
+#                    
+	assign		___344_result $const4 	%line{31} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	functioncall	$const19 70 	%line{33} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (sqrt)
+	min		$tmp51 ___342_smooth $const18 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp50 $tmp51 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	mul		$tmp53 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{33} %argrw{"wrr"}
+	noise		$tmp52 $const20 $tmp53 	%argrw{"wrr"}
+	mul		___344_disturb $tmp50 $tmp52 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:34
+#             
+	add		$tmp56 ___344_lightDir ___344_disturb 	%line{34} %argrw{"wrr"}
+	normalize	$tmp55 $tmp56 	%argrw{"wr"}
+	trace		$tmp54 P $tmp55 $const22 ___344_maxdist 	%argrw{"wrrrr"} %argderivs{1,2}
+	sub		$tmp57 $const4 $tmp54 	%argrw{"wrr"}
+	mul		___344_result ___344_result $tmp57 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:36
+#             getmessage("trace","geom:name",nameHit);
+	assign		___344_nameHit $const23 	%line{36} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:37
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp58 $const24 $const25 ___344_nameHit 	%line{37} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:38
+#                 result = 1;
+	startswith	$tmp59 ___344_nameHit $const26 	%line{38} %argrw{"wrr"}
+	if		$tmp59 83 83 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:39
+#             }
+	assign		___344_result $const4 	%line{39} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:43
+#             return result * lum;
+	assign		$tmp60 ___344_result 	%line{43} %argrw{"wr"}
+	mul		Mask Mask $tmp60 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:44
+#         }
+	assign		$tmp62 ___344_result 	%line{44} %argrw{"wr"}
+	mul		$tmp61 $tmp62 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp13 $tmp61 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:49
+#             vector rot = vector(stof(splitedData[4]),stof(splitedData[5]),stof(splitedData[6]));  
+	assign		___346_result $const4 	%line{49} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:50
+#             vector disturb = ( clamp(smooth,0.0,1.0) * (noise("perlin", P*10000.0)) );
+	aref		$tmp64 ___342_splitedData $const27 	%line{50} %argrw{"wrr"}
+	stof		$tmp63 $tmp64 	%argrw{"wr"}
+	aref		$tmp66 ___342_splitedData $const28 	%argrw{"wrr"}
+	stof		$tmp65 $tmp66 	%argrw{"wr"}
+	aref		$tmp68 ___342_splitedData $const29 	%argrw{"wrr"}
+	stof		$tmp67 $tmp68 	%argrw{"wr"}
+	vector		___346_rot $tmp63 $tmp65 $tmp67 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	functioncall	$const19 100 	%line{51} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (asin)
+	min		$tmp70 ___342_smooth $const30 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp69 $tmp70 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	mul		$tmp72 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{51} %argrw{"wrr"}
+	noise		$tmp71 $const20 $tmp72 	%argrw{"wrr"}
+	mul		___346_disturb $tmp69 $tmp71 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:52
+#             
+	add		$tmp74 ___346_rot ___346_disturb 	%line{52} %argrw{"wrr"}
+	trace		$tmp73 P $tmp74 	%argrw{"wrr"} %argderivs{1,2}
+	sub		$tmp75 $const4 $tmp73 	%argrw{"wrr"}
+	mul		___346_result ___346_result $tmp75 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:54
+#             getmessage("trace","geom:name",nameHit);
+	assign		___346_nameHit $const23 	%line{54} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:55
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp76 $const24 $const25 ___346_nameHit 	%line{55} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:56
+#                 result = 1;
+	startswith	$tmp77 ___346_nameHit $const26 	%line{56} %argrw{"wrr"}
+	if		$tmp77 112 112 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:57
+#             }
+	assign		___346_result $const4 	%line{57} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:60
+#             return result * lum;
+	assign		$tmp78 ___346_result 	%line{60} %argrw{"wr"}
+	mul		Mask Mask $tmp78 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:61
+#         }
+	assign		$tmp80 ___346_result 	%line{61} %argrw{"wr"}
+	mul		$tmp79 $tmp80 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp13 $tmp79 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:83
+#     }
+	add		Output Output $tmp13 	%line{83} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:85
+#         Output *= CheckLight(2,splitedLights,Normal,Mask);
+	aref		$tmp82 splitedLights $const5 	%line{85} %argrw{"wrr"}
+	strlen		$tmp81 $tmp82 	%argrw{"wr"}
+	gt		$tmp83 $tmp81 $const2 	%argrw{"wrr"}
+	if		$tmp83 226 226 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:86
+#     }
+	functioncall	$const6 225 	%line{86} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:10
+#         
+	aref		$tmp86 splitedLights $const5 	%line{10} %argrw{"wrr"}
+	split		$tmp85 $tmp86 ___342_splitedData $const7 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:12
+#         if(useShadow == 0.0){
+	aref		$tmp87 ___342_splitedData $const8 	%line{12} %argrw{"wrr"}
+	stof		___342_useShadow $tmp87 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:13
+#             return color(0,0,0);
+	eq		$tmp88 ___342_useShadow $const9 	%line{13} %argrw{"wrr"}
+	if		$tmp88 132 132 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:14
+#         }
+	assign		$tmp84 $const10 	%line{14} %argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:17
+#         string type = splitedData[0];    
+	aref		$tmp89 ___342_splitedData $const11 	%line{17} %argrw{"wrr"}
+	stof		___342_smooth $tmp89 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:18
+#         vector pos = vector(stof(splitedData[1]),stof(splitedData[2]),stof(splitedData[3]));
+	aref		___342_type ___342_splitedData $const2 	%line{18} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:19
+# 
+	aref		$tmp91 ___342_splitedData $const4 	%line{19} %argrw{"wrr"}
+	stof		$tmp90 $tmp91 	%argrw{"wr"}
+	aref		$tmp93 ___342_splitedData $const5 	%argrw{"wrr"}
+	stof		$tmp92 $tmp93 	%argrw{"wr"}
+	aref		$tmp95 ___342_splitedData $const12 	%argrw{"wrr"}
+	stof		$tmp94 $tmp95 	%argrw{"wr"}
+	vector		___342_pos $tmp90 $tmp92 $tmp94 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:22
+#         vector col = vector(stof(colors[0]),stof(colors[1]),stof(colors[2]));
+	aref		$tmp97 ___342_splitedData $const13 	%line{22} %argrw{"wrr"}
+	split		$tmp96 $tmp97 ___342_colors $const3 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:23
+#         float lum = (0.2126*col[0] + 0.7152*col[1] + 0.0722*col[2]);
+	aref		$tmp99 ___342_colors $const2 	%line{23} %argrw{"wrr"}
+	stof		$tmp98 $tmp99 	%argrw{"wr"}
+	aref		$tmp101 ___342_colors $const4 	%argrw{"wrr"}
+	stof		$tmp100 $tmp101 	%argrw{"wr"}
+	aref		$tmp103 ___342_colors $const5 	%argrw{"wrr"}
+	stof		$tmp102 $tmp103 	%argrw{"wr"}
+	vector		___342_col $tmp98 $tmp100 $tmp102 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:24
+#         
+	compref		$tmp104 ___342_col $const2 	%line{24} %argrw{"wrr"}
+	mul		$tmp105 $const14 $tmp104 	%argrw{"wrr"}
+	compref		$tmp106 ___342_col $const4 	%argrw{"wrr"}
+	mul		$tmp107 $const15 $tmp106 	%argrw{"wrr"}
+	add		$tmp108 $tmp105 $tmp107 	%argrw{"wrr"}
+	compref		$tmp109 ___342_col $const5 	%argrw{"wrr"}
+	mul		$tmp110 $const16 $tmp109 	%argrw{"wrr"}
+	add		___342_lum $tmp108 $tmp110 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:26
+#             vector lightDir = vector(pos[0]-P[0],pos[1]-P[1],pos[2]-P[2]);
+	eq		$tmp111 ___342_type $const17 	%line{26} %argrw{"wrr"}
+	if		$tmp111 196 225 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:27
+#             float maxdist = length(lightDir);
+	compref		$tmp112 ___342_pos $const2 	%line{27} %argrw{"wrr"}
+	compref		$tmp113 P $const2 	%argrw{"wrr"}
+	sub		$tmp114 $tmp112 $tmp113 	%argrw{"wrr"}
+	compref		$tmp115 ___342_pos $const4 	%argrw{"wrr"}
+	compref		$tmp116 P $const4 	%argrw{"wrr"}
+	sub		$tmp117 $tmp115 $tmp116 	%argrw{"wrr"}
+	compref		$tmp118 ___342_pos $const5 	%argrw{"wrr"}
+	compref		$tmp119 P $const5 	%argrw{"wrr"}
+	sub		$tmp120 $tmp118 $tmp119 	%argrw{"wrr"}
+	vector		___344_lightDir $tmp114 $tmp117 $tmp120 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:28
+#             
+	length		___344_maxdist ___344_lightDir 	%line{28} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:30
+#             int result = 1;
+	dot		___344_d N ___344_lightDir 	%line{30} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:31
+#                    
+	assign		___344_result $const4 	%line{31} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	functioncall	$const19 177 	%line{33} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (sqrt)
+	min		$tmp122 ___342_smooth $const18 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp121 $tmp122 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	mul		$tmp124 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{33} %argrw{"wrr"}
+	noise		$tmp123 $const20 $tmp124 	%argrw{"wrr"}
+	mul		___344_disturb $tmp121 $tmp123 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:34
+#             
+	add		$tmp127 ___344_lightDir ___344_disturb 	%line{34} %argrw{"wrr"}
+	normalize	$tmp126 $tmp127 	%argrw{"wr"}
+	trace		$tmp125 P $tmp126 $const22 ___344_maxdist 	%argrw{"wrrrr"} %argderivs{1,2}
+	sub		$tmp128 $const4 $tmp125 	%argrw{"wrr"}
+	mul		___344_result ___344_result $tmp128 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:36
+#             getmessage("trace","geom:name",nameHit);
+	assign		___344_nameHit $const23 	%line{36} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:37
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp129 $const24 $const25 ___344_nameHit 	%line{37} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:38
+#                 result = 1;
+	startswith	$tmp130 ___344_nameHit $const26 	%line{38} %argrw{"wrr"}
+	if		$tmp130 190 190 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:39
+#             }
+	assign		___344_result $const4 	%line{39} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:43
+#             return result * lum;
+	assign		$tmp131 ___344_result 	%line{43} %argrw{"wr"}
+	mul		Mask Mask $tmp131 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:44
+#         }
+	assign		$tmp133 ___344_result 	%line{44} %argrw{"wr"}
+	mul		$tmp132 $tmp133 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp84 $tmp132 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:49
+#             vector rot = vector(stof(splitedData[4]),stof(splitedData[5]),stof(splitedData[6]));  
+	assign		___346_result $const4 	%line{49} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:50
+#             vector disturb = ( clamp(smooth,0.0,1.0) * (noise("perlin", P*10000.0)) );
+	aref		$tmp135 ___342_splitedData $const27 	%line{50} %argrw{"wrr"}
+	stof		$tmp134 $tmp135 	%argrw{"wr"}
+	aref		$tmp137 ___342_splitedData $const28 	%argrw{"wrr"}
+	stof		$tmp136 $tmp137 	%argrw{"wr"}
+	aref		$tmp139 ___342_splitedData $const29 	%argrw{"wrr"}
+	stof		$tmp138 $tmp139 	%argrw{"wr"}
+	vector		___346_rot $tmp134 $tmp136 $tmp138 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	functioncall	$const19 207 	%line{51} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (asin)
+	min		$tmp141 ___342_smooth $const30 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp140 $tmp141 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	mul		$tmp143 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{51} %argrw{"wrr"}
+	noise		$tmp142 $const20 $tmp143 	%argrw{"wrr"}
+	mul		___346_disturb $tmp140 $tmp142 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:52
+#             
+	add		$tmp145 ___346_rot ___346_disturb 	%line{52} %argrw{"wrr"}
+	trace		$tmp144 P $tmp145 	%argrw{"wrr"} %argderivs{1,2}
+	sub		$tmp146 $const4 $tmp144 	%argrw{"wrr"}
+	mul		___346_result ___346_result $tmp146 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:54
+#             getmessage("trace","geom:name",nameHit);
+	assign		___346_nameHit $const23 	%line{54} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:55
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp147 $const24 $const25 ___346_nameHit 	%line{55} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:56
+#                 result = 1;
+	startswith	$tmp148 ___346_nameHit $const26 	%line{56} %argrw{"wrr"}
+	if		$tmp148 219 219 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:57
+#             }
+	assign		___346_result $const4 	%line{57} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:60
+#             return result * lum;
+	assign		$tmp149 ___346_result 	%line{60} %argrw{"wr"}
+	mul		Mask Mask $tmp149 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:61
+#         }
+	assign		$tmp151 ___346_result 	%line{61} %argrw{"wr"}
+	mul		$tmp150 $tmp151 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp84 $tmp150 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:86
+#     }
+	mul		Output Output $tmp84 	%line{86} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:88
+#         Output *= CheckLight(3,splitedLights,Normal,Mask);
+	aref		$tmp153 splitedLights $const12 	%line{88} %argrw{"wrr"}
+	strlen		$tmp152 $tmp153 	%argrw{"wr"}
+	gt		$tmp154 $tmp152 $const2 	%argrw{"wrr"}
+	if		$tmp154 333 333 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:89
+#     }
+	functioncall	$const6 332 	%line{89} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:10
+#         
+	aref		$tmp157 splitedLights $const12 	%line{10} %argrw{"wrr"}
+	split		$tmp156 $tmp157 ___342_splitedData $const7 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:12
+#         if(useShadow == 0.0){
+	aref		$tmp158 ___342_splitedData $const8 	%line{12} %argrw{"wrr"}
+	stof		___342_useShadow $tmp158 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:13
+#             return color(0,0,0);
+	eq		$tmp159 ___342_useShadow $const9 	%line{13} %argrw{"wrr"}
+	if		$tmp159 239 239 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:14
+#         }
+	assign		$tmp155 $const10 	%line{14} %argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:17
+#         string type = splitedData[0];    
+	aref		$tmp160 ___342_splitedData $const11 	%line{17} %argrw{"wrr"}
+	stof		___342_smooth $tmp160 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:18
+#         vector pos = vector(stof(splitedData[1]),stof(splitedData[2]),stof(splitedData[3]));
+	aref		___342_type ___342_splitedData $const2 	%line{18} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:19
+# 
+	aref		$tmp162 ___342_splitedData $const4 	%line{19} %argrw{"wrr"}
+	stof		$tmp161 $tmp162 	%argrw{"wr"}
+	aref		$tmp164 ___342_splitedData $const5 	%argrw{"wrr"}
+	stof		$tmp163 $tmp164 	%argrw{"wr"}
+	aref		$tmp166 ___342_splitedData $const12 	%argrw{"wrr"}
+	stof		$tmp165 $tmp166 	%argrw{"wr"}
+	vector		___342_pos $tmp161 $tmp163 $tmp165 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:22
+#         vector col = vector(stof(colors[0]),stof(colors[1]),stof(colors[2]));
+	aref		$tmp168 ___342_splitedData $const13 	%line{22} %argrw{"wrr"}
+	split		$tmp167 $tmp168 ___342_colors $const3 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:23
+#         float lum = (0.2126*col[0] + 0.7152*col[1] + 0.0722*col[2]);
+	aref		$tmp170 ___342_colors $const2 	%line{23} %argrw{"wrr"}
+	stof		$tmp169 $tmp170 	%argrw{"wr"}
+	aref		$tmp172 ___342_colors $const4 	%argrw{"wrr"}
+	stof		$tmp171 $tmp172 	%argrw{"wr"}
+	aref		$tmp174 ___342_colors $const5 	%argrw{"wrr"}
+	stof		$tmp173 $tmp174 	%argrw{"wr"}
+	vector		___342_col $tmp169 $tmp171 $tmp173 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:24
+#         
+	compref		$tmp175 ___342_col $const2 	%line{24} %argrw{"wrr"}
+	mul		$tmp176 $const14 $tmp175 	%argrw{"wrr"}
+	compref		$tmp177 ___342_col $const4 	%argrw{"wrr"}
+	mul		$tmp178 $const15 $tmp177 	%argrw{"wrr"}
+	add		$tmp179 $tmp176 $tmp178 	%argrw{"wrr"}
+	compref		$tmp180 ___342_col $const5 	%argrw{"wrr"}
+	mul		$tmp181 $const16 $tmp180 	%argrw{"wrr"}
+	add		___342_lum $tmp179 $tmp181 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:26
+#             vector lightDir = vector(pos[0]-P[0],pos[1]-P[1],pos[2]-P[2]);
+	eq		$tmp182 ___342_type $const17 	%line{26} %argrw{"wrr"}
+	if		$tmp182 303 332 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:27
+#             float maxdist = length(lightDir);
+	compref		$tmp183 ___342_pos $const2 	%line{27} %argrw{"wrr"}
+	compref		$tmp184 P $const2 	%argrw{"wrr"}
+	sub		$tmp185 $tmp183 $tmp184 	%argrw{"wrr"}
+	compref		$tmp186 ___342_pos $const4 	%argrw{"wrr"}
+	compref		$tmp187 P $const4 	%argrw{"wrr"}
+	sub		$tmp188 $tmp186 $tmp187 	%argrw{"wrr"}
+	compref		$tmp189 ___342_pos $const5 	%argrw{"wrr"}
+	compref		$tmp190 P $const5 	%argrw{"wrr"}
+	sub		$tmp191 $tmp189 $tmp190 	%argrw{"wrr"}
+	vector		___344_lightDir $tmp185 $tmp188 $tmp191 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:28
+#             
+	length		___344_maxdist ___344_lightDir 	%line{28} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:30
+#             int result = 1;
+	dot		___344_d N ___344_lightDir 	%line{30} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:31
+#                    
+	assign		___344_result $const4 	%line{31} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	functioncall	$const19 284 	%line{33} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (sqrt)
+	min		$tmp193 ___342_smooth $const18 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp192 $tmp193 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	mul		$tmp195 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{33} %argrw{"wrr"}
+	noise		$tmp194 $const20 $tmp195 	%argrw{"wrr"}
+	mul		___344_disturb $tmp192 $tmp194 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:34
+#             
+	add		$tmp198 ___344_lightDir ___344_disturb 	%line{34} %argrw{"wrr"}
+	normalize	$tmp197 $tmp198 	%argrw{"wr"}
+	trace		$tmp196 P $tmp197 $const22 ___344_maxdist 	%argrw{"wrrrr"} %argderivs{1,2}
+	sub		$tmp199 $const4 $tmp196 	%argrw{"wrr"}
+	mul		___344_result ___344_result $tmp199 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:36
+#             getmessage("trace","geom:name",nameHit);
+	assign		___344_nameHit $const23 	%line{36} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:37
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp200 $const24 $const25 ___344_nameHit 	%line{37} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:38
+#                 result = 1;
+	startswith	$tmp201 ___344_nameHit $const26 	%line{38} %argrw{"wrr"}
+	if		$tmp201 297 297 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:39
+#             }
+	assign		___344_result $const4 	%line{39} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:43
+#             return result * lum;
+	assign		$tmp202 ___344_result 	%line{43} %argrw{"wr"}
+	mul		Mask Mask $tmp202 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:44
+#         }
+	assign		$tmp204 ___344_result 	%line{44} %argrw{"wr"}
+	mul		$tmp203 $tmp204 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp155 $tmp203 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:49
+#             vector rot = vector(stof(splitedData[4]),stof(splitedData[5]),stof(splitedData[6]));  
+	assign		___346_result $const4 	%line{49} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:50
+#             vector disturb = ( clamp(smooth,0.0,1.0) * (noise("perlin", P*10000.0)) );
+	aref		$tmp206 ___342_splitedData $const27 	%line{50} %argrw{"wrr"}
+	stof		$tmp205 $tmp206 	%argrw{"wr"}
+	aref		$tmp208 ___342_splitedData $const28 	%argrw{"wrr"}
+	stof		$tmp207 $tmp208 	%argrw{"wr"}
+	aref		$tmp210 ___342_splitedData $const29 	%argrw{"wrr"}
+	stof		$tmp209 $tmp210 	%argrw{"wr"}
+	vector		___346_rot $tmp205 $tmp207 $tmp209 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	functioncall	$const19 314 	%line{51} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (asin)
+	min		$tmp212 ___342_smooth $const30 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp211 $tmp212 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	mul		$tmp214 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{51} %argrw{"wrr"}
+	noise		$tmp213 $const20 $tmp214 	%argrw{"wrr"}
+	mul		___346_disturb $tmp211 $tmp213 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:52
+#             
+	add		$tmp216 ___346_rot ___346_disturb 	%line{52} %argrw{"wrr"}
+	trace		$tmp215 P $tmp216 	%argrw{"wrr"} %argderivs{1,2}
+	sub		$tmp217 $const4 $tmp215 	%argrw{"wrr"}
+	mul		___346_result ___346_result $tmp217 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:54
+#             getmessage("trace","geom:name",nameHit);
+	assign		___346_nameHit $const23 	%line{54} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:55
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp218 $const24 $const25 ___346_nameHit 	%line{55} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:56
+#                 result = 1;
+	startswith	$tmp219 ___346_nameHit $const26 	%line{56} %argrw{"wrr"}
+	if		$tmp219 326 326 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:57
+#             }
+	assign		___346_result $const4 	%line{57} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:60
+#             return result * lum;
+	assign		$tmp220 ___346_result 	%line{60} %argrw{"wr"}
+	mul		Mask Mask $tmp220 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:61
+#         }
+	assign		$tmp222 ___346_result 	%line{61} %argrw{"wr"}
+	mul		$tmp221 $tmp222 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp155 $tmp221 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:89
+#     }
+	mul		Output Output $tmp155 	%line{89} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:91
+#         Output *= CheckLight(4,splitedLights,Normal,Mask);
+	aref		$tmp224 splitedLights $const27 	%line{91} %argrw{"wrr"}
+	strlen		$tmp223 $tmp224 	%argrw{"wr"}
+	gt		$tmp225 $tmp223 $const2 	%argrw{"wrr"}
+	if		$tmp225 440 440 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:92
+#     }
+	functioncall	$const6 439 	%line{92} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:10
+#         
+	aref		$tmp228 splitedLights $const27 	%line{10} %argrw{"wrr"}
+	split		$tmp227 $tmp228 ___342_splitedData $const7 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:12
+#         if(useShadow == 0.0){
+	aref		$tmp229 ___342_splitedData $const8 	%line{12} %argrw{"wrr"}
+	stof		___342_useShadow $tmp229 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:13
+#             return color(0,0,0);
+	eq		$tmp230 ___342_useShadow $const9 	%line{13} %argrw{"wrr"}
+	if		$tmp230 346 346 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:14
+#         }
+	assign		$tmp226 $const10 	%line{14} %argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:17
+#         string type = splitedData[0];    
+	aref		$tmp231 ___342_splitedData $const11 	%line{17} %argrw{"wrr"}
+	stof		___342_smooth $tmp231 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:18
+#         vector pos = vector(stof(splitedData[1]),stof(splitedData[2]),stof(splitedData[3]));
+	aref		___342_type ___342_splitedData $const2 	%line{18} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:19
+# 
+	aref		$tmp233 ___342_splitedData $const4 	%line{19} %argrw{"wrr"}
+	stof		$tmp232 $tmp233 	%argrw{"wr"}
+	aref		$tmp235 ___342_splitedData $const5 	%argrw{"wrr"}
+	stof		$tmp234 $tmp235 	%argrw{"wr"}
+	aref		$tmp237 ___342_splitedData $const12 	%argrw{"wrr"}
+	stof		$tmp236 $tmp237 	%argrw{"wr"}
+	vector		___342_pos $tmp232 $tmp234 $tmp236 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:22
+#         vector col = vector(stof(colors[0]),stof(colors[1]),stof(colors[2]));
+	aref		$tmp239 ___342_splitedData $const13 	%line{22} %argrw{"wrr"}
+	split		$tmp238 $tmp239 ___342_colors $const3 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:23
+#         float lum = (0.2126*col[0] + 0.7152*col[1] + 0.0722*col[2]);
+	aref		$tmp241 ___342_colors $const2 	%line{23} %argrw{"wrr"}
+	stof		$tmp240 $tmp241 	%argrw{"wr"}
+	aref		$tmp243 ___342_colors $const4 	%argrw{"wrr"}
+	stof		$tmp242 $tmp243 	%argrw{"wr"}
+	aref		$tmp245 ___342_colors $const5 	%argrw{"wrr"}
+	stof		$tmp244 $tmp245 	%argrw{"wr"}
+	vector		___342_col $tmp240 $tmp242 $tmp244 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:24
+#         
+	compref		$tmp246 ___342_col $const2 	%line{24} %argrw{"wrr"}
+	mul		$tmp247 $const14 $tmp246 	%argrw{"wrr"}
+	compref		$tmp248 ___342_col $const4 	%argrw{"wrr"}
+	mul		$tmp249 $const15 $tmp248 	%argrw{"wrr"}
+	add		$tmp250 $tmp247 $tmp249 	%argrw{"wrr"}
+	compref		$tmp251 ___342_col $const5 	%argrw{"wrr"}
+	mul		$tmp252 $const16 $tmp251 	%argrw{"wrr"}
+	add		___342_lum $tmp250 $tmp252 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:26
+#             vector lightDir = vector(pos[0]-P[0],pos[1]-P[1],pos[2]-P[2]);
+	eq		$tmp253 ___342_type $const17 	%line{26} %argrw{"wrr"}
+	if		$tmp253 410 439 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:27
+#             float maxdist = length(lightDir);
+	compref		$tmp254 ___342_pos $const2 	%line{27} %argrw{"wrr"}
+	compref		$tmp255 P $const2 	%argrw{"wrr"}
+	sub		$tmp256 $tmp254 $tmp255 	%argrw{"wrr"}
+	compref		$tmp257 ___342_pos $const4 	%argrw{"wrr"}
+	compref		$tmp258 P $const4 	%argrw{"wrr"}
+	sub		$tmp259 $tmp257 $tmp258 	%argrw{"wrr"}
+	compref		$tmp260 ___342_pos $const5 	%argrw{"wrr"}
+	compref		$tmp261 P $const5 	%argrw{"wrr"}
+	sub		$tmp262 $tmp260 $tmp261 	%argrw{"wrr"}
+	vector		___344_lightDir $tmp256 $tmp259 $tmp262 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:28
+#             
+	length		___344_maxdist ___344_lightDir 	%line{28} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:30
+#             int result = 1;
+	dot		___344_d N ___344_lightDir 	%line{30} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:31
+#                    
+	assign		___344_result $const4 	%line{31} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	functioncall	$const19 391 	%line{33} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (sqrt)
+	min		$tmp264 ___342_smooth $const18 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp263 $tmp264 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	mul		$tmp266 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{33} %argrw{"wrr"}
+	noise		$tmp265 $const20 $tmp266 	%argrw{"wrr"}
+	mul		___344_disturb $tmp263 $tmp265 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:34
+#             
+	add		$tmp269 ___344_lightDir ___344_disturb 	%line{34} %argrw{"wrr"}
+	normalize	$tmp268 $tmp269 	%argrw{"wr"}
+	trace		$tmp267 P $tmp268 $const22 ___344_maxdist 	%argrw{"wrrrr"} %argderivs{1,2}
+	sub		$tmp270 $const4 $tmp267 	%argrw{"wrr"}
+	mul		___344_result ___344_result $tmp270 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:36
+#             getmessage("trace","geom:name",nameHit);
+	assign		___344_nameHit $const23 	%line{36} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:37
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp271 $const24 $const25 ___344_nameHit 	%line{37} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:38
+#                 result = 1;
+	startswith	$tmp272 ___344_nameHit $const26 	%line{38} %argrw{"wrr"}
+	if		$tmp272 404 404 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:39
+#             }
+	assign		___344_result $const4 	%line{39} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:43
+#             return result * lum;
+	assign		$tmp273 ___344_result 	%line{43} %argrw{"wr"}
+	mul		Mask Mask $tmp273 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:44
+#         }
+	assign		$tmp275 ___344_result 	%line{44} %argrw{"wr"}
+	mul		$tmp274 $tmp275 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp226 $tmp274 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:49
+#             vector rot = vector(stof(splitedData[4]),stof(splitedData[5]),stof(splitedData[6]));  
+	assign		___346_result $const4 	%line{49} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:50
+#             vector disturb = ( clamp(smooth,0.0,1.0) * (noise("perlin", P*10000.0)) );
+	aref		$tmp277 ___342_splitedData $const27 	%line{50} %argrw{"wrr"}
+	stof		$tmp276 $tmp277 	%argrw{"wr"}
+	aref		$tmp279 ___342_splitedData $const28 	%argrw{"wrr"}
+	stof		$tmp278 $tmp279 	%argrw{"wr"}
+	aref		$tmp281 ___342_splitedData $const29 	%argrw{"wrr"}
+	stof		$tmp280 $tmp281 	%argrw{"wr"}
+	vector		___346_rot $tmp276 $tmp278 $tmp280 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	functioncall	$const19 421 	%line{51} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (asin)
+	min		$tmp283 ___342_smooth $const30 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp282 $tmp283 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	mul		$tmp285 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{51} %argrw{"wrr"}
+	noise		$tmp284 $const20 $tmp285 	%argrw{"wrr"}
+	mul		___346_disturb $tmp282 $tmp284 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:52
+#             
+	add		$tmp287 ___346_rot ___346_disturb 	%line{52} %argrw{"wrr"}
+	trace		$tmp286 P $tmp287 	%argrw{"wrr"} %argderivs{1,2}
+	sub		$tmp288 $const4 $tmp286 	%argrw{"wrr"}
+	mul		___346_result ___346_result $tmp288 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:54
+#             getmessage("trace","geom:name",nameHit);
+	assign		___346_nameHit $const23 	%line{54} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:55
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp289 $const24 $const25 ___346_nameHit 	%line{55} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:56
+#                 result = 1;
+	startswith	$tmp290 ___346_nameHit $const26 	%line{56} %argrw{"wrr"}
+	if		$tmp290 433 433 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:57
+#             }
+	assign		___346_result $const4 	%line{57} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:60
+#             return result * lum;
+	assign		$tmp291 ___346_result 	%line{60} %argrw{"wr"}
+	mul		Mask Mask $tmp291 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:61
+#         }
+	assign		$tmp293 ___346_result 	%line{61} %argrw{"wr"}
+	mul		$tmp292 $tmp293 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp226 $tmp292 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:92
+#     }
+	mul		Output Output $tmp226 	%line{92} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:94
+#         Output *= CheckLight(5,splitedLights,Normal,Mask);
+	aref		$tmp295 splitedLights $const28 	%line{94} %argrw{"wrr"}
+	strlen		$tmp294 $tmp295 	%argrw{"wr"}
+	gt		$tmp296 $tmp294 $const2 	%argrw{"wrr"}
+	if		$tmp296 547 547 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:95
+#     }
+	functioncall	$const6 546 	%line{95} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:10
+#         
+	aref		$tmp299 splitedLights $const28 	%line{10} %argrw{"wrr"}
+	split		$tmp298 $tmp299 ___342_splitedData $const7 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:12
+#         if(useShadow == 0.0){
+	aref		$tmp300 ___342_splitedData $const8 	%line{12} %argrw{"wrr"}
+	stof		___342_useShadow $tmp300 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:13
+#             return color(0,0,0);
+	eq		$tmp301 ___342_useShadow $const9 	%line{13} %argrw{"wrr"}
+	if		$tmp301 453 453 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:14
+#         }
+	assign		$tmp297 $const10 	%line{14} %argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:17
+#         string type = splitedData[0];    
+	aref		$tmp302 ___342_splitedData $const11 	%line{17} %argrw{"wrr"}
+	stof		___342_smooth $tmp302 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:18
+#         vector pos = vector(stof(splitedData[1]),stof(splitedData[2]),stof(splitedData[3]));
+	aref		___342_type ___342_splitedData $const2 	%line{18} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:19
+# 
+	aref		$tmp304 ___342_splitedData $const4 	%line{19} %argrw{"wrr"}
+	stof		$tmp303 $tmp304 	%argrw{"wr"}
+	aref		$tmp306 ___342_splitedData $const5 	%argrw{"wrr"}
+	stof		$tmp305 $tmp306 	%argrw{"wr"}
+	aref		$tmp308 ___342_splitedData $const12 	%argrw{"wrr"}
+	stof		$tmp307 $tmp308 	%argrw{"wr"}
+	vector		___342_pos $tmp303 $tmp305 $tmp307 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:22
+#         vector col = vector(stof(colors[0]),stof(colors[1]),stof(colors[2]));
+	aref		$tmp310 ___342_splitedData $const13 	%line{22} %argrw{"wrr"}
+	split		$tmp309 $tmp310 ___342_colors $const3 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:23
+#         float lum = (0.2126*col[0] + 0.7152*col[1] + 0.0722*col[2]);
+	aref		$tmp312 ___342_colors $const2 	%line{23} %argrw{"wrr"}
+	stof		$tmp311 $tmp312 	%argrw{"wr"}
+	aref		$tmp314 ___342_colors $const4 	%argrw{"wrr"}
+	stof		$tmp313 $tmp314 	%argrw{"wr"}
+	aref		$tmp316 ___342_colors $const5 	%argrw{"wrr"}
+	stof		$tmp315 $tmp316 	%argrw{"wr"}
+	vector		___342_col $tmp311 $tmp313 $tmp315 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:24
+#         
+	compref		$tmp317 ___342_col $const2 	%line{24} %argrw{"wrr"}
+	mul		$tmp318 $const14 $tmp317 	%argrw{"wrr"}
+	compref		$tmp319 ___342_col $const4 	%argrw{"wrr"}
+	mul		$tmp320 $const15 $tmp319 	%argrw{"wrr"}
+	add		$tmp321 $tmp318 $tmp320 	%argrw{"wrr"}
+	compref		$tmp322 ___342_col $const5 	%argrw{"wrr"}
+	mul		$tmp323 $const16 $tmp322 	%argrw{"wrr"}
+	add		___342_lum $tmp321 $tmp323 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:26
+#             vector lightDir = vector(pos[0]-P[0],pos[1]-P[1],pos[2]-P[2]);
+	eq		$tmp324 ___342_type $const17 	%line{26} %argrw{"wrr"}
+	if		$tmp324 517 546 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:27
+#             float maxdist = length(lightDir);
+	compref		$tmp325 ___342_pos $const2 	%line{27} %argrw{"wrr"}
+	compref		$tmp326 P $const2 	%argrw{"wrr"}
+	sub		$tmp327 $tmp325 $tmp326 	%argrw{"wrr"}
+	compref		$tmp328 ___342_pos $const4 	%argrw{"wrr"}
+	compref		$tmp329 P $const4 	%argrw{"wrr"}
+	sub		$tmp330 $tmp328 $tmp329 	%argrw{"wrr"}
+	compref		$tmp331 ___342_pos $const5 	%argrw{"wrr"}
+	compref		$tmp332 P $const5 	%argrw{"wrr"}
+	sub		$tmp333 $tmp331 $tmp332 	%argrw{"wrr"}
+	vector		___344_lightDir $tmp327 $tmp330 $tmp333 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:28
+#             
+	length		___344_maxdist ___344_lightDir 	%line{28} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:30
+#             int result = 1;
+	dot		___344_d N ___344_lightDir 	%line{30} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:31
+#                    
+	assign		___344_result $const4 	%line{31} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	functioncall	$const19 498 	%line{33} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (sqrt)
+	min		$tmp335 ___342_smooth $const18 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp334 $tmp335 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	mul		$tmp337 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{33} %argrw{"wrr"}
+	noise		$tmp336 $const20 $tmp337 	%argrw{"wrr"}
+	mul		___344_disturb $tmp334 $tmp336 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:34
+#             
+	add		$tmp340 ___344_lightDir ___344_disturb 	%line{34} %argrw{"wrr"}
+	normalize	$tmp339 $tmp340 	%argrw{"wr"}
+	trace		$tmp338 P $tmp339 $const22 ___344_maxdist 	%argrw{"wrrrr"} %argderivs{1,2}
+	sub		$tmp341 $const4 $tmp338 	%argrw{"wrr"}
+	mul		___344_result ___344_result $tmp341 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:36
+#             getmessage("trace","geom:name",nameHit);
+	assign		___344_nameHit $const23 	%line{36} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:37
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp342 $const24 $const25 ___344_nameHit 	%line{37} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:38
+#                 result = 1;
+	startswith	$tmp343 ___344_nameHit $const26 	%line{38} %argrw{"wrr"}
+	if		$tmp343 511 511 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:39
+#             }
+	assign		___344_result $const4 	%line{39} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:43
+#             return result * lum;
+	assign		$tmp344 ___344_result 	%line{43} %argrw{"wr"}
+	mul		Mask Mask $tmp344 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:44
+#         }
+	assign		$tmp346 ___344_result 	%line{44} %argrw{"wr"}
+	mul		$tmp345 $tmp346 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp297 $tmp345 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:49
+#             vector rot = vector(stof(splitedData[4]),stof(splitedData[5]),stof(splitedData[6]));  
+	assign		___346_result $const4 	%line{49} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:50
+#             vector disturb = ( clamp(smooth,0.0,1.0) * (noise("perlin", P*10000.0)) );
+	aref		$tmp348 ___342_splitedData $const27 	%line{50} %argrw{"wrr"}
+	stof		$tmp347 $tmp348 	%argrw{"wr"}
+	aref		$tmp350 ___342_splitedData $const28 	%argrw{"wrr"}
+	stof		$tmp349 $tmp350 	%argrw{"wr"}
+	aref		$tmp352 ___342_splitedData $const29 	%argrw{"wrr"}
+	stof		$tmp351 $tmp352 	%argrw{"wr"}
+	vector		___346_rot $tmp347 $tmp349 $tmp351 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	functioncall	$const19 528 	%line{51} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (asin)
+	min		$tmp354 ___342_smooth $const30 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp353 $tmp354 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	mul		$tmp356 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{51} %argrw{"wrr"}
+	noise		$tmp355 $const20 $tmp356 	%argrw{"wrr"}
+	mul		___346_disturb $tmp353 $tmp355 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:52
+#             
+	add		$tmp358 ___346_rot ___346_disturb 	%line{52} %argrw{"wrr"}
+	trace		$tmp357 P $tmp358 	%argrw{"wrr"} %argderivs{1,2}
+	sub		$tmp359 $const4 $tmp357 	%argrw{"wrr"}
+	mul		___346_result ___346_result $tmp359 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:54
+#             getmessage("trace","geom:name",nameHit);
+	assign		___346_nameHit $const23 	%line{54} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:55
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp360 $const24 $const25 ___346_nameHit 	%line{55} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:56
+#                 result = 1;
+	startswith	$tmp361 ___346_nameHit $const26 	%line{56} %argrw{"wrr"}
+	if		$tmp361 540 540 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:57
+#             }
+	assign		___346_result $const4 	%line{57} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:60
+#             return result * lum;
+	assign		$tmp362 ___346_result 	%line{60} %argrw{"wr"}
+	mul		Mask Mask $tmp362 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:61
+#         }
+	assign		$tmp364 ___346_result 	%line{61} %argrw{"wr"}
+	mul		$tmp363 $tmp364 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp297 $tmp363 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:95
+#     }
+	mul		Output Output $tmp297 	%line{95} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:97
+#         Output *= CheckLight(6,splitedLights,Normal,Mask);
+	aref		$tmp366 splitedLights $const29 	%line{97} %argrw{"wrr"}
+	strlen		$tmp365 $tmp366 	%argrw{"wr"}
+	gt		$tmp367 $tmp365 $const2 	%argrw{"wrr"}
+	if		$tmp367 654 654 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:98
+#     }
+	functioncall	$const6 653 	%line{98} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:10
+#         
+	aref		$tmp370 splitedLights $const29 	%line{10} %argrw{"wrr"}
+	split		$tmp369 $tmp370 ___342_splitedData $const7 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:12
+#         if(useShadow == 0.0){
+	aref		$tmp371 ___342_splitedData $const8 	%line{12} %argrw{"wrr"}
+	stof		___342_useShadow $tmp371 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:13
+#             return color(0,0,0);
+	eq		$tmp372 ___342_useShadow $const9 	%line{13} %argrw{"wrr"}
+	if		$tmp372 560 560 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:14
+#         }
+	assign		$tmp368 $const10 	%line{14} %argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:17
+#         string type = splitedData[0];    
+	aref		$tmp373 ___342_splitedData $const11 	%line{17} %argrw{"wrr"}
+	stof		___342_smooth $tmp373 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:18
+#         vector pos = vector(stof(splitedData[1]),stof(splitedData[2]),stof(splitedData[3]));
+	aref		___342_type ___342_splitedData $const2 	%line{18} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:19
+# 
+	aref		$tmp375 ___342_splitedData $const4 	%line{19} %argrw{"wrr"}
+	stof		$tmp374 $tmp375 	%argrw{"wr"}
+	aref		$tmp377 ___342_splitedData $const5 	%argrw{"wrr"}
+	stof		$tmp376 $tmp377 	%argrw{"wr"}
+	aref		$tmp379 ___342_splitedData $const12 	%argrw{"wrr"}
+	stof		$tmp378 $tmp379 	%argrw{"wr"}
+	vector		___342_pos $tmp374 $tmp376 $tmp378 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:22
+#         vector col = vector(stof(colors[0]),stof(colors[1]),stof(colors[2]));
+	aref		$tmp381 ___342_splitedData $const13 	%line{22} %argrw{"wrr"}
+	split		$tmp380 $tmp381 ___342_colors $const3 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:23
+#         float lum = (0.2126*col[0] + 0.7152*col[1] + 0.0722*col[2]);
+	aref		$tmp383 ___342_colors $const2 	%line{23} %argrw{"wrr"}
+	stof		$tmp382 $tmp383 	%argrw{"wr"}
+	aref		$tmp385 ___342_colors $const4 	%argrw{"wrr"}
+	stof		$tmp384 $tmp385 	%argrw{"wr"}
+	aref		$tmp387 ___342_colors $const5 	%argrw{"wrr"}
+	stof		$tmp386 $tmp387 	%argrw{"wr"}
+	vector		___342_col $tmp382 $tmp384 $tmp386 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:24
+#         
+	compref		$tmp388 ___342_col $const2 	%line{24} %argrw{"wrr"}
+	mul		$tmp389 $const14 $tmp388 	%argrw{"wrr"}
+	compref		$tmp390 ___342_col $const4 	%argrw{"wrr"}
+	mul		$tmp391 $const15 $tmp390 	%argrw{"wrr"}
+	add		$tmp392 $tmp389 $tmp391 	%argrw{"wrr"}
+	compref		$tmp393 ___342_col $const5 	%argrw{"wrr"}
+	mul		$tmp394 $const16 $tmp393 	%argrw{"wrr"}
+	add		___342_lum $tmp392 $tmp394 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:26
+#             vector lightDir = vector(pos[0]-P[0],pos[1]-P[1],pos[2]-P[2]);
+	eq		$tmp395 ___342_type $const17 	%line{26} %argrw{"wrr"}
+	if		$tmp395 624 653 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:27
+#             float maxdist = length(lightDir);
+	compref		$tmp396 ___342_pos $const2 	%line{27} %argrw{"wrr"}
+	compref		$tmp397 P $const2 	%argrw{"wrr"}
+	sub		$tmp398 $tmp396 $tmp397 	%argrw{"wrr"}
+	compref		$tmp399 ___342_pos $const4 	%argrw{"wrr"}
+	compref		$tmp400 P $const4 	%argrw{"wrr"}
+	sub		$tmp401 $tmp399 $tmp400 	%argrw{"wrr"}
+	compref		$tmp402 ___342_pos $const5 	%argrw{"wrr"}
+	compref		$tmp403 P $const5 	%argrw{"wrr"}
+	sub		$tmp404 $tmp402 $tmp403 	%argrw{"wrr"}
+	vector		___344_lightDir $tmp398 $tmp401 $tmp404 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:28
+#             
+	length		___344_maxdist ___344_lightDir 	%line{28} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:30
+#             int result = 1;
+	dot		___344_d N ___344_lightDir 	%line{30} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:31
+#                    
+	assign		___344_result $const4 	%line{31} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	functioncall	$const19 605 	%line{33} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (sqrt)
+	min		$tmp406 ___342_smooth $const18 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp405 $tmp406 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	mul		$tmp408 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{33} %argrw{"wrr"}
+	noise		$tmp407 $const20 $tmp408 	%argrw{"wrr"}
+	mul		___344_disturb $tmp405 $tmp407 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:34
+#             
+	add		$tmp411 ___344_lightDir ___344_disturb 	%line{34} %argrw{"wrr"}
+	normalize	$tmp410 $tmp411 	%argrw{"wr"}
+	trace		$tmp409 P $tmp410 $const22 ___344_maxdist 	%argrw{"wrrrr"} %argderivs{1,2}
+	sub		$tmp412 $const4 $tmp409 	%argrw{"wrr"}
+	mul		___344_result ___344_result $tmp412 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:36
+#             getmessage("trace","geom:name",nameHit);
+	assign		___344_nameHit $const23 	%line{36} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:37
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp413 $const24 $const25 ___344_nameHit 	%line{37} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:38
+#                 result = 1;
+	startswith	$tmp414 ___344_nameHit $const26 	%line{38} %argrw{"wrr"}
+	if		$tmp414 618 618 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:39
+#             }
+	assign		___344_result $const4 	%line{39} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:43
+#             return result * lum;
+	assign		$tmp415 ___344_result 	%line{43} %argrw{"wr"}
+	mul		Mask Mask $tmp415 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:44
+#         }
+	assign		$tmp417 ___344_result 	%line{44} %argrw{"wr"}
+	mul		$tmp416 $tmp417 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp368 $tmp416 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:49
+#             vector rot = vector(stof(splitedData[4]),stof(splitedData[5]),stof(splitedData[6]));  
+	assign		___346_result $const4 	%line{49} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:50
+#             vector disturb = ( clamp(smooth,0.0,1.0) * (noise("perlin", P*10000.0)) );
+	aref		$tmp419 ___342_splitedData $const27 	%line{50} %argrw{"wrr"}
+	stof		$tmp418 $tmp419 	%argrw{"wr"}
+	aref		$tmp421 ___342_splitedData $const28 	%argrw{"wrr"}
+	stof		$tmp420 $tmp421 	%argrw{"wr"}
+	aref		$tmp423 ___342_splitedData $const29 	%argrw{"wrr"}
+	stof		$tmp422 $tmp423 	%argrw{"wr"}
+	vector		___346_rot $tmp418 $tmp420 $tmp422 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	functioncall	$const19 635 	%line{51} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (asin)
+	min		$tmp425 ___342_smooth $const30 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp424 $tmp425 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	mul		$tmp427 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{51} %argrw{"wrr"}
+	noise		$tmp426 $const20 $tmp427 	%argrw{"wrr"}
+	mul		___346_disturb $tmp424 $tmp426 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:52
+#             
+	add		$tmp429 ___346_rot ___346_disturb 	%line{52} %argrw{"wrr"}
+	trace		$tmp428 P $tmp429 	%argrw{"wrr"} %argderivs{1,2}
+	sub		$tmp430 $const4 $tmp428 	%argrw{"wrr"}
+	mul		___346_result ___346_result $tmp430 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:54
+#             getmessage("trace","geom:name",nameHit);
+	assign		___346_nameHit $const23 	%line{54} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:55
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp431 $const24 $const25 ___346_nameHit 	%line{55} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:56
+#                 result = 1;
+	startswith	$tmp432 ___346_nameHit $const26 	%line{56} %argrw{"wrr"}
+	if		$tmp432 647 647 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:57
+#             }
+	assign		___346_result $const4 	%line{57} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:60
+#             return result * lum;
+	assign		$tmp433 ___346_result 	%line{60} %argrw{"wr"}
+	mul		Mask Mask $tmp433 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:61
+#         }
+	assign		$tmp435 ___346_result 	%line{61} %argrw{"wr"}
+	mul		$tmp434 $tmp435 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp368 $tmp434 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:98
+#     }
+	mul		Output Output $tmp368 	%line{98} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:100
+#         Output *= CheckLight(7,splitedLights,Normal,Mask);
+	aref		$tmp437 splitedLights $const31 	%line{100} %argrw{"wrr"}
+	strlen		$tmp436 $tmp437 	%argrw{"wr"}
+	gt		$tmp438 $tmp436 $const2 	%argrw{"wrr"}
+	if		$tmp438 761 761 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:101
+#     }
+	functioncall	$const6 760 	%line{101} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:10
+#         
+	aref		$tmp441 splitedLights $const31 	%line{10} %argrw{"wrr"}
+	split		$tmp440 $tmp441 ___342_splitedData $const7 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:12
+#         if(useShadow == 0.0){
+	aref		$tmp442 ___342_splitedData $const8 	%line{12} %argrw{"wrr"}
+	stof		___342_useShadow $tmp442 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:13
+#             return color(0,0,0);
+	eq		$tmp443 ___342_useShadow $const9 	%line{13} %argrw{"wrr"}
+	if		$tmp443 667 667 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:14
+#         }
+	assign		$tmp439 $const10 	%line{14} %argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:17
+#         string type = splitedData[0];    
+	aref		$tmp444 ___342_splitedData $const11 	%line{17} %argrw{"wrr"}
+	stof		___342_smooth $tmp444 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:18
+#         vector pos = vector(stof(splitedData[1]),stof(splitedData[2]),stof(splitedData[3]));
+	aref		___342_type ___342_splitedData $const2 	%line{18} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:19
+# 
+	aref		$tmp446 ___342_splitedData $const4 	%line{19} %argrw{"wrr"}
+	stof		$tmp445 $tmp446 	%argrw{"wr"}
+	aref		$tmp448 ___342_splitedData $const5 	%argrw{"wrr"}
+	stof		$tmp447 $tmp448 	%argrw{"wr"}
+	aref		$tmp450 ___342_splitedData $const12 	%argrw{"wrr"}
+	stof		$tmp449 $tmp450 	%argrw{"wr"}
+	vector		___342_pos $tmp445 $tmp447 $tmp449 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:22
+#         vector col = vector(stof(colors[0]),stof(colors[1]),stof(colors[2]));
+	aref		$tmp452 ___342_splitedData $const13 	%line{22} %argrw{"wrr"}
+	split		$tmp451 $tmp452 ___342_colors $const3 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:23
+#         float lum = (0.2126*col[0] + 0.7152*col[1] + 0.0722*col[2]);
+	aref		$tmp454 ___342_colors $const2 	%line{23} %argrw{"wrr"}
+	stof		$tmp453 $tmp454 	%argrw{"wr"}
+	aref		$tmp456 ___342_colors $const4 	%argrw{"wrr"}
+	stof		$tmp455 $tmp456 	%argrw{"wr"}
+	aref		$tmp458 ___342_colors $const5 	%argrw{"wrr"}
+	stof		$tmp457 $tmp458 	%argrw{"wr"}
+	vector		___342_col $tmp453 $tmp455 $tmp457 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:24
+#         
+	compref		$tmp459 ___342_col $const2 	%line{24} %argrw{"wrr"}
+	mul		$tmp460 $const14 $tmp459 	%argrw{"wrr"}
+	compref		$tmp461 ___342_col $const4 	%argrw{"wrr"}
+	mul		$tmp462 $const15 $tmp461 	%argrw{"wrr"}
+	add		$tmp463 $tmp460 $tmp462 	%argrw{"wrr"}
+	compref		$tmp464 ___342_col $const5 	%argrw{"wrr"}
+	mul		$tmp465 $const16 $tmp464 	%argrw{"wrr"}
+	add		___342_lum $tmp463 $tmp465 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:26
+#             vector lightDir = vector(pos[0]-P[0],pos[1]-P[1],pos[2]-P[2]);
+	eq		$tmp466 ___342_type $const17 	%line{26} %argrw{"wrr"}
+	if		$tmp466 731 760 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:27
+#             float maxdist = length(lightDir);
+	compref		$tmp467 ___342_pos $const2 	%line{27} %argrw{"wrr"}
+	compref		$tmp468 P $const2 	%argrw{"wrr"}
+	sub		$tmp469 $tmp467 $tmp468 	%argrw{"wrr"}
+	compref		$tmp470 ___342_pos $const4 	%argrw{"wrr"}
+	compref		$tmp471 P $const4 	%argrw{"wrr"}
+	sub		$tmp472 $tmp470 $tmp471 	%argrw{"wrr"}
+	compref		$tmp473 ___342_pos $const5 	%argrw{"wrr"}
+	compref		$tmp474 P $const5 	%argrw{"wrr"}
+	sub		$tmp475 $tmp473 $tmp474 	%argrw{"wrr"}
+	vector		___344_lightDir $tmp469 $tmp472 $tmp475 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:28
+#             
+	length		___344_maxdist ___344_lightDir 	%line{28} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:30
+#             int result = 1;
+	dot		___344_d N ___344_lightDir 	%line{30} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:31
+#                    
+	assign		___344_result $const4 	%line{31} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	functioncall	$const19 712 	%line{33} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (sqrt)
+	min		$tmp477 ___342_smooth $const18 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp476 $tmp477 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	mul		$tmp479 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{33} %argrw{"wrr"}
+	noise		$tmp478 $const20 $tmp479 	%argrw{"wrr"}
+	mul		___344_disturb $tmp476 $tmp478 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:34
+#             
+	add		$tmp482 ___344_lightDir ___344_disturb 	%line{34} %argrw{"wrr"}
+	normalize	$tmp481 $tmp482 	%argrw{"wr"}
+	trace		$tmp480 P $tmp481 $const22 ___344_maxdist 	%argrw{"wrrrr"} %argderivs{1,2}
+	sub		$tmp483 $const4 $tmp480 	%argrw{"wrr"}
+	mul		___344_result ___344_result $tmp483 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:36
+#             getmessage("trace","geom:name",nameHit);
+	assign		___344_nameHit $const23 	%line{36} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:37
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp484 $const24 $const25 ___344_nameHit 	%line{37} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:38
+#                 result = 1;
+	startswith	$tmp485 ___344_nameHit $const26 	%line{38} %argrw{"wrr"}
+	if		$tmp485 725 725 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:39
+#             }
+	assign		___344_result $const4 	%line{39} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:43
+#             return result * lum;
+	assign		$tmp486 ___344_result 	%line{43} %argrw{"wr"}
+	mul		Mask Mask $tmp486 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:44
+#         }
+	assign		$tmp488 ___344_result 	%line{44} %argrw{"wr"}
+	mul		$tmp487 $tmp488 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp439 $tmp487 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:49
+#             vector rot = vector(stof(splitedData[4]),stof(splitedData[5]),stof(splitedData[6]));  
+	assign		___346_result $const4 	%line{49} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:50
+#             vector disturb = ( clamp(smooth,0.0,1.0) * (noise("perlin", P*10000.0)) );
+	aref		$tmp490 ___342_splitedData $const27 	%line{50} %argrw{"wrr"}
+	stof		$tmp489 $tmp490 	%argrw{"wr"}
+	aref		$tmp492 ___342_splitedData $const28 	%argrw{"wrr"}
+	stof		$tmp491 $tmp492 	%argrw{"wr"}
+	aref		$tmp494 ___342_splitedData $const29 	%argrw{"wrr"}
+	stof		$tmp493 $tmp494 	%argrw{"wr"}
+	vector		___346_rot $tmp489 $tmp491 $tmp493 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	functioncall	$const19 742 	%line{51} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (asin)
+	min		$tmp496 ___342_smooth $const30 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp495 $tmp496 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	mul		$tmp498 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{51} %argrw{"wrr"}
+	noise		$tmp497 $const20 $tmp498 	%argrw{"wrr"}
+	mul		___346_disturb $tmp495 $tmp497 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:52
+#             
+	add		$tmp500 ___346_rot ___346_disturb 	%line{52} %argrw{"wrr"}
+	trace		$tmp499 P $tmp500 	%argrw{"wrr"} %argderivs{1,2}
+	sub		$tmp501 $const4 $tmp499 	%argrw{"wrr"}
+	mul		___346_result ___346_result $tmp501 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:54
+#             getmessage("trace","geom:name",nameHit);
+	assign		___346_nameHit $const23 	%line{54} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:55
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp502 $const24 $const25 ___346_nameHit 	%line{55} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:56
+#                 result = 1;
+	startswith	$tmp503 ___346_nameHit $const26 	%line{56} %argrw{"wrr"}
+	if		$tmp503 754 754 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:57
+#             }
+	assign		___346_result $const4 	%line{57} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:60
+#             return result * lum;
+	assign		$tmp504 ___346_result 	%line{60} %argrw{"wr"}
+	mul		Mask Mask $tmp504 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:61
+#         }
+	assign		$tmp506 ___346_result 	%line{61} %argrw{"wr"}
+	mul		$tmp505 $tmp506 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp439 $tmp505 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:101
+#     }
+	mul		Output Output $tmp439 	%line{101} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:103
+#         Output *= CheckLight(8,splitedLights,Normal,Mask);
+	aref		$tmp508 splitedLights $const32 	%line{103} %argrw{"wrr"}
+	strlen		$tmp507 $tmp508 	%argrw{"wr"}
+	gt		$tmp509 $tmp507 $const2 	%argrw{"wrr"}
+	if		$tmp509 868 868 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:104
+#     }
+	functioncall	$const6 867 	%line{104} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:10
+#         
+	aref		$tmp512 splitedLights $const32 	%line{10} %argrw{"wrr"}
+	split		$tmp511 $tmp512 ___342_splitedData $const7 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:12
+#         if(useShadow == 0.0){
+	aref		$tmp513 ___342_splitedData $const8 	%line{12} %argrw{"wrr"}
+	stof		___342_useShadow $tmp513 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:13
+#             return color(0,0,0);
+	eq		$tmp514 ___342_useShadow $const9 	%line{13} %argrw{"wrr"}
+	if		$tmp514 774 774 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:14
+#         }
+	assign		$tmp510 $const10 	%line{14} %argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:17
+#         string type = splitedData[0];    
+	aref		$tmp515 ___342_splitedData $const11 	%line{17} %argrw{"wrr"}
+	stof		___342_smooth $tmp515 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:18
+#         vector pos = vector(stof(splitedData[1]),stof(splitedData[2]),stof(splitedData[3]));
+	aref		___342_type ___342_splitedData $const2 	%line{18} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:19
+# 
+	aref		$tmp517 ___342_splitedData $const4 	%line{19} %argrw{"wrr"}
+	stof		$tmp516 $tmp517 	%argrw{"wr"}
+	aref		$tmp519 ___342_splitedData $const5 	%argrw{"wrr"}
+	stof		$tmp518 $tmp519 	%argrw{"wr"}
+	aref		$tmp521 ___342_splitedData $const12 	%argrw{"wrr"}
+	stof		$tmp520 $tmp521 	%argrw{"wr"}
+	vector		___342_pos $tmp516 $tmp518 $tmp520 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:22
+#         vector col = vector(stof(colors[0]),stof(colors[1]),stof(colors[2]));
+	aref		$tmp523 ___342_splitedData $const13 	%line{22} %argrw{"wrr"}
+	split		$tmp522 $tmp523 ___342_colors $const3 	%argrw{"wrwr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:23
+#         float lum = (0.2126*col[0] + 0.7152*col[1] + 0.0722*col[2]);
+	aref		$tmp525 ___342_colors $const2 	%line{23} %argrw{"wrr"}
+	stof		$tmp524 $tmp525 	%argrw{"wr"}
+	aref		$tmp527 ___342_colors $const4 	%argrw{"wrr"}
+	stof		$tmp526 $tmp527 	%argrw{"wr"}
+	aref		$tmp529 ___342_colors $const5 	%argrw{"wrr"}
+	stof		$tmp528 $tmp529 	%argrw{"wr"}
+	vector		___342_col $tmp524 $tmp526 $tmp528 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:24
+#         
+	compref		$tmp530 ___342_col $const2 	%line{24} %argrw{"wrr"}
+	mul		$tmp531 $const14 $tmp530 	%argrw{"wrr"}
+	compref		$tmp532 ___342_col $const4 	%argrw{"wrr"}
+	mul		$tmp533 $const15 $tmp532 	%argrw{"wrr"}
+	add		$tmp534 $tmp531 $tmp533 	%argrw{"wrr"}
+	compref		$tmp535 ___342_col $const5 	%argrw{"wrr"}
+	mul		$tmp536 $const16 $tmp535 	%argrw{"wrr"}
+	add		___342_lum $tmp534 $tmp536 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:26
+#             vector lightDir = vector(pos[0]-P[0],pos[1]-P[1],pos[2]-P[2]);
+	eq		$tmp537 ___342_type $const17 	%line{26} %argrw{"wrr"}
+	if		$tmp537 838 867 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:27
+#             float maxdist = length(lightDir);
+	compref		$tmp538 ___342_pos $const2 	%line{27} %argrw{"wrr"}
+	compref		$tmp539 P $const2 	%argrw{"wrr"}
+	sub		$tmp540 $tmp538 $tmp539 	%argrw{"wrr"}
+	compref		$tmp541 ___342_pos $const4 	%argrw{"wrr"}
+	compref		$tmp542 P $const4 	%argrw{"wrr"}
+	sub		$tmp543 $tmp541 $tmp542 	%argrw{"wrr"}
+	compref		$tmp544 ___342_pos $const5 	%argrw{"wrr"}
+	compref		$tmp545 P $const5 	%argrw{"wrr"}
+	sub		$tmp546 $tmp544 $tmp545 	%argrw{"wrr"}
+	vector		___344_lightDir $tmp540 $tmp543 $tmp546 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:28
+#             
+	length		___344_maxdist ___344_lightDir 	%line{28} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:30
+#             int result = 1;
+	dot		___344_d N ___344_lightDir 	%line{30} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:31
+#                    
+	assign		___344_result $const4 	%line{31} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	functioncall	$const19 819 	%line{33} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (sqrt)
+	min		$tmp548 ___342_smooth $const18 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp547 $tmp548 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:33
+#             result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	mul		$tmp550 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{33} %argrw{"wrr"}
+	noise		$tmp549 $const20 $tmp550 	%argrw{"wrr"}
+	mul		___344_disturb $tmp547 $tmp549 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:34
+#             
+	add		$tmp553 ___344_lightDir ___344_disturb 	%line{34} %argrw{"wrr"}
+	normalize	$tmp552 $tmp553 	%argrw{"wr"}
+	trace		$tmp551 P $tmp552 $const22 ___344_maxdist 	%argrw{"wrrrr"} %argderivs{1,2}
+	sub		$tmp554 $const4 $tmp551 	%argrw{"wrr"}
+	mul		___344_result ___344_result $tmp554 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:36
+#             getmessage("trace","geom:name",nameHit);
+	assign		___344_nameHit $const23 	%line{36} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:37
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp555 $const24 $const25 ___344_nameHit 	%line{37} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:38
+#                 result = 1;
+	startswith	$tmp556 ___344_nameHit $const26 	%line{38} %argrw{"wrr"}
+	if		$tmp556 832 832 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:39
+#             }
+	assign		___344_result $const4 	%line{39} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:43
+#             return result * lum;
+	assign		$tmp557 ___344_result 	%line{43} %argrw{"wr"}
+	mul		Mask Mask $tmp557 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:44
+#         }
+	assign		$tmp559 ___344_result 	%line{44} %argrw{"wr"}
+	mul		$tmp558 $tmp559 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp510 $tmp558 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:49
+#             vector rot = vector(stof(splitedData[4]),stof(splitedData[5]),stof(splitedData[6]));  
+	assign		___346_result $const4 	%line{49} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:50
+#             vector disturb = ( clamp(smooth,0.0,1.0) * (noise("perlin", P*10000.0)) );
+	aref		$tmp561 ___342_splitedData $const27 	%line{50} %argrw{"wrr"}
+	stof		$tmp560 $tmp561 	%argrw{"wr"}
+	aref		$tmp563 ___342_splitedData $const28 	%argrw{"wrr"}
+	stof		$tmp562 $tmp563 	%argrw{"wr"}
+	aref		$tmp565 ___342_splitedData $const29 	%argrw{"wrr"}
+	stof		$tmp564 $tmp565 	%argrw{"wr"}
+	vector		___346_rot $tmp560 $tmp562 $tmp564 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	functioncall	$const19 849 	%line{51} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (asin)
+	min		$tmp567 ___342_smooth $const30 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp566 $tmp567 $const9 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:51
+#             result *= (1-trace(P,rot + disturb));
+	mul		$tmp569 P $const21 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl"} %line{51} %argrw{"wrr"}
+	noise		$tmp568 $const20 $tmp569 	%argrw{"wrr"}
+	mul		___346_disturb $tmp566 $tmp568 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:52
+#             
+	add		$tmp571 ___346_rot ___346_disturb 	%line{52} %argrw{"wrr"}
+	trace		$tmp570 P $tmp571 	%argrw{"wrr"} %argderivs{1,2}
+	sub		$tmp572 $const4 $tmp570 	%argrw{"wrr"}
+	mul		___346_result ___346_result $tmp572 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:54
+#             getmessage("trace","geom:name",nameHit);
+	assign		___346_nameHit $const23 	%line{54} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:55
+#             if(startswith(nameHit,"-")){
+	getmessage	$tmp573 $const24 $const25 ___346_nameHit 	%line{55} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:56
+#                 result = 1;
+	startswith	$tmp574 ___346_nameHit $const26 	%line{56} %argrw{"wrr"}
+	if		$tmp574 861 861 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:57
+#             }
+	assign		___346_result $const4 	%line{57} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:60
+#             return result * lum;
+	assign		$tmp575 ___346_result 	%line{60} %argrw{"wr"}
+	mul		Mask Mask $tmp575 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:61
+#         }
+	assign		$tmp577 ___346_result 	%line{61} %argrw{"wr"}
+	mul		$tmp576 $tmp577 ___342_lum 	%argrw{"wrr"}
+	assign		$tmp510 $tmp576 	%argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:104
+#     }
+	mul		Output Output $tmp510 	%line{104} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_SoftShadowScene.osl:107
+#         
+	add		Output Output ambCol 	%line{107} %argrw{"wrr"}
+	end

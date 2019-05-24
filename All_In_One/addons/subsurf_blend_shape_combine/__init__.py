@@ -16,7 +16,7 @@ bl_info = {
     "warning" : "",
     "wiki_url" : "",
     "tracker_url" : "",
-    "category" : "BlendShape"
+    "category": "Learnbgame",
 }
 
 def menu_func(self, context):

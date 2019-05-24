@@ -11,7 +11,7 @@ bl_info = {
     "description": "Export Multicam Sequence", 
     "warning": "",
     "location": "File > Export > Export Multicam",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 def get_multicam():

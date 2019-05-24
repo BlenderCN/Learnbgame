@@ -2,7 +2,7 @@
 
 bl_info = {
     "name": "Export Animation Paths",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "author": "Julian Ewers-Peters",
     "location": "File > Import-Export"
 }

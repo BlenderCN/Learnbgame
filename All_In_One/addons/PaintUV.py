@@ -8,7 +8,7 @@ bl_info = {
 	"description": "Tools",
 	"warning": "",
 	"wiki_url": "None",
-	"category": "User"
+	"category": "Learnbgame",
 }
 
 import bpy

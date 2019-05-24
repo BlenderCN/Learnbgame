@@ -29,7 +29,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://www.barneyparker.com/blender-json-import-export-plugin",
     "tracker_url": "http://www.barneyparker.com/blender-json-import-export-plugin",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

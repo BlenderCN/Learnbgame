@@ -1,0 +1,35 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles v1.1
+/*   Point Light Shading
+/*------------------------------------------*/
+
+shader Cell(
+    color Light = color(1,1,1),
+    color Shadow = color(0,0,0),
+    
+      
+    float Radius = 5.0,
+    float Smooth = 0.5,  
+    
+    vector Position = vector(0, 0, 1),
+    normal Normal = N,
+    
+    output float Mask =0,
+    output color Output=0)
+{   
+
+    vector n = normalize(Normal);
+    vector lightDir = Position-P;
+    float dist = length(lightDir);
+    float NdotL = max(dot(n,normalize(lightDir)),0.0);
+    
+    float att = clamp(1.0 - dist/max(Radius,0.001), 0.0, 1.0);
+    float dif = clamp(NdotL * att,0.0,1.0);
+    
+
+    float value = smoothstep(0.0,clamp(Smooth,0.0001,1.0),dif);
+    
+    
+    Output = (Light * value + Shadow * (1-value));
+    Mask = value;
+}

@@ -27,7 +27,7 @@ bl_info = {
     #"wiki_url": "",
     "tracker_url": "https://github.com/mrwonko/Blender-2.6-Ghoul-2-addon/issues",
     #"support": 'OFFICIAL',
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 # reload won't work properly no matter what I do so I might as well ignore it.

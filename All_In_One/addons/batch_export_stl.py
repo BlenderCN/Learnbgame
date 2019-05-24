@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Export animation frames as mesh files",
-    "category": "Export",
+    "category": "Learnbgame",
 }
 
 import bpy

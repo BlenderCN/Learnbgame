@@ -5,7 +5,7 @@ bl_info = {
     "name": "Exporter to Zimesh JSON",
     "author": "bajos",
     "description": "Exports scene to Zinot Engine Zimesh JSON format.",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "location": "File > Export > Zimesh JSON (.json)"
 }
 

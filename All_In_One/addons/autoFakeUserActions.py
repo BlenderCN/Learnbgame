@@ -8,7 +8,7 @@ bl_info = {
     "description": "Enable fake user to rescue Actions automatically before saving",
     "warning": "Make sure this addon is enabled by default!",
     "wiki_url": "http://blender.stackexchange.com/q/9289/935",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # Slight modification of code shown on wiki_url

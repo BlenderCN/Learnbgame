@@ -30,7 +30,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/ijacquez/blender_tools",
     "tracker_url": "https://github.com/ijacquez/blender_tools",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 import os

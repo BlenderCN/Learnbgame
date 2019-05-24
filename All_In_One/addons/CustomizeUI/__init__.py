@@ -3,7 +3,7 @@ bl_info = {
     "author": "Christophe Seux",
     "version": (0, 1),
     "blender": (2, 79, 0),
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

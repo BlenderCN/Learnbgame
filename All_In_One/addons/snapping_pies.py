@@ -4,7 +4,7 @@ bl_info = {
     "version": (0, 2),
     "blender": (2, 7, 2),
     "description": "Custom Pie Menus",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

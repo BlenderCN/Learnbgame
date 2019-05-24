@@ -13,7 +13,7 @@ bl_info = {
     "wiki_url": "",
     "tracker_url": "https://github.com/vvoovv/blender-geo/issues",
     "support": "COMMUNITY",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 import bpy, bmesh
@@ -59,7 +59,8 @@ class TransverseMercator:
 
         lon = self.lon + math.degrees(lon)
         lat = math.degrees(lat)
-        return (lat, lon)
+        return (lat, lon)
+
 
 class ImportGpx(bpy.types.Operator, ImportHelper):
     """Import a file in the GPX format (.gpx)"""
@@ -193,4 +194,5 @@ def register():
 
 def unregister():
     bpy.utils.unregister_class(ImportGpx)
-    bpy.types.INFO_MT_file_import.remove(menu_func_import)
+    bpy.types.INFO_MT_file_import.remove(menu_func_import)
+

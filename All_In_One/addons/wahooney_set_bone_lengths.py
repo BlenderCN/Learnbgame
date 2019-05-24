@@ -32,7 +32,8 @@ bl_info = {
     'version': '1.0',
     'blender': (2, 6, 2),
     'url': 'http://wahooney.net',
-    'category': 'Armature'}
+    "category": "Learnbgame",
+}
     
 import bpy
 from mathutils import Vector

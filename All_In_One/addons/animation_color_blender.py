@@ -29,7 +29,7 @@ bl_info = {
     "warning": "Still under development, bug reports appreciated",
     "wiki_url": "",
     "tracker_url": "",
-    'category': 'Animation'
+    "category": "Learnbgame",
    }
 
 '''

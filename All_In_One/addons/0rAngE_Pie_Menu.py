@@ -20,7 +20,7 @@ bl_info = {
     "name": "0rAngE Pie Menu",
     "author": "0rAngE",
     "blender": (2, 80, 0),
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

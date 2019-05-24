@@ -26,7 +26,7 @@ bl_info = {
     "blender": (2, 70, 0),
     "location": "Properties Editor -> Scene -> M3 Panels",
     "description": "Allows to export (and import) simple Starcraft 2 models (.m3) with particle systems. Use on own risk!",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "wiki_url": "https://github.com/Talv/m3addon/blob/master/README.md",
     "tracker_url": "https://github.com/Talv/m3addon/issues"
 }

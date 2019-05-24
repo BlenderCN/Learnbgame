@@ -342,7 +342,7 @@ def comicLineartNodeDivided():
 ################### add on setting section###########################
 bl_info = {
     "name": "Convert Comic Lineart　Node",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

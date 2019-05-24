@@ -8,7 +8,7 @@ bl_info = {
   'blender': (2, 79, 0),
   'description': 'Creates rigs using the UE4 skeleton',
   'license': 'MIT',
-  'category': 'Animation'
+  "category": "Learnbgame",
 }
 
 class AddRig(bpy.types.Operator):

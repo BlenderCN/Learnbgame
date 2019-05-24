@@ -22,7 +22,7 @@
 bl_info = {
     'name': 'Creating anime style hairs',
     "author": "Mateusz Dera",
-    'category': 'All'
+    "category": "Learnbgame",
 }
 
 import bpy

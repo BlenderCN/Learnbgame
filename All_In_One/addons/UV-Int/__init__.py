@@ -3,7 +3,7 @@
 
 bl_info = {
     'name': 'UV-Int',
-    'category': 'UV',
+    "category": "Learnbgame",
     'author': 'Nikita Akimov',
     'version': (1, 0, 1),
     'blender': (2, 79, 0),

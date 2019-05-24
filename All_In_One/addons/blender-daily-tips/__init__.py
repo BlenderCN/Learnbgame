@@ -32,7 +32,7 @@ bl_info = {
 	"warning":     "In Development",  
 	"wiki_url":    "NA",
 	"tracker_url": "theduckcow.com/dev/blender",
-	"category":    "System"
+	"category": "Learnbgame",
 	}
 
 

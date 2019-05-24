@@ -15,7 +15,7 @@ bl_info = {
     "version"     : (0, 0, 0, 2),
     "location"    : "3D View > Toolbox",
     "description" : "Batch convert image file formats",
-    "category"    : "Convert"
+    "category": "Learnbgame",
 }
 
 import bpy

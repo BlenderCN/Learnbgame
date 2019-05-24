@@ -25,7 +25,7 @@ bl_info = {
         "location": "Info Toolbar, File -> Import, File -> Export",
         "wiki_url":    "https://github.com/Digiography/blender_addon_zbrushcore/wiki",
         "tracker_url": "https://github.com/Digiography/blender_addon_zbrushcore/issues",
-        "category": "System",
+        "category": "Learnbgame",
 }
 
 import bpy

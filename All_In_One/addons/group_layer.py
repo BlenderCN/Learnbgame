@@ -23,7 +23,7 @@ bl_info = {
 	"location": "Outliner header",
 	"description": "Outliner group like layer.",
 	"warning": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 

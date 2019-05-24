@@ -27,7 +27,7 @@ bl_info = {
     "location": "Operator Search -> Driver Constraint",
     "warning": "This addon is still in development.",
     "wiki_url": "https://github.com/ndee85/Driver-Constraint-Addon",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

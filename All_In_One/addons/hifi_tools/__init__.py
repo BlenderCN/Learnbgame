@@ -27,7 +27,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "",
     "support": "COMMUNITY",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 default_gateway_server = "http://206.189.208.218"
 oauth_api = "https://metaverse.highfidelity.com/user/tokens/new?for_identity=true"

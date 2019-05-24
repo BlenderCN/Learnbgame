@@ -5,7 +5,7 @@ bl_info = {
     "blender": (2,78,0),
     "description": "Uploads a video file to Youtube from the Blender GUI",
     "warning": "Requires install of Google APIs for python",
-    "category": "Render",
+    "category": "Learnbgame",
 }
 
 # python

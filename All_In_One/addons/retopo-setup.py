@@ -5,7 +5,7 @@ bl_info = {
     "author": "Sreenivas Alapati(cg-cnu)",
     "version": (1, 0),
     "blender": (2, 79, 0),
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy 

@@ -27,7 +27,8 @@ bl_info = {
     'description': 'Display indices of verts, edges and faces in the 3d-view',
     'wiki_url': '',
     'tracker_url': '',
-    'category': '3D View'}
+    "category": "Learnbgame",
+}
 
 """
 Display the indices of vertices, edges and faces in the 3d-view.

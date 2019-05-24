@@ -30,7 +30,8 @@ bl_info = {
         'Import-Export/M3_Import',
     'tracker_url': 'http://projects.blender.org/tracker/index.php?'\
         'func=detail&aid=24017',
-    'category': 'Import-Export'}
+    "category": "Learnbgame",
+}
 
 
 # To support reload properly, try to access a package var, if it's there,

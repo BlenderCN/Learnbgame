@@ -31,7 +31,7 @@ bl_info = {
     "support": "COMMUNITY",
     "wiki_url": "https://github.com/FujiSunflower/love2d3d/wiki",
     "tracker_url": "https://github.com/FujiSunflower/love2d3d/issues",
-    "category": "Add Mesh"
+    "category": "Learnbgame",
 }
 
 RGBA = 4  # Color size per pixels

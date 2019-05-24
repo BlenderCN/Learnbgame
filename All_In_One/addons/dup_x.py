@@ -23,7 +23,7 @@ bl_info = {
 	"location": "like a zbrush add parts",
 	"description": "Shift + cmd + T",
 	"warning": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 import bpy

@@ -33,7 +33,7 @@ bl_info = {
     "location": "Info Header, render engine menu",
     "description": "RenderMan 21.5 integration",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

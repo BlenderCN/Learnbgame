@@ -28,7 +28,7 @@ bl_info = {
     "description": "Import Export Camera in Json",
     "warning": "",
     "wiki_url": "",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     }
 
 

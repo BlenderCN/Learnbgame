@@ -5,7 +5,7 @@ bl_info = {
     "version":     (1, 2, 0),
     "blender":     (2, 79, 0),
     "location":    "View3D > Tools Panel > BakeLab",
-    "category":    "Render"
+    "category": "Learnbgame",
 }
 
 import bpy

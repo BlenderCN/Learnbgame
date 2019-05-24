@@ -28,7 +28,7 @@ cross_section_matrix_apply.py from http://goo.gl/xqJ3x",
     "warning": "",
     "wiki_url": "https://github.com/jwandborg/blender-make_cross_section",
     "tracker_url": "https://github.com/jwandborg/blender-make_cross_section/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

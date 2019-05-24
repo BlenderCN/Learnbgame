@@ -9,7 +9,7 @@ bl_info = {
     'description': 'Facilitates the creation of 2-D cutout-style characters from MakeHuman output.',
     'author': 'Adam Wentz',
     'version': (0, 1),
-    'category': 'MakeHuman'
+    "category": "Learnbgame",
 }
 
 

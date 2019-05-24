@@ -33,7 +33,7 @@ bl_info = {
     "name": "Lightning Artist Toolkit (Latk)", 
     "author": "Nick Fox-Gieg",
     "description": "Import and export Latk format",
-    "category": "Animation"
+    "category": "Learnbgame",
 }
 
 import bpy

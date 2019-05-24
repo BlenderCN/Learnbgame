@@ -19,7 +19,7 @@ bl_info = \
         "blender" : (2, 6, 3),
         "location" : "Text Editor > Text > Edit in Emacs",
         "description" : "Edit the current text externally in Emacs (ALT+E)",
-        "category" : "Text Editor",
+        "category": "Learnbgame",
     }
 
 class EditExternal(bpy.types.Operator) :

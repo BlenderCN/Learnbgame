@@ -33,7 +33,7 @@ bl_info = {
 	"warning": "",
 	"wiki_url": "N/A",
 	"tracker_url": "N/A",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 gee = 9.81

@@ -16,7 +16,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://stonefield.cocolog-nifty.com/higurashi/2013/11/blenderaddondub.html",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

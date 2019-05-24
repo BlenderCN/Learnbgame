@@ -37,7 +37,7 @@ bl_info = {
         'scripts/materialedior',
     "tracker_url": "https://projects.blender.org/tracker/index.php?" \
         "func=detail&aid=????",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

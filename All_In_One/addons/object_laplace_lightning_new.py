@@ -26,7 +26,7 @@ bl_info = {
     "warning": "Beta",
     "wiki_url": "http://www.funkboxing.com/wordpress/?p=301",
     "tracker_url": "http://www.funkboxing.com/wordpress/?p=301",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
         
 ######################################################################

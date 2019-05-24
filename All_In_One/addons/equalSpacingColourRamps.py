@@ -24,7 +24,7 @@ bl_info = {
     "version": (1, 0),
     "blender": (2, 71, 0),
     "location": "Node Editor > Q over selected ColourRamp node",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 

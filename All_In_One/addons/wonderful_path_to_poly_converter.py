@@ -2,7 +2,7 @@
 
 bl_info = {
     "name": "Convert KBAP Paths to POLY",
-    "category": "Mesh",
+    "category": "Learnbgame",
     "author": "Julian Ewers-Peters"
 }
 

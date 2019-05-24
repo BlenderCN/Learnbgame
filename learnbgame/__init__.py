@@ -52,15 +52,15 @@ from . import spaceship_generator
 from . import spacestation
 from .book import Book
 from .shelf import Shelf
-from .ch_trees import gui
+#from .ch_trees import gui
 from .grove import Grove_Operator
 from .LearnbgamEngine import learnbgamEditor
 #from .LearnbgamEngine import sverchok
 
 from . import human
 
-from . import jewelcraft
-from . import LearnbgamEngine
+#from . import jewelcraft
+#from . import LearnbgamEngine
 
 from .energy import gxav,hdri,materials_library_vx
 
@@ -1223,11 +1223,11 @@ def register():
     bpy.types.Scene.molecule = PointerProperty(type=MOLECULE_PROPERTY)
     bpy.types.Scene.atoms = PointerProperty(type=ATOM_PROPERTY)
     bpy.types.Scene.brand = PointerProperty(type=BRAND_PROPERTY)
-    gui.register()
+    #gui.register()
     human.register()
-    jewelcraft.register()
-    LearnbgamEngine.register()
-    learnbgamEditor.register()
+    #jewelcraft.register()
+    #LearnbgamEngine.register()
+    #learnbgamEditor.register()
     #sverchok.register()
     gxav.register()
     materials_library_vx.register()
@@ -1237,16 +1237,16 @@ def register():
 def unregister():
     materials_library_vx.unregister()
     gxav.unregister()
-    jewelcraft.unregister()
-    LearnbgamEngine.unregister()
+    #jewelcraft.unregister()
+    #LearnbgamEngine.unregister()
     #sverchok.unregister()
-    learnbgamEditor.unregister()
+    #learnbgamEditor.unregister()
     del bpy.types.Scene.brand
     del bpy.types.Scene.atoms
     del bpy.types.Scene.molecule
     del bpy.types.Scene.plants
     human.unregister()
-    gui.unregister()
+    #gui.unregister()
     global icons_collection
     for cla in CLASSES:
         unregister_class(cla)

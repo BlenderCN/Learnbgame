@@ -8,7 +8,7 @@ bl_info = {
 	"description": "Sets up object's materials for baking",
 	"warning": "",
 	"wiki_url": "",
-	"category": "Render",
+	"category": "Learnbgame",
 }
 
 

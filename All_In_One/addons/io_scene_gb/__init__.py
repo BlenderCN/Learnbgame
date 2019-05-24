@@ -1,5 +1,5 @@
 bl_info = {
-    'name' : 'OpenKal GB Format', 'category': 'Import-Export',
+    'name' : 'OpenKal GB Format', "category": "Learnbgame",
 }
 
 

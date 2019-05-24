@@ -26,7 +26,7 @@ bl_info = {
     'description': 'Overwrite splash and icon images',
     'warning': 'Linux only',
     'wiki_url': 'https://github.com/chromoly/blender-OverwriteBuiltinImages',
-    'category': 'User Interface',
+    "category": "Learnbgame",
 }
 
 

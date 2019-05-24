@@ -31,7 +31,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/mrdoob/three.js/tree/master/utils/exporters/blender",
     "tracker_url": "https://github.com/mrdoob/three.js/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # To support reload properly, try to access a package var,

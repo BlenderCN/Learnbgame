@@ -1,6 +1,6 @@
 bl_info = { "name":"Timeline Key Mover",
             "author":"Joel Daniels",
-            "category":"Animation",
+            "category": "Learnbgame",
             "version":(0,3),
             "blender": (2, 80, 0),
             "location":"Timeline header",

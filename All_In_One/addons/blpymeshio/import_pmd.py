@@ -42,7 +42,7 @@ This script imports a pmd into Blender for editing.
 20120306: fix rigid body.
 """
 bl_addon_info = {
-        'category': 'Import/Export',
+        "category": "Learnbgame",
         'name': 'Import: MikuMikuDance Model Format (.pmd)',
         'author': 'ousttrue',
         'version': (2, 2),

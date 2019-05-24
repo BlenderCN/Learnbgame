@@ -120,7 +120,7 @@ bl_info = {
 "wiki_url": "https://yethiel.github.io/re-volt-addon/",
 "tracker_url": "https://github.com/Yethiel/re-volt-addon/issues",
 "support": 'COMMUNITY',
-"category": "Import-Export"
+"category": "Learnbgame",
 }
 
 @persistent

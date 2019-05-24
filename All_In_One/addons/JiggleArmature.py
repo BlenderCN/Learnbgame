@@ -34,7 +34,7 @@ bl_info = {
     "description": "Jiggle bone animation tool",
     "warning": "",
     "wiki_url": "",
-    "category": "Animation",
+    "category": "Learnbgame",
 }
 
 

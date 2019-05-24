@@ -23,7 +23,7 @@ bl_info = {
     "description": "A complete lab for characters creation",
     "warning": "",
     'wiki_url': "http://www.manuelbastioni.com",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -2,7 +2,7 @@ bl_info = {
     "name": "KinectToPin mocap", 
     "author": "Nick Fox-Gieg",
     "description": "Import and export K2P xml format",
-    "category": "Animation"
+    "category": "Learnbgame",
 }
 
 import bpy

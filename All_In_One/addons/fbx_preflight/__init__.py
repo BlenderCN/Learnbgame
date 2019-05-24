@@ -53,7 +53,7 @@ bl_info = {
     "author": "Apsis Labs",
     "version": (1, 0, 0),
     "blender": (2, 79, 0),
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "description": "Define export groups to be output as FBX files."
 }
 

@@ -32,7 +32,7 @@ bl_info = {
     "warning" : "",
     "wiki_url": "https://github.com/p2or/blender-viewport-rename",
     "tracker_url": "https://github.com/p2or/blender-viewport-rename/issues",
-    "category" : "Development"
+    "category": "Learnbgame",
 }
 
 def get_ui_classes():

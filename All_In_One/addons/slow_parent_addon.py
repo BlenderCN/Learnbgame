@@ -9,7 +9,7 @@ bl_info = {
     "blender": (2, 6, 1),
     "location": "View3D > Properties",
     "description": "Some buttons to play with recursive slow parenting",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy, random

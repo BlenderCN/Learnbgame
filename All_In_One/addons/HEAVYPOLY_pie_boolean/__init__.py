@@ -8,7 +8,7 @@ bl_info = {
 	"warning": "",
 	"wiki_url": "https://github.com/schroef/HeavyPoly-Pie-Boolean/",
 	"tracker_url": "https://github.com/schroef/HeavyPoly-Pie-Boolean/issues",
-	"category": "Pie Menu"
+	"category": "Learnbgame",
 	}
 import bpy
 import os

@@ -7,7 +7,7 @@ bl_info = {
     "description": "Delete Vertex Groups with no assigned weight of active object",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

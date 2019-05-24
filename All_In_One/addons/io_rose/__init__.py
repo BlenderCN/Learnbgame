@@ -5,7 +5,7 @@ bl_info = {
     "version": (0, 0, 3),
     "location": "File > Import",
     "description": "Import files from ROSE Online",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

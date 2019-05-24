@@ -38,7 +38,7 @@ bl_info = {
     "description": "Creates rooms, doors, windows, and other architecture objects",
     "wiki_url": "https://github.com/insma/ArchitectureLab/wiki",
     "tracker_url": "https://github.com/insma/ArchitectureLab/issues",
-    "category": "Add Mesh"
+    "category": "Learnbgame",
 }
 
 

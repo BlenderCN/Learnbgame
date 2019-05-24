@@ -1,7 +1,7 @@
 bl_info = {
     'name': 'Switch Between Console and Text Editor Spaces',
     'description': 'Switch Between Console and Text Editor Spaces by using the SHIFT+ESC key',
-    'category': 'System',
+    "category": "Learnbgame",
     "author": "Satish Goda (iluvblender on BA, satishgoda@gmail.com)",
     "version": (0, 1),
     "blender": (2, 7, 0),

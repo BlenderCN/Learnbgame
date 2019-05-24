@@ -22,7 +22,7 @@ bl_info = {
     "name": "Nikitron tools",
     "version": (2, 1, 5),
     "blender": (2, 7, 9),  
-    "category": "Object",
+    "category": "Learnbgame",
     "author": "Nikita Gorodetskiy",
     "location": "object",
     "description": "Nikitron tools - vertices and object names, curves to 3d, material to object mode, spread objects, bounding boxes",

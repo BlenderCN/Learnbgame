@@ -25,7 +25,7 @@ bl_info = {
 	"blender": (2, 79, 0),
 	"location": "Add 'view3d.change_frame_drag' to Input Preferences under 3D View (Global)",
 	"description": "Change frame by dragging",
-	"category": "Cenda Tools",
+	"category": "Learnbgame",
 	"wiki_url": "https://github.com/CenekStrichel/CendaTools/wiki",
 	"tracker_url": "https://github.com/CenekStrichel/CendaTools/issues"
 	}

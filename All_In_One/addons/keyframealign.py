@@ -14,7 +14,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/sambler/myblendercontrib/blob/master/keyframealign.py",
     "tracker_url": "https://github.com/sambler/myblendercontrib/issues",
-    "category": "Animation"
+    "category": "Learnbgame",
 }
 
 import bpy

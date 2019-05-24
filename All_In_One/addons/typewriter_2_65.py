@@ -28,7 +28,8 @@ bl_info = {
     'location': 'Properties Editor, Text Context',
     'description': 'Typewriter Text effect',
     'url': 'http://urchn.org',
-    'category': 'Text'}
+    "category": "Learnbgame",
+}
  
 __bpydoc__ = """
 Typewriter Text Animation For Font Objects

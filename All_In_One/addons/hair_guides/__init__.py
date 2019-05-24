@@ -3,7 +3,7 @@ bl_info = {
     'author': 'Alexander Meißner',
     'version': (0,0,1),
     'blender': (2,7,9),
-    'category': 'Particle',
+    "category": "Learnbgame",
     'wiki_url': 'https://github.com/lichtso/hair_guides/',
     'tracker_url': 'https://github.com/lichtso/hair_guides/issues',
     'description': 'Generates hair particles from meshes (seam edges), bezier curves or nurbs surfaces.'

@@ -31,7 +31,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 from math import pi as PI, pow, sin, cos, tan, atan2, degrees, radians, sqrt

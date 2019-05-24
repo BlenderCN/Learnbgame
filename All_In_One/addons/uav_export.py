@@ -7,7 +7,7 @@ bl_info = {
     "description": "Export selected object locations/frames for UAV control",
     "warning": "",
     "wiki_url": "",
-    "category": "Animation",
+    "category": "Learnbgame",
     }
 
 import bpy

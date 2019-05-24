@@ -16,7 +16,7 @@ bl_info = \
   "warning": "",
   "wiki_url": "",
   "tracker_url": "",
-  "category": "Import-Export"
+  "category": "Learnbgame",
 }
 
 # To support reload properly, try to access a package var, 

@@ -1,6 +1,6 @@
 bl_info = {
     "name": "PBRTv3 Exporter",
-    "category": "Render"
+    "category": "Learnbgame",
 }
 
 import sys

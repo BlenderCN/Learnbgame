@@ -7,7 +7,8 @@ bl_info = {
     'description': 'makes it all pretty',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Text Editor'}
+    "category": "Learnbgame",
+}
 
 
 import bpy

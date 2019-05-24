@@ -25,7 +25,7 @@ bl_info = {
 	"blender": (2, 79, 0),
 	"location": "Export settings in Scene Properties, Export button in Header View3D",
 	"description": "Export selected objects to destination (FBX) with override per object",
-	"category": "Cenda Tools",
+	"category": "Learnbgame",
 	"wiki_url": "https://github.com/CenekStrichel/CendaTools/wiki",
 	"tracker_url": "https://github.com/CenekStrichel/CendaTools/issues"
 	}

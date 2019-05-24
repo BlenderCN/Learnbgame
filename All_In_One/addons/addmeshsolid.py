@@ -30,7 +30,7 @@ bl_info = {
         "Scripts/Add_Mesh/Add_Solid",
     "tracker_url": "https://projects.blender.org/tracker/index.php?"\
         "func=detail&aid=22405",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

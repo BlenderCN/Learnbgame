@@ -4,7 +4,7 @@ bl_info = {
 	"blender"     : (2, 74, 0),
 	"location"    : "File > Import-Export",
 	"description" : "Imports or exports an .MD2 model compatible with Lego Racers 2.",
-	"category"    : "Import-Export"
+	"category"	  : "Learnbgame",
 }
 
 if 'bpy' in locals():

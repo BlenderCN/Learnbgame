@@ -26,7 +26,7 @@ bl_info = {
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/"\
         "Scripts/System/Compact_Object_Panel",
     "tracker_url": "https://github.com/dairin0d/compact-object-panel/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 #============================================================================#
 

@@ -28,7 +28,7 @@ bl_info = {
                    'and Blender 2.77a or newer.',
     'wiki_url': 'https://wiki.blender.org/index.php/Extensions:2.6/Py/'
                 'Scripts/System/BlenderCloud',
-    'category': 'System',
+    "category": "Learnbgame",
 }
 
 import logging

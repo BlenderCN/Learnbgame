@@ -27,7 +27,7 @@ bl_info = {
     "description": "The DeEvA toolkit for the creation of avatars from personality traits.",
     "warning": "",
     'wiki_url': "https://github.com/fnunnari/deeva",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

@@ -4,7 +4,7 @@ bl_info = {
     'author': 'Pavel_Blend',
     'version': (0, 0, 0),
     'blender': (2, 7, 6),
-    'category': 'Import-Export',
+    "category": "Learnbgame",
     'location': 'File > Import',
     'description': 'Import X-Ray Engine *.object files',
     'wiki_url': 'https://github.com/PavelBlend/Blender-OBJECT-X-Ray-Engine',

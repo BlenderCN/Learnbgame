@@ -101,9 +101,9 @@ def read_osl_shaders():
                     else:
                         d['url'] = ''
                     if 'as_category' in shader_meta:
-                        d['category'] = shader_meta['as_category']['value']
+                        d["category": "Learnbgame",
                     else:
-                        d['category'] = 'other'
+                        d["category": "Learnbgame",
                     num_of_params = q.get_num_params()
                     for x in range(0, num_of_params):
                         metadata = {}

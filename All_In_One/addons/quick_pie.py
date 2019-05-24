@@ -22,7 +22,7 @@ bl_info = {
 	"version": (0, 1, 1),
 	"blender": (2, 7, 2),
 	"description": "Quick Pie Menu - Spacebar, Q and X",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 

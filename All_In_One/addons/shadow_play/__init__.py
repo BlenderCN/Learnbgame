@@ -28,7 +28,7 @@ bl_info = {
     "description": "Sketch-based Shadow Play Animation Tools in 2.5D (depends on io_import_images_as_meshes.py). Attention: DO NOT import it into macOS!",
     "wiki_url": "https://zhaozj89.github.io/ShadowPlay2.5D/",
     "support": "TESTING",
-    "category": "Animation",
+    "category": "Learnbgame",
 }
 
 

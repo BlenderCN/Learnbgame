@@ -20,7 +20,7 @@ bl_info = {
     "description": "Tools to create 3d model for Unreal Engine 4, that make use of the Pivot Painter Tool's material functions",
     "warning": "Untested",
     "wiki_url": "https://github.com/Gvgeo/Pivot-Painter-for-Blender",
-    "category": "Unreal Tools",
+    "category": "Learnbgame",
     }
 
 import time, sys, math, ctypes, random, mathutils, bpy, os

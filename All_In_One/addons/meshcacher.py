@@ -31,7 +31,7 @@ bl_info = {
     "description": "Replace linked groups with cached meshes",
     "warning": "",
     "wiki_url": "http://wiki.urchn.org/wiki/Meshcacher",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """

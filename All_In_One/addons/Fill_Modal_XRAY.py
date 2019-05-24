@@ -5,7 +5,7 @@ import bgl
 
 bl_info = {
     "name": "Fill-Modal",
-    "category": "User",
+    "category": "Learnbgame",
     "author": "Andreas Strømberg, Jac Rossiter",
 }
 

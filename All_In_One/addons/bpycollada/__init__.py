@@ -30,7 +30,8 @@ bl_info = {
     'wiki_url'   : 'https://github.com/skrat/blender-pycollada/wiki',
     'tracker_url': 'https://github.com/skrat/blender-pycollada/issues',
     'support'    : 'OFFICIAL',
-    'category'   : 'Import'}
+    "category": "Learnbgame",
+}
 
 
 if 'bpy' in locals():

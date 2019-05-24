@@ -9,7 +9,7 @@ bl_info = {
   "warning": "",
   "wiki_url": "https://github.com/sebastian-k/scripts",
   "tracker_url": "https://github.com/sebastian-k/scripts/issues",
-  "category": "3D View"
+  "category": "Learnbgame",
   }
 
 import bpy

@@ -1,0 +1,35 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles v1.1
+/*   Directional Shading
+/*------------------------------------------*/
+
+shader DirectionalShading(
+    color Light = color(1,1,1),
+    color Shadow = color(0,0,0),
+    
+    
+    float Smooth = 0.5,
+    float Offset = 0.0,
+    
+    float MaskLight = 0.0,
+    float MaskShadow = 1.0,
+    
+    vector Direction = vector(0, 0, 1),
+    normal Normal = N,
+    
+    output float Mask =0,
+    output color Output=0)
+{   
+    float val = MaskShadow;
+    
+    vector d = transform("world", normalize(Direction));
+    float dif = dot(normalize(Normal),d);
+    float offset = Offset;
+    
+    float value = clamp(smoothstep(offset*(-1),offset*(-1)+clamp(Smooth,0.0,1.0),dif),0.0,1.0);
+    float lightFactor = smoothstep(0.0,clamp(Smooth,0.0001,1.0),MaskLight);
+    float shadowFactor = smoothstep(0.0,clamp(Smooth,0.00001,0.9999),MaskShadow);
+    Mask = min(max(value,lightFactor),shadowFactor);
+    Output = (Light * Mask + Shadow * (1-Mask));
+    
+}

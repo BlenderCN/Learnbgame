@@ -1,6 +1,6 @@
 bl_info = {
     'name': 'Sterna',
-    'category': 'All',
+    "category": "Learnbgame",
     'version': (0, 0, 1),
     'blender': (2, 79, 0)
 }

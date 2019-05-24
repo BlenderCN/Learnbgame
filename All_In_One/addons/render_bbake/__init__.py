@@ -8,7 +8,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/florianfelix/render_bbake/wiki",
     "tracker_url": "https://github.com/florianfelix/render_bbake/issues",
-    "category": "Render",
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

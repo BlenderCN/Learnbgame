@@ -17,7 +17,8 @@ bl_info = {
     'warning': '',
     'wiki_url': 'http://code.google.com/p/tubras/wiki/irrb',
     'tracker_url' : '',
-    'category': 'Import-Export'}
+    "category": "Learnbgame",
+}
 
 import bpy
 from bpy.props import *

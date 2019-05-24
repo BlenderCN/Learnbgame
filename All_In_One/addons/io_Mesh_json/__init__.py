@@ -5,7 +5,7 @@ bl_info = {
     "version": (0,0,2),
     "location": "File > Import-Export",
     "description":  "Import-Export JSON data format (only export avalable now)",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "wiki_url": "https://github.com/warmwaffles/io_mesh_json",
     "tracker_url": "https://github.com/warmwaffles/io_mesh_json",
 }

@@ -1,7 +1,7 @@
 
 bl_info = {
     'name': 'Prompt and Run Command ',
-    'category': 'Development',
+    "category": "Learnbgame",
     'description': 'Execute expressions in command prompt'
 }
 

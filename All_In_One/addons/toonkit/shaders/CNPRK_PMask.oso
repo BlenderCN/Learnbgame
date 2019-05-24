@@ -1,0 +1,75 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.7.5
+# options: -o C:\Users\vitor\AppData\Local\Temp\tmpw4u_ddfz.oso -IC:\Program Files\Blender Foundation\Blender\2.79\scripts\addons\cycles\shader
+shader PenetrationMask
+param	float	clampDist	0.015		%read{12,12} %write{2147483647,-1}
+oparam	float	Result	0		%read{2147483647,-1} %write{18,18}
+global	point	P	%read{5,12} %write{2147483647,-1} %derivs
+global	vector	I	%read{10,10} %write{2147483647,-1} %derivs
+local	point	CamPos	%read{5,5} %write{4,4}
+local	vector	rasterPoint	%read{7,7} %write{6,6}
+local	vector	finalPoint	%read{2147483647,-1} %write{7,7}
+local	float	L	%read{2147483647,-1} %write{9,9}
+local	int	DoTrace	%read{13,13} %write{12,12}
+local	string	___343_nameHit	%read{16,16} %write{14,15}
+temp	int	$tmp1	%read{1,1} %write{0,0}
+const	string	$const1	"camera"		%read{0,8} %write{2147483647,-1}
+temp	int	$tmp2	%read{2,2} %write{1,1}
+const	int	$const2	0		%read{1,1} %write{2147483647,-1}
+const	float	$const3	0		%read{4,4} %write{2147483647,-1}
+const	string	$const4	"world"		%read{6,8} %write{2147483647,-1}
+temp	vector	$tmp3	%read{6,6} %write{5,5}
+temp	point	$tmp4	%read{9,9} %write{8,8}
+temp	vector	$tmp5	%read{12,12} %write{11,11} %derivs
+temp	vector	$tmp6	%read{11,11} %write{10,10} %derivs
+const	string	$const5	"mindist"		%read{12,12} %write{2147483647,-1}
+const	string	$const6	""		%read{14,14} %write{2147483647,-1}
+temp	int	$tmp7	%read{2147483647,-1} %write{15,15}
+const	string	$const7	"trace"		%read{15,15} %write{2147483647,-1}
+const	string	$const8	"geom:name"		%read{15,15} %write{2147483647,-1}
+temp	int	$tmp8	%read{17,17} %write{16,16}
+const	string	$const9	"+"		%read{16,16} %write{2147483647,-1}
+const	int	$const10	1		%read{18,18} %write{2147483647,-1}
+code ___main___
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_PMask.osl:14
+# 
+	raytype		$tmp1 $const1 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_PMask.osl"} %line{14} %argrw{"wr"}
+	eq		$tmp2 $tmp1 $const2 	%argrw{"wrr"}
+	if		$tmp2 4 4 	%argrw{"r"}
+	exit
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_PMask.osl:17
+#     vector rasterPoint = transform("world","camera",P-CamPos);
+	point		CamPos $const1 $const3 $const3 $const3 	%line{17} %argrw{"wrrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_PMask.osl:18
+#     vector finalPoint = transform("camera","world",rasterPoint);
+	sub		$tmp3 P CamPos 	%line{18} %argrw{"wrr"}
+	transformv	rasterPoint $const4 $const1 $tmp3 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_PMask.osl:19
+#     
+	transformv	finalPoint $const1 $const4 rasterPoint 	%line{19} %argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_PMask.osl:21
+#     int DoTrace = trace (P,normalize(-I),"mindist",clampDist) ;
+	transform	$tmp4 $const4 $const1 P 	%line{21} %argrw{"wrrr"}
+	length		L $tmp4 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_PMask.osl:22
+#     
+	neg		$tmp6 I 	%line{22} %argrw{"wr"}
+	normalize	$tmp5 $tmp6 	%argrw{"wr"}
+	trace		DoTrace P $tmp5 $const5 clampDist 	%argrw{"wrrrr"} %argderivs{1,2}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_PMask.osl:24
+#         string nameHit = "";
+	if		DoTrace 19 19 	%line{24} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_PMask.osl:25
+#         getmessage("trace","geom:name",nameHit);        
+	assign		___343_nameHit $const6 	%line{25} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_PMask.osl:26
+#         if(startswith(nameHit,"+")){
+	getmessage	$tmp7 $const7 $const8 ___343_nameHit 	%line{26} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_PMask.osl:27
+#             Result = 1;
+	startswith	$tmp8 ___343_nameHit $const9 	%line{27} %argrw{"wrr"}
+	if		$tmp8 19 19 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_PMask.osl:28
+#         }
+	assign		Result $const10 	%line{28} %argrw{"wr"}
+	end

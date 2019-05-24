@@ -26,7 +26,7 @@ bl_info = {
     "version": (0, 0, 1),
     "blender": (2, 78, 0),
     "description": "Blender Add on to assist in the use of using BVH data",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

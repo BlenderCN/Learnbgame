@@ -27,7 +27,7 @@ bl_info = {
     "location": "View3D > TOOLS > My Category > Change Category",
     "description": "Change Panel Categories",
     #"wiki_url" : "http://blenderartists.org/forum/showthread.php?363859-Addon-CAD-Snap-Utilities",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -25,7 +25,7 @@ bl_info = {
     "description": "Fractured Object, Bomb, Projectile, Recorder",
     "warning": "",
     "url": "http://swoorupjoshi.xyz/blog/blender-addon-for-creating-waypoints/",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 if "init_data" in locals():

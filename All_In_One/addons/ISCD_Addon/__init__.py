@@ -1,6 +1,6 @@
 bl_info = {
     'name': 'ISCD Addon',
-    'category': 'Import-Export',
+    "category": "Learnbgame",
     'version': (1, 0, 0),
     'blender': (2, 78, 0),
     "description": "Imports and exports 3d  meshes and interfaces with ISCD tools",

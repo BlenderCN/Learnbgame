@@ -30,7 +30,7 @@ bl_info = {
     'api' : 61076,
     'location' : '[Outliner]Hotkey: up/down + [shift]; (alt + wheel up/down) + [shift]; shift + (double)LMB; shift v/s/r',
     'warning' : "Alpha",
-    'category' : 'Outliner',
+    "category": "Learnbgame",
     "wiki_url" : "https://github.com/nirenyang/Blender_Addon_-_Outliner_Extend_Keys",
     "tracker_url" : "http://www.blenderartists.org/forum/showthread.php?303375-Addon-Outliner-Extend-Keys",
 }

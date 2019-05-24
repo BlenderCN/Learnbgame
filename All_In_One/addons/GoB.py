@@ -31,7 +31,7 @@ bl_info = {
 		"2.6/Py/Scripts/Import-Export/GoB_ZBrush_import_export",
     "tracker_url": "http://www.zbrushcentral.com/showthread.php?"
 		"127419-GoB-an-unofficial-GoZ-for-Blender",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if os.path.isfile("C:/Users/Public/Pixologic/GoZBrush/GoZBrushFromApp.exe"):

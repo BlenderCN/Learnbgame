@@ -9,7 +9,7 @@ bl_info = {
     'location': 'File > Import',
     'description': 'This script imports BMS and BMA files',
     'warning': '',
-    'category': 'Import'
+    "category": "Learnbgame",
 }
 
 

@@ -22,7 +22,7 @@ bl_info = {
     "description": "Create an armature from the selected mesh",
     "wiki_url": "http://stonefield.cocolog-nifty.com/higurashi/2014/05/bone-modeling-h.html",
     "tracker_url": "http://stonefield.cocolog-nifty.com/higurashi/2014/05/bone-modeling-h.html",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 #    メッセージ（英語,日本語）

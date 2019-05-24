@@ -1,7 +1,7 @@
 bl_info = {
     'name': 'Development tools for Blender',
     'description': 'Registers operators, panels, menus etc to abet development and introspection',
-    'category': 'Development',
+    "category": "Learnbgame",
 }
 
 """Registers operators, panels, menus etc to abet development and introspection"""

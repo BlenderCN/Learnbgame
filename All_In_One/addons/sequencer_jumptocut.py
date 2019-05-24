@@ -24,7 +24,7 @@ bl_info = {
     "version": (5,0,1),
     "blender": (2, 6, 2, 0),
     "api": 44539,
-    "category": "Sequencer",
+    "category": "Learnbgame",
     "location": "Sequencer > UI > Jump to Cut",
     "description": "Tool collection to help speed up editting and grade videos with blender",
     "warning": "",

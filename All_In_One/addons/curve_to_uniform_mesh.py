@@ -27,7 +27,7 @@ bl_info = {
     "warning": "Beta",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Add Curve",
+    "category": "Learnbgame",
     }
 
 """

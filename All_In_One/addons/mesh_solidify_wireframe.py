@@ -6,7 +6,7 @@ bl_info = {
     "description": "Turns the selected edges of a mesh into solid geometry",
     "version": (2, 3),
     "blender": (2, 5, 8),
-    "category": "Mesh",
+    "category": "Learnbgame",
     "location": "Mesh > Solidify Wireframe",
     "warning": '',
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/Modeling/Solidify_Wireframe",

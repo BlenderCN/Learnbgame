@@ -7,7 +7,7 @@ bl_info = {
     "description": "Export/Export Object Animations for UAV Control",
     "warning": "",
     "wiki_url": "",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     }
 
 if "bpy" in locals():

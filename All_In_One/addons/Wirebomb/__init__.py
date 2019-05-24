@@ -33,7 +33,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://blendermarket.com/products/wirebomb",
     "tracker_url": "https://blendermarket.com/products/wirebomb",
-    "category": "Render"
+    "category": "Learnbgame",
 }
 
 

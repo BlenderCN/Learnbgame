@@ -30,7 +30,7 @@ bl_info = {
     "description": "Import downloads gist by ID as new text item, export copies gist url to clipboard.",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

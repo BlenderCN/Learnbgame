@@ -9,7 +9,7 @@ bl_info = {
                    "materials and textures",
     "warning": "Add-on is in development.",
     "wiki_url": "",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

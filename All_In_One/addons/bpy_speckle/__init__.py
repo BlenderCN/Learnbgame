@@ -7,7 +7,7 @@ bl_info = {
     "warning": "ALPHA. Not to be trusted.",
     "description": "SpeckleWorks is an open source initiative for developing an extensible Design & AEC data communication protocol and platform.",
     "wiki_url": "https://speckle.works",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 # import Blender

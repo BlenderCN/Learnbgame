@@ -28,7 +28,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://wiki.blender.org/index.php/Extensions:2.6/Py/"
                 "Scripts/Add_Mesh/Add_Extra",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

@@ -25,7 +25,7 @@ bl_info = {
     "description": "Set of tools to help UV alignment\\distribution",
     "warning": "",
     "wiki_url": "https://github.com/c30ra/uv-align-distribute",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import imp

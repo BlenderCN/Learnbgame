@@ -31,7 +31,7 @@ bl_info = {"name": "Node Location Panel",
            "warning": "",
            "wiki_url": "",
            "tracker_url": "",
-           "category": "Node"
+           "category": "Learnbgame",
            }
 
 

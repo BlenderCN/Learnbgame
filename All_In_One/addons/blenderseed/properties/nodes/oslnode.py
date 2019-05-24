@@ -208,7 +208,7 @@ def generate_node(node):
     parameter_types = {}
     filepaths = []
     name = node['name']
-    category = node['category']
+    category = node["category": "Learnbgame",
     input_params = node['inputs']
     output_sockets = node['outputs']
     url_reference = node['url']

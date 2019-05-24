@@ -22,7 +22,7 @@ bl_info = {
     "location": "Property panel > Mesh Display",
     "description": "Select face by angle.",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

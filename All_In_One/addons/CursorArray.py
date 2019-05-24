@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Cursor Array",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

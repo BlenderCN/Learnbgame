@@ -27,7 +27,7 @@ bl_info = {
     "description": "Add a single edge to the mesh that best fits a collection of selected vertices",
     "warning": "",
     "wiki_url": "",
-    "category": "Mesh",
+    "category": "Learnbgame",
 }
 
 import numpy as np

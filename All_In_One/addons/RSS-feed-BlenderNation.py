@@ -3,7 +3,7 @@ bl_info = {
     "name": "RSS",
     "version": (0, 2, 0),
     "blender": (2, 8, 0), 
-    "category": "World",
+    "category": "Learnbgame",
     "author": "Nikolay Fomichev",
     "location": "World",
     "description": "makes RSS appears in world properties",

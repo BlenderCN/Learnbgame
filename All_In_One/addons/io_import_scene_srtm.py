@@ -13,7 +13,7 @@ bl_info = {
     "wiki_url": "https://github.com/vvoovv/blender-geo/wiki/Import-SRTM-(.hgt)",
     "tracker_url": "https://github.com/vvoovv/blender-geo/issues",
     "support": "COMMUNITY",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 import bpy, mathutils
@@ -59,7 +59,8 @@ class TransverseMercator:
 
         lon = self.lon + math.degrees(lon)
         lat = math.degrees(lat)
-        return (lat, lon)
+        return (lat, lon)
+
 import bpy
 import webbrowser
 
@@ -82,7 +83,8 @@ class Donate(bpy.types.Operator):
         box.label("If you like \'{}\' add-on".format(addonName))
         box.label("please donate!")
         
-        box.operator(cls.bl_idname, icon='HELP')
+        box.operator(cls.bl_idname, icon='HELP')
+
 
 def getSrtmIntervals(x1, x2):
     """
@@ -458,4 +460,5 @@ def register():
 def unregister():
     bpy.utils.unregister_class(ImportSrtm)
     bpy.utils.unregister_class(Donate)
-    bpy.types.INFO_MT_file_import.remove(menu_func_import)
+    bpy.types.INFO_MT_file_import.remove(menu_func_import)
+

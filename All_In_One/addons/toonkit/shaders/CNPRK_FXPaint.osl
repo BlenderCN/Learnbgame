@@ -1,0 +1,65 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles v1.1
+/*   Paint FX
+/*------------------------------------------*/
+
+#include "stdosl.h"
+#include "node_texture.h"
+
+color node_mix_linear(float t, color col1, color col2)
+{
+	color outcol = col1;
+
+	if (col2[0] > 0.5)
+		outcol[0] = col1[0] + t * (2.0 * (col2[0] - 0.5));
+	else
+		outcol[0] = col1[0] + t * (2.0 * (col2[0]) - 1.0);
+
+	if (col2[1] > 0.5)
+		outcol[1] = col1[1] + t * (2.0 * (col2[1] - 0.5));
+	else
+		outcol[1] = col1[1] + t * (2.0 * (col2[1]) - 1.0);
+
+	if (col2[2] > 0.5)
+		outcol[2] = col1[2] + t * (2.0 * (col2[2] - 0.5));
+	else
+		outcol[2] = col1[2] + t * (2.0 * (col2[2]) - 1.0);
+	
+	return outcol;
+}
+
+float noise_musgrave_fBm(point p, float H, float lacunarity, float octaves)
+{
+	float rmd;
+	float value = 0.0;
+	float pwr = 1.0;
+	float pwHL = pow(lacunarity, -H);
+	int i;
+
+	for (i = 0; i < (int)octaves; i++) {
+		value += safe_noise(p, "signed") * pwr;
+		pwr *= pwHL;
+		p *= lacunarity;
+	}
+
+	rmd = octaves - floor(octaves);
+	if (rmd != 0.0)
+		value += rmd * safe_noise(p, "signed") * pwr;
+
+	return value;
+}
+
+shader TexFxPaint(
+    float Intensity = 0.5,
+    float Scale = 1.0,
+	float Detail = 2.0,
+	point UV = P,
+	output vector Vector = 0.0)
+{
+    point p = UV;	
+    point p1 = P * Scale*10;
+    float Fac = noise_musgrave_fBm(p1,1,1,max(0.0,Detail)/100);
+    
+    Vector = node_mix_linear(Intensity*Fac,UV,1);
+    
+}

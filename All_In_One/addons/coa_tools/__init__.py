@@ -28,7 +28,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/ndee85/coa_tools/wiki",
     "tracker_url": "https://github.com/ndee85/coa_tools/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

@@ -30,7 +30,7 @@ bl_info = {
     "wiki_url": "https://github.com/enetheru/springrts-blender-tools"
                 "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

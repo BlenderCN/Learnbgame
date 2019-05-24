@@ -26,7 +26,7 @@ bl_info = {
     "location": "Object ",
     "description": "Import Midi Events to Ipo Curves. Inspired and widely ported from the original Import midi drum part into IPO Script by Jean-Baptiste PERIN",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

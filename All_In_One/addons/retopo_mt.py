@@ -18,7 +18,7 @@
 
 bl_info = {
     "name": "Retopo MT",
-    "category": "Mesh",
+    "category": "Learnbgame",
     "author": "Will Souloumiac aka Pixivore, Cédric Lepiller aka Pitiwazou, Blenderlounge, OrAngE",
     "version": (1,0,3),
     "blender": (2, 73, 0),

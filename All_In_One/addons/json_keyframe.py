@@ -6,7 +6,7 @@ bl_info = {
     "location": "File > Import > JSON keyframe (.json)",
     "description": "Import JSON",
     "warning": "Alpha software",
-    "category": "Import",
+    "category": "Learnbgame",
 }
 
 import os

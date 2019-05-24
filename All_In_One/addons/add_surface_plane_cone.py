@@ -11,7 +11,7 @@ bl_info = {
         " ",
     "tracker_url": " "\
         " ",
-    "category": "Add Surface"
+    "category": "Learnbgame",
     }
 
 #info:

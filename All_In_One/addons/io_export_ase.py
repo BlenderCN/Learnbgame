@@ -32,7 +32,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/DarklightGames/io_export_ase",
     "tracker_url": "https://github.com/DarklightGames/io_export_ase/issues",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 """

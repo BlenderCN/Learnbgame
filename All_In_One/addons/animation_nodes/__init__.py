@@ -26,7 +26,7 @@ bl_info = {
     "version":     (2, 1, 4),
     "blender":     (2, 80, 0),
     "location":    "Animation Nodes Editor",
-    "category":    "Learnbgame",
+    "category": "Learnbgame",
     "warning":     "This version is still in development."
 }
 

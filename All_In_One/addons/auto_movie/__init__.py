@@ -8,7 +8,7 @@ bl_info = {
     "description": "Import auto-movie files",
     "warning": "",
     "wiki_url": "",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

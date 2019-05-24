@@ -32,7 +32,7 @@ bl_info = {
         "Scripts/3D_interaction/Sun_Position",
         "tracker_url": "https://projects.blender.org/tracker/" \
         "index.php?func=detail&aid=29714",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """

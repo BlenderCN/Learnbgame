@@ -34,7 +34,7 @@ bl_info = {
     "version": (1, 1),
     "blender": (2, 7, 3),
     "description": "Create html documentation for blend files, including storyboards, images and linked assets.",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import sys

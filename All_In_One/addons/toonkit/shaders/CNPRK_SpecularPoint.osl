@@ -1,0 +1,28 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles v1.1
+/*   Point Specular
+/*------------------------------------------*/
+
+shader Specular(
+    
+    float Smooth = 0.5,
+    float SpecularSize = 0.5,
+    
+    vector Position = vector(0,0,1),
+    normal Normal = N,
+    
+    output float Output=0)
+{   
+    //float dif = dot(reflect(-Direction,normalize(Normal)),I);
+    //float value = smoothstep(Offset*(-1),Offset*(-1)+clamp(Smooth,0.0,1.0),dif);
+    
+    // SPECULAR Point
+    vector rot = Position-P;
+    vector d = transform("world", normalize(rot));
+    float spc = max(0.0,dot(reflect(-d,Normal),I));
+    float spSize = clamp(SpecularSize,0,1);
+    float Spec = smoothstep(spSize*(-1)+1,spSize*(-1)+1+clamp(Smooth,0.0,1.0),spc);
+        
+    
+    Output = Spec;
+}

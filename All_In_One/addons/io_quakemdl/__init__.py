@@ -5,7 +5,7 @@ bl_info = {
     "version":      (0,0,1),
     "location":     "File > Import-Export",
     "description":  "Export MDL file formats",
-    "category":     "Import-Export"
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -37,7 +37,7 @@ bl_info = {
     "description": "Make rigs for MakeHuman characters",
     "warning": "",
     'wiki_url': "http://www.makehuman.org/node/237",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

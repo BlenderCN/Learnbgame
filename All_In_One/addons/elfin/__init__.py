@@ -21,7 +21,7 @@
 
 bl_info = {
     'name': 'Elfin UI', 
-    'category': 'Elfin',
+    "category": "Learnbgame",
     'author': 'Joy Yeh',
     'version': (0, 1, 0),
     'blender': (2, 79, 0),

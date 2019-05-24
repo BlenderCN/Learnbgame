@@ -1,6 +1,6 @@
 bl_info = {
     'name': 'Camera Management',
-    'category': 'Camera',
+    "category": "Learnbgame",
     'description': 'allow individual or group camera rendering',
     'author': 'Niccolò Cantù (nicokant)',
     'version': (0, 2),

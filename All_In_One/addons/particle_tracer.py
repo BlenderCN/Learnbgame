@@ -49,7 +49,8 @@ bl_info = {
     'description':
     'Makes curve based on particle locations at a point in time',
     'warning': '',  # used for warning icon and text in addons panel
-    'category': 'Add Curve'}
+    "category": "Learnbgame",
+}
 
 
 def get_particle_sys(ob):

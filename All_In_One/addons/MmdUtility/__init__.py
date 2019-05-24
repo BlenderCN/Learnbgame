@@ -1,5 +1,5 @@
 bl_info={
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "name": "MmdUtil(pmd/pmx)",
     "author": "ousttrue",
     "version": (0, 1, 0),

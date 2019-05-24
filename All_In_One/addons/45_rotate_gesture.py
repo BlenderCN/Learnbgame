@@ -24,7 +24,7 @@ import bpy
 bl_info = {'name':'45 rotate gesture',
             'author':'bookyakuno',
             'version':(0,1),
-            'category':'3D View',
+            "category": "Learnbgame",
             'location':'View3D > cmd + D , Ctrl + Shift + D',
             'description':'45 rotate Gesture'}
 

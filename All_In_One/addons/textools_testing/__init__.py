@@ -4,7 +4,7 @@ bl_info = {
  "author": "renderhjs",
  "blender": (2, 7, 9),
  "version": (1, 0, 0),
- "category": "UV",
+ "category": "Learnbgame",
  "location": "Viewport > Tool shelf"
 }
 

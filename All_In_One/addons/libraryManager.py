@@ -6,7 +6,7 @@ bl_info = {
     "location": "View3D > Panel Tools > Texture library manager panel (sculpt mode)",
     "warning": "",
     "description": "Load and unload image libraries",
-    "category": "Paint",
+    "category": "Learnbgame",
 }
 
 

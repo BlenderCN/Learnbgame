@@ -31,7 +31,7 @@ bl_info = {
 	'tracker_url': '',
 	'link': '',
 	'support': 'COMMUNITY',
-	'category': 'Import-Export',
+	"category": "Learnbgame",
 	}
 
 import bpy

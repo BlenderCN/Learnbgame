@@ -32,7 +32,7 @@ bl_info = {
     "location": "3D View > Display Panel > Show Menu Pins",
     "description": "Pin menus temporarily in 3d View for quick access",
     "wiki_url": "http://blenderartists.org/forum/showthread.php?339859-Addon-Test-Release-Menu-Pinning-for-quick-access",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 PinnedMenus = {}

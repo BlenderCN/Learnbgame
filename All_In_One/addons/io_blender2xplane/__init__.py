@@ -8,7 +8,8 @@ bl_info = {
     'location': 'File > Import/Export > XPlaneNG ',
     'description': 'Import and Export XPlane objects/planes (.obj format)',
     'warning': 'beta', # used for warning icon and text in addons panel
-    'category': 'Import-Export'}
+    "category": "Learnbgame",
+}
 
 
 

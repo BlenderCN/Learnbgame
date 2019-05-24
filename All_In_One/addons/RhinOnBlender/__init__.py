@@ -7,7 +7,7 @@ bl_info = {
     "description": "Planejamento de Rinoplastia no Blender",
     "warning": "",
     "wiki_url": "",
-    "category": "rhin",
+    "category": "Learnbgame",
     }
 
 import bpy

@@ -1,0 +1,76 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.7.5
+# options: -o C:\Users\vitor\AppData\Local\Temp\tmp0pnqc8_0.oso -IC:\Program Files\Blender Foundation\Blender\2.79\scripts\addons\cycles\shader
+shader Cell
+param	color	ColorIn	0 0 0		%read{14,14} %write{2147483647,-1}
+param	color	ColorOut	0 0 0		%read{16,16} %write{2147483647,-1}
+param	float	Hardness	0.5		%read{7,7} %write{2147483647,-1}
+param	float	Size	0.5		%read{10,12} %write{2147483647,-1}
+param	vector	Direction	0 0 1		%read{1,1} %write{2147483647,-1}
+param	normal	Normal	0 0 0		%read{4,4} %write{0,0} %initexpr
+oparam	float	Mask	0		%read{2147483647,-1} %write{18,18}
+oparam	color	Output	0 0 0		%read{2147483647,-1} %write{17,17}
+global	normal	N	%read{0,0} %write{2147483647,-1}
+local	vector	d	%read{5,5} %write{3,3}
+local	float	dif	%read{13,13} %write{5,5}
+local	float	s	%read{10,11} %write{9,9}
+local	float	value	%read{14,18} %write{13,13}
+const	string	$const1	"world"		%read{3,3} %write{2147483647,-1}
+temp	vector	$tmp1	%read{3,3} %write{1,1}
+const	string	$const2	"transform"		%read{2,2} %write{2147483647,-1}
+const	string	$const3	"common"		%read{3,3} %write{2147483647,-1}
+temp	normal	$tmp2	%read{5,5} %write{4,4}
+const	float	$const5	0		%read{8,9} %write{2147483647,-1}
+const	float	$const7	2		%read{9,9} %write{2147483647,-1}
+temp	float	$tmp3	%read{9,9} %write{8,8}
+const	float	$const9	1		%read{7,15} %write{2147483647,-1}
+const	string	$const10	"clamp"		%read{6,6} %write{2147483647,-1}
+temp	float	$tmp4	%read{8,8} %write{7,7}
+temp	float	$tmp5	%read{13,13} %write{10,10}
+temp	float	$tmp6	%read{12,12} %write{11,11}
+temp	float	$tmp7	%read{13,13} %write{12,12}
+temp	color	$tmp8	%read{17,17} %write{14,14}
+temp	float	$tmp9	%read{16,16} %write{15,15}
+temp	color	$tmp10	%read{17,17} %write{16,16}
+code Normal
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/nprkit/shaders//CNPRK_Shading.osl:16
+#     
+	assign		Normal N 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/nprkit/shaders//CNPRK_Shading.osl"} %line{16} %argrw{"wr"}
+code ___main___
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/nprkit/shaders//CNPRK_Shading.osl:22
+#     float dif = dot(normalize(Normal),d);
+	normalize	$tmp1 Direction 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/nprkit/shaders//CNPRK_Shading.osl"} %line{22} %argrw{"wr"}
+	functioncall	$const2 4 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:242
+#         // total internal reflection
+	transformv	d $const3 $const1 $tmp1 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{242} %argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/nprkit/shaders//CNPRK_Shading.osl:23
+#     
+	normalize	$tmp2 Normal 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/nprkit/shaders//CNPRK_Shading.osl"} %line{23} %argrw{"wr"}
+	dot		dif $tmp2 d 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/nprkit/shaders//CNPRK_Shading.osl:25
+#     float value = smoothstep(s + Size,1-s + Size,dif);
+	functioncall	$const10 9 	%line{25} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (sign)
+	min		$tmp4 Hardness $const9 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp3 $tmp4 $const5 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/nprkit/shaders//CNPRK_Shading.osl:25
+#     float value = smoothstep(s + Size,1-s + Size,dif);
+	smoothstep	s $const5 $const7 $tmp3 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/nprkit/shaders//CNPRK_Shading.osl"} %line{25} %argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/nprkit/shaders//CNPRK_Shading.osl:26
+#     Output = (ColorIn * value + ColorOut * (1-value));
+	add		$tmp5 s Size 	%line{26} %argrw{"wrr"}
+	sub		$tmp6 $const9 s 	%argrw{"wrr"}
+	add		$tmp7 $tmp6 Size 	%argrw{"wrr"}
+	smoothstep	value $tmp5 $tmp7 dif 	%argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/nprkit/shaders//CNPRK_Shading.osl:27
+#     Mask = value;
+	mul		$tmp8 ColorIn value 	%line{27} %argrw{"wrr"}
+	sub		$tmp9 $const9 value 	%argrw{"wrr"}
+	mul		$tmp10 ColorOut $tmp9 	%argrw{"wrr"}
+	add		Output $tmp8 $tmp10 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/nprkit/shaders//CNPRK_Shading.osl:28
+# }
+	assign		Mask value 	%line{28} %argrw{"wr"}
+	end

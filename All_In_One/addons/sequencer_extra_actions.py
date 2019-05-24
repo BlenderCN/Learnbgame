@@ -24,7 +24,7 @@ bl_info = {
     'version': (2, 0),
     'blender': (2, 6, 2, 1),
     'api': 44812,
-    'category': 'Sequencer',
+    "category": "Learnbgame",
     'location': 'Sequencer',
     'description': 'Collection of extra operators to manipulate VSE strips',
     'wiki_url': 'http://wiki.blender.org/index.php/'

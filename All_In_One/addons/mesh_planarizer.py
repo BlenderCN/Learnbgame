@@ -26,7 +26,7 @@ bl_info = {
     'location': "View3D > Specials (W-key)",
     'warning': "",
     'description': "Corrects non-planar quads",
-    'category': 'Mesh',
+    "category": "Learnbgame",
     'wiki_url': "http://wiki.blender.org/index.php/Extensions:2.6/Py/"
             "Scripts/Modeling/Planarizer",
     'support': 'COMMUNITY'}

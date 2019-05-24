@@ -29,7 +29,7 @@ bl_info = {
     "api": 41226,
     "location": "File > Import > Minecraft",
     "warning": '', # used for warning icon and text in addons panel
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 #import os

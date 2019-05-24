@@ -4,7 +4,7 @@ bl_info = {
     "name": "Tungsten",
     "author": "Aaron Griffith <aargri@gmail.com>",
     "description": "Tungsten renderer integration",
-    "category": "Render",
+    "category": "Learnbgame",
     "blender": (2, 6, 7),
     "location": "Info Header (engine dropdown)",
 }

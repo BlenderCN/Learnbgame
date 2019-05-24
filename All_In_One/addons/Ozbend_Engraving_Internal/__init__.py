@@ -6,7 +6,7 @@
 
 bl_info = {
     'name': 'Engraving_Internal',
-    'category': 'Render',
+    "category": "Learnbgame",
     'author': 'Nikita Akimov',
     'version': (1, 1, 0),
     'blender': (2, 79, 0),

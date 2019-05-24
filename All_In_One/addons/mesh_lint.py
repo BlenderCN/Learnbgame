@@ -25,7 +25,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Modeling/MeshLint",
     "tracker_url": "https://github.com/ryanjosephking/meshlint/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # For the ./mkblenderwiki script

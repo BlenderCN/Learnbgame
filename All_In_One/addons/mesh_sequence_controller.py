@@ -27,7 +27,7 @@ bl_info = {
     "blender": (2, 79, 0),
     "location": "View 3D > Add > Mesh > Mesh Sequence",
     "warning": "",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
     "wiki_url": "https://github.com/neverhood311/Stop-motion-OBJ",
     "tracker_url": "https://github.com/neverhood311/Stop-motion-OBJ/issues"
 }

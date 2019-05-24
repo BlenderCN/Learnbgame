@@ -28,7 +28,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/Northern3D/blender_quack/",
     "tracker_url": "https://github.com/Northern3D/blender_quack/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

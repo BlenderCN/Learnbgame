@@ -14,7 +14,7 @@ import math
 # bl_info = {
 #     "name": "Jimmy_pie_uv",
 #     "description": "Jimmy's UV select mode pie menu",
-#     "category": "3D View",
+#     "category": "Learnbgame",
 # }
 
 
@@ -37,7 +37,7 @@ import math
 #     'warning': '',
 #     'wiki_url': '',
 #     'tracker_url': 'http://chaosdesk.blog123.fc2.com/',
-#     "category": "Learnbgame"
+#     "category": "Learnbgame",
 }
 
 MAX_LOCATION = 1

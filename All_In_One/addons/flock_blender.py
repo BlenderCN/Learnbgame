@@ -51,7 +51,7 @@ bl_info = {
     "version": (1, 0, 0),
     "blender": (2, 7, 8),
     "description": "Flock Animation",
-    "category": "Development"
+    "category": "Learnbgame",
 }
 
 

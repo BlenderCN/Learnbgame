@@ -28,7 +28,7 @@ bl_info = {
     "blender": (2, 79, 0),
     "location": "",
     "description": "Blender Python Nodes extension that provides a python library for creating Python Node systems",
-    "category": "System",
+    "category": "Learnbgame",
     "tracker_url": "",
     "wiki_url": ""
 }

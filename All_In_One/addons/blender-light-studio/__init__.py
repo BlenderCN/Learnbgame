@@ -26,7 +26,7 @@ bl_info = {
     "blender": (2, 79, 0),
     "location": "View3D -> Tools -> Light Studio",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
     

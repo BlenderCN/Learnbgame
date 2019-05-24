@@ -23,7 +23,7 @@ bl_info = {
     'author': 'Bartek Skorupa',
     'version': (1, 0),
     'blender': (2, 6, 4),
-    'category': 'Object',
+    "category": "Learnbgame",
     "warning": "",
     }
 

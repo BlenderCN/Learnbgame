@@ -14,7 +14,7 @@ bl_info = {
     "blender": (2, 73, 0),
     "location": "File > Import",
     "warning": "", # used for warning icon and text in addons panel
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 # Temporary stl file

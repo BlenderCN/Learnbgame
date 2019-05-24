@@ -9,7 +9,7 @@ bl_info= {
     "wiki_url": "https://github.com/paxetgloria/bLandscapeTools/wiki",
     "tracker_url": "https://github.com/paxetgloria/bLandscapeTools/issues",
     "support" : "COMMUNITY",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import sys

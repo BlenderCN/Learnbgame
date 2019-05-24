@@ -36,7 +36,7 @@ bl_info = {
 	"warning": "",
 	"wiki_url": "http://blenderthings.blogspot.com/",
 	"tracker_url": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 

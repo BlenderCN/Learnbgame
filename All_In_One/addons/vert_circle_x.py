@@ -22,7 +22,7 @@ bl_info = {
 	"location": "alt + Y or object.vert_circle_x",
 	"description": "need loop tool addon circle",
 	"warning": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 import bpy

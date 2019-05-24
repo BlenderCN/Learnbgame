@@ -37,7 +37,7 @@ bl_info = {
     'location': 'Nodes',
     'warning': '',
     'wiki_url': '',
-    'category': 'Material'
+    "category": "Learnbgame",
 }
 
 

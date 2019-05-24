@@ -10,7 +10,7 @@ bl_info = {
     "location": "View3D > Add > Mesh",
     "description": "Add mesh defined by XYZ RGB function",
     "warning": "",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
 }
 
 import bpy

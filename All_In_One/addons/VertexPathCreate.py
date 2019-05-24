@@ -6,7 +6,7 @@
 bl_info = {
     "name": "Adorn Mesh Vertices With Path Tool",
     "author": "Josh Sheldon",
-    "category": "Add Curve",
+    "category": "Learnbgame",
     "blender": (2, 7, 9)    
 }
 

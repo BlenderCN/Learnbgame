@@ -8,7 +8,7 @@ bl_info = {
     "location": "Operator Search Menu (type 'Zen')",
     "description": "(Un)Clear the area headers for the current screen",
     "warning": "",
-    "category": "System"
+    "category": "Learnbgame",
 }
 
 """(Un)Clear the area headers for the current screen"""

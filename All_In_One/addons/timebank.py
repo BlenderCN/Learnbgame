@@ -26,7 +26,7 @@ bl_info = {
     "support": "COMMUNITY",
     "wiki_url": "https://github.com/rn9dfj3/timebank/wiki",
     "tracker_url": "https://github.com/rn9dfj3/timebank/issues",
-    "category": "System"
+    "category": "Learnbgame",
 }
 OPTION_SAVED = {'REGISTER'}
 PROCESSES = ("modeling", "skinning", "texturing",

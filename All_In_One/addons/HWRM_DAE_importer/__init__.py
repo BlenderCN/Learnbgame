@@ -13,7 +13,7 @@ bl_info = {
 	"blender": (2, 76, 0),
 	"location": "File > Import-Export > Dae",
 	"description": "Import HWRM DAE files",
-	"category": "Import-Export",
+	"category": "Learnbgame",
 }
 
 

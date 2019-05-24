@@ -14,7 +14,7 @@ bl_info = {
     "wiki_url": "",
     "tracker_url": "",
     "support": 'TESTING',
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 modules = ops.modules + [exporter, ui]

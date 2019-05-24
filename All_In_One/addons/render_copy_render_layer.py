@@ -23,7 +23,7 @@ bl_info = {
     'blender': (2, 7, 0),
     'location': "Render Layers Panel",
     'description': 'Copy, Paste or Duplicate Render Layer',
-    'category': 'Render',
+    "category": "Learnbgame",
     "warning": "When pasting render layer to different file double check material and light override",
     'wiki_url': "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Render/Copy_Render_Layer",
     'tracker_url': "http://projects.blender.org/tracker/index.php?func=detail&aid=34109&group_id=153&atid=467",

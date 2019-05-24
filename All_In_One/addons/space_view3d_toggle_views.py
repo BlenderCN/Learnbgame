@@ -25,7 +25,8 @@ bl_info = {
     'description': 'toggle Camera from PERSP view to SIDE view and back (depends of camera vector)',
     'wiki_url': 'http://evgeniyzaitsev.com/2012/05/29/3d-view-toggle-views/',
     'tracker_url': 'None',
-    'category': '3D View'}
+    "category": "Learnbgame",
+}
 
 import bpy
 import mathutils

@@ -29,7 +29,7 @@ bl_info = {
     'author': 'Alexander Meißner',
     'version': (1, 0, 0),
     'blender': (2, 80, 0),
-    'category': 'Curve',
+    "category": "Learnbgame",
     'location': 'View3D > EditMode > (w) Specials',
     'wiki_url': 'http://lichtso.github.io/curve_cad/',
     'tracker_url': 'https://github.com/lichtso/curve_cad/issues'

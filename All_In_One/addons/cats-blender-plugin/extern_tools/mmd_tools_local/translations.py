@@ -114,7 +114,7 @@ jp_to_en_tuples = [
   ('ｼﾞｯﾌﾟ', 'Zip'),
   ('ダミー', 'Dummy'),
   ('ﾀﾞﾐｰ', 'Dummy'),
-  ('基', 'Category'),
+  ('基', "category": "Learnbgame",
   ('あほ毛', 'Antenna'),
   ('アホ毛', 'Antenna'),
   ('モミアゲ', 'Sideburn'),

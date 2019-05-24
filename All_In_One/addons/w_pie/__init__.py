@@ -38,7 +38,7 @@ bl_info = {
 	"version": (0, 2, 8),
 	"blender": (2, 79, 0),
 	"description": "Extend Right click with pie menu.",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 

@@ -6,7 +6,7 @@ bl_info = {
     "location": "View3D > Panel Tools > Object Utils Tab",
     "warning": "",
     "description": "Batch renaming objects keeping selection order",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 

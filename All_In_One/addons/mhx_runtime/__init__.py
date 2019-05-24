@@ -38,7 +38,8 @@ bl_info = {
     'description': 'Runtime support for characters imported with the MakeHuman eXchange format (.mhx)',
     'warning': '',
     'wiki_url': 'http://makehuman.org/doc/node/makehuman_blender.html',
-    'category': 'MakeHuman'}
+    "category": "Learnbgame",
+}
 
 
 if "bpy" in locals():

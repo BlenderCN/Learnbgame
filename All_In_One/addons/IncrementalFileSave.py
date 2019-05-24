@@ -18,7 +18,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "",
     "tracker_url": "http://blenderlounge.fr/forum/viewtopic.php?f=18&t=736",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 ##############

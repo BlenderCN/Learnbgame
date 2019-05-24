@@ -35,7 +35,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/appleseedhq/blenderseed/wiki",
     "tracker_url": "https://github.com/appleseedhq/blenderseed/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

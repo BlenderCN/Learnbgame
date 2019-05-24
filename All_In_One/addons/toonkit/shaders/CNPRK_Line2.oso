@@ -1,0 +1,337 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.7.5
+# options: -o C:\Users\vitor\AppData\Local\Temp\tmps91d90sq.oso -IC:\Program Files\Blender Foundation\Blender\2.79\scripts\addons\cycles\shader
+shader LineRender
+param	int	UseGlobal	1		%read{2147483647,-1} %write{2147483647,-1}
+param	int	Relative	0		%read{27,27} %write{2147483647,-1}
+param	int	UseSiluette	1		%read{2147483647,-1} %write{2147483647,-1}
+param	int	UseObj	1		%read{99,99} %write{2147483647,-1}
+param	int	UseNormal	1		%read{61,61} %write{2147483647,-1}
+param	int	UseDepth	1		%read{72,72} %write{2147483647,-1}
+param	int	Mode	0		%read{17,17} %write{2147483647,-1}
+param	int	UseAllPasses	0		%read{0,0} %write{2147483647,-1}
+param	color	VertexMask	1 1 1		%read{47,54} %write{2147483647,-1}
+param	float	Size	0.1		%read{31,37} %write{2147483647,-1} %derivs
+param	float	NormalLimit	0.89999998		%read{66,66} %write{2147483647,-1}
+param	float	DepthLimit	0.1		%read{93,93} %write{2147483647,-1}
+param	float	ClampDistance	999		%read{44,44} %write{2147483647,-1}
+param	float	ClampAngle	0.40000001		%read{90,90} %write{2147483647,-1}
+oparam	color	Result	1 1 1		%read{25,116} %write{25,116}
+global	point	P	%read{11,92} %write{2147483647,-1} %derivs
+global	normal	N	%read{64,64} %write{2147483647,-1}
+local	string	selfName	%read{7,116} %write{6,6}
+local	float	L	%read{25,116} %write{12,12} %derivs
+local	vector	normHit	%read{25,116} %write{25,116}
+local	vector	normP	%read{25,116} %write{25,116}
+local	point	CamPos	%read{25,116} %write{10,10} %derivs
+local	vector[4]	angles	%read{25,116} %write{13,22} %derivs
+local	int	___346_i	%read{25,116} %write{24,116} %derivs
+local	vector	___347_rasterPoint	%read{25,116} %write{25,116} %derivs
+local	vector	___347_finalPoint	%read{25,116} %write{25,116} %derivs
+local	int	___347_ray	%read{25,116} %write{25,116}
+local	color	___351_col	%read{25,116} %write{25,116}
+local	vector	___354_rayDirection	%read{2147483647,-1} %write{25,116}
+local	float	___354_a	%read{25,116} %write{25,116}
+local	string	___356_nameHit	%read{25,116} %write{25,116}
+const	int	$const1	0		%read{0,112} %write{2147483647,-1}
+temp	int	$tmp1	%read{1,1} %write{0,0}
+temp	int	$tmp2	%read{3,3} %write{2,2}
+const	string	$const2	"camera"		%read{2,41} %write{2147483647,-1}
+const	int	$const3	1		%read{3,116} %write{2147483647,-1}
+temp	int	$tmp3	%read{4,4} %write{3,3}
+temp	int	$tmp4	%read{2147483647,-1} %write{6,6}
+const	string	$const4	"geom:name"		%read{6,101} %write{2147483647,-1}
+temp	int	$tmp5	%read{8,8} %write{7,7}
+const	string	$const5	"-"		%read{7,108} %write{2147483647,-1}
+const	float	$const6	0		%read{10,10} %write{2147483647,-1}
+temp	point	$tmp6	%read{12,12} %write{11,11} %derivs
+const	string	$const7	"world"		%read{11,41} %write{2147483647,-1}
+const	vector	$const8	1 0 0		%read{13,13} %write{2147483647,-1}
+const	vector	$const9	-1 0 0		%read{14,14} %write{2147483647,-1}
+const	vector	$const10	0 1 0		%read{15,15} %write{2147483647,-1}
+const	int	$const11	2		%read{15,82} %write{2147483647,-1}
+const	vector	$const12	0 -1 0		%read{16,16} %write{2147483647,-1}
+const	int	$const13	3		%read{16,22} %write{2147483647,-1}
+temp	int	$tmp11	%read{18,18} %write{17,17}
+const	vector	$const14	1 1 0		%read{19,19} %write{2147483647,-1}
+const	vector	$const15	-1 1 0		%read{20,20} %write{2147483647,-1}
+const	vector	$const16	1 -1 0		%read{21,21} %write{2147483647,-1}
+const	vector	$const17	-1 -1 0		%read{22,22} %write{2147483647,-1}
+temp	int	$tmp16	%read{25,116} %write{25,116}
+temp	int	$tmp17	%read{23,116} %write{24,116}
+temp	vector	$tmp18	%read{25,116} %write{25,116} %derivs
+temp	vector	$tmp19	%read{25,116} %write{25,116} %derivs
+temp	vector	$tmp20	%read{25,116} %write{25,116} %derivs
+temp	vector	$tmp21	%read{25,116} %write{25,116} %derivs
+const	float	$const18	0.0099999998		%read{32,38} %write{2147483647,-1}
+temp	vector	$tmp22	%read{25,116} %write{25,116} %derivs
+temp	vector	$tmp23	%read{25,116} %write{25,116} %derivs
+temp	vector	$tmp24	%read{25,116} %write{25,116} %derivs
+temp	vector	$tmp25	%read{25,116} %write{25,116} %derivs
+temp	vector	$tmp26	%read{25,116} %write{25,116} %derivs
+temp	vector	$tmp27	%read{25,116} %write{25,116} %derivs
+temp	vector	$tmp28	%read{25,116} %write{25,116} %derivs
+temp	vector	$tmp29	%read{25,116} %write{25,116} %derivs
+const	string	$const19	"mindist"		%read{45,45} %write{2147483647,-1}
+temp	float	$tmp30	%read{25,116} %write{25,116}
+temp	int	$tmp31	%read{25,116} %write{25,116}
+const	color	$const20	-1 -1 -1		%read{49,49} %write{2147483647,-1}
+temp	int	$tmp32	%read{2147483647,-1} %write{25,116}
+const	string	$const21	"trace"		%read{50,101} %write{2147483647,-1}
+const	string	$const22	"Col"		%read{50,50} %write{2147483647,-1}
+temp	float	$tmp33	%read{25,116} %write{25,116}
+const	int	$const23	-1		%read{52,52} %write{2147483647,-1}
+temp	int	$tmp34	%read{25,116} %write{25,116}
+temp	int	$tmp35	%read{25,116} %write{25,116}
+temp	float	$tmp36	%read{25,116} %write{25,116}
+const	float	$const24	0.30000001		%read{55,55} %write{2147483647,-1}
+temp	int	$tmp37	%read{25,116} %write{25,116}
+temp	color	$tmp38	%read{25,116} %write{25,116}
+temp	int	$tmp39	%read{2147483647,-1} %write{25,116}
+const	string	$const25	"N"		%read{62,74} %write{2147483647,-1}
+temp	int	$tmp40	%read{25,116} %write{25,116}
+temp	float	$tmp41	%read{25,116} %write{25,116}
+temp	vector	$tmp42	%read{25,116} %write{25,116}
+temp	normal	$tmp43	%read{25,116} %write{25,116}
+temp	int	$tmp44	%read{25,116} %write{25,116}
+temp	color	$tmp45	%read{25,116} %write{25,116}
+temp	int	$tmp46	%read{2147483647,-1} %write{25,116}
+const	string	$const26	"P"		%read{73,73} %write{2147483647,-1}
+temp	int	$tmp47	%read{2147483647,-1} %write{25,116}
+temp	vector	$tmp48	%read{25,116} %write{25,116}
+temp	float	$tmp49	%read{25,116} %write{25,116}
+temp	float	$tmp50	%read{25,116} %write{25,116}
+temp	float	$tmp51	%read{25,116} %write{25,116}
+temp	float	$tmp52	%read{25,116} %write{25,116}
+temp	float	$tmp53	%read{25,116} %write{25,116}
+temp	float	$tmp54	%read{25,116} %write{25,116}
+temp	float	$tmp55	%read{25,116} %write{25,116}
+temp	float	$tmp56	%read{25,116} %write{25,116}
+temp	float	$tmp57	%read{25,116} %write{25,116}
+temp	vector	$tmp58	%read{25,116} %write{25,116}
+temp	vector	$tmp59	%read{25,116} %write{25,116}
+temp	float	$tmp60	%read{25,116} %write{25,116}
+temp	int	$tmp61	%read{25,116} %write{25,116}
+temp	int	$tmp62	%read{25,116} %write{25,116}
+temp	float	$tmp63	%read{25,116} %write{25,116}
+temp	int	$tmp64	%read{25,116} %write{25,116}
+temp	color	$tmp65	%read{25,116} %write{25,116}
+const	string	$const27	""		%read{100,100} %write{2147483647,-1}
+temp	int	$tmp66	%read{2147483647,-1} %write{25,116}
+temp	int	$tmp67	%read{25,116} %write{25,116}
+temp	int	$tmp68	%read{25,116} %write{25,116}
+temp	color	$tmp69	%read{25,116} %write{25,116}
+temp	int	$tmp70	%read{25,116} %write{25,116}
+temp	int	$tmp71	%read{25,116} %write{25,116}
+temp	int	$tmp72	%read{2147483647,-1} %write{25,116}
+code ___main___
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:26
+#         if(raytype("camera") != 1){
+	eq		$tmp1 UseAllPasses $const1 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl"} %line{26} %argrw{"wrr"}
+	if		$tmp1 6 6 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:27
+#             return;
+	raytype		$tmp2 $const2 	%line{27} %argrw{"wr"}
+	neq		$tmp3 $tmp2 $const3 	%argrw{"wrr"}
+	if		$tmp3 6 6 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:28
+#         }
+	exit	%line{28}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:33
+#     if(startswith(selfName,"-")){
+	getattribute	$tmp4 $const4 selfName 	%line{33} %argrw{"wrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:34
+#         return;
+	startswith	$tmp5 selfName $const5 	%line{34} %argrw{"wrr"}
+	if		$tmp5 10 10 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:35
+#     }
+	exit	%line{35}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:45
+#     L = length((vector)transform("world", "camera", P));
+	point		CamPos $const2 $const6 $const6 $const6 	%line{45} %argrw{"wrrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:46
+#     
+	transform	$tmp6 $const7 $const2 P 	%line{46} %argrw{"wrrr"}
+	length		L $tmp6 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:53
+# 
+	aassign		angles $const1 $const8 	%line{53} %argrw{"wrr"}
+	aassign		angles $const3 $const9 	%argrw{"wrr"}
+	aassign		angles $const11 $const10 	%argrw{"wrr"}
+	aassign		angles $const13 $const12 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:55
+#         angles[0] = vector(1,1,0);
+	eq		$tmp11 Mode $const3 	%line{55} %argrw{"wrr"}
+	if		$tmp11 23 23 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:56
+#         angles[1] = vector(-1,1,0);
+	aassign		angles $const1 $const14 	%line{56} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:57
+#         angles[2] = vector(1,-1,0);
+	aassign		angles $const3 $const15 	%line{57} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:58
+#         angles[3] = vector(-1,-1,0);
+	aassign		angles $const11 $const16 	%line{58} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:59
+#     }
+	aassign		angles $const13 $const17 	%line{59} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:62
+#         vector rasterPoint;
+	for		$tmp17 25 27 115 117 	%line{62} %argrw{"r"}
+	assign		___346_i $const1 	%argrw{"wr"}
+	arraylength	$tmp16 angles 	%argrw{"wr"}
+	lt		$tmp17 ___346_i $tmp16 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:65
+#             rasterPoint = transform("world","camera",P-CamPos) + angles[i] * Size * 0.01 ;
+	if		Relative 34 41 	%line{65} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:66
+#         }
+	sub		$tmp19 P CamPos 	%line{66} %argrw{"wrr"}
+	transformv	$tmp18 $const7 $const2 $tmp19 	%argrw{"wrrr"}
+	aref		$tmp20 angles ___346_i 	%argrw{"wrr"}
+	mul		$tmp21 $tmp20 Size 	%argrw{"wrr"}
+	mul		$tmp22 $tmp21 $const18 	%argrw{"wrr"}
+	add		___347_rasterPoint $tmp18 $tmp22 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:69
+#         }
+	sub		$tmp24 P CamPos 	%line{69} %argrw{"wrr"}
+	transformv	$tmp23 $const7 $const2 $tmp24 	%argrw{"wrrr"}
+	aref		$tmp25 angles ___346_i 	%argrw{"wrr"}
+	mul		$tmp26 $tmp25 Size 	%argrw{"wrr"}
+	mul		$tmp27 $tmp26 $const18 	%argrw{"wrr"}
+	mul		$tmp28 $tmp27 L 	%argrw{"wrr"}
+	add		___347_rasterPoint $tmp23 $tmp28 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:72
+#         
+	transformv	___347_finalPoint $const2 $const7 ___347_rasterPoint 	%line{72} %argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:74
+#        ray = trace(CamPos, normalize(finalPoint), "mindist", L-ClampDistance);
+	assign		___347_ray $const1 	%line{74} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:75
+# 
+	normalize	$tmp29 ___347_finalPoint 	%line{75} %argrw{"wr"}
+	sub		$tmp30 L ClampDistance 	%argrw{"wrr"}
+	trace		___347_ray CamPos $tmp29 $const19 $tmp30 	%argrw{"wrrrr"} %argderivs{1,2}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:77
+#             
+	if		___347_ray 111 112 	%line{77} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:79
+#                 color col = color(-1,-1,-1);
+	isconnected	$tmp31 VertexMask 	%line{79} %argrw{"wr"}
+	if		$tmp31 61 61 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:80
+#                 getmessage("trace","Col",col);
+	assign		___351_col $const20 	%line{80} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:81
+#                 if(col[0] != -1){
+	getmessage	$tmp32 $const21 $const22 ___351_col 	%line{81} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:82
+#                     Result *= distance(VertexMask,col) > 0.3 ? 0 : 1;
+	compref		$tmp33 ___351_col $const1 	%line{82} %argrw{"wrr"}
+	neq		$tmp34 $tmp33 $const23 	%argrw{"wrr"}
+	if		$tmp34 61 61 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:83
+#                 }
+	distance	$tmp36 VertexMask ___351_col 	%line{83} %argrw{"wrr"}
+	gt		$tmp37 $tmp36 $const24 	%argrw{"wrr"}
+	if		$tmp37 58 59 	%argrw{"r"}
+	assign		$tmp35 $const1 	%argrw{"wr"}
+	assign		$tmp35 $const3 	%argrw{"wr"}
+	assign		$tmp38 $tmp35 	%argrw{"wr"}
+	mul		Result Result $tmp38 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:87
+#                 getmessage("trace","N",normHit);
+	if		UseNormal 72 72 	%line{87} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:88
+#                 Result *= distance(normalize(normHit),normalize(N)) > NormalLimit ? 0 : 1;
+	getmessage	$tmp39 $const21 $const25 normHit 	%line{88} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:89
+#             }
+	normalize	$tmp42 normHit 	%line{89} %argrw{"wr"}
+	normalize	$tmp43 N 	%argrw{"wr"}
+	distance	$tmp41 $tmp42 $tmp43 	%argrw{"wrr"}
+	gt		$tmp44 $tmp41 NormalLimit 	%argrw{"wrr"}
+	if		$tmp44 69 70 	%argrw{"r"}
+	assign		$tmp40 $const1 	%argrw{"wr"}
+	assign		$tmp40 $const3 	%argrw{"wr"}
+	assign		$tmp45 $tmp40 	%argrw{"wr"}
+	mul		Result Result $tmp45 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:92
+#                 getmessage("trace","P",normP);
+	if		UseDepth 99 99 	%line{92} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:93
+#                 getmessage("trace","N",normHit);
+	getmessage	$tmp46 $const21 $const26 normP 	%line{93} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:94
+#                 vector rayDirection = normalize(vector(normP[0]-CamPos[0],normP[1]-CamPos[1],normP[2]-CamPos[2]));
+	getmessage	$tmp47 $const21 $const25 normHit 	%line{94} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:95
+#                 float a = (dot(normalize(normHit),normalize(finalPoint)));
+	compref		$tmp49 normP $const1 	%line{95} %argrw{"wrr"}
+	compref		$tmp50 CamPos $const1 	%argrw{"wrr"}
+	sub		$tmp51 $tmp49 $tmp50 	%argrw{"wrr"}
+	compref		$tmp52 normP $const3 	%argrw{"wrr"}
+	compref		$tmp53 CamPos $const3 	%argrw{"wrr"}
+	sub		$tmp54 $tmp52 $tmp53 	%argrw{"wrr"}
+	compref		$tmp55 normP $const11 	%argrw{"wrr"}
+	compref		$tmp56 CamPos $const11 	%argrw{"wrr"}
+	sub		$tmp57 $tmp55 $tmp56 	%argrw{"wrr"}
+	vector		$tmp48 $tmp51 $tmp54 $tmp57 	%argrw{"wrrr"}
+	normalize	___354_rayDirection $tmp48 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:96
+#                 if(abs(a) > ClampAngle){
+	normalize	$tmp58 normHit 	%line{96} %argrw{"wr"}
+	normalize	$tmp59 ___347_finalPoint 	%argrw{"wr"}
+	dot		___354_a $tmp58 $tmp59 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:97
+#                     Result *= distance(normP,P) > DepthLimit ? 0 : 1 ;
+	abs		$tmp60 ___354_a 	%line{97} %argrw{"wr"}
+	gt		$tmp61 $tmp60 ClampAngle 	%argrw{"wrr"}
+	if		$tmp61 99 99 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:98
+#                 }
+	distance	$tmp63 normP P 	%line{98} %argrw{"wrr"}
+	gt		$tmp64 $tmp63 DepthLimit 	%argrw{"wrr"}
+	if		$tmp64 96 97 	%argrw{"r"}
+	assign		$tmp62 $const1 	%argrw{"wr"}
+	assign		$tmp62 $const3 	%argrw{"wr"}
+	assign		$tmp65 $tmp62 	%argrw{"wr"}
+	mul		Result Result $tmp65 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:102
+#                 string nameHit = "";
+	if		UseObj 111 111 	%line{102} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:103
+#                 getmessage("trace","geom:name",nameHit);
+	assign		___356_nameHit $const27 	%line{103} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:104
+#                 Result *= (nameHit != selfName) ? 0 : 1 ;
+	getmessage	$tmp66 $const21 $const4 ___356_nameHit 	%line{104} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:105
+#                 if(startswith(nameHit,"-")){
+	neq		$tmp68 ___356_nameHit selfName 	%line{105} %argrw{"wrr"}
+	if		$tmp68 105 106 	%argrw{"r"}
+	assign		$tmp67 $const1 	%argrw{"wr"}
+	assign		$tmp67 $const3 	%argrw{"wr"}
+	assign		$tmp69 $tmp67 	%argrw{"wr"}
+	mul		Result Result $tmp69 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:106
+#                     Result = 1;
+	startswith	$tmp70 ___356_nameHit $const5 	%line{106} %argrw{"wrr"}
+	if		$tmp70 111 111 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:107
+#                 }
+	assign		Result $const3 	%line{107} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:113
+#         }
+	assign		Result $const1 	%line{113} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:116
+#     }
+	eq		$tmp71 Result $const1 	%line{116} %argrw{"wrr"}
+	if		$tmp71 115 115 	%argrw{"r"}
+	exit
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_Line2.osl:62
+#         vector rasterPoint;
+	assign		$tmp72 ___346_i 	%line{62} %argrw{"wr"}
+	add		___346_i ___346_i $const3 	%argrw{"wrr"}
+	end

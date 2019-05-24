@@ -10,7 +10,7 @@ bl_info = {
     "support": "TESTING",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Animation"
+    "category": "Learnbgame",
 }
 
 # Translation dictionary

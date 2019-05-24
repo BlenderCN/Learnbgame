@@ -26,7 +26,7 @@ bl_info = {
     "warning": "",  # used for warning icon and text in addons panel
     "wiki_url": "http://pyroevil.com/molecular-script-docs/",
     "tracker_url": "http://pyroevil.com/contact/" ,
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 import bpy

@@ -4,7 +4,7 @@ bl_info = {
     "version": (1,0,0),
     "blender": (2, 7, 9),
     "description":"",
-    "category": "Mesh",
+    "category": "Learnbgame",
     "support": "TESTING",
     "location": "VIEW 3D > EDIT MODE > MESH",
 }

@@ -18,7 +18,7 @@ bl_info = {
     "blender" : (2, 80, 0),
     "location" : "View3D",
     "warning" : "",
-    "category" : "Generic"
+    "category": "Learnbgame",
 }
 
 import bpy

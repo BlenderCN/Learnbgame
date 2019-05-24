@@ -16,7 +16,7 @@ from bpy.props import (
     PointerProperty
 )
 
-bl_info = {"name": "BriZide", "category": "Learnbgame"
+bl_info = {"name": "BriZide", "category": "Learnbgame",
 }
 
 

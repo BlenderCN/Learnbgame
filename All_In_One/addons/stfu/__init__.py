@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Procedural Planets",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
     "author": "Rafael",
     "version": (0, 0),
     }

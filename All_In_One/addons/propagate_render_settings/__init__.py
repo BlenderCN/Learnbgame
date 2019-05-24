@@ -29,7 +29,7 @@ bl_info = {
                 "Scripts/Render/Propagate Render Settings",
     "tracker_url": "http://projects.blender.org/tracker/index.php?"\
                    "func=detail&aid=25832",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

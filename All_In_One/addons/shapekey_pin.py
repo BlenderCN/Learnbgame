@@ -27,7 +27,7 @@ bl_info = {
     "location": "View3D > UI panel > Shapekey pinning",
     "description": "Shapekey pinning",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy, os, mathutils

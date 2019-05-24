@@ -7,7 +7,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://forums.uberent.com/forums/viewtopic.php?f=72&t=47964",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

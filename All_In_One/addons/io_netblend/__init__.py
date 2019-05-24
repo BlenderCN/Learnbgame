@@ -79,7 +79,8 @@ bl_info = {
     'description': 'A compact and minimal blend format.',
     'wiki_url': 'http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts',
     'tracker_url': 'http://projects.blender.org/tracker/',
-    'category': 'Import-Export'}
+    "category": "Learnbgame",
+}
 
 # ExportHelper is a helper class, defines filename and
 # invoke() function which calls the file selector.

@@ -35,7 +35,7 @@ bl_info = {
     "description": "Sketch and generate meshes with the grease pencil",
     "warning": "Beta",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

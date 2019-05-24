@@ -13,7 +13,7 @@ bl_info = {
     "blender": (2, 77, 0),
     'location': 'Properties > Camera > Lens > CameraTools',
     "description": "CameraTools",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 

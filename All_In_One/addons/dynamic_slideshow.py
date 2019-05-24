@@ -9,7 +9,7 @@ bl_info = {
     "wiki_url": "https://github.com/hapit/blender_addon_dynamic_slideshow/wiki/Documentation",
     'tracker_url': 'https://github.com/hapit/blender_addon_dynamic_slideshow/issues',
     'support': 'COMMUNITY',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

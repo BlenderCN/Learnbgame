@@ -28,7 +28,8 @@ bl_info = {
     'wiki_url': 'https://github.com/jasperges/pose_thumbnails/blob/master/README.md',
     'tracker_url': 'https://github.com/jasperges/pose_thumbnails/issues',
     'support': 'COMMUNITY',
-    'category': 'Animation'}
+    "category": "Learnbgame",
+}
 
 
 if 'bpy' in locals():

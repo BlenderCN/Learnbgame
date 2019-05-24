@@ -11,7 +11,7 @@ bl_info = {
 	"location": "Propertys > Render",
 	"warning": "Early alpha",
 	"support": "TESTING",
-	"category": "Render"
+	"category": "Learnbgame",
 }
 
 class SheepitPropertys(bpy.types.PropertyGroup):

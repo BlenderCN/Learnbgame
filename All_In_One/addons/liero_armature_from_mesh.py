@@ -9,7 +9,7 @@ bl_info = {
     "blender": (2, 5, 7),
     "location": "View3D > Tool Shelf",
     "description": "Grows a chain of bones from edge loops in geometry",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy, bmesh, mathutils

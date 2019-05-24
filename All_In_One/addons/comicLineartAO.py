@@ -49,7 +49,7 @@ def comicLineartAOout():
 ################### add on setting section###########################
 bl_info = {
     "name": "Convert Comic Lineart AO",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

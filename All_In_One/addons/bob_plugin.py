@@ -19,7 +19,7 @@ bl_info = {
     "location": "File > Import-Export",
     "warning": "",
     "wiki_url": "",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 BOB_FILE_ID = 45623

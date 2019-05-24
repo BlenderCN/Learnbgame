@@ -6,7 +6,7 @@ bl_info = {
 	"location": "File > Import > Animation File (.bob)",
 	"description": "Import Spellforce Animation Data",
 	"warning": "totally untested",
-	"category": "Import-Export",
+	"category": "Learnbgame",
 }
 
 """

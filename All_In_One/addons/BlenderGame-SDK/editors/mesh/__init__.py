@@ -7,5 +7,5 @@ bl_info = {
     "description": "",
     "warning": "",
     "wiki_url": "",
-    "category": "System",
+    "category": "Learnbgame",
     }

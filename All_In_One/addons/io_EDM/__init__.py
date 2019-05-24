@@ -6,7 +6,7 @@ bl_info = {
   'version': (0,3,0),
   'blender': (2, 78, 0),
   'location': "File > Import/Export > .EDM Files",
-  'category': 'Import-Export',
+  "category": "Learnbgame",
 }
 
 try:

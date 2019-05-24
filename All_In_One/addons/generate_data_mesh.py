@@ -8,7 +8,7 @@ bl_info = {
     "version": (0, 0, 1),
     "blender": (2, 78, 0),
     "location": "Text Editor",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 
@@ -19,7 +19,7 @@ extend_template = '''bl_info = {
 "blender": (2, 75, 0),
 "location": "View3D > Add > Mesh > New Object",
 "description": "Add %s Object",
-"category": "Add Mesh",
+"category": "Learnbgame",
 }
 
 %s

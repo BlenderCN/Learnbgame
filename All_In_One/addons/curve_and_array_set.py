@@ -6,7 +6,7 @@ bl_info = {
     "blender": (2, 76, 0),
     'location': 'View3D > Tool Shelf > Create > Curve & Array Set',
     "description": "Curve & Array Modifier Setting. 1.Curves → 2.object  select ",
-    "category": "3D View",
+    "category": "Learnbgame",
 }
 
 

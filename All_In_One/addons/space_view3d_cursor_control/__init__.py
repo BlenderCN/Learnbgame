@@ -27,7 +27,7 @@ bl_info = {
     "warning": "Buggy, may crash other add-ons",
     "wiki_url": "http://blenderpythonscripts.wordpress.com/",
     "tracker_url": "https://developer.blender.org/maniphest/task/edit/form/2/",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

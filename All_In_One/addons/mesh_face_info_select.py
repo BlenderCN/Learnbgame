@@ -29,7 +29,7 @@ bl_info = {
     "tracker_url": "http://projects.blender.org/tracker/index.php?"\
         "func=detail&aid=31926",
     "support": 'TESTING',
-    "category": "Mesh"
+    "category": "Learnbgame",
 }
 
 # Written by CoDEmanX for frivus

@@ -2,7 +2,7 @@ bl_info = {
 	"name": "CQTC Herramientas",
 	"description": "Herramientas varias",
 	"location": "Properties > Render > CQTC Herramientas",
-	"category": "CosoQueTeCoso",
+	"category": "Learnbgame",
     "version": (1, 0),
     "blender": (2, 78, 0),
 }

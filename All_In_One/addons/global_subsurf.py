@@ -25,7 +25,7 @@ bl_info = {
     "blender": (2, 65, 0),
     "location": "3D View -> Properties Panel -> Global Subsurf Level",
     "warning": "",
-    "category": "Object"
+    "category": "Learnbgame",
 }
 
 import bpy

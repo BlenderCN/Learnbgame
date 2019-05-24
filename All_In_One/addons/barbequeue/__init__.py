@@ -26,7 +26,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "", # Github Wiki
     "tracker_url": "", # Github issues
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

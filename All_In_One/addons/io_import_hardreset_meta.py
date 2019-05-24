@@ -25,7 +25,7 @@ bl_info= {
 	"location": "File > Import > HardReset Model (.meta)",
 	"description": "Imports Hard Reset .meta/.rhm models",
 	"warning": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 	
 import bpy, os, struct

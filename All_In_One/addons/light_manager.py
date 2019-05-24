@@ -30,7 +30,7 @@ bl_info = {
     "location": "View3D",
     "warning": "This is a not-tested-program",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 

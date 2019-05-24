@@ -23,7 +23,7 @@ bl_info = {
     "location": "File > Import-Export",
     "version": (1, 3, 0),
     "support": 'COMMUNITY',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

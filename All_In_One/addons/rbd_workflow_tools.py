@@ -7,7 +7,7 @@ bl_info = {
     "location": "Operator Search Menu (Tools start with RBD)",
     "description": "Suite of Tools to abet RBD Workflow",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }   
 
 """Suite of Tools to abet RBD Workflow"""

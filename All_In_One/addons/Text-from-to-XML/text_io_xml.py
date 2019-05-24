@@ -7,7 +7,7 @@ bl_info = {
     "discription" : "copys an text objectx from-to xml file",
     "wiki_url" : " https://github.com/chebhou",
     "tracker_url" : "https://github.com/chebhou",
-    "category" : "Import-Export"
+    "category": "Learnbgame",
     }
 
 import bpy

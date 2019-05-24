@@ -32,7 +32,7 @@ bl_info = {
     "description": "Import and Export S3D files which are used in the Frozenbyte Storm3D engine",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

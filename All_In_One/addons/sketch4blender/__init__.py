@@ -5,7 +5,7 @@ bl_info = {
         "version" : (1, 0, 0),
         "location" : "File > Import-Export",
         "description" : "Import Sketch (*.sk) Files into Blender objects",
-        "category" : "Import-Export",
+        "category": "Learnbgame",
 }
 
 import os

@@ -37,7 +37,7 @@ bl_info = {
     "wiki_url": "http://sourceforge.net/apps/"\
         "mediawiki/ifcopenshell/index.php",
     "tracker_url": "http://sourceforge.net/tracker/?group_id=543113",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

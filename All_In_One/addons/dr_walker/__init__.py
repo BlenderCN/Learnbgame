@@ -28,7 +28,7 @@ bl_info = {
     "description": "Transform path animation into walks",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }    
 
 """

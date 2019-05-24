@@ -1,7 +1,7 @@
 bl_info = {
     'name': 'Application Debugging Flags',
     'description': 'User interface to the application debug flags (bpy.app.debug[_*])',
-    'category': 'Debugging',
+    "category": "Learnbgame",
 }
 
 

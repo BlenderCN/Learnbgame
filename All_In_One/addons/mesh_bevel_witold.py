@@ -26,7 +26,7 @@ bl_info = {
     "blender": (2, 5, 7),
     "api": 36147,
     "location": "View3D >Specials (W-key)",
-    "category": "Mesh",
+    "category": "Learnbgame",
     "description": "Bevels selected edges",
     "warning": "",
     "wiki_url": "http://airplanes3d.net/scripts-252_e.xml",

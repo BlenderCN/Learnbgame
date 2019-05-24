@@ -20,7 +20,7 @@
 
 bl_info = {
 	"name": "Rig Switcher",
-	"category": "Cenda Tools",
+	"category": "Learnbgame",
 	"author": "Cenek Strichel",
 	"description": "Switching between Riggigng modes",
 	"location": "Add to Input: wm.call_menu + VIEW3D_MT_rig_switcher_menu & Armature Setting: Rig Switcher Settings",

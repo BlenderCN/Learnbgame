@@ -8,7 +8,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/birddiq/blender-BNR",
     "tracker_url": "https://github.com/birddiq/blender-BNR/issues",
-    "category": "Rigging",
+    "category": "Learnbgame",
     }
 
 ##TODO: Add a way to detect child bone chains by defining which axis it faces via xml

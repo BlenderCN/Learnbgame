@@ -24,7 +24,7 @@ bl_info = {
 	'location': 'Properties > Render > Bake',
 	"warning": "Required 2 add-ons",
 	"description": "multi object bake Macro. Create target object & bake object , bake texture",
-	"category": "Render",
+	"category": "Learnbgame",
 }
 
 

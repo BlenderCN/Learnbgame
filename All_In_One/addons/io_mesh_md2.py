@@ -38,7 +38,7 @@ bl_info = {
 	"location": "File > Import/Export > Quake2 MD2",
 	"warning": "", # used for warning icon and text in addons panel
 	"support": 'COMMUNITY',
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 import bpy

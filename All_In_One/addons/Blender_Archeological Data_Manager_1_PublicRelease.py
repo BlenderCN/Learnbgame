@@ -48,7 +48,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/KoreTeknology/Blender-Addon-Archeological-data-Manager",
     "tracker_url": "https://github.com/KoreTeknology/Blender-Addon-Archeological-data-Manager",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

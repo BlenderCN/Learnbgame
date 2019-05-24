@@ -39,7 +39,7 @@ bl_info = {
     "warning": "only handy for python addon programming",
     "wiki_url": "https://github.com/littleneo/Blender-addon-dependencies/blob/master/addon/addon_dependencies/README",
     "tracker_url": "https://github.com/littleneo/Blender-addon-dependencies/issues",
-    "category": "Development"
+    "category": "Learnbgame",
 }
 
 import os

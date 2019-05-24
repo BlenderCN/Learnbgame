@@ -28,7 +28,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "",
     "tracker_url": "https://github.com/MadMinstrel/meltdown/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import code

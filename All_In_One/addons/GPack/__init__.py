@@ -7,7 +7,7 @@ bl_info = {
 	"description": "UV packing game",
 	"warning": "",
 	"wiki_url": "http://www.blendercam.blogspot.com",
-	"category": "Object"
+	"category": "Learnbgame",
 }
 
 

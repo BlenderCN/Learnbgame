@@ -6,7 +6,8 @@ bl_info = {
     'location': 'View3D > Tools > Animation > Boomsmash',
     'description': 'Have quick access for opengl previews without the need to change your render settings',
     'warning': "It's very first beta! The addon is in progress!",
-    'category': 'Animation'}
+    "category": "Learnbgame",
+}
 
 import os.path
 

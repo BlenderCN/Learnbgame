@@ -5,7 +5,7 @@ bl_info = {
 	"location": "File > Import-Export",
 	"description": "Import Bayonetta mesh data.",
 	"warning": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 # To support reload properly, try to access a package var,

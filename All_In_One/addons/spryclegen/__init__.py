@@ -15,7 +15,7 @@ bl_info = {
     "wiki_url": "https://github.com/GoranM/sprycle/wiki",
     "tracker_url": "https://github.com/GoranM/sprycle/issues",
     "support": 'COMMUNITY',
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 modules = ops.modules + [exporter, preview, ui]

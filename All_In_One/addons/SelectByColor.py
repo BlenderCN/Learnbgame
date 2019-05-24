@@ -8,7 +8,7 @@ bl_info = {
     'blender': (2, 6, 1),
     'location': 'View3D > Specials > Select By Color',
     'description': 'Select all faces with the same vertex color of the selected face',
-    'category': 'Mesh'
+    "category": "Learnbgame",
 }
 
 def select_by_color(obj, threshold=0.01):

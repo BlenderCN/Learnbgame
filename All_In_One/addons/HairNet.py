@@ -14,7 +14,7 @@ bl_info = {
         "version": (0,5,0),
         "blender": (2,7,4),
         "location": "Properties",
-        "category": "Particle",
+        "category": "Learnbgame",
         "description": "Creates a particle hair system with hair guides from mesh edges which start at marked seams.",
         "wiki_url": "http://wiki.blender.org/index.php?title=Extensions:2.6/Py/Scripts/Objects/HairNet",
         "tracker_url":"http://projects.blender.org/tracker/index.php?func=detail&aid=35062&group_id=153&atid=467"

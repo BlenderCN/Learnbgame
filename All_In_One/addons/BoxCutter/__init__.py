@@ -23,7 +23,8 @@ bl_info = {
     'blender': (2, 80, 0),
     'location': 'View3D',
     'wiki_url': 'https://masterxeon1001.com/2018/11/30/boxcutter-7-2-8-betascythe/',
-    'category': 'Learnbgame'}
+    "category": "Learnbgame",
+}
 
 from . addon import preference, property
 from . addon.interface import operator, panel, toolbar, keymap

@@ -25,7 +25,7 @@ bl_info = {
     "version": (1, 0, 20160229),
     "blender": (2, 76, 0),
     "warning": "Bang! Bang! That awful sound.",
-    "category": ":",
+    "category": "Learnbgame",
     "location": "File > External Data > Velvet Revolver",
     "support": "COMMUNITY"}
 

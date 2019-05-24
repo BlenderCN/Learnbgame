@@ -11,7 +11,7 @@ bl_info = {
     "version": (2, 0, 0),
     "location": "File > Import-Export",
     "description": "Import Spore .gmdl, .gmsh, .bmdl and .rw4 model formats. Exports .rw4 format.",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 import sporemodder

@@ -37,7 +37,7 @@ bl_info = {
     "description": "Collection of experimental and undocumented MakeHuman tools",
     "warning": "",
     #'wiki_url': "http://www.makehuman.org/doc/node.???.html",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # To support reload properly, try to access a package var, if it's there, reload everything

@@ -5,7 +5,7 @@ bl_info = {
     "version": (0, 2),
     "blender": (2, 79, 0),
     "location": "3D View > Quick Search > Weight Normals",
-    "category": "Object",
+    "category": "Learnbgame",
     "support": "COMMUNITY"
 }
 

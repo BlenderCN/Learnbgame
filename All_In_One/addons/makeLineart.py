@@ -109,7 +109,7 @@ def objectJoin():
 ################### add on setting section###########################
 bl_info = {
     "name": "Conver Comic Lineart",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

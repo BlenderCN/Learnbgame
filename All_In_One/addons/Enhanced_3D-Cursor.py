@@ -28,7 +28,7 @@ bl_info = {
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/"
         "Scripts/3D_interaction/Enhanced_3D_Cursor",
     "tracker_url": "https://github.com/dairin0d/enhanced-3d-cursor/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """

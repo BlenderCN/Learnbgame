@@ -10,7 +10,7 @@ bl_info = {
     "description": "Creates a flattened version of the mesh as a shape key",
     "warning": "Experimental: Everyone who has ever died did so while alive",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

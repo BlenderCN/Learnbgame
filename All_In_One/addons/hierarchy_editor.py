@@ -33,7 +33,7 @@ bl_info = {
     "author"     : "Tamir Lousky",
     "version"    : (0, 0, 1),
     "blender"    : (2, 67, 0),
-    "category"   : "Object",
+    "category": "Learnbgame",
     "location"   : "3D View >> Header",
     "wiki_url"   : "",
     "tracker_url": "",

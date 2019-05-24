@@ -30,7 +30,7 @@ bl_info = {
     "description": "Adds curve with endpoints on two arbitrary polygons",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if 'bpy' in globals():

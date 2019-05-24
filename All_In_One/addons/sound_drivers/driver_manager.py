@@ -11,7 +11,7 @@ bl_info = {
     "tracker_url": "",
     "icon": 'DRIVER',
     "support": 'TESTING',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 import bpy
 from bpy.types import AddonPreferences

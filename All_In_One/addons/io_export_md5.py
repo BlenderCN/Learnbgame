@@ -19,7 +19,7 @@ bl_info = { # changed from bl_addon_info in 2.57 -mikshaw
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.5/Py/"\
         "Scripts/File_I-O/idTech4_md5",
     "tracker_url": "http://www.katsbits.com/",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }	# changed from "Import/Export" -katsbits
 
 import bpy,struct,math,os,time,sys,mathutils

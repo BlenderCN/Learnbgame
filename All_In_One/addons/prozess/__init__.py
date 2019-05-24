@@ -7,7 +7,7 @@ bl_info = {
     "api": 35011,
     "location": "File > Export",
     "description": "Dump scene as python source",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # To support reload properly, try to access a package var, if it's there, reload everything

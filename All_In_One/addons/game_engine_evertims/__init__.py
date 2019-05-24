@@ -27,7 +27,7 @@ bl_info = {
     'tracker_url': "https://evertims.github.io/#contact",
     "wiki_url": "https://evertims.github.io",
     'support': 'COMMUNITY',
-    "category": "Game Engine"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

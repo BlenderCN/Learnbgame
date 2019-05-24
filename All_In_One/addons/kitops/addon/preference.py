@@ -241,7 +241,7 @@ class KitOps(AddonPreferences):
 
         row = layout.row()
         row.label(text='Toolshelf category:')
-        row.prop(self, 'category', text='')
+        row.prop(self, "category": "Learnbgame",
 
         split = layout.split()
         split.label(text='Popup location:')

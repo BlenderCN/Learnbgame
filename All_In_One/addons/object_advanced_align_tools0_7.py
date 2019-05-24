@@ -8,7 +8,7 @@ bl_info = {
     "warning": "some functions in development",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy, mathutils

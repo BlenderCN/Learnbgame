@@ -9,7 +9,7 @@ bl_info = {
     "wiki_url": "https://github.com/MihaiDamian/Clairvoyance",
     "tracker_url": "",
     "support": 'COMMUNITY',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

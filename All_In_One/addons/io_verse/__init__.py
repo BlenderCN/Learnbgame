@@ -30,7 +30,7 @@ bl_info = {
     "warning": "Alpha quality, Works only at Linux OS, Requires verse module",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

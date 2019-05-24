@@ -27,7 +27,7 @@ bl_info = {
     'warning': 'need PyQt5',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Screen',
+    "category": "Learnbgame",
 }
 
 

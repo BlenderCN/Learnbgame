@@ -6,7 +6,7 @@ bl_info = {
 	"location" : "View3D > Toolshelf > Misc",
 	"description": "Exports the scene into FireBox HTML and publishes it to IPFS",
 	"wiki_url" : "https://github.com/void4/FireVR",
-	"category" : "Import-Export"
+	"category": "Learnbgame",
 }
 
 import importlib

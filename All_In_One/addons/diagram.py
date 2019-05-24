@@ -26,7 +26,7 @@ bl_info = {
     "warning": "This add-on is in alpha development",
     "location": "File > Import > Table data (.csv)",
     "tracker_url": "https://github.com/Lominean/Blender-Diagram/labels/bug",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 import bpy

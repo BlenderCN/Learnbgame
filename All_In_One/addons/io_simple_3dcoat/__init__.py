@@ -28,7 +28,7 @@ bl_info = {
     "Scripts/Import-Export/3dcoat_applink",
     "tracker_url": "https://projects.blender.org/tracker/?"
     "func=detail&aid=24446",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

@@ -7,13 +7,13 @@ from bpy.types import PropertyGroup, UIList, Panel, Operator
 
 d = [('NONE', """{'edges': [], 'nodes': {}}"""),
      ('GROUND', """{'edges': [{'source': 0, 'dest': 1}], 'nodes': {0:
-      {'frameparent': (None,), 'posx': 0.0, 'category': ('SETTAG', ['INPUT',
+      {'frameparent': (None,), 'posx': 0.0, "category": "Learnbgame",
       'GRAPH', 'AND', 'OR', 'QUERYTAG', 'SETTAG', 'VARIABLE', 'MAP', 'OUTPUT',
       'EVENT', 'PYTHON', 'PRINT']), 'posy': 0.0, 'settings':
       OrderedDict([('Tag', 'Ground'), ('Use threshold', True), ('Threshold',
       0.0), ('Action', ('Add', ('Add', 'Remove'))), ('Value', 1)]),
       'UID': 0, 'displayname': 'settag Ground', 'type': 'LogicNode'},
-      1: {'frameparent': (None,), 'posx': -192.0, 'category': ('INPUT',
+      1: {'frameparent': (None,), 'posx': -192.0, "category": "Learnbgame",
       ['INPUT', 'GRAPH', 'AND', 'OR', 'QUERYTAG', 'SETTAG', 'VARIABLE',
       'MAP', 'OUTPUT', 'EVENT', 'PYTHON', 'PRINT']), 'posy': -0.9, 'settings':
       OrderedDict([('Input', '1')]), 'UID': 1, 'displayname': '1',

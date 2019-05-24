@@ -9,7 +9,7 @@ bl_info = {
     "wiki_url": "http://www.petartasev.com/modding/rise-of-nations/blender-addon/",
     "tracker_url": "https://github.com/Ryder25/Rise-of-Nations/issues",
     "support": 'COMMUNITY',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # TODO: Figure out how reloading works

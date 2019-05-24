@@ -8,7 +8,7 @@ bl_info = {
     "description": "Addon allows to import Source Engine maps",
     #"wiki_url": "http://www.barneyparker.com/blender-json-import-export-plugin",
     #"tracker_url": "http://www.barneyparker.com/blender-json-import-export-plugin",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 from . import BSP_reader,BSP_DATA,BSP_import
 if "bpy" in locals():

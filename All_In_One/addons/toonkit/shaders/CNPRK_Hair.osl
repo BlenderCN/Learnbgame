@@ -1,0 +1,16 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles v1.1
+/*   Matcap Mapper
+/*------------------------------------------*/
+
+#include "stdosl.h"
+#include "node_texture.h"
+
+shader HairTexture(
+	float Scale = 5.0,
+	point UV = P,
+	output float Fac = 0.0)
+{
+	point p = UV * Scale * vector(1,0,1);
+    Fac = noise_turbulence(p, 1, 1);
+}

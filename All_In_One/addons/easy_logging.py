@@ -21,7 +21,7 @@ bl_info = {
     "version": (0,0,1),
     "blender": (2, 7, 0, 0),
     "api": 44539,
-    "category": "Sequencer",
+    "category": "Learnbgame",
     "location": "Sequencer > UI > Easy Logging",
     "description": "Logging system for the Video Sequence Editor",
     "warning": "",

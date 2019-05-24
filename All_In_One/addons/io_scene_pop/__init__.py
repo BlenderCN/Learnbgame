@@ -5,7 +5,7 @@ bl_info = {
     "blender": (2, 72, 0),
     "location": "File > Import > PoP map",
     "description": "Import PoP map",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

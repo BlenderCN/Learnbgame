@@ -26,7 +26,7 @@ bl_info = {
     "location": "Node Editor",
     "description": "Nodes for setting up modifiers in objects",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import os

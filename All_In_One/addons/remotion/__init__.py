@@ -32,7 +32,7 @@ bl_info = {
     "description": "Fix motion animation using machine learning prediction",
     "warning": "",
     "support": "TESTING",
-    "category": "Animation",
+    "category": "Learnbgame",
 }
 
 # Panels ----------------------------------------

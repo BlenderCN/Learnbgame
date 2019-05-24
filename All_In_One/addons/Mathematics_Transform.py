@@ -4,7 +4,7 @@ bl_info = {
     "version": (0, 1,2),
     "blender": (2, 70, 0),
     "location": "View 3D > Properties Shelf",
-    "category": "3D View"
+    "category": "Learnbgame",
 }
 import bpy
 from bpy_extras.view3d_utils import location_3d_to_region_2d, region_2d_to_vector_3d

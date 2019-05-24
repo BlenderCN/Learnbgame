@@ -77,7 +77,7 @@ bl_info = \
         "blender" : (2, 7, 8),
         "location" : "Properties > Font",
         "description" : "load a font by matching a pattern",
-        "category" : "Object",
+        "category": "Learnbgame",
     }
 
 class Failure(Exception) :

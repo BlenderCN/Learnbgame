@@ -6,7 +6,7 @@ bl_info = {
     "description": "View camera frustum",
     "warning": "",
     "wiki_url": "",
-    "category": "Camera",
+    "category": "Learnbgame",
     }
 
 

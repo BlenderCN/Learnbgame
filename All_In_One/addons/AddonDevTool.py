@@ -23,7 +23,7 @@ bl_info = {
     "location": "Properties shelf of the text editor",
     "warning": "",
     "support": "COMMUNITY",
-    "category": "Text Editor"
+    "category": "Learnbgame",
 }
 
 import bpy

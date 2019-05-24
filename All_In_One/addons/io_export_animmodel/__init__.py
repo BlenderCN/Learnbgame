@@ -6,7 +6,7 @@ bl_info = {
 	"location":     "File > Import-Export",
 	"description":  "Export into AnimModel format",
 	"warning": "",
-	"category":     "Import-Export"
+	"category": "Learnbgame",
 }
 		
 import bpy

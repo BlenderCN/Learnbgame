@@ -27,7 +27,7 @@ bl_info = {
     "location":    "File > Import-Export",
     "description": "Exporter for Cyan Worlds' Plasma Engine",
     "warning":     "beta",
-    "category":    "System",
+    "category": "Learnbgame",
 }
 
 

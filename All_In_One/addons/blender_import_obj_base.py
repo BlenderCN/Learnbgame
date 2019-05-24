@@ -3,7 +3,7 @@ bl_info = {
 	'author': 'Khemakhem, Feras',
 	'version': (0, 1),
 	'blender': (2, 6, 7),
-	'category': 'Import-Export',
+	"category": "Learnbgame",
 	'location': 'File > Import/Export',
 	'wiki_url': ''}
 

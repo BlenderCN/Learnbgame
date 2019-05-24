@@ -6,7 +6,7 @@ bl_info = {
     'blender': (2, 76, 0),
     'warning': "",
     'location': 'View3D > Ctrl + Shift + F',
-    'category': 'Material'
+    "category": "Learnbgame",
 }
 
 

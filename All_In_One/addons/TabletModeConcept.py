@@ -7,7 +7,7 @@ bl_info = {
     "description": "Enables a Tablet Mode for Blender",
     "warning": "Proof of Concept only!",
     "wiki_url": "",
-    "category": "User Interface",
+    "category": "Learnbgame",
     }
 
 

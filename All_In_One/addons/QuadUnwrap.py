@@ -36,7 +36,8 @@ bl_info = {
     'blender': (2, 7, 6),
     #'location': 'UVs > Normalize UVs',
     'url': 'http://wahooney.net',
-    'category': 'UV'}
+    "category": "Learnbgame",
+}
 
 import bpy
 import bmesh

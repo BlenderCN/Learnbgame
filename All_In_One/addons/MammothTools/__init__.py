@@ -9,7 +9,7 @@ bl_info = {
 	'wiki_url': 'https://github.com/BlazingMammothGames/mammoth_blender_tools',
 	'tracker_url': 'https://github.com/BlazingMammothGames/mammoth_blender_tools/issues',
 	'support': 'TESTING',
-	'category': 'Game Engine'
+	"category": "Learnbgame",
 }
 
 if "bpy" in locals():

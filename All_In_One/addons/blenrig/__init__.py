@@ -40,7 +40,8 @@ bl_info = {
     'description': 'BlenRig 5 rigging system',
     'wiki_url': 'https://cloud.blender.org/p/blenrig/56966411c379cf44546120e8',
     'tracker_url': 'https://gitlab.com/jpbouza/BlenRig/issues',
-    'category': 'Rigging'}
+    "category": "Learnbgame",
+}
 
 
 import bpy

@@ -22,7 +22,7 @@ bl_info = {
     "version": (0,0,4),
     "blender": (2, 5, 9),
     "api": 40101,
-    "category": "Add Curve",
+    "category": "Learnbgame",
     "location": "View3d > Tools",
     "description": "Tool to build graphics from csv databases,",
     "warning": "",

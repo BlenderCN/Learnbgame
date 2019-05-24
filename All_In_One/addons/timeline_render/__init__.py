@@ -9,7 +9,7 @@
 
 bl_info = {
     'name': 'TimeLineRender',
-    'category': 'Render',
+    "category": "Learnbgame",
     'author': 'Nikita Akimov',
     'version': (1, 0, 0),
     'blender': (2, 79, 0),

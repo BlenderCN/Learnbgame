@@ -28,7 +28,7 @@ bl_info = {
                 'View3D > Ctrl + Shift + L',
     'description': 'Lock vertices coordinates in mesh edit mode',
     'wiki_url': 'https://github.com/chromoly/blender_lock_coords',
-    'category': 'Mesh',
+    "category": "Learnbgame",
 }
 
 

@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Blender Navigator",
-    "category": "Scene",
+    "category": "Learnbgame",
 }
 
 import bpy

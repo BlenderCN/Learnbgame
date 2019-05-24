@@ -26,7 +26,8 @@ bl_info = {
     'api': 34765,
     'location': 'View3D Header > Object Menu > Transform',
     'description': '',
-    'category': 'Object'}
+    "category": "Learnbgame",
+}
 
 
 #import math

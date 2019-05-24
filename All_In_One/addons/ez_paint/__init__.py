@@ -32,7 +32,8 @@ bl_info = {
     'description': 'Several improvements for PAINT MODE',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Paint'}
+    "category": "Learnbgame",
+}
 
 
 import bgl, blf, bpy, mathutils, os, time, copy, math

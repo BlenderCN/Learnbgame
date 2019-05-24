@@ -30,7 +30,7 @@ bl_info = {
                 "",
     "tracker_url": "https://github.com/Kupoman/blendergltf/issues",
     "support": 'COMMUNITY',
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 

@@ -19,7 +19,7 @@ import bpy
 bl_info = {
     'name': 'Vertex Lattice Deform',
     'description': 'Adds a menu in the operator panel for quickly creating, applying, and cleaning up vertex lattice deformation modifiers',
-    'category': '3D View',
+    "category": "Learnbgame",
     'author': 'Nikko Miu',
     'version': (1,0,3),
     'support': 'COMMUNITY',

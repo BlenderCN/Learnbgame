@@ -7,7 +7,7 @@ bl_info = {
     "description": "Toggle interface's translation",
     "warning": "",
     "wiki_url": "stan.stz@gmail.com",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

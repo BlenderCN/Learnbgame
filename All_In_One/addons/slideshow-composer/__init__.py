@@ -6,7 +6,7 @@ bl_info = {
     "blender": (2, 78, 0),
     "location": "sequencer",    
     "wiki_url": "",    
-    "category": "VSE"
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -22,7 +22,7 @@ bl_info = {
     'warning': '',
     'wiki_url': 'https://github.com/omichel/blender-webots-exporter/wiki',
     'support': 'COMMUNITY',
-    'category': 'Import-Export',
+    "category": "Learnbgame",
 }
 
 if 'bpy' in locals():

@@ -16,7 +16,7 @@ bl_info = {
     "description": "Apply edit mode operations in sculpt mode",
     "warning": "",
     "wiki_url": "",
-    "category": "Sculpting"
+    "category": "Learnbgame",
 }
 
 import bpy

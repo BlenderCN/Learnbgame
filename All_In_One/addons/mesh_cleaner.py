@@ -15,7 +15,7 @@ bl_info = {
     "blender": (2, 79, 0),
     "location": "View3D > Tools > Mesh Cleaner",
     "description": "Clean the mesh",
-    "category": "Mesh Tool",
+    "category": "Learnbgame",
     }
 
 import bpy

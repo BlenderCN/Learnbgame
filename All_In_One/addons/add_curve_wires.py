@@ -38,7 +38,7 @@ bl_info = {
     "description": "Creates wires between two objects.",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

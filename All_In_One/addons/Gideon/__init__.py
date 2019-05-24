@@ -6,7 +6,7 @@ bl_info = {
     "author" : "Curtis Andrus",
     "version": (1, 0),  
     "blender": (2, 6, 6),  
-    "category": "Render"
+    "category": "Learnbgame",
 }
 
 from . import render, ui, properties

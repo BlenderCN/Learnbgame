@@ -9,7 +9,7 @@ bl_info = {
     "wiki_url": "https://github.com/vvoovv/blender-geo/wiki/Import-SRTM-(.hgt)",
     "tracker_url": "https://github.com/vvoovv/blender-geo/issues",
     "support": "COMMUNITY",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 import bpy, mathutils

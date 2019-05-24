@@ -24,7 +24,8 @@ bl_info = {
     'location': 'Operator Search',
     'description': 'create production package for tube',
     'wiki_url': 'http://wiki.tube.freefac.org/wiki/sparklesharit',
-    'category': 'Scene'}
+    "category": "Learnbgame",
+}
 
 __bpydoc__ = """
 Sparkleshart

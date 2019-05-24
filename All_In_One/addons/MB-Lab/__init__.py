@@ -50,7 +50,7 @@ bl_info = {
     "warning": "",
     'wiki_url': "https://github.com/animate1978/MB-Lab/wiki",
     'tracker_url': 'https://github.com/animate1978/MB-Lab/issues',
-    "category": "Characters"
+    "category": "Learnbgame",
 }
 
 mblab_humanoid = humanoid.Humanoid(bl_info["version"])

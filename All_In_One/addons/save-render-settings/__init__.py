@@ -5,7 +5,7 @@ from .render_settings_ui import *
 bl_info = {
     "name": "Render Settings",
     "description": "Export and import JSON render settings",
-    "category": "Render"
+    "category": "Learnbgame",
 }
 
 

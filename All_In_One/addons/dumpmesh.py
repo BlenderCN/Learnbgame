@@ -29,7 +29,7 @@ bl_info = {
 	"warning": "",
 	"wiki_url": "https://github.com/varkenvarken/blenderaddons/blob/master/dumpmesh.py",
 	"tracker_url": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 # to prevent problems with all sorts of quotes and stuff, the code that will be included in the final output is here base64 encoded

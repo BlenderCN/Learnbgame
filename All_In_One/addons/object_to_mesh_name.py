@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Object to mesh name",
-    "category": "Object",
+    "category": "Learnbgame",
     "blender": (2, 80, 0),
 }
 

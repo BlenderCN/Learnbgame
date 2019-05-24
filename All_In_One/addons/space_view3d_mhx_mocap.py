@@ -45,7 +45,7 @@ bl_info = {
     "description": "Mocap tool for MHX rig",
     "warning": "",
     'wiki_url': 'http://sites.google.com/site/makehumandocs/blender-export-and-mhx/mocap-tool',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """

@@ -7,7 +7,7 @@ bl_info = {
 	"description": "Aligns objects side by side by their bounding boxes",
 	"warning": "Changes objects origins",
 	"wiki_url": "",
-	"category": "Object"
+	"category": "Learnbgame",
 }
 
 import bpy

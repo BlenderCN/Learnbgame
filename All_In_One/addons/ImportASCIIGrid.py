@@ -15,7 +15,7 @@ bl_info = {
   "version": (1,0,0),
   "location": "File>Import-Export",
   "description": "Import meshes in ASCII Grid file format",
-  "category": "Import-Export"
+  "category": "Learnbgame",
 }
 
 import bpy

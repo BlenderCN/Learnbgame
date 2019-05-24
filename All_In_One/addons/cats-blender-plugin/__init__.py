@@ -26,7 +26,7 @@
 
 bl_info = {
     'name': 'Cats Blender Plugin',
-    'category': '3D View',
+    "category": "Learnbgame",
     'author': 'GiveMeAllYourCats',
     'location': 'View 3D > Tool Shelf > CATS',
     'description': 'A tool designed to shorten steps needed to import and optimize models into VRChat',

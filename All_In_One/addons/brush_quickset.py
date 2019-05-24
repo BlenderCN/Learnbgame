@@ -23,7 +23,7 @@ bl_info = {
     "blender": (2, 7, 6),
     "location": "User Preferences > Input > assign 'brush.modal_quickset'",
     "warning": "Automatically assigns brush.modal_quickset to RMB in sculpt mode",
-    "category": "Paint"
+    "category": "Learnbgame",
 }
 
 # brush_quickset.py

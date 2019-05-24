@@ -8,7 +8,7 @@ bl_info = {
     "location": "File > Import",
     "description": "Import to the MikuMikuDance Format (.pmd)",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

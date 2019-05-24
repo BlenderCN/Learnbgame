@@ -32,7 +32,7 @@ bl_info = {
 	"blender": (2, 5, 7),
 	"location": "View3D > Add > Mesh ",
 	"url": "http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/Add_Teapot",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 '''
 import bpy, mathutils, io, operator, functools

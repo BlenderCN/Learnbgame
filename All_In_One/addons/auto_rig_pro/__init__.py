@@ -26,7 +26,7 @@ bl_info = {
 	"location": "3D View > Properties> Auto-Rig Pro",
 	"description": "Automatic rig creation based on reference bones. Picker panel, smart features, various tools",
 	"tracker_url": "https://blendermarket.com/products/auto-rig-pro?ref=46",	
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 } 
 
 

@@ -24,7 +24,8 @@ bl_info = {
     "location"    : "View3D > Tools > AssemblMe",
     "wiki_url"    : "https://www.blendermarket.com/products/assemblme",
     "tracker_url" : "https://github.com/bblanimation/assemblme/issues",
-    "category"    : "Animation"}
+    "category": "Learnbgame",
+   }
 
 # System imports
 import os

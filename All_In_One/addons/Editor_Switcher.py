@@ -28,7 +28,7 @@ bl_info = {
     "location": "Window",
     "warning": "This addon is still in development.",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 

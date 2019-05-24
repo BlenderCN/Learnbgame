@@ -3,7 +3,7 @@
 
 bl_info = {
     "name": "Export Actions to JSON",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 import bpy

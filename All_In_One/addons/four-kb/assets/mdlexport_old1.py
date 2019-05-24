@@ -10,7 +10,7 @@ bl_info = {
     'blender': (2, 79, 0),
     'location': "File > Export",
     'description': "Export Four-kb model",
-    'category': 'Import-Export'
+    "category": "Learnbgame",
 }
 
 

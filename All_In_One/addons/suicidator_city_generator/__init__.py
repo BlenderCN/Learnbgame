@@ -31,7 +31,7 @@ bl_info = {
 	"api": 45996,
 	"location": "View3D > Tool Shelf > 3D Nav",
 	"description": "Build large and detailed cities very easily. Buy the Pro version for even more details and options.",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 	

@@ -28,7 +28,7 @@ bl_info = {
     "warning": "",
     "wiki_url": ("http://www.godotengine.org"),
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

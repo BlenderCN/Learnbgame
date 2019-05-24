@@ -31,7 +31,7 @@ bl_info = {
     "description": "Import LEGO Dat/Ldr/Mpd into Blender; export Blender to LEGO Dat",
     "warning": "",
     "wiki_url": "https://github.com/retsyo/io_scene_legoldraw",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

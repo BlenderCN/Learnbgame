@@ -26,7 +26,7 @@ bl_info = {
 	'location': 'View3D > Tools Panel > Tools Tab',
 	'description': 'Make non manifold object for 3d print',
 	'wiki_url': 'https://github.com/agapas/make-solid#readme',
-	'category': 'Object',
+	"category": "Learnbgame",
 }
 
 

@@ -10,7 +10,7 @@ bl_info = {
     "version": (0, 0, 11),
     "location": "File > Import > LAMMPS format",
     "description": "Import LAMMPS data format",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -19,7 +19,7 @@
 
 bl_info = {
 	"name": "Export Material to .VMT",
-	"category": "Import-Export",
+	"category": "Learnbgame",
 	"author": "lucasvinbr (lucasvinbr@gmail.com)",
 	"version": "0.1",
 	"location": "Material Properties > Export Material to VMT",

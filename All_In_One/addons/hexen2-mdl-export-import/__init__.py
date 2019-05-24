@@ -32,7 +32,7 @@ bl_info = {
     "wiki_url": "",
     "tracker_url": "",
 #    "support": 'OFFICIAL',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # To support reload properly, try to access a package var, if it's there,

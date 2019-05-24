@@ -24,7 +24,7 @@ bl_info = {
   "location": "File > Export",
   "description": "Export to the Orbit Ribbon Episode format",
   "warning": "",
-  "category": "Import-Export"
+  "category": "Learnbgame",
 }
 
 import bpy, mathutils

@@ -31,7 +31,7 @@ bl_info = {"name": "F-Curve Samples/Keyframes conversion",
            "warning": "",
            "wiki_url": "",
            "tracker_url": "",
-           "category": "Animation"
+           "category": "Learnbgame",
            }
 
 import bpy

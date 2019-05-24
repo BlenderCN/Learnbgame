@@ -23,7 +23,7 @@ bl_info = {
     "version": (1, 0, 3),
     "blender": (2, 79, 0),
     "location": "UV > Properties Shelf",
-    "category": "UV",
+    "category": "Learnbgame",
     "tracker_url": "https://github.com/StokesLee/UIEditor-Texture-Manager/issues",
 }
 import bpy

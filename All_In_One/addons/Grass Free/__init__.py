@@ -9,7 +9,7 @@ bl_info = {
     "wiki_url": "http://wolfflow.weebly.com/grass.html",
     "tracker_url": "http://wolfflow.weebly.com/grass.html",
     "support": "OFFICIAL",
-    "category": "Mesh"
+    "category": "Learnbgame",
     }
 
 

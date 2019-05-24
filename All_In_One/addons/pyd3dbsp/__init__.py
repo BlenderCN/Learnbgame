@@ -9,7 +9,7 @@ bl_info = {
     "version": (0, 0, 1),
     "blender": (2, 79, 0),
     "location": "File > Import/Export",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "warning": "This addon is still in development.",
     #"wiki_url": "",
 }

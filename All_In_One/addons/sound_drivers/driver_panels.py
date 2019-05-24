@@ -11,7 +11,7 @@ bl_info = {
     "tracker_url": "",
     "icon": 'DRIVER',
     "support": 'TESTING',
-    "category": "Animation",
+    "category": "Learnbgame",
     }
 
 import bpy

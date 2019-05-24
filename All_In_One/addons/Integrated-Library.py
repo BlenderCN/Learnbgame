@@ -23,7 +23,8 @@ bl_info = {
     'blender': (2, 56, 6),
     'location': 'Properties > Object > Library Panel',
     'description': 'Integrated Library',
-    'category': 'Add Mesh'}
+    "category": "Learnbgame",
+}
 
 __bpydoc__ = """
 Integrated Library

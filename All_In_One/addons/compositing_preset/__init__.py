@@ -25,7 +25,7 @@ bl_info = {
     "api": 35035,
     "location": "Node Editor > Properties",
     "description": "Presets of nodes for the Compositing Nodes.",
-    "category": "Compositing",
+    "category": "Learnbgame",
     'wiki_url': "http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/"\
                 "Compositing/Compositing_Presets",
     'tracker_url': "http://projects.blender.org/tracker/?func=detail&aid=25621"

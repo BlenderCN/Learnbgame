@@ -9,7 +9,7 @@ bl_info = {
   "warning": "Pre Alpha",
   "wiki_url": "",
   "tracker_url": "",
-  "category": "Import-Export"
+  "category": "Learnbgame",
 }
 
 # Blender module reloading...

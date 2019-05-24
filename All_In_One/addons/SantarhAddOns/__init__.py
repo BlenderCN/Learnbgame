@@ -1,7 +1,7 @@
 bl_info = {
     "name": "SantarhAddOns",
     "auther": "santarh",
-    "category": "User"
+    "category": "Learnbgame",
 }
 
 import bpy

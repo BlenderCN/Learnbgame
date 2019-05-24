@@ -29,7 +29,8 @@ bl_info = { \
     'tracker_url': 'https://github.com/stuffmatic/blam/issues',
     'wiki_url': 'https://github.com/stuffmatic/blam/wiki',
     'support': 'COMMUNITY',
-    'category': '3D View'}
+    "category": "Learnbgame",
+}
 
 '''
 Public domain pure python linear algebra

@@ -11,7 +11,8 @@ bl_info = {
     'description': 'adds new Empty while in edit mode',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Mesh'}
+    "category": "Learnbgame",
+}
 
 
 def add_to_selected(context):

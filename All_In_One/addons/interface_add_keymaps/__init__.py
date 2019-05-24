@@ -30,7 +30,7 @@ bl_info = {
     "description": "Adds 1,2,3 as vert/edge/face selection.",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -3,7 +3,7 @@ bl_info = {
     "author": "",
     "version": (0, 1),
     "blender": (2, 7, 6),
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 import os

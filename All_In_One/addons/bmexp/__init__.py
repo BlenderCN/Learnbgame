@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Bmexp",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals(): #reloading

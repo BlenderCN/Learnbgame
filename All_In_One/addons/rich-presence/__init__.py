@@ -9,7 +9,7 @@ bl_info = {
 	"wiki_url": "https://github.com/AlexApps99/blender-rich-presence/wiki",
 	"tracker_url": "https://github.com/AlexApps99/blender-rich-presence/issues",
 	"support": "COMMUNITY",
-	"category": "System"
+	"category": "Learnbgame",
 	}
 import rpc
 import time

@@ -29,7 +29,7 @@ bl_info = {
     "warning": "Still in beta stage.",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Development/Script_Watcher",
     "tracker_url": "https://github.com/wisaac407/blender-script-watcher/issues/new",
-    "category": "Development",
+    "category": "Learnbgame",
 }
 
 import os, sys

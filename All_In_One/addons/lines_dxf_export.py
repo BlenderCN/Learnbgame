@@ -6,7 +6,7 @@ bl_info = {
 	"blender": (2, 6, 9),
 	"description": "Export selected object's edges to DXF file",
 	"wiki": "",
-	"category": "Import-Export"
+	"category": "Learnbgame",
 }
 
 

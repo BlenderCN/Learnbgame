@@ -19,7 +19,7 @@ bl_info = {
     "author": "Reslav Hollos",
     "version": (1, 4, 21),
     "blender": (2, 71, 0),
-    "category": "Mesh",
+    "category": "Learnbgame",
     #"location": "UV Image Editor > UVs > UVs to grid of squares",
     #"warning": "",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/UV/Uv_Squares"

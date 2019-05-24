@@ -3,7 +3,7 @@ bl_info = {
 	'author': 'cmomoney',
 	'version': (0, 2),
 	'blender': (2, 6, 7),
-	'category': 'Import-Export',
+	"category": "Learnbgame",
 	'location': 'File > Import/Export',
 	'wiki_url': ''}
 

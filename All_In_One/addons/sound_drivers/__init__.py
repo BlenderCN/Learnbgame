@@ -28,7 +28,7 @@ bl_info = {
     "blender": (2, 7, 6),
     "tracker_url": "",
     "support": 'TESTING',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 #reload_flag = "bpy" in locals()

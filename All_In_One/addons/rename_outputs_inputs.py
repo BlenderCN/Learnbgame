@@ -7,7 +7,7 @@ bl_info = {
     "description": "replace strings of inputs and output nodes in node editor as well as the render output",
     "warning": "",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Render/Rename_Outputs",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

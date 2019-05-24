@@ -30,7 +30,8 @@ bl_info = {
     'description': 'Import and visualize gcode files generated for Makerbot printers (.gcode)',
     "wiki_url": "",
     "tracker_url": "",
-    'category': 'Import-Export'}
+    "category": "Learnbgame",
+}
 
 __version__ = '.'.join([str(s) for s in bl_info['version']])
 

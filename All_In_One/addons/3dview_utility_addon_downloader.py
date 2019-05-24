@@ -30,7 +30,7 @@ bl_info = {
     "description": "Adds a downloader utility to the search bar path",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

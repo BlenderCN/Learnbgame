@@ -44,7 +44,7 @@ bl_info = {
 	"warning": "Be aware of long duration exports",
     "wiki_url": "",
 	"tracker_url": "",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 os.system("cls")

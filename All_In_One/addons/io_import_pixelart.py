@@ -9,7 +9,7 @@ bl_info = {
 	"description": "Imports pixel art images, creating colored cubes for each pixel.",
 	"wiki_url": "https://github.com/panzi/blender-addon-import-pixelart/blob/master/README.md",
 	"tracker_url": "https://github.com/panzi/blender-addon-import-pixelart/issues",
-	"category": "Import-Export"
+	"category": "Learnbgame",
 }
 
 import os.path

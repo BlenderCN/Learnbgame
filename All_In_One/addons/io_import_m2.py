@@ -5,7 +5,7 @@ bl_info = {
     "location": "File > Import",
     "description": "Import M2 models",
     "warning": "",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 import bpy

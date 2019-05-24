@@ -7,7 +7,7 @@ from collections import defaultdict
 bl_info = {
     "name": "Resolve Camera Tracks",
     "author": "Anthony Zhang",
-    "category": "Animation",
+    "category": "Learnbgame",
     "version": (1, 1),
     "blender": (2, 75, 0),
     "location": "View3D > Object > Resolve Camera Tracks or Search > Resolve Camera Tracks",

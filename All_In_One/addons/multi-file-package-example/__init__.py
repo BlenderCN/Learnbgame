@@ -8,7 +8,7 @@ bl_info = {
     'name': 'Multifile package example',
     'author': 'Thomas Larsson',
     'location': 'View3D > UI panel > Add meshes',
-    'category': '3D View'
+    "category": "Learnbgame",
     }
  
 # To support reload properly, try to access a package var, 

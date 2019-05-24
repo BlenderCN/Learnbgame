@@ -32,7 +32,7 @@ bl_info = {
     "description": "Set Render Border Automatically",
     "warning": "",
     "wiki_url": "",
-    "category": "Render",
+    "category": "Learnbgame",
     }
 
 bpy.types.Scene.automatic_render_border_margin = \

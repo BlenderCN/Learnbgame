@@ -18,7 +18,7 @@ bl_info = {
     "warning": "Experimental Version - Use it at your own risk (be sure to check the cache path)",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 ##############

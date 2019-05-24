@@ -8,7 +8,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://sourceforge.net/p/blenderbitsbobs/wiki/SMD%20exporter",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

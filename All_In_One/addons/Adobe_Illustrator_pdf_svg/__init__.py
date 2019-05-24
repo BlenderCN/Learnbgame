@@ -31,7 +31,7 @@ bl_info = {
       "http://http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/Import-Export/AI_PDF_SVG",
   "tracker_url": \
       "http://http://projects.blender.org/tracker/index.php?func=detail&aid=27246",
-  "category": "Learnbgame"
+  "category": "Learnbgame",
 }
 
 if "bpy" in locals():

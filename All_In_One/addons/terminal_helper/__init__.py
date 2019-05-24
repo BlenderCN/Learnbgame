@@ -7,7 +7,7 @@ bl_info = {
     "location": "Render",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

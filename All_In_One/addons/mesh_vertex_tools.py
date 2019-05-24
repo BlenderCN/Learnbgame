@@ -347,7 +347,7 @@ bl_info = {
     "blender": (2, 5, 7),
     "api": 36147,
     "location": "View 3D > Mesh > Vertex >Align & Distribute",
-    "category": "Mesh",
+    "category": "Learnbgame",
     "description": "Align or distribute selected vertices (from the old Geom Tool)",
     "warning": "",
     "tracker_url": "http://airplanes3d.net/track-254_e.xml",

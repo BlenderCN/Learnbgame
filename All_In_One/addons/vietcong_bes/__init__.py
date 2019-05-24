@@ -27,7 +27,7 @@ bl_info = {
     "description": "Vietcong BES Material Tools",
     "wiki_url"   : "https://github.com/OpenVietcong/blender-plugin-vietcong",
     "tracker_url": "https://github.com/OpenVietcong/blender-plugin-vietcong/issues",
-    "category"   : "Material",
+    "category": "Learnbgame",
 }
 
 def update_material_view(context):

@@ -37,7 +37,7 @@
 ## \brief Information about this addon
 bl_info = {
     "name":"OMPL Interface",
-    "category":"Game Engine",
+    "category": "Learnbgame",
     "description":"Planning with OMPL (requires MORSE)",
     "location":"Game > OMPL",
     "author":"Caleb Voss"

@@ -6,7 +6,7 @@ bl_info = {
     "location": "File > Export",
     "description": "Export Ogre models",
     "warning": "",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 import bpy

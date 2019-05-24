@@ -4,7 +4,8 @@ bl_info = {
     "author"        : "Csaba Hruska",
     "version"       : (0, 1),
     "blender"       : (2, 66, 1),
-    "category"      : "Game Engine"}
+    "category": "Learnbgame",
+   }
 
 import sys
 

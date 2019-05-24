@@ -5,7 +5,7 @@ bl_info = {
     "blender": (2, 6, 3),
     "location": "File > Import-Export > Renderware (.dff) ",
     "description": "RenderWare importer/exporter for GTA III/VC/SA",
-    "category": "Import-Export" 
+    "category": "Learnbgame",
     }
 
 import struct

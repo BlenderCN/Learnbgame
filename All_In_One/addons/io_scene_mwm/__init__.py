@@ -17,7 +17,7 @@ bl_info = {
     "author": "Evgeny Vasilyev (Zeejfps)",
     "location": "File > Import",
     "description": "Import .mwm meshes",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 if is_blender:

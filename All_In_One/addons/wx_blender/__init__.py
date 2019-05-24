@@ -10,7 +10,7 @@ bl_info = {
     "wiki_url": "http://wxpython.org/Phoenix/snapshot-builds/",
     "tracker_url": "https://github.com/Metallicow/wxBlender/issues",
     "warning": "Requirements: http://wxpython.org/Phoenix/snapshot-builds/ >>> blender's site packages.",
-    "category": "3D View"
+    "category": "Learnbgame",
     }
 
 import bpy

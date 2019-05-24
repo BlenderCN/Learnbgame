@@ -24,7 +24,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "",
     "support": 'TESTING',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # Default palette, given in .vox 150 specification format

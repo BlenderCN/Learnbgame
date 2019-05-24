@@ -8,7 +8,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://blskl.cf/kaldocs",
     "tracker_url": "http://blskl.cf/kalbugs",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

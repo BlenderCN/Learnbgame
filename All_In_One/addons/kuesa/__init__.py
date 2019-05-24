@@ -33,7 +33,7 @@ bl_info = {
     "version": (0, 0, 1),
     "blender": (2, 7, 9),
     "description": "KDAB - Kuesa Tools For Blender",
-    "category": "All"
+    "category": "Learnbgame",
 }
 
 class KuesaPropertyGroup (bpy.types.PropertyGroup):

@@ -26,7 +26,7 @@ bl_info = {
     "blender": (2, 74, 0),
     "location": "View3D",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
     

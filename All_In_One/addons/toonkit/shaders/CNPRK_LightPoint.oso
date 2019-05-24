@@ -1,0 +1,196 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.7.5
+# options: -o C:\Users\vitor\AppData\Local\Temp\tmpzpcuqs6f.oso -IC:\Program Files\Blender Foundation\Blender\2.79\scripts\addons\cycles\shader
+shader Cell
+param	color	Light	1 1 1		%read{58,58} %write{2147483647,-1}
+param	float	Radius	5		%read{7,7} %write{2147483647,-1}
+param	float	Smooth	0.5		%read{18,18} %write{2147483647,-1}
+param	float	ShadowSmooth	0		%read{26,26} %write{2147483647,-1} %derivs
+param	int	SelfShadow	1		%read{44,44} %write{2147483647,-1}
+param	vector	Position	0 0 1		%read{2,2} %write{2147483647,-1} %derivs
+param	normal	Normal	0 0 0		%read{1,1} %write{0,0} %initexpr
+oparam	float	Shadow	0		%read{41,57} %write{35,53}
+oparam	color	Output	0 0 0		%read{2147483647,-1} %write{58,58}
+global	point	P	%read{2,33} %write{2147483647,-1} %derivs
+global	normal	N	%read{0,22} %write{2147483647,-1}
+local	vector	n	%read{5,5} %write{1,1}
+local	vector	lightDir	%read{3,31} %write{2,2} %derivs
+local	float	dist	%read{8,8} %write{3,3}
+local	float	NdotL	%read{13,13} %write{6,6}
+local	float	att	%read{13,13} %write{12,12}
+local	float	dif	%read{20,20} %write{16,16}
+local	float	value	%read{54,56} %write{20,20}
+local	float	maxdist	%read{33,33} %write{21,21}
+local	float	d	%read{23,23} %write{22,22}
+local	vector	___342_disturb	%read{31,31} %write{30,30} %derivs
+local	string	___342_nameHit	%read{38,51} %write{36,50}
+local	string	___344_name	%read{51,51} %write{48,49}
+local	int	___344_HitTrace	%read{2147483647,-1} %write{50,50}
+temp	float	$tmp1	%read{6,6} %write{5,5}
+temp	vector	$tmp2	%read{5,5} %write{4,4}
+const	float	$const1	0		%read{6,55} %write{2147483647,-1}
+const	float	$const2	1		%read{9,54} %write{2147483647,-1}
+temp	float	$tmp3	%read{8,8} %write{7,7}
+const	float	$const3	0.001		%read{7,7} %write{2147483647,-1}
+temp	float	$tmp4	%read{9,9} %write{8,8}
+temp	float	$tmp5	%read{11,11} %write{9,9}
+const	string	$const4	"clamp"		%read{10,25} %write{2147483647,-1}
+temp	float	$tmp6	%read{12,12} %write{11,11}
+temp	float	$tmp7	%read{15,15} %write{13,13}
+temp	float	$tmp8	%read{16,16} %write{15,15}
+temp	float	$tmp9	%read{20,20} %write{19,19}
+const	float	$const5	9.9999997e-005		%read{19,19} %write{2147483647,-1}
+temp	float	$tmp10	%read{19,19} %write{18,18}
+const	int	$const6	0		%read{23,45} %write{2147483647,-1}
+temp	int	$tmp11	%read{24,24} %write{23,23}
+temp	float	$tmp12	%read{30,30} %write{27,27} %derivs
+const	float	$const7	10		%read{26,26} %write{2147483647,-1}
+temp	float	$tmp13	%read{27,27} %write{26,26} %derivs
+temp	vector	$tmp14	%read{30,30} %write{29,29} %derivs
+const	string	$const8	"perlin"		%read{29,29} %write{2147483647,-1}
+const	float	$const9	10000		%read{28,28} %write{2147483647,-1}
+temp	point	$tmp15	%read{29,29} %write{28,28} %derivs
+const	int	$const10	1		%read{34,34} %write{2147483647,-1}
+temp	int	$tmp16	%read{34,34} %write{33,33}
+temp	vector	$tmp17	%read{33,33} %write{32,32} %derivs
+temp	vector	$tmp18	%read{32,32} %write{31,31} %derivs
+const	string	$const11	"maxdist"		%read{33,33} %write{2147483647,-1}
+temp	int	$tmp19	%read{35,35} %write{34,34}
+const	string	$const12	""		%read{36,48} %write{2147483647,-1}
+temp	int	$tmp20	%read{2147483647,-1} %write{37,37}
+const	string	$const13	"trace"		%read{37,50} %write{2147483647,-1}
+const	string	$const14	"geom:name"		%read{37,50} %write{2147483647,-1}
+temp	int	$tmp21	%read{39,39} %write{38,38}
+const	string	$const15	"-"		%read{38,38} %write{2147483647,-1}
+temp	int	$tmp22	%read{42,42} %write{41,41}
+temp	int	$tmp23	%read{43,47} %write{42,46}
+temp	int	$tmp24	%read{45,45} %write{44,44}
+temp	int	$tmp25	%read{46,46} %write{45,45}
+temp	int	$tmp26	%read{2147483647,-1} %write{49,49}
+temp	int	$tmp27	%read{52,52} %write{51,51}
+temp	float	$tmp28	%read{55,55} %write{54,54}
+temp	float	$tmp29	%read{56,56} %write{55,55}
+temp	float	$tmp30	%read{57,57} %write{56,56}
+temp	float	$tmp31	%read{58,58} %write{57,57}
+code Normal
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:16
+#     
+	assign		Normal N 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl"} %line{16} %argrw{"wr"}
+code ___main___
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:24
+#     vector lightDir = Position-P;
+	normalize	n Normal 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl"} %line{24} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:25
+#     float dist = length(lightDir);
+	sub		lightDir Position P 	%line{25} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:26
+#     float NdotL = max(dot(n,normalize(lightDir)),0.0);
+	length		dist lightDir 	%line{26} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:27
+#     float att = clamp(1.0 - dist/max(Radius,0.001), 0.0, 1.0);
+	normalize	$tmp2 lightDir 	%line{27} %argrw{"wr"}
+	dot		$tmp1 n $tmp2 	%argrw{"wrr"}
+	max		NdotL $tmp1 $const1 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:28
+#     float dif = clamp(NdotL * att,0.0,1.0);
+	max		$tmp3 Radius $const3 	%line{28} %argrw{"wrr"}
+	div		$tmp4 dist $tmp3 	%argrw{"wrr"}
+	sub		$tmp5 $const2 $tmp4 	%argrw{"wrr"}
+	functioncall	$const4 13 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# int abs (int x) BUILTIN;
+	min		$tmp6 $tmp5 $const2 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		att $tmp6 $const1 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:29
+#     float value = smoothstep(0.0,clamp(Smooth,0.0001,1.0),dif);
+	mul		$tmp7 NdotL att 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl"} %line{29} %argrw{"wrr"}
+	functioncall	$const4 17 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (abs)
+	min		$tmp8 $tmp7 $const2 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		dif $tmp8 $const1 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:30
+#     
+	functioncall	$const4 20 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl"} %line{30} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# float hypot (float a, float b, float c) { return sqrt (a*a + b*b + c*c); }
+	min		$tmp10 Smooth $const2 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp9 $tmp10 $const5 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:30
+#     
+	smoothstep	value $const1 $tmp9 dif 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl"} %line{30} %argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:32
+#     float d = dot(N,lightDir);
+	length		maxdist lightDir 	%line{32} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:33
+#     if(d> 0){
+	dot		d N lightDir 	%line{33} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:34
+#         vector disturb = ( clamp(ShadowSmooth,0.0,10.0) * (noise("perlin", P*10000.0)) );
+	gt		$tmp11 d $const6 	%line{34} %argrw{"wrr"}
+	if		$tmp11 54 54 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:35
+#         Shadow = 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	functioncall	$const4 28 	%line{35} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (log10)
+	min		$tmp13 ShadowSmooth $const7 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		$tmp12 $tmp13 $const1 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:35
+#         Shadow = 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+	mul		$tmp15 P $const9 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl"} %line{35} %argrw{"wrr"}
+	noise		$tmp14 $const8 $tmp15 	%argrw{"wrr"}
+	mul		___342_disturb $tmp12 $tmp14 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:36
+#         
+	add		$tmp18 lightDir ___342_disturb 	%line{36} %argrw{"wrr"}
+	normalize	$tmp17 $tmp18 	%argrw{"wr"}
+	trace		$tmp16 P $tmp17 $const11 maxdist 	%argrw{"wrrrr"} %argderivs{1,2}
+	sub		$tmp19 $const10 $tmp16 	%argrw{"wrr"}
+	assign		Shadow $tmp19 	%argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:38
+#         getmessage("trace","geom:name",nameHit);
+	assign		___342_nameHit $const12 	%line{38} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:39
+#         
+	getmessage	$tmp20 $const13 $const14 ___342_nameHit 	%line{39} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:41
+#             Shadow = 1.0;
+	startswith	$tmp21 ___342_nameHit $const15 	%line{41} %argrw{"wrr"}
+	if		$tmp21 41 41 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:42
+#         }
+	assign		Shadow $const2 	%line{42} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:45
+#             string name = "";
+	eq		$tmp22 Shadow $const6 	%line{45} %argrw{"wrr"}
+	neq		$tmp23 $tmp22 $const6 	%argrw{"wrr"}
+	if		$tmp23 47 47 	%argrw{"r"}
+	eq		$tmp24 SelfShadow $const6 	%argrw{"wrr"}
+	neq		$tmp25 $tmp24 $const6 	%argrw{"wrr"}
+	assign		$tmp23 $tmp25 	%argrw{"wr"}
+	if		$tmp23 54 54 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:46
+#             getattribute("geom:name", name);
+	assign		___344_name $const12 	%line{46} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:47
+#             int HitTrace = getmessage ("trace", "geom:name" , nameHit ) ;
+	getattribute	$tmp26 $const14 ___344_name 	%line{47} %argrw{"wrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:48
+#             if(nameHit == name){
+	getmessage	___344_HitTrace $const13 $const14 ___342_nameHit 	%line{48} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:49
+#                 Shadow = 1.0;
+	eq		$tmp27 ___342_nameHit ___344_name 	%line{49} %argrw{"wrr"}
+	if		$tmp27 54 54 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:50
+#             }
+	assign		Shadow $const2 	%line{50} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_LightPoint.osl:56
+# }
+	sub		$tmp28 $const2 value 	%line{56} %argrw{"wrr"}
+	mul		$tmp29 $const1 $tmp28 	%argrw{"wrr"}
+	add		$tmp30 value $tmp29 	%argrw{"wrr"}
+	mul		$tmp31 $tmp30 Shadow 	%argrw{"wrr"}
+	mul		Output $tmp31 Light 	%argrw{"wrr"}
+	end

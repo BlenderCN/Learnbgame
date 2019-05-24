@@ -4,7 +4,8 @@ bl_info = {
     "version" : (0, 1, 0),
     "blender" : (2, 72, 0),
     "description" : "Custom Pie Menus",
-    "category" : "3D View",}
+    "category": "Learnbgame",
+   }
 
 import bpy
 

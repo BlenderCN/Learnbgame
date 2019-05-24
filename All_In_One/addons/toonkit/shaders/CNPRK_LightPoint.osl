@@ -1,0 +1,56 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles v1.1
+/*   Point Light
+/*------------------------------------------*/
+
+shader Cell(
+    color Light = color(1,1,1),
+
+    float Radius = 5.0,
+    float Smooth = 0.5,    
+    float ShadowSmooth = 0.0,
+    
+    int SelfShadow = 1,
+    vector Position = vector(0, 0, 1),
+    normal Normal = N,
+    
+
+    output float Shadow= 0,
+    output color Output= 0
+    )
+{   
+
+    vector n = normalize(Normal);
+    vector lightDir = Position-P;
+    float dist = length(lightDir);
+    float NdotL = max(dot(n,normalize(lightDir)),0.0);
+    float att = clamp(1.0 - dist/max(Radius,0.001), 0.0, 1.0);
+    float dif = clamp(NdotL * att,0.0,1.0);
+    float value = smoothstep(0.0,clamp(Smooth,0.0001,1.0),dif);
+    
+    float maxdist = length(lightDir);
+    float d = dot(N,lightDir);
+    if(d> 0){
+        vector disturb = ( clamp(ShadowSmooth,0.0,10.0) * (noise("perlin", P*10000.0)) );
+        Shadow = 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+        
+         string nameHit = "";
+        getmessage("trace","geom:name",nameHit);
+        
+        if(startswith(nameHit,"-")){
+            Shadow = 1.0;
+        }
+        
+        if(Shadow == 0 && SelfShadow == 0){
+            string name = "";
+            getattribute("geom:name", name);
+            int HitTrace = getmessage ("trace", "geom:name" , nameHit ) ;
+            if(nameHit == name){
+                Shadow = 1.0;
+            }
+        }
+    }   
+    
+
+    Output = (value + (0,0,0) * (1-value)) * Shadow * Light;
+}

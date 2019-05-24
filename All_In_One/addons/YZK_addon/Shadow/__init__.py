@@ -30,7 +30,7 @@ bl_info = {
     "description": "Stream Shadow animation data from the Motion Service into "
                    "the Blender scene. Use MotionSDK to handle socket "
                    "communication.",
-    "category": "Animation"
+    "category": "Learnbgame",
 }
 
 

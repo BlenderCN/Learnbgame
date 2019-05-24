@@ -9,7 +9,7 @@ bl_info = {
     "description": "Displays spaces that were activated in all the areas so that you can \
                     conviniently switch between then",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """Display Area Spaces in Header"""

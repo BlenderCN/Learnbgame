@@ -18,7 +18,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/Dummiesman/HabitatB/wiki",
     "support": 'COMMUNITY',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

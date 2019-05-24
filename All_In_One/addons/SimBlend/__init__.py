@@ -47,7 +47,7 @@ bl_info = {
 	"location": "", #todo: check out meaning of this key
 	"wiki_url": "", #todo: check out meaning of this key
 	"tracker_url": "", #todo: check out meaning of this key
-	"category": "Import-Export"
+	"category": "Learnbgame",
 	}
 
 #UI element definition: "Simion to Animation" which starts the data import process

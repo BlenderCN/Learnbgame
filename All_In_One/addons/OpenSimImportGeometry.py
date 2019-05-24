@@ -4,7 +4,7 @@ bl_info = {
 	"author": "Clay Anderson",
 	"location": "File > Import > OpenSim Geometry",
 	"description": "Imports an OpenSim geometry file",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import xml.dom.minidom

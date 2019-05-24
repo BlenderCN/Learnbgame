@@ -25,7 +25,7 @@ bl_info = {
     "description": "Simple tool to select the first/last/previous/next point on a curve",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

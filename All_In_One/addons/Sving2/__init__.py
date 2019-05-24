@@ -26,7 +26,7 @@ bl_info = {
     "description": "Plug-in for Secondlife Sculpties",
     "wiki_url": "http://wiki.albsalgar.com",
     "tracker_url": "https://bugs.launchpad.net/albsalgar",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

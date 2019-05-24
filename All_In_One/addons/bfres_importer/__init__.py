@@ -16,7 +16,7 @@ bl_info = {
     "wiki_url": "https://github.com/RenaKunisaki/bfres_importer/wiki",
     "tracker_url": "https://github.com/RenaKunisaki/bfres_importer/issues",
     "support": 'COMMUNITY',
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 # Reload the package modules when reloading add-ons in Blender with F8.

@@ -4,7 +4,7 @@ bl_info = {
         "version": (0, 9),
         "blender": (2,6,9),
         "description": "Render by exporting an obj scene and notifying an external program over UDP",
-        "category": "Render"
+        "category": "Learnbgame",
 }
 
 import bpy,socket

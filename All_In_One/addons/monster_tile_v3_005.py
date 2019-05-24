@@ -25,7 +25,8 @@ bl_info = {
     'description': 'you give it CM / INCH, it spits out tiled renders.',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Render'}
+    "category": "Learnbgame",
+}
 
 import bpy
 from bpy.props import *

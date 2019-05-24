@@ -13,7 +13,7 @@ bl_info = {
     "description": "A series of tools to help with managing batch renders",
     "warning": "",
     "wiki_url": "",
-    "category": "Render",
+    "category": "Learnbgame",
     }
 
 

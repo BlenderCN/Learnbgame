@@ -52,7 +52,7 @@ bl_info = {
     "description": "Tools for automatic object alignment",
     "warning": "",
     "wiki_url": "",
-    "category": "Mesh",
+    "category": "Learnbgame",
     }
 
 

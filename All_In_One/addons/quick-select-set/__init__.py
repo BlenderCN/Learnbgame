@@ -8,7 +8,7 @@ bl_info = {
     "version": (0, 1),
     "blender": (2, 78, 0),
     "location": "Data",
-    "category": "Mesh"
+    "category": "Learnbgame",
 }
 
 

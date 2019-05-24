@@ -22,7 +22,8 @@ bl_info = {
 'description': 'Automatically Flip Normals and Make Normals Consistent on multiple objects',
 'wiki_url': 'http://alexiy.nl/flippist/',
 'tracker_url': 'http://alexiy.nl/feedback/',
-'category': 'Object'}
+"category": "Learnbgame",
+}
 
 import bpy
 

@@ -28,7 +28,8 @@ bl_info = {
     'description': 'Import files in the new MakeHuman eXhange format (.mhx2)',
     'warning': '',
     'wiki_url': 'http://thomasmakehuman.wordpress.com/mhx2-documentation/',
-    'category': 'MakeHuman'}
+    "category": "Learnbgame",
+}
 
 if "bpy" in locals():
     print("Reloading MHX2 importer-runtime v %d.%d" % bl_info["version"])

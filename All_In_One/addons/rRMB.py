@@ -27,7 +27,7 @@ bl_info = {
     "description": "Adds an RMB menu.",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

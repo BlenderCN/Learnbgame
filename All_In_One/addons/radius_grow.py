@@ -10,7 +10,7 @@ bl_info = {
     "blender": (2, 5, 7),
     "location": "View3D > Tool Shelf",
     "description": "Grows a curve by animating its point's radii",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

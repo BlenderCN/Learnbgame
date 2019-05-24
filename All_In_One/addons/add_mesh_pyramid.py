@@ -27,7 +27,8 @@ bl_info = {
     'location': 'View3D > Add > Mesh',
     'description': 'Create an egyption-style step pyramid',
     'warning': '',  # used for warning icon and text in addons panel
-    'category': 'Add Mesh'}
+    "category": "Learnbgame",
+}
 
 
 import bpy

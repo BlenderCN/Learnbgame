@@ -9,7 +9,7 @@ bl_info = {
     "wiki_url": "",
     "tracker_url": "",
     "support": "",
-    "category": "Render"
+    "category": "Learnbgame",
 }
 
 import bpy

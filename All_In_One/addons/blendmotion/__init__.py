@@ -12,7 +12,7 @@ bl_info = {
     "description": "convert animation to robot motion",
     "wiki_url": "https://github.com/DeepL2/blendmotion/wiki",
     "tracker_url": "https://github.com/DeepL2/blendmotion/issues",
-    "category": "Development",
+    "category": "Learnbgame",
 }
 
 def register():

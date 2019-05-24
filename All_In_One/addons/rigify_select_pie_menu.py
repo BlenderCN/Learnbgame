@@ -35,7 +35,7 @@ bl_info = {
 	"blender": (2,77,0),
 	"description": "rigify rig Quick Select. ",
 	"location": "Pose mode > Ctrl + W",
-	"category": "Pie menu",
+	"category": "Learnbgame",
     "warning": "Use RigifyPicker Addon !!  http://salvadorartero.com/downloads/" 
     }
 

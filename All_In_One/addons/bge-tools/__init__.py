@@ -11,7 +11,7 @@ bl_info = {
 	"warning": "Requires Blender version prior to 2.8",
 	"wiki_url": "https://github.com/rafcolson/bge-tools/wiki",
 	"tracker_url": "https://github.com/rafcolson/bge-tools/issues",
-	"category": "Game Engine"
+	"category": "Learnbgame",
 }
 
 def register():

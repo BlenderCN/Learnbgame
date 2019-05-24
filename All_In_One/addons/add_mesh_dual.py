@@ -6,7 +6,7 @@ bl_info = {
     "location": "Add -> Mesh -> Dual Polyhedron",
     "warning": "",
     "description": "Create a dual polyhedron of the active mesh",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
     "wiki_url": "",
     "tracker_url": ""
 }

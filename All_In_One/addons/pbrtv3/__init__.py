@@ -36,7 +36,7 @@ bl_info = {
     "version": (0, 0, 'dev'),
     "blender": (2, 79),
     "api": 57908,
-    "category": "Render",
+    "category": "Learnbgame",
     "location": "Info header, render engine menu",
     "warning": "In Development!!!",
     "wiki_url": "http://www.luxrender.net/wiki/LuxBlend25_Manual",

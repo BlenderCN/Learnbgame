@@ -2,7 +2,7 @@ import bpy
 
 bl_info = {
   "name": "VTK nodes",
-  "category": "Node",
+  "category": "Learnbgame",
 }
 
 import paraview

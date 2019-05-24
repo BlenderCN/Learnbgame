@@ -7,7 +7,7 @@ bl_info = {
     "description": "Generates a mesh from a heightmap image",
     "warning": "",
     "wiki_url": "",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
     }
 
 

@@ -25,7 +25,8 @@ bl_info = {
     "warning"     : "",  # used for warning icon and text in addons panel
     "wiki_url"    : "https://www.blendermarket.com/products/abs-plastic-materials",
     "tracker_url" : "https://github.com/bblanimation/abs-plastic-materials/issues",
-    "category"    : "Materials"}
+    "category": "Learnbgame",
+   }
 # NOTE: Comment out `abs.mark_outdated` ui button
 
 # Blender imports

@@ -6,7 +6,7 @@ bl_info = {
     "blender": (2, 6, 5),
     "wiki_url": "",
     "tracker_url":"",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

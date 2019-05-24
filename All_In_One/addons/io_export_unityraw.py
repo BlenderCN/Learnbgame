@@ -31,7 +31,7 @@ bl_info = {"name": "Export Unity .raw",
            "warning": "",
            "wiki_url": "",
            "tracker_url": "",
-           "category": "Import-Export"
+           "category": "Learnbgame",
            }
 
 import struct

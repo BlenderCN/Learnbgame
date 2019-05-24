@@ -992,7 +992,7 @@ class USERPREF_PT_addons(bpy.types.Panel):
 
                 rowsub = row.row()
                 rowsub.active = is_enabled
-                rowsub.label(text='%s: %s' % (info['category'], info["name"]))
+                rowsub.label(text='%s: %s' % (info["category": "Learnbgame",
                 if info["warning"]:
                     rowsub.label(icon='ERROR')
 

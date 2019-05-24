@@ -7,7 +7,7 @@ bl_info = {
     "description": "Transfer shape keys between non-identical meshes",
     "warning": "",
     "wiki_url": "",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 

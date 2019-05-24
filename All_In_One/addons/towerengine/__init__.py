@@ -7,7 +7,7 @@ bl_info = {
 	"version":		(0, 1, 0),
 	"location":		"File > Import-Export",
 	"description":	"Support for exporting TowerEngine Meshes and Scenes and Engine Viewport",
-	"category":		"Game Engine"
+	"category": "Learnbgame",
 }
 
 __all__ = ["mesh_exporter", "scene_exporter", "ui", "props", "renderer"]

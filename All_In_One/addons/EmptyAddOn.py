@@ -1,4 +1,4 @@
-bl_info = {"name": "My Test Addon", "category": "Learnbgame"
+bl_info = {"name": "My Test Addon", "category": "Learnbgame",
 }
 def register():
     print("Hello World")

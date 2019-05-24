@@ -17,7 +17,7 @@ Created on Wed Mar  6 13:38:47 2019
 content=bytes("","UTF-8")
 bl_info = {
     "name": "MHF FMod Model Importer",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "author": "AsteriskAmpersand (Code) & Vuze (Structure)",
     "location": "File > Import-Export > FMod/MHF",
     "version": (1,0,0)

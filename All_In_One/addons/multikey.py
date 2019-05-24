@@ -7,7 +7,7 @@ bl_info = {
     "description": "Edit Multiply Keyframes by adjusting their value or randomizing it",
     "warning": "",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Animation/Multikey",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

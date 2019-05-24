@@ -24,7 +24,7 @@ bl_info = {
     'blender': (2, 77, 0),
     'location': 'View3D > Properties Panel > Mesh Display',
     'wiki_url': 'https://github.com/chromoly/blender-EditMeshDrawNearest',
-    'category': '3D View',
+    "category": "Learnbgame",
 }
 
 

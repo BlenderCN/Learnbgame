@@ -6,6 +6,7 @@ bl_info = {
     'description': 'Draw the scout acrylic vessel',
     'author': 'morgan',
     'version': (1, 0),
+    "category": "Learnbgame",
     'blender': (2, 73, 0),
     }
 

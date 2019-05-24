@@ -29,7 +29,7 @@ bl_info = {
     "warning": "Format guess is based on filename extension.",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Sequencer/SimpleSubtitleEditor",
     "tracker_url": "https://github.com/jamesruan/SimpleSubtitleEditor/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -5,7 +5,7 @@ bl_info = {
     "blender": (2, 7, 5),
     "location": "Properties Editor > Bone",
     "description": "Enables the proxy picker feature for the rig",     
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

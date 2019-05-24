@@ -6,7 +6,7 @@ sys.path.append(append_path)
 
 
 bl_info={
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "name": "blpymeshio(pmx)",
     "author": "ousttrue",
     "version": (1, 0, 0),

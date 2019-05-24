@@ -29,7 +29,8 @@ bl_info = {
     'wiki_url': 'http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts',
     'tracker_url': 'https://projects.blender.org/tracker/index.php?'\
                    'func=detail&aid=26997',
-    'category': 'Object'}
+    "category": "Learnbgame",
+}
 
 import bpy, mathutils
 

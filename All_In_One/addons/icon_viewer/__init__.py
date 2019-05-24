@@ -7,7 +7,7 @@ bl_info = {
     "wiki_url": (
         "https://wiki.blender.org/index.php/User:Raa/Addons/Icon_Viewer"),
     "tracker_url": "http://blenderartists.org/forum/showthread.php?392912",
-    "category": "Development"
+    "category": "Learnbgame",
 }
 
 import bpy

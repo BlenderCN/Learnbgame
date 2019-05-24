@@ -7,7 +7,7 @@ bl_info = {
 	"location": "VSE strip editor > Properties > Edit Strip (Panel): Match Strips",
 	"wiki_url": "",
 	"tracker_url":"",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 ## Render Match VSE Strips(set strip properties code) by Patrick W. Crawford

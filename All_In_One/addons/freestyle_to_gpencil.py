@@ -23,7 +23,7 @@ bl_info = {
     "description": "Exports Freestyle's stylized to a Grease Pencil sketch",
     "warning": "",
     "wiki_url": "",
-    "category": "Render",
+    "category": "Learnbgame",
     }
 
 from bpy.props import (

@@ -27,7 +27,7 @@ bl_info = {
     "location": "Import-Export Menus",
     "wiki_url": "https://github.com/samytichadou/SMART-CONFIG_blender_addon/tree/v0.1",
     "tracker_url": "https://github.com/samytichadou/SMART-CONFIG_blender_addon/issues/new",  
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

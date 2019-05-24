@@ -40,7 +40,7 @@ bl_info = {
     "warning": "May take a long time to generate! Save your file before generating!",
     "wiki_url": "https://github.com/MaximeHerpin/modular_tree/wiki",
     "tracker_url": "https://github.com/MaximeHerpin/modular_tree/issues/new",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

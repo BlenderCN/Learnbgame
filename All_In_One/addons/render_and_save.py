@@ -1,7 +1,7 @@
 #addon in development DONT USE IT, just for learning proposes
 bl_info = {
     "name": "Render and Save",
-    "category": "Render",
+    "category": "Learnbgame",
 }
 
 import bpy

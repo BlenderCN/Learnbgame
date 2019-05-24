@@ -7,7 +7,7 @@ bl_info = {
     "description": "Online account syncronizing service",
     "warning": "",
     "wiki_url": "",
-    "category": "System",
+    "category": "Learnbgame",
     }
 
 import sys, os

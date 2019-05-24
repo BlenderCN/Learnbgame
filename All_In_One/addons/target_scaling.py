@@ -9,7 +9,7 @@ bl_info = {
     "wiki_url": "https://github.com/vvoovv/blender-tools/wiki/Target-Scaling",
     "tracker_url": "https://github.com/vvoovv/blender-tools/issues",
     "support": "COMMUNITY",
-    "category": "3D View",
+    "category": "Learnbgame",
 }
 
 import bpy, bmesh

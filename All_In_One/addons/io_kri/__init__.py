@@ -4,5 +4,5 @@ bl_info = {
     'version': (0, 1, 0),
     'blender': (2, 7, 9),
     'warning': '',
-    'category': 'Import-Export'
+    "category": "Learnbgame",
 }

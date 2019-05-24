@@ -89,7 +89,7 @@ class _MorphBase:
         default='',
         )
     category = EnumProperty(
-        name='Category',
+        name="category": "Learnbgame",
         description='Select category',
         items = [
             ('SYSTEM', 'Hidden', '', 0),

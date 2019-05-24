@@ -27,7 +27,7 @@ bl_info = {
     "location": "Bring up the Operator Search menu and type 'Toggle Grid' ",
     "description": "Toggle Grid Display in all the viewports",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """Toggle Grid Display"""

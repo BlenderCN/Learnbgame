@@ -11,7 +11,7 @@ bl_info = {
     "description": "Distributed Rendering Engine for Blender",
     "warning": "work in progress",
     "wiki_url": "http://easyportfolio.xyz",
-    "category": "Render",
+    "category": "Learnbgame",
 }
 
 if "reload_modules" in locals():

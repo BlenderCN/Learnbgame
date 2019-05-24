@@ -29,7 +29,7 @@ bl_info = {
     'location': 'File > Export',
     'description': 'Export files in the MakeHuman eXchange format (.mhx)',
     'url': 'http://www.makehuman.org',
-    'category': 'MakeHuman'
+    "category": "Learnbgame",
     }
 
 """

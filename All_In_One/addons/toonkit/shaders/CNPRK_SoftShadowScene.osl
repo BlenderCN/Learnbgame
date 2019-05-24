@@ -1,0 +1,108 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles
+/*   Scene Shadow 
+/*------------------------------------------*/
+
+color CheckLight(int i, string splitedLights[],vector Normal, float Mask){
+        
+        string splitedData[12];
+        split(splitedLights[i],splitedData,","); 
+        
+        float useShadow = stof(splitedData[11]);
+        if(useShadow == 0.0){
+            return color(0,0,0);
+        }
+        
+        float smooth = stof(splitedData[10]);
+        string type = splitedData[0];    
+        vector pos = vector(stof(splitedData[1]),stof(splitedData[2]),stof(splitedData[3]));
+
+        string colors[3];
+        split(splitedData[9],colors,"|");
+        vector col = vector(stof(colors[0]),stof(colors[1]),stof(colors[2]));
+        float lum = (0.2126*col[0] + 0.7152*col[1] + 0.0722*col[2]);
+        
+        if(type == "POINT"){
+            vector lightDir = vector(pos[0]-P[0],pos[1]-P[1],pos[2]-P[2]);
+            float maxdist = length(lightDir);
+            
+            float d = dot(N,lightDir);
+            int result = 1;
+                   
+            vector disturb = ( clamp(smooth,0.0,10.0) * (noise("perlin", P*10000.0)) );
+            result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",maxdist);
+            
+            string nameHit = "";
+            getmessage("trace","geom:name",nameHit);
+            if(startswith(nameHit,"-")){
+                result = 1;
+            }
+            
+            
+            Mask *= result;   
+            return result * lum;
+        }
+        // DIRECTIONAL
+        else{
+            
+            int result = 1;
+            vector rot = vector(stof(splitedData[4]),stof(splitedData[5]),stof(splitedData[6]));  
+            vector disturb = ( clamp(smooth,0.0,1.0) * (noise("perlin", P*10000.0)) );
+            result *= (1-trace(P,rot + disturb));
+            
+            string nameHit = "";
+            getmessage("trace","geom:name",nameHit);
+            if(startswith(nameHit,"-")){
+                result = 1;
+            }
+            
+            Mask *= result;
+            return result * lum;
+        }
+}   
+
+shader Cell(
+    string LightData = "",
+    normal Normal = N,
+    //int Sampling = 1,
+    output color Output=0,
+    output float Mask=1
+    )
+{   
+    string splitedLights[9];
+    split(LightData,splitedLights,";");
+    int len = arraylength(splitedLights);
+    
+    string ambColor[3];
+    split(splitedLights[0],ambColor,"|");
+    vector ambCol = vector(stof(ambColor[0]),stof(ambColor[1]),stof(ambColor[2])); 
+    
+
+    if(strlen(splitedLights[1]) > 0){
+        Output += CheckLight(1,splitedLights,Normal,Mask);
+    }
+    if(strlen(splitedLights[2]) > 0){
+        Output *= CheckLight(2,splitedLights,Normal,Mask);
+    }
+    if(strlen(splitedLights[3]) > 0){
+        Output *= CheckLight(3,splitedLights,Normal,Mask);
+    }
+    if(strlen(splitedLights[4]) > 0){
+        Output *= CheckLight(4,splitedLights,Normal,Mask);
+    }
+    if(strlen(splitedLights[5]) > 0){
+        Output *= CheckLight(5,splitedLights,Normal,Mask);
+    }
+    if(strlen(splitedLights[6]) > 0){
+        Output *= CheckLight(6,splitedLights,Normal,Mask);
+    }
+    if(strlen(splitedLights[7]) > 0){
+        Output *= CheckLight(7,splitedLights,Normal,Mask);
+    }
+    if(strlen(splitedLights[8]) > 0){
+        Output *= CheckLight(8,splitedLights,Normal,Mask);
+    }
+
+    Output += ambCol;
+        
+}

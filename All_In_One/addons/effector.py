@@ -50,7 +50,7 @@ bl_info = {
 	"version": (1, 0, 3),
 	"blender": (2, 71, 0),
 	"location": "3D window toolshelf",
-	"category": "Object",
+	"category": "Learnbgame",
 	"description": "Effector special motion graphics",
 	"wiki_url": "https://github.com/TheDuckCow/Blender_Effectors"
 	}

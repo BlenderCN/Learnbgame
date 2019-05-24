@@ -1,6 +1,6 @@
 bl_info = {
 	"name": "Skyrim hkx format",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 import bpy

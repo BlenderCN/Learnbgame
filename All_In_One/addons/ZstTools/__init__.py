@@ -11,7 +11,7 @@ bl_info = {
         "AddOnPython",
     "tracker_url": "https://wiki.blender.org/index.php/Dev:Py/Scripts/Guidelines/Addons/metainfo",
     "support": "COMMUNITY",
-    "category":"Object"
+    "category": "Learnbgame",
 }
 
 import bpy, sys, os, glob, importlib

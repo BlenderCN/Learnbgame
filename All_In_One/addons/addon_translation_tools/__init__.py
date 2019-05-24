@@ -16,7 +16,7 @@ bl_info = {
     "name": "Addon Translation Tools",
     "version": (0, 1, 0),
     "author": "nagadomi@nurs.or.jp",
-    "category": "User Interface",
+    "category": "Learnbgame",
     "location": "Text Editor > Tools Panel > Addon Translation .+",
 }
 

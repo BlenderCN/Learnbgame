@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Context",
-    "category": "Scene",
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -16,7 +16,7 @@ bl_info = {
 	"support": "TESTING",
 	"wiki_url": "",
 	"tracker_url": "",
-	"category": "Tool"
+	"category": "Learnbgame",
 }
 
 class SerialDataThread(threading.Thread):

@@ -1,0 +1,19 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles v1.1
+/*   Pixelize FX
+/*------------------------------------------*/
+
+#include "stdosl.h"
+#include "node_texture.h"
+
+shader TexFxPixelize(
+    float Resolution = 16,
+	point UV = P,
+	output vector Vector = 0.0)
+{
+	point p = UV;
+    p[0] = round((p[0] * Resolution))/Resolution;
+    p[1] = round((p[1] * Resolution))/Resolution;
+    Vector = p;
+    
+}

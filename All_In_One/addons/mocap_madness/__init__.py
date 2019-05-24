@@ -29,7 +29,7 @@ bl_info = {
                 "Scripts/Import-Export/MotionCapture_BVH",
     "tracker_url": "",
     "support": 'TESTING',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

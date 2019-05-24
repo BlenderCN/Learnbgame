@@ -5,7 +5,7 @@ bl_info = {
     "blender" : (2, 80, 0),
     "location" : "",
     "warning" : "",
-    "category" : "Generic"
+    "category": "Learnbgame",
 }
 
 import bpy

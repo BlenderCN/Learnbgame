@@ -31,7 +31,7 @@ bl_info = {
     'wiki_url': 'http://wiki.blender.org/index.php/Extensions:2.6/'
                 'Py/Scripts/3D_interaction/Screencast_Key_Status_Tool',
     'tracker_url': 'https://github.com/nutti/Screencast-Keys',
-    'category': 'System',
+    "category": "Learnbgame",
 }
 
 

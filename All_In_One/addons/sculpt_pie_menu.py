@@ -11,7 +11,7 @@ bl_info = {
     "description": "Spacebar to access sculpting brushes pie menu.",
     "wiki_url": "https://github.com/amerizalde/sculpt_pie_menu",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 addon_keymaps = []

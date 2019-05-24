@@ -37,7 +37,7 @@ bl_info = {
     "warning": "Beta version",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Material/Online_Material_Library",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 node_types = {
@@ -641,7 +641,7 @@ class OnlineMaterialLibraryPanel(bpy.types.Panel):
                     colrow.operator("material.libraryaddgroup", text="Add to nodegroups", icon='ZOOMIN').text_block = context.scene.mat_lib_bcg_read
                     colrow.operator("material.libraryinsertgroup", text="Insert into active", icon='PASTEDOWN').text_block = context.scene.mat_lib_bcg_read
 
-            elif category_type == "category":
+            elif category_type == "category": "Learnbgame",
                 #Browsing category - show materials
                 row = layout.row()
                 matwrap = row.box()

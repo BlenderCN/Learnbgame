@@ -26,7 +26,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "",
     "tracker_url": "https://developer.blender.org/maniphest/task/edit/form/2/",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

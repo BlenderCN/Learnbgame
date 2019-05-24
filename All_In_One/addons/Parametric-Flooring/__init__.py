@@ -38,7 +38,7 @@ bl_info = {
     'tracker_url': 'https://github.com/BlendingJake/Parametric-Flooring-for-Blender-3D/issues',
     'link': 'hhttps://github.com/BlendingJake/Parametric-Flooring-for-Blender-3D',
     'support': 'COMMUNITY',
-    'category': '3D View'
+    "category": "Learnbgame",
     }
 
 

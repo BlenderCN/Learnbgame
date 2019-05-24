@@ -19,7 +19,7 @@ bl_info = {
     "version": (1, 1, 0),
     "blender": (2, 70, 0),
     "location": "",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "tracker_url": "https://github.com/ajjackson/ascii-phonons/issues"
     }
 

@@ -21,7 +21,7 @@ bl_info = {
     "support": "TESTING",
     "wiki_url": "https://am1tanaka.github.io/ply2fbx/",
     "tracker_url": "https://github.com/am1tanaka/ply2fbx/issues",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 

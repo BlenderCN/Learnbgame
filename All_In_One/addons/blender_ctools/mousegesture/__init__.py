@@ -26,7 +26,7 @@ bl_info = {
     'description': '',
     'warning': '',
     'wiki_url': 'https://github.com/chromoly/blender_mouse_gesture',
-    'category': 'User Interface',
+    "category": "Learnbgame",
 }
 
 

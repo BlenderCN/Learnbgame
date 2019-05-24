@@ -19,7 +19,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://www.youtube.com/watch?v=CTPsqHxmrgM&list=UUNhIgErK9OY3XzhEoRS_j7Q",
     "tracker_url": "http://le-terrier-de-lapineige.over-blog.com/contact",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 ##############

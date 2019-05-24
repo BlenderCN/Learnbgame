@@ -30,7 +30,7 @@ bl_info = {
 	"warning": "Currently only the vertices and faces are imported, work in progress.",
 	"wiki_url": "http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/Import-Export/WarCraft_MDL",
 	"tracker_url": "http://projects.blender.org/tracker/index.php?func=detail&aid=29552",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 # This is our abstract state machine

@@ -5,7 +5,7 @@ bl_info = {
   "version": (1, 0),
   "blender": (2, 7, 0),
   "wiki_url": "http://nonexistent",
-  "category": "Import-Export"
+  "category": "Learnbgame",
 }
 
 def register ():

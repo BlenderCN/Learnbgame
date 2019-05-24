@@ -9,7 +9,7 @@ bl_info = {
     "wiki_url": "http://3dwolf.weebly.com/camera.html",
     "tracker_url": "http://3dwolf.weebly.com/camera.html",
     "support": "OFFICIAL",
-    "category": "Compositing"
+    "category": "Learnbgame",
     }
 
 

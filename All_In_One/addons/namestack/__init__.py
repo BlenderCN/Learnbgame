@@ -21,7 +21,7 @@ bl_info = {
     'location': '3D View > Tool Shelf > Name',
     'description': 'In panel datablock name stack with shortcut and batch name tools',
     'tracker_url': 'https://github.com/proxeIO/name-stack-public-edition/issues',
-    'category': '3D View'
+    "category": "Learnbgame",
 }
 
 # imports

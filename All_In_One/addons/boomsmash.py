@@ -25,7 +25,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://wiki.tube.freefac.org/wiki/Boomsmash",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

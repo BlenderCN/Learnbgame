@@ -36,7 +36,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/lubosz/blender-glge-exporter",
     "tracker_url": "https://github.com/lubosz/blender-glge-exporter/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

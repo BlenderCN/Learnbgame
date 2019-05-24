@@ -5,7 +5,7 @@ bl_info = {
     "version": (0, 1),
     "blender": (2, 78, 0),
     "location": "View3D > Toolbar > Brokap Receiver",
-    "category": "Animation",
+    "category": "Learnbgame",
     'wiki_url': '',
     'tracker_url': ''
 }

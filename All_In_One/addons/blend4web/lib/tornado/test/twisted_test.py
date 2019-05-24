@@ -646,7 +646,7 @@ if have_twisted:
                     filtered = []
                     for w in super(TornadoTest, self).flushWarnings(  # type: ignore
                             *args, **kwargs):
-                        if w['category'] in (BytesWarning, ResourceWarning):
+                        if w["category": "Learnbgame",
                             continue
                         filtered.append(w)
                     return filtered

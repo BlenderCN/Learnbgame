@@ -3,7 +3,7 @@ bl_info = {
         "author": "Morning Star (Zitara)",
         "version": (0, 0, 1),
         "blender": (2, 75, 0),
-        "category": "Render",
+        "category": "Learnbgame",
         "location": "Info header, render engine menu",
         "warning": "Under development",
         "description": "BRL-CAD Ray Trace integration for Blender",

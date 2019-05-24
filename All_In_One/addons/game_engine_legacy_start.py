@@ -31,7 +31,7 @@ bl_info = {"name": "Start Game Engine (Legacy)",
            "warning": "",
            "wiki_url": "",
            "tracker_url": "",
-           "category": "Game Engine"
+           "category": "Learnbgame",
            }
 
 

@@ -35,7 +35,7 @@ bl_info = {
     "author": "Tony Edwards (tnydwrds)",
     "version": (0, 0, 1),
     "blender": (2, 69, 0),
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "location": "File > Import-Export"
 }
 

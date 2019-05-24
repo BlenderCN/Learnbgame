@@ -29,7 +29,8 @@ bl_info = {
     'location': '',
     'description': 'Generates a curve character based on an existing armature',
     'warning': '', # used for warning icon and text in addons panel
-    'category': 'Add Curve'}
+    "category": "Learnbgame",
+}
 
 import bpy
 from pdb import set_trace

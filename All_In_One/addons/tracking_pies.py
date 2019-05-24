@@ -5,7 +5,7 @@ bl_info = {
 "blender": (2, 7, 3),
 "location": "Clip Editor > Tracking Pies",
 "description": "Pie Controls for Tracking",
-"category": "Learnbgame"
+"category": "Learnbgame",
 }
 
 '''

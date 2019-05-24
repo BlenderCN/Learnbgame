@@ -34,7 +34,7 @@ bl_info = {
     "version"    : (0, 0, 4),
     "blender"    : (2, 68, 0),
     "api"        : 58537,
-    "category"   : "Render",
+    "category": "Learnbgame",
     "location"   : "Info header > render engine menu",
     "warning"    : "Pre beta version, may crash.",
     "wiki_url"   : "https://github.com/nodebench/Exporter/wiki",

@@ -6,7 +6,7 @@ bl_info = {
     "location": "Video Sequence Editor > Add > Effect Strip > TextTimer",
     "description": "Add a timer to your video",
     "wiki_url": "",
-    "category": "Sequencer",
+    "category": "Learnbgame",
     }
 
 

@@ -27,7 +27,7 @@ bl_info = {
     "description": "Tools for Anacronte",
     "warning": "",
     "wiki_url": "",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
     }
 
 import bpy

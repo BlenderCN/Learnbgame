@@ -3,7 +3,7 @@ import bgl
 
 bl_info = {
     "name": "Connect-Merge-Modal",
-    "category": "User",
+    "category": "Learnbgame",
     "author": "Andreas Strømberg",
 }
 

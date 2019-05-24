@@ -22,7 +22,7 @@ bl_info = {
     "name": "Camstore",
     "version": (0, 4, 0),
     "blender": (2, 7, 9),  
-    "category": "Camera",
+    "category": "Learnbgame",
     "author": "Nikita Gorodetskiy",
     "location": "object",
     "description": "camera background changer",

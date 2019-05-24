@@ -25,7 +25,7 @@ bl_info = {
 	"blender": (2, 79, 0),
 	"location": "Hotkeys",
 	"description": "Combined modeling tools",
-	"category": "Cenda Tools",
+	"category": "Learnbgame",
 	"wiki_url": "https://github.com/CenekStrichel/CendaTools/wiki",
 	"tracker_url": "https://github.com/CenekStrichel/CendaTools/issues"
 	}

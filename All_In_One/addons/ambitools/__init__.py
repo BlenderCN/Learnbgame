@@ -770,7 +770,7 @@ class Test_OP(Master_OP):
 
 bl_info = {
     "name": "Mesh Refine Toolbox",
-    "category": "Mesh",
+    "category": "Learnbgame",
     "description": "Various tools for mesh processing",
     "author": "ambi",
     "location": "3D view > Tools",

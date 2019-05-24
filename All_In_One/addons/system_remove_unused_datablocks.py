@@ -23,7 +23,7 @@ bl_info = {
     'blender': (2, 6, 9),
     'location': "File -> Remove Unused Datablocks",
     'description': 'Remove Unused Datablocks',
-    'category': 'System',
+    "category": "Learnbgame",
     "warning": "",
     'wiki_url': "",
     'tracker_url': "",

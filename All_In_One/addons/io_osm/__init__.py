@@ -30,7 +30,8 @@ bl_info = {
     'location': 'File > Import/Export > OSM ',
     'description': 'Import Openstreetmap XML data',
     'warning': 'Depends on addon "Inset Polygon"!', # used for warning icon and text in addons panel
-    'category': 'Import-Export'}
+    "category": "Learnbgame",
+}
 
 if "bpy" in locals():
     import imp

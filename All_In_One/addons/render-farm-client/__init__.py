@@ -25,7 +25,8 @@ bl_info = {
     "warning"     : "Relatively stable but still work in progress",
     "wiki_url"    : "",
     "tracker_url" : "",
-    "category"    : "Render"}
+    "category": "Learnbgame",
+   }
 
 # System imports
 #None!!

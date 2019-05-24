@@ -22,7 +22,7 @@ bl_info = {
     "version": (0, 1, 7),
     "blender": (2, 71, 4),
     "description": "Custom Pie Menus",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 import bpy, os

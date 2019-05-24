@@ -46,7 +46,7 @@ bl_info = {
     "description": "Make clothes and UVs for MakeHuman characters",
     "warning": "",
     'wiki_url': "http://makehuman.org/doc/node/makeclothes.html",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

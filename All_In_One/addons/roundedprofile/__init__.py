@@ -20,7 +20,7 @@
 
 bl_info = {
     "name": "Add rounded profile",
-    "category": "Mesh",
+    "category": "Learnbgame",
     'author': 'Piotr Komisarczyk (komi3D)',
     'version': (0, 0, 1),
     'blender': (2, 7, 6),
@@ -28,7 +28,7 @@ bl_info = {
     'description': 'Add rounded profile',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Mesh'
+    "category": "Learnbgame",
 }
 
 import os

@@ -3,7 +3,7 @@ bl_info = {
         'author': 'bay raitt',
         'version': (0, 1),
         'blender': (2, 80, 0),
-        'category': 'View',
+        "category": "Learnbgame",
         'location': 'View > Aim at selected',
         'wiki_url': ''}
 

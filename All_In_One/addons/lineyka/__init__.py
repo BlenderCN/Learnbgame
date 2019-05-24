@@ -11,7 +11,7 @@ bl_info = {
 	"blender": (2, 78, 0),
 	"location": "View3d tools, ui panels",
 	"warning": "", # used for warning icon and text in addons panel
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 if "bpy" in locals():

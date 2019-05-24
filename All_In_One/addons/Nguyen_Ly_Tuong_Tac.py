@@ -7,7 +7,7 @@ bl_info = {
     "description": "Nguyen Ly Gia Co - NEO",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

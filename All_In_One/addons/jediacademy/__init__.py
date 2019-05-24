@@ -23,7 +23,7 @@ bl_info = {
     "version": (0, 2, 1),
     "blender": (2, 6, 3),
     "location": "File > Import/Export",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 #  Imports

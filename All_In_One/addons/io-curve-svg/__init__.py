@@ -28,7 +28,7 @@ bl_info = {
     "warning": "Add-on in development",
     "wiki_url": "https://github.com/Aadjou/io-curve-svg",
     "support": 'COMMUNITY',
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 

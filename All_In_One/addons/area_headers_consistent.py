@@ -9,7 +9,7 @@ bl_info = {
     "location": "Operator Search Menu -> Make Area Headers Consistent",
     "description": "Move all headers to the top/or bottom in all areas of the current screen",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

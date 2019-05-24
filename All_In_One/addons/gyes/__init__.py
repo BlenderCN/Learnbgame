@@ -30,7 +30,7 @@ bl_info = {
     "warning": '',  # used for warning icon and text in addons panel
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/System/Gyes",
     "tracker_url": "https://github.com/kilon/Gyes",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

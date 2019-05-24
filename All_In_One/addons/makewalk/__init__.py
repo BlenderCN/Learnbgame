@@ -46,7 +46,7 @@ bl_info = {
     "description": "Mocap tool for MakeHuman character",
     "warning": "",
     'wiki_url': "http://www.makehuman.org/doc/node/makewalk.html",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # To support reload properly, try to access a package var, if it's there, reload everything

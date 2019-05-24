@@ -6,6 +6,7 @@ bl_info = {
     'name': 'splitter',
     'description': 'Splits the image down a plan (removing the extra bit)',
     'author': 'morgan',
+    "category": "Learnbgame",
     'version': (1, 0),
     'blender': (2, 73, 0),
     }

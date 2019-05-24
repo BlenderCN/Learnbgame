@@ -32,7 +32,7 @@ bl_info = {"name": "Edit Preselect",
            "warning": "",
            "wiki_url": "",
            "tracker_url": "",
-           "category": "3D View"
+           "category": "Learnbgame",
            }
 
 

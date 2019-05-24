@@ -8,7 +8,7 @@ bl_info = {
     'blender': (2, 76, 0),
     'warning': "",
     'location': 'View3D > Tool Shelf > Create > Asset Flinger OBJ & Thumbnail',
-    'category': 'Export'
+    "category": "Learnbgame",
 }
 
 

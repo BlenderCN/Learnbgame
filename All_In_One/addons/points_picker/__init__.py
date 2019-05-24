@@ -25,7 +25,8 @@ bl_info = {
     "warning"     : "",  # used for warning icon and text in addons panel
     "wiki_url"    : "",
     "tracker_url" : "",
-    "category"    : "Object"}
+    "category": "Learnbgame",
+   }
 
 # System imports
 # NONE!

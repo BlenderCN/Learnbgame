@@ -6,7 +6,7 @@ bl_info = {
     "version": (0, 0, 2),
     "blender": (2, 74, 0),
     "description": "Useful things for working with Multicam Sequences", 
-    "category":"Animation", 
+    "category": "Learnbgame",
     "warning": "",
 }
 

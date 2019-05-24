@@ -13,7 +13,7 @@ bl_info = {
     "support": "TESTING", 
     "wiki_url": "", 
     "tracker_url": "", 
-    "category": "Mesh"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

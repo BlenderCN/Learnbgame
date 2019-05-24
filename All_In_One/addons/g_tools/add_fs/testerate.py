@@ -3,7 +3,7 @@ bl_info = {
     "name": "Testerate",
     "location": "View3D > Add > Mesh > Testerate",
     "description": "Testerate",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 #importdefs

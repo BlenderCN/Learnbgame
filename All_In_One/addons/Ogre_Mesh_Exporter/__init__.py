@@ -31,7 +31,7 @@ bl_info = {
 	"warning": '', # used for warning icon and text in addons panel
 	"wiki_url": "http://www.ogre3d.org/tikiwiki/Blender+2.5+Exporter",
 	"tracker_url": "http://sourceforge.net/tracker/?group_id=2997&atid=302997",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 if "bpy" in locals():

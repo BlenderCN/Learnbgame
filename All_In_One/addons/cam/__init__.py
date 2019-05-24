@@ -50,7 +50,7 @@ bl_info = {
 	"warning": "there is no warranty for the produced gcode by now",
 	"wiki_url": "blendercam.blogspot.com",
 	"tracker_url": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
   
   

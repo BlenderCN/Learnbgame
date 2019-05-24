@@ -23,7 +23,7 @@ bl_info = {
     "version": (1, 1),
     "blender": (2, 77, 0),
     "location": "Properties Editor > Performance",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
     

@@ -5,7 +5,7 @@ bl_info = {
     "blender" : (2, 76, 0),
     "location" : "View 3D > Toolbar > JARCH Vis",
     "description" : "Adds Architectural Objects Like Flooring, Siding, Stairs, and Roofing",
-    "category" : "Add Mesh"
+    "category": "Learnbgame",
     }
 
 if "bpy" in locals():

@@ -25,7 +25,7 @@ bl_info = {
     "location": "3d View > Properties Panel > Depth of Field Utilities",
     "wiki_url": "https://github.com/p2or/blender-dof-utils",
     "tracker_url": "https://github.com/p2or/blender-dof-utils/issues",
-    "category": "Render"
+    "category": "Learnbgame",
 }
 
 import bpy

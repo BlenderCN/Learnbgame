@@ -28,7 +28,8 @@ bl_info = {
     'description': 'Tools for controlling BlenRig rigs',
     'wiki_url': 'http://www.jpbouza.com.ar',
     'tracker_url': '',
-    'category': 'Rigging'}
+    "category": "Learnbgame",
+}
 
 
 import bpy

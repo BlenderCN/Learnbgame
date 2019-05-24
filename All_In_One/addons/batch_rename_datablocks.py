@@ -28,7 +28,7 @@ bl_info = {
         "Scripts/Object/Batch_Rename_Datablocks",
     "tracker_url": "http://projects.blender.org/tracker/index.php?"\
         "func=detail&aid=25242",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

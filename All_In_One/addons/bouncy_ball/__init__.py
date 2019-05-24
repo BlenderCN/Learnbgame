@@ -38,7 +38,7 @@ bl_info = {
     "warning": "",
     "link": "",
     "tracker_url": "",
-    "category": "3D View"
+    "category": "Learnbgame",
 }
 
 

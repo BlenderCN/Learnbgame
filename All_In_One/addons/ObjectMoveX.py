@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Move X Axis",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -5,7 +5,7 @@ bl_info = {
     "version":     (0, 0, 1),
     "blender":     (2, 79, 0),
     "location":    "Node Editor",
-    "category":    "Node",
+    "category": "Learnbgame",
     "warning":     "Proof of concept!"
 }
 

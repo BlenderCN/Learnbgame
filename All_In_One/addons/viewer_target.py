@@ -4,7 +4,7 @@ bl_info = {
     "version": (0, 1),
     "blender": (2, 7, 2),
     "description": "Doubleclick to set the viewer node focus to the mouse position",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

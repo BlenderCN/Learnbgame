@@ -43,7 +43,7 @@ bl_info = {
     "warning": "This addon is still in development.",
     "wiki_url": "https://github.com/kalwalt/terragen_utils/wiki",
     "tracker_url": "https://github.com/kalwalt/terragen_utils/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

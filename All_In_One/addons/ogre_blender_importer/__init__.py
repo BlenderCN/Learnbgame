@@ -4,7 +4,7 @@ bl_info = {
     "author": "Julien De Loor",
     "location": "File > Import-Export",
     "blender": (2,76,0),
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 import bpy;

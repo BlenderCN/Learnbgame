@@ -7,7 +7,7 @@ bl_info = {
     "warning": "",
     "description": "save a mesh data status in order to be reused if needed",
     "wiki_url": "http://blenderaddonlist.blogspot.com/2015/03/addon-non-destructive-modelling.html",
-    "category": "Mesh",
+    "category": "Learnbgame",
 }
 
 

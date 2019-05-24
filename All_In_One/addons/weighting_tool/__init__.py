@@ -27,7 +27,7 @@ bl_info = {
     "description": "MakeHuman Utilities",
     "warning": "",
     'wiki_url': "http://www.makehuman.org",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

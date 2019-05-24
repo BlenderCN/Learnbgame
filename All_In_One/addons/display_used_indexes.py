@@ -7,7 +7,7 @@ bl_info = {
     "description": "Displays the Material or object indexes already used.",
     "warning": "",
     "wiki_url": "",
-    "category": "UI",
+    "category": "Learnbgame",
     }
 
 import bpy

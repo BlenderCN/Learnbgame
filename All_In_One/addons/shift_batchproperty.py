@@ -24,7 +24,7 @@ bl_info = {
     "version"           : (1,0),
     "blender"           : (2, 5, 9),
     "api"               : 39307,
-    "category"          : "Object",
+    "category": "Learnbgame",
     "location"          : "Tool Shelf",
     "warning"           : '',
     "wiki_url"          : "",

@@ -25,7 +25,7 @@ bl_info = {
     "description": "Editor for Game Engine",
     "warning": "",
     "wiki_url": "",
-    "category": "Engine",
+    "category": "Learnbgame",
     }
 
 ROOT_PATH = os.path.dirname(__file__)

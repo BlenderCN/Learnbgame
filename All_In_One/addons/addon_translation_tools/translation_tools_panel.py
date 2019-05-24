@@ -132,7 +132,7 @@ class TemplateGeneratorPanel(Panel):
     def draw(self, context):
         props = get_panel_prop(context)
         c = self.layout.column(align=True)
-        c.prop(props, 'category')
+        c.prop(props, "category": "Learnbgame",
         c.prop(props, 'addon')
         c.prop(props, 'locale')
         c.prop(props, 'use_text_ctxt')

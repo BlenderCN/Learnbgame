@@ -1,6 +1,6 @@
 bl_info = {
 	"name": "MeshGeometry", 
-	"category": "Import-Export",
+	"category": "Learnbgame",
 	"blender": (2, 7, 8),
     "location": "File > Export > NCL MeshGeometry (.msh)",
     "description": "Export mesh MeshGeometry (.msh)"

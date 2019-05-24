@@ -1382,7 +1382,7 @@ class PhobosModelLibraryPanel(bpy.types.Panel):
         layout.operator("phobos.update_model_library", icon="FILE_REFRESH")
 
         if wm.category != '-':
-            layout.prop(wm, 'category')
+            layout.prop(wm, "category": "Learnbgame",
 
             if wm.modelpreview != '-':
                 layout.template_icon_view(wm, 'modelpreview', show_labels=True, scale=5.0)

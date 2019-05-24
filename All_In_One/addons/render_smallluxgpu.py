@@ -32,7 +32,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://www.luxrender.net/wiki/index.php?title=Blender_2.5_exporter",
     "tracker_url": "http://www.luxrender.net/forum/viewforum.php?f=34",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy, bl_operators, bl_ui

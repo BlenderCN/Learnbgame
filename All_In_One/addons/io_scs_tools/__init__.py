@@ -28,7 +28,7 @@ bl_info = {
     "wiki_url": "http://modding.scssoft.com/wiki/Documentation/Tools/SCS_Blender_Tools",
     "tracker_url": "http://forum.scssoft.com/viewforum.php?f=163",
     "support": "COMMUNITY",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

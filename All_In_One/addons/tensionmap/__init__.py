@@ -27,7 +27,7 @@ bl_info = {
     "warning":     "",
     "wiki_url":    "https://github.com/ScottishCyclops/tensionmap",
     "tracker_url": "https://github.com/ScottishCyclops/tensionmap/issues",
-    "category":    "Object"
+    "category": "Learnbgame",
 }
 
 last_processed_frame = None

@@ -5,7 +5,7 @@ bl_info = {
     "blender": (2, 78, 0),
     "location": "View3D > Add > Mesh > Staircase",
     "description": "A simple staircase generator.",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
     }
 
 

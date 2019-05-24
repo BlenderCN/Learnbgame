@@ -32,7 +32,7 @@ bl_info = {
     "description": "Text animation tools", 
     "wiki_url": "http://codeofart.com/text-fx/",
     "tracker_url": "http://codeofart.com/text-fx/",      
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

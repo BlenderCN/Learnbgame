@@ -45,7 +45,7 @@ bl_info = {
     "description": "Mocap tool for MHX rig",
     "warning": "",
     'wiki_url': "http://www.makehuman.org/node/285",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """

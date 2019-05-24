@@ -1,0 +1,108 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles v1.1
+/*   Sampled Line Rendering
+/*------------------------------------------*/
+
+shader LineRender(
+    int UseGlobal = 1,
+    int Samples = 5,
+    int Relative = 0,
+    int UseSiluette = 1,
+    int UseObj = 1,
+    int UseNormal = 1,
+    int UseDepth = 1,
+    int UseAllPasses = 0,
+    color VertexMask = 1.0,
+    float Size = 1,
+    float NormalLimit = 0.9,
+    float DepthLimit = 0.2,
+    float ClampAngle = 0.4,
+    float ClampDistance = 999,
+    
+    output color Result = 1)
+{   
+    if(UseAllPasses == 0 ){
+        if(raytype("camera") != 1){
+            return;
+        }
+    }
+    
+    string selfName;
+    getattribute("geom:name", selfName);
+    if(startswith(selfName,"-")){
+        return;
+    }
+    
+        
+    float L; 
+    vector disturb;
+    vector normHit;
+    vector normP;
+    
+    UseGlobal = UseGlobal;
+    
+    float v1 = 1; float v2 = 1; float v3 =1;
+    point CamPos = point("camera",0,0,0);
+    L = length((vector)transform("world", "camera", P));
+    
+    for(int i = 0; i< Samples; i++){
+
+        vector rasterPoint;
+        
+        if(Relative){
+            disturb =  Size/2 * L * 0.01 * (noise("perlin", abs(P)*1000000.0 + i));
+            rasterPoint = transform("world","camera",P-CamPos) + disturb * Size/2 ;
+        }
+        else{
+            disturb = Size/2 * 0.01 * (noise("perlin", abs(P)*1000000.0 + i));
+            rasterPoint = transform("world","camera",P-CamPos) + disturb * Size/2 * L;
+        }
+        
+        vector finalPoint = transform("camera","world",rasterPoint);
+        
+        int ray = 0;
+        ray = trace(CamPos, normalize(finalPoint), "mindist", L-ClampDistance);
+       
+        
+        if(ray){
+            if(isconnected(VertexMask)){
+                color col = color(-1,-1,-1);
+                getmessage("trace","Col",col);
+                if(col[0] != -1){
+                    Result *= distance(VertexMask,col) > 0.3 ? 0 : 1;
+                }
+            }
+            
+            if(UseNormal){
+                getmessage("trace","N",normHit);
+                Result *= distance(normalize(normHit),normalize(N)) > NormalLimit ? 0 : 1;
+            }
+            
+            if(UseDepth){
+                getmessage("trace","P",normP);
+                getmessage("trace","N",normHit);
+                vector rayDirection = normalize(vector(normP[0]-CamPos[0],normP[1]-CamPos[1],normP[2]-CamPos[2]));
+                float a = dot(normalize(normHit),normalize(P-CamPos + disturb));
+                if(abs(a) > ClampAngle){
+                    Result *= distance(normP,P) > DepthLimit ? 0 : 1 ;
+                }
+            }
+            
+            if(UseObj){
+                string nameHit = "";
+                getmessage("trace","geom:name",nameHit);
+                Result *= (nameHit != selfName) ? 0 : 1 ;
+                if(startswith(nameHit,"-")){
+                    Result = 1;
+                }
+            }
+
+        }
+        else{
+            if(UseSiluette){
+                Result = 0;
+            }
+        }
+        if(Result == 0){return;}
+    }
+}

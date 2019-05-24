@@ -33,7 +33,8 @@ bl_info = {
     'location': 'VIEW 3D -> TOOLS',
     'description': 'Set of tools to mangle curves, meshes, and shape keys',
     'warning': '',
-    'category': 'Object'}
+    "category": "Learnbgame",
+}
 
 
 def move_coordinate(context, co, is_curve=False):

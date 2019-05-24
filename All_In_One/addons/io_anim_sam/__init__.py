@@ -15,7 +15,7 @@ bl_info = {
     "version":      (0,0,1),
     "location":     "File > Import-Export",
     "description":  "Export bones animation for spout engine.",
-    "category":     "Import-Export"
+    "category": "Learnbgame",
 }
 
 class ExportSAM(bpy.types.Operator, ExportHelper):

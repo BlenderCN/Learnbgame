@@ -1,7 +1,7 @@
 # Sketch for possible glitch3d addon
 bl_info = {
     "name": "Glitch3D",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

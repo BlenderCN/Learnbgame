@@ -33,7 +33,7 @@ bl_info = {
     "support" : "COMMUNITY",
     "wiki_url" : "",
     "tracker_url" : "",
-    "category" : "3D View"
+    "category": "Learnbgame",
 }
 
 

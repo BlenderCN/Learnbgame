@@ -9,7 +9,7 @@ bl_info = {
     "wiki_url":    "https://github.com/ZoomTen/blender-vse-cinebars",
     "tracker_url": "https://github.com/ZoomTen/blender-vse-cinebars/issues",
     "location":    "Video Sequence Editor > Properties > Cinebars",
-    "category":    "Sequencer"
+    "category": "Learnbgame",
     }
 
 # vars

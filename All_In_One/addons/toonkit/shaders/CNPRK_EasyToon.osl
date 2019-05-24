@@ -1,0 +1,188 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles v1.1
+/*   EasyToon
+/*------------------------------------------*/
+
+color CheckLight(int i, string splitedLights[],vector Normal, float Spec,float spcSmooth, float spcOffset, int Cels){
+
+    string splitedData[12];
+    split(splitedLights[i],splitedData,",");
+    
+    string type = splitedData[0];    
+    float smooth = stof(splitedData[7]);
+    
+    // Light Color
+    string colors[3];
+    split(splitedData[9],colors,"|");
+    vector col = vector(stof(colors[0]),stof(colors[1]),stof(colors[2]));
+    
+    // Shadow
+    float useShadow = stof(splitedData[11]);
+    float smoothShadow = stof(splitedData[10]);
+    vector posShadow = vector(stof(splitedData[1]),stof(splitedData[2]),stof(splitedData[3]));
+    
+
+    if(type == "POINT"){
+        vector pos = vector(stof(splitedData[1]),stof(splitedData[2]),stof(splitedData[3]));
+        
+        float radius = stof(splitedData[8]);
+        vector n = normalize(Normal);
+        vector lightDir = pos-P;
+        float dist = length(lightDir);
+        float NdotL = max(dot(n,normalize(lightDir)),0.0);
+        
+        if(NdotL > 0){
+            float att = clamp(1.0 - dist/max(radius,0.001), 0.0, 1.0);
+            float dif = clamp(NdotL * att,0.0,1.0);
+            
+            float terminator = -0.15;
+            float value;
+            
+            
+            if(Cels > 0){
+                // if using cell use the max smoothness value to get all shading information
+                value = clamp(smoothstep(terminator*(-1),terminator*(-1)+clamp(1,0.0,1.0),dif),0.0,1.0);
+                value = ceil(value * Cels)/Cels; 
+            }
+            else{
+                value = smoothstep(terminator*(-1),terminator*(-1)+clamp(smooth,0.0001,1.0),dif);
+            }
+              
+            
+            // SHADOW
+            int result = 1;
+            if(useShadow){
+                float d = dot(Normal,lightDir);
+                vector disturb = ( clamp(smoothShadow,0.0,10.0) * (noise("perlin", P*10000.0 + i)) );
+                result *= 1-trace(P,normalize(lightDir + disturb),"maxdist",dist);
+                string nameHit = "";
+                getmessage("trace","geom:name",nameHit);
+                if(startswith(nameHit,"-")){
+                    result = 1;
+                }
+            }
+            
+            // SPECULAR
+            vector rot = pos-P;
+            vector d = transform("world", normalize(rot));
+            float spc = max(0.0,dot(reflect(-d,Normal),I));
+            float spSize = clamp(spcOffset,0,1);
+            Spec += smoothstep(spSize*(-1)+1,spSize*(-1)+1+clamp(spcSmooth,0.0,1.0),spc) * result;
+            
+            return result * value * col;
+        }
+        
+        return color(0,0,0);
+    
+    }
+    // DIRECTIONAL
+    else{
+        vector rot = vector(stof(splitedData[4]),stof(splitedData[5]),stof(splitedData[6]));
+        vector d = transform("world", normalize(rot));
+            
+        float NdotL = max(dot(Normal,d),0.0);
+        
+        if(NdotL > 0){
+            float dif = dot(normalize(Normal),d);    
+            float terminator = -0.15;
+
+            float value = clamp(smoothstep(terminator*(-1),terminator*(-1)+clamp(smooth,0.0,1.0),dif),0.0,1.0);
+            
+            if(Cels > 0){
+                value = ceil(value * Cels)/Cels; 
+            }
+        
+            // Shadow
+            int result = 1;
+            if(useShadow){
+                vector disturb = ( clamp(smoothShadow,0.0,1.0) * (noise("perlin", P*10000.0 + i)) );
+                result = (1-trace(P,rot + disturb));
+                string nameHit = "";
+                getmessage("trace","geom:name",nameHit);
+                if(startswith(nameHit,"-")){
+                    result = 1;
+                }
+            }
+            
+            // SPECULAR
+            if(spcOffset > 0){
+                float spc = max(0.0,dot(reflect(-d,Normal),I));
+                Spec += smoothstep(spcOffset*(-1)+1,spcOffset*(-1)+1+clamp(spcSmooth,0.0,1.0),spc) * result;            
+            }
+            
+            
+            return clamp(col * value,0,1) * result;
+        }
+        else{
+            return color(0,0,0);
+        }
+    }
+
+}
+
+
+shader Cell(
+    
+    color Light = 0.8,
+    color Shadow = 0,
+    int Cels = 1,
+    
+    color SpecColor = 1,
+    float SpecSmooth = 0.0,
+    float SpecularSize = 0.1,
+    
+    string Data = "",
+    normal Normal = N,
+    
+    output color Output = 0,
+    output color Mask= 0,
+    output float Specular = 0
+    )
+{   
+    if(strlen(Data) > 1){
+        string splitedLights[9];
+        split(Data,splitedLights,";");
+        int size = arraylength(splitedLights);
+        
+        float spc = 0;
+        
+        string ambColor[3];
+        split(splitedLights[0],ambColor,"|");
+        vector ambCol = vector(stof(ambColor[0]),stof(ambColor[1]),stof(ambColor[2]));  
+        
+        if(strlen(splitedLights[1]) > 0){
+            Mask += CheckLight(1,splitedLights,Normal,spc,SpecSmooth,SpecularSize,Cels);
+        }
+
+        if(strlen(splitedLights[2]) > 0){
+            Mask += CheckLight(2,splitedLights,Normal,spc,SpecSmooth,SpecularSize,Cels);
+        }
+        if(strlen(splitedLights[3]) > 0){
+            Mask += CheckLight(3,splitedLights,Normal,spc,SpecSmooth,SpecularSize,Cels);
+        }
+        if(strlen(splitedLights[4]) > 0){
+            Mask += CheckLight(4,splitedLights,Normal,spc,SpecSmooth,SpecularSize,Cels);
+        }
+        if(strlen(splitedLights[5]) > 0){
+            Mask += CheckLight(5,splitedLights,Normal,spc,SpecSmooth,SpecularSize,Cels);
+        }
+        if(strlen(splitedLights[6]) > 0){
+            Mask += CheckLight(6,splitedLights,Normal,spc,SpecSmooth,SpecularSize,Cels);
+        }
+        if(strlen(splitedLights[7]) > 0){
+            Mask += CheckLight(7,splitedLights,Normal,spc,SpecSmooth,SpecularSize,Cels);
+        }
+        if(strlen(splitedLights[8]) > 0){
+            Mask += CheckLight(8,splitedLights,Normal,spc,SpecSmooth,SpecularSize,Cels);
+        }
+        
+        Specular = spc;
+        Mask = clamp(Mask+ambCol,0.00,1.00);
+        spc = clamp(spc,0.00,1.00);
+        Output = mix(Shadow,Light,Mask);
+        Output = mix(Output,SpecColor,spc);    
+        
+    }
+    
+
+}

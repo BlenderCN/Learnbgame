@@ -25,7 +25,7 @@ bl_info = {
     'location': '',
     'description': '',
     'wiki_url': 'https://github.com/chromoly/blender_update_tag',
-    'category': '3D View',
+    "category": "Learnbgame",
 }
 
 

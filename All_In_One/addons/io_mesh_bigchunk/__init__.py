@@ -5,7 +5,7 @@ bl_info = {
 	"version":      (0,0,1),
 	"location":     "File > Import-Export",
 	"description":  "Exports selected mesh as a BIGCHUNK Model",
-	"category":     "Import-Export"
+	"category": "Learnbgame",
 }
 
 # Ensure that we reload our dependencies if we ourselves are reloaded by Blender

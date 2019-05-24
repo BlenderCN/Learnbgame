@@ -34,7 +34,7 @@ bl_info = {
 	"warning": "",
 	"wiki_url": "http://blenderthings.blogspot.com/2013/08/coloring-connected-vertices.html",
 	"tracker_url": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 

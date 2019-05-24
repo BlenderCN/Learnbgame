@@ -23,7 +23,7 @@ bl_info = {
     "version": (1, 1, 2),
     "blender": (2, 72, 0),
     "location": "UV/Image Editor > Shift+R or Ctrl+Shift+R",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 import bpy   

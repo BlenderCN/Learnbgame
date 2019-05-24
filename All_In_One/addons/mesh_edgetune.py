@@ -68,7 +68,7 @@ bl_info = {
 	"warning": "",
 	"wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Mesh/EdgeTune",
 	"tracker_url": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 

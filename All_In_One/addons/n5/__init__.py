@@ -27,7 +27,7 @@ bl_info = {
     "location": "View3D",
     "warning": "This addon is always in development.",
     "wiki_url": "c:/",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
     

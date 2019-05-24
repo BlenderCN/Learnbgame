@@ -7,7 +7,7 @@ bl_info = {
     "description": "scrapes code object from data found at post link",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

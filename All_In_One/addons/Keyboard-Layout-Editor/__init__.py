@@ -7,7 +7,7 @@ bl_info = {
     "location": "File > Import-Export > Keyboard Layout Editor Raw (.json) ",
     "description": "Import Keyboard Layouts",
     "warning": "",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 import bpy

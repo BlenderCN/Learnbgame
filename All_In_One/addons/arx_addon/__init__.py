@@ -25,7 +25,7 @@ bl_info = {
     "warning": "This is alpha software, read the documentation, keep your original blend files!",
     "wiki_url": "http://wiki.arx-libertatis.org/Blender",
     "tracker_url": "https://bugs.arx-libertatis.org/arx/issues/new",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "support": "COMMUNITY",
 }
 

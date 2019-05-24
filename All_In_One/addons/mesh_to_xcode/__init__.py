@@ -37,7 +37,7 @@ bl_info = {
     'author': 'Osman Mesut Ozcan',
     'blender': (2, 8, 1),
     'version': (0, 0, 1),
-    'category': 'Add Mesh',
+    "category": "Learnbgame",
     'location': '',
     'warning': '',
     'wiki_url': '',

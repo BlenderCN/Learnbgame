@@ -28,7 +28,7 @@ bl_info = {
     "warning": "Beta",
     "wiki_url": "https://github.com/al3p/BtoMW",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # Release Log

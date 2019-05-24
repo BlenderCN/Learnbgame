@@ -36,7 +36,7 @@ bl_info = {
     "author"     : "Tamir Lousky (Original Author), Luciano Muñoz (added folder creation functionality), Jule Marcoueille (added single file output option)",
     "version"    : (0, 0, 5),
     "blender"    : (2, 68, 0),
-    "category"   : "Render",
+    "category": "Learnbgame",
     "location"   : "Node Editor >> Tools",
     "wiki_url"   : "https://github.com/Tlousky/production_scripts/wiki/save_all_renderlayers_And_passes.py",
     "tracker_url": "https://github.com/Tlousky/production_scripts/blob/master/save_all_renderlayers_and_passes.py",

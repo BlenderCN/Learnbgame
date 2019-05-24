@@ -28,7 +28,7 @@ bl_info = {
     "warning": "Modifiers must be applied before scaling newly created pillow",
     "wiki_url": "https://blenderartists.org/forum/showthread.php?432659-MakePillow-py-Generate-a-pillow",
     "tracker_url": "https://blenderartists.org/forum/showthread.php?432659-MakePillow-py-Generate-a-pillow",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

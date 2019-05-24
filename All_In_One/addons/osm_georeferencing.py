@@ -9,7 +9,7 @@ bl_info = {
     "wiki_url": "https://github.com/vvoovv/blender-tools/wiki/OpenStreetMap-Georeferencing",
     "tracker_url": "https://github.com/vvoovv/blender-tools/issues",
     "support": "COMMUNITY",
-    "category": "3D View",
+    "category": "Learnbgame",
 }
 
 import bpy
@@ -50,7 +50,8 @@ class TransverseMercator:
 
         lon = self.lon + math.degrees(lon)
         lat = math.degrees(lat)
-        return (lat, lon)
+        return (lat, lon)
+
 
 class OsmGeoreferencingPanel(bpy.types.Panel):
     bl_space_type = "VIEW_3D"
@@ -124,4 +125,5 @@ def register():
     bpy.utils.register_module(__name__)
 
 def unregister():
-    bpy.utils.unregister_module(__name__)
+    bpy.utils.unregister_module(__name__)
+

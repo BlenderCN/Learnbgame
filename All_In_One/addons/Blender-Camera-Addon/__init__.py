@@ -31,7 +31,7 @@ bl_info = {
     "version":     (1, 3, 2),
     "blender":     (2, 7, 1),
 	"location":    "View 3D > Tool Shelf > Animation/Sniper",
-    "category":    "Animation"
+    "category": "Learnbgame",
     }
 	
 	

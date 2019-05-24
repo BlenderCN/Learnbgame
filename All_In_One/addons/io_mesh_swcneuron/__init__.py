@@ -8,7 +8,7 @@ bl_info = {
     'location': 'File > Import > SWC Neuron',
     'description': 'Import SWC Neuron Structures',
     'license': 'MIT',
-    'category': 'Import'
+    "category": "Learnbgame",
 }
 
 __author__ = bl_info['author']

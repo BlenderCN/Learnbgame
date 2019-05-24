@@ -3,7 +3,7 @@ bl_info = {
     "author"      : "Tamir Lousky",
     "version"     : (1, 0, 0),
     "blender"     : (2, 66, 0),
-    "category"    : "Rigging",
+    "category": "Learnbgame",
     "wiki_url"    : "https://github.com/Tlousky/production_scripts/wiki/_new?wiki[name]=draw_parenting_tree.py",
     "download_url": "https://github.com/Tlousky/production_scripts/blob/master/draw_parenting_tree.py",
     "description" : "Creates a node tree representing the armature's bone parenting structure."

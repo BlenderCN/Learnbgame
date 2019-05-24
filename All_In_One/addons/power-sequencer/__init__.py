@@ -28,7 +28,7 @@ bl_info = {
     "warning": "Docs and new features in progress",
     "wiki_url": "https://github.com/GDquest/Blender-power-sequencer",
     "support": "COMMUNITY",
-    "category": "VSE"
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -38,7 +38,7 @@ bl_info = {
     'api': 36103,
     'location': 'View3D > Tool Shelf > 4D Light Field Renderer',
     'url': 'https://www.informatik.uni-konstanz.de/cvia/',
-    'category': 'Render'
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

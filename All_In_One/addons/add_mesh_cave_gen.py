@@ -6,7 +6,8 @@ bl_info = {
     'location': 'View3D > Add > Mesh',
     'description': 'Makes Caves using metaballs converted to mesh',
     'warning': 'Murrently WIP',  # used for warning icon and text in addons panel
-    'category': 'Add Mesh'}
+    "category": "Learnbgame",
+}
 
 
 import bpy

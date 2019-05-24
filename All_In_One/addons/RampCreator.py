@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Ramp Object",
-    "category": "Object"
+    "category": "Learnbgame",
 }
 
 import bpy

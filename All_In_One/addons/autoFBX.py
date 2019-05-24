@@ -2,7 +2,7 @@ import bpy
 import os
 from bpy.app.handlers import persistent
 
-bl_info = {"name": "autoFBX", "category": "Learnbgame"
+bl_info = {"name": "autoFBX", "category": "Learnbgame",
 }
 
 @persistent

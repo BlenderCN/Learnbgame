@@ -7,7 +7,7 @@
 
 bl_info = {
     'name': 'Color matching',
-    'category': 'All',
+    "category": "Learnbgame",
     'author': 'Nikita Akimov',
     'version': (1, 1, 0),
     'blender': (2, 79, 0),

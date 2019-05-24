@@ -6,7 +6,7 @@ bl_info = {
     "location": "Tool shelf",
     "description": "Weld the normals of two objects.",
     "show_expanded": True,
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 	
 import bpy

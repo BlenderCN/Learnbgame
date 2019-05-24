@@ -29,7 +29,8 @@ bl_info = {
     'description': 'Divide render into blocks, render each block and try to merge them into a single image.',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Render'}
+    "category": "Learnbgame",
+}
 
 scn = bpy.types.Scene
 

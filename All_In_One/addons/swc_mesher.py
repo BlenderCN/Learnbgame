@@ -20,7 +20,7 @@ bl_info = {
 	"warning" : "",
 	"wiki_url" : "http://salk.edu",
 	"tracker_url" : "",
-	"category": "Add Mesh",
+	"category": "Learnbgame",
 }
 
 class MakeNeuronMeta_Panel(bpy.types.Panel):

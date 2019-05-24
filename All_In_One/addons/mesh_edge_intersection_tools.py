@@ -23,7 +23,7 @@ bl_info = {
     "author": "zeffii",
     "version": (0, 5, 1),
     "blender": (2, 56, 0),
-    "category": "Mesh",
+    "category": "Learnbgame",
     "location": "View3D > EditMode > (w) Specials",
     "warning": "will detach geometry",
     "wiki_url": "http://wiki.blender.org/index.php/"\

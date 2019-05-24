@@ -5,7 +5,7 @@ from .face_material_id_ui import *
 bl_info = {
     "name": "Face Material Id",
     "description": "Face Material Id",
-    "category": "Mesh",
+    "category": "Learnbgame",
     "author": "Cube"
 }
 

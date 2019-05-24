@@ -14,7 +14,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "github.com/gabrielmontagne/blender-addon-import-export-timeline-markers",
     "tracker_url": "github.com/gabrielmontagne/blender-addon-import-export-timeline-markers/issues",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 class ExportTimelineMarkers(Operator, ExportHelper):

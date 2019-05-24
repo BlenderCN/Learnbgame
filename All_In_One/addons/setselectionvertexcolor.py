@@ -13,7 +13,7 @@ bl_info = {
 	"description": "Assigs a color to the current vertex/edge/poly selection",
 	"warning": "",
 	"wiki_url": "",
-	"category": "Mesh",
+	"category": "Learnbgame",
 	}
 
 

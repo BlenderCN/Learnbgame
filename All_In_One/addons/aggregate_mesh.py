@@ -12,7 +12,7 @@ bl_info = {
     "api": 38676,
     "location": "View3D > Properties",
     "description": "Adds geometry to a mesh like in DLA aggregators.",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy, random, time, mathutils

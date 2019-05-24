@@ -7,7 +7,7 @@ bl_info = {
 	'description': 'Animation offset tools for motion graphics.',
 	'wiki_url': 'https://github.com/mrachinskiy/commotion#readme',
 	'tracker_url': 'https://github.com/mrachinskiy/commotion/issues',
-	'category': 'Animation',
+	"category": "Learnbgame",
 	}
 
 

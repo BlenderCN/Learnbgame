@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Kinect MoCap",
-    "category": "Object",
+    "category": "Learnbgame",
     "author": "Pete Dring",
     "version": (1,0),
 }

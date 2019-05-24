@@ -26,7 +26,7 @@ bl_info = {
     "description": "Debug pose for MakeHuman",
     "warning": "",
     'wiki_url': "http://www.makehuman.org/node/xxx",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 

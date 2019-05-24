@@ -25,7 +25,7 @@ bl_info = {
     "version": (0, 1),
     "blender": (2, 76, 0),
     "location": "Properties > Scene and Node Editor",
-    "category": "Animation",
+    "category": "Learnbgame",
     "warning": "Extremely experimental! Press save regularly"
 }
 

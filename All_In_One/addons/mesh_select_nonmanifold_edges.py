@@ -6,7 +6,7 @@ bl_info = {
     "description": "Selects non-manifold edges in the active mesh object",
     "version": (0, 3),
     "blender": (2, 5, 6),
-    "category": "Mesh",
+    "category": "Learnbgame",
     "location": "Mesh > Edges > Select non-manifold edges",
     "warning": '',
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/Modeling/Select_nonmanifold_edges",

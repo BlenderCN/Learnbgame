@@ -29,7 +29,7 @@ bl_info = {
     "description": "Use Grease Pencil to retopologise a mesh.",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

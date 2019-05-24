@@ -30,7 +30,7 @@ This file is part of the JMP Blender Utilities.
 
 bl_info = {
     "name": "Quantize Vertices", 
-    "category": "Object"
+    "category": "Learnbgame",
 }
 
 import bpy

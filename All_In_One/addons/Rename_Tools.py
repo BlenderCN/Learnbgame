@@ -27,7 +27,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "User Interface"
+    "category": "Learnbgame",
 }
 
 import bpy

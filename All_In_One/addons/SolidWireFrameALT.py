@@ -28,7 +28,7 @@ bl_info = {
     #             "Scripts/Modeling/Mesh_WireFrane',
     # "tracker_url": "https://projects.blender.org/tracker/index.php?"
     #                "func=detail&aid=22929",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

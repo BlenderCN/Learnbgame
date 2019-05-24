@@ -6,7 +6,7 @@ bl_info = {
     "location": "File > Import-Export > cube map (.cmap)",
     "description": "Export cube map(.cmap)",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

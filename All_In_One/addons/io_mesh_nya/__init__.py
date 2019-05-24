@@ -31,7 +31,7 @@ bl_info = {
 	"wiki_url": ""
 				"",
 	"support": 'OFFICIAL',
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 if "bpy" in locals():

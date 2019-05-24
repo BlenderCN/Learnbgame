@@ -1,0 +1,99 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.7.5
+# options: -o C:\Users\vitor\AppData\Local\Temp\tmpnqmb8ia1.oso -IC:\Program Files\Blender Foundation\Blender\2.79\scripts\addons\cycles\shader
+shader AO
+param	float	Distance	0.5		%read{17,20} %write{2147483647,-1}
+oparam	float	AO	1		%read{2147483647,-1} %write{25,25}
+global	point	P	%read{1,17} %write{2147483647,-1} %derivs
+global	normal	N	%read{4,4} %write{2147483647,-1} %derivs
+local	vector	noisevector	%read{13,13} %write{0,12} %derivs
+local	vector	aovector	%read{8,16} %write{4,13} %derivs
+local	float	aoangle	%read{12,12} %write{7,7} %derivs
+local	int	didhit	%read{18,24} %write{14,17}
+local	float	dist	%read{20,20} %write{19,19}
+local	float	fac	%read{25,25} %write{15,23}
+const	vector	$const1	0 0 0		%read{0,0} %write{2147483647,-1}
+const	float	$const2	0.001		%read{3,3} %write{2147483647,-1}
+temp	vector	$tmp1	%read{3,3} %write{2,2} %derivs
+const	string	$const3	"perlin"		%read{2,2} %write{2147483647,-1}
+const	float	$const4	10000		%read{1,8} %write{2147483647,-1}
+temp	point	$tmp2	%read{2,2} %write{1,1} %derivs
+temp	vector	$tmp3	%read{4,4} %write{3,3} %derivs
+const	float	$const6	60		%read{7,7} %write{2147483647,-1}
+const	string	$const7	"radians"		%read{5,5} %write{2147483647,-1}
+const	float	$const8	3.1415927		%read{6,6} %write{2147483647,-1}
+const	float	$const9	180		%read{6,6} %write{2147483647,-1}
+temp	float	$tmp4	%read{7,7} %write{6,6} %derivs
+const	float	$const11	2		%read{10,10} %write{2147483647,-1}
+temp	vector	$tmp5	%read{10,10} %write{9,9} %derivs
+const	string	$const12	"cell"		%read{9,9} %write{2147483647,-1}
+temp	vector	$tmp6	%read{9,9} %write{8,8} %derivs
+temp	vector	$tmp7	%read{11,11} %write{10,10} %derivs
+temp	vector	$tmp8	%read{12,12} %write{11,11} %derivs
+const	float	$const13	1		%read{11,22} %write{2147483647,-1}
+const	int	$const14	0		%read{14,15} %write{2147483647,-1}
+temp	vector	$tmp9	%read{17,17} %write{16,16} %derivs
+const	string	$const15	"maxdist"		%read{17,17} %write{2147483647,-1}
+temp	int	$tmp10	%read{2147483647,-1} %write{19,19}
+const	string	$const16	"trace"		%read{19,19} %write{2147483647,-1}
+const	string	$const17	"hitdist"		%read{19,19} %write{2147483647,-1}
+temp	float	$tmp11	%read{22,22} %write{20,20}
+const	float	$const18	0		%read{23,23} %write{2147483647,-1}
+const	string	$const19	"clamp"		%read{21,21} %write{2147483647,-1}
+temp	float	$tmp12	%read{23,23} %write{22,22}
+code ___main___
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl:12
+#     vector aovector = N  + ( 0.001 * noise("perlin", P*10000.0) );
+	assign		noisevector $const1 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl"} %line{12} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl:13
+#     float aoangle = radians(60);
+	mul		$tmp2 P $const4 	%line{13} %argrw{"wrr"}
+	noise		$tmp1 $const3 $tmp2 	%argrw{"wrr"}
+	mul		$tmp3 $const2 $tmp1 	%argrw{"wrr"}
+	add		aovector N $tmp3 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl:14
+# 
+	functioncall	$const7 8 	%line{14} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:88
+#     color  name (color x, float y) BUILTIN;     \
+	div		$tmp4 $const8 $const9 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{88} %argrw{"wrr"}
+	mul		aoangle $const6 $tmp4 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl:16
+#     aovector +=  noisevector;
+	mul		$tmp6 aovector $const4 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl"} %line{16} %argrw{"wrr"}
+	noise		$tmp5 $const12 $tmp6 	%argrw{"wrr"}
+	mul		$tmp7 $const11 $tmp5 	%argrw{"wrr"}
+	sub		$tmp8 $const13 $tmp7 	%argrw{"wrr"}
+	mul		noisevector aoangle $tmp8 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl:17
+# 
+	add		aovector aovector noisevector 	%line{17} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl:19
+#     float dist,fac=0;
+	assign		didhit $const14 	%line{19} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl:20
+# 
+	assign		fac $const14 	%line{20} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl:22
+#     if(didhit){ 
+	normalize	$tmp9 aovector 	%line{22} %argrw{"wr"}
+	trace		didhit P $tmp9 $const15 Distance 	%argrw{"wrrrr"} %argderivs{1,2}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl:23
+#         getmessage ("trace", "hitdist", dist );
+	if		didhit 24 24 	%line{23} %argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl:24
+#         fac = clamp( (dist/Distance), 0, 1 );
+	getmessage	$tmp10 $const16 $const17 dist 	%line{24} %argrw{"wrrw"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl:25
+#     }
+	div		$tmp11 dist Distance 	%line{25} %argrw{"wrr"}
+	functioncall	$const19 24 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# PERCOMP1 (sign)
+	min		$tmp12 $tmp11 $const13 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		fac $tmp12 $const18 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl:27
+# }
+	if		didhit 26 26 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders/CNPRK_AO.osl"} %line{27} %argrw{"r"}
+	assign		AO fac 	%argrw{"wr"}
+	end

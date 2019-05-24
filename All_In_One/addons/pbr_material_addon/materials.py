@@ -40,7 +40,7 @@ class PBRMaterialPanel(bpy.types.Panel):
         col = layout.column(align=True)
         
         row = col.row()
-        row.prop(settings, 'category', text="Category", expand=True)
+        row.prop(settings, "category": "Learnbgame",
         
         # Preview
         row = col.row()

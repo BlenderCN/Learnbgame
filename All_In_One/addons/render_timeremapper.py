@@ -25,7 +25,7 @@ bl_info = {
     "description": "Time remaps whole scene according to an animatable "
                    "speed factor",
     "warning": "beta",
-    "category": "Render",
+    "category": "Learnbgame",
     "wiki_url": "",
     "tracker_url": "https://github.com/hxxr/time-remapper"}
 

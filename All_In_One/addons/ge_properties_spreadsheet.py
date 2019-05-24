@@ -27,7 +27,7 @@ bl_info = {
     "location": "World context in Properties Editor",
     "description": "Display Material Physics Properties in a spreadsheet for quick editing",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """Display Material Physics Properties in a spreadsheet for quick editing"""

@@ -24,7 +24,7 @@ bl_info = {
   'version': (1, 0),
   'blender': (2, 6, 4),
   'location': 'File > Export > Skeleton Model format (.skm)',
-  'category': 'Import-Export'
+  "category": "Learnbgame",
 }
 
 '''

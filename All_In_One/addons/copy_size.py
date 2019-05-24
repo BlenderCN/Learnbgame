@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Copy Size",
 	"description": "Copies the scale and dimension of the active object to the selected objects",
-    "category": "Object",
+    "category": "Learnbgame",
 	"blender": (2, 77, 0),
     "author": "Akshay More",
 }

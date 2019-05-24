@@ -6,7 +6,7 @@ bl_info = {
     "location": "File > Import > SWC",
     "description": "Import SWC files",
     "license": "GPL v2",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 __author__ = bl_info['author']

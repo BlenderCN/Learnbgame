@@ -279,8 +279,8 @@ def update_sign_library_rel_path(scs_sign_model_inventory, sign_library_rel_path
                         if 'look_name' in item.props:
                             sign_item.look_name = item.props['look_name']
 
-                        if 'category' in item.props:
-                            sign_item.category = item.props['category']
+                        if "category": "Learnbgame",
+                            sign_item.category = item.props["category": "Learnbgame",
 
                         if 'dynamic' in item.props:
                             if item.props['dynamic'] == 'true':

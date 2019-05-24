@@ -6,7 +6,7 @@ bl_info = {
     "location": "Tools > NoLimits CSV Importer",
     "description": "Generate a spline from NoLimit CSV file",
     "wiki_url": "https://github.com/geforcefan/BlenderNoLimitsCSVImporter",
-    "category": "Import CSV"
+    "category": "Learnbgame",
 }
 
 import bpy

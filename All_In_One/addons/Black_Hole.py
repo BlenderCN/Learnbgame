@@ -28,7 +28,7 @@ bl_info = {
     "location": "3D View > Object Mode > Tools > Black Hole",
     "description": "Adds additional Object Origin tools",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 #//////////////////////////////// - IMPORT - ///////////////////////////    

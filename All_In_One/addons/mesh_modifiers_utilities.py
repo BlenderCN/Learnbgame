@@ -34,7 +34,7 @@ bl_info = {
     "warning": "",
     "wiki_url": ""
                 "",
-    "category": "Mesh",
+    "category": "Learnbgame",
 }
 
 """

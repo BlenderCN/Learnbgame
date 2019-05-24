@@ -3,7 +3,7 @@ bl_info = {
     "description": "Some scripts 3D realtime workflow oriented.",
     "author": "Vincent (V!nc3r) Lamy",
     "location": "3D view toolshelf > Nthg-is-3D tab",
-    "category": "3D View",
+    "category": "Learnbgame",
     "wiki_url": 'https://github.com/Vinc3r/BlenderScripts',
     "tracker_url": 'https://github.com/Vinc3r/BlenderScripts/issues',
     "version": (1, 0, 0),

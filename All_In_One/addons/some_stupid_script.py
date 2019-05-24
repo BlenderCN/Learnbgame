@@ -2,7 +2,7 @@
 
 bl_info = {
     "name": "Export Collision Spheres",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "author": "Julian Ewers-Peters",
     "location": "File > Import-Export"
 }

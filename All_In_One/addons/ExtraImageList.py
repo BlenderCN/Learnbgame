@@ -10,7 +10,7 @@
 bl_info = {
     "name": "Extra Image List",
     "author": "Meshlogic",
-    "category": "UV",
+    "category": "Learnbgame",
     "description": "Alternative image browse list with tiles for UV/Image Editor.",
     "location": "UV/Image Editor > Tools > Extra Image List",
     "version": (0, 1),

@@ -3,7 +3,7 @@ bl_info = {
         'author': 'bay raitt',
         'version': (0, 1),
         'blender': (2, 80, 0),
-        'category': 'Animation',
+        "category": "Learnbgame",
         'location': 'Object > Animation > Flipbook Selected Objects',
         'wiki_url': ''}
 

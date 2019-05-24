@@ -27,7 +27,7 @@ bl_info = {
                "it may use a lot of memory for a few seconds.",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Node"
+    "category": "Learnbgame",
 }
 
 import os.path

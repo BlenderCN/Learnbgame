@@ -55,7 +55,7 @@ bl_info = {
     'author': 'Keith (Wahooney) Boshoff',
     'version': (0, 3, 0),
     'blender': (2, 5, 7),
-    'category': 'UV'
+    "category": "Learnbgame",
 }
 
 import bpy

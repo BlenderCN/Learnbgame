@@ -24,7 +24,7 @@ bl_info = {
     "blender": (2, 68, 0),
     "location": "Material Panel",
     "description": "Display the objects that use the selected material.",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

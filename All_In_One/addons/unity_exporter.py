@@ -33,7 +33,7 @@ bl_info = {
     'warning': 'FBXConvert executable required to use all add-on features',
     'wiki_url': 'http://github.com/stillwwater/bl_unity_exporter',
     'tracker_url': 'http://github.com/stillwwater/bl_unity_exporter/issues',
-    'category': 'Import-Export'
+    "category": "Learnbgame",
 }
 
 

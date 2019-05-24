@@ -6,7 +6,7 @@ bl_info = {
     "blender": (2, 66, 0),
     "location": "SpaceBar Search -> ARewO",
     "description": "Animation replicator with offset",
-    "category": "Animation",
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -27,7 +27,7 @@ bl_info = {
     "location": "Bring up the Operator Search menu and type 'Rename Objects' ",
     "description": "Rename Objects by manually invoking the operator",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """Rename Objects quickly using an Operator"""

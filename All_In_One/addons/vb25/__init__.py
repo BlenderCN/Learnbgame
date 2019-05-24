@@ -34,7 +34,7 @@ bl_info = {
     "wiki_url" : "https://github.com/bdancer/vb25/wiki",
     "tracker_url" : "https://github.com/bdancer/vb25/issues",
     "support" : 'COMMUNITY',
-    "category" : "Render"
+    "category": "Learnbgame",
 }
 
 

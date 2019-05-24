@@ -38,7 +38,7 @@ bl_info = {
     "location": "File > Import-Export",
     "description": "Import SGL mesh, colors and PBR data",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 triangleIndex = 4294967295

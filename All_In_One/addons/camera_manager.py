@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Camera Manager",
-    "category": "3D View",
+    "category": "Learnbgame",
     "location": "View3D > Tool Shelf > Camera Manager",
     "description": "Easily switch between different cameras",
     "author": "Isaac Weaver"

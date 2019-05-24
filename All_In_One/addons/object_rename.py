@@ -31,7 +31,8 @@ bl_info = {
         'Scripts/Object/Object_Rename',
     'tracker_url': 'https://projects.blender.org/tracker/index.php?'\
         'func=detail&aid=21681&group_id=153&atid=468',
-    'category': 'Object'}
+    "category": "Learnbgame",
+}
 
 import bpy
 import math

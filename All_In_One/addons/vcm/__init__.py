@@ -9,7 +9,7 @@ bl_info = {
     "wiki_url": "http://github.com/krre/vcm",
     "tracker_url": "",
     "support": "COMMUNITY",
-    "category": "Development"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

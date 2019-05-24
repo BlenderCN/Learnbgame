@@ -8,7 +8,7 @@ dbg_init()
 content=bytes("","UTF-8")
 bl_info = {
     "name": "MHW Model importer",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "author": "CrazyT",
     "location": "File > Import",
     "version": "{VERSION}",

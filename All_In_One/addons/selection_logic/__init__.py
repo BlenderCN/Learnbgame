@@ -6,7 +6,7 @@ bl_info = {
     "blender": (2, 79, 0),
     "location": "View3D",
     "warning": "",
-    "category": "Mesh"
+    "category": "Learnbgame",
 }
 
 import bpy

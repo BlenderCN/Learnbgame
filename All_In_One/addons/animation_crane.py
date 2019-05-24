@@ -9,7 +9,8 @@ bl_info = {
     'description': 'Tools for controlling Crane Camera Rig',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Animation'}
+    "category": "Learnbgame",
+}
 
 import bpy
 

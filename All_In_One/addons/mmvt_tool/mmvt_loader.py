@@ -5,7 +5,7 @@ bl_info = {
     'blender': (2, 7, 9),
     'location': 'Press [Space], search for "mmvt_addon"',
     'wiki_url': 'https://github.com/pelednoam/mmvt/wiki',
-    'category': 'Development',
+    "category": "Learnbgame",
 }
 
 import bpy

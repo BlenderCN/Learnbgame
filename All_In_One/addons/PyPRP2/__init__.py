@@ -26,7 +26,8 @@ bl_info = {
     'description': 'Plasma engine settings and development tools.',
     'warning': 'beta',
 #    'url': 'http://www.guildofwriters.com/wiki/',
-    'category': 'Import-Export'}
+    "category": "Learnbgame",
+}
 
 
 # this is a dirty dirty hack

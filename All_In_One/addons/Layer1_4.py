@@ -28,7 +28,8 @@ bl_info = {
     'description': 'Display and Edit Layer Name',
     'wiki_url': '',
     'tracker_url': '',
-    'category': '3D View'}
+    "category": "Learnbgame",
+}
     
 import bpy
 from bpy.props import StringProperty, BoolProperty, IntProperty, CollectionProperty, BoolVectorProperty

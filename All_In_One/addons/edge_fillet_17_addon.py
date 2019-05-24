@@ -32,7 +32,8 @@ bl_info = {
     'description': 'select a vertex, connected to two edges, it will fillet the edge.',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Mesh'}
+    "category": "Learnbgame",
+}
 
 
 import bpy

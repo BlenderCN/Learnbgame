@@ -9,7 +9,7 @@ bl_info = {
     "blender": (2, 6, 1),
     "location": "View3D > Tool Shelf",
     "description": "Connect selected objects with a curve + hooks",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

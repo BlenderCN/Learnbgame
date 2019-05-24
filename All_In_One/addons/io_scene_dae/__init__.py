@@ -29,7 +29,7 @@ bl_info = {
     "wiki_url": ("http://www.godotengine.org"),
     "tracker_url": "",
     "support": 'OFFICIAL',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

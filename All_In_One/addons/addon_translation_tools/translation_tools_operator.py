@@ -279,7 +279,7 @@ bl_info = {{
     "version": ({V0}, {V1}, {V2}),
     "author": "{AUTHOR}",
     "tracker_url": "{TRACKER_URL}",
-    "category": "User Interface",
+    "category": "Learnbgame",
     "support": "COMMUNITY"
 }}
 """

@@ -8,7 +8,8 @@ bl_info = {
     'warning': '',
     'wiki_url': '',
     'support': 'COMMUNITY',
-    'category': 'Import-Export'}
+    "category": "Learnbgame",
+}
 
 __version__ = '.'.join(map(str, bl_info['version']))
 

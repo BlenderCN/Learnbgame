@@ -4,7 +4,7 @@ bl_info = {
 	"blender": (2, 6, 2),
 	"location": "File > Export",
 	"description": "Export scene as FC resource",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 import xml.etree.ElementTree as ET

@@ -7,7 +7,7 @@ bl_info = {
     "description": "Lets you manipulate textures easily in the 3d view",
     "warning": "Experimental. Has been know to cause reasonable fear of clowns",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -12,7 +12,7 @@
 bl_info = {
     "name": "AR Importer",
     "author": "Jesse Vander Does",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "description": "Import scenes captured with ARExporter",
     "location": "3D View > Tools > Image List",
     "version": (0, 2),

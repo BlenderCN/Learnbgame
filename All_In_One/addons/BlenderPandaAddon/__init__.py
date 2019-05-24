@@ -8,7 +8,7 @@ bl_info = {
 	"wiki_url": "",
 	"tracker_url": "",
 	"support": 'TESTING',
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 

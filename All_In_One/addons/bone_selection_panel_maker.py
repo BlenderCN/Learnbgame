@@ -1,6 +1,6 @@
 bl_info = {
     "name"     : "Bone Selection Facilitator",
-    "category" : "Animation",
+    "category": "Learnbgame",
     "author"   : "Tamir Lousky",
     "version"  : "1.0"
 }

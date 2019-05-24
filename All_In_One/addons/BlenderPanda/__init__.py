@@ -8,7 +8,7 @@ bl_info = { # pylint: disable=invalid-name
     "wiki_url": "https://github.com/Moguri/BlenderPanda",
     "tracker_url": "https://github.com/Moguri/BlenderPanda/issues",
     "support": "COMMUNITY",
-    "category": "Render"
+    "category": "Learnbgame",
 }
 
 

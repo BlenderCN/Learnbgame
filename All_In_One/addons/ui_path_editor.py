@@ -27,7 +27,7 @@ bl_info = {
     "location": "Proprieties > Scene > Path Editor",
     "description": "Display and Edit Path",
     "wiki_url": "http://blenderaddonlist.blogspot.com.au/2014/06/addon-path-editor.html",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

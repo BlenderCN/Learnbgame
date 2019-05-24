@@ -1,6 +1,6 @@
 bl_info = {
     "name": "RavenEngine (.rav, .rani)",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "version": (0, 1),
     "blender": (2, 76, 0),
     "location": "File > Export > RavenEngine",

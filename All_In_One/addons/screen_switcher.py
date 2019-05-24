@@ -33,7 +33,7 @@ bl_info = {
 	"version": (0, 3, 3),
 	"blender": (2, 7, 8),
 	"warning": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 

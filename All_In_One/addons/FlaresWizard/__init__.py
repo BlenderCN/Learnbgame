@@ -36,7 +36,7 @@ bl_info = {
 	"wiki_url": "http://codeofart.com/flares-wizard/",
     "tracker_url": "http://codeofart.com/flares-wizard/",
 	"location":    "View 3D > Tool Shelf",
-	"category":    "3D View"
+	"category": "Learnbgame",
 	}
 addonFolder = inspect.getfile(inspect.currentframe())[0:-len("__init__.py")]
 elementsFolder = os.path.join(addonFolder, "elements")

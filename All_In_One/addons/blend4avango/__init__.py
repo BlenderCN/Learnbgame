@@ -7,7 +7,7 @@ bl_info = {
     "location": "File > Import-Export",
     "description": "Blend4Avango is a Blender Extinsion",
     "warning": "",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
     
 if "bpy" in locals():

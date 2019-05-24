@@ -26,7 +26,7 @@ bl_info = {
 	"warning":     "",  # used for warning icon and text in addons panel
 	"wiki_url":    "https://github.com/CGCookie/blender-addon-updater",
 	"tracker_url": "https://github.com/CGCookie/blender-addon-updater/issues",
-	"category":    "System"
+	"category": "Learnbgame",
 	}
 
 

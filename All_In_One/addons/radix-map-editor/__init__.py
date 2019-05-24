@@ -6,7 +6,7 @@ bl_info = {
   "version":      (1, 0, 0),
   "location":     "File > Import-Export",
   "description":  "Module for loading, editing and saving Radix maps.",
-  "category":     "Import-Export",
+  "category": "Learnbgame",
   "tracker_url":  "https://github.com/SGOrava/radix-map-editor/issues"
 }
 

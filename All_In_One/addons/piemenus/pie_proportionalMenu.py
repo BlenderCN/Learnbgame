@@ -46,7 +46,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "3D View"
+    "category": "Learnbgame",
 }
  
 class VIEW3D_MT_Proportional_Menu(bpy.types.Operator):

@@ -25,7 +25,8 @@ bl_info = {
     'location': "IMAGE_EDITOR > TOOLS",
     'description': "UV Toolbar",
     "wiki_url": "http://blenderartists.org/forum/showthread.php?339842-Addon-UV-Image-Tools",
-    'category': 'UV'}
+    "category": "Learnbgame",
+}
 
     # changes by russcript:tested 2.7 RC windows and linux
     # added tabs organization (line 46)
@@ -462,7 +463,7 @@ class uvrotated(bpy.types.Operator):
 #    "warning": "",
 #    "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/UV/Island_Tools",
 #    "tracker_url": "",
-#    "category": "Learnbgame"
+#    "category": "Learnbgame",
 }
 
 #"""

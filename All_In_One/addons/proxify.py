@@ -43,7 +43,7 @@ def proxify():
 ################### add on setting section###########################
 bl_info = {
     "name": "Proxify ",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

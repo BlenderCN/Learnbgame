@@ -8,7 +8,7 @@ bl_info = {
     "wiki_url": "www.github.com/jacobvalenta/ffimport/",
     "tracker_url": "",
     "support": 'COMMUNITY',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

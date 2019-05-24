@@ -31,7 +31,7 @@ bl_info = {
 	"blender" : (2,74,0),
 	"location" : "File > Import",
 	"description" : "Import Shenmue mesh data",
-	"category" : "Import-Export"
+	"category": "Learnbgame",
 }
 
 #Import Libraries

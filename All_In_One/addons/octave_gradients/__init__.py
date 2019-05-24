@@ -9,7 +9,7 @@ bl_info = {
     "author": "zeffii (aka Dealga McArdle)",
     "version": (0, 0, 4),
     "blender": (2, 7, 6),
-    "category": "Node",
+    "category": "Learnbgame",
     "wiki_url": "",
     "tracker_url": ""
 }

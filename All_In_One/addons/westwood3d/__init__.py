@@ -8,7 +8,7 @@ bl_info = {
     "warning": "This is a preview and should not be used for projects",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

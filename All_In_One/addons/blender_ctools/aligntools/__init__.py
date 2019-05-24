@@ -27,7 +27,7 @@ bl_info = {
     'warning': '',
     'wiki_url': 'https://github.com/chromoly/quadview_move',
     'tracker_url': '',
-    'category': '3D View',
+    "category": "Learnbgame",
 }
 
 

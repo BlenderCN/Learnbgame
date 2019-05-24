@@ -30,7 +30,7 @@ bl_info = {
     "description": "Adds Copy History options to Console button.",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 import bpy

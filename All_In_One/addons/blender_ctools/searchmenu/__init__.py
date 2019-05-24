@@ -26,7 +26,7 @@ bl_info = {
     'description': '',
     'warning': '',
     'wiki_url': '',
-    'category': 'UI',
+    "category": "Learnbgame",
 }
 
 

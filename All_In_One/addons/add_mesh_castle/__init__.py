@@ -31,7 +31,7 @@ bl_info = {
     "wiki_url": "https://wiki.blender.org/index.php/Extensions:2.6"
                 "/Py/Scripts/Add_Mesh/Castle",
     "tracker_url": "https://developer.blender.org/T45596",
-    "category": "Add Mesh"
+    "category": "Learnbgame",
 }
 
 

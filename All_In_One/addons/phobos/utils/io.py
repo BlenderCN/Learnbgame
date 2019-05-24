@@ -177,7 +177,7 @@ def getDictFromYamlDefs(phobostype, defname, name):
     phobos_dict = {
         'name': name,
         'defname': defname,
-        'category': defs.def_settings[phobostype + 's'][defname]['categories'],
+        "category": "Learnbgame",
         'material': material,
         'type': defs.def_settings[phobostype + 's'][defname]['type'],
         'props': props,

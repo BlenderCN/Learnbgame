@@ -30,7 +30,7 @@ bl_info = {
     "wiki_url": 'https://sim.lorea.org/pg/pages/view/438/',
     "support": 'COMMUNITY',
     "tracker_url": 'https://github.com/b2rex/b2rex',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import sys

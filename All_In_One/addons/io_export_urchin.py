@@ -5,7 +5,7 @@ bl_info = {
   "api": 31847,
   "location": "File > Export",
   "description": "Export Urchin Engine (.urchinMesh, .urchinAnim)",
-  "category": "Learnbgame"
+  "category": "Learnbgame",
 }
 
 import bpy, struct, math, os, time, sys, mathutils, enum

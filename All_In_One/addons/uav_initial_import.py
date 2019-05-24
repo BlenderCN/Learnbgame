@@ -7,7 +7,7 @@ bl_info = {
     "description": "Import UAV IDs and initial locations as empties",
     "warning": "",
     "wiki_url": "",
-    "category": "Animation",
+    "category": "Learnbgame",
     }
 
 import bpy

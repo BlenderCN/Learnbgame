@@ -24,7 +24,7 @@ from .geom_import import ImportGeom
 
 bl_info = {
     "name": "Sims 3 GEOM Tools",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 	"version": (0, 0, 0),
 	"blender": (2, 79, 0),
 	"location": "File > Import/Export",

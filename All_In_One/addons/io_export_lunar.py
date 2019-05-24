@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Lunar Exporter",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 import os
 import bpy

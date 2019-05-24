@@ -6,7 +6,7 @@ bl_info = {
     "location": "File > Import-Export > Mocap",
     "description": "Import-Export STL files",
     "warning": "",
-    "category": "Rigging",
+    "category": "Learnbgame",
 }
  
 

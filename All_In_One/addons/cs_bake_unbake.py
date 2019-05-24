@@ -25,7 +25,7 @@ bl_info = {
 	"blender": (2, 79, 0),
 	"location": "Physics > Rigid Body Settings",
 	"description": "Bake / Unbake, Save / Load setttings",
-	"category": "Cenda Tools",
+	"category": "Learnbgame",
 	"wiki_url": "https://github.com/CenekStrichel/CendaTools/wiki",
 	"tracker_url": "https://github.com/CenekStrichel/CendaTools/issues"
 	}

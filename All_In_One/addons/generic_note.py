@@ -27,7 +27,7 @@ bl_info = {
     "version":     (0, 2, 0),
     "blender":     (2, 7, 7),
     "location":    "Node Editor, N-Panel or menu Layout",
-    "category":    "Node",
+    "category": "Learnbgame",
     "warning":     "The note will not work for people without this addon",
     "wiki-url":    "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Nodes/Generic_Note",
 }

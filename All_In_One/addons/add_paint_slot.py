@@ -13,7 +13,8 @@ bl_info = {
          "warning" : "",
          "wiki_url" : "https://github.com/amerizalde/add_paint_slots",
          "tracker_url" : "",
-         "category" : "Paint"}
+         "category": "Learnbgame",
+   }
     
 # callback to add a texture to the active material and add a paint slot in Texture Paint mode
 class SlotsOperator(Operator):

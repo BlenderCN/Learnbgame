@@ -6,7 +6,7 @@ bl_info = {
 	"blender": (2, 7, 6),
 	"description": "Slices active object for number of pieces",
 	"wiki": "",
-	"category": "Object"
+	"category": "Learnbgame",
 }
 
 

@@ -2,7 +2,7 @@ bl_info = {
 	"name": "CQTC Añadir Tomas Falsas",
 	"description": "Plugin para añadir las transiciones de las tomas falsas",
 	"location": "Properties > Render > Añadir Tomas Falsas",
-	"category": "CosoQueTeCoso",
+	"category": "Learnbgame",
 	"version": (1, 0),
 	"blender": (2, 78, 0),
 }

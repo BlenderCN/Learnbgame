@@ -34,7 +34,7 @@ bl_info = {
     "wiki_url": "https://lsimic.github.io/ProceduralBuildingGenerator/index.html",
     "tracker_url": "https://github.com/lsimic/ProceduralBuildingGenerator/issues",
     "support": "COMMUNITY",
-    "category": "Add Mesh"
+    "category": "Learnbgame",
 }
 
 

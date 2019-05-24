@@ -1,0 +1,298 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.7.5
+# options: -o C:\Users\vitor\AppData\Local\Temp\tmpl2mcei9i.oso -IC:\Program Files\Blender Foundation\Blender\2.79\scripts\addons\cycles\shader
+shader TexFxPaint
+param	float	Intensity	0.5		%read{53,53} %write{2147483647,-1}
+param	float	Scale	1		%read{2,2} %write{2147483647,-1}
+param	float	Detail	2		%read{4,4} %write{2147483647,-1}
+param	point	UV	0 0 0		%read{1,101} %write{0,0} %initexpr
+oparam	vector	Vector	0 0 0		%read{2147483647,-1} %write{108,108}
+global	point	P	%read{0,2} %write{2147483647,-1}
+local	float	___354_f	%read{13,48} %write{13,42}
+local	color	___361_outcol	%read{108,108} %write{56,107}
+local	float	___362_rmd	%read{35,49} %write{34,34}
+local	float	___362_value	%read{13,52} %write{7,51}
+local	float	___362_pwr	%read{13,50} %write{8,32}
+local	float	___362_pwHL	%read{13,32} %write{10,10}
+local	int	___362_i	%read{13,32} %write{12,32}
+local	point	p	%read{2147483647,-1} %write{1,1}
+local	point	p1	%read{13,42} %write{3,32}
+local	float	Fac	%read{53,53} %write{52,52}
+temp	point	$tmp1	%read{3,3} %write{2,2}
+const	float	$const2	10		%read{3,3} %write{2147483647,-1}
+const	int	$const3	1		%read{32,90} %write{2147483647,-1}
+const	float	$const4	1		%read{8,104} %write{2147483647,-1}
+temp	float	$tmp2	%read{5,5} %write{4,4}
+const	float	$const5	0		%read{4,38} %write{2147483647,-1}
+temp	float	$tmp3	%read{13,34} %write{5,5}
+const	float	$const7	100		%read{5,5} %write{2147483647,-1}
+const	string	$const8	"noise_musgrave_fBm"		%read{6,6} %write{2147483647,-1}
+temp	float	$tmp4	%read{10,10} %write{9,9}
+const	int	$const9	0		%read{12,73} %write{2147483647,-1}
+temp	int	$tmp5	%read{13,32} %write{13,32}
+temp	int	$tmp6	%read{11,32} %write{12,32}
+temp	float	$tmp7	%read{13,32} %write{13,32}
+const	string	$const10	"signed"		%read{17,39} %write{2147483647,-1}
+const	string	$const11	"safe_noise"		%read{15,37} %write{2147483647,-1}
+temp	int	$tmp8	%read{13,32} %write{13,32}
+const	string	$const12	"perlin"		%read{19,41} %write{2147483647,-1}
+temp	int	$tmp9	%read{13,32} %write{13,32}
+temp	int	$tmp10	%read{13,32} %write{13,32}
+const	float	$const13	0.5		%read{24,96} %write{2147483647,-1}
+temp	float	$tmp11	%read{13,32} %write{13,32}
+temp	int	$tmp12	%read{2147483647,-1} %write{13,32}
+temp	float	$tmp13	%read{34,34} %write{33,33}
+temp	int	$tmp14	%read{36,36} %write{35,35}
+temp	float	$tmp15	%read{49,49} %write{46,48}
+temp	int	$tmp16	%read{40,40} %write{39,39}
+temp	int	$tmp17	%read{44,44} %write{43,43}
+temp	int	$tmp18	%read{45,45} %write{44,44}
+temp	float	$tmp19	%read{50,50} %write{49,49}
+temp	float	$tmp20	%read{51,51} %write{50,50}
+temp	float	$tmp21	%read{64,105} %write{53,53}
+temp	color	$tmp22	%read{57,102} %write{54,54}
+const	string	$const14	"node_mix_linear"		%read{55,55} %write{2147483647,-1}
+temp	float	$tmp23	%read{58,58} %write{57,57}
+temp	int	$tmp24	%read{59,59} %write{58,58}
+temp	float	$tmp25	%read{65,65} %write{60,60}
+const	float	$const15	2		%read{63,103} %write{2147483647,-1}
+temp	float	$tmp26	%read{62,62} %write{61,61}
+temp	float	$tmp27	%read{63,63} %write{62,62}
+temp	float	$tmp28	%read{64,64} %write{63,63}
+temp	float	$tmp29	%read{65,65} %write{64,64}
+temp	float	$tmp30	%read{66,66} %write{65,65}
+temp	float	$tmp31	%read{72,72} %write{67,67}
+temp	float	$tmp32	%read{69,69} %write{68,68}
+temp	float	$tmp33	%read{70,70} %write{69,69}
+temp	float	$tmp34	%read{71,71} %write{70,70}
+temp	float	$tmp35	%read{72,72} %write{71,71}
+temp	float	$tmp36	%read{73,73} %write{72,72}
+temp	float	$tmp37	%read{75,75} %write{74,74}
+temp	int	$tmp38	%read{76,76} %write{75,75}
+temp	float	$tmp39	%read{82,82} %write{77,77}
+temp	float	$tmp40	%read{79,79} %write{78,78}
+temp	float	$tmp41	%read{80,80} %write{79,79}
+temp	float	$tmp42	%read{81,81} %write{80,80}
+temp	float	$tmp43	%read{82,82} %write{81,81}
+temp	float	$tmp44	%read{83,83} %write{82,82}
+temp	float	$tmp45	%read{89,89} %write{84,84}
+temp	float	$tmp46	%read{86,86} %write{85,85}
+temp	float	$tmp47	%read{87,87} %write{86,86}
+temp	float	$tmp48	%read{88,88} %write{87,87}
+temp	float	$tmp49	%read{89,89} %write{88,88}
+temp	float	$tmp50	%read{90,90} %write{89,89}
+const	int	$const16	2		%read{91,107} %write{2147483647,-1}
+temp	float	$tmp51	%read{92,92} %write{91,91}
+temp	int	$tmp52	%read{93,93} %write{92,92}
+temp	float	$tmp53	%read{99,99} %write{94,94}
+temp	float	$tmp54	%read{96,96} %write{95,95}
+temp	float	$tmp55	%read{97,97} %write{96,96}
+temp	float	$tmp56	%read{98,98} %write{97,97}
+temp	float	$tmp57	%read{99,99} %write{98,98}
+temp	float	$tmp58	%read{100,100} %write{99,99}
+temp	float	$tmp59	%read{106,106} %write{101,101}
+temp	float	$tmp60	%read{103,103} %write{102,102}
+temp	float	$tmp61	%read{104,104} %write{103,103}
+temp	float	$tmp62	%read{105,105} %write{104,104}
+temp	float	$tmp63	%read{106,106} %write{105,105}
+temp	float	$tmp64	%read{107,107} %write{106,106}
+code UV
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:57
+# 	output vector Vector = 0.0)
+	assign		UV P 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl"} %line{57} %argrw{"wr"}
+code ___main___
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:60
+#     point p1 = P * Scale*10;
+	assign		p UV 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl"} %line{60} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:61
+#     float Fac = noise_musgrave_fBm(p1,1,1,max(0.0,Detail)/100);
+	mul		$tmp1 P Scale 	%line{61} %argrw{"wrr"}
+	mul		p1 $tmp1 $const2 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:62
+#     
+	max		$tmp2 $const5 Detail 	%line{62} %argrw{"wrr"}
+	div		$tmp3 $tmp2 $const7 	%argrw{"wrr"}
+	functioncall	$const8 53 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:35
+# 	float pwr = 1.0;
+	assign		___362_value $const5 	%line{35} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:36
+# 	float pwHL = pow(lacunarity, -H);
+	assign		___362_pwr $const4 	%line{36} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:37
+# 	int i;
+	neg		$tmp4 $const4 	%line{37} %argrw{"wr"}
+	pow		___362_pwHL $const4 $tmp4 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:40
+# 		value += safe_noise(p, "signed") * pwr;
+	for		$tmp6 13 15 31 33 	%line{40} %argrw{"r"}
+	assign		___362_i $const9 	%argrw{"wr"}
+	assign		$tmp5 $tmp3 	%argrw{"wr"}
+	lt		$tmp6 ___362_i $tmp5 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:41
+# 		pwr *= pwHL;
+	functioncall	$const11 27 	%line{41} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:92
+# 
+	assign		___354_f $const5 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h"} %line{92} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:95
+# 					da[2] = da[1];
+	eq		$tmp8 $const10 $const10 	%line{95} %argrw{"wrr"}
+	if		$tmp8 20 21 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:96
+# 					da[1] = da[0];
+	noise		___354_f $const12 p1 	%line{96} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:100
+# 					pa[2] = pa[1];
+	noise		___354_f p1 	%line{100} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:103
+# 				}
+	isfinite	$tmp9 ___354_f 	%line{103} %argrw{"wr"}
+	eq		$tmp10 $tmp9 $const9 	%argrw{"wrr"}
+	if		$tmp10 26 26 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:104
+# 				else if (d < da[1]) {
+	assign		$tmp7 $const13 	%line{104} %argrw{"wr"}
+	return
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:106
+# 					da[2] = da[1];
+	assign		$tmp7 ___354_f 	%line{106} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:41
+# 		pwr *= pwHL;
+	mul		$tmp11 $tmp7 ___362_pwr 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl"} %line{41} %argrw{"wrr"}
+	add		___362_value ___362_value $tmp11 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:42
+# 		p *= lacunarity;
+	mul		___362_pwr ___362_pwr ___362_pwHL 	%line{42} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:43
+# 	}
+	mul		p1 p1 $const4 	%line{43} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:40
+# 		value += safe_noise(p, "signed") * pwr;
+	assign		$tmp12 ___362_i 	%line{40} %argrw{"wr"}
+	add		___362_i ___362_i $const3 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:46
+# 	if (rmd != 0.0)
+	floor		$tmp13 $tmp3 	%line{46} %argrw{"wr"}
+	sub		___362_rmd $tmp3 $tmp13 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:47
+# 		value += rmd * safe_noise(p, "signed") * pwr;
+	neq		$tmp14 ___362_rmd $const5 	%line{47} %argrw{"wrr"}
+	if		$tmp14 52 52 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:48
+# 
+	functioncall	$const11 49 	%line{48} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:92
+# 			for (zz = zi - 1; zz <= zi + 1; zz++) {
+	assign		___354_f $const5 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h"} %line{92} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:95
+# 				point pd = p - (vp + ip);
+	eq		$tmp16 $const10 $const10 	%line{95} %argrw{"wrr"}
+	if		$tmp16 42 43 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:96
+# 				float d = dot(pd, pd);
+	noise		___354_f $const12 p1 	%line{96} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:100
+# 				if (d < da[0]) {
+	noise		___354_f p1 	%line{100} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:103
+# 					da[1] = da[0];
+	isfinite	$tmp17 ___354_f 	%line{103} %argrw{"wr"}
+	eq		$tmp18 $tmp17 $const9 	%argrw{"wrr"}
+	if		$tmp18 48 48 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:104
+# 					da[0] = d;
+	assign		$tmp15 $const13 	%line{104} %argrw{"wr"}
+	return
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:106
+# 					pa[3] = pa[2];
+	assign		$tmp15 ___354_f 	%line{106} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:48
+# 
+	mul		$tmp19 ___362_rmd $tmp15 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl"} %line{48} %argrw{"wrr"}
+	mul		$tmp20 $tmp19 ___362_pwr 	%argrw{"wrr"}
+	add		___362_value ___362_value $tmp20 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:50
+# }
+	assign		Fac ___362_value 	%line{50} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:64
+#     
+	mul		$tmp21 Intensity Fac 	%line{64} %argrw{"wrr"}
+	assign		$tmp22 $const4 	%argrw{"wr"}
+	functioncall	$const14 109 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:12
+# 
+	assign		___361_outcol UV 	%line{12} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:14
+# 		outcol[0] = col1[0] + t * (2.0 * (col2[0] - 0.5));
+	compref		$tmp23 $tmp22 $const9 	%line{14} %argrw{"wrr"}
+	gt		$tmp24 $tmp23 $const13 	%argrw{"wrr"}
+	if		$tmp24 67 74 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:15
+# 	else
+	compref		$tmp25 UV $const9 	%line{15} %argrw{"wrr"}
+	compref		$tmp26 $tmp22 $const9 	%argrw{"wrr"}
+	sub		$tmp27 $tmp26 $const13 	%argrw{"wrr"}
+	mul		$tmp28 $const15 $tmp27 	%argrw{"wrr"}
+	mul		$tmp29 $tmp21 $tmp28 	%argrw{"wrr"}
+	add		$tmp30 $tmp25 $tmp29 	%argrw{"wrr"}
+	compassign	___361_outcol $const9 $tmp30 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:17
+# 
+	compref		$tmp31 UV $const9 	%line{17} %argrw{"wrr"}
+	compref		$tmp32 $tmp22 $const9 	%argrw{"wrr"}
+	mul		$tmp33 $const15 $tmp32 	%argrw{"wrr"}
+	sub		$tmp34 $tmp33 $const4 	%argrw{"wrr"}
+	mul		$tmp35 $tmp21 $tmp34 	%argrw{"wrr"}
+	add		$tmp36 $tmp31 $tmp35 	%argrw{"wrr"}
+	compassign	___361_outcol $const9 $tmp36 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:19
+# 		outcol[1] = col1[1] + t * (2.0 * (col2[1] - 0.5));
+	compref		$tmp37 $tmp22 $const3 	%line{19} %argrw{"wrr"}
+	gt		$tmp38 $tmp37 $const13 	%argrw{"wrr"}
+	if		$tmp38 84 91 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:20
+# 	else
+	compref		$tmp39 UV $const3 	%line{20} %argrw{"wrr"}
+	compref		$tmp40 $tmp22 $const3 	%argrw{"wrr"}
+	sub		$tmp41 $tmp40 $const13 	%argrw{"wrr"}
+	mul		$tmp42 $const15 $tmp41 	%argrw{"wrr"}
+	mul		$tmp43 $tmp21 $tmp42 	%argrw{"wrr"}
+	add		$tmp44 $tmp39 $tmp43 	%argrw{"wrr"}
+	compassign	___361_outcol $const3 $tmp44 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:22
+# 
+	compref		$tmp45 UV $const3 	%line{22} %argrw{"wrr"}
+	compref		$tmp46 $tmp22 $const3 	%argrw{"wrr"}
+	mul		$tmp47 $const15 $tmp46 	%argrw{"wrr"}
+	sub		$tmp48 $tmp47 $const4 	%argrw{"wrr"}
+	mul		$tmp49 $tmp21 $tmp48 	%argrw{"wrr"}
+	add		$tmp50 $tmp45 $tmp49 	%argrw{"wrr"}
+	compassign	___361_outcol $const3 $tmp50 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:24
+# 		outcol[2] = col1[2] + t * (2.0 * (col2[2] - 0.5));
+	compref		$tmp51 $tmp22 $const16 	%line{24} %argrw{"wrr"}
+	gt		$tmp52 $tmp51 $const13 	%argrw{"wrr"}
+	if		$tmp52 101 108 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:25
+# 	else
+	compref		$tmp53 UV $const16 	%line{25} %argrw{"wrr"}
+	compref		$tmp54 $tmp22 $const16 	%argrw{"wrr"}
+	sub		$tmp55 $tmp54 $const13 	%argrw{"wrr"}
+	mul		$tmp56 $const15 $tmp55 	%argrw{"wrr"}
+	mul		$tmp57 $tmp21 $tmp56 	%argrw{"wrr"}
+	add		$tmp58 $tmp53 $tmp57 	%argrw{"wrr"}
+	compassign	___361_outcol $const16 $tmp58 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:27
+# 	
+	compref		$tmp59 UV $const16 	%line{27} %argrw{"wrr"}
+	compref		$tmp60 $tmp22 $const16 	%argrw{"wrr"}
+	mul		$tmp61 $const15 $tmp60 	%argrw{"wrr"}
+	sub		$tmp62 $tmp61 $const4 	%argrw{"wrr"}
+	mul		$tmp63 $tmp21 $tmp62 	%argrw{"wrr"}
+	add		$tmp64 $tmp59 $tmp63 	%argrw{"wrr"}
+	compassign	___361_outcol $const16 $tmp64 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXPaint.osl:29
+# }
+	assign		Vector ___361_outcol 	%line{29} %argrw{"wr"}
+	end

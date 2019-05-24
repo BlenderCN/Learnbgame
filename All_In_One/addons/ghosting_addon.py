@@ -7,7 +7,7 @@ bl_info = {
     "location": "View3D > Tool Shelf",
     "description": "Basic ghosting for spatial transform animations",
     'warning': 'experimental',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

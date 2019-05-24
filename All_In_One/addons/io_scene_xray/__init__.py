@@ -7,7 +7,7 @@ bl_info = {
     'author': 'Vakhurin Sergey (igel), Pavel_Blend',
     'version': (0, 6, 0),
     'blender': (2, 80, 0),
-    'category': 'Import-Export',
+    "category": "Learnbgame",
     'location': 'File > Import/Export',
     'description': 'Import/Export X-Ray objects',
     'wiki_url': 'https://github.com/PavelBlend/blender-xray',

@@ -2,7 +2,7 @@ bl_info = {
 	"name": "CQTC Subtítulos",
 	"description": "Plugin para añadir subtítulos automáticamente",
 	"location": "Properties > Render > Añadir subtítulos",
-	"category": "CosoQueTeCoso",
+	"category": "Learnbgame",
 	"version": (1, 0),
 	"blender": (2, 78, 0),
 }

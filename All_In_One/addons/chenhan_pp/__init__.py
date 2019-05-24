@@ -17,7 +17,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Object"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

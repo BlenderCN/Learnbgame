@@ -33,7 +33,7 @@ bl_info = {
                 "Addons/block_wall_builder",
     "tracker_url": "http://projects.blender.org/tracker/"
                    "?func=detail&aid=31422",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 #Version History

@@ -39,7 +39,7 @@ bl_info = {
     "warning": "Beta",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """

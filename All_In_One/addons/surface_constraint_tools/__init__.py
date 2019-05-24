@@ -27,7 +27,7 @@ bl_info = {
     "author" : "Brett Fedack",
     "version" : (1, 0),
     "blender" : (2, 78, 0),
-    "category" : "3D View"
+    "category": "Learnbgame",
 }
 
 if "bpy" not in locals():

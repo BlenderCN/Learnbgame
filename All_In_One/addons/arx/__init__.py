@@ -25,7 +25,7 @@ bl_info = {
     "description": "architecture render helpfull plugins",
     "wiki_url": "none",
     "tracker_url": "none",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

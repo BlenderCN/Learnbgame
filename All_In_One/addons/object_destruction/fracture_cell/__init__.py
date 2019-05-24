@@ -28,7 +28,7 @@ bl_info = {
         "Scripts/Object/Fracture",
     "tracker_url": "https://projects.blender.org/tracker/index.php?"\
         "func=detail&aid=21793",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

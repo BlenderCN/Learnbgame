@@ -5,6 +5,7 @@ bl_info = {
     'name': 'shield',
     'description': 'Draw a scout lead shield',
     'author': 'morgan',
+    "category": "Learnbgame",
     'version': (1, 0),
     'blender': (2, 73, 0),
     }

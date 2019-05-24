@@ -33,7 +33,7 @@ bl_info = {
     'wiki_url2': 'https://github.com/chromoly/blender-ScreencastKeysMod',
     "tracker_url": "http://projects.blender.org/tracker/index.php?"
                    "func=detail&aid=21612",
-    "category": "3D View",
+    "category": "Learnbgame",
 }
 
 

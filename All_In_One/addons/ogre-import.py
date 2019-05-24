@@ -121,7 +121,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/"
                 "Scripts/Nodes/Nodes_Efficiency_Tools",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 __version__ = "1.2.3"

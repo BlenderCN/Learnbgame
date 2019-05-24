@@ -17,7 +17,7 @@ bl_info = {
     "wiki_url": "https://github.com/SE2Dev/io_anim_seanim",
     "tracker_url": "https://github.com/SE2Dev/io_anim_seanim/issues",
     "support": "COMMUNITY",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 # To support reload properly, try to access a package var, if it's there,

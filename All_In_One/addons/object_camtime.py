@@ -8,7 +8,7 @@ bl_info = {
     'version': (0, 0, 1),
     'blender': (2, 70, 0),
     'description': 'Auto-seek to frame based on active Camera attributes',
-    'category': 'Object',
+    "category": "Learnbgame",
     'support': 'COMMUNITY',
 }
 

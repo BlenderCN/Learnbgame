@@ -23,7 +23,7 @@ bl_info = {
     "blender": (2, 78, 0),
     "location": "View3D -> Tools -> Torchlight 2 Tab",
     "description": "Import torchlight 2 mesh and animation files using OGRE command line tools.",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     }
 
 import os

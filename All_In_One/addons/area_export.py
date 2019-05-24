@@ -8,7 +8,7 @@ bl_info = {
 	"blender": (2, 6, 7),
 	"location": "File > Export > Area",
 	"wiki_url": "http://github.com/ccxvii/mio",
-	"category": "Import-Export",
+	"category": "Learnbgame",
 }
 
 import bpy, math, struct, os, sys

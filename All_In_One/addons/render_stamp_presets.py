@@ -26,7 +26,7 @@ bl_info = {
     "location": "Properties Editor -> Render Context -> Stamp panel",
     "description": "Prepend presets for the Stamp Panel in Render Properties Editor",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """Prepend presets for the Stamp Panel in Render Properties Editor"""

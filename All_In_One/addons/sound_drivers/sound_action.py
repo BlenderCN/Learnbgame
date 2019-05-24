@@ -10,7 +10,7 @@ bl_info = {
     "tracker_url": "",
     "icon": 'NONE',
     "support": 'TESTING',
-    "category": "Animation",
+    "category": "Learnbgame",
     }
 # <pep8-80 compliant>
 import bpy

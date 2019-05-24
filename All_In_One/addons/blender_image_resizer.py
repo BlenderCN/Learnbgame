@@ -26,7 +26,7 @@ bl_info = {
     "warning": "If python module Pillow(PIL) is not installed this addon will not work!",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Node"
+    "category": "Learnbgame",
 }
 
 import os.path

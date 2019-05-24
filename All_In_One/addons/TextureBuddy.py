@@ -26,7 +26,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://matt-lucas.itch.io/level-buddy",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

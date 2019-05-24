@@ -6,7 +6,7 @@ bl_info = {
     "location": "View3D > Property",
     "description": "Create Materials in Single Click",
     "wiki_url": "http://www.dragoneex.com/dynamats.html",
-    "category": "Material",
+    "category": "Learnbgame",
     }
 
 

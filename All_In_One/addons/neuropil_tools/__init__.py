@@ -34,7 +34,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://www.mcell.org",
     "tracker_url": "https://github.com/mcellteam/neuropil_tools/issues",
-    "category": "Cell Modeling"
+    "category": "Learnbgame",
 }
 
 

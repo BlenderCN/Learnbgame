@@ -7,7 +7,7 @@ bl_info = {
 	"description": "Change mesh selection mode with the scroll wheel",
 	"warning": "",
 	"wiki_url": "",
-	"category": "Mesh",
+	"category": "Learnbgame",
 	}
 
 import bpy

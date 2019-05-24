@@ -7,7 +7,7 @@ bl_info = {
 	"warning": "This tool is still in beta.",
 	"wiki_url": "https://community.simtropolis.com/profile/745638-elektrix/",
 	"support": "COMMUNITY",
-	"category": "UV"
+	"category": "Learnbgame",
 }
 
 import bpy, time

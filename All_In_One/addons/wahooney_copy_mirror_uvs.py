@@ -35,7 +35,8 @@ bl_info = {
     'location': 'UVs > Copy UVs from Mirror',
     'url': 'http://www.wahooney.net/',
     'description': 'Copies the mirror side UVs to the current uv face selection',
-    'category': 'UV'}
+    "category": "Learnbgame",
+}
 
 import bpy
 from bpy.props import *

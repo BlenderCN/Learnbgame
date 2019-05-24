@@ -6,7 +6,7 @@ bl_info = {
 	"location": "File > Import-Export > Cani2D (.json) ",
 	"description": "Export Cani2D geometry",
 	"warning": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 if "bpy" in locals():

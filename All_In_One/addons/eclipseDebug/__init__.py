@@ -9,7 +9,7 @@ bl_info = {
     "version"    : (0, 0, 1),
     "blender"    : (2, 67, 0),
     "api"        : 57908,
-    "category"   : "3D View",
+    "category": "Learnbgame",
     "tooltip"    : "Eclipse Interactive Debugger",
     "license"    : "GPL Version 2",
     }

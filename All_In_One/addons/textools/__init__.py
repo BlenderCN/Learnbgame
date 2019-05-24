@@ -4,7 +4,7 @@ bl_info = {
 	"author": "renderhjs",
 	"version": (1, 3, 00),
 	"blender": (2, 79, 0),
-	"category": "UV",
+	"category": "Learnbgame",
 	"location": "UV Image Editor > Tools > 'TexTools' panel",
 	"wiki_url": "http://renderhjs.net/textools/blender/"
 }

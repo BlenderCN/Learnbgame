@@ -5,7 +5,7 @@ bl_info = {
     "blender": (2, 78, 0),
     "location": "Timeline Header or Space> Set timecode",
     "description": "Allows viewing and setting the current frame via a timecode (HH:MM:SS:FF)",
-    "category": "Animation"
+    "category": "Learnbgame",
     }
     
 

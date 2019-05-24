@@ -25,7 +25,7 @@ bl_info = {
         "blender": (2, 70, 0),
         "location": "View3D > Add > Mesh > Asset Flinger",
         "description": "Simple Mesh Importer",
-        "category": "Learnbgame"
+        "category": "Learnbgame",
 }
 
 import bpy

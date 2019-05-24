@@ -23,7 +23,7 @@ bl_info = {
     "blender": (2, 7, 1),
     "location": "View3D > RMB",
     "description": "Right Click Pie Menu",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """

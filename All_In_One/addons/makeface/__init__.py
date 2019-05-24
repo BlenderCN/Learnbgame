@@ -32,7 +32,7 @@ bl_info = {
     "description": "Make MakeHuman Face. Experimental tool, not recommended for end-users.",
     "warning": "",
     'wiki_url': "http://www.makehuman.org/node/223",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

@@ -35,7 +35,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/cedricpinson/osgexport/wiki",
     "tracker_url": "http://github.com/cedricpinson/osgexport",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 __url__ = bl_info["wiki_url"]

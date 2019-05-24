@@ -29,7 +29,7 @@ bl_info = {
     "warning":     "",  # used for warning icon and text in addons panel
     "wiki_url":    "https://github.com/patmo141/cut_mesh/wiki",
     "tracker_url": "https://github.com/patmo141/cut_mesh/issues",
-    "category":    "3D View"
+    "category": "Learnbgame",
     }
 
 # Blender imports

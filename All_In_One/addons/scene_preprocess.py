@@ -6,7 +6,8 @@ bl_info = {
     'blender': (2, 6, 0),
     'api': 39685,
     'tracker_url' : '',
-    'category': 'Scene'}
+    "category": "Learnbgame",
+}
 
 import bpy
 

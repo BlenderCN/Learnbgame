@@ -27,7 +27,7 @@ bl_info = {
 	"warning": "",
 	"wiki_url": "https://sites.google.com/site/aleonserra/home/scripts/matlib-vx",
 	"tracker_url": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 

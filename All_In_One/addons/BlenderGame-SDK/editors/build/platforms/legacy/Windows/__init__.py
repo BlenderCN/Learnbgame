@@ -41,7 +41,7 @@ if config.standalone:
         "description": "Build game for the windows platform",
         "warning": "",
         "wiki_url": "",
-        "category": "System",
+        "category": "Learnbgame",
         }
     
     def register():

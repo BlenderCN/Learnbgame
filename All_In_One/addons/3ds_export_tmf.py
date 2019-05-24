@@ -25,7 +25,7 @@ bl_info = {
     "description": "Export 3DS model for TrackMania Forever (.3ds)",
     "warning": "",
     "wiki_url": "",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -4,7 +4,7 @@ from .GUI_ops import *
 
 bl_info = {
     "name": "BAT4Blender",
-    "category": "Render",
+    "category": "Learnbgame",
     "blender": (2, 79, 0),
     "author": "vrtxt",
     "version": (0, 0, 2),

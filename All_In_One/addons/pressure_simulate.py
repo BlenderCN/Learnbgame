@@ -27,7 +27,7 @@ bl_info = {
     "location": "View3D > Sculpt Mode > Tools > Pressure Simulation",
     "warning": "This addon is still in development.",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

@@ -10,7 +10,7 @@ bl_info = {
     "blender": (2, 5, 5),
     "location": "View3D > Properties Panel",
     "description": "Resample baked f-curve to a new Action / f-curve",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

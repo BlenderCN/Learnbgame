@@ -37,7 +37,8 @@ bl_info = {
 	"wiki_url": "https://github.com/xavier150/blender-for-unrealengine-addons",
 	'tracker_url': '',
 	'support': 'COMMUNITY',
-	'category': 'Import-Export'}
+	"category": "Learnbgame",
+}
 
 
 import os

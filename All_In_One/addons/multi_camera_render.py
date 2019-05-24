@@ -17,7 +17,7 @@ bl_info = {
     "warning": "", 
     "wiki_url": "http://www.le-terrier-de-lapineige.over-blog.com",
     "tracker_url": "http://blenderlounge.fr/forum/viewtopic.php?f=18&t=622",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 ############# 
 

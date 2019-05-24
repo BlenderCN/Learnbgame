@@ -12,7 +12,7 @@ bl_info = {
     'wiki_url': 'https://github.com/rmerkushin/blender_sprite_tools',
     'tracker_url': 'https://github.com/rmerkushin/blender_sprite_tools/issues',
     'support': 'COMMUNITY',
-    'category': 'Render'
+    "category": "Learnbgame",
 }
 
 bpy.types.Scene.render_prefix = StringProperty(

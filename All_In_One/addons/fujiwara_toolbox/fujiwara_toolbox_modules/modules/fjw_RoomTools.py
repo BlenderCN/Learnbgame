@@ -26,7 +26,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/My_Script",
     "tracker_url": "http://projects.blender.org/tracker/index.php?func=detail&aid=",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """

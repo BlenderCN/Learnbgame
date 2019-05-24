@@ -62,7 +62,7 @@ bl_info = {
     "warning": "GIT Alpha",
     "wiki_url": "http://wiki.aqsis.org/guide/ribmosaic_install",
     "tracker_url": "http://sourceforge.net/projects/ribmosaic/develop",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

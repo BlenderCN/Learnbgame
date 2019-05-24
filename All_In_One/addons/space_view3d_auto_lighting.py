@@ -24,7 +24,7 @@ bl_info = {
   "location": "View3D > Properties panel > Display tab",
   "description": "Allows you to view materials even if there are no lamps in your scene. Does not affect rendering.",
   "warning": "",
-  "category": "3D View"
+  "category": "Learnbgame",
 }
 
 import bpy, bgl

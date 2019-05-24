@@ -33,7 +33,7 @@ bl_info = {
     "wiki_url": "",
     "tracker_url": "http://kaikostack.com",
     "support": "COMMUNITY",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 """

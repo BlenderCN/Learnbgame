@@ -34,7 +34,7 @@ LOGGER = logging.getLogger(__name__)
 
 bl_info = {
     "name": "VSE parallel render",
-    "category": "VSE"
+    "category": "Learnbgame",
 }
 
 def _can_concatenate(scene):

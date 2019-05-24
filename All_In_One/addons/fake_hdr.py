@@ -38,7 +38,7 @@ bl_info = {
     "author"      : "Tamir Lousky",
     "version"     : (0, 0, 2),
     "blender"     : (2, 68, 0),
-    "category"    : "Render",
+    "category": "Learnbgame",
     "location"    : "3D View >> Tools",
     "wiki_url"    : "https://github.com/Tlousky/production_scripts/wiki/Fake-HDR",
     "tracker_url" : "https://github.com/Tlousky/production_scripts/blob/master/fake_hdr.py",

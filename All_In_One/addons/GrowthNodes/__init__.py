@@ -8,7 +8,7 @@ bl_info = {
     "warning": "Testing Needed",
     "wiki_url": "https://github.com/hsab/GrowthNodes",
     "tracker_url": "https://github.com/hsab/GrowthNodes/issues",
-    "category": "Node"
+    "category": "Learnbgame",
 }
 
 import os

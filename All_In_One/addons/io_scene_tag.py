@@ -33,7 +33,7 @@ bl_info = {
 	"location": "File > Import/Export > UFO:AI md2 TAGs",
 	"warning": '', # used for warning icon and text in addons panel
 	"support": 'COMMUNITY',
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 import bpy

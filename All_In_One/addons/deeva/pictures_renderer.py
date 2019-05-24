@@ -43,7 +43,7 @@ bl_info = {
     "version": (0, 10),
     "blender": (2, 79, 0),
     "location": "Toolbox > ManuelBastioniLAB > Pictures",
-    "category": "Characters",
+    "category": "Learnbgame",
     }
 
 #

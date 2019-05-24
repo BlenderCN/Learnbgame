@@ -6,7 +6,7 @@
 
 bl_info = {
     'name': 'JewelryRender',
-    'category': 'Render',
+    "category": "Learnbgame",
     'author': 'Nikita Akimov',
     'version': (1, 4, 0),
     'blender': (2, 79, 0),

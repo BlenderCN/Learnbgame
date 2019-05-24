@@ -8,7 +8,7 @@ from bpy.types import Menu
 #     "blender": (2, 72, 2),
 #     "description": "A pie menu for adding objects",
 #     "location": "SHIFT + A",
-#     "category": "Learnbgame"
+#     "category": "Learnbgame",
 }
 
 

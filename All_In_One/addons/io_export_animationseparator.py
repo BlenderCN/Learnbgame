@@ -1,11 +1,11 @@
 bl_info = {
         "name":         "Fbx Animation Splitter for Xenko",
-        "category":     "Import-Export",
+        "category": "Learnbgame",
         "version":      (0,0,2),
         "blender":      (2,80,0),
         "location":     "File > Import-Export",
         "description":  "Split Animation Export",
-        "category":     "Import-Export"
+        "category": "Learnbgame",
         }
         
 import bpy

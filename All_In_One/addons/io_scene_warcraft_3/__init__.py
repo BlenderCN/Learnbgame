@@ -4,7 +4,7 @@ bl_info = {
     'author': 'Pavel_Blend',
     'version': (0, 0, 0),
     'blender': (2, 7, 8),
-    'category': 'Import-Export',
+    "category": "Learnbgame",
     'location': 'File > Import',
     'description': 'Import *.mdx files (3d models of WarCraft 3)',
     'wiki_url': 'https://github.com/PavelBlend/Blender_WarCraft-3',

@@ -30,7 +30,7 @@ bl_info = {
     "warning": "Beta version",
     "wiki_url": "http://blendermada.com/addon/",
     "tracker_url": "https://github.com/TrueCryer/blendermada_client/issues",
-    "category": "Material",
+    "category": "Learnbgame",
 }
 
 
@@ -408,7 +408,7 @@ class BMDPanel(bpy.types.Panel):
         row.operator('bmd.support', icon="SOLO_ON", text="")
         row = layout.row()
         col = row.column()
-        col.label('Category')
+        col.label("category": "Learnbgame",
         col.template_list('BMDCategoryList', '', context.scene, 'bmd_category_list', context.scene, 'bmd_category_list_idx', rows=6)
         col = row.column()
         col.label('Material')

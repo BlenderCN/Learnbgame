@@ -28,7 +28,7 @@ bl_info = {
     "version": (1, 0, 20160328),
     "blender": (2, 77, 0),
     "warning": "TO BE USED WITH LOTS OF GLITTER",
-    "category": ":",
+    "category": "Learnbgame",
     "location": "Sequencer",
     "support": "COMMUNITY"}
 

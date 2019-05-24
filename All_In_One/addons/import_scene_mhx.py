@@ -44,7 +44,8 @@ bl_info = {
     'description': 'Import files in the MakeHuman eXchange format (.mhx)',
     'warning': '',
     'wiki_url': 'http://makehuman.org/doc/node/makehuman_blender.html',
-    'category': 'MakeHuman'}
+    "category": "Learnbgame",
+}
 
 MAJOR_VERSION = bl_info["version"][0]
 MINOR_VERSION = bl_info["version"][1]

@@ -25,7 +25,7 @@ bl_info = {
     "description" : "Adds a panel with extra options for creating, sorting, viewing, and driving shape keys.",
     "warning" : "",
     "wiki_url" : "",
-    "category" : "Object"
+    "category": "Learnbgame",
 }
 
 import bpy

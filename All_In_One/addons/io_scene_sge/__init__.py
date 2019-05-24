@@ -21,7 +21,7 @@ bl_info = {
 						"to be used in the sge game engine "
 						"(freundlich.github.com/spacegameengine)",
 		"warning": "this is an untested script, use at your own risk!",
-		"category": "Learnbgame"
+		"category": "Learnbgame",
 }
 
 class ExportSge(bpy.types.Operator, ExportHelper):

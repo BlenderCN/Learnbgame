@@ -28,7 +28,7 @@ bl_info = {
     "wiki_url": "",
     "tracker_url": "",
     "keywords": ("extrude", "face", "boolean", "clean"),
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if 'bpy' in globals():

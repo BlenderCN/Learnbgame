@@ -20,7 +20,7 @@
 
 bl_info = {
     "name": "Image Edit Operations",
-    "category": "Paint",
+    "category": "Learnbgame",
     "description": "Various image processing filters and operations",
     "author": "Tommi Hyppänen (ambi)",
     "location": "Image Editor > Tool Shelf > Texture Tools",

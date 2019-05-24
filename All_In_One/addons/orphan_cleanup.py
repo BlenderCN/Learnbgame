@@ -27,7 +27,8 @@ bl_info = {
     'location': 'VIEW 3D -> TOOLS',
     'description': 'Deletes unused objects from the bpy.data modules',
     'warning': 'Know what it is you are deleting. Check datablocks view within outliner if there are any doubts!', # used for warning icon and text in addons panel
-    'category': 'System'}
+    "category": "Learnbgame",
+}
 
 """
 Special note on image removal.

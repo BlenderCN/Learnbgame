@@ -7,7 +7,7 @@ bl_info = {
     "description": "Adds edge sum box to Mesh Display.",
     "wiki_url": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # http://blender.stackexchange.com/a/1071/47

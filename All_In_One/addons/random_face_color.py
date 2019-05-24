@@ -27,7 +27,8 @@ bl_info = {
     'location': '',
     'description': 'Generate random diffuse faces on each face of a mesh',
     'warning': 'Don\'t use on meshes that have a large number of faces.',
-    'category': 'Add Material'}
+    "category": "Learnbgame",
+}
 
 """
 How to use:

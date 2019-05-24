@@ -22,7 +22,7 @@ bl_info = {
 	"version":(0,3,1),
 	"blender":(2,78,0),
 	"support":"TESTING",
-	"category":"Render",
+	"category": "Learnbgame",
 	"location":"Render",
 	"author":"Mark Fitzgibbon"
 }

@@ -5,7 +5,7 @@ bl_info = {
 	"blender": (2, 7, 5),
 	"location": "3D View > Properties> Auto-Rig Pro",
 	"description": "Automatic rig generation based on reference bones",		
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }	
 
 

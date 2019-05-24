@@ -1,0 +1,16 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles v1.1
+/*   Depth Normalized
+/*------------------------------------------*/
+
+shader Depth(
+
+    float Near = 0.0,
+    float Far = 10.0,
+    output float Depth = 0.0,
+    )
+{
+	vector ViewVector = (vector)transform("world", "camera", P);
+	float ViewZDepth = fabs(ViewVector[2]);
+	Depth = 1-(ViewZDepth-Near)/Far;
+}

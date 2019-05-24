@@ -21,7 +21,7 @@ bl_info = {
     "blender": (2, 75, 0),
     "location": "Info > RenderEngine",
     "warning": "Still under development", # used for warning icon and text in addons panel
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 from extensions_framework import Addon

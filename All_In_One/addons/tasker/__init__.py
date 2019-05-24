@@ -27,7 +27,7 @@ bl_info = {
     "description": "Project Task Manager",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

@@ -7,7 +7,7 @@ bl_info = {
     "description": "Popup sculpt setting",
     "warning": "",
     "wiki_url": "stan.stz@gmail.com",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

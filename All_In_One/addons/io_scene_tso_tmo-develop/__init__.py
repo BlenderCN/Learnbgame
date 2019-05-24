@@ -1,6 +1,6 @@
 bl_info = {
 	"name": "TechArts3D tso format and tmo format",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 import bpy

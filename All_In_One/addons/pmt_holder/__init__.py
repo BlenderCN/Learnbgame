@@ -6,6 +6,7 @@ bl_info = {
     'description': 'Draw the pmt holder structure for scout',
     'author': 'morgan',
     'version': (1, 0),
+    "category": "Learnbgame",
     'blender': (2, 73, 0),
     }
 

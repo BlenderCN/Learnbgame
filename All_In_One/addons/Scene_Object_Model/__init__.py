@@ -7,7 +7,7 @@ bl_info = {
 	"description": "Import-Export Scene Object Model",
 	"warning": "",
 	"wiki_url": "",
-	"category": "Import-Export",
+	"category": "Learnbgame",
 }
 
 if "bpy" in locals():

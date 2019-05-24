@@ -17,7 +17,7 @@ bl_info = {
 	'location': 'Tool Shelf',
 	'warning': '',
 	'wiki_url': 'https://github.com/patwork/blender-tools',
-	'category': 'Scene'
+	"category": "Learnbgame",
 }
 
 ui = {

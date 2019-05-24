@@ -75,7 +75,8 @@ bl_info = {
     'description': "CAD style edge manipulation tools",
     'wiki_url': "http://blenderartists.org/forum/showthread.php?245137-Blender-EdgeTools",
     'tracker_url': "",
-    'category': 'Mesh'}
+    "category": "Learnbgame",
+}
 
 import bpy, bmesh, mathutils
 from math import radians

@@ -7,7 +7,7 @@ bl_info = {
     "description": "Plugin to help creating the synthetic database for RTI",
     "warning": "This addon is still in development.",
     "wiki_url": "https://github.com/giach68/SyntheticRTI",
-    "category": "3D View",
+    "category": "Learnbgame",
 }
 
 import bpy

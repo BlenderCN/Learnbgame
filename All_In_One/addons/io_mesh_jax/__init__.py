@@ -12,7 +12,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://github.com/sinisterchipmunk/jax-blender-models/wiki",
     "tracker_url": "http://github.com/sinisterchipmunk/jax-blender-models/issues",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -1,4 +1,4 @@
-# ##### BEGIN GPL LICENSE BLOCK #####
+sw# ##### BEGIN GPL LICENSE BLOCK #####
 #
 #  This program is free software; you can redistribute it and/or
 #  modify it under the terms of the GNU General Public License
@@ -33,7 +33,7 @@ bl_info = {
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/"
                 "Scripts/Import-Export/MQO",
     "tracker_url": "https://github.com/50thomatoes50/blender.io_mqo/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

@@ -32,7 +32,7 @@ bl_info = {
     "description": "Add Another Vertex Group into the Active One",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """

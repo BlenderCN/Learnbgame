@@ -14,7 +14,7 @@ bl_info = {
     "location": "File > Import > Bake Sound Spectrum",
     "description": "Audio visualization with some cubes", 
     "warning": "",
-    "category": "Animation",
+    "category": "Learnbgame",
 }
 
 def find_sound_clip():

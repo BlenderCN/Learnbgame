@@ -8,7 +8,7 @@ bl_info = {
    "warning": "",
    "wiki_url": "https://github.com/AlansCodeLog/blender-useful-menus-addon",
    "tracker_url": "https://github.com/AlansCodeLog/blender-useful-menus-addon/issues",
-   "category": "User Interface",
+   "category": "Learnbgame",
 }
 
 import bpy

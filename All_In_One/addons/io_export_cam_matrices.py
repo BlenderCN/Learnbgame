@@ -27,7 +27,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://suedsicht.de",
     "tracker_url": "http://suedsicht.de",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 import bpy

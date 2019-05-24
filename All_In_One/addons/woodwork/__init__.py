@@ -8,7 +8,7 @@ bl_info = {
     "location": "View3D > Tool Shelf > Woodworking",
     "warning": "",
     "wiki_url": "https://github.com/Khrisbie/blender-woodworking",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

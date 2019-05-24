@@ -28,7 +28,8 @@ bl_info = {
     'location': 'Video Sequence Editor',
     'description': 'Proxy Workflow enhancement for Sequencer',
     'wiki_url': '',
-    'category': 'VSE'}
+    "category": "Learnbgame",
+    }
 
 __bpydoc__ = """
 Allow Setting custom directory path rules for a lot of sequences at once, makes

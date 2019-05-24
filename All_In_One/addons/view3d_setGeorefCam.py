@@ -30,7 +30,7 @@ bl_info = {
 	'wiki_url': 'https://github.com/domlysz/BlenderGIS/wiki',
 	'tracker_url': '',
 	'link': '',
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 import bpy

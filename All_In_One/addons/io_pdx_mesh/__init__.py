@@ -17,7 +17,7 @@ bl_info = {
     'warning': 'this add-on is beta',
     'wiki_url': 'https://github.com/ross-g/io_pdx_mesh',
     'support': 'COMMUNITY',
-    'category': 'Import-Export',
+    "category": "Learnbgame",
 }
 
 app = os.path.split(sys.executable)[1]

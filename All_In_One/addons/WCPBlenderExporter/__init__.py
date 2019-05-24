@@ -40,7 +40,7 @@ bl_info = {
     "location": "File > Export",
     "warning": "%{GIT_COMMIT}",
     "wiki_url": "http://www.ciinet.org/kevin/bl_wcp_exporter/",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 

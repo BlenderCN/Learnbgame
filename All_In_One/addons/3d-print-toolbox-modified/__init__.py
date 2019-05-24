@@ -27,7 +27,7 @@ bl_info = {
     "location": "3D View > Toolbox",
     "warning": "",
     'wiki_url': 'https://github.com/agapas/3d-print-toolbox-modified#readme',
-    "category": "Mesh"
+    "category": "Learnbgame",
 }
 
 

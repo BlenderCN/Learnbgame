@@ -1,0 +1,30 @@
+/*----------------------------------------- */
+/*   Copyright (C) Cogumelo Softworks - ToonKit for Cycles v1.2
+/*   EasyToon
+/*------------------------------------------*/
+
+shader PenetrationMask(
+
+    float clampDist = 0.015,
+    output float Result=0
+
+)
+{
+    if(!raytype("camera")){return;}
+
+    int Hit;
+    point CamPos = point("camera",0,0,0);
+    vector rasterPoint = transform("world","camera",P-CamPos);
+    vector finalPoint = transform("camera","world",rasterPoint);
+    
+    float L = length((vector)transform("world", "camera", P));
+    int DoTrace = trace (P,normalize(-I),"mindist",clampDist) ;
+    
+    if(DoTrace){
+        string nameHit = "";
+        getmessage("trace","geom:name",nameHit);        
+        if(startswith(nameHit,"+")){
+            Result = 1;
+        }
+    }
+}

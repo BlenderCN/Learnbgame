@@ -29,7 +29,8 @@ bl_info = {
     'description': 'Import or Export the Westerwood W3D-Format (.w3d)',
     'warning': 'Still in Progress',
     'tracker_url': 'http://forum.modding-union.com/index.php/topic,15838.0.html',
-    'category': 'Import-Export'}
+    "category": "Learnbgame",
+}
 
 # To support reload properly, try to access a package var, if it's there,
 # reload everything

@@ -8,7 +8,8 @@ bl_info = {
     'warning': '',
     'wiki_url': '',
     'support': 'COMMUNITY',
-    'category': 'Import-Export'}
+    "category": "Learnbgame",
+}
 
 if 'bpy' in locals():
     import importlib

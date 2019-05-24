@@ -28,7 +28,7 @@ bl_info = {
                 "None Yet",
     "tracker_url": "None"
                    "func=detail&aid=<number>",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

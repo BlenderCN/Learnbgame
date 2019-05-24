@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Blender Poly",
-    "category": "Object",
+    "category": "Learnbgame",
     "author": "Yuichi Sato",
     "version": (1, 5),
     "blender": (2, 79, 0),
@@ -271,7 +271,7 @@ class BlenderPolyAssetsLoader(bpy.types.Operator):
     
     def getPayload (self, preferences, props):
         return {'key': preferences.polyApiKey, 'format': 'OBJ',
-            'category': props.category_type,
+            "category": "Learnbgame",
             'maxComplexity': props.maxComplexity,
             'curated': props.curated,
             'keywords': props.keywords,

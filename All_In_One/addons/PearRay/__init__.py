@@ -7,7 +7,7 @@ bl_info = {
     "location": "Render > Engine > PearRay",
     "warning": "experimental",
     "tracker_url": "https://github.com/PearCoding/PearRay/issues/new",
-    "category": "Render"
+    "category": "Learnbgame",
     }
 
 

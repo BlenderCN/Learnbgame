@@ -26,7 +26,7 @@ bl_info = {
     "description": "Create a ray traced image of the current scene",
     "warning": "",
     "wiki_url": "https://blog.michelanders.nl/2018/05/raytracing-concepts-and-code.html",
-    "category": "Render",
+    "category": "Learnbgame",
 }
 
 import bpy

@@ -35,7 +35,7 @@ bl_info = {
     "blender": (2, 7, 2),
     "location": "View 3D > Toolbar > Tools tab > Retopology (panel)",
     "description": "Tools for fast retopology",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

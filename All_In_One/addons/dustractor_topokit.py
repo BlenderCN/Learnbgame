@@ -28,7 +28,7 @@ bl_info = {
     "warning" : "",
     "wiki_url" : "",
     "tracker_url" : "github.com/dustractor/tkit",
-    "category" : "Mesh"
+    "category": "Learnbgame",
 }
 import bpy
 

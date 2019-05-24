@@ -30,7 +30,8 @@ bl_info = {
     'location': 'View3D',
     # 'warning': '',
     'wiki_url': 'https://vrcat.club/threads/material-combiner-blender-addon.2255/',
-    'category': 'Object'}
+    "category": "Learnbgame",
+}
 
 iamready = True
 

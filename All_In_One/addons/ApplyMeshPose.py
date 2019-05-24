@@ -3,7 +3,7 @@ bl_info = {
         'author': 'bay raitt',
         'version': (0, 1),
         'blender': (2, 80, 0),
-        'category': 'Pose',
+        "category": "Learnbgame",
         'location': 'W > Appy current pose as rest for armature and all parented objects',
         'wiki_url': ''}
 

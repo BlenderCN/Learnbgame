@@ -25,7 +25,7 @@ bl_info = {
   "description": "Import CSV Point Cloud as single mesh.",
   "warning": "",
   "wiki_url": "",
-  "category": "Import-Export"
+  "category": "Learnbgame",
 }
 
 if "bpy" in locals():

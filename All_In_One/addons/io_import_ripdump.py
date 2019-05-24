@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Import Ninja Ripper/Dx Ripper RIPDUMP",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "author": "Chris Barrett",
     "version": (2, 0, 1),
     "blender": (2, 74, 0),

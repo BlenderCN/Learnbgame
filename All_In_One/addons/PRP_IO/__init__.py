@@ -8,7 +8,7 @@ bl_info = {
     "blender": (2, 29, 0),
     "location": "File > Import-Export > Overlord2 model (.prp)(converted to json) ",
     "description": "Addon allows to import Overlord2 models(converted to json)",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 from bpy.props import StringProperty, BoolProperty, CollectionProperty

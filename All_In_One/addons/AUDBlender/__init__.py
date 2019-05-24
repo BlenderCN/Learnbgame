@@ -5,7 +5,7 @@ bl_info = {
     'name': 'AUD Exporter',
     'author': 'merikesh',
     'location': 'File > Export > Export AUD (.usda)',
-    'category': 'Export',
+    "category": "Learnbgame",
     "description": "Exporter to write usda ascii files out without requiring USD binaries",
     "version": (0, 0, 2),
     "blender": (2, 80, 0)

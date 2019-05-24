@@ -22,7 +22,7 @@ bl_info = {
     "license": "GPL v2",
     "description": "Parametric Anatomical Modeling is a method to translate "
                    "large-scale anatomical data into spiking neural networks.",
-    "category": "Object"
+    "category": "Learnbgame",
 }
 
 __author__ = bl_info['author']

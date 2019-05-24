@@ -10,7 +10,7 @@ Created on Wed Mar  6 13:38:47 2019
 content=bytes("","UTF-8")
 bl_info = {
     "name": "MHW Mod3 Model Importer",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "author": "AsteriskAmpersand (Code) & CrazyT (Structure)",
     "location": "File > Import-Export > Mod3/MHW",
     "version": (1,0,0)

@@ -19,7 +19,7 @@ bl_info = {
     "blender" : (2, 80, 0),
     "location" : "",
     "warning" : "",
-    "category" : "Import-Export"
+    "category": "Learnbgame",
 }
 
 import os,sys,bpy

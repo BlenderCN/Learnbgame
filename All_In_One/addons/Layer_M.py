@@ -27,7 +27,7 @@ bl_info = {
     "warning": "",
     "description": "Layer Management Addon edit by Bookyakuno",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/3D_interaction/layer_manager",
-    "category": "3D View",
+    "category": "Learnbgame",
 }
 
 import bpy

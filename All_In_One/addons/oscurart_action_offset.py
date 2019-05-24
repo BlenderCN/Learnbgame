@@ -29,7 +29,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "oscurart.blogspot.com",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

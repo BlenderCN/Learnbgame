@@ -23,7 +23,7 @@ bl_info = {
     "blender": (2, 74, 0),
     "location": "File > Import > Quake BSP (.bsp)",
     "description": "This script imports the polygon geometry from a Quake BSP file.",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 # imports

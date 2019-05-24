@@ -11,7 +11,7 @@ bl_info = {
 	"warning" : "",
 	"wiki_url" : "https://github.com/CM3Duser/Blender-CM3D2-Converter",
 	"tracker_url" : "https://twitter.com/saidenka_cm3d2",
-	"category" : "Import-Export"
+	"category": "Learnbgame",
 }
 
 # サブスクリプト群をインポート

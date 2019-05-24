@@ -6,7 +6,7 @@ bl_info = {
     "version":      (0, 0, 3),
     "location":     "File > Import-Export",
     "description":  "GlPortal XML Format",
-    "category":     "Import-Export"
+    "category": "Learnbgame",
 }
 
 import bpy

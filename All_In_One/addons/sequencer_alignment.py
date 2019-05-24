@@ -38,7 +38,7 @@ bl_info = {
     'description': 'Align sequencer strips.',
     'wiki_url': 'https://github.com/sambler/addonsByMe/blob/master/sequencer_alignment.py',
     'tracker_url': 'https://github.com/sambler/addonsByMe/issues',
-    'category': 'Sequencer',
+    "category": "Learnbgame",
     }
 
 import bpy

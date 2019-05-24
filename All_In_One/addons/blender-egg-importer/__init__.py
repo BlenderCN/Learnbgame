@@ -6,7 +6,7 @@ bl_info = {
     "location": "File > Import > Panda3D (.egg)",
     "description": "",
     "warning": "",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

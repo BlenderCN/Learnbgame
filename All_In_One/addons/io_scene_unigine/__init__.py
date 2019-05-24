@@ -11,7 +11,7 @@ bl_info = {
         "Scripts/Unigine",
     "tracker_url": "http://projects.blender.org/tracker/index.php?"\
         "func=detail&aid=<number>",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

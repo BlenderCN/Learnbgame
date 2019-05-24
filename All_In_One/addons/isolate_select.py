@@ -19,7 +19,7 @@ bl_info = {
 	"blender": (2, 79),
 	"location": "3D View Q key",
 	"description": "Repeat local view as long as there are selected objects & Non zoom",
-	"category": "3D View",
+	"category": "Learnbgame",
 }
 
 

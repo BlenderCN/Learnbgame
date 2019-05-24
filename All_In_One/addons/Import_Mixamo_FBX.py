@@ -36,7 +36,7 @@ bl_info = \
         "warning" : "",
         "wiki_url" : "http://growlybearproductions.com/blender",
         "tracker_url" : "",
-        "category" : "Import-Export",
+        "category": "Learnbgame",
     }
 
 

@@ -27,7 +27,7 @@ bl_info = {
     "description": "Create a lathe",
     "warning": "",
     "wiki_url": "",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
     }
 
 import bpy

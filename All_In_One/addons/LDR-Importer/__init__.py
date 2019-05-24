@@ -33,7 +33,7 @@ bl_info = {
     "warning": "Incomplete Cycles support, MPD and Bricksmith models not supported",  # noqa
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Import-Export/LDRAW_Importer",  # noqa
     "tracker_url": "https://github.com/le717/LDR-Importer/issues",
-    "category": "Import-Export"
+    "category": "Learnbgame",
     }
 
 

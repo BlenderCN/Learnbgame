@@ -6,7 +6,7 @@ bl_info = {
     "location": "View 3D > Tool Shelf > Curve",
     "description": "Tool to help add and maintain beveled curve easier",
     "wiki_url": "https://github.com/ucupumar/bevel-curve-tools",
-    "category": "Add Curve",
+    "category": "Learnbgame",
 }
 
 import bpy, math

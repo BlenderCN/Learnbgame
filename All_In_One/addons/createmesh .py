@@ -29,7 +29,7 @@ bl_info = {
 	"warning": "",
 	"wiki_url": "https://github.com/varkenvarken/blenderaddons/blob/master/createmesh%20.py",
 	"tracker_url": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 import bpy

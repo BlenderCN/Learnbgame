@@ -23,7 +23,7 @@ bl_info = {
     "version": (1, 0),
     "blender": (2, 71, 0),
     "location": "Text Editor > Shift+Tab or Ctrl+Shift+Tab",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 import bpy    

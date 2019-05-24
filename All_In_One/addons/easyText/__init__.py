@@ -6,7 +6,7 @@ bl_info = {
     "blender": (2, 79, 0),
     "location": "View3D > Tools",
     "description": "easy Text making",
-    "category": "Object"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

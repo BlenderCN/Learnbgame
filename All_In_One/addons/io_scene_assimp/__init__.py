@@ -31,7 +31,8 @@ bl_info = {
     'description': 'Import using Assimp (.3ds .ase .lwo .md3 .obj .ply .x ...)',
     'wiki_url': 'http://wiki.blender.org/index.php/Extensions:2.5/Py/' \
         'Scripts/',
-    'category': 'Import-Export',}
+    "category": "Learnbgame",
+}
 
 """
 This script imports any files supported by Assimp to Blender.

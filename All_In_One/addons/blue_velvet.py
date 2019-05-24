@@ -25,7 +25,7 @@ bl_info = {
     "version": (1, 0, 20160328),
     "blender": (2, 77, 0),
     "warning": "War, children, it's just a shot away.",
-    "category": ":",
+    "category": "Learnbgame",
     "location": "File > Export > Ardour (.ardour)",
     "support": "COMMUNITY"}
 

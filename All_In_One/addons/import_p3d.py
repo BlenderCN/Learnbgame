@@ -5,7 +5,7 @@ bl_info = {
     "blender": (2, 78, 0),
     "location": "File > Import-Export",
     "description": "Import Move3D files (.p3d/.macro)",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

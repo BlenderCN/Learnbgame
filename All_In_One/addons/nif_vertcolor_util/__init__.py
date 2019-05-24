@@ -14,7 +14,7 @@ bl_info = {
            "tracker_url": (
                            "http://sourceforge.net/tracker/?group_id=149157&atid=776343"),
            "support": "COMMUNITY",
-           "category": "Learnbgame"
+           "category": "Learnbgame",
 }
 
 import bpy

@@ -4,7 +4,7 @@ bl_info = {
     "version" : (1, 0, 0),
     "blender" : (2, 7, 9),
     "description" : "Repeatedly extrude, move, scale and rotate selected faces",    
-    "category": "Mesh",
+    "category": "Learnbgame",
     "support": "TESTING",
     "location" : "View 3D > Edit Mode > Mesh",
 }

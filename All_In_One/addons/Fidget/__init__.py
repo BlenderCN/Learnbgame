@@ -27,7 +27,7 @@ bl_info = {
     "location": "View3D",
     # "warning": ",
     "wiki_url": "none",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

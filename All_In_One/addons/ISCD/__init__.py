@@ -1,6 +1,6 @@
 bl_info = {
     'name':     'ISCD I/O',
-    'category': 'Import-Export',
+    "category": "Learnbgame",
     'version': (0, 1, 0),
     'blender': (2, 79, 0),
     "description": "I/O for ISCD",

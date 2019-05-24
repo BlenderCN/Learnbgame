@@ -6,7 +6,7 @@ from . import (importer, exporter)
 
 bl_info = {
     "name": "Clausewitz Import/Export",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "author": "Bernhard Sirlinger",
     "version": (0, 6, 0),
     "blender": (2, 78, 0),

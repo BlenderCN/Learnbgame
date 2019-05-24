@@ -34,7 +34,7 @@ bl_info = {
     "wiki_url": "http://www.blenderfds.org/",
     "tracker_url": "http://code.google.com/p/blenderfds/issues/list",
     "support": "COMMUNITY",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 ### Import/Reimport

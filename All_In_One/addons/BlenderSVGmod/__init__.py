@@ -31,7 +31,7 @@ bl_info = {
     "tracker_url": "http://projects.blender.org/tracker/index.php?"\
         "func=detail&aid=26166&",
     "support": 'OFFICIAL',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # To support reload properly, try to access a package var,

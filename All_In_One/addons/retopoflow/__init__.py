@@ -30,7 +30,7 @@ bl_info = {
     # "warning":     "beta 2",  # used for warning icon and text in addons panel
     "wiki_url":    "http://docs.retopoflow.com",
     "tracker_url": "https://github.com/CGCookie/retopoflow/issues",
-    "category":    "3D View"
+    "category": "Learnbgame",
 }
 
 import sys

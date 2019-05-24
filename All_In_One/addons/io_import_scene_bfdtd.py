@@ -27,7 +27,7 @@ bl_info = {
     'wiki_url': '',
     'tracker_url': '',
     'support': 'OFFICIAL',
-    'category': 'Import-Export',
+    "category": "Learnbgame",
     }
 
 """

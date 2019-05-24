@@ -27,7 +27,7 @@ bl_info = {
     "location": "View3D > TOOLS > Tools > Mesh Tools > Add: > Extrude Menu (Alt + E)",
     "description": "Push and pull face entities to sculpt 3d models",
     #"wiki_url" : "http://blenderartists.org/forum/",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

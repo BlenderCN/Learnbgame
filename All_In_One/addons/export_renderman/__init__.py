@@ -40,7 +40,8 @@ bl_info = {
     'blender': (2, 5, 6),
     'location': 'Info Header',
     'description': 'Connects Blender to Renderman Interface',
-    'category': 'Render'}
+    "category": "Learnbgame",
+}
     
 ##################################################################################################################################
 if "bpy" in locals():

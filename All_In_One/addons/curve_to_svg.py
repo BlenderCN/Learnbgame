@@ -8,7 +8,8 @@ bl_info = {
     'warning': "Curve splines may be inverted, so self intersections can be wrong after export",
     'wiki_url': "https://github.com/aryelgois/blender-curve-to-svg",
     'tracker_url': "https://github.com/aryelgois/blender-curve-to-svg/issues",
-    'category': "Import-Export"}
+    "category": "Learnbgame",
+}
 
 
 import bpy

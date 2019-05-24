@@ -28,7 +28,7 @@ bl_info = {
     "warning": "Requires ImageMagick",
     "wiki_url": "http://wiki.blender.org/index.php?title=Extensions:2.6/Py/Scripts/Render/Spritify",
     "tracker_url": "http://projects.blender.org/tracker/index.php?func=detail&aid=31129&group_id=153&atid=467",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Print to Python Interactive Console",
-    "category": "Development",
+    "category": "Learnbgame",
 }
 import bpy
 import os

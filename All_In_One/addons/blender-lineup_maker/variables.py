@@ -15,7 +15,7 @@ LM_CHANNELS = [] if P.get_prefs() is None else [P.get_prefs().textureSet_albedo_
 
 LM_NAMING_CONVENTION_KEYWORDS_COMMON = {'project':[],
 										'team':[],
-										'category':[],
+										"category": "Learnbgame",
 										'incr':[],
 										'gender':['m', 'f', 'mf', 'u']}
 

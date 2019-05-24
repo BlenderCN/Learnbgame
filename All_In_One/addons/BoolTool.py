@@ -7,7 +7,7 @@ bl_info = {
     "description": "Improve de Boolean Usability",
     "warning": "",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Object/BoolTool",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

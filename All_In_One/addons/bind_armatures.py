@@ -30,7 +30,7 @@ bl_info = {
     "author": "Vadim Macagon",
     "version": (0, 1),
     "blender": (2, 6, 9),
-    "category": "Rigging",
+    "category": "Learnbgame",
     "description": "Hooks up a simple game-ready armature to a Rigify or advanced MakeHuman armature."
 }
 

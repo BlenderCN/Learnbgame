@@ -30,7 +30,7 @@ bl_info = {
 	"location": "View3D > UI > Billboard Resources",
 	"warning": "This addon is still in development.",
 	"wiki_url": "",
-	"category": "Import-Export" 
+	"category": "Learnbgame",
 }
 
 import bpy, os, logging, traceback

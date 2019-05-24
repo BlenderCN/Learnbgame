@@ -8,7 +8,7 @@ bl_info = {
     "warning": "Under construction! Visit Wiki for details.",
     "wiki_url": "https://github.com/satoyuichi/BlenderRokuro",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

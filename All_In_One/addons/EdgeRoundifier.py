@@ -19,7 +19,7 @@
 
 bl_info = {
     "name": "Edge Roundifier",
-    "category": "Mesh",
+    "category": "Learnbgame",
     'author': 'Piotr Komisarczyk (komi3D)',
     'version': (0, 0, 1),
     'blender': (2, 7, 1),
@@ -27,7 +27,7 @@ bl_info = {
     'description': 'Mesh editing script allowing edge rounding',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Mesh'
+    "category": "Learnbgame",
 }
 
 import math

@@ -32,7 +32,7 @@ bl_info = {
     "blender": (2, 78, 0),
     "location": "Animation",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

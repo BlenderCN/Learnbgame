@@ -27,7 +27,7 @@ bl_info = {
 	"warning": "",
 	"wiki_url": "http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/Add_Mesh/Add_Ogive",
 	"tracker_url": "http://projects.blender.org/tracker/index.php?func=detail&aid=26779",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 '''

@@ -8,7 +8,7 @@ bl_info = {
     "warnig": "",
     "wiki_url": "",
     "support": "COMMUNITY",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if 'bpy' in locals():

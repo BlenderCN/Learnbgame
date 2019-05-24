@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Scene Setup",
-    "category": "Scene",
+    "category": "Learnbgame",
 }
 
 import sys

@@ -13,7 +13,7 @@ bl_info = {
   'author': 'millighost',
   'version': (1, 0),
   'blender': (2,6,3),
-  'category': 'Import-Export',
+  "category": "Learnbgame",
   'warning': '',
   'wiki_url': 'http://nonexistent',
 }

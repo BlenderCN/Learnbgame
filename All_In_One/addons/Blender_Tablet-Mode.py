@@ -25,7 +25,7 @@ bl_info = {
     "description": "Enables better tablet integration for Blender",
     "warning": "Early development state!",
     "wiki_url": "",
-    "category": "User Interface",
+    "category": "Learnbgame",
     }
     
 import bpy

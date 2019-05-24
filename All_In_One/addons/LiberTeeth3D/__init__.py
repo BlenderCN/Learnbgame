@@ -7,7 +7,7 @@ bl_info = {
     "description": "Ortodontia no Blender",
     "warning": "",
     "wiki_url": "",
-    "category": "liber",
+    "category": "Learnbgame",
     }
 
 

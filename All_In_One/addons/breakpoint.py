@@ -32,7 +32,7 @@ bl_info = {
                 "Scripts/Development/BreakPoint",
     "tracker_url": "http://projects.blender.org/tracker/index.php?"
                    "func=detail&aid=28802",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

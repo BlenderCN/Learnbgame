@@ -134,7 +134,7 @@ bl_info = {
     "blender": (2, 71, 0),
     "location": "Sequencer Panels; Sequencer Menus; Sequencer S, F, Z, Ctrl-P, Shift-P Shortcuts",
     "wiki_url": "http://blenderaddonlist.blogspot.com.au/2014/06/addon-vse-quick-functions.html",
-    "category": "Sequencer"
+    "category": "Learnbgame",
 }
 
 

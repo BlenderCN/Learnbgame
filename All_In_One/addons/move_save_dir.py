@@ -4,7 +4,7 @@ bl_info = {
     "name": "Move Backup Save Files To Directory",
     "author": "Jonathan Stroem",
     "description": """Move the backup save files to a directory instead of the Blender-file's current directory. A new folder called "backup.blend" will be created and all save-files will be moved there instead of the default folder.""" ,
-    "category": "System",
+    "category": "Learnbgame",
     "location": """The backup folder will be named "backup.blend". Under 'File > User Preferences > File > Save Versions', you can change how many backups that'll be used.""",
     }
  

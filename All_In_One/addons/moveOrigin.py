@@ -23,7 +23,8 @@ bl_info = {
     'description': 'in edit mode, sets object origin to the median of selected verts/edges/faces',
     'wiki_url': '',
     'tracker_url': '',
-    'category': '3D View'}
+    "category": "Learnbgame",
+}
 
 import bpy
 

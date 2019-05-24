@@ -27,7 +27,8 @@ bl_info = {
     'description': 'select a spline/curve, drag the slidersit will fillet the edge.',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Mesh'}
+    "category": "Learnbgame",
+}
 
 
 import math

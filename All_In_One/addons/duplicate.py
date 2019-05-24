@@ -1,6 +1,6 @@
 bl_info = {
     "name" : "Duplicate:CustomAddon",
-    "category": "MyAddon",    
+    "category": "Learnbgame",
     "author": "AkashManna"
 }
 

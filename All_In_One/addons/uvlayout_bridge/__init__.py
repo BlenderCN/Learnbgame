@@ -50,7 +50,7 @@ bl_info = {
 #    "wiki_url": "https://gumroad.com/l/Blender2UVLayoutBridge",
 	"wiki_url": "https://github.com/schroef/uvlayout_bridge",
 	"tracker_url": "https://github.com/schroef/uvlayout_bridge/issues",
-	"category": "UV"
+	"category": "Learnbgame",
 }
 
 import bpy

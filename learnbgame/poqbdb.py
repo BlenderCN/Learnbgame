@@ -229,6 +229,37 @@ class POQBDB_SPECIES_MICRABE_ADD(Operator):
 		obj[0].location = context.scene.cursor.location 
 		return {'FINISHED'}
 
+class POQBDB_PLANETS_RIG(Panel,ObjectButtonsPanel):
+	bl_label="rig"
+	bl_space_type = "VIEW_3D"
+	bl_region_type = "UI"
+	bl_category = "Learnbgame"
+	bl_parent_id = "POQBDB_PLANETS"
+
+	global icons_collection
+	icons = icons_collection["main"]
+
+	def draw(self,context):
+		layout=self.layout
+		scene = context.scene
+		poqbdbs = scene.poqbdbs
+		row = layout.row()
+		row.prop(poqbdbs,"poqbdb_planets_rig",icon_value=icons[poqbdbs.poqbdb_planets_rig if poqbdbs.poqbdb_planets_rig+".png" in icons_list else "learnbgame"].icon_id)
+		row.operator(POQBDB_PLANETS_RIG_ADD.bl_idname,text="add",icon="ADD")
+
+class POQBDB_PLANETS_RIG_ADD(Operator):
+	bl_idname = "poqbdb_planets_rig.add"
+	bl_label = "poqbdb_planets_rig+"
+
+	def execute(self,context):
+		poqbdbs = context.scene.poqbdbs
+		poqbdb_planets_rig = poqbdbs.poqbdb_planets_rig
+		bpy.ops.import_scene.gltf(filepath=os.path.join(os.path.dirname(__file__),"poqbdb/planets/rig")+os.path.sep + poqbdb_planets_rig + ".glb")
+		obj = context.selected_objects
+		obj[0].name = poqbdb_planets_rig
+		obj[0].location = context.scene.cursor.location 
+		return {'FINISHED'}
+
 class POQBDB_PLANETS_TRAFFIC(Panel,ObjectButtonsPanel):
 	bl_label="traffic"
 	bl_space_type = "VIEW_3D"
@@ -383,6 +414,13 @@ class POQBDB_PROPERTY(PropertyGroup):
 			]
 	)
 
+	poqbdb_planets_rig : EnumProperty(
+		name="rig",
+		items=[
+			("fire_drango","Fire_drango","add fire_drango"),
+			]
+	)
+
 	poqbdb_planets_traffic : EnumProperty(
 		name="traffic",
 		items=[
@@ -430,6 +468,10 @@ def register():
 	
 	bpy.utils.register_class(POQBDB_SPECIES_MICRABE_ADD)
 	
+	bpy.utils.register_class(POQBDB_PLANETS_RIG)
+	
+	bpy.utils.register_class(POQBDB_PLANETS_RIG_ADD)
+	
 	bpy.utils.register_class(POQBDB_PLANETS_TRAFFIC)
 	
 	bpy.utils.register_class(POQBDB_PLANETS_TRAFFIC_ADD)
@@ -470,6 +512,10 @@ def unregister():
 	bpy.utils.unregister_class(POQBDB_SPECIES_MICRABE)
 	
 	bpy.utils.unregister_class(POQBDB_SPECIES_MICRABE_ADD)
+	
+	bpy.utils.unregister_class(POQBDB_PLANETS_RIG)
+	
+	bpy.utils.unregister_class(POQBDB_PLANETS_RIG_ADD)
 	
 	bpy.utils.unregister_class(POQBDB_PLANETS_TRAFFIC)
 	

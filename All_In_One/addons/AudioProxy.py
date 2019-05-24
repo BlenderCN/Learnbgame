@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Audio Proxy",
-    "category": "Sequencer",
+    "category": "Learnbgame",
 }
 
 import bpy

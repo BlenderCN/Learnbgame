@@ -10,7 +10,7 @@ bl_info = {
 	"warning" : "",
 	"wiki_url" : "https://github.com/coverman03/blender",
 	"tracker_url" : "https://github.com/coverman03/blender/issues",
-	"category" : "3D View"
+	"category": "Learnbgame",
 }
 
 if "bpy" in locals():

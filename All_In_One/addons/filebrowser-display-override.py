@@ -26,7 +26,7 @@ bl_info = {
     "warning" : "",
     "wiki_url" : "https://blender.stackexchange.com/a/28054/935",
     "tracker_url" : "https://gist.github.com/p2or/59b2795f011f2f024f5e781d1a33a5da",
-    "category" : "User Interface"
+    "category": "Learnbgame",
 }
 
 import bpy

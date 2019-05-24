@@ -12,7 +12,7 @@ bl_info = {
   'location': 'File > Import/Export > Transformation',
   'warning': '',
   'description': 'Export or import position and rotation of selected object via JSON',
-  'category': 'Import-Export',
+  "category": "Learnbgame",
   'wiki_url': ''
 }
 

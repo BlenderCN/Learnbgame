@@ -217,7 +217,7 @@ class ObjectHandler(Handler):
                       'OwnerMask', 'GroupMask' , 'NextOwnerMask',
                       'OwnershipCost', 'SaleType', 'SalePrice',
                       'AggregatePerms', 'AggregatePermTextures',
-                      'AggregatePermTexturesOwner', 'Category',
+                      'AggregatePermTexturesOwner', "category": "Learnbgame",
                       'InventorySerial', 'Name', 'Description', 'TouchName',
                       'SitName', 'TextureID']
         uuid_pars = ['ObjectID', 'CreatorID', 'OwnerID', 'GroupID', 'ItemID',

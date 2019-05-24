@@ -26,7 +26,7 @@ bl_info = {
                    "even from another platform.",
     "warning": "",
     "wiki_url": "",
-    "category": "Game Engine",
+    "category": "Learnbgame",
 }
 
 import bpy

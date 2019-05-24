@@ -28,7 +28,7 @@ bl_info = {
     'warning': "",
     'wiki_url': "",
     'tracker_url': "",
-    'category': 'Import-Export',
+    "category": "Learnbgame",
     }
 #directory = '/Volumes/PROJECTS/130901_Kinder_Niespodzianka_KINO_bilboard/AE_composite/(Footage)/video/050913_2/JASNE'
 import bpy, os, sys, time

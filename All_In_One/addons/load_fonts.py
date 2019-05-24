@@ -4,7 +4,7 @@ bl_info = {
     "version": (1, 0),
     "blender": (2, 72, 0),
     "description": "load all fonts from fonts directory",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import os

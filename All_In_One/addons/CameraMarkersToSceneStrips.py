@@ -10,7 +10,7 @@ bl_info = {
     "location": "VSE strip editor > Header > Add Menu: Marker Cameras",
     "wiki_url": "https://github.com/tin2tin/Camera-Markers-to-Scene-Strips/wiki",
     "tracker_url":"",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

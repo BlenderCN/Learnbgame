@@ -11,7 +11,7 @@ import bpy
 
 bl_info = {
     "name": "VSE batch strip properties",
-    "category": "VSE"
+    "category": "Learnbgame",
 }
 
 # TODO: Can I get that from somewhere instead of hardcoding?

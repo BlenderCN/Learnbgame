@@ -14,7 +14,7 @@ bl_info = {
     "warning": "Constantly changing format, visit Mini3d website for info", # used for warning icon and text in addons panel
     "wiki_url": "www.mini3d.org",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

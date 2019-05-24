@@ -31,7 +31,7 @@ bl_info = {"name": "Matpi's Add-ons Collection (Configurator)",
            "warning": "",
            "wiki_url": "",
            "tracker_url": "",
-           "category": "System"
+           "category": "Learnbgame",
            }
 
 

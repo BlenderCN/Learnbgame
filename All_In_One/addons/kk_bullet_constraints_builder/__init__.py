@@ -174,7 +174,7 @@ bl_info = {
     "description": "Tool to connect rigid bodies via constraints in a physical plausible way.",
     "wiki_url": "http://www.inachus.eu",
     "tracker_url": "http://kaikostack.com",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 ################################################################################

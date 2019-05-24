@@ -5,7 +5,7 @@ bl_info = {
     "blender": (2, 6, 4),
     "location": "View3D > Tool Shelf",
     "description": "Set up materials for a Wire Render.",
-    "category": "Material",
+    "category": "Learnbgame",
     "url": "http://www.blenderheads.org/forums/es/viewtopic.php?t=932",
 }
 

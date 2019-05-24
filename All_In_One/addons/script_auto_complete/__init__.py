@@ -27,7 +27,7 @@ bl_info = {
     "version":     (2, 0, 0),
     "blender":     (2, 7, 4),
     "location":    "Text Editor",
-    "category":    "Development"
+    "category": "Learnbgame",
     }
 
 

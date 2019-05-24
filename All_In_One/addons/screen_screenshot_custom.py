@@ -6,7 +6,7 @@ bl_info = {
     "location": "Save Screenshot Custom",
     "description": "Create screenshots of all the individual areas in the current screen (and the whole area also if you want)",
     "warning": "",
-    "category": "Screen"
+    "category": "Learnbgame",
 }
 
 

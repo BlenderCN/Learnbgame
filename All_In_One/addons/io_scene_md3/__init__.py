@@ -8,7 +8,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Import-Export/MD3",
     "tracker_url": "https://github.com/neumond/blender-md3/issues",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 

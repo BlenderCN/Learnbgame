@@ -27,7 +27,7 @@ bl_info = {
     "description": "Warns if the scene is being used by another user.",
     "warning": "",
     "wiki_url": "",
-    "category": "User Interface",
+    "category": "Learnbgame",
     }
 
 import bpy

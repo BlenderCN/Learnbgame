@@ -32,7 +32,7 @@
 #         ". *requires the Blender ID add-on",
 #     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/"
 #                 "Scripts/Workflow/Attract",
-#     "category": "Workflow",
+#     "category": "Learnbgame",
 #     "support": "TESTING"
 # }
 

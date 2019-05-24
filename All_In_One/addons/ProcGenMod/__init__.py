@@ -6,7 +6,7 @@ bl_info = {
     "blender": (2, 79, 0),
     "location": "Node Editor",
     "description": "Create procedural meshes using Node Editor",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

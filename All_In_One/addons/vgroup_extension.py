@@ -7,7 +7,7 @@ bl_info = {
     "description": "Adds more vertex groups options",
     "warning": "",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 import bpy

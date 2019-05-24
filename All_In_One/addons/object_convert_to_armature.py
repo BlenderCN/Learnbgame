@@ -31,7 +31,7 @@ bl_info = {
 	"location": "Object > Convert to Armature",
 	"warning": "",
 	"description": "Generate an armature with a single bone controlling each face",
-	"category": "Object",
+	"category": "Learnbgame",
 	"wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Object/Convert_to_Armature",
 	"tracker_url": ""}
 

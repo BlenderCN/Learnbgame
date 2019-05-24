@@ -9,7 +9,7 @@ bl_info = {
     "blender": (2, 6, 6),
     "location": "View3D > Tool Shelf",
     "description": "Creates a 3d pixelated version of the object. Supports animation.",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy, bmesh, mathutils

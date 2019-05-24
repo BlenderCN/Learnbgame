@@ -25,7 +25,7 @@ bl_info = {
 	"description": "Rational Keymap Set",
 	"location": "This addon Setting",
 	"warning": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 #

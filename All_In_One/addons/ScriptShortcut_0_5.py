@@ -30,7 +30,7 @@ bl_info = {
     "blender": (2, 76, 0),
     "location": "Properties shelf in most areas, View menu in same areas, Ctrl-Shift-Space shortcut in most areas",
     "wiki_url": "none",
-    "category": "User Interface"
+    "category": "Learnbgame",
 }
 
 addon_keymaps = []

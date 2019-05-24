@@ -25,7 +25,7 @@ bl_info = {
     "support": 'TESTING',
     "warning": "Early development",
     "wiki_url": "",
-    "category": "System",
+    "category": "Learnbgame",
     }
 
 

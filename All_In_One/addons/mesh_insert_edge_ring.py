@@ -34,7 +34,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Mesh/Insert_Edge_Ring",
     "tracker_url": "http://projects.blender.org/tracker/index.php?func=detail&aid=32424",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 ###########################################################################
 import bpy, bmesh, math

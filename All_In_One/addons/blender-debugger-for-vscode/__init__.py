@@ -28,7 +28,7 @@ bl_info = {
    "warning": "",
    "wiki_url": "https://github.com/AlansCodeLog/blender-debugger-for-vscode",
    "tracker_url": "https://github.com/AlansCodeLog/blender-debugger-for-vscode/issues",
-   'category': 'Development',
+   "category": "Learnbgame",
 }
 
 import bpy

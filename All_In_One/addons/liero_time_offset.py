@@ -11,7 +11,7 @@ bl_info = {
     "api": 37260,
     "location": "View3D > Properties",
     "description": "Time offset, align and distribute animations of selected objects",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy, random

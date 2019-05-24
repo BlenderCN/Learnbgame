@@ -5,7 +5,7 @@ bl_info = {
     "blender": (2, 7, 8),
     "location" : "View3D > Add > Mesh > 3D Text",
     "description": "Make 3D Text Effect",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

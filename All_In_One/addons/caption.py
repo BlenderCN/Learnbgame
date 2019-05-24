@@ -35,7 +35,7 @@ bl_info = {
 	"wiki_url": "https://github.com/pzl/blender-scripts",
 	"tracker_url": "https://github.com/pzl/blender-scripts/issues",
 	"support": "COMMUNITY",
-	"category": "Scene"
+	"category": "Learnbgame",
 }
 
 import bpy

@@ -13,7 +13,7 @@ bl_info = {
     "blender": (2, 78, 0),
     "warning": "", # used for warning icon and text in addons panel
     "wiki_url": "",
-    "category": "Export"
+    "category": "Learnbgame",
     }
 
 import bpy

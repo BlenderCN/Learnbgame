@@ -15,7 +15,7 @@ bl_info = {
     "blender": (2, 79, 0),
     "location": "File > Import",
     "wiki_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

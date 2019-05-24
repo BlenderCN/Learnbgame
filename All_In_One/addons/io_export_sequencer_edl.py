@@ -40,7 +40,7 @@ bl_info = {
     "description": "Save a CMX 3600 formatted EDL from the Timeline - One video track and four audio tracks",
     "warning": "",
     "wiki_url": "https://github.com/tin2tin/ExportEDL",
-    "category": "Import-Export",
+    "category": "Learnbgame",
 }
 
 class UIPanel(bpy.types.Panel):

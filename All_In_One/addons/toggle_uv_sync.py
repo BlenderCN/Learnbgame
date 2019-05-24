@@ -8,7 +8,7 @@ bl_info = {
     "location": "Key Bindings",
     "description": "Provides an operator for keybindings to toggle the"
                    "keep UV and edit mode selection in sync",
-    "category": "UV"
+    "category": "Learnbgame",
 }
 
 

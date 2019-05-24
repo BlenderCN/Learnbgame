@@ -25,7 +25,7 @@ bl_info = {
     "blender": (2, 65, 0),
     "location": "Select",
     "warning": "",
-    "category": "Mesh"
+    "category": "Learnbgame",
 }
 
 import bpy

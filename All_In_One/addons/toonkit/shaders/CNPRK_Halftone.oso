@@ -1,0 +1,178 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.7.5
+# options: -o C:\Users\vitor\AppData\Local\Temp\tmpexfiy332.oso -IC:\Program Files\Blender Foundation\Blender\2.79\scripts\addons\cycles\shader
+shader halftone_texture
+param	int	Pattern	0		%read{25,25} %write{2147483647,-1}
+param	vector	Mapping	0 0 0		%read{1,3} %write{0,0} %initexpr
+param	float	Size	0.5		%read{58,58} %write{2147483647,-1}
+param	float	Scale	64		%read{2,4} %write{2147483647,-1}
+oparam	float	Texture	0		%read{58,58} %write{31,57}
+oparam	float	Halftone	0		%read{2147483647,-1} %write{60,61}
+global	point	P	%read{0,0} %write{2147483647,-1}
+local	float	X	%read{6,52} %write{2,21}
+local	float	Y	%read{16,56} %write{4,23}
+local	float	Xa	%read{2147483647,-1} %write{9,9}
+local	int	pat	%read{27,54} %write{26,26}
+const	string	$const1	"world"		%read{0,0} %write{2147483647,-1}
+const	string	$const2	"camera"		%read{0,0} %write{2147483647,-1}
+const	int	$const3	0		%read{1,60} %write{2147483647,-1}
+temp	float	$tmp1	%read{2,2} %write{1,1}
+const	int	$const4	1		%read{3,61} %write{2147483647,-1}
+temp	float	$tmp2	%read{4,4} %write{3,3}
+const	float	$const5	1		%read{6,56} %write{2147483647,-1}
+const	string	$const6	"mod"		%read{5,15} %write{2147483647,-1}
+temp	float	$tmp3	%read{8,8} %write{7,7}
+temp	float	$tmp4	%read{7,7} %write{6,6}
+temp	float	$tmp5	%read{9,9} %write{8,8}
+temp	float	$tmp6	%read{13,13} %write{12,12}
+temp	float	$tmp7	%read{12,12} %write{11,11}
+temp	float	$tmp8	%read{14,14} %write{13,13}
+temp	float	$tmp9	%read{18,18} %write{17,17}
+temp	float	$tmp10	%read{17,17} %write{16,16}
+temp	float	$tmp11	%read{19,19} %write{18,18}
+const	int	$const7	2		%read{37,37} %write{2147483647,-1}
+temp	float	$tmp12	%read{21,21} %write{20,20}
+const	float	$const8	2		%read{20,57} %write{2147483647,-1}
+temp	float	$tmp13	%read{23,23} %write{22,22}
+const	int	$const9	5		%read{25,54} %write{2147483647,-1}
+const	string	$const10	"clamp"		%read{24,24} %write{2147483647,-1}
+temp	int	$tmp14	%read{26,26} %write{25,25}
+temp	int	$tmp15	%read{28,28} %write{27,27}
+temp	float	$tmp16	%read{31,31} %write{29,29}
+temp	float	$tmp17	%read{31,31} %write{30,30}
+temp	int	$tmp18	%read{33,33} %write{32,32}
+temp	float	$tmp19	%read{36,36} %write{34,34}
+temp	float	$tmp20	%read{36,36} %write{35,35}
+temp	int	$tmp21	%read{38,38} %write{37,37}
+temp	float	$tmp22	%read{41,41} %write{39,39}
+temp	float	$tmp23	%read{41,41} %write{40,40}
+temp	float	$tmp24	%read{42,42} %write{41,41}
+const	int	$const11	3		%read{43,43} %write{2147483647,-1}
+temp	int	$tmp25	%read{44,44} %write{43,43}
+temp	float	$tmp26	%read{49,49} %write{46,46}
+temp	float	$tmp27	%read{46,46} %write{45,45}
+temp	float	$tmp28	%read{49,49} %write{48,48}
+temp	float	$tmp29	%read{48,48} %write{47,47}
+const	int	$const12	4		%read{50,50} %write{2147483647,-1}
+temp	int	$tmp30	%read{51,51} %write{50,50}
+temp	float	$tmp31	%read{53,53} %write{52,52}
+temp	int	$tmp32	%read{55,55} %write{54,54}
+temp	float	$tmp33	%read{57,57} %write{56,56}
+temp	int	$tmp34	%read{59,59} %write{58,58}
+code Mapping
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:11
+#     float Size = 0.5,  
+	transform	Mapping $const1 $const2 P 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl"} %line{11} %argrw{"wrrr"}
+code ___main___
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:19
+#     float Y= Mapping[1] * Scale;
+	compref		$tmp1 Mapping $const3 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl"} %line{19} %argrw{"wrr"}
+	mul		X $tmp1 Scale 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:20
+#     
+	compref		$tmp2 Mapping $const4 	%line{20} %argrw{"wrr"}
+	mul		Y $tmp2 Scale 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:22
+#     
+	functioncall	$const6 10 	%line{22} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:135
+# float hypot (float a, float b) { return sqrt (a*a + b*b); }
+	div		$tmp4 X $const5 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{135} %argrw{"wrr"}
+	floor		$tmp3 $tmp4 	%argrw{"wr"}
+	mul		$tmp5 $const5 $tmp3 	%argrw{"wrr"}
+	sub		Xa X $tmp5 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:24
+#     Y= mod(Y,1);
+	functioncall	$const6 15 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl"} %line{24} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:135
+# PERCOMP1 (sqrt)
+	div		$tmp7 X $const5 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{135} %argrw{"wrr"}
+	floor		$tmp6 $tmp7 	%argrw{"wr"}
+	mul		$tmp8 $const5 $tmp6 	%argrw{"wrr"}
+	sub		X X $tmp8 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:25
+# 
+	functioncall	$const6 20 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl"} %line{25} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:135
+# PERCOMP1 (logb)
+	div		$tmp10 Y $const5 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{135} %argrw{"wrr"}
+	floor		$tmp9 $tmp10 	%argrw{"wr"}
+	mul		$tmp11 $const5 $tmp9 	%argrw{"wrr"}
+	sub		Y Y $tmp11 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:27
+#     Y= Y*2-1;
+	mul		$tmp12 X $const8 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl"} %line{27} %argrw{"wrr"}
+	sub		X $tmp12 $const5 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:28
+# 
+	mul		$tmp13 Y $const8 	%line{28} %argrw{"wrr"}
+	sub		Y $tmp13 $const5 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:30
+#     
+	functioncall	$const10 27 	%line{30} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:145
+# PERCOMP1 (abs)
+	min		$tmp14 Pattern $const9 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{145} %argrw{"wrr"}
+	max		pat $tmp14 $const3 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:32
+#     {
+	eq		$tmp15 pat $const3 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl"} %line{32} %argrw{"wrr"}
+	if		$tmp15 32 58 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:34
+#     }
+	mul		$tmp16 X X 	%line{34} %argrw{"wrr"}
+	mul		$tmp17 Y Y 	%argrw{"wrr"}
+	add		Texture $tmp16 $tmp17 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:36
+#     {
+	eq		$tmp18 pat $const4 	%line{36} %argrw{"wrr"}
+	if		$tmp18 37 58 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:38
+#     } 
+	abs		$tmp19 X 	%line{38} %argrw{"wr"}
+	abs		$tmp20 Y 	%argrw{"wr"}
+	max		Texture $tmp19 $tmp20 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:40
+#     {
+	eq		$tmp21 pat $const7 	%line{40} %argrw{"wrr"}
+	if		$tmp21 43 58 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:42
+#     }
+	abs		$tmp22 X 	%line{42} %argrw{"wr"}
+	abs		$tmp23 Y 	%argrw{"wr"}
+	add		$tmp24 $tmp22 $tmp23 	%argrw{"wrr"}
+	div		Texture $tmp24 $const8 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:44
+#     {
+	eq		$tmp25 pat $const11 	%line{44} %argrw{"wrr"}
+	if		$tmp25 50 58 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:46
+#     }
+	abs		$tmp27 X 	%line{46} %argrw{"wr"}
+	atan		$tmp26 $tmp27 	%argrw{"wr"}
+	abs		$tmp29 Y 	%argrw{"wr"}
+	atan		$tmp28 $tmp29 	%argrw{"wr"}
+	add		Texture $tmp26 $tmp28 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:48
+#     {
+	eq		$tmp30 pat $const12 	%line{48} %argrw{"wrr"}
+	if		$tmp30 54 58 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:50
+#     } 
+	add		$tmp31 X $const5 	%line{50} %argrw{"wrr"}
+	div		Texture $tmp31 $const8 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:52
+#     {
+	eq		$tmp32 pat $const9 	%line{52} %argrw{"wrr"}
+	if		$tmp32 58 58 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:54
+#     }
+	add		$tmp33 Y $const5 	%line{54} %argrw{"wrr"}
+	div		Texture $tmp33 $const8 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_Halftone.osl:56
+# 
+	gt		$tmp34 Texture Size 	%line{56} %argrw{"wrr"}
+	if		$tmp34 61 62 	%argrw{"r"}
+	assign		Halftone $const3 	%argrw{"wr"}
+	assign		Halftone $const4 	%argrw{"wr"}
+	end

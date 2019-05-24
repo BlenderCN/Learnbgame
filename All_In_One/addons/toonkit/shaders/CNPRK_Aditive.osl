@@ -1,0 +1,18 @@
+/*----------------------------------------- */
+/*   Cycles NPR Kit
+/*   Cogumelo Softworks 2017
+/*   Add Shader
+/*------------------------------------------*/
+
+
+shader AddShader(
+
+    float Fac = 0.5,
+    closure color Shader1 = background(),
+    closure color Shader2 = background(),
+    output closure color Shader = background()
+)
+
+{
+Shader = Shader1 + clamp(Fac,0.0,1.0) * Shader2;
+}

@@ -25,7 +25,8 @@ bl_info = {
     "warning"     : "",  # used for warning icon and text in addons panel
     "wiki_url"    : "https://www.blendermarket.com/products/bricksculpt/",
     "tracker_url" : "https://github.com/bblanimation/bricksculpt/issues",
-    "category"    : "Object"}
+    "category": "Learnbgame",
+   }
 
 # System imports
 # NONE!

@@ -7,7 +7,7 @@ bl_info = {
     "description": "Adds a new fractal",
     "warning": "",
     "wiki_url": "",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
 }
 
 import bpy  # NOQA

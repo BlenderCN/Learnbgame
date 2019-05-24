@@ -25,7 +25,8 @@ bl_info = {
     "warning"     : "",  # used for warning icon and text in addons panel
     "wiki_url"    : "https://www.blendermarket.com/products/interactive-physics-editor",
     "tracker_url" : "https://github.com/bblanimation/interactive-physics-editor/issues",
-    "category"    : "3D View"}
+    "category": "Learnbgame",
+   }
 
 # Blender imports
 import bpy

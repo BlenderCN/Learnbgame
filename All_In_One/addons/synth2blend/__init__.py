@@ -25,7 +25,7 @@ bl_info = {
         "version":      (0,0,1),
         "location":     "File > Import-Export",
         "description":  "Import StructureSynth Scene",
-        "category":     "Import-Export"
+        "category": "Learnbgame",
 }
 
 if "bpy" in locals():

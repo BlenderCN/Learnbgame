@@ -4,7 +4,7 @@ bl_info = {
     "version": (1, 0),
     "blender": (2, 78, 0),
     "description": "Speak English",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

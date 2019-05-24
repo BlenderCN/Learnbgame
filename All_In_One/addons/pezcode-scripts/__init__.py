@@ -7,7 +7,7 @@ bl_info = {
     "blender": (2, 79, 0),
     'support': 'COMMUNITY',
     'tracker_url': 'https://github.com/pezcode/blender-scripts/issues',
-    'category': 'Misc'
+    "category": "Learnbgame",
 }
 
 # https://wiki.blender.org/index.php/Dev:Py/Scripts/Cookbook/Code_snippets/Multi-File_packages

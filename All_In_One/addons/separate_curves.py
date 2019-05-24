@@ -26,7 +26,7 @@ bl_info = {
     "location": "View3D > Tools Panel > Tools Tab > Edit",
     "warning": "",
     "description": "Separate active curve object by loose parts",
-    "category": "Curve",
+    "category": "Learnbgame",
 }
 
 

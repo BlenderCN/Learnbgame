@@ -4,7 +4,7 @@ bl_info = {
     "version": (1, 3),
     "blender": (2, 76, 0),
     "wiki_url": "http://hophead.ninja/product/perfect_shape",
-    "category": "Mesh"
+    "category": "Learnbgame",
 }
 
 import bpy

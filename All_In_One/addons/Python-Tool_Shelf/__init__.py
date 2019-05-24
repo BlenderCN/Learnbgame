@@ -9,7 +9,7 @@ bl_info = {
     "location": "Tool Shelf, Python Tab",
     "description": "Python Tool shelf for long running scripts",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

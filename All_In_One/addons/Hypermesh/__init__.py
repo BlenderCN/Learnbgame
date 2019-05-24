@@ -19,7 +19,7 @@ bl_info = {
     "author": "Daan Michiels",
     "version": (0, 1),
     "blender": (2, 79, 0),
-    "category": "Mesh"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():  # we're reloading

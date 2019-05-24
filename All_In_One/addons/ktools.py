@@ -24,7 +24,7 @@ bl_info = {
         'author': "Kjartan Tysdal",
         'location': '"Shift+Q" and also in EditMode "W-Specials/ KTools"',
         'description': "Adds my personal collection of small handy scripts (mostly modeling tools)",
-        'category': "Mesh",
+        "category": "Learnbgame",
         'blender': (2, 7, 6),
         'version': (0, 2, 7),
         'wiki_url': 'http://www.kjartantysdal.com/scripts',

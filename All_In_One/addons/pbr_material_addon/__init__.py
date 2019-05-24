@@ -24,7 +24,7 @@ bl_info = {
     "blender": (2, 77, 0),
     "author": "Nathan Craddock",
 	"wiki_url": "http://wolfflow.weebly.com/materials.html",
-    "category": "Material"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

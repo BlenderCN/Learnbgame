@@ -11,7 +11,7 @@ bl_info = {
     "warning" : "this add-on is extremly unusefull",
     "wiki_url" : "http://blender.stackexchange.com/a/27926",
     "tracker_url" : "chebhou@gmail.com",
-    "category" : "Import-Export"
+    "category": "Learnbgame",
     }
 
 import bpy

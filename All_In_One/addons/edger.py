@@ -12,7 +12,7 @@ bl_info = {
     "description": "Lock vertices on \"edge\" they lay, make unselectable edge loops for subdivision",
     "warning": "",
 #    "wiki_url": "",
-    "category": "Mesh"
+    "category": "Learnbgame",
 }
 
 #TODO noncyclics get drawed when Edger is unregistered

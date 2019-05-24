@@ -28,7 +28,7 @@ bl_info = {
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/"\
                 "Scripts/Development/Macros_Recorder",
     "tracker_url": "https://github.com/dairin0d/macros-recorder/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 #============================================================================#
 

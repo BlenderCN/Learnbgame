@@ -10,7 +10,7 @@ bl_info = {
     #'warning': 'May crash blender',
     # "wiki_url": "http://www.barneyparker.com/blender-json-import-export-plugin",
     # "tracker_url": "http://www.barneyparker.com/blender-json-import-export-plugin",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 from . import io_RIP
 

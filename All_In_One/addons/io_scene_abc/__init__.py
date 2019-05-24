@@ -9,7 +9,7 @@ bl_info = {
     'wiki_url': 'https://github.com/cmbasnett/io_scene_abc/wiki',
     'tracker_url': 'https://github.com/cmbasnett/io_scene_abc/issues',
     'support': 'COMMUNITY',
-    'category': 'Import-Export'
+    "category": "Learnbgame",
 }
 
 if 'bpy' in locals():

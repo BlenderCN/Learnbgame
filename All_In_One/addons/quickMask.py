@@ -29,7 +29,7 @@ bl_info = {
     "blender": (2, 78, 0),
     "location": "Mesh > Vertices > Vertex Groups",
     "description": "Adds tools to create Mask modifiers quickly by selecting vertices in Edit Mode",
-    "category": "Object"
+    "category": "Learnbgame",
     }
 
 

@@ -7,7 +7,7 @@ bl_info = {
         "description": "Import-Export CGF, Import CGF mesh, UV's, materials and textures",
         "warning": "",
         "support": "TESTING",
-        "category": "Learnbgame"
+        "category": "Learnbgame",
 }
 
 if "bpy" in locals():

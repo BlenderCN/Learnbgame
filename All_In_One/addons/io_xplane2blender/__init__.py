@@ -31,7 +31,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/der-On/XPlane2Blender/wiki",
     "tracker_url": "https://github.com/der-On/XPlane2Blender/issues",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

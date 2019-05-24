@@ -25,7 +25,7 @@ bl_info = {
     "description": "Setup matcap",
     "wiki_url": "https://www.youtube.com/watch?v=-uxy9irGr80",
     "tracker_url": "http://blenderlounge.fr/forum/viewtopic.php?f=26&t=1064",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
     

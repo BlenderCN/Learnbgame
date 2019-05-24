@@ -46,7 +46,7 @@ bl_info = {
   "wiki_url": "",
   "tracker_url": "http://github.com/kralf/blender-urdf",
   "support": "COMMUNITY",
-  "category": "Import-Export"
+  "category": "Learnbgame",
 }
 
 

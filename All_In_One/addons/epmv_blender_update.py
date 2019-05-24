@@ -38,7 +38,7 @@ bl_info = {
         "Scripts/My_Script",
     "tracker_url": ""\
         "func=detail&aid=<number>",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

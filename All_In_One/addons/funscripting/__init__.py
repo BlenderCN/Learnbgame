@@ -35,7 +35,7 @@ bl_info = {
     "version": (0, 0, 0),
     "location": "Sequencer",
     "description": "Script Launch haptics data and export as Funscript.",
-    "category": "Sequencer",
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

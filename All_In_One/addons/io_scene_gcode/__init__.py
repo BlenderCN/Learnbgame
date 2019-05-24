@@ -29,7 +29,7 @@ bl_info = {
   'warning': 'may not work',
   "wiki_url": "",
   "tracker_url": "",
-  'category': 'Import-Export'
+  "category": "Learnbgame",
 }
 
 if "bpy" in locals():

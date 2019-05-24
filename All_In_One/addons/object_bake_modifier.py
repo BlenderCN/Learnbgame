@@ -30,7 +30,7 @@ bl_info = {"name": "Bake Modifier to Shape Keys",
            "warning": "",
            "wiki_url": "",
            "tracker_url": "",
-           "category": "Object"
+           "category": "Learnbgame",
            }
 
 

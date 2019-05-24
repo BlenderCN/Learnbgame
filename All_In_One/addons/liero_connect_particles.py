@@ -9,7 +9,7 @@ bl_info = {
     "blender": (2, 5, 7),
     "location": "View3D > Tool Shelf",
     "description": "Create a continuous animated curve from particles in active system.",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

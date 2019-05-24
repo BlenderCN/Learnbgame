@@ -19,7 +19,7 @@
 
 bl_info = {
 	"name": "Cache Manager",
-	"category": "Cenda Tools",
+	"category": "Learnbgame",
 	"author": "Cenek Strichel",
 	"version": (1, 0, 2),
 	"blender": (2, 79, 0),

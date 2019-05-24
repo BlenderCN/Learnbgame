@@ -7,7 +7,7 @@ bl_info = {
     "blender" : (2, 80, 0),
     "location" : "",
     "warning" : "",
-    "category" : "Game Tool"
+    "category": "Learnbgame",
 }
 
 

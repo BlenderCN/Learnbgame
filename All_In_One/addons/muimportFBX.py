@@ -6,7 +6,7 @@ bl_info = {
     "location": "File > Import-Export",
     "description": "Import multiple FBX files",
     "wiki_url": "https://github.com/chombor/pyb/",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

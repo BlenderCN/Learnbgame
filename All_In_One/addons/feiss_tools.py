@@ -1,6 +1,6 @@
 bl_info={
 	"name":"Feiss Tools",
-	"category": "3D View",
+	"category": "Learnbgame",
 	"author": "feiss"
 }
 

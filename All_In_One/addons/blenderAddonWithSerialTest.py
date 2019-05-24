@@ -7,7 +7,7 @@ from random import randint
 
 bl_info = {
 	"name": "Create Cubez",
-	"category": "Object",
+	"category": "Learnbgame",
 }
 
 class CreateCubes(bpy.types.Operator):

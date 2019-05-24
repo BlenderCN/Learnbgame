@@ -1,3 +1,4 @@
+
 # ##### BEGIN GPL LICENSE BLOCK #####
 #
 #  This program is free software; you can redistribute it and/or
@@ -26,7 +27,7 @@ bl_info = {
     "description": "Adds support for Second Life primitives",
     "wiki_url": "https://github.com/sorayaelcar/MoMoSculpt/wiki",
     "tracker_url": "https://github.com/sorayaelcar/MoMoSculpt/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 try:

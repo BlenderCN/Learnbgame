@@ -6,7 +6,7 @@ bl_info = {
            "blender": (2, 5, 9),
            "api": 39307,
            "location": "View3D -> Edit Mode -> Special (W-key)",
-           "category": "Mesh",
+           "category": "Learnbgame",
            "description": "Bevels selected edges",
            "warning": "Beta",
            "tracking_url": "https://github.com/neomonkeus/blender_bevel"

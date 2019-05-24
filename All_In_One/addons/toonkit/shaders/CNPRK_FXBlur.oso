@@ -1,0 +1,763 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.7.5
+# options: -o C:\Users\vitor\AppData\Local\Temp\tmpdplpun8e.oso -IC:\Program Files\Blender Foundation\Blender\2.79\scripts\addons\cycles\shader
+shader node_noise_texture
+param	float	Scale	1		%read{282,282} %write{2147483647,-1}
+param	point	UV	0 0 0		%read{1,294} %write{0,0} %initexpr
+oparam	vector	Vector	0 0 0		%read{2147483647,-1} %write{297,297}
+global	point	P	%read{0,0} %write{2147483647,-1}
+local	float	___354_f	%read{15,241} %write{15,235}
+local	float	___355_fscale	%read{15,229} %write{6,224}
+local	float	___355_amp	%read{15,246} %write{7,224}
+local	float	___355_sum	%read{15,278} %write{8,277}
+local	int	___355_i	%read{15,224} %write{14,224}
+local	int	___355_n	%read{15,272} %write{12,198}
+local	float	___355_octaves	%read{12,226} %write{11,197}
+local	float	___357_t	%read{15,224} %write{15,224}
+local	float	___355_rmd	%read{41,267} %write{40,226}
+local	float	___358_t	%read{57,246} %write{53,245}
+local	float	___358_sum2	%read{78,267} %write{61,264}
+local	int	___361_hard	%read{15,242} %write{4,4}
+local	float	___361_fac	%read{280,280} %write{82,92}
+local	color	___361_Col	%read{281,281} %write{280,280}
+local	float	___362_tm	%read{290,290} %write{284,284}
+local	color	___362_one	%read{286,291} %write{285,285}
+local	color	___362_scr	%read{294,294} %write{289,289}
+local	point	p	%read{2,2} %write{1,1}
+local	color	disturb	%read{286,292} %write{281,281}
+temp	point	$tmp1	%read{15,189} %write{2,2}
+const	float	$const2	4000		%read{2,2} %write{2147483647,-1}
+const	string	$const3	"noise"		%read{3,3} %write{2147483647,-1}
+const	int	$const4	0		%read{4,237} %write{2147483647,-1}
+const	float	$const5	1		%read{6,284} %write{2147483647,-1}
+const	string	$const6	"noise_turbulence"		%read{5,191} %write{2147483647,-1}
+const	float	$const7	0		%read{8,231} %write{2147483647,-1}
+const	float	$const8	16		%read{10,196} %write{2147483647,-1}
+const	string	$const9	"clamp"		%read{9,195} %write{2147483647,-1}
+temp	float	$tmp2	%read{11,11} %write{10,10}
+temp	int	$tmp3	%read{13,38} %write{14,38}
+temp	point	$tmp4	%read{15,38} %write{15,38}
+const	string	$const10	"unsigned"		%read{19,232} %write{2147483647,-1}
+const	string	$const11	"safe_noise"		%read{17,230} %write{2147483647,-1}
+const	string	$const12	"signed"		%read{19,232} %write{2147483647,-1}
+temp	int	$tmp5	%read{15,38} %write{15,38}
+const	string	$const13	"perlin"		%read{21,234} %write{2147483647,-1}
+temp	int	$tmp6	%read{15,38} %write{15,38}
+temp	int	$tmp7	%read{15,38} %write{15,38}
+const	float	$const14	0.5		%read{26,239} %write{2147483647,-1}
+const	float	$const15	2		%read{30,243} %write{2147483647,-1}
+temp	float	$tmp8	%read{15,38} %write{15,38}
+temp	float	$tmp9	%read{15,38} %write{15,38}
+temp	float	$tmp10	%read{15,38} %write{15,38}
+const	int	$const16	1		%read{38,274} %write{2147483647,-1}
+temp	int	$tmp11	%read{2147483647,-1} %write{15,38}
+temp	float	$tmp12	%read{40,40} %write{39,39}
+temp	int	$tmp13	%read{42,42} %write{41,41}
+temp	point	$tmp14	%read{48,49} %write{43,43}
+temp	int	$tmp15	%read{47,47} %write{46,46}
+temp	int	$tmp16	%read{51,51} %write{50,50}
+temp	int	$tmp17	%read{52,52} %write{51,51}
+temp	float	$tmp18	%read{58,58} %write{57,57}
+temp	float	$tmp19	%read{59,59} %write{58,58}
+temp	float	$tmp20	%read{61,61} %write{60,60}
+temp	int	$tmp21	%read{63,63} %write{62,62}
+temp	float	$tmp22	%read{68,68} %write{63,63}
+temp	int	$tmp23	%read{65,65} %write{64,64}
+temp	int	$tmp24	%read{66,66} %write{65,65}
+temp	int	$tmp25	%read{67,67} %write{66,66}
+temp	float	$tmp26	%read{68,68} %write{67,67}
+temp	float	$tmp27	%read{69,69} %write{68,68}
+temp	int	$tmp28	%read{71,71} %write{70,70}
+temp	int	$tmp29	%read{72,72} %write{71,71}
+temp	float	$tmp30	%read{77,77} %write{72,72}
+const	int	$const17	2		%read{73,259} %write{2147483647,-1}
+temp	int	$tmp31	%read{74,74} %write{73,73}
+temp	int	$tmp32	%read{75,75} %write{74,74}
+temp	int	$tmp33	%read{76,76} %write{75,75}
+temp	float	$tmp34	%read{77,77} %write{76,76}
+temp	float	$tmp35	%read{78,78} %write{77,77}
+temp	float	$tmp36	%read{80,80} %write{79,79}
+temp	float	$tmp37	%read{82,82} %write{80,80}
+temp	float	$tmp38	%read{82,82} %write{81,81}
+temp	int	$tmp39	%read{85,85} %write{84,84}
+temp	float	$tmp40	%read{90,90} %write{85,85}
+temp	int	$tmp41	%read{87,87} %write{86,86}
+temp	int	$tmp42	%read{88,88} %write{87,87}
+temp	int	$tmp43	%read{89,89} %write{88,88}
+temp	float	$tmp44	%read{90,90} %write{89,89}
+temp	float	$tmp45	%read{91,91} %write{90,90}
+temp	float	$tmp46	%read{280,280} %write{175,185}
+temp	point	$tmp47	%read{108,136} %write{97,97}
+temp	float	$tmp48	%read{97,97} %write{94,94}
+temp	float	$tmp49	%read{97,97} %write{95,95}
+temp	float	$tmp50	%read{97,97} %write{96,96}
+temp	float	$tmp51	%read{104,104} %write{103,103}
+temp	int	$tmp52	%read{106,131} %write{107,131}
+temp	point	$tmp53	%read{108,131} %write{108,131}
+temp	int	$tmp54	%read{108,131} %write{108,131}
+temp	int	$tmp55	%read{108,131} %write{108,131}
+temp	int	$tmp56	%read{108,131} %write{108,131}
+temp	float	$tmp57	%read{108,131} %write{108,131}
+temp	float	$tmp58	%read{108,131} %write{108,131}
+temp	float	$tmp59	%read{108,131} %write{108,131}
+temp	int	$tmp60	%read{2147483647,-1} %write{108,131}
+temp	float	$tmp61	%read{133,133} %write{132,132}
+temp	int	$tmp62	%read{135,135} %write{134,134}
+temp	point	$tmp63	%read{141,142} %write{136,136}
+temp	int	$tmp64	%read{140,140} %write{139,139}
+temp	int	$tmp65	%read{144,144} %write{143,143}
+temp	int	$tmp66	%read{145,145} %write{144,144}
+temp	float	$tmp67	%read{151,151} %write{150,150}
+temp	float	$tmp68	%read{152,152} %write{151,151}
+temp	float	$tmp69	%read{154,154} %write{153,153}
+temp	int	$tmp70	%read{156,156} %write{155,155}
+temp	float	$tmp71	%read{161,161} %write{156,156}
+temp	int	$tmp72	%read{158,158} %write{157,157}
+temp	int	$tmp73	%read{159,159} %write{158,158}
+temp	int	$tmp74	%read{160,160} %write{159,159}
+temp	float	$tmp75	%read{161,161} %write{160,160}
+temp	float	$tmp76	%read{162,162} %write{161,161}
+temp	int	$tmp77	%read{164,164} %write{163,163}
+temp	int	$tmp78	%read{165,165} %write{164,164}
+temp	float	$tmp79	%read{170,170} %write{165,165}
+temp	int	$tmp80	%read{167,167} %write{166,166}
+temp	int	$tmp81	%read{168,168} %write{167,167}
+temp	int	$tmp82	%read{169,169} %write{168,168}
+temp	float	$tmp83	%read{170,170} %write{169,169}
+temp	float	$tmp84	%read{171,171} %write{170,170}
+temp	float	$tmp85	%read{173,173} %write{172,172}
+temp	float	$tmp86	%read{175,175} %write{173,173}
+temp	float	$tmp87	%read{175,175} %write{174,174}
+temp	int	$tmp88	%read{178,178} %write{177,177}
+temp	float	$tmp89	%read{183,183} %write{178,178}
+temp	int	$tmp90	%read{180,180} %write{179,179}
+temp	int	$tmp91	%read{181,181} %write{180,180}
+temp	int	$tmp92	%read{182,182} %write{181,181}
+temp	float	$tmp93	%read{183,183} %write{182,182}
+temp	float	$tmp94	%read{184,184} %write{183,183}
+temp	float	$tmp95	%read{280,280} %write{268,278}
+temp	point	$tmp96	%read{201,229} %write{190,190}
+temp	float	$tmp97	%read{190,190} %write{187,187}
+temp	float	$tmp98	%read{190,190} %write{188,188}
+temp	float	$tmp99	%read{190,190} %write{189,189}
+temp	float	$tmp100	%read{197,197} %write{196,196}
+temp	int	$tmp101	%read{199,224} %write{200,224}
+temp	point	$tmp102	%read{201,224} %write{201,224}
+temp	int	$tmp103	%read{201,224} %write{201,224}
+temp	int	$tmp104	%read{201,224} %write{201,224}
+temp	int	$tmp105	%read{201,224} %write{201,224}
+temp	float	$tmp106	%read{201,224} %write{201,224}
+temp	float	$tmp107	%read{201,224} %write{201,224}
+temp	float	$tmp108	%read{201,224} %write{201,224}
+temp	int	$tmp109	%read{2147483647,-1} %write{201,224}
+temp	float	$tmp110	%read{226,226} %write{225,225}
+temp	int	$tmp111	%read{228,228} %write{227,227}
+temp	point	$tmp112	%read{234,235} %write{229,229}
+temp	int	$tmp113	%read{233,233} %write{232,232}
+temp	int	$tmp114	%read{237,237} %write{236,236}
+temp	int	$tmp115	%read{238,238} %write{237,237}
+temp	float	$tmp116	%read{244,244} %write{243,243}
+temp	float	$tmp117	%read{245,245} %write{244,244}
+temp	float	$tmp118	%read{247,247} %write{246,246}
+temp	int	$tmp119	%read{249,249} %write{248,248}
+temp	float	$tmp120	%read{254,254} %write{249,249}
+temp	int	$tmp121	%read{251,251} %write{250,250}
+temp	int	$tmp122	%read{252,252} %write{251,251}
+temp	int	$tmp123	%read{253,253} %write{252,252}
+temp	float	$tmp124	%read{254,254} %write{253,253}
+temp	float	$tmp125	%read{255,255} %write{254,254}
+temp	int	$tmp126	%read{257,257} %write{256,256}
+temp	int	$tmp127	%read{258,258} %write{257,257}
+temp	float	$tmp128	%read{263,263} %write{258,258}
+temp	int	$tmp129	%read{260,260} %write{259,259}
+temp	int	$tmp130	%read{261,261} %write{260,260}
+temp	int	$tmp131	%read{262,262} %write{261,261}
+temp	float	$tmp132	%read{263,263} %write{262,262}
+temp	float	$tmp133	%read{264,264} %write{263,263}
+temp	float	$tmp134	%read{266,266} %write{265,265}
+temp	float	$tmp135	%read{268,268} %write{266,266}
+temp	float	$tmp136	%read{268,268} %write{267,267}
+temp	int	$tmp137	%read{271,271} %write{270,270}
+temp	float	$tmp138	%read{276,276} %write{271,271}
+temp	int	$tmp139	%read{273,273} %write{272,272}
+temp	int	$tmp140	%read{274,274} %write{273,273}
+temp	int	$tmp141	%read{275,275} %write{274,274}
+temp	float	$tmp142	%read{276,276} %write{275,275}
+temp	float	$tmp143	%read{277,277} %write{276,276}
+const	float	$const18	0.1		%read{282,282} %write{2147483647,-1}
+temp	float	$tmp144	%read{284,296} %write{282,282}
+const	string	$const19	"node_mix_soft"		%read{283,283} %write{2147483647,-1}
+const	color	$const20	1 1 1		%read{285,285} %write{2147483647,-1}
+temp	color	$tmp145	%read{288,288} %write{286,286}
+temp	color	$tmp146	%read{288,288} %write{287,287}
+temp	color	$tmp147	%read{289,289} %write{288,288}
+temp	color	$tmp148	%read{297,297} %write{290,290}
+temp	color	$tmp149	%read{292,292} %write{291,291}
+temp	color	$tmp150	%read{293,293} %write{292,292}
+temp	color	$tmp151	%read{295,295} %write{293,293}
+temp	color	$tmp152	%read{295,295} %write{294,294}
+temp	color	$tmp153	%read{296,296} %write{295,295}
+temp	color	$tmp154	%read{297,297} %write{296,296}
+code UV
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:35
+# 	output vector Vector = 0.0)
+	assign		UV P 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl"} %line{35} %argrw{"wr"}
+code ___main___
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:38
+#     color disturb = noise(p * 4000);
+	assign		p UV 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl"} %line{38} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:39
+#     Vector = node_mix_soft(Scale*0.1,UV,disturb);
+	mul		$tmp1 p $const2 	%line{39} %argrw{"wrr"}
+	functioncall	$const3 282 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:13
+# 
+	assign		___361_hard $const4 	%line{13} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:15
+# 	
+	functioncall	$const6 94 	%line{15} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:113
+# 	/* Perlin noise in range 0..1 */
+	assign		___355_fscale $const5 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h"} %line{113} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:114
+# 	else
+	assign		___355_amp $const5 	%line{114} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:115
+# 		f = noise(p);
+	assign		___355_sum $const7 	%line{115} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:118
+# 	if (!isfinite(f))
+	functioncall	$const9 12 	%line{118} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# /////////////////////////////////////////////////////////////////////////////
+	min		$tmp2 $const5 $const8 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		___355_octaves $tmp2 $const7 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:119
+# 	n = (int)octaves;
+	assign		___355_n ___355_octaves 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h"} %line{119} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:121
+# 	for (i = 0; i <= n; i++) {
+	for		$tmp3 15 16 37 39 	%line{121} %argrw{"r"}
+	assign		___355_i $const4 	%argrw{"wr"}
+	le		$tmp3 ___355_i ___355_n 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:122
+# 		float t = safe_noise(fscale * p, "unsigned");
+	mul		$tmp4 ___355_fscale $tmp1 	%line{122} %argrw{"wrr"}
+	functioncall	$const11 29 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:92
+# 	float f = 0.0;
+	assign		___354_f $const7 	%line{92} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:95
+# 	if (type == "signed")
+	eq		$tmp5 $const10 $const12 	%line{95} %argrw{"wrr"}
+	if		$tmp5 22 23 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:96
+# 		f = noise("perlin", p);
+	noise		___354_f $const13 $tmp4 	%line{96} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:100
+# 		f = noise(p);
+	noise		___354_f $tmp4 	%line{100} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:103
+# 	if (!isfinite(f))
+	isfinite	$tmp6 ___354_f 	%line{103} %argrw{"wr"}
+	eq		$tmp7 $tmp6 $const4 	%argrw{"wrr"}
+	if		$tmp7 28 28 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:104
+# 		return 0.5;
+	assign		___357_t $const14 	%line{104} %argrw{"wr"}
+	return
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:106
+# 	return f;
+	assign		___357_t ___354_f 	%line{106} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:124
+# 		if (hard)
+	if		___361_hard 33 33 	%line{124} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:125
+# 			t = fabs(2.0 * t - 1.0);
+	mul		$tmp8 $const15 ___357_t 	%line{125} %argrw{"wrr"}
+	sub		$tmp9 $tmp8 $const5 	%argrw{"wrr"}
+	fabs		___357_t $tmp9 	%argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:127
+# 		sum += t * amp;
+	mul		$tmp10 ___357_t ___355_amp 	%line{127} %argrw{"wrr"}
+	add		___355_sum ___355_sum $tmp10 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:128
+# 		amp *= 0.5;
+	mul		___355_amp ___355_amp $const14 	%line{128} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:129
+# 		fscale *= 2.0;
+	mul		___355_fscale ___355_fscale $const15 	%line{129} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:121
+# 	for (i = 0; i <= n; i++) {
+	assign		$tmp11 ___355_i 	%line{121} %argrw{"wr"}
+	add		___355_i ___355_i $const16 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:132
+# 	float rmd = octaves - floor(octaves);
+	floor		$tmp12 ___355_octaves 	%line{132} %argrw{"wr"}
+	sub		___355_rmd ___355_octaves $tmp12 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:134
+# 	if (rmd != 0.0) {
+	neq		$tmp13 ___355_rmd $const7 	%line{134} %argrw{"wrr"}
+	if		$tmp13 84 94 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:135
+# 		float t = safe_noise(fscale * p, "unsigned");
+	mul		$tmp14 ___355_fscale $tmp1 	%line{135} %argrw{"wrr"}
+	functioncall	$const11 56 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:92
+# 	float f = 0.0;
+	assign		___354_f $const7 	%line{92} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:95
+# 	if (type == "signed")
+	eq		$tmp15 $const10 $const12 	%line{95} %argrw{"wrr"}
+	if		$tmp15 49 50 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:96
+# 		f = noise("perlin", p);
+	noise		___354_f $const13 $tmp14 	%line{96} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:100
+# 		f = noise(p);
+	noise		___354_f $tmp14 	%line{100} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:103
+# 	if (!isfinite(f))
+	isfinite	$tmp16 ___354_f 	%line{103} %argrw{"wr"}
+	eq		$tmp17 $tmp16 $const4 	%argrw{"wrr"}
+	if		$tmp17 55 55 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:104
+# 		return 0.5;
+	assign		___358_t $const14 	%line{104} %argrw{"wr"}
+	return
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:106
+# 	return f;
+	assign		___358_t ___354_f 	%line{106} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:137
+# 		if (hard)
+	if		___361_hard 60 60 	%line{137} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:138
+# 			t = fabs(2.0 * t - 1.0);
+	mul		$tmp18 $const15 ___358_t 	%line{138} %argrw{"wrr"}
+	sub		$tmp19 $tmp18 $const5 	%argrw{"wrr"}
+	fabs		___358_t $tmp19 	%argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:140
+# 		float sum2 = sum + t * amp;
+	mul		$tmp20 ___358_t ___355_amp 	%line{140} %argrw{"wrr"}
+	add		___358_sum2 ___355_sum $tmp20 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:142
+# 		sum *= ((float)(1 << n) / (float)((1 << (n + 1)) - 1));
+	shl		$tmp21 $const16 ___355_n 	%line{142} %argrw{"wrr"}
+	assign		$tmp22 $tmp21 	%argrw{"wr"}
+	add		$tmp23 ___355_n $const16 	%argrw{"wrr"}
+	shl		$tmp24 $const16 $tmp23 	%argrw{"wrr"}
+	sub		$tmp25 $tmp24 $const16 	%argrw{"wrr"}
+	assign		$tmp26 $tmp25 	%argrw{"wr"}
+	div		$tmp27 $tmp22 $tmp26 	%argrw{"wrr"}
+	mul		___355_sum ___355_sum $tmp27 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:143
+# 		sum2 *= ((float)(1 << (n + 1)) / (float)((1 << (n + 2)) - 1));
+	add		$tmp28 ___355_n $const16 	%line{143} %argrw{"wrr"}
+	shl		$tmp29 $const16 $tmp28 	%argrw{"wrr"}
+	assign		$tmp30 $tmp29 	%argrw{"wr"}
+	add		$tmp31 ___355_n $const17 	%argrw{"wrr"}
+	shl		$tmp32 $const16 $tmp31 	%argrw{"wrr"}
+	sub		$tmp33 $tmp32 $const16 	%argrw{"wrr"}
+	assign		$tmp34 $tmp33 	%argrw{"wr"}
+	div		$tmp35 $tmp30 $tmp34 	%argrw{"wrr"}
+	mul		___358_sum2 ___358_sum2 $tmp35 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:145
+# 		return (1.0 - rmd) * sum + rmd * sum2;
+	sub		$tmp36 $const5 ___355_rmd 	%line{145} %argrw{"wrr"}
+	mul		$tmp37 $tmp36 ___355_sum 	%argrw{"wrr"}
+	mul		$tmp38 ___355_rmd ___358_sum2 	%argrw{"wrr"}
+	add		___361_fac $tmp37 $tmp38 	%argrw{"wrr"}
+	return
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:148
+# 		sum *= ((float)(1 << n) / (float)((1 << (n + 1)) - 1));
+	shl		$tmp39 $const16 ___355_n 	%line{148} %argrw{"wrr"}
+	assign		$tmp40 $tmp39 	%argrw{"wr"}
+	add		$tmp41 ___355_n $const16 	%argrw{"wrr"}
+	shl		$tmp42 $const16 $tmp41 	%argrw{"wrr"}
+	sub		$tmp43 $tmp42 $const16 	%argrw{"wrr"}
+	assign		$tmp44 $tmp43 	%argrw{"wr"}
+	div		$tmp45 $tmp40 $tmp44 	%argrw{"wrr"}
+	mul		___355_sum ___355_sum $tmp45 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:149
+# 		return sum;
+	assign		___361_fac ___355_sum 	%line{149} %argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:17
+# 		noise_turbulence(point(p[1], p[2], p[0]), 1.0, hard));
+	compref		$tmp48 $tmp1 $const16 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl"} %line{17} %argrw{"wrr"}
+	compref		$tmp49 $tmp1 $const4 	%argrw{"wrr"}
+	compref		$tmp50 $tmp1 $const17 	%argrw{"wrr"}
+	point		$tmp47 $tmp48 $tmp49 $tmp50 	%argrw{"wrrr"}
+	functioncall	$const6 187 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:113
+# 		f = noise("perlin", p);
+	assign		___355_fscale $const5 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h"} %line{113} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:114
+# 	
+	assign		___355_amp $const5 	%line{114} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:115
+# 	/* Perlin noise in range 0..1 */
+	assign		___355_sum $const7 	%line{115} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:118
+# 
+	functioncall	$const9 105 	%line{118} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# /////////////////////////////////////////////////////////////////////////////
+	min		$tmp51 $const5 $const8 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		___355_octaves $tmp51 $const7 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:119
+# 	n = (int)octaves;
+	assign		___355_n ___355_octaves 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h"} %line{119} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:121
+# 	for (i = 0; i <= n; i++) {
+	for		$tmp52 108 109 130 132 	%line{121} %argrw{"r"}
+	assign		___355_i $const4 	%argrw{"wr"}
+	le		$tmp52 ___355_i ___355_n 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:122
+# 		float t = safe_noise(fscale * p, "unsigned");
+	mul		$tmp53 ___355_fscale $tmp47 	%line{122} %argrw{"wrr"}
+	functioncall	$const11 122 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:92
+# 	float f = 0.0;
+	assign		___354_f $const7 	%line{92} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:95
+# 	if (type == "signed")
+	eq		$tmp54 $const10 $const12 	%line{95} %argrw{"wrr"}
+	if		$tmp54 115 116 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:96
+# 		f = noise("perlin", p);
+	noise		___354_f $const13 $tmp53 	%line{96} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:100
+# 		f = noise(p);
+	noise		___354_f $tmp53 	%line{100} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:103
+# 	if (!isfinite(f))
+	isfinite	$tmp55 ___354_f 	%line{103} %argrw{"wr"}
+	eq		$tmp56 $tmp55 $const4 	%argrw{"wrr"}
+	if		$tmp56 121 121 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:104
+# 		return 0.5;
+	assign		___357_t $const14 	%line{104} %argrw{"wr"}
+	return
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:106
+# 	return f;
+	assign		___357_t ___354_f 	%line{106} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:124
+# 		if (hard)
+	if		___361_hard 126 126 	%line{124} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:125
+# 			t = fabs(2.0 * t - 1.0);
+	mul		$tmp57 $const15 ___357_t 	%line{125} %argrw{"wrr"}
+	sub		$tmp58 $tmp57 $const5 	%argrw{"wrr"}
+	fabs		___357_t $tmp58 	%argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:127
+# 		sum += t * amp;
+	mul		$tmp59 ___357_t ___355_amp 	%line{127} %argrw{"wrr"}
+	add		___355_sum ___355_sum $tmp59 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:128
+# 		amp *= 0.5;
+	mul		___355_amp ___355_amp $const14 	%line{128} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:129
+# 		fscale *= 2.0;
+	mul		___355_fscale ___355_fscale $const15 	%line{129} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:121
+# 	for (i = 0; i <= n; i++) {
+	assign		$tmp60 ___355_i 	%line{121} %argrw{"wr"}
+	add		___355_i ___355_i $const16 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:132
+# 	float rmd = octaves - floor(octaves);
+	floor		$tmp61 ___355_octaves 	%line{132} %argrw{"wr"}
+	sub		___355_rmd ___355_octaves $tmp61 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:134
+# 	if (rmd != 0.0) {
+	neq		$tmp62 ___355_rmd $const7 	%line{134} %argrw{"wrr"}
+	if		$tmp62 177 187 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:135
+# 		float t = safe_noise(fscale * p, "unsigned");
+	mul		$tmp63 ___355_fscale $tmp47 	%line{135} %argrw{"wrr"}
+	functioncall	$const11 149 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:92
+# 	float f = 0.0;
+	assign		___354_f $const7 	%line{92} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:95
+# 	if (type == "signed")
+	eq		$tmp64 $const10 $const12 	%line{95} %argrw{"wrr"}
+	if		$tmp64 142 143 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:96
+# 		f = noise("perlin", p);
+	noise		___354_f $const13 $tmp63 	%line{96} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:100
+# 		f = noise(p);
+	noise		___354_f $tmp63 	%line{100} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:103
+# 	if (!isfinite(f))
+	isfinite	$tmp65 ___354_f 	%line{103} %argrw{"wr"}
+	eq		$tmp66 $tmp65 $const4 	%argrw{"wrr"}
+	if		$tmp66 148 148 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:104
+# 		return 0.5;
+	assign		___358_t $const14 	%line{104} %argrw{"wr"}
+	return
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:106
+# 	return f;
+	assign		___358_t ___354_f 	%line{106} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:137
+# 		if (hard)
+	if		___361_hard 153 153 	%line{137} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:138
+# 			t = fabs(2.0 * t - 1.0);
+	mul		$tmp67 $const15 ___358_t 	%line{138} %argrw{"wrr"}
+	sub		$tmp68 $tmp67 $const5 	%argrw{"wrr"}
+	fabs		___358_t $tmp68 	%argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:140
+# 		float sum2 = sum + t * amp;
+	mul		$tmp69 ___358_t ___355_amp 	%line{140} %argrw{"wrr"}
+	add		___358_sum2 ___355_sum $tmp69 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:142
+# 		sum *= ((float)(1 << n) / (float)((1 << (n + 1)) - 1));
+	shl		$tmp70 $const16 ___355_n 	%line{142} %argrw{"wrr"}
+	assign		$tmp71 $tmp70 	%argrw{"wr"}
+	add		$tmp72 ___355_n $const16 	%argrw{"wrr"}
+	shl		$tmp73 $const16 $tmp72 	%argrw{"wrr"}
+	sub		$tmp74 $tmp73 $const16 	%argrw{"wrr"}
+	assign		$tmp75 $tmp74 	%argrw{"wr"}
+	div		$tmp76 $tmp71 $tmp75 	%argrw{"wrr"}
+	mul		___355_sum ___355_sum $tmp76 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:143
+# 		sum2 *= ((float)(1 << (n + 1)) / (float)((1 << (n + 2)) - 1));
+	add		$tmp77 ___355_n $const16 	%line{143} %argrw{"wrr"}
+	shl		$tmp78 $const16 $tmp77 	%argrw{"wrr"}
+	assign		$tmp79 $tmp78 	%argrw{"wr"}
+	add		$tmp80 ___355_n $const17 	%argrw{"wrr"}
+	shl		$tmp81 $const16 $tmp80 	%argrw{"wrr"}
+	sub		$tmp82 $tmp81 $const16 	%argrw{"wrr"}
+	assign		$tmp83 $tmp82 	%argrw{"wr"}
+	div		$tmp84 $tmp79 $tmp83 	%argrw{"wrr"}
+	mul		___358_sum2 ___358_sum2 $tmp84 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:145
+# 		return (1.0 - rmd) * sum + rmd * sum2;
+	sub		$tmp85 $const5 ___355_rmd 	%line{145} %argrw{"wrr"}
+	mul		$tmp86 $tmp85 ___355_sum 	%argrw{"wrr"}
+	mul		$tmp87 ___355_rmd ___358_sum2 	%argrw{"wrr"}
+	add		$tmp46 $tmp86 $tmp87 	%argrw{"wrr"}
+	return
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:148
+# 		sum *= ((float)(1 << n) / (float)((1 << (n + 1)) - 1));
+	shl		$tmp88 $const16 ___355_n 	%line{148} %argrw{"wrr"}
+	assign		$tmp89 $tmp88 	%argrw{"wr"}
+	add		$tmp90 ___355_n $const16 	%argrw{"wrr"}
+	shl		$tmp91 $const16 $tmp90 	%argrw{"wrr"}
+	sub		$tmp92 $tmp91 $const16 	%argrw{"wrr"}
+	assign		$tmp93 $tmp92 	%argrw{"wr"}
+	div		$tmp94 $tmp89 $tmp93 	%argrw{"wrr"}
+	mul		___355_sum ___355_sum $tmp94 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:149
+# 		return sum;
+	assign		$tmp46 ___355_sum 	%line{149} %argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:18
+#     
+	compref		$tmp97 $tmp1 $const16 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl"} %line{18} %argrw{"wrr"}
+	compref		$tmp98 $tmp1 $const17 	%argrw{"wrr"}
+	compref		$tmp99 $tmp1 $const4 	%argrw{"wrr"}
+	point		$tmp96 $tmp97 $tmp98 $tmp99 	%argrw{"wrrr"}
+	functioncall	$const6 280 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:113
+# 	if (type == "signed")
+	assign		___355_fscale $const5 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h"} %line{113} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:114
+# 		f = noise("perlin", p);
+	assign		___355_amp $const5 	%line{114} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:115
+# 	
+	assign		___355_sum $const7 	%line{115} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:118
+# 		f = noise(p);
+	functioncall	$const9 198 	%line{118} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h:144
+# /////////////////////////////////////////////////////////////////////////////
+	min		$tmp100 $const5 $const8 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\stdosl.h"} %line{144} %argrw{"wrr"}
+	max		___355_octaves $tmp100 $const7 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:119
+# 	n = (int)octaves;
+	assign		___355_n ___355_octaves 	%filename{"C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h"} %line{119} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:121
+# 	for (i = 0; i <= n; i++) {
+	for		$tmp101 201 202 223 225 	%line{121} %argrw{"r"}
+	assign		___355_i $const4 	%argrw{"wr"}
+	le		$tmp101 ___355_i ___355_n 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:122
+# 		float t = safe_noise(fscale * p, "unsigned");
+	mul		$tmp102 ___355_fscale $tmp96 	%line{122} %argrw{"wrr"}
+	functioncall	$const11 215 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:92
+# 	float f = 0.0;
+	assign		___354_f $const7 	%line{92} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:95
+# 	if (type == "signed")
+	eq		$tmp103 $const10 $const12 	%line{95} %argrw{"wrr"}
+	if		$tmp103 208 209 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:96
+# 		f = noise("perlin", p);
+	noise		___354_f $const13 $tmp102 	%line{96} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:100
+# 		f = noise(p);
+	noise		___354_f $tmp102 	%line{100} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:103
+# 	if (!isfinite(f))
+	isfinite	$tmp104 ___354_f 	%line{103} %argrw{"wr"}
+	eq		$tmp105 $tmp104 $const4 	%argrw{"wrr"}
+	if		$tmp105 214 214 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:104
+# 		return 0.5;
+	assign		___357_t $const14 	%line{104} %argrw{"wr"}
+	return
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:106
+# 	return f;
+	assign		___357_t ___354_f 	%line{106} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:124
+# 		if (hard)
+	if		___361_hard 219 219 	%line{124} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:125
+# 			t = fabs(2.0 * t - 1.0);
+	mul		$tmp106 $const15 ___357_t 	%line{125} %argrw{"wrr"}
+	sub		$tmp107 $tmp106 $const5 	%argrw{"wrr"}
+	fabs		___357_t $tmp107 	%argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:127
+# 		sum += t * amp;
+	mul		$tmp108 ___357_t ___355_amp 	%line{127} %argrw{"wrr"}
+	add		___355_sum ___355_sum $tmp108 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:128
+# 		amp *= 0.5;
+	mul		___355_amp ___355_amp $const14 	%line{128} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:129
+# 		fscale *= 2.0;
+	mul		___355_fscale ___355_fscale $const15 	%line{129} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:121
+# 	for (i = 0; i <= n; i++) {
+	assign		$tmp109 ___355_i 	%line{121} %argrw{"wr"}
+	add		___355_i ___355_i $const16 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:132
+# 	float rmd = octaves - floor(octaves);
+	floor		$tmp110 ___355_octaves 	%line{132} %argrw{"wr"}
+	sub		___355_rmd ___355_octaves $tmp110 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:134
+# 	if (rmd != 0.0) {
+	neq		$tmp111 ___355_rmd $const7 	%line{134} %argrw{"wrr"}
+	if		$tmp111 270 280 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:135
+# 		float t = safe_noise(fscale * p, "unsigned");
+	mul		$tmp112 ___355_fscale $tmp96 	%line{135} %argrw{"wrr"}
+	functioncall	$const11 242 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:92
+# 	float f = 0.0;
+	assign		___354_f $const7 	%line{92} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:95
+# 	if (type == "signed")
+	eq		$tmp113 $const10 $const12 	%line{95} %argrw{"wrr"}
+	if		$tmp113 235 236 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:96
+# 		f = noise("perlin", p);
+	noise		___354_f $const13 $tmp112 	%line{96} %argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:100
+# 		f = noise(p);
+	noise		___354_f $tmp112 	%line{100} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:103
+# 	if (!isfinite(f))
+	isfinite	$tmp114 ___354_f 	%line{103} %argrw{"wr"}
+	eq		$tmp115 $tmp114 $const4 	%argrw{"wrr"}
+	if		$tmp115 241 241 	%argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:104
+# 		return 0.5;
+	assign		___358_t $const14 	%line{104} %argrw{"wr"}
+	return
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:106
+# 	return f;
+	assign		___358_t ___354_f 	%line{106} %argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:137
+# 		if (hard)
+	if		___361_hard 246 246 	%line{137} %argrw{"r"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:138
+# 			t = fabs(2.0 * t - 1.0);
+	mul		$tmp116 $const15 ___358_t 	%line{138} %argrw{"wrr"}
+	sub		$tmp117 $tmp116 $const5 	%argrw{"wrr"}
+	fabs		___358_t $tmp117 	%argrw{"wr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:140
+# 		float sum2 = sum + t * amp;
+	mul		$tmp118 ___358_t ___355_amp 	%line{140} %argrw{"wrr"}
+	add		___358_sum2 ___355_sum $tmp118 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:142
+# 		sum *= ((float)(1 << n) / (float)((1 << (n + 1)) - 1));
+	shl		$tmp119 $const16 ___355_n 	%line{142} %argrw{"wrr"}
+	assign		$tmp120 $tmp119 	%argrw{"wr"}
+	add		$tmp121 ___355_n $const16 	%argrw{"wrr"}
+	shl		$tmp122 $const16 $tmp121 	%argrw{"wrr"}
+	sub		$tmp123 $tmp122 $const16 	%argrw{"wrr"}
+	assign		$tmp124 $tmp123 	%argrw{"wr"}
+	div		$tmp125 $tmp120 $tmp124 	%argrw{"wrr"}
+	mul		___355_sum ___355_sum $tmp125 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:143
+# 		sum2 *= ((float)(1 << (n + 1)) / (float)((1 << (n + 2)) - 1));
+	add		$tmp126 ___355_n $const16 	%line{143} %argrw{"wrr"}
+	shl		$tmp127 $const16 $tmp126 	%argrw{"wrr"}
+	assign		$tmp128 $tmp127 	%argrw{"wr"}
+	add		$tmp129 ___355_n $const17 	%argrw{"wrr"}
+	shl		$tmp130 $const16 $tmp129 	%argrw{"wrr"}
+	sub		$tmp131 $tmp130 $const16 	%argrw{"wrr"}
+	assign		$tmp132 $tmp131 	%argrw{"wr"}
+	div		$tmp133 $tmp128 $tmp132 	%argrw{"wrr"}
+	mul		___358_sum2 ___358_sum2 $tmp133 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:145
+# 		return (1.0 - rmd) * sum + rmd * sum2;
+	sub		$tmp134 $const5 ___355_rmd 	%line{145} %argrw{"wrr"}
+	mul		$tmp135 $tmp134 ___355_sum 	%argrw{"wrr"}
+	mul		$tmp136 ___355_rmd ___358_sum2 	%argrw{"wrr"}
+	add		$tmp95 $tmp135 $tmp136 	%argrw{"wrr"}
+	return
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:148
+# 		sum *= ((float)(1 << n) / (float)((1 << (n + 1)) - 1));
+	shl		$tmp137 $const16 ___355_n 	%line{148} %argrw{"wrr"}
+	assign		$tmp138 $tmp137 	%argrw{"wr"}
+	add		$tmp139 ___355_n $const16 	%argrw{"wrr"}
+	shl		$tmp140 $const16 $tmp139 	%argrw{"wrr"}
+	sub		$tmp141 $tmp140 $const16 	%argrw{"wrr"}
+	assign		$tmp142 $tmp141 	%argrw{"wr"}
+	div		$tmp143 $tmp138 $tmp142 	%argrw{"wrr"}
+	mul		___355_sum ___355_sum $tmp143 	%argrw{"wrr"}
+# C:/Program Files\\Blender Foundation\\Blender\\2.79\\scripts\\addons\\cycles\\shader\\node_texture.h:149
+# 		return sum;
+	assign		$tmp95 ___355_sum 	%line{149} %argrw{"wr"}
+	return
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:18
+#     
+	color		___361_Col ___361_fac $tmp46 $tmp95 	%filename{"C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl"} %line{18} %argrw{"wrrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:20
+# }
+	assign		disturb ___361_Col 	%line{20} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:40
+# }
+	mul		$tmp144 Scale $const18 	%line{40} %argrw{"wrr"}
+	functioncall	$const19 298 	%argrw{"r"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:25
+# 
+	sub		___362_tm $const5 $tmp144 	%line{25} %argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:27
+# 	color scr = one - (one - col2) * (one - col1);
+	assign		___362_one $const20 	%line{27} %argrw{"wr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:28
+# 
+	sub		$tmp145 ___362_one disturb 	%line{28} %argrw{"wrr"}
+	sub		$tmp146 ___362_one UV 	%argrw{"wrr"}
+	mul		$tmp147 $tmp145 $tmp146 	%argrw{"wrr"}
+	sub		___362_scr ___362_one $tmp147 	%argrw{"wrr"}
+# C:\\Users\\vitor\\AppData\\Roaming\\Blender Foundation\\Blender\\2.79\\scripts\\addons/toonkit/shaders//CNPRK_FXBlur.osl:30
+# }
+	mul		$tmp148 ___362_tm UV 	%line{30} %argrw{"wrr"}
+	sub		$tmp149 ___362_one UV 	%argrw{"wrr"}
+	mul		$tmp150 $tmp149 disturb 	%argrw{"wrr"}
+	mul		$tmp151 $tmp150 UV 	%argrw{"wrr"}
+	mul		$tmp152 UV ___362_scr 	%argrw{"wrr"}
+	add		$tmp153 $tmp151 $tmp152 	%argrw{"wrr"}
+	mul		$tmp154 $tmp144 $tmp153 	%argrw{"wrr"}
+	add		Vector $tmp148 $tmp154 	%argrw{"wrr"}
+	end

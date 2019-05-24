@@ -24,7 +24,7 @@ bl_info = {
     "blender": (2, 76, 0),
     "location": "Properties > Object Data > Shape Keys",
     "tracker_url": "https://github.com/p2or/blender-shapekeyextras/issues",
-    "category": "Mesh"
+    "category": "Learnbgame",
 }
 
 import bpy

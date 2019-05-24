@@ -6,7 +6,7 @@ bl_info = {
 	"location": "File > Export > Mesh File (.msb)",
 	"description": "Export Spellforce Mesh Data (static only)",
 	"warning": "totally untested",
-	"category": "Import-Export",
+	"category": "Learnbgame",
 }
  
 """

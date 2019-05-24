@@ -6,7 +6,7 @@ bl_info = {
     "location": "『 object.asset_flinger_thumbnail 』",
     "description": "create thumbnail for Asset Flinger addon ",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 # 参考

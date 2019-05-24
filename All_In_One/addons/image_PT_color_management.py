@@ -10,7 +10,7 @@ bl_info = {
     "location": "Image Editor -> Preview Region (T-KEY) - Node Editor -> UI Region (N-KEY)",
     "description": "Display the Color Management Panel in Image Editor Preview Region",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """Color Management Panel in Image Editor/Node Editor"""

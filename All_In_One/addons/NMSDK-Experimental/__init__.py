@@ -17,7 +17,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/monkeyman192/NMSDK/wiki",
     "tracker_url": "https://github.com/monkeyman192/NMSDK/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

@@ -11,7 +11,7 @@ bl_info = {
     'version': (1, 0, 0),
     'location': 'View3D',
     'description': 'Bulk load and configure image textures on one object',
-    'category': 'Textures'
+    "category": "Learnbgame",
 }
 
 def register_modules(modules, unregister=False):

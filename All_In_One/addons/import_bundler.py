@@ -30,7 +30,7 @@ bl_info = {
     "wiki_url": "",
     "tracker_url": "",
     "support": 'TESTING',
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # Copyright (C) 2012: Konrad Koelzer, koelzk at web dot de

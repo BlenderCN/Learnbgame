@@ -46,7 +46,7 @@ if config.standalone:
         "description": "Building tool for multiplatform release",
         "warning": "",
         "wiki_url": "",
-        "category": "System",
+        "category": "Learnbgame",
         }
   
     def register():

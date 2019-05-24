@@ -3,7 +3,7 @@ from bpy.types import Panel, Operator
 
 bl_info = {
     "name": "Stellaris .asset Exporter",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "author": "Dayshine, original by Oninoni (oninoni@oninoni.de)",
     "version": (0, 0, 3),
     "blender": (2, 73, 0),

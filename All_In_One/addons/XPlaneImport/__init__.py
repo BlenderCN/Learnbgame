@@ -41,7 +41,7 @@ bl_info = {
     "wiki_url": "https://github.com/daveprue/XPlaneImport/wiki",
     "tracker_url": "https://github.com/daveprue/XPlaneImport/issues",
     "support": "COMMUNITY",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
         

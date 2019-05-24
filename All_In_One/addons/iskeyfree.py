@@ -25,7 +25,8 @@ bl_info = {
     "blender": (2, 6, 9),
     'location': 'Properties pane > IsKeyFree Tools',
     'description': 'Find free shortcuts and inform of used keys',
-    'category': 'UI'}
+    "category": "Learnbgame",
+}
 
 import bpy
 from bpy.props import StringProperty, BoolProperty, EnumProperty

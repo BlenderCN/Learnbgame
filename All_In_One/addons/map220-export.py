@@ -8,7 +8,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://sourceforge.net/p/blenderbitsbobs/wiki/MAP%20220%20Exporter",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import math

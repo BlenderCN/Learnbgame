@@ -27,7 +27,7 @@ if cfg.experimental_enable_bis_custom_nodes:
 
 bl_info = {
     'name': 'BIS',
-    'category': 'Material',
+    "category": "Learnbgame",
     'author': 'Nikita Akimov',
     'version': (1, 5, 3),
     'blender': (2, 79, 0),

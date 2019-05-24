@@ -26,7 +26,8 @@ bl_info = {
     'description': 'A simple panel  for the 3D view properties panel with some common tools used by animators',
     "wiki_url": "",
     "tracker_url": "",
-    'category': 'Animation'}
+    "category": "Learnbgame",
+}
 
 """
 This script simply places some commonly used controls into the 3D view Properies panel. Nothing special, just a timesaver for animators. Includes some changes by Shane Ambler.

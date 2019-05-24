@@ -204,7 +204,7 @@ def get_asset_from_xml(xml,step) :
 
     assetInfo['name'] = root.attrib['name']
     assetInfo['item_type'] = root.attrib['item_type']
-    assetInfo['category'] = root.attrib['category']
+    assetInfo["category": "Learnbgame",
     assetInfo['tags'] = [tag.attrib['name'] for tag in root.findall("./tags/")]
     assetInfo['folder'] = os.path.basename(os.path.dirname(os.path.dirname(xml)))
 

@@ -34,7 +34,7 @@ bl_info = {
     "blender": (2, 7, 3),
     "location": "View3D > Toolshelf > Add Window",
     "description": "Window Generator with continuous editing and cycles materials",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import sys

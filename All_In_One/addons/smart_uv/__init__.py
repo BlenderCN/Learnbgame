@@ -1,6 +1,6 @@
 bl_info = {
     "name": "Smart UV",
-    "category": "UV",
+    "category": "Learnbgame",
     "author": "Jimmy Livefjord, roaoao, Diego Quevedo, Nicholas Anderson",
     "version": (1, 0, 3),
     "blender": (2, 76, 0),

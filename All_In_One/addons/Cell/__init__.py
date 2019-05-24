@@ -7,7 +7,7 @@ bl_info = {
     "tracker_url" : "https://github.com/meekrob/c-blenderi/issues",
     "warning" : "",
     "wiki_url" : "https://github.com/meekrob/c-blenderi/wiki",
-    "category" : "3D View"
+    "category": "Learnbgame",
 }
 import sys
 import os

@@ -12,7 +12,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "",
     "tracker_url": "https://github.com/mifth/mifthtools/edit/master/blender/addons/paint_clones/",
-    "category": "Object"
+    "category": "Learnbgame",
 }
 
 

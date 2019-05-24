@@ -31,7 +31,7 @@ bl_info = {
 	'tracker_url': 'https://github.com/domlysz/BlenderGIS/issues',
 	'link': '',
 	'support': 'COMMUNITY',
-	'category': 'Learnbgame'
+	"category": "Learnbgame",
 	}
 
 #Modules

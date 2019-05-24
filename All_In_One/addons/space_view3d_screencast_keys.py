@@ -31,7 +31,7 @@ bl_info = {
                 "Py/Scripts/3D_interaction/Screencast_Key_Status_Tool",
     "tracker_url": "http://projects.blender.org/tracker/index.php?"
                    "func=detail&aid=21612",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bgl

@@ -27,7 +27,8 @@ bl_info = {
     'description': "Operator to add special characters to Text object",
     'wiki_url': "",
     'tracker_url': "http://blender.lt/?page_id=417",
-    'category': 'Object'}
+    "category": "Learnbgame",
+}
 
 import bpy
 

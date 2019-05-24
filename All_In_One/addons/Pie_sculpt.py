@@ -3,7 +3,7 @@ bl_info = {
     "author": "Jose Ant. Garcia",
     "version": (0, 1, 4),
     "description": "Custom Pie Menus",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

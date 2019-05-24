@@ -14,7 +14,7 @@ bl_info = {
     "blender": (2, 74, 0),
     "location": "File > Import-Export",
     "description": "Import-Export PangYa .pet and .mpet files.",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 # ImportMpet implements the operator for importing Mpet models.

@@ -2,10 +2,11 @@ from scout_constants import *
 from scout_tools import *
 
 bl_info = {
-    'name': 'pmt',
+    'name': 'pmt room',
     'description': 'Draw a scout pmt',
     'author': 'morgan',
     'version': (1, 0),
+    "category": "Learnbgame",
     'blender': (2, 73, 0),
     }
 

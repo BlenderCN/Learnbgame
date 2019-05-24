@@ -26,7 +26,7 @@ bl_info = {
     "description": "Yet another FBX exporter/importer",
     "warning": "",
     'wiki_url': "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

@@ -26,7 +26,7 @@ bl_info = {
     "location": "Properties > Render",
     "warning": "",
     "description": "Render Selected Frames",
-    "category": "Render",
+    "category": "Learnbgame",
 }
 
 

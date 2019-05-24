@@ -5,7 +5,7 @@ bl_info = {
     "blender": (2, 6, 9),
     "location": "",
     "description": "Tools to assist artists in lighting their scene",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

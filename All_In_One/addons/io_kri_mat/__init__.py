@@ -11,7 +11,8 @@ bl_info = {
     'warning': '',
     'wiki_url': 'http://code.google.com/p/kri/wiki/Exporter',
     'tracker_url': '',
-    'category': 'Import-Export'}
+    "category": "Learnbgame",
+}
 
 extension = '.xml'
 

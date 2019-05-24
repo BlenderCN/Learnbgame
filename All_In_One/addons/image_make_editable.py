@@ -7,7 +7,7 @@ bl_info = {
 	"description": "Makes images that have been saved to hard drive editable again.",
 	"warning": "Always save before using. Can be slow if image is big. Data loss is possible.",
 	"wiki_url": "",
-	"category": "Image"
+	"category": "Learnbgame",
 }
 
 import bpy

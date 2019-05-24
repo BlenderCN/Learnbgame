@@ -31,7 +31,7 @@ bl_info = {"name": "Node ColorRamp Dropper",
            "warning": "",
            "wiki_url": "",
            "tracker_url": "",
-           "category": "Node"
+           "category": "Learnbgame",
            }
 
 

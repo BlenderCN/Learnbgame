@@ -28,7 +28,7 @@ bl_info = {
     "location": "3D View > Object Mode > Tools > Onyx",
     "description": "Quick Multi-Object Origin Tools",
     "wiki_url": "",
-    "category": "Object"
+    "category": "Learnbgame",
 }
 
 # Start importing all the addon files

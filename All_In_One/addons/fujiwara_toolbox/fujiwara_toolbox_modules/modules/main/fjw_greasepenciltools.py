@@ -13,7 +13,7 @@ bl_info = {
     "blender": (2, 77, 0),
     'location': '',
     "description": "GreasePencilTools",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 

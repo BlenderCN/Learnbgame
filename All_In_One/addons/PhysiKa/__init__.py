@@ -8,7 +8,7 @@ bl_info = {
     "warning" : "Still developing",
     "wiki_url" : "",
     "tracker_url" : "",
-    "category" : "Animation"
+    "category": "Learnbgame",
 }
 if "bpy" in locals():
     import importlib

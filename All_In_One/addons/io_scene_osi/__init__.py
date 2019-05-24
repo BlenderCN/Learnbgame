@@ -8,7 +8,7 @@ bl_info = {
     "warning": "This add-on is under development.",
     "wiki_url": "https://github.com/Philippus229/io_scene_osi/wiki",
     "tracker_url": "https://github.com/Philippus229/io_scene_osi/issues",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 # Reload the package modules when reloading add-ons in Blender with F8.

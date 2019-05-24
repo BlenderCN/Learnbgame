@@ -4,7 +4,7 @@ bl_info = {
     "blender": (2, 68, 1),
     "location": "View3D > Tool Shelf > Mesh Face Tool",
     "description": "Editing the Mesh with Editing Tools",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy
@@ -278,7 +278,8 @@ bl_info = {
     'warning': '',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Mesh' }
+    "category": "Learnbgame",
+}
 
 # ------ ------
 
@@ -613,7 +614,7 @@ bl_info = {
 	"warning": "",
 	"wiki_url": "",
 	"tracker_url": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 if "bpy" in locals():
@@ -731,7 +732,7 @@ bl_info = {
 	"warning": "",
 	"wiki_url": "",
 	"tracker_url": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 if "bpy" in locals():

@@ -7,7 +7,7 @@ bl_info = {
     "description": "Procedurally generate 3D spaceships from a random seed.",
     "wiki_url": "https://github.com/a1studmuffin/SpaceshipGenerator/blob/master/README.md",
     "tracker_url": "https://github.com/a1studmuffin/SpaceshipGenerator/issues",
-    "category": "Add Mesh"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

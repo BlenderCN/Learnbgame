@@ -7,7 +7,7 @@ bl_info = {
     'description': 'Edge groups',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Object'
+    "category": "Learnbgame",
 }
 
 import bpy, bmesh

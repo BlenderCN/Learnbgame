@@ -11,7 +11,7 @@ bl_info = {
     "blender": (2,80,0),
     "location": "View 3D > Sculpt mod > Tool",
     "description": "UI Palette sculpt brush",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
     
 

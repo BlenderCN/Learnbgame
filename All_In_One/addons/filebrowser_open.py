@@ -26,7 +26,7 @@ bl_info = {
     "location": "File Browser -> Header -> Open File",
     "description": "Open Files in External Applications",
     "warning": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 """Open Files in External Applications from the File Browser Editor"""

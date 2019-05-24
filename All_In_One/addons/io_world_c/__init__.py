@@ -2,7 +2,7 @@ bl_info = {
     "name": "World C Plugin",
     'author': 'Justin Meiners',
     "location": "Many",
-    "category": "Games"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

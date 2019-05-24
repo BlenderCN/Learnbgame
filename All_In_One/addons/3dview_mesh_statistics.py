@@ -31,7 +31,7 @@ bl_info = {"name": "Mesh Statistics",
            "warning": "",
            "wiki_url": "",
            "tracker_url": "",
-           "category": "3D View"
+           "category": "Learnbgame",
            }
 
 

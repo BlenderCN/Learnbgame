@@ -6,7 +6,7 @@ bl_info = {
 	"blender": (2, 7, 9),
 	"location": "3D View > Object Mode > Toolshelf > Asset Creation Toolset",
 	"warning": "For use tool 'Texture to Vertex Colors' requires enabled 'Bake UV-Texture to Vertex Colors' Add-on",
-	"category": "Object",
+	"category": "Learnbgame",
 }
 
 import bpy

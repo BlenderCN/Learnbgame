@@ -5,7 +5,7 @@ bl_info = {
     "blender":  (2, 79, 0),
     "location": "View3D",
     "description": "Add-on for planning stereotaxic surgical implantation of microelectrodes for neurophysiology",
-    "category": "Development",
+    "category": "Learnbgame",
     "warning": "",
     "wiki_url": "https://github.com/MonkeyGone2Heaven/SurgeryPlanner/wiki",
     "tracker_url": "",

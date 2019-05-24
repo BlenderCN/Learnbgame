@@ -27,7 +27,7 @@ bl_info = {
     "location": "File > Import > Pointcache (.pc2)",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Import-Export/PC2_Pointcache_import",
     "tracker_url": "http://projects.blender.org/tracker/index.php?func=detail&aid=28056&group_id=153&atid=467",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

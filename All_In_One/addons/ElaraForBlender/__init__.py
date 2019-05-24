@@ -8,7 +8,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "http://rendease.com",
     "tracker_url": "http://rendease.com",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

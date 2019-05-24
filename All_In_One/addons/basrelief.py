@@ -15,7 +15,7 @@ bl_info = {
 	"warning": "there is no warranty. needs Numpy library installed in blende python directory.",
 	"wiki_url": "blendercam.blogspot.com",
 	"tracker_url": "",
-	"category": "Learnbgame"
+	"category": "Learnbgame",
 }
 
 ##////////////////////////////////////////////////////////////////////

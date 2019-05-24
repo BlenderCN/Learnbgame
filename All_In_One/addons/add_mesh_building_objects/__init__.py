@@ -29,7 +29,7 @@ bl_info = \
         "warning" : "",
         "wiki_url" : "",
         "tracker_url" : "https://developer.blender.org/T32711",
-        "category" : "Add Mesh",
+        "category": "Learnbgame",
     }
 
 import bpy

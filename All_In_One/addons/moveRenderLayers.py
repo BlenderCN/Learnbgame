@@ -6,7 +6,7 @@ bl_info = {
     "location": "Properties Editor> Render Layers",
     "description": "Adds 'up' and 'down' arrows for moving render layers up or down the render layers list",
     "wiki_url": "",
-    "category": "Render",
+    "category": "Learnbgame",
     }
 
 

@@ -26,7 +26,7 @@ bl_info = {
     'description': 'Collection of add-ons',
     'warning': '',
     'wiki_url': 'https://github.com/chromoly/blender_ctools',
-    'category': 'User Interface',
+    "category": "Learnbgame",
 }
 
 
@@ -146,7 +146,7 @@ def gen_fake_modules():
         if mod:
             _fake_sub_modules.append(mod)
     _fake_sub_modules.sort(
-        key=lambda mod: (mod.bl_info['category'], mod.bl_info['name']))
+        key=lambda mod: (mod.bl_info["category": "Learnbgame",
 
     return OrderedDict(
         [(mod.__name__.split('.')[-1], mod) for mod in _fake_sub_modules])
@@ -274,7 +274,7 @@ class CToolsPreferences(bpy.types.AddonPreferences):
             op = sub.operator('wm.context_toggle', text='', icon=icon,
                               emboss=False)
             op.data_path = 'addon_prefs.show_expanded_' + mod_name
-            sub.label('{}: {}'.format(info['category'], info['name']))
+            sub.label('{}: {}'.format(info["category": "Learnbgame",
             sub = row.row()
             sub.alignment = 'RIGHT'
             if info.get('warning'):

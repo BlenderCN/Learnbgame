@@ -229,7 +229,7 @@ def register():
     from bpy.props import StringProperty, EnumProperty, BoolProperty
 
     WindowManager.modelpreview = EnumProperty(items=getModelListForEnumProperty, name='Model')
-    WindowManager.category = EnumProperty(items=getCategoriesForEnumProperty, name='Category')
+    WindowManager.category = EnumProperty(items=getCategoriesForEnumProperty, name="category": "Learnbgame",
     compileModelList()
 
 

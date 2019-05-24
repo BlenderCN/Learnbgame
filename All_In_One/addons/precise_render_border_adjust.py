@@ -19,7 +19,7 @@ bl_info = {
     "warning": "", # used for warning icon and text in addons panel
     "wiki_url": "http://le-terrier-de-lapineige.over-blog.com/2014/07/precise-render-border-adjust-mon-add-on-pour-positionner-precisement-le-border-render.html",
     "tracker_url": "http://blenderclan.tuxfamily.org/html/modules/newbb/viewtopic.php?topic_id=42159",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 ##############

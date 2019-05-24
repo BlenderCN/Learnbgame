@@ -8,7 +8,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "https://github.com/portnov/assethub/wiki",
     "tracker_url": "https://github.com/portnov/assethub/issues",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

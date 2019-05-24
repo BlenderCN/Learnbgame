@@ -6,7 +6,7 @@ bl_info = {
     "description": "Adds an image plane on the active camera",
     "warning": "",
     "wiki_url": "",
-    "category": "User",
+    "category": "Learnbgame",
     }
 
 import bpy

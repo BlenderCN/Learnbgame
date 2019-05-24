@@ -10,7 +10,8 @@ bl_info = {
     'description': 'adds new object with one selected vertex to location of 3d cursor',
     'wiki_url': '',
     'tracker_url': '',
-    'category': 'Mesh'}
+    "category": "Learnbgame",
+}
 
 from bpy.props import FloatProperty, BoolProperty, FloatVectorProperty
 

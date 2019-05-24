@@ -18,7 +18,7 @@ __version__ = '1.0.1'
 bl_info = \
     {
         "name":        "Wakatime plugin for Blender",
-        "category":    "Development",
+        "category": "Learnbgame",
         "author":      "Allis Tauri <allista@gmail.com>",
         "version":     (1, 0, 1),
         "blender":     (2, 77, 0),

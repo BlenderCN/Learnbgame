@@ -5,7 +5,7 @@ bl_info = {
         "version": (0, 0, 1),
         "location": "File > Import-Export",
         "description": "Export custom physics format",
-        "category": "Import-Export"
+        "category": "Learnbgame",
 }
 
 """

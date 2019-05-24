@@ -7,7 +7,8 @@ bl_info = {
     'description': 'Export Babylon.js scenes (.babylon)',
     'wiki_url': 'https://github.com/BabylonJS/Babylon.js/tree/master/Exporters/Blender',
     'tracker_url': '',
-    'category': 'Babylon.JS'}
+    "category": "Learnbgame",
+    }
 
 # allow module to be changed during a session (dev purposes)
 if "bpy" in locals():

@@ -13,7 +13,7 @@
 
 bl_info = {
     "name": "Convert IKs to FKs",
-    "category": "Rigging"
+    "category": "Learnbgame",
 }
 
 import bpy

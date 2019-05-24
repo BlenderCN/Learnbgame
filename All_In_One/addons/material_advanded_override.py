@@ -19,7 +19,7 @@ bl_info = {
     "warning": "",
     "wiki_url": "",
     "tracker_url": "http://blenderlounge.fr/forum/viewtopic.php?f=26&t=810",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

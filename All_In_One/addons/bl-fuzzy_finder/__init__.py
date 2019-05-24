@@ -10,7 +10,7 @@ bl_info = {
     'author': "miniukof",
     'version': (0, 0, 1),
     'blender': (2, 77, 0),
-    'category': "User Interface",
+    "category": "Learnbgame",
 }
 
 

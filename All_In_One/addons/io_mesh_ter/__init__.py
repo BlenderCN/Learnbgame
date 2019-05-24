@@ -7,7 +7,7 @@ bl_info = {
     "description": "Import Torque Terrain (TER) files",
     "warning": "",
     "support": "COMMUNITY",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

@@ -5,7 +5,7 @@ bl_info = {
     "version":      (0,0,2),
     "location":     "File > Import-Export",
     "description":  "Export custom MSH format",
-    "category":     "Import-Export"
+    "category": "Learnbgame",
 }
 
 import bpy

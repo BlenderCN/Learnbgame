@@ -25,7 +25,7 @@ bl_info = {
     "version"           : (1,0),
     "blender"           : (2, 5, 9),
     "api"               : 39307,
-    "category"          : "Object",
+    "category": "Learnbgame",
     "location"          : "3D View > Properties",
     "warning"           : '',
     "wiki_url"          : "",

@@ -26,7 +26,7 @@ bl_info = {
     "warning": "", # used for warning icon and text in addons panel
     "wiki_url": "https://github.com/p2or/blender-vfxtoolbox",
     "tracker_url": "https://github.com/p2or/blender-vfxtoolbox/issues",
-    "category": "VFX"
+    "category": "Learnbgame",
     }
 
 

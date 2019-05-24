@@ -33,7 +33,7 @@ bl_info = {
     "description": "Utility package for MakeHuman scripts. Don't enable this addon - it is visible only to kill some annoying error messages in the console.",
     "warning": "",
     'wiki_url': "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 

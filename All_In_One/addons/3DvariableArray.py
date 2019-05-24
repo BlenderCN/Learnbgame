@@ -1,6 +1,6 @@
 bl_info = {
     "name": "3D Cloner Array",
-    "category": "Object",
+    "category": "Learnbgame",
 }
 
 import bpy

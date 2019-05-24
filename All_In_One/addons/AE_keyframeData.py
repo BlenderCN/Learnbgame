@@ -20,7 +20,7 @@ bl_info = {
     "blender": (2, 62, 0),
     "location": "File > Export > Adobe After Effects 6.0 Keyframe Data",
     "warning": "",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     }
 
 import bpy, mathutils, math, pyperclip

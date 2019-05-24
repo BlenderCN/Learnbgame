@@ -62,7 +62,7 @@ bl_info = {
     # This must be one of the categories as listed in Blender's add-on tab; if it's not, it will
     # create a new category for your add-on (which may be good or bad.)
     # Don't create new categories to make your add-on stand out.
-    "category": "3D View",
+    "category": "Learnbgame",
     # This support can be either 'OFFICIAL', 'COMMUNITY', or 'TESTING'. 'OFFICIAL' should only be
     # used if this add-on is included with Blender.
     # (If you're not sure, don't use 'OFFICIAL'.) 'COMMUNITY' and 'TESTING' are both fine to use.

@@ -7,7 +7,7 @@ bl_info = {
     "description": "Add tools for Steel University Pipeline",
     "warning": "",
     "wiki_url": "",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
     }
 
 

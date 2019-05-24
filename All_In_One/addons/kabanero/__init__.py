@@ -4,7 +4,7 @@ bl_info = {
     "version": (0, 1, 0),
     "blender": (2, 77, 0),
     "location": "File > Import-Export",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

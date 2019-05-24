@@ -30,7 +30,7 @@ bl_info = {
     'wiki_url': '',
     'tracker_url': '',
     'support': 'UNOFFICIAL',
-    'category': 'Import-Export',
+    "category": "Learnbgame",
     }
 
 import re

@@ -7,7 +7,7 @@ bl_info = {
     "description": "Adds an involute profile gear",
     "warning": "",
     "wiki_url": "",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
     }
 
 

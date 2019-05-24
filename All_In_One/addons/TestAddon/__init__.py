@@ -25,7 +25,7 @@ bl_info = {
     "description": "This is a test add-on",
     "warning": "",
     "wiki_url": "",
-    "category": "TEST"
+    "category": "Learnbgame",
 }
 
 import bpy

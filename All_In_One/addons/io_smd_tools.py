@@ -24,7 +24,7 @@ bl_info = {
 	"version": (1, 1, 4),
 	"blender": (2, 59, 0),
 	"api": 39307,
-	"category": "Import-Export",
+	"category": "Learnbgame",
 	"location": "File > Import/Export, Scene properties, Armature properties",
 	"wiki_url": "http://code.google.com/p/blender-smd/",
 	"tracker_url": "http://code.google.com/p/blender-smd/issues/list",

@@ -6,7 +6,7 @@ bl_info = {
 	"location": "File > Import > Mesh File (.msb + .bor)",
 	"description": "Import Spellforce Mesh+Skeleton Data",
 	"warning": "totally untested",
-	"category": "Import-Export",
+	"category": "Learnbgame",
 }
 
 """

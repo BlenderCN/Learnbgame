@@ -8,7 +8,7 @@ bl_info = {
     'location': 'File > Import > Allen Brain Mesh',
     'description': 'Import Allen Brain Compartment Mesh',
     'license': 'MIT',
-    'category': 'Import'
+    "category": "Learnbgame",
 }
 
 __author__ = bl_info['author']

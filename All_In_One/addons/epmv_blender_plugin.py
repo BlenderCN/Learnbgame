@@ -37,7 +37,7 @@ Develloped in the Molecular Graphics Laboratory directed by Arthur Olson.""",
         "Scripts/My_Script",
     "tracker_url": ""\
         "func=detail&aid=<number>",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 # -------------------------------------------------------------------------- 
 # ***** BEGIN GPL LICENSE BLOCK ***** 

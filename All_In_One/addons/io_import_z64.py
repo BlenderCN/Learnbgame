@@ -8,7 +8,7 @@ bl_info = {
     "wiki_url":      "https://code.google.com/p/sods-blender-plugins/",
     "tracker_url":   "https://code.google.com/p/sods-blender-plugins/",
     "support":       'COMMUNITY',
-    "category":      "Import-Export",
+    "category": "Learnbgame",
     "Anim stuff":    "RodLima http://www.facebook.com/rod.lima.96?ref=tn_tnmn"
 }
 

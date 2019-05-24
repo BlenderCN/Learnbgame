@@ -33,7 +33,7 @@ bl_info = {
         "Scripts/3D_interaction/3D_Navigation",
     "tracker_url": "http://projects.blender.org/tracker/index.php?"\
 	    "func=detail&aid=23530",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 # import the basic library

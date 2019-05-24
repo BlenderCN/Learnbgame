@@ -289,7 +289,7 @@ def makeComicResource():
 ################### add on setting section###########################
 bl_info = {
     "name": "Make Comic Resource",
-    "category": "Render",
+    "category": "Learnbgame",
     "version"    : (0, 0, 1),
     "blender"    : (2, 72, 0),
     "location"   : "Node Editor >> Tools",

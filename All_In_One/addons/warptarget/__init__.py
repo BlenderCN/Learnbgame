@@ -32,7 +32,7 @@ bl_info = {
     "description": "Warp MakeHuman Targets To New Characters. Experimental tool, not recommended for end-users.",
     "warning": "",
     'wiki_url': "http://www.makehuman.org/node/223",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

@@ -19,7 +19,7 @@
 
 bl_info = {
 	"name": "Render Tools",
-	"category": "Cenda Tools",
+	"category": "Learnbgame",
 	"author": "Cenek Strichel",
 	"description": "Render Region & Render without file output",
 	"location": "Hotkey (commands)",

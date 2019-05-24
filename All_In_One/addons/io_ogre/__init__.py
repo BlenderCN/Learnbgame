@@ -25,7 +25,7 @@ bl_info = {
     "description": "Export to Ogre xml and binary formats",
     "wiki_url": "https://github.com/OGRECave/blender2ogre",
     "tracker_url": "https://github.com/OGRECave/blender2ogre/issues",
-    "category": "Import-Export"
+    "category": "Learnbgame",
 }
 
 from pprint import pprint

@@ -31,7 +31,7 @@ bl_info = {
 	"description": "Switch between Graph Editor & DopeSheet",
 	"wiki_url": "http://blerifa.com/tools/SwitchAnimView/",
 	"tracker_url": "https://github.com/julienduroure/SwitchAnimView/issues/",
-	"category": "Animation",
+	"category": "Learnbgame",
 }
 
 import bpy

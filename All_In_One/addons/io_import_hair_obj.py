@@ -44,7 +44,8 @@ bl_info = {
     'location': 'File > Import',
     'description': 'Import MakeHuman hair file (.obj)',
     'wiki_url': 'http://sites.google.com/site/makehumandocs/blender-export-and-mhx/hair',
-    'category': 'Import-Export'}
+    "category": "Learnbgame",
+}
 
 import bpy
 import mathutils

@@ -5,7 +5,7 @@ bl_info = {
     "blender": (2, 63, 0),
     "location": "View3D > Add > Mesh",
     "description": "Add Fibonacci lattice mesh",
-    "category": "Add Mesh",
+    "category": "Learnbgame",
 }
 
 if "bpy" in locals():

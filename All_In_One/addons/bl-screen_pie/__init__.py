@@ -9,7 +9,7 @@ bl_info = {'name': 'Screen Pie Menu',
            'author': 'miniukof',
            'version': (0, 0, 2),
            'blender': (2, 76, 11),
-           'category': 'User Interface',
+           "category": "Learnbgame",
            'wiki_url': 'https://github.com/miniukof/bl-screen_pie'
           }
 

@@ -15,7 +15,7 @@
 
 bl_info = {
     "name": "Tree model (QSM) and leaf model (L-QSM) importer",
-    "category": "Import-Export",
+    "category": "Learnbgame",
     "author": "Markku Åkerblom",
     "version": (0, 8, 0),
     "blender": (2, 79 ,0),

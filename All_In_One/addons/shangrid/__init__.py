@@ -6,7 +6,7 @@ bl_info = {
     "description": "Shangrid Add-on for Blender",
     "warning": "",
     "tracker_url": "",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy

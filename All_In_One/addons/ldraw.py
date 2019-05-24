@@ -7,7 +7,8 @@ bl_info = {
     'description': "This script imports LDraw model files.",
     # used for warning icon and text in addons panel
     'warning': "Some parts may be distorted",
-    'category': "Import-Export"}
+    "category": "Learnbgame",
+}
 
 """\
 This script imports LDraw model files.

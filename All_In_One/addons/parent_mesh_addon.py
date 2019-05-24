@@ -9,7 +9,7 @@ bl_info = {
     "blender": (2, 6, 0),
     "location": "View3D > Tool Shelf",
     "description": "Parents each selected object to the faces of a new mesh.",
-    "category": "Learnbgame"
+    "category": "Learnbgame",
 }
 
 import bpy, mathutils as m
