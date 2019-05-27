@@ -57,7 +57,7 @@ from .grove import Grove_Operator
 from .LearnbgamEngine import learnbgamEditor
 #from .LearnbgamEngine import sverchok
 
-from . import human
+#from . import human
 
 #from . import jewelcraft
 #from . import LearnbgamEngine
@@ -1224,7 +1224,7 @@ def register():
     bpy.types.Scene.atoms = PointerProperty(type=ATOM_PROPERTY)
     bpy.types.Scene.brand = PointerProperty(type=BRAND_PROPERTY)
     #gui.register()
-    human.register()
+    #human.register()
     #jewelcraft.register()
     #LearnbgamEngine.register()
     #learnbgamEditor.register()
@@ -1245,7 +1245,7 @@ def unregister():
     del bpy.types.Scene.atoms
     del bpy.types.Scene.molecule
     del bpy.types.Scene.plants
-    human.unregister()
+    #human.unregister()
     #gui.unregister()
     global icons_collection
     for cla in CLASSES:
