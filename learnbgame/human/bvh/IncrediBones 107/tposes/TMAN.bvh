@@ -1,0 +1,391 @@
+HIERARCHY
+ROOT Model
+{
+	OFFSET 0 0 0
+	CHANNELS 6 Xposition Yposition Zposition Zrotation Xrotation Yrotation
+	JOINT Model1
+	{
+		OFFSET -0.00529289 5.98323 4.51547
+		CHANNELS 3 Zrotation Xrotation Yrotation
+		JOINT Model2
+		{
+			OFFSET 0.0102978 24.222 0.0238037
+			CHANNELS 3 Zrotation Xrotation Yrotation
+			JOINT Model3
+			{
+				OFFSET 0.17109 23.0998 0.0229797
+				CHANNELS 3 Zrotation Xrotation Yrotation
+				JOINT Model4
+				{
+					OFFSET 0.503458 23.5566 0.0240173
+					CHANNELS 3 Zrotation Xrotation Yrotation
+					JOINT Model5
+					{
+						OFFSET 1.41722 40.0951 0.0418396
+						CHANNELS 3 Zrotation Xrotation Yrotation
+						JOINT Model6
+						{
+							OFFSET 0.776531 22.1295 3.3317
+							CHANNELS 3 Zrotation Xrotation Yrotation
+							End Site
+							{
+								OFFSET 0 0 0
+							}
+						}
+					}
+					JOINT Model7
+					{
+						OFFSET 7.78101 21.3822 0.869659
+						CHANNELS 3 Zrotation Xrotation Yrotation
+						JOINT Model8
+						{
+							OFFSET 3.00806 11.7724 -0.448029
+							CHANNELS 3 Zrotation Xrotation Yrotation
+							JOINT Model9
+							{
+								OFFSET 20.6627 -2.20404 -0.569122
+								CHANNELS 3 Zrotation Xrotation Yrotation
+								JOINT Model10
+								{
+									OFFSET 7.77855 -1.03021 -0.0038147
+									CHANNELS 3 Zrotation Xrotation Yrotation
+									JOINT Model11
+									{
+										OFFSET 25.8595 0.489777 3.1376
+										CHANNELS 3 Zrotation Xrotation Yrotation
+										JOINT Model12
+										{
+											OFFSET 21.6109 0.409302 2.6221
+											CHANNELS 3 Zrotation Xrotation Yrotation
+											JOINT Model13
+											{
+												OFFSET 33.0492 1.42328 5.05219
+												CHANNELS 3 Zrotation Xrotation Yrotation
+												JOINT Model14
+												{
+													OFFSET 23.3656 1.00626 3.57184
+													CHANNELS 3 Zrotation Xrotation Yrotation
+													JOINT Model15
+													{
+														OFFSET 8.43372 -1.2338 8.89883
+														CHANNELS 3 Zrotation Xrotation Yrotation
+														JOINT Model16
+														{
+															OFFSET 3.9248 -3.57034 5.311
+															CHANNELS 3 Zrotation Xrotation Yrotation
+															JOINT Model17
+															{
+																OFFSET 5.38681 -0.941193 1.85339
+																CHANNELS 3 Zrotation Xrotation Yrotation
+																End Site
+																{
+																	OFFSET 0 0 0
+																}
+															}
+														}
+													}
+													JOINT Model18
+													{
+														OFFSET 18.2313 1.26285 9.04904
+														CHANNELS 3 Zrotation Xrotation Yrotation
+														JOINT Model19
+														{
+															OFFSET 9.07352 -1.01755 1.30096
+															CHANNELS 3 Zrotation Xrotation Yrotation
+															JOINT Model20
+															{
+																OFFSET 5.69823 -0.641266 0.828979
+																CHANNELS 3 Zrotation Xrotation Yrotation
+																End Site
+																{
+																	OFFSET 0 0 0
+																}
+															}
+														}
+													}
+													JOINT Model21
+													{
+														OFFSET 18.5746 1.89938 4.39993
+														CHANNELS 3 Zrotation Xrotation Yrotation
+														JOINT Model22
+														{
+															OFFSET 10.4563 -1.51663 1.55515
+															CHANNELS 3 Zrotation Xrotation Yrotation
+															JOINT Model23
+															{
+																OFFSET 5.94543 -0.862335 0.884247
+																CHANNELS 3 Zrotation Xrotation Yrotation
+																End Site
+																{
+																	OFFSET 0 0 0
+																}
+															}
+														}
+													}
+													JOINT Model24
+													{
+														OFFSET 19.1496 1.63815 -0.0783386
+														CHANNELS 3 Zrotation Xrotation Yrotation
+														JOINT Model25
+														{
+															OFFSET 9.73857 -1.16119 1.50739
+															CHANNELS 3 Zrotation Xrotation Yrotation
+															JOINT Model26
+															{
+																OFFSET 4.9458 -0.589752 0.765533
+																CHANNELS 3 Zrotation Xrotation Yrotation
+																End Site
+																{
+																	OFFSET 0 0 0
+																}
+															}
+														}
+													}
+													JOINT Model27
+													{
+														OFFSET 19.4996 0.1409 -3.70859
+														CHANNELS 3 Zrotation Xrotation Yrotation
+														JOINT Model28
+														{
+															OFFSET 6.50978 0.101227 0.845215
+															CHANNELS 3 Zrotation Xrotation Yrotation
+															JOINT Model29
+															{
+																OFFSET 4.22246 0.0656128 0.548248
+																CHANNELS 3 Zrotation Xrotation Yrotation
+																End Site
+																{
+																	OFFSET 0 0 0
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					JOINT Model30
+					{
+						OFFSET -6.25463 21.8783 0.846344
+						CHANNELS 3 Zrotation Xrotation Yrotation
+						JOINT Model31
+						{
+							OFFSET -2.16783 11.9553 -0.456635
+							CHANNELS 3 Zrotation Xrotation Yrotation
+							JOINT Model32
+							{
+								OFFSET -20.6562 -1.91837 1.32968
+								CHANNELS 3 Zrotation Xrotation Yrotation
+								JOINT Model33
+								{
+									OFFSET -7.75948 -0.926727 0.70639
+									CHANNELS 3 Zrotation Xrotation Yrotation
+									JOINT Model34
+									{
+										OFFSET -25.2566 -2.53967 5.8699
+										CHANNELS 3 Zrotation Xrotation Yrotation
+										JOINT Model35
+										{
+											OFFSET -21.107 -2.12244 4.90549
+											CHANNELS 3 Zrotation Xrotation Yrotation
+											JOINT Model36
+											{
+												OFFSET -32.2887 -2.81506 8.32571
+												CHANNELS 3 Zrotation Xrotation Yrotation
+												JOINT Model37
+												{
+													OFFSET -22.8279 -1.99023 5.88623
+													CHANNELS 3 Zrotation Xrotation Yrotation
+													JOINT Model38
+													{
+														OFFSET -7.47093 -1.48605 9.68585
+														CHANNELS 3 Zrotation Xrotation Yrotation
+														JOINT Model39
+														{
+															OFFSET -3.31345 -3.70212 5.62793
+															CHANNELS 3 Zrotation Xrotation Yrotation
+															JOINT Model40
+															{
+																OFFSET -5.15698 -1.0531 2.37384
+																CHANNELS 3 Zrotation Xrotation Yrotation
+																End Site
+																{
+																	OFFSET 0 0 0
+																}
+															}
+														}
+													}
+													JOINT Model41
+													{
+														OFFSET -17.2395 0.847504 10.8602
+														CHANNELS 3 Zrotation Xrotation Yrotation
+														JOINT Model42
+														{
+															OFFSET -8.87909 -1.18277 2.19528
+															CHANNELS 3 Zrotation Xrotation Yrotation
+															JOINT Model43
+															{
+																OFFSET -5.57489 -0.745178 1.3905
+																CHANNELS 3 Zrotation Xrotation Yrotation
+																End Site
+																{
+																	OFFSET 0 0 0
+																}
+															}
+														}
+													}
+													JOINT Model44
+													{
+														OFFSET -18.0607 1.53796 6.27908
+														CHANNELS 3 Zrotation Xrotation Yrotation
+														JOINT Model45
+														{
+															OFFSET -10.2215 -1.70767 2.58047
+															CHANNELS 3 Zrotation Xrotation Yrotation
+															JOINT Model46
+															{
+																OFFSET -5.8119 -0.970978 1.46725
+																CHANNELS 3 Zrotation Xrotation Yrotation
+																End Site
+																{
+																	OFFSET 0 0 0
+																}
+															}
+														}
+													}
+													JOINT Model47
+													{
+														OFFSET -19.0817 1.32486 1.87842
+														CHANNELS 3 Zrotation Xrotation Yrotation
+														JOINT Model48
+														{
+															OFFSET -9.51764 -1.33994 2.46567
+															CHANNELS 3 Zrotation Xrotation Yrotation
+															JOINT Model49
+															{
+																OFFSET -4.83359 -0.680542 1.2522
+																CHANNELS 3 Zrotation Xrotation Yrotation
+																End Site
+																{
+																	OFFSET 0 0 0
+																}
+															}
+														}
+													}
+													JOINT Model50
+													{
+														OFFSET -19.7746 -0.131195 -1.71921
+														CHANNELS 3 Zrotation Xrotation Yrotation
+														JOINT Model51
+														{
+															OFFSET -6.39169 -0.0163879 1.4993
+															CHANNELS 3 Zrotation Xrotation Yrotation
+															JOINT Model52
+															{
+																OFFSET -4.14586 -0.0106812 0.972473
+																CHANNELS 3 Zrotation Xrotation Yrotation
+																End Site
+																{
+																	OFFSET 0 0 0
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	JOINT Model53
+	{
+		OFFSET 8.75209 -2.23827 4.30566
+		CHANNELS 3 Zrotation Xrotation Yrotation
+		JOINT Model54
+		{
+			OFFSET 9.89996 0.011322 0.0172424
+			CHANNELS 3 Zrotation Xrotation Yrotation
+			JOINT Model55
+			{
+				OFFSET 1.8982 -36.5599 6.18787
+				CHANNELS 3 Zrotation Xrotation Yrotation
+				JOINT Model56
+				{
+					OFFSET 2.17677 -41.9249 7.09589
+					CHANNELS 3 Zrotation Xrotation Yrotation
+					JOINT Model57
+					{
+						OFFSET 3.0753 -58.973 -13.2527
+						CHANNELS 3 Zrotation Xrotation Yrotation
+						JOINT Model58
+						{
+							OFFSET 1.19166 -22.8516 -5.13535
+							CHANNELS 3 Zrotation Xrotation Yrotation
+							JOINT Model59
+							{
+								OFFSET 1.66178 -13.6525 16.3484
+								CHANNELS 3 Zrotation Xrotation Yrotation
+								End Site
+								{
+									OFFSET 0 0 0
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	JOINT Model60
+	{
+		OFFSET -8.76892 -2.23079 4.27521
+		CHANNELS 3 Zrotation Xrotation Yrotation
+		JOINT Model61
+		{
+			OFFSET -9.89995 0.0197754 -0.0170288
+			CHANNELS 3 Zrotation Xrotation Yrotation
+			JOINT Model62
+			{
+				OFFSET -2.38799 -36.5362 6.15814
+				CHANNELS 3 Zrotation Xrotation Yrotation
+				JOINT Model63
+				{
+					OFFSET -2.73844 -41.8977 7.06183
+					CHANNELS 3 Zrotation Xrotation Yrotation
+					JOINT Model64
+					{
+						OFFSET -2.15362 -59.0177 -13.2358
+						CHANNELS 3 Zrotation Xrotation Yrotation
+						JOINT Model65
+						{
+							OFFSET -0.834511 -22.8689 -5.12878
+							CHANNELS 3 Zrotation Xrotation Yrotation
+							JOINT Model66
+							{
+								OFFSET -2.867 -13.5908 16.2324
+								CHANNELS 3 Zrotation Xrotation Yrotation
+								End Site
+								{
+									OFFSET 0 0 0
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+MOTION
+Frames: 0
+Frame Time: 0.033333
