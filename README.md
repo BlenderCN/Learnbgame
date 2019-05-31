@@ -31,7 +31,11 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 这是关于免疫学知识的卡牌游戏
 
 ### All_In_One
-收集来源于github上的blender的插件集合,目前共计1825枚插件/脚本----[ing](All_In_One/README.md)
+*	收集来源于github上的blender的插件集合,目前共计1825枚插件/脚本----[ing](All_In_One/README.md)
+
+*	计划会编写一个检测github平台上和blender有关的插件和脚本的爬虫脚本,以实时追踪blender的最新动向
+
+*	未整理的托管于[BlenderCN-Org](https://github.com/BlenderCN-Org),共计1845枚.
 
 ### 目前集成开源[插件列表](LearnbdnelB.md)
 
