@@ -2,6 +2,8 @@
 
 Learnbgame的目标是一个创建一个关于科学知识学习的[AR/VR游戏](),将科学研究得到的科学知识进行三维可视化,力求创建一种所见即所得的学习方式,你可以理解为现实世界的虚拟仿真映射.
 
+关于[Learnbgame](https://www.bilibili.com/video/av53908817)
+
 ## Learnbgame开发路线图式
 
 ![](mDrivEngine/develep.jpg)
