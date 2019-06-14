@@ -22,7 +22,7 @@ LearnruT is learn turn
 
 [六角细胞](LearnruT/add_hex_cell.py)
 
-[缩面轮廓/镂空](LearnruT/add_face_hollow.py)
+[缩面轮廓/镂空](LearnruT/add_face_hollow.py)--[tutorial](https://www.bilibili.com/video/av51475439)
 
 [花束](LearnruT/add_flower.py)
 
