@@ -20,17 +20,16 @@ import bpy
 #     sys.path.append(dir )
 # import ipdb
 
-class VIEW3D_PT_Hair_Panel_Bake(bpy.types.Panel):
+class  HT_OP_Hair_Panel_Bake(bpy.types.Panel):
     bl_label = "Hair Bake"
     bl_idname = "hair_tool_bake"
     bl_space_type = 'VIEW_3D'
-    bl_region_type = 'TOOLS'
-    bl_category = "Tools"
-    bl_context = "objectmode"
+    bl_region_type = 'UI'
+    bl_category = 'Hair Tool'
+    # bl_context = "object"
 
     def draw(self, context):
         layout = self.layout
-
         if 'Background' in bpy.data.objects.keys():
             row = layout.row(align=True)
             row.operator("object.bake_hair",icon='RESTRICT_RENDER_OFF')
@@ -39,9 +38,15 @@ class VIEW3D_PT_Hair_Panel_Bake(bpy.types.Panel):
             layout.prop(context.scene.hair_bake_settings, 'bakeResolution')
             layout.prop(context.scene.hair_bake_settings,'render_quality')
             layout.prop(context.scene.hair_bake_settings, 'output_format')
+            layout.prop(context.scene.hair_bake_settings, 'hair_bake_composite',expand=True)
             col = layout.column(align=True)
             col.prop(context.scene.hair_bake_settings, 'render_passes',expand=True)
-            layout.prop(context.scene.hair_bake_settings, 'hair_bake_composite',expand=True)
+            layout.separator()
+            col = layout.box()
+            col.label(text='Global Particle Hair Settings')
+            col.prop(context.scene.hair_bake_settings, 'particle_display_step')
+            col.prop(context.scene.hair_bake_settings, 'particle_width')
+            col.prop(context.scene.hair_bake_settings, 'particle_shape')
         row = layout.row(align=True)
         row.operator("object.open_hair_bake")
             

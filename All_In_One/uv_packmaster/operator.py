@@ -16,12 +16,11 @@ class InvalidTopologyError(BaseException):
     pass
 
 class InconsistentMaterialError(BaseException):
-    def __init__(self, uv_island_faces_list, island_indices):
-        self.island_indices = island_indices
-        self.uv_island_faces_list = uv_island_faces_list
+    def __init__(self, p_context):
+        self.p_context = p_context
 
 
-class UvPackOperatorGeneric(bpy.types.Operator):
+class UVP_OT_PackOperatorGeneric(bpy.types.Operator):
 
     bl_options = {'UNDO'}
 
@@ -47,7 +46,10 @@ class UvPackOperatorGeneric(bpy.types.Operator):
             raise RuntimeError("'Pack To Others' option enabled, but no unselected island found in the unit UV square")
 
         if retcode == UvPackerErrorCode.UNEXPECTED_INVALID_TOPOLOGY:
-            raise RuntimeError("Unexpected topology error encoutered. Consider reporting the UV map to developers")
+            raise RuntimeError("Unexpected topology error encoutered. Consider reporting the UV map to the developers")
+
+        if retcode == UvPackerErrorCode.MAX_GROUP_COUNT_EXCEEDED:
+            raise RuntimeError("Maximal group count exceeded")
 
         raise RuntimeError('Pack process returned an error')
 
@@ -57,7 +59,7 @@ class UvPackOperatorGeneric(bpy.types.Operator):
     def exit_common(self):
         wm = self.p_context.context.window_manager
         wm.event_timer_remove(self._timer)
-        bmesh.update_edit_mesh(self.p_context.context.active_object.data)
+        self.p_context.update_meshes()
 
     def process_invalid_islands(self):
         if self.invalid_islands_msg is None:
@@ -66,7 +68,7 @@ class UvPackOperatorGeneric(bpy.types.Operator):
         invalid_islands = read_int_array(self.invalid_islands_msg)
 
         if len(invalid_islands) > 0:
-            handle_invalid_islands(self.p_context, self.uv_island_faces_list, invalid_islands)
+            handle_invalid_islands(self.p_context, invalid_islands)
             self.report({'ERROR'}, 'Invalid topology encountered. Check selected islands or adjust topology options')
             raise InvalidTopologyError()
 
@@ -110,6 +112,9 @@ class UvPackOperatorGeneric(bpy.types.Operator):
 
         if self.curr_phase == UvPackingPhaseCode.AREA_MEASUREMENT:
             return 'Area measurement in progress (press ESC to cancel)'
+
+        if self.curr_phase == UvPackingPhaseCode.SIMILAR_SELECTION:
+            return 'Looking for similar islands (press ESC to cancel)'
 
         if self.curr_phase == UvPackingPhaseCode.RENDER_PRESENTATION:
             return 'Close the demo window to finish'
@@ -180,6 +185,12 @@ class UvPackOperatorGeneric(bpy.types.Operator):
 
             self.invalid_faces_msg = msg
 
+        elif msg_code == UvPackMessageCode.SIMILAR_ISLANDS:
+            if self.similar_islands_msg is not None:
+                self.raiseUnexpectedOutputError()
+
+            self.similar_islands_msg = msg
+
         else:
             self.raiseUnexpectedOutputError()
 
@@ -240,72 +251,34 @@ class UvPackOperatorGeneric(bpy.types.Operator):
 
     def execute(self, context):
         cancel = False
-        obj = context.active_object
 
-        bm = bmesh.from_edit_mesh(obj.data)
-        bm.verts.ensure_lookup_table()
-        bm.faces.ensure_lookup_table()
+        objs = context.selected_objects
+        self.p_context = PackContext(context, objs)
 
-        uv_layer = bm.loops.layers.uv.verify()
-
-        self.p_context = PackContext(context, bm, uv_layer)
         try:
             if not in_debug_mode():
                 platform_check_op()
 
             prefs = get_prefs()
-            selected_faces = get_selected_faces(self.p_context)
+            send_unselected = self.send_unselected_islands()
+            self.p_context.gather_uv_data(send_unselected)
 
-            uv_island_faces_list, face_to_verts = extract_islands_from_faces(bm, uv_layer, selected_faces)
-
-            self.uv_island_faces_list = uv_island_faces_list
             self.validate_pack_params()
-
-            if self.supports_pack_to_others() and prefs.FEATURE_pack_to_others and prefs.pack_to_others:
-                def uv_face_hidden(face):
-                    if self.p_context.context.tool_settings.use_uv_select_sync:
-                        return face.hide
-                    else:
-                        if not face.select:
-                            return True
-                    return False
-
-                other_faces = [face for face in self.p_context.bm.faces if
-                               face not in selected_faces and not uv_face_hidden(face)]
-                other_uv_island_faces_list, other_face_to_verts = extract_islands_from_faces(bm, uv_layer, other_faces)
-
-                other_start_idx = len(uv_island_faces_list)
-
-                self.uv_island_faces_list += other_uv_island_faces_list
-                face_to_verts.update(other_face_to_verts)
-            else:
-                other_start_idx = -1
 
             island_materials = None
             prev_mat_id = None
             nequal_count = 0
 
-            if self.supports_grouped_pack() and prefs.FEATURE_grouped_pack and prefs.grouped_pack:
-                island_materials = []
-                inconsistent_islands = []
-                for idx, island_faces in enumerate(self.uv_island_faces_list):
-                    mat_found, mat_id = get_island_material(self.p_context, island_faces)
-                    if not mat_found:
-                        inconsistent_islands.append(idx)
+            if self.prepare_material_map():
+                mat_count = self.p_context.prepare_material_map()
 
-                    if prev_mat_id != mat_id:
-                        nequal_count += 1
-                        prev_mat_id = mat_id
+                if len(self.p_context.inconsistent_islands) > 0:
+                    raise InconsistentMaterialError(self.p_context)
 
-                    island_materials.append(mat_id)
-
-                if len(inconsistent_islands) > 0:
-                    raise InconsistentMaterialError(self.uv_island_faces_list, inconsistent_islands)
-
-                if nequal_count == 1:
+                if mat_count == 1:
                     raise RuntimeError("All selected islands belong to the same material")
 
-            raw_uv_data = prepare_raw_uv_topo_data(self.uv_island_faces_list, face_to_verts, island_materials)
+            raw_uv_data = prepare_raw_uv_topo_data(self.p_context.uv_island_faces_list, self.p_context.face_to_verts, self.p_context.material_map)
 
             if prefs.write_to_file:
                 out_filepath = os.path.join(tempfile.gettempdir(), 'uv_islands.data')
@@ -313,10 +286,13 @@ class UvPackOperatorGeneric(bpy.types.Operator):
                 out_file.write(raw_uv_data)
                 out_file.close()
 
-            packer_args_final = [get_packer_path(), '-e', str(self.get_topo_analysis_level())] + self.get_packer_args(other_start_idx)
+            packer_args_final = [get_packer_path(), '-E', '-e', str(self.get_topo_analysis_level())] + self.get_packer_args()
 
             if prefs.multithreaded:
                 packer_args_final.append('-t')
+
+            if send_unselected:
+                packer_args_final += ['-s', str(self.p_context.selected_count)]
 
             if in_debug_mode():
                 if prefs.seed > 0:
@@ -324,6 +300,9 @@ class UvPackOperatorGeneric(bpy.types.Operator):
 
                 if prefs.simplify_disable:
                     packer_args_final.append('-d')
+
+                if prefs.benchmark:
+                    packer_args_final.append('-b')
 
                 packer_args_final += ['-T', str(prefs.test_param)]
                 print('Pakcer args: ' + ' '.join(x for x in packer_args_final))
@@ -350,10 +329,11 @@ class UvPackOperatorGeneric(bpy.types.Operator):
             self.pack_solution_msg = None
             self.area_msg = None
             self.invalid_faces_msg = None
+            self.similar_islands_msg = None
 
         except InconsistentMaterialError as err:
-            self.report({'ERROR'}, 'Select islands belong to more than one material')
-            invalid_islands_handler(err, self.p_context)
+            self.report({'ERROR'}, 'Selected islands do not have unique material assigned')
+            handle_invalid_islands(err.p_context, err.p_context.inconsistent_islands)
             cancel = True
 
         except RuntimeError as ex:
@@ -369,14 +349,14 @@ class UvPackOperatorGeneric(bpy.types.Operator):
             self.report({'ERROR'}, 'Unexpected error')
             cancel = True
 
-        bmesh.update_edit_mesh(obj.data)
+        self.p_context.update_meshes()
 
         if cancel:
             return {'FINISHED'}
         # context.scene.update()
 
         wm = context.window_manager
-        self._timer = wm.event_timer_add(0.1, context.window)
+        self._timer = wm.event_timer_add(0.1, window=context.window)
         wm.modal_handler_add(self)
         return {'RUNNING_MODAL'}
 
@@ -397,23 +377,25 @@ class UvPackOperatorGeneric(bpy.types.Operator):
     def get_confirmation_msg(self):
         return ''
 
-    def supports_pack_to_others(self):
+    def send_unselected_islands(self):
         return False
 
-    def supports_grouped_pack(self):
+    def prepare_material_map(self):
         return False
 
 
-class UvPackOperator(UvPackOperatorGeneric):
+class UVP_OT_PackOperator(UVP_OT_PackOperatorGeneric):
     bl_idname = 'uv_packmaster.uv_pack'
     bl_label = 'Pack'
     bl_description = 'Pack selected UV islands'
 
-    def supports_pack_to_others(self):
-        return True
+    def send_unselected_islands(self):
+        prefs = get_prefs()
+        return prefs.FEATURE_pack_to_others and prefs.pack_to_others
 
-    def supports_grouped_pack(self):
-        return True
+    def prepare_material_map(self):
+        prefs = get_prefs()
+        return prefs.FEATURE_grouped_pack and prefs.grouped_pack and prefs.grouping_method == str(UvGroupingMethod.EXTERNAL)
 
     def process_result(self):
         prefs = get_prefs()
@@ -466,22 +448,28 @@ class UvPackOperator(UvPackOperatorGeneric):
             island_flags = read_int_array(self.island_flags_msg)
 
             for i_solution in island_solutions:
-                matrix = mathutils.Matrix.Translation(i_solution.island_location - i_solution.orient_origin) * \
-                         mathutils.Matrix.Translation(i_solution.orient_pivot) * \
-                         mathutils.Matrix.Rotation(i_solution.orient_angle, 4, 'Z') * \
+                bm_idx = self.p_context.island_bm_map[i_solution.island_idx]
+                bm = self.p_context.bms[bm_idx]
+                uv_layer = self.p_context.uv_layers[bm_idx]
+                face_idx_offset = self.p_context.face_idx_offsets[bm_idx]
+
+                matrix = mathutils.Matrix.Translation(i_solution.island_location - i_solution.orient_origin) @ \
+                         mathutils.Matrix.Translation(i_solution.orient_pivot) @ \
+                         mathutils.Matrix.Rotation(i_solution.orient_angle, 4, 'Z') @ \
                          mathutils.Matrix.Translation(-i_solution.orient_pivot)
 
-                island_faces = self.uv_island_faces_list[i_solution.island_idx]
+                island_faces = self.p_context.uv_island_faces_list[i_solution.island_idx]
 
-                for face_id in island_faces:
-                    face = self.p_context.bm.faces[face_id]
+                for face_idx in island_faces:
+                    orig_face_idx = face_idx - face_idx_offset;
+                    face = bm.faces[orig_face_idx]
                     for loop in face.loops:
-                        uv = loop[self.p_context.uv_layer].uv
-                        transformed_uv = matrix * mathutils.Vector((uv[0], uv[1], 0.0))
-                        loop[self.p_context.uv_layer].uv = (
+                        uv = loop[uv_layer].uv
+                        transformed_uv = matrix @ mathutils.Vector((uv[0], uv[1], 0.0))
+                        loop[uv_layer].uv = (
                         transformed_uv[0] / solution_sizeX, transformed_uv[1] / solution_sizeY)
 
-            overlap_detected = handle_island_flags(self.p_context, self.uv_island_faces_list, island_flags)
+            overlap_detected = handle_island_flags(self.p_context, self.p_context.uv_island_faces_list, island_flags)
 
         if (self.packer_proc.returncode == UvPackerErrorCode.NO_SPACE):
             self.report({'WARNING'}, 'No enough space to pack all islands' + (
@@ -498,18 +486,28 @@ class UvPackOperator(UvPackOperatorGeneric):
     def validate_pack_params(self):
         prefs = get_prefs()
 
-        if prefs.FEATURE_heuristic_search and prefs.heuristic_search_time > 0 and len(self.uv_island_faces_list) < 2:
+        if prefs.FEATURE_heuristic_search and prefs.heuristic_search_time > 0 and len(self.p_context.uv_island_faces_list) < 2:
             raise RuntimeError("In order to use 'Heuristic Search' select more than one island")
 
         if prefs.FEATURE_pack_to_others and prefs.FEATURE_pack_ratio:
             if prefs.pack_to_others and prefs.tex_ratio:
-                raise RuntimeError("'Pack To Others' is not supported with 'Use Tex Ratio' option")
+                raise RuntimeError("'Pack To Others' is not supported with the 'Use Tex Ratio' option")
 
         if prefs.FEATURE_pack_to_others and prefs.FEATURE_heuristic_search:
             if prefs.pack_to_others and prefs.heuristic_search_time > 0:
-                raise RuntimeError("'Pack To Others' is not supported with 'Heuristic Search Time' option")
+                raise RuntimeError("'Pack To Others' is not supported with the 'Heuristic Search Time' option")
 
-    def get_packer_args(self, other_start_idx):
+        if prefs.FEATURE_grouped_pack and prefs.grouped_pack and prefs.grouping_method == str(UvGroupingMethod.SIMILARITY):
+            if prefs.FEATURE_pack_to_others and prefs.pack_to_others:
+                raise RuntimeError("'Pack To Others' is not supported with grouping by similarity")
+
+            if not prefs.rot_enable:
+                raise RuntimeError("Island rotations must be enabled in order to group by similarity")
+
+            if prefs.prerot_disable:
+                raise RuntimeError("'Pre-Rotation Disable' option must be off in order to group by similarity")
+
+    def get_packer_args(self):
         prefs = get_prefs()
         packer_args = ['-o', str(UvPackerOpcode.PACK), '-i', str(prefs.iterations), '-m',
                        str(prefs.margin)]
@@ -533,13 +531,16 @@ class UvPackOperator(UvPackOperatorGeneric):
             packer_args += ['-q', str(ratio)]
 
         if prefs.FEATURE_grouped_pack and prefs.grouped_pack:
-            packer_args += ['-g', '-a', prefs.grouped_pack_approach]
+            packer_args += ['-g', '-a', prefs.grouping_method]
+
+            if prefs.grouping_method == str(UvGroupingMethod.SIMILARITY):
+                packer_args += ['-I', str(prefs.similarity_threshold)]
 
         if prefs.FEATURE_lock_overlapping and prefs.lock_overlapping:
             packer_args += ['-l']
 
-        if other_start_idx >= 0:
-            packer_args += ['-s', str(other_start_idx)]
+        if (prefs.FEATURE_pack_to_others and prefs.pack_to_others):
+            packer_args += ['-x']
 
         if prefs.overlap_check:
             packer_args.append('-c')
@@ -550,7 +551,7 @@ class UvPackOperator(UvPackOperatorGeneric):
         return packer_args
 
 
-class UvOverlapCheckOperator(UvPackOperatorGeneric):
+class UVP_OT_OverlapCheckOperator(UVP_OT_PackOperatorGeneric):
     bl_idname = 'uv_packmaster.uv_overlap_check'
     bl_label = 'Overlap Check'
     bl_description = 'Check wheter selected UV islands overlap each other'
@@ -562,7 +563,7 @@ class UvOverlapCheckOperator(UvPackOperatorGeneric):
             self.raiseUnexpectedOutputError()
 
         island_flags = read_int_array(self.island_flags_msg)
-        overlap_detected = handle_island_flags(self.p_context, self.uv_island_faces_list, island_flags)
+        overlap_detected = handle_island_flags(self.p_context, self.p_context.uv_island_faces_list, island_flags)
 
         if overlap_detected:
             self.report({'WARNING'}, 'Overlapping islands detected')
@@ -572,7 +573,7 @@ class UvOverlapCheckOperator(UvPackOperatorGeneric):
     def validate_pack_params(self):
         pass
 
-    def get_packer_args(self, other_start_idx):
+    def get_packer_args(self):
         prefs = get_prefs()
         packer_args = ['-o', str(UvPackerOpcode.OVERLAP_CHECK)]
 
@@ -580,7 +581,7 @@ class UvOverlapCheckOperator(UvPackOperatorGeneric):
 
 
 
-class UvMeasureAreaOperator(UvPackOperatorGeneric):
+class UVP_OT_MeasureAreaOperator(UVP_OT_PackOperatorGeneric):
     bl_idname = 'uv_packmaster.uv_measure_area'
     bl_label = 'Measure Area'
     bl_description = 'Measure area of selected UV islands'
@@ -595,7 +596,7 @@ class UvMeasureAreaOperator(UvPackOperatorGeneric):
     def validate_pack_params(self):
         pass
 
-    def get_packer_args(self, other_start_idx):
+    def get_packer_args(self):
         prefs = get_prefs()
 
         packer_args = ['-o', str(UvPackerOpcode.MEASURE_AREA)]
@@ -604,7 +605,7 @@ class UvMeasureAreaOperator(UvPackOperatorGeneric):
 
 
 
-class UvValidateOperator(UvPackOperatorGeneric):
+class UVP_OT_ValidateOperator(UVP_OT_PackOperatorGeneric):
     bl_idname = 'uv_packmaster.uv_validate'
     bl_label = 'Validate UVs'
     bl_description = 'Validate selected UV faces. The validation procedure looks for invalid UV faces i.e. faces with area close to 0, self-intersecting faces, faces overlapping each other'
@@ -623,16 +624,18 @@ class UvValidateOperator(UvPackOperatorGeneric):
             self.raiseUnexpectedOutputError()
 
         invalid_face_count = force_read_int(self.invalid_faces_msg)
+        invalid_faces = read_int_array(self.invalid_faces_msg)
 
         if not prefs.FEATURE_demo:
-            invalid_faces = read_int_array(self.invalid_faces_msg)
-
             if len(invalid_faces) != invalid_face_count:
                 self.raiseUnexpectedOutputError()
 
             if invalid_face_count > 0:
-                select_faces(self.p_context, range(len(self.p_context.bm.faces)), False)
-                select_faces(self.p_context, invalid_faces, True)
+                self.p_context.select_all_faces(False)
+                self.p_context.select_faces(list(invalid_faces), True)
+        else:
+            if len(invalid_faces) > 0:
+                self.raiseUnexpectedOutputError()
 
         if invalid_face_count > 0:
             self.report({'WARNING'}, 'Number of invalid faces found: ' + str(invalid_face_count))
@@ -653,9 +656,66 @@ class UvValidateOperator(UvPackOperatorGeneric):
             if self.p_context.context.scene.tool_settings.uv_select_mode != 'FACE':
                 raise RuntimeError("UV selection mode must be set to FACE in order to run validation")
 
-    def get_packer_args(self, other_start_idx):
+    def get_packer_args(self):
         prefs = get_prefs()
 
         packer_args = ['-o', str(UvPackerOpcode.VALIDATE_UVS)]
+
+        return packer_args
+
+class UVP_OT_SelectSimilarOperator(UVP_OT_PackOperatorGeneric):
+    bl_idname = 'uv_packmaster.uv_select_similar'
+    bl_label = 'Select Similar'
+    bl_description = "Select all islands which have a similar shape to already selected islands. See the description of the 'Similarity Threshold' parameter for more information"
+
+    def get_confirmation_msg(self):
+        prefs = get_prefs()
+
+        if prefs.FEATURE_demo:
+            return 'WARNING: in the demo mode only the number of similar islands found is reported, islands will not be selected. Click OK to continue'
+
+        return ''
+
+    def send_unselected_islands(self):
+        return True
+
+    def process_result(self):
+        prefs = get_prefs()
+
+        if self.similar_islands_msg is None:
+            self.raiseUnexpectedOutputError()
+
+        similar_island_count = force_read_int(self.similar_islands_msg)
+        similar_islands = read_int_array(self.similar_islands_msg)
+
+        if not prefs.FEATURE_demo:
+            if len(similar_islands) != similar_island_count:
+                self.raiseUnexpectedOutputError()
+
+            for island_idx in similar_islands:
+                self.p_context.select_island_faces(island_idx, self.p_context.uv_island_faces_list[island_idx], True)
+        else:
+            if len(similar_islands) > 0:
+                self.raiseUnexpectedOutputError()
+
+        self.report({'INFO'}, 'Similar islands found: ' + str(similar_island_count))
+
+    def validate_pack_params(self):
+        prefs = get_prefs()
+
+        if not prefs.rot_enable:
+            raise RuntimeError("Island rotations must be enabled in order to run operation")
+
+        if prefs.prerot_disable:
+            raise RuntimeError("'Pre-Rotation Disable' option must be off in order to run operation")
+
+    def get_packer_args(self):
+        prefs = get_prefs()
+
+        packer_args = ['-o', str(UvPackerOpcode.SELECT_SIMILAR), '-I', str(prefs.similarity_threshold)]
+        packer_args += ['-i', str(prefs.iterations)]
+
+        if prefs.FEATURE_island_rotation and prefs.rot_enable:
+            packer_args += ['-r', str(prefs.rot_step)]
 
         return packer_args

@@ -20,12 +20,12 @@ from bpy_extras import view3d_utils
 from math import sqrt, pow
 from random import uniform, seed
 import numpy as np
-from .ribbons_operations import CurvesUVRefresh
+from .ribbons_operations import HT_OT_CurvesUVRefresh
 from mathutils import noise, Vector, kdtree, Matrix
 from mathutils.bvhtree import BVHTree
 from mathutils.geometry import barycentric_transform
 from bpy.props import EnumProperty, FloatProperty, BoolProperty, IntProperty, StringProperty
-from .resample2d import interpol
+from .resample2d import interpol_Catmull_Rom
 from .helper_functions import calc_power
 # import sys
 # dir = 'C:\\Users\\JoseConseco\\AppData\\Local\\Programs\\Python\\Python35\\Lib\\site-packages'
@@ -38,52 +38,52 @@ from .helper_functions import calc_power
  #DONE: Addo noise..
  #NOPE: Support uniform and non even len interpol? Or just leave it to resample oper?
 
-class RibbonsFromParticleHairChild(bpy.types.Operator):
+class HT_OT_RibbonsFromParticleHairChild(bpy.types.Operator):
     bl_label = "Ribbons from particle hair with children"
     bl_idname = "object.ribbons_from_ph_child"
     bl_description = "Generate Ribbons from particle hair with custom made child strands generator. \n" \
                      "It gives more uniform child distribution compared to build in child particles."
-    bl_options = {"REGISTER", "UNDO", "PRESET"}
+    bl_options = {"REGISTER", "UNDO", "PRESET", 'USE_EVAL_DATA'}
 
-    # extend = BoolProperty(name="Append", description="Appends new curves to already existing Particle hair strands", default=True)
-    # override_segments = BoolProperty(name="Resample strands", description="Force using strands segments parameter", default=False)
-    t_in_y = IntProperty(name="Strand Segments", default=5, min=2, max=20)
-    childCount = IntProperty(name="Child count", default=100, min=10, max=2000)
-    hairType = bpy.props.EnumProperty(name="Hair Type", default="NURBS",
+    # extend: BoolProperty(name="Append", description="Appends new curves to already existing Particle hair strands", default=True)
+    # override_segments: BoolProperty(name="Resample strands", description="Force using strands segments parameter", default=False)
+    t_in_y: IntProperty(name="Strand Segments", default=5, min=2, max=20)
+    childCount: IntProperty(name="Child count", default=100, min=10, max=2000)
+    hairType: bpy.props.EnumProperty(name="Hair Type", default="NURBS",
                                       items=(("BEZIER", "Bezier", ""),
                                              ("NURBS", "Nurbs", ""),
                                              ("POLY", "Poly", "")))
-    Seed = IntProperty(name="Noise Seed", default=1, min=1, max=1000)
-    PlacementJittering = FloatProperty(name="Placement Jittering/Face", description="Placement Jittering/Face \n"
+    Seed: IntProperty(name="Noise Seed", default=1, min=1, max=1000)
+    PlacementJittering: FloatProperty(name="Placement Jittering/Face", description="Placement Jittering/Face \n"
                                                                                     "Helps even out particle distribution \n"
                                                                                     "0 = automatic", default=0, min=0, max=100, subtype='PERCENTAGE')
 
-    embed = FloatProperty(name="Embed roots", description="Radius for bezier curve", default=0, min=0, max=10)
-    # embedTips = FloatProperty(name="Embed tips", description="Radius for bezier curve", default=0, min=0, max=10)
+    embed: FloatProperty(name="Embed roots", description="Radius for bezier curve", default=0, min=0, max=10)
+    # embedTips: FloatProperty(name="Embed tips", description="Radius for bezier curve", default=0, min=0, max=10)
 
-    noiseFalloff = FloatProperty(name="Noise falloff", description="Noise influence over strand lenght", default=0, min=-1, max=1, subtype='PERCENTAGE')
-    freq = FloatProperty(name="Noise freq", default=0.5, min=0.0, max=5.0)
-    noiseAmplitude = FloatProperty(name="Noise Amplitude", default=0.5, min=0.0, max=10.0)
+    noiseFalloff: FloatProperty(name="Noise falloff", description="Noise influence over strand lenght", default=0, min=-1, max=1, subtype='PERCENTAGE')
+    freq: FloatProperty(name="Noise freq", default=0.5, min=0.0, max=5.0)
+    noiseAmplitude: FloatProperty(name="Noise Amplitude", default=0.5, min=0.0, max=10.0)
 
-    lenSeed = IntProperty(name="Length Seed", default=1, min=1, max=1000)
-    RandomizeLengthPlus = FloatProperty(name="Increase length randomly", description="Increase length randomly", default=0, min=0, max=1, subtype='PERCENTAGE')
-    RandomizeLengthMinus = FloatProperty(name="Decrease length randomly", description="Decrease length randomly", default=0, min=0, max=1, subtype='PERCENTAGE')
+    lenSeed: IntProperty(name="Length Seed", default=1, min=1, max=1000)
+    RandomizeLengthPlus: FloatProperty(name="Increase length randomly", description="Increase length randomly", default=0, min=0, max=1, subtype='PERCENTAGE')
+    RandomizeLengthMinus: FloatProperty(name="Decrease length randomly", description="Decrease length randomly", default=0, min=0, max=1, subtype='PERCENTAGE')
 
-    generateRibbons = BoolProperty(name="Generate Ribbons", description="Generate Ribbons on curve", default=True)
-    strandResU = IntProperty(name="Segments U", default=3, min=1, max=5, description="Additional subdivision along strand length")
-    strandResV = IntProperty(name="Segments V", default=2, min=1, max=5, description="Subdivisions perpendicular to strand length ")
-    strandWidth = FloatProperty(name="Strand Width", default=0.5, min=0.0, max=10)
-    strandPeak = FloatProperty(name="Strand peak", default=0.4, min=0.0, max=1,
+    generateRibbons: BoolProperty(name="Generate Ribbons", description="Generate Ribbons on curve", default=True)
+    strandResU: IntProperty(name="Segments U", default=3, min=1, max=5, description="Additional subdivision along strand length")
+    strandResV: IntProperty(name="Segments V", default=2, min=1, max=5, description="Subdivisions perpendicular to strand length ")
+    strandWidth: FloatProperty(name="Strand Width", default=0.5, min=0.0, max=10)
+    strandPeak: FloatProperty(name="Strand peak", default=0.4, min=0.0, max=1,
                                description="Describes how much middle point of ribbon will be elevated")
-    strandUplift = FloatProperty(name="Strand uplift", default=0.0, min=-1, max=1, description="Moves whole ribbon up or down")
-    alignToSurface = BoolProperty(name="Align tilt", description="Align tilt to Surface", default=False)
+    strandUplift: FloatProperty(name="Strand uplift", default=0.0, min=-1, max=1, description="Moves whole ribbon up or down")
+    alignToSurface: BoolProperty(name="Align tilt", description="Align tilt to Surface", default=False)
 
-    RadiusFalloff = FloatProperty(name="Radius falloff", description="Radius falloff over strand lenght", default=0,  min=-1, max=1, subtype='PERCENTAGE')
-    TipRadius = FloatProperty(name="Tip Radius", description="Tip Radius", default=0, min=0,  max=1, subtype='PERCENTAGE')
+    RadiusFalloff: FloatProperty(name="Radius falloff", description="Radius falloff over strand lenght", default=0,  min=-1, max=1, subtype='PERCENTAGE')
+    TipRadius: FloatProperty(name="Tip Radius", description="Tip Radius", default=0, min=0,  max=1, subtype='PERCENTAGE')
 
-    Clumping = FloatProperty(name="Clumping", description="Clumping", default=0, min=0,  max=1, subtype='PERCENTAGE')
-    ClumpingFalloff = FloatProperty(name="Clumping Falloff", description="Clumping Falloff", default=0,  min=-1, max=1, subtype='PERCENTAGE')
-    Radius = FloatProperty(name="Radius", description="Radius for bezier curve", default=1, min=0, max=100)
+    Clumping: FloatProperty(name="Clumping", description="Clumping", default=0, min=0,  max=1, subtype='PERCENTAGE')
+    ClumpingFalloff: FloatProperty(name="Clumping Falloff", description="Clumping Falloff", default=0,  min=-1, max=1, subtype='PERCENTAGE')
+    Radius: FloatProperty(name="Radius", description="Radius for bezier curve", default=1, min=0, max=100)
 
 
 
@@ -94,7 +94,7 @@ class RibbonsFromParticleHairChild(bpy.types.Operator):
     def draw(self, context):
         layout = self.layout
         box = layout.box()
-        box.label("Curves from Particle Hair Settings:")
+        box.label(text="Curves from Particle Hair Settings:")
         box.prop(self, 'embed')
         # box.prop(self, 'embedTips')
         box.prop(self, 'hairType')
@@ -102,7 +102,7 @@ class RibbonsFromParticleHairChild(bpy.types.Operator):
         box.prop(self, 'childCount')
         box.prop(self, 'PlacementJittering')
 
-        box.label("Noise:")
+        box.label(text="Noise:")
         col = box.column(align=True)
         col.prop(self, 'Seed')
         col.prop(self, 'noiseFalloff')
@@ -151,16 +151,30 @@ class RibbonsFromParticleHairChild(bpy.types.Operator):
         partsysUniform.userjit = PlacementJittering*2
         tempParticleMod.particle_system.seed = Seed
         tempParticleMod.particle_system.vertex_group_density = partsysMod.vertex_group_density
+
+        partsysUniform.use_modifier_stack = True
+
         bpy.context.scene.update()
+
+        depsgraph = bpy.context.depsgraph
+        particleObj_eval = depsgraph.objects.get(particleObj.name, None)
+        tempParticleMod_eval = particleObj_eval.modifiers["HairTemp"]
+
+
         particleObjMatWorldInv = particleObj.matrix_world.inverted()
-        childParticles = [particleObjMatWorldInv * particle.location for particle in tempParticleMod.particle_system.particles]
+        childParticles = [particleObjMatWorldInv @ particle.location for particle in tempParticleMod_eval.particle_system.particles]
         particleObj.modifiers.remove(tempParticleMod)
         particleObj.particle_systems.active_index = index
         return childParticles
 
 
     def execute(self, context):
-        particleObj = context.active_object
+        depsgraph = bpy.context.depsgraph
+        ob = bpy.context.active_object
+        obj_eval = depsgraph.objects.get(ob.name, None)
+
+        # particleObj = context.active_object
+        particleObj = obj_eval
         if bpy.context.active_object.particle_systems is None:  # create new one
             self.report({'INFO'}, 'No active Particle Hair System found!')
             return {"CANCELLED"}
@@ -185,8 +199,8 @@ class RibbonsFromParticleHairChild(bpy.types.Operator):
         pointsList_uniq = []
         [pointsList_uniq.append(x) for x in pointsList_hair if x not in pointsList_uniq]  #removing doubles (can cause zero size tris)
 
-        #constantLen cos barycentric transform requires it
-        pointsList = interpol(pointsList_uniq, self.t_in_y, uniform=True, constantLen=True) #just gives smoother result on borders
+        #same_point_count cos barycentric transform requires it
+        pointsList = interpol_Catmull_Rom(pointsList_uniq, self.t_in_y, uniform_spacing=True, same_point_count=True)  # just gives smoother result on borders
 
         searchDistance = 100 * diagonal
         parentRoots = [strand[0] for strand in pointsList]  # first point of roots
@@ -197,14 +211,14 @@ class RibbonsFromParticleHairChild(bpy.types.Operator):
         for i, root in enumerate(parentRoots):
             kd.insert(root, i)
         kd.balance()
-        sourceSurface_BVHT = BVHTree.FromObject(particleObj, context.scene)
+        sourceSurface_BVHT = BVHTree.FromObject(particleObj, context.depsgraph)
         childStrandsPoints = []  #will contain strands with child points
         childStrandRootNormals = []
         length_ver_group_index = -1
         vertex_group_length_name = psys_active.vertex_group_length
         if vertex_group_length_name:  # calc weight based on root point
             length_ver_group_index = particleObj.vertex_groups[vertex_group_length_name].index
-        particleObjMesh = particleObj.to_mesh(context.scene, apply_modifiers=True, settings='PREVIEW')
+        particleObjMesh = particleObj.to_mesh(context.depsgraph, apply_modifiers=True, calc_undeformed=False)
         seed(a=self.lenSeed, version=2)
         embed = self.embed * 0.04 * diagonal
         cpow = calc_power(self.noiseFalloff)
@@ -240,16 +254,17 @@ class RibbonsFromParticleHairChild(bpy.types.Operator):
             translationMatrix = Matrix.Translation(childRoot)
             rotMatrixRot = rotQuat.to_matrix().to_4x4()
             mat_sca = Matrix.Scale(lenWeight, 4)
-            transformMatrix = translationMatrix * rotMatrixRot
+            transformMatrix = translationMatrix @ rotMatrixRot
             strandPoints = []
             #for childRootSnapped points transform them from parent root triangles to parent next segment triangle t1,t2,t3
             # and compensate child snapping to root triangle from before
             for j,(t1,t2,t3) in enumerate(zip(pointsList[ParentRootIndices[0]],pointsList[ParentRootIndices[1]],pointsList[ParentRootIndices[2]])):
                 pointTransformed = barycentric_transform(childRootSnapped,rootTri_co[0],rootTri_co[1],rootTri_co[2], Vector(t1), Vector(t2), Vector(t3))
-                childInterpolatedPoint = transformMatrix*mat_sca*(pointTransformed-childRootSnapped) #rotate child strand to original pos (from before snapt)
+                childInterpolatedPoint = transformMatrix@mat_sca@(pointTransformed-childRootSnapped) #rotate child strand to original pos (from before snapt)
                 #do noise
                 noise.seed_set(self.Seed + i)  # add seed per strand/ring ?
-                noiseVectorPerStrand = noise.noise_vector(childInterpolatedPoint * self.freq / diagonal, noise.types.STDPERLIN)* noiseFalloff[j] * self.noiseAmplitude * diagonal / 10
+                noiseVectorPerStrand = noise.noise_vector(childInterpolatedPoint * self.freq / diagonal,
+                                                          noise_basis ='PERLIN_ORIGINAL') * noiseFalloff[j] * self.noiseAmplitude * diagonal / 10
                 # childInterpolatedPoint += noiseVectorPerStrand
 
                 #do clumping
@@ -301,17 +316,17 @@ class RibbonsFromParticleHairChild(bpy.types.Operator):
         curveOB = bpy.data.objects.new(particleObj.name+'_curve', curveData)
         curveOB.matrix_world = particleObj.matrix_world
         scn = context.scene
-        scn.objects.link(curveOB)
+        scn.collection.objects.link(curveOB)
         curveOB.targetObjPointer = particleObj.name  # store source surface for snapping oper
-        scn.objects.active = curveOB
-        curveOB.select = True
-        curveOB.data.show_normal_face = False
+        context.view_layer.objects.active = curveOB
+        curveOB.select_set(True)
+        # curveOB.data.show_normal_face = False
         if self.generateRibbons:
             bpy.ops.object.generate_ribbons(strandResU=self.strandResU, strandResV=self.strandResV,
                                             strandWidth=self.strandWidth, strandPeak=self.strandPeak,
                                             strandUplift=self.strandUplift, alignToSurface=self.alignToSurface)
-            CurvesUVRefresh.uvCurveRefresh(curveOB)
-            context.scene.objects.active = particleObj
+            HT_OT_CurvesUVRefresh.uvCurveRefresh(curveOB)
+            context.view_layer.objects.active = particleObj
         else:
             curveData.fill_mode = 'FULL'
             curveData.bevel_depth = 0.004 * diagonal
@@ -321,35 +336,31 @@ class RibbonsFromParticleHairChild(bpy.types.Operator):
 
 
 
-class ParticleHairToCurves(bpy.types.Operator):
+class HT_OT_ParticleHairToCurves(bpy.types.Operator):
     bl_label = "Particle Hair to Curves"
     bl_idname = "object.hair_to_curves"
     bl_description = "Convert active Hair particle system to curves. "
-    bl_options = {"REGISTER", "UNDO"}
+    bl_options = {"REGISTER", "UNDO", 'USE_EVAL_DATA'} #fixes operator on redo
 
-    embed = FloatProperty(name="Embed roots", description="Embed roots", default=0, min=0, max=10)
-    # embedTip = FloatProperty(name="Embed tips", description="Embed tips", default=0, min=0, max=10)
-    hairType = bpy.props.EnumProperty(name="Hair Type", default="NURBS",
+
+    # embed: FloatProperty(name="Embed roots", description="Embed roots", default=0, min=0, max=10)
+    # embedTip: FloatProperty(name="Embed tips", description="Embed tips", default=0, min=0, max=10)
+    hairType: bpy.props.EnumProperty(name="Hair Type", default="NURBS",
                                       items=(("BEZIER", "Bezier", ""),
                                              ("NURBS", "Nurbs", ""),
                                              ("POLY", "Poly", "")))
-    particleHairRes = IntProperty(name="Hair Res", description="How many points output curve will build off", default=3,
-                                  min=0, max=6)
-    strandResU = IntProperty(name="Segments U", default=3, min=1, max=5, description="Additional subdivision along strand length")
-    strandResV = IntProperty(name="Segments V", default=2, min=1, max=5, description="Subdivisions perpendicular to strand length ")
-    strandWidth = FloatProperty(name="Strand Width", default=0.5, min=0.0, max=10)
-    strandPeak = FloatProperty(name="Strand peak", default=0.4, min=0.0, max=1, description="Describes how much middle point of ribbon will be elevated")
-    strandUplift = FloatProperty(name="Strand uplift", default=0.0, min=-1, max=1, description="Moves whole ribbon up or down")
+    particleHairRes: IntProperty(name="Hair Res", description="How many points output curve will build off", default=2,
+                                  min=0, soft_max=6)
+    strandResU: IntProperty(name="Segments U", default=3, min=1, max=5, description="Additional subdivision along strand length")
+    strandResV: IntProperty(name="Segments V", default=2, min=1, max=5, description="Subdivisions perpendicular to strand length ")
+    strandWidth: FloatProperty(name="Strand Width", default=0.5, min=0.0, soft_max=10)
+    strandPeak: FloatProperty(name="Strand peak", default=0.4, min=0.0, max=1, description="Describes how much middle point of ribbon will be elevated")
+    strandUplift: FloatProperty(name="Strand uplift", default=0.0, min=-1, max=1, description="Moves whole ribbon up or down")
 
-    alignToSurface = BoolProperty(name="Align tilt", description="Align tilt to Surface", default=False)
+    alignToSurface: BoolProperty(name="Align tilt", description="Align tilt to Surface", default=False)
 
-    RadiusFalloff = FloatProperty(name="Radius falloff", description="Radius falloff over strand lenght", default=0,
-                                  min=-1, max=1, subtype='PERCENTAGE')
-    TipRadius = FloatProperty(name="Tip Radius", description="Tip Radius", default=1, min=0,
-                                  max=1, subtype='PERCENTAGE')
-    Radius = FloatProperty(name="Radius", description="Radius for bezier curve", default=1, min=0, max=100)
-    generateRibbons = BoolProperty(name="Generate Ribbons", description="Generate Ribbons on curve", default=True)
-    Seed = IntProperty(name="UV Seed", default=1, min=1, max=1000)
+    generateRibbons: BoolProperty(name="Generate Ribbons", description="Generate Ribbons on curve", default=False)
+    Seed: IntProperty(name="UV Seed", default=1, min=1, soft_max=1000)
 
     def check(self, context):  # DONE: can prop panel be fixed/refreshed when using f6 prop popup
         return True
@@ -357,8 +368,8 @@ class ParticleHairToCurves(bpy.types.Operator):
     def draw(self, context):
         layout = self.layout
         box = layout.box()
-        box.label("Curve from Particle Hair Settings:")
-        box.prop(self, 'embed')
+        box.label(text="Curve from Particle Hair Settings:")
+        # box.prop(self, 'embed')
         # box.prop(self, 'embedTips')
         box.prop(self, 'particleHairRes')
         box.prop(self, 'hairType')
@@ -373,14 +384,14 @@ class ParticleHairToCurves(bpy.types.Operator):
             col.prop(self, 'strandUplift')
             col.prop(self, 'Seed')
             col.prop(self, 'alignToSurface')
-        else:
-            col.prop(self, 'Radius')
-            col.prop(self, 'RadiusFalloff')
-            col.prop(self, 'TipRadius')
 
 
     def execute(self, context):
-        particleObj = context.object
+        depsgraph = bpy.context.depsgraph
+        ob = bpy.context.active_object
+        obj_eval = depsgraph.objects.get(ob.name, None)
+
+        particleObj = obj_eval
         partsysMod = None
         for mod in particleObj.modifiers:
             if mod.type == 'PARTICLE_SYSTEM':  #  and mod.show_viewport use first visible
@@ -391,7 +402,10 @@ class ParticleHairToCurves(bpy.types.Operator):
         if partsysMod is None:
             self.report({'INFO'}, 'No active Particle Hair System found')
             return {"CANCELLED"}
-        partsysMod.particle_system.settings.draw_step = self.particleHairRes
+        # partsysMod.particle_system.settings.draw_step = self.particleHairRes
+        partsysMod.particle_system.settings.display_step = self.particleHairRes
+        context.scene.render.hair_subdiv = 1
+        
         bpy.ops.object.modifier_convert(modifier=partsysMod.name)
         newObj = context.active_object
         me = newObj.data
@@ -399,17 +413,8 @@ class ParticleHairToCurves(bpy.types.Operator):
         bm.from_mesh(me)
         diagonal = math.sqrt(pow(particleObj.dimensions[0], 2) + pow(particleObj.dimensions[1], 2) + pow(particleObj.dimensions[2],
                                                                                                          2))  # to normalize some values
-        sourceSurface_BVHT = BVHTree.FromObject(particleObj, context.scene)
-        embed = self.embed * 0.04 * diagonal
-        # embedTips = self.embedTips * 0.04 * diagonal
-        for i, vert in enumerate(bm.verts):
-            if vert.select: #cos converted hair to mesh has first verts selected
-                snappedPoint, normalSourceSurf, index, distance = sourceSurface_BVHT.find_nearest(vert.co, 1000)
-                nextVert = vert.link_edges[0].other_vert(vert)  # only one edge
-                diff = vert.co - nextVert.co
-                diff.normalize()
-                normalWeight = abs(diff.dot(normalSourceSurf))
-                vert.co += (diff*normalWeight - normalSourceSurf*(1-normalWeight))* embed  #for slight bending root toward surface source
+        sourceSurface_BVHT = BVHTree.FromObject(particleObj, context.depsgraph)
+        
         bm.to_mesh(me)
         bm.free()
         newObj.data.transform(particleObj.matrix_world.inverted())  # cos modifier_convert above, applays loc,rot, scale so revert it
@@ -427,7 +432,6 @@ class ParticleHairToCurves(bpy.types.Operator):
 
         newObj.data.dimensions = '3D'
         newObj.data.fill_mode = 'FULL'
-        newObj.data.bevel_depth = 0.004 * diagonal
         newObj.data.bevel_resolution = 2
         newObj.data.resolution_u = self.strandResU
         if self.generateRibbons:
@@ -436,9 +440,7 @@ class ParticleHairToCurves(bpy.types.Operator):
             bpy.ops.object.generate_ribbons(strandResU=self.strandResU, strandResV=self.strandResV,
                                             strandWidth=self.strandWidth, strandPeak=self.strandPeak,
                                             strandUplift=self.strandUplift, alignToSurface=self.alignToSurface)
-            CurvesUVRefresh.uvCurveRefresh(newObj)
-        else:
-            bpy.ops.object.curve_taper(TipRadiusFalloff=self.RadiusFalloff, MainRadius=self.Radius, TipRadius=self.TipRadius)
+            HT_OT_CurvesUVRefresh.uvCurveRefresh(newObj)
 
         partsysMod.show_viewport = False
 
@@ -453,8 +455,9 @@ def getObjectMassCenter(context, obj):
     return view3d_utils.location_3d_to_region_2d(region, rv3d, global_bbox_center)  # 3d coords to 2d reg
 
 def particleHairFromPoints(self, context, particleObj, pointsList, extend=False):
+    ''' Particle system only works on equal len strands. No api for hair_keys with ++ point, or --'''
     partsysMod = None
-    context.scene.objects.active = particleObj
+    context.view_layer.objects.active = particleObj
 
     for mod in particleObj.modifiers:
         if mod.type == 'PARTICLE_SYSTEM':  # use first visible
@@ -467,66 +470,53 @@ def particleHairFromPoints(self, context, particleObj, pointsList, extend=False)
                         extendList.append([hair_key.co for hair_key in strand.hair_keys])
                     # ipdb.set_trace()
                     if len(extendList) > 0:
-                        pointsList.extend(interpol(extendList, len(pointsList[0]), uniform=False, constantLen=True))
+                        pointsList.extend(interpol_Catmull_Rom(extendList, len(pointsList[0]), uniform_spacing=False, same_point_count=True))
                 bpy.ops.particle.edited_clear()  # toogle editability
                 break
     if partsysMod is None:  # create new one
         self.report({'INFO'}, 'No active Particle Hair System found! Adding new one')
-        particleObj.modifiers.new("HairNet", 'PARTICLE_SYSTEM')
+        particleObj.modifiers.new("Hair_From_Curves", 'PARTICLE_SYSTEM')
         partsysMod = particleObj.particle_systems[-1]
         partsysMod.name = 'HairFromCurves'
-    # ipdb.set_trace()
     # Create new settings
     partsysMod.settings.type = 'HAIR'
     partsysMod.settings.emit_from = 'FACE'
     partsysMod.settings.use_strand_primitive = True
 
-    partsysMod.settings.hair_step = len(pointsList[0]) - 1  # == HAIR_KEY NUMB
+    hair_len = len(pointsList[0])-1
+    partsysMod.settings.hair_step = hair_len  # == HAIR_KEY NUMB
     partsysMod.settings.count = len(pointsList)
-    partsysMod.settings.draw_step = max(math.floor(math.log(len(pointsList[0]), 2)), 2) + 1
+    partsysMod.settings.display_step = max(math.floor(math.log(len(pointsList[0]), 2)), 2) + 1
     bpy.ops.particle.particle_edit_toggle()
-
-    bpy.context.scene.tool_settings.particle_edit.use_emitter_deflect = False
-    bpy.context.scene.tool_settings.particle_edit.use_preserve_root = False
-    bpy.context.scene.tool_settings.particle_edit.use_preserve_length = False
     # bpy.context.scene.update()
     for i, points in enumerate(pointsList):  # for strand point
         partsysMod.particles[i].location = points[0]
         for j, point in enumerate(points):  # for strand point
             partsysMod.particles[i].hair_keys[j].co = Vector(point)
+            
+    bpy.ops.particle.select_all(action='SELECT')
 
-    # do empty stroke to save hair
-    x, y = getObjectMassCenter(context, particleObj)
-    # fix stupid particle jumpint by making empty comb
-    bpy.context.scene.tool_settings.particle_edit.tool = 'COMB'
-    brushSize = bpy.context.scene.tool_settings.particle_edit.brush.size
-    bpy.context.scene.tool_settings.particle_edit.brush.size = 500
-    # bpy.ops.particle.brush_edit(
-    #     stroke=[{"name": "", "location": (0, 0, 0), "mouse": (x, y), "pressure": 0, "size": 0, "pen_flip": False, "time": 0, "is_start": False}])
-    # bpy.context.scene.update()
-    bpy.ops.particle.brush_edit(  # do 'empty' stroke to fix hair jumping
-        stroke=[{"name": "", "location": (0, 0, 0), "mouse": (x, y), "pressure": 0, "size": 0, "pen_flip": False, "time": 0, "is_start": False},
-                {"name": "", "location": (0, 0, 0), "mouse": (x + 1, y + 1), "pressure": 0, "size": 0, "pen_flip": False, "time": 0, "is_start": False}])
-    bpy.context.scene.tool_settings.particle_edit.brush.size = brushSize
-    bpy.context.scene.tool_settings.particle_edit.use_emitter_deflect = True
-    bpy.context.scene.tool_settings.particle_edit.use_preserve_root = True
-    bpy.context.scene.tool_settings.particle_edit.use_preserve_length = True
-    # snap to surface
+    bpy.ops.particle.rekey(keys_number=len(pointsList[0])) #fixes jumping bug
+    weights = [i / hair_len for i in range(hair_len ,-1, -1)]
+    for particle in partsysMod.particles:
+        particle.hair_keys.foreach_set('weight', weights)
+    bpy.ops.particle.select_all(action='DESELECT')
+
+     #sticks the attached curves to head surface
     bpy.ops.particle.disconnect_hair(all=True)
     bpy.ops.particle.connect_hair(all=True)
+
     bpy.ops.particle.particle_edit_toggle()
+    
 
-
-class ParticleHairFromCurves(bpy.types.Operator):
+class HT_OT_ParticleHairFromCurves(bpy.types.Operator):
     bl_label = "Particle Hair from Curves"
     bl_idname = "object.hair_from_curves"
     bl_description = "Creates particle hair strands from Curves object. \n" \
                      "Two objects need to be selected: one mesh and one curve type"
-    bl_options = {"REGISTER", "UNDO"}
+    bl_options = {"REGISTER", "UNDO", 'USE_EVAL_DATA'}
 
-    extend = BoolProperty(name="Append", description="Appends new curves to already existing Particle hair strands", default=True)
-    override_segments = BoolProperty(name="Resample strands", description="Force using strands segments parameter", default=False)
-    t_in_y = IntProperty(name="Strand Segments", default=8, min=3, max=20)
+    extend: BoolProperty(name="Append", description="Appends new curves to already existing Particle hair strands", default=True)
 
     def invoke(self, context, event):
         particleObj = context.active_object
@@ -535,21 +525,6 @@ class ParticleHairFromCurves(bpy.types.Operator):
             return {"CANCELLED"}
         return self.execute(context)
 
-    def draw(self, context):
-        layout = self.layout
-        box = layout.box()
-        box.label("Particle Hair from Curve settings:")
-        box.prop(self, 'extend')
-        box.prop(self, 'override_segments')
-        col = box.column(align=True)
-        if self.override_segments:
-            col.prop(self, 't_in_y')
-
-    @staticmethod
-    def isEqualLen(lst_of_lsts):
-        if len(lst_of_lsts) in (0, 1): return True
-        lfst = len(lst_of_lsts[0])
-        return all(len(lst) == lfst for lst in lst_of_lsts[1:])
 
     def execute(self, context):
         meshObj = [obj for obj in context.selected_objects if obj.type == 'MESH']
@@ -560,62 +535,60 @@ class ParticleHairFromCurves(bpy.types.Operator):
         particleObj = meshObj[0]
         for curveObj in curveObjs:
             #wtf undo won't work without this .... extend - if disablend, and then enabled breaks appending old hair (old hair co are all null)
-            bpy.context.scene.update()
-            # sourceSurface_BVHT = BVHTree.FromObject(particleObj, context.scene)
-
+            # bpy.context.scene.update()
             curveData = curveObj.data
-            curveData.transform(particleObj.matrix_world.inverted()*curveObj.matrix_world) #to make it go into particle obj space
+            curveData.transform(particleObj.matrix_world.inverted()@curveObj.matrix_world) #to make it go into particle obj space
             pointsList = []
             for polyline in curveData.splines:  # for strand point
                 if polyline.type == 'NURBS' or polyline.type == 'POLY':
-                    pointsList.append([point.co[0:3] for point in polyline.points])
+                    pointsList.append([point.co.xyz for point in polyline.points])
                 else:
-                    pointsList.append([point.co[0:3] for point in polyline.bezier_points])
-            curveData.transform(curveObj.matrix_world.inverted() * particleObj.matrix_world)
-            if self.override_segments: #if force resample
-                averLen = self.t_in_y
-                pointsList = interpol(pointsList, averLen, uniform=False)
-            elif not self.isEqualLen(pointsList):  #else  do stroke interpolation for splines of various lengths
+                    pointsList.append([point.co.xyz for point in polyline.bezier_points])
+            curveData.transform(curveObj.matrix_world.inverted() @ particleObj.matrix_world)
+            first_strand_len = len(pointsList[0])
+            if not all(len(strand) == first_strand_len for strand in pointsList):
                 averLen = int((len(pointsList[0]) + len(pointsList[1])) / 2)  # assume at least two splines?
-                pointsInterpolated = interpol(pointsList, averLen, uniform=False)
-                pointsList.clear()
-                pointsList = pointsInterpolated
-            if len(curveObjs)>1:
-                matchFound = False
-                for i,particleSystem in enumerate(particleObj.particle_systems):
-                    if particleSystem.name == curveObj.name:
-                        particleObj.particle_systems.active_index = i
-                        matchFound = True
-                        break
-                if not matchFound: #No matched Particle Hair System found! Adding new one
-                    particleObj.modifiers.new(curveObj.name, 'PARTICLE_SYSTEM')
-                    partsysMod = particleObj.particle_systems[-1]
-                    partsysMod.name = curveObj.name
-                    particleObj.particle_systems.active = partsysMod
-                    # particleObj.particle_systems.update()
+                pointsList = interpol_Catmull_Rom(pointsList, averLen, uniform_spacing=False)
+            matchFound = False
+            for i,particleSystem in enumerate(particleObj.particle_systems):
+                if particleSystem.name == curveObj.name:
+                    particleObj.particle_systems.active_index = i
+                    matchFound = True
+                    break
+            if not matchFound: #No matched Particle Hair System found! Adding new one
+                particleObj.modifiers.new(curveObj.name, 'PARTICLE_SYSTEM')
+                partsysMod = particleObj.particle_systems[-1]
+                partsysMod.name = curveObj.name
+                particleObj.particle_systems.active = partsysMod
+                # particleObj.particle_systems.update()
             particleHairFromPoints(self,context, particleObj, pointsList, extend = self.extend)
+        #do some nonsense - edit - quit particle edit undo - to fix jumping particle hairs. Soo ugly
+        # bpy.ops.ed.undo_push()        #     # bpy.context.scene.update()
+        # #MAKES crash on operator redo
+        # bpy.ops.ed.undo()
+        # bpy.ops.ed.redo()
         return {"FINISHED"}
 
 
 
-class ParticleHairFromGPencil(bpy.types.Operator):
+class HT_OT_ParticleHairFromGPencil(bpy.types.Operator):
     bl_label = "Particle hair from GPencile"
     bl_idname = "object.particle_from_gp"
     bl_description = "Convert Grease Pencil strokes to Particle hair, \n" \
                      "and attach them to selected mesh object"
     bl_options = {"REGISTER", "UNDO"}
 
-    hairType = bpy.props.EnumProperty(name="Hair Type", default="NURBS",
+    hairType: bpy.props.EnumProperty(name="Hair Type", default="NURBS",
                                       items=(("BEZIER", "Bezier", ""),
                                              ("NURBS", "Nurbs", ""),
                                              ("POLY", "Poly", "")))
-    t_in_y = IntProperty(name="Strand Segments", default=4, min=3, max=20)
-    offsetFalloff = FloatProperty(name="Offset Falloff", description="Noise influence over strand lenght", default=0,
+    t_in_y: IntProperty(name="Strand Segments", default=4, min=3, max=20)
+    offsetFalloff: FloatProperty(name="Offset Falloff", description="Noise influence over strand lenght", default=0,
                                  min=-1, max=1, subtype='PERCENTAGE')
-    offsetAbove = FloatProperty(name="Offset Strands", description="Offset strands above surface", default=0.2,
+    offsetAbove: FloatProperty(name="Offset Strands", description="Offset strands above surface", default=0.2,
                                 min=0.01, max=5.0)
-    useVertWeight = BoolProperty(name="Use Vertex Weight", description="Use Vertex Weight for modulating particle offset", default=False)
-    extend = BoolProperty(name="Append", description="Appends new curves to already existing Particle hair strands", default=False)
+    useVertWeight: BoolProperty(name="Use Vertex Weight", description="Use Vertex Weight for modulating particle offset", default=False)
+    extend: BoolProperty(name="Append", description="Appends new curves to already existing Particle hair strands", default=False)
 
     def invoke(self, context, event):
         particleObj = context.active_object
@@ -628,7 +601,7 @@ class ParticleHairFromGPencil(bpy.types.Operator):
     def execute(self, context):
         particleObj = context.active_object
         matInvHairObj = particleObj.matrix_world.inverted()
-        addon_prefs = bpy.context.user_preferences.addons['hair_tool'].preferences
+        addon_prefs = bpy.context.preferences.addons['hair_tool'].preferences
         if context.scene.GPSource:  # true == use scene gp
             if bpy.context.scene.grease_pencil and bpy.context.scene.grease_pencil.layers.active:
                 if len(bpy.context.scene.grease_pencil.layers.active.active_frame.strokes) > 0:
@@ -660,7 +633,7 @@ class ParticleHairFromGPencil(bpy.types.Operator):
         bm.from_mesh(particleObj.data)
         sourceSurface_BVHT = BVHTree.FromBMesh(bm)
         bm.free()
-        sourceSurface_BVHT_mod = BVHTree.FromObject(particleObj, context.scene) # to get smoother result when using subdiv
+        sourceSurface_BVHT_mod = BVHTree.FromObject(particleObj, context.depsgraph) # to get smoother result when using subdiv
 
         VGIndex = particleObj.vertex_groups.active_index
         # activeVertexGroup = context.active_object.vertex_groups[VGIndex]
@@ -672,8 +645,8 @@ class ParticleHairFromGPencil(bpy.types.Operator):
         if len(strokes)==0:
             self.report({'INFO'}, 'No GP strokes found!')
         for stroke in strokes:
-            pointsList.append([matInvHairObj*point.co for point in stroke.points])
-        pointsInterpolated = interpol(pointsList, self.t_in_y, uniform=True, constantLen=True)
+            pointsList.append([matInvHairObj@point.co for point in stroke.points])
+        pointsInterpolated = interpol_Catmull_Rom(pointsList, self.t_in_y, uniform_spacing=True, same_point_count=True)
 
         cpow = calc_power(self.offsetFalloff)
         strandLen = len(pointsInterpolated[0])
@@ -699,4 +672,5 @@ class ParticleHairFromGPencil(bpy.types.Operator):
                     offsetAbove = Vector(point) + self.offsetAbove * normalSourceSurf * noiseFalloff * weight * diagonal
                     pointsList[i].append(offsetAbove)
         particleHairFromPoints(self, context, particleObj, pointsList,extend=self.extend)
+
         return {"FINISHED"}

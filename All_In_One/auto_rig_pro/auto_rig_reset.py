@@ -2,18 +2,16 @@ import bpy
 
 def reset_all():
 
-	def set_inverse_child(b):
-		pbone = bpy.context.active_object.pose.bones[b]
-		context_copy = bpy.context.copy()
-		context_copy["constraint"] = pbone.constraints["Child Of"]
-		bpy.context.active_object.data.bones.active = pbone.bone
-		try:
-			bpy.ops.constraint.childof_set_inverse(context_copy, constraint="Child Of", owner='BONE')	
-		except:
-			print('Invalid bone constraint', b)
+	def set_inverse_child(b):			
+		# direct inverse matrix method
+		if cns.subtarget != "":
+			if bpy.context.active_object.data.bones.get(cns.subtarget):
+				cns.inverse_matrix = bpy.context.active_object.pose.bones[cns.subtarget].matrix.inverted()	
+		else:
+			print("Child Of constraint could not be reset, bone does not exist:", cns.subtarget, cns.name)
 		
 		
-	# Reset transforms-------------g-----------------
+	# Reset transforms------------------------------
 	bpy.ops.pose.select_all(action='SELECT')
 	bpy.ops.pose.loc_clear()
 	bpy.ops.pose.rot_clear()
@@ -41,16 +39,12 @@ def reset_all():
 					bone['bend_all'] = 0.0
 					
 		if len(bone.constraints) > 0:
-			if 'hand' in bone.name or 'foot' in bone.name:
+			if 'hand' in bone.name or 'foot' in bone.name or "c_leg_pole" in bone.name or "c_arms_pole" in bone.name or "head" in bone.name:
 				for cns in bone.constraints:
 					if 'Child Of' in cns.name:
 						set_inverse_child(bone.name)
-			if 'head' in bone.name:
-				for cns in bone.constraints:
-					if 'Child Of' in cns.name:	
-						#set_inverse_child(bone.name)
-						cns.inverse_matrix = bpy.context.object.pose.bones['c_neck.x'].matrix.inverted()
-						
-
-
+							
+			
+			
+			
 	bpy.ops.pose.select_all(action='DESELECT')

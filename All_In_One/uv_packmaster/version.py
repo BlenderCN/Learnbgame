@@ -13,8 +13,9 @@ class VersionInfo:
         self.marker = _marker
 
 def get_packer_version_array():
+    release_suffix = 'blend2.8-beta'
     version_array = [VersionInfo(1, 'e', 'extend', 'extended', 'UVP_VERSION_EXTENDED'),
                      VersionInfo(2, 'p', 'pro', 'professional', 'UVP_VERSION_PRO'),
                      VersionInfo(3, 'd', 'demo', 'DEMO', 'UVP_VERSION_DEMO')]
 
-    return version_array
+    return release_suffix, version_array

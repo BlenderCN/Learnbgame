@@ -1,0 +1,23 @@
+Notifications
+===================================
+
+.. image :: _static/notifications.jpg
+
+Desktop Notifications
+--------------------------------------------------------------------------------
+
+Displays a popup message in your desktop when rendering is finished. Desktop notifications currently work only on Linux and OS X Mavericks (or newer).
+
+
+Sound Notifications
+--------------------------------------------------------------------------------
+
+Plays a sound once rendering is complete. You can set the file and volume in the addon :doc:`preferences`. 
+
+
+Email Notifications
+--------------------------------------------------------------------------------
+
+Sends an email once rendering is finished. The email contains the name of the blend file, as well as total rendertime. If you rendered an animation, you will also get animation stats too (average and slowest/fastest frame).
+
+The email SMTP server must be configured before you can use it. Head over to the addon :doc:`preferences` section for more information.

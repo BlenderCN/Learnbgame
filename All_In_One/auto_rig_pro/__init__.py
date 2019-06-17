@@ -21,19 +21,23 @@
 bl_info = {
 	"name": "Auto-Rig Pro",
 	"author": "Artell",
-	"version": (3, 1, 8),
-	"blender": (2, 7, 9),
+	"version": (3, 41, 20),
+	"blender": (2, 80, 0),
 	"location": "3D View > Properties> Auto-Rig Pro",
-	"description": "Automatic rig creation based on reference bones. Picker panel, smart features, various tools",
+	"description": "[BETA VERSION FOR BLENDER 2.8 ONLY] Automatic rig generation based on reference bones and various tools",
 	"tracker_url": "https://blendermarket.com/products/auto-rig-pro?ref=46",	
-	"category": "Learnbgame",
-} 
+	"category": "Animation",
+	"warning": "Experimental"}
 
 
 if "bpy" in locals():
 	import importlib
+	if "auto_rig_prefs" in locals():
+		importlib.reload(auto_rig_prefs)
 	if "rig_functions" in locals():
 		importlib.reload(rig_functions)
+	if "auto_rig_datas" in locals():
+		importlib.reload(auto_rig_datas)
 	if "auto_rig" in locals():
 		importlib.reload(auto_rig)
 	if "auto_rig_smart" in locals():
@@ -42,44 +46,51 @@ if "bpy" in locals():
 		importlib.reload(auto_rig_remap)
 	if "auto_rig_ge" in locals():
 		importlib.reload(auto_rig_ge)
+	if "arp_fbx_init" in locals():
+		importlib.reload(arp_fbx_init)
+
 
 import bpy
 from bpy.app.handlers import persistent
 #import script files
+from . import auto_rig_prefs
 from . import rig_functions
 from . import auto_rig
 from . import auto_rig_smart
 from . import auto_rig_remap
 from . import auto_rig_ge
 
+from .export_fbx import arp_fbx_init
+	
 
 
-def register():	   
-	#register classes
-	bpy.utils.register_module(__name__)
-	#register properties and misc
+def menu_func_export(self, context):
+	self.layout.operator(auto_rig_ge.ARP_OT_GE_export_fbx_panel.bl_idname, text="Auto-Rig Pro FBX (.fbx)")	
+	
+
+def register():	 
+	auto_rig_prefs.register()
 	auto_rig.register()
-	auto_rig_smart.register()
-	rig_functions.register()
+	auto_rig_smart.register()	
 	auto_rig_remap.register()
 	auto_rig_ge.register()
+	rig_functions.register()
+	arp_fbx_init.register()
 	
+	bpy.types.TOPBAR_MT_file_export.append(menu_func_export)
 	
-  
 	
 
-def unregister():	
-	#unregister classes
-	bpy.utils.unregister_module(__name__)
-	#unregister properties and misc
+def unregister():
+	auto_rig_prefs.unregister()
 	auto_rig.unregister()
-	auto_rig_smart.unregister()
-	rig_functions.unregister()
+	auto_rig_smart.unregister()	
 	auto_rig_remap.unregister()
 	auto_rig_ge.unregister()
-	
-	
-	
+	rig_functions.unregister()
+	arp_fbx_init.unregister()
+	bpy.types.TOPBAR_MT_file_export.remove(menu_func_export)
+		
 	
 
 if __name__ == "__main__":

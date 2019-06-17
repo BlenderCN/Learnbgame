@@ -20,15 +20,14 @@ Created by Andreas Esau
 
 bl_info = {
     "name": "BPainter",
-    "description": "",
+    "description": "BPainter is a powerfull painting addon for blender.",
     "author": "Andreas Esau",
-    "version": (1, 0),
-    "blender": (2, 80, 0),
+    "version": (1, 1),
+    "blender": (2, 77, 0),
     "location": "View3D",
-    "warning": "This addon is still in Alpha state, please do not use for production.",
-    "wiki_url": "",
-    "category": "Learnbgame",
-    }
+    "warning": "",
+    "wiki_url": "http://bpainter.artbyndee.de/introduction",
+    "category": "Paint" }
 
 
 import bpy
@@ -63,6 +62,7 @@ class ExampleAddonPreferences(bpy.types.AddonPreferences):
     auto_set_viewport_shading = bpy.props.BoolProperty(name="Auto Set Viewport Shading", description="This will automatically set the Viewport Shading to Material when entering the Texture Paint.",default=True)
     override_buildin_colorpicker = bpy.props.BoolProperty(name="Override Buildin Colorpicker", description="This will override the buildin colorpicker that can be trigger with the S key.",default=True,update=inform_restart)
     use_alt_as_colorpicker = bpy.props.BoolProperty(name="Use Alt as Colorpicker", description="That way alt will be used as Colorpicker.",default=True, update=inform_restart)
+    use_layer_alpha_lock = bpy.props.BoolProperty(name="Use Layer Alpha Lock",description='If used, the Brush "Use Alpha" setting is overwritten by the layer Alpha Lock setting.',default=True)
     
     def draw(self, context):
         wm = context.window_manager
@@ -75,11 +75,14 @@ class ExampleAddonPreferences(bpy.types.AddonPreferences):
         row.prop(self, "use_alt_as_colorpicker")
         row = layout.row()
         row.prop(self, "override_buildin_colorpicker")
+        row = layout.row()
+        row.prop(self, "use_layer_alpha_lock")
         
         row = layout.row()
         op = row.operator("b_painter.import_brush_from_json",text="Load Brush Factory Settings",icon="LOAD_FACTORY")
         op.force_restore = True
         op.all_brushes = True
+        
 
 addon_keymaps = []
 def register_keymaps():
@@ -98,6 +101,9 @@ def register_keymaps():
     
     kmi = km.keymap_items.new("b_painter.set_absolute_brush_size", type = "F", value = "PRESS")
     kmi.active = False
+    
+    kmi = km.keymap_items.new("wm.call_menu_pie", type = "A", value = "PRESS")
+    kmi.properties.name = "view3d.b_painter_pie_menu"
     
     if get_addon_prefs(bpy.context).override_buildin_colorpicker:
         kmi = km.keymap_items.new("b_painter.color_pipette", type = "S", value = "PRESS")
@@ -118,12 +124,11 @@ def register():
     ui.register_previews()
     register_previews()
     
-    try: bpy.utils.register_class(ExampleAddonPreferences)
+    try: bpy.utils.register_module(__name__)
     except: traceback.print_exc()
 
     paint_props.register()
-    bpy.app.handlers.depsgraph_update_post.append(start_modal_update)
-    #bpy.app.handlers.scene_update_post.append(start_modal_update)
+    bpy.app.handlers.scene_update_post.append(start_modal_update)
     bpy.app.handlers.load_post.append(b_painter_startup)
     bpy.app.handlers.save_pre.append(save_pre_operations)
     
@@ -138,7 +143,7 @@ def unregister():
     
     unregister_keymaps()
     
-    try: bpy.utils.unregister_class(ExampleAddonPreferences)
+    try: bpy.utils.unregister_module(__name__)
     except: traceback.print_exc()
     
     bpy.app.handlers.load_post.remove(b_painter_startup)
@@ -158,7 +163,7 @@ def start_modal_update(dummy):
         bpy.context.window_manager["b_painter_startup_done"] = True
         bpy.data.scenes[0].b_painter_use_absolute_size = bpy.data.scenes[0].b_painter_use_absolute_size ### set shortcut for brush size
         
-        bpy.app.handlers.depsgraph_update_post.remove(start_modal_update)
+        bpy.app.handlers.scene_update_post.remove(start_modal_update)
         
         #################################
         context = bpy.context
@@ -228,7 +233,7 @@ def start_modal_update(dummy):
 @persistent
 def b_painter_startup(dummy):
     context = bpy.context
-    bpy.app.handlers.depsgraph_update_post.append(start_modal_update)
+    bpy.app.handlers.scene_update_post.append(start_modal_update)
         
         
 ### save pre operations    

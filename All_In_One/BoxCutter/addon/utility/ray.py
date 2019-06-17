@@ -1,62 +1,69 @@
-import bmesh
+import bpy
 
-from mathutils import Vector
-from mathutils.bvhtree import BVHTree as BVH
-
-from . import update, addon, data, modifier, object
-from . view3d import *
+from . view3d import location2d_to_origin3d, location2d_to_vector3d
 
 
 class cast:
 
 
-    #TODO: need to only apply modifiers in edit mode that are visible and effect cage
-    def object(ot, x, y, objects=[]):
+    def objects(x, y, obj=None, mesh=None, snap=False):
+        bc = bpy.context.window_manager.bc
 
-        bm = bmesh.new()
+        origin = location2d_to_origin3d(x, y)
+        direction = location2d_to_vector3d(x, y)
 
-        objects = ot.datablock['targets'] if not objects else objects
+        if obj:
+            hit, location, normal, index = obj.ray_cast(origin, direction, depsgraph=bpy.context.depsgraph)
 
-        for obj in objects:
-            new = object.duplicate(obj, name='Duplicate')
+            return hit, location, normal, index
 
-            modifier.apply(obj=new, visible=bpy.context.workspace.tools_mode == 'EDIT_MESH')
+        if mesh:
+            obj = bpy.data.objects.new(name='TMP', object_data=mesh)
 
-            new.data.transform(obj.matrix_world)
-            new.data.bc.removeable = True
-            new.modifiers.clear()
+            if snap and bool(bc.snap.object):
+                obj.data = obj.data.copy()
+                obj.data.bc.removeable = True
 
-            bm.from_mesh(new.data)
+                obj.data.transform(bc.snap.object.matrix_world)
 
-        addon.log(value='Duplicated selected objects and created ray geometry', indent=2)
+            original_active = bpy.context.active_object
+            bpy.context.scene.collection.objects.link(obj)
+            bpy.context.view_layer.objects.active = obj
 
-        dat = bpy.data.meshes.new(name='Duplicate')
-        bm.to_mesh(dat)
-        dat.bc.removeable = True
+            bpy.context.scene.update()
 
-        new = bpy.data.objects.new(name='Duplicate', object_data=dat)
-        ot.datablock['duplicate'] = new
+            hit, location, normal, index = obj.ray_cast(origin, direction, depsgraph=bpy.context.depsgraph)
 
-        if ot.datablock['dimensions'] == Vector((0, 0, 0)):
-            ot.datablock['dimensions'] = Vector((new.dimensions.x, new.dimensions.y, new.dimensions.z))
-            addon.log(value=F'Collected geometry dimensions: {ot.datablock["dimensions"]}', indent=2)
+            bpy.data.objects.remove(obj)
 
-        matrix = new.matrix_world
+            del obj
 
-        ray_origin = matrix.inverted() @ location2d_to_origin3d(x, y)
-        ray_direction = matrix.inverted().to_3x3() @ location2d_to_vector3d(x, y)
+            bpy.context.view_layer.objects.active = original_active
 
-        addon.log(value=F'Ray direction @ {ray_direction}', indent=2)
+            return hit, location, normal, index
 
-        bvh = BVH.FromBMesh(bm)
+        original_visible = bpy.context.visible_objects[:]
+        display = [(obj, obj.display_type) for obj in bpy.context.selected_objects if obj.type == 'MESH']
+        hide = [obj for obj in original_visible if not obj.select_get() or obj.type != 'MESH']
 
-        location, normal, index, distance = bvh.ray_cast(ray_origin, ray_direction)
+        for obj in hide:
+            obj.hide_set(True)
 
-        if location:
-            addon.log(value=F'Casted ray and found location @ {location}', indent=2)
-            addon.log(value=F'Normal @ {normal}', indent=2)
-            addon.log(value=F'Distance @ {distance}', indent=2)
-            return matrix @ location, matrix.to_3x3() @ normal, index, distance
-        else:
-            addon.log(value='Casted ray and found nothing', indent=2)
-            return None, None, None, None
+        for obj in display:
+            obj[0].display_type = 'SOLID'
+
+        bpy.context.scene.update()
+
+        hit, location, normal, index, object, matrix = bpy.context.scene.ray_cast(bpy.context.view_layer, origin, direction)
+
+        for obj in hide:
+            obj.hide_set(False)
+
+        for obj in display:
+            obj[0].display_type = obj[1]
+
+        del original_visible
+        del display
+        del hide
+
+        return hit, location, normal, index, object, matrix

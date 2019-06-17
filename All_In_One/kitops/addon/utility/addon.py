@@ -7,6 +7,7 @@ from . import update
 name = __name__.partition('.')[0]
 icons = {}
 
+
 class path:
 
     def __new__(self):
@@ -24,10 +25,9 @@ class path:
     def default_thumbnail():
         return os.path.join(path.default_kpack(), 'thumb.png')
 
-def preference():
-    global name
 
-    preference = bpy.context.user_preferences.addons[name].preferences
+def preference():
+    preference = bpy.context.preferences.addons[name].preferences
 
     if not len(preference.folders):
         folder = preference.folders.add()
@@ -35,6 +35,7 @@ def preference():
         folder.location = path.default_kpack()
 
     return preference
+
 
 def option():
     option = bpy.context.window_manager.kitops

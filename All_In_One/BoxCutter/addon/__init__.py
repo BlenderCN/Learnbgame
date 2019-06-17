@@ -1,1 +1,1 @@
-__all__ = ('interface', 'utility', 'preference', 'property')
+__all__ = ('operator', 'panel', 'utility', 'icon', 'keymap', 'pie', 'preference', 'property', 'topbar')

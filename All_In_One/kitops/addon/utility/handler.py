@@ -1,109 +1,130 @@
 import sys
 
 import bpy
-from bpy.app.handlers import persistent
+from bpy.app.handlers import persistent, depsgraph_update_pre, depsgraph_update_post, load_pre, load_post, save_pre
 
-from . import addon, draw, insert, remove, update
+from . import addon, shader, insert, remove, update
 
 smart_enabled = True
 try: from . import smart
 except: smart_enabled = False
 
-@persistent
-def scene_update_pre(none):
-    global smart_enabled
 
-    if not insert.authoring():
+#TODO: switch to timer modal
+class pre:
 
-        if smart_enabled:
-            smart.insert_scene_update_pre()
 
-        insert.correct_ids()
-
-    elif not smart_enabled:
-        for object in bpy.data.objects:
-            object.select = False
-
-    if not smart_enabled:
-        for object in bpy.data.objects:
-            if object.kitops.main and not object.kitops.id:
-                sys.exit()
-
-@persistent
-def scene_update_post(none):
-    global smart_enabled
-
-    preference = addon.preference()
-    option = addon.option()
-
-    if insert.authoring():
-        if smart_enabled:
-            smart.authoring_scene_update_post()
-    else:
-        if not insert.operator:
-            for object in [object for object in bpy.data.objects if object.kitops.duplicate]:
-                remove.object(object, data=True)
-
-        if addon.preference().mode == 'SMART' or addon.preference().enable_auto_select:
-            insert.select()
-
-        if not insert.operator:
+    @persistent
+    def depsgraph(none):
+        if not insert.authoring():
 
             if smart_enabled:
-                smart.toggles_scene_update_post()
+                smart.insert_depsgraph_update_pre()
 
-    if not smart_enabled:
-        for object in bpy.data.objects:
-            if object.kitops.main and not object.kitops.id:
-                sys.exit()
+            insert.correct_ids()
 
-@persistent
-def load_pre(none):
-    global smart_enabled
+        elif not smart_enabled:
+            for obj in bpy.data.objects:
+                try:
+                    obj.select_set(False)
+                except RuntimeError: pass
 
-    if draw.handler:
-        bpy.types.SpaceView3D.draw_handler_remove(draw.handler, 'WINDOW')
+        if not smart_enabled:
+            for obj in bpy.data.objects:
+                if obj.kitops.main and not obj.kitops.id:
+                    sys.exit()
 
-    draw.handler = None
 
-    if not smart_enabled:
-        for object in bpy.data.objects:
-            if object.kitops.main and not object.kitops.id:
-                sys.exit()
+    @persistent
+    def load(none):
+        # if shader.handler:
+        #     bpy.types.SpaceView3D.draw_handler_remove(shader.handler, 'WINDOW')
 
-@persistent
-def load_post(none):
-    global smart_enabled
+        # shader.handler = None
 
-    option = addon.option()
+        if not smart_enabled:
+            for obj in bpy.data.objects:
+                if obj.kitops.main and not obj.kitops.id:
+                    sys.exit()
 
-    draw.handler = bpy.types.SpaceView3D.draw_handler_add(draw.border, (None, bpy.context), 'WINDOW', 'POST_PIXEL')
 
-    if insert.authoring():
+    @persistent
+    def save(none):
+        option = addon.option()
+
+        # if shader.handler:
+        #     bpy.types.SpaceView3D.draw_handler_remove(shader.handler, 'WINDOW')
+        #     shader.handler = None
+
         if smart_enabled:
-            smart.authoring_load_post()
-    else:
-        update.category(None, bpy.context)
+            smart.authoring_save_pre()
 
-    if not smart_enabled:
-        for object in bpy.data.objects:
-            if object.kitops.main and not object.kitops.id:
-                sys.exit()
+        if not smart_enabled:
+            for obj in bpy.data.objects:
+                if obj.kitops.main and not obj.kitops.id:
+                    sys.exit()
 
-@persistent
-def save_pre(none):
-    global smart_enabled
 
-    option = addon.option()
+class post:
 
-    if draw.handler:
-        bpy.types.SpaceView3D.draw_handler_remove(draw.handler, 'WINDOW')
-        draw.handler = None
 
-    if smart_enabled:
-        smart.authoring_save_pre()
+    @persistent
+    def depsgraph(none):
+        preference = addon.preference()
+        option = addon.option()
 
-    if not smart_enabled:
-        for object in bpy.data.objects:
-            if object.kitops.main and not object.kitops.id:
-                sys.exit()
+        if insert.authoring():
+            if smart_enabled:
+                smart.authoring_depsgraph_update_post()
+        else:
+            if not insert.operator:
+                for obj in [ob for ob in bpy.data.objects if ob.kitops.duplicate]:
+                    remove.object(obj, data=True)
+
+            if addon.preference().mode == 'SMART' or addon.preference().enable_auto_select:
+                insert.select()
+
+            if not insert.operator:
+
+                if smart_enabled:
+                    smart.toggles_depsgraph_update_post()
+
+        if not smart_enabled:
+            for obj in bpy.data.objects:
+                if obj.kitops.main and not obj.kitops.id:
+                    sys.exit()
+
+
+    @persistent
+    def load(none):
+        option = addon.option()
+
+        # shader.handler = bpy.types.SpaceView3D.draw_handler_add(shader.border, (None, bpy.context), 'WINDOW', 'POST_PIXEL')
+
+        if insert.authoring():
+            if smart_enabled:
+                smart.authoring_load_post()
+            else:
+                for obj in bpy.data.objects:
+                    obj.kitops.applied = True
+
+        if not smart_enabled:
+            for obj in bpy.data.objects:
+                if obj.kitops.main and not obj.kitops.id:
+                    sys.exit()
+
+
+def register():
+    depsgraph_update_pre.append(pre.depsgraph)
+    depsgraph_update_post.append(post.depsgraph)
+    load_pre.append(pre.load)
+    load_post.append(post.load)
+    save_pre.append(pre.save)
+
+
+def unregister():
+    depsgraph_update_pre.remove(pre.depsgraph)
+    depsgraph_update_post.remove(post.depsgraph)
+    load_pre.remove(pre.load)
+    load_post.remove(post.load)
+    save_pre.remove(pre.save)

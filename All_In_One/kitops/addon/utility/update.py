@@ -12,24 +12,24 @@ smart_mode = True
 try: from . import smart
 except: smart_mode = False
 
-def category(prop, context):
-    from .. import panel
 
-    preference = addon.preference()
+def kpacks(prop, context):
+    option = addon.option()
 
-    panel.Tools.bl_category = preference.category
+    for index, category in enumerate(option.kpack.categories):
+        if category.name == option.kpacks:
+            option.kpack.active_index = index
 
-    unregister_class(panel.Tools)
-    register_class(panel.Tools)
+            break
 
 def kpack(prop, context):
     preference = addon.preference()
     option = addon.option()
 
-    def add_blend(location, folder, catagory):
+    def add_blend(location, folder, category):
         for file in os.listdir(os.path.join(location, folder)):
-            if file.endswith('.blend') and regex.clean_name(file, use_re=preference.clean_names) not in [blend.name for blend in catagory.blends]:
-                blend = catagory.blends.add()
+            if file.endswith('.blend') and regex.clean_name(file, use_re=preference.clean_names) not in [blend.name for blend in category.blends]:
+                blend = category.blends.add()
                 blend.name = regex.clean_name(file, use_re=preference.clean_names)
                 blend.location = os.path.join(location, folder, file)
                 blend.icon = 'FILE_BLEND'
@@ -49,11 +49,11 @@ def kpack(prop, context):
 
     def add_folder(master):
         for folder in [file for file in os.listdir(master.location) if os.path.isdir(os.path.join(master.location, file))]:
-            if regex.clean_name(folder, use_re=preference.clean_names) not in [catagory.name for catagory in option.kpack.categories]:
-                catagory = option.kpack.categories.add()
-                catagory.name = regex.clean_name(folder, use_re=preference.clean_names)
-                catagory.icon = 'FILE_FOLDER'
-                catagory.folder = folder
+            if regex.clean_name(folder, use_re=preference.clean_names) not in [category.name for category in option.kpack.categories]:
+                category = option.kpack.categories.add()
+                category.name = regex.clean_name(folder, use_re=preference.clean_names)
+                category.icon = 'FILE_FOLDER'
+                category.folder = folder
 
                 if folder in insert.thumbnails:
                     previews.remove(insert.thumbnails[folder])
@@ -64,14 +64,14 @@ def kpack(prop, context):
 
                 insert.thumbnails[folder] = thumbnails
 
-                add_blend(master.location, folder, catagory)
+                add_blend(master.location, folder, category)
 
-                if not len(catagory.blends):
-                    option.kpack.categories.remove([catagory.name for catagory in option.kpack.categories].index(catagory.name))
+                if not len(category.blends):
+                    option.kpack.categories.remove([category.name for category in option.kpack.categories].index(category.name))
             else:
-                catagory = option.kpack.categories[regex.clean_name(folder, use_re=preference.clean_names)]
+                category = option.kpack.categories[regex.clean_name(folder, use_re=preference.clean_names)]
 
-                add_blend(master.location, folder, catagory)
+                add_blend(master.location, folder, category)
 
             images = insert.thumbnails[folder].images
             enum_items = []
@@ -98,10 +98,12 @@ def kpack(prop, context):
     if reset:
         kpack(None, context)
 
+
 def options():
     option = addon.option()
 
     kpack(None, bpy.context)
+
 
 def icons():
     preview = previews.new()
@@ -111,6 +113,7 @@ def icons():
             preview.load(file[:-4], os.path.join(addon.path.icons(), file), 'IMAGE')
 
     addon.icons['main'] = preview
+
 
 def libpath(prop, context):
     preference = addon.preference()
@@ -125,52 +128,61 @@ def libpath(prop, context):
 
     kpack(None, context)
 
+
 def thumbnails(prop, context):
     option = addon.option()
 
     prop['active_index'] = [blend.name for blend in prop.blends].index(prop.thumbnail)
     option.kpack.active_index = [kpack.name for kpack in option.kpack.categories].index(prop.name)
-    bpy.ops.kitops.add_insert('INVOKE_DEFAULT', location=prop.blends[prop.active_index].location)
+    # bpy.ops.ko.add_insert('INVOKE_DEFAULT', location=prop.blends[prop.active_index].location)
+
 
 def active_index(prop, context):
-    bpy.ops.kitops.add_insert('INVOKE_DEFAULT', location=prop.blends[prop.active_index].location)
+    pass
+    # bpy.ops.ko.add_insert('INVOKE_DEFAULT', location=prop.blends[prop.active_index].location)
+
 
 def mode(prop, context):
-    inserts = [object for object in bpy.data.objects if object.kitops.insert]
+    inserts = [obj for obj in bpy.data.objects if obj.kitops.insert]
 
-    for object in inserts:
-        object.kitops.applied = True
+    for obj in inserts:
+        obj.kitops.applied = True
 
         if prop.mode == 'REGULAR':
-            object.kitops['insert_target'] = None
+            obj.kitops['insert_target'] = None
+
 
 def show_modifiers(prop, context):
     option = addon.option()
 
     inserts = insert.collect(all=True)
 
-    for object in bpy.data.objects:
-        for modifier in object.modifiers:
+    for obj in bpy.data.objects:
+        for modifier in obj.modifiers:
             if modifier.type == 'BOOLEAN' and modifier.object and modifier.object in inserts:
                 modifier.show_viewport = option.show_modifiers
+
 
 def show_solid_objects(prop, context):
     option = addon.option()
 
-    for object in insert.collect(solids=True, all=True):
-        object.hide = not option.show_solid_objects
+    for obj in insert.collect(solids=True, all=True):
+        obj.hide_viewport = not option.show_solid_objects
+
 
 def show_cutter_objects(prop, context):
     option = addon.option()
 
-    for object in insert.collect(cutters=True, all=True):
-        object.hide = not option.show_cutter_objects
+    for obj in insert.collect(cutters=True, all=True):
+        obj.hide_viewport = not option.show_cutter_objects
+
 
 def show_wire_objects(prop, context):
     option = addon.option()
 
-    for object in insert.collect(wires=True, all=True):
-        object.hide = not option.show_wire_objects
+    for obj in insert.collect(wires=True, all=True):
+        obj.hide_viewport = not option.show_wire_objects
+
 
 def location():
     if ray.success:
@@ -182,38 +194,39 @@ def location():
         insert.operator.main.matrix_world.translation = ray.location
         insert.operator.main.scale = scale
 
+
 def insert_scale(prop, context):
     preference = addon.preference()
     option = addon.option()
 
-    if not insert.operator:
-        mains = insert.collect(context.selected_objects, mains=True)
-    else:
-        mains = [insert.operator.main]
+    if option.auto_scale:
+        if not insert.operator:
+            mains = insert.collect(context.selected_objects, mains=True)
+        else:
+            mains = [insert.operator.main]
 
-    for main in mains:
-        try:
+        for main in mains:
             if main.kitops.insert_target and smart_mode or insert.operator and not smart_mode:
-                init_hide = copy(main.hide)
-                main.hide = False
+                init_hide = copy(main.hide_viewport)
+                main.hide_viewport = False
 
                 scale = getattr(preference, '{}_scale'.format(preference.insert_scale.lower()))
                 largest_dimension = max(*main.kitops.insert_target.dimensions) * (scale * 0.01)
 
                 dimension = main.dimensions
+
                 axis = 'x'
                 if dimension.y > dimension.x:
                     axis = 'y'
                 if dimension.z > getattr(dimension, axis):
                     axis = 'z'
 
-                setattr(dimension, axis, largest_dimension)
+                setattr(main.scale, axis, largest_dimension / getattr(dimension, axis) * getattr(main.scale, axis))
 
                 remaining_axis = [a for a in 'xyz' if a != axis]
                 setattr(main.scale, remaining_axis[0], getattr(main.scale, axis))
                 setattr(main.scale, remaining_axis[1], getattr(main.scale, axis))
 
-                main.hide = init_hide
-        except: pass
+                main.hide_viewport = init_hide
 
     context.scene.update()

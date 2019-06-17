@@ -24,6 +24,135 @@ from shutil import copyfile
 from mathutils import Vector
 import math
 
+def generate_combine_alpha_node_group(context):
+    if "BPainterCombineAlpha" not in bpy.data.node_groups:
+        node_group = bpy.data.node_groups.new("BPainterCombineAlpha","ShaderNodeTree")
+        
+        group_input = node_group.nodes.new("NodeGroupInput")
+        group_input.select = False
+        group_output = node_group.nodes.new("NodeGroupOutput")
+        group_output.select = False
+        math_subtract = node_group.nodes.new("ShaderNodeMath")
+        math_subtract.operation = "SUBTRACT"
+        math_subtract.inputs[0].default_value = 1.0
+        math_subtract.select = False
+        math_multiply = node_group.nodes.new("ShaderNodeMath")
+        math_multiply.operation = "MULTIPLY"
+        math_multiply.select = False
+        math_add = node_group.nodes.new("ShaderNodeMath")
+        math_add.operation = "ADD"
+        math_add.select = False
+        
+        group_input.location = [0,0]
+        group_output.location = [460,0]
+        math_subtract.location = [160,-20]
+        math_multiply.location = [260,-20]
+        math_add.location = [360,0]
+        
+        math_subtract.hide = True
+        math_multiply.hide = True
+        math_add.hide = True
+        
+        a1 = node_group.inputs.new("NodeSocketFloat","Alpha1")
+        a1.max_value = 1.0
+        a1.min_value = 0.0
+        a2 = node_group.inputs.new("NodeSocketFloat","Alpha2")
+        a2.max_value = 1.0
+        a2.min_value = 0.0
+        a = node_group.outputs.new("NodeSocketFloat","Alpha")
+        a.max_value = 1.0
+        a.min_value = 0.0
+        
+        node_group.links.new(group_input.outputs["Alpha1"],math_subtract.inputs[1])
+        node_group.links.new(group_input.outputs["Alpha1"],math_add.inputs[0])
+        node_group.links.new(group_input.outputs["Alpha2"],math_multiply.inputs[1])
+        node_group.links.new(math_subtract.outputs["Value"],math_multiply.inputs[0])
+        node_group.links.new(math_multiply.outputs["Value"],math_add.inputs[1])
+        node_group.links.new(math_add.outputs["Value"],group_output.inputs["Alpha"])
+    return bpy.data.node_groups["BPainterCombineAlpha"]  
+
+def generate_paint_channel_alpha(context,node_group):
+    generate_combine_alpha_node_group(context)
+    nodes = node_group.nodes
+    
+    layers = []
+    for node in nodes:
+        if "BPainterAlpha" in node:
+            node_group.nodes.remove(node)
+            continue
+        
+        if node.type == "MIX_RGB" and node.label != "BPaintMask" and node.blend_type == "MIX":
+            layer = {"mix_node":node,"mask_node":None}
+            if len(node.outputs["Color"].links) == 1:
+                next_node = node.outputs["Color"].links[0].to_node
+                if next_node.label == "BPaintMask":
+                    layer["mask_node"] = next_node
+                
+                
+            layers.append(layer)
+    layers.sort(key=lambda x:x["mix_node"].location[0])
+    
+    alpha1 = None
+    for i,layer in enumerate(layers):
+        if i + 1 <= len(layers)-1:
+            next_layer = layers[i+1]
+            next_layer_2 = layers[i+2] if i + 2 <= len(layers)-1 else None
+            alpha1 = layer["mix_node"].inputs["Fac"].links[0].from_node if alpha1 == None else alpha1
+            alpha2 = next_layer["mix_node"].inputs["Fac"].links[0].from_node
+            
+            alpha_mix = node_group.nodes.new("ShaderNodeGroup")
+            alpha_mix["BPainterAlpha"] = True
+            alpha_mix.node_tree = bpy.data.node_groups["BPainterCombineAlpha"]
+            alpha_mix.location[0] = next_layer["mix_node"].location[0]
+            alpha_mix.location[1] = next_layer["mix_node"].location[1] -280
+            alpha_mix.hide = True
+            alpha_mix.select = False
+            
+            subtract_node = None
+            if next_layer["mask_node"] != None:
+                subtract_node = node_group.nodes.new("ShaderNodeMath")
+                subtract_node["BPainterAlpha"] = True
+                subtract_node.location[0] = next_layer["mix_node"].location[0]
+                subtract_node.location[1] = next_layer["mix_node"].location[1] -240
+                subtract_node.operation = "SUBTRACT"
+                subtract_node.hide = True
+                subtract_node.select = False
+            
+                
+            ### link nodes    
+            if subtract_node != None:
+                node_group.links.new(next_layer["mask_node"].inputs["Fac"].links[0].from_node.outputs["Color"],subtract_node.inputs[1])
+                node_group.links.new(alpha2.outputs["Value"],subtract_node.inputs[0])
+                alpha2 = subtract_node
+                
+            
+            node_group.links.new(alpha1.outputs[0],alpha_mix.inputs["Alpha2"])
+            node_group.links.new(alpha2.outputs[0],alpha_mix.inputs["Alpha1"])
+            
+            if next_layer_2 == None:
+                if len(node_group.nodes["Group Output"].inputs["Alpha"].links) > 0:
+                    node_group.links.remove(node_group.nodes["Group Output"].inputs["Alpha"].links[0])
+                node_group.links.new(alpha_mix.outputs[0],node_group.nodes["Group Output"].inputs["Alpha"],verify_limits=False)
+            alpha1 = alpha_mix
+        elif len(layers) == 1:
+            alpha1 = layer["mix_node"].inputs["Fac"].links[0].from_node
+            node_group.links.new(alpha1.outputs[0],node_group.nodes["Group Output"].inputs["Alpha"])
+            
+def set_brush_alpha_lock(context,mat):
+    prefs = get_addon_prefs(context)
+    
+    if prefs.use_layer_alpha_lock:
+        brush = context.tool_settings.image_paint.brush if context.tool_settings != None and context.tool_settings.image_paint != None else None
+        layer = mat.b_painter.paint_layers[mat.b_painter.paint_layers_index] if mat != None and len(mat.b_painter.paint_layers) > 0 and mat.b_painter.paint_layers_index <= len(mat.b_painter.paint_layers)-1 else None
+        if brush != None and layer != None:
+            img = None
+            if context.scene.render.engine in ["BLENDER_RENDER","BLENDER_GAME"]:
+                img = bpy.data.images[layer.name] if layer.name in bpy.data.images else None
+            elif context.scene.render.engine in ["CYCLES"]:
+                img = bpy.data.images[layer.img_name] if layer.img_name in bpy.data.images else None
+            if img != None:
+                brush.use_alpha = not(img.b_painter.lock_alpha)
+
 def get_node_group_recursive(node_tree):
     list = []
     if node_tree != None:
@@ -121,7 +250,7 @@ def setup_b_painter():
 
 def get_addon_prefs(context):
     addon_name = __name__.split(".")[0]
-    user_preferences = context.preferences
+    user_preferences = context.user_preferences
     addon_prefs = user_preferences.addons[addon_name].preferences
     return addon_prefs
 
@@ -203,7 +332,13 @@ def b_version_bigger_than(version):
     if bpy.app.version > version:
         return True
     else:
-        return False         
+        return False
+    
+def b_version_smaller_than(version):
+    if bpy.app.version < version:
+        return True
+    else:
+        return False
 
 def set_active_paint_layer(self,obj):
     context = bpy.context
@@ -298,6 +433,7 @@ def update_paint_layers(self,context,mat):
             for i in range(len(paint_layers)):
                 paint_layers.remove(0)
             
+            layer_item = None
             if context.scene.render.engine in ['BLENDER_RENDER','BLENDER_GAME']:
                 for i,tex_slot in enumerate(mat.texture_slots):
                     if tex_slot != None:
@@ -320,8 +456,8 @@ def update_paint_layers(self,context,mat):
                         layer_node = layer_data[0]
                         layer_type = layer_data[1]
                         if layer_type == "PAINT_LAYER":
-                            tex_node = layer_node.inputs["Color2"].links[0].from_node
-                            if tex_node.image != None:
+                            tex_node = layer_node.inputs["Color2"].links[0].from_node if layer_node.inputs["Color2"].links[0].from_node.type == "TEX_IMAGE" else None
+                            if tex_node != None and tex_node.image != None:
                                 img = tex_node.image
                                 layer_item = paint_layers.add()
                                 layer_item.name = img.name
@@ -343,16 +479,6 @@ def update_paint_layers(self,context,mat):
                                     layer_item.mask_mix_node_name = mask_node.name
                                     layer_item.mask_tex_node_name = mask_tex_node.name
                                     layer_item.mask_img_name = mask_img.name
-                                     
-                                    if layer_item.name not in mat.b_painter:
-                                        mat.b_painter[layer_item.name] = [1,0]
-                                    else:
-                                        layer_item["mask_layer_active"] = mat.b_painter[layer_item.name][1]
-                                        
-                                if layer_item.name not in mat.b_painter:
-                                    mat.b_painter[layer_item.name] = [1,0]
-                                else:
-                                    layer_item["paint_layer_active"] = mat.b_painter[layer_item.name][0]
                                     
                                 
                         elif layer_type in ["ADJUSTMENT_LAYER","PROCEDURAL_TEXTURE"]:
@@ -383,17 +509,6 @@ def update_paint_layers(self,context,mat):
                                 layer_item.tex_node_name = mask_tex_node.name
                                 layer_item.mask_img_name = mask_img.name
                                  
-                                if layer_item.name not in mat.b_painter:
-                                    mat.b_painter[layer_item.name] = [1,0]
-                                else:
-                                    layer_item["mask_layer_active"] = mat.b_painter[layer_item.name][1]
-                                    
-                            if layer_item.name not in mat.b_painter:
-                                mat.b_painter[layer_item.name] = [1,0]
-                            else:
-                                layer_item["paint_layer_active"] = mat.b_painter[layer_item.name][0]
-                            
-                            
                 elif mat.b_painter.paint_channel_active == "Unordered Images":
                     node_tree = mat.node_tree
                     
@@ -415,8 +530,32 @@ def update_paint_layers(self,context,mat):
                 
                 get_paint_channel_info(mat,context)
                 context.scene.update()
+                
+                ### update channel alpha
+                if mat.b_painter.paint_channel_active in bpy.data.node_groups:
+                    generate_paint_channel_alpha(context,bpy.data.node_groups[mat.b_painter.paint_channel_active]) 
+                
             set_active_uv_layout(self,context)        
             
+            ### set active mask/paint-layer and alpha lock
+            if "layer_information" not in mat.b_painter:
+                mat.b_painter["layer_information"] = {}
+            for layer_item in mat.b_painter.paint_layers:
+                if layer_item.name not in mat.b_painter["layer_information"]:
+                    mat.b_painter["layer_information"][layer_item.name] = [1,0]
+                elif layer_item.name in mat.b_painter["layer_information"] and len(mat.b_painter["layer_information"][layer_item.name]) == 2:
+                    settings = list(mat.b_painter["layer_information"][layer_item.name])
+                    settings.append(False)
+                    mat.b_painter["layer_information"][layer_item.name] = settings
+                else:
+                    layer_item["mask_layer_active"] = mat.b_painter["layer_information"][layer_item.name][1]
+                    layer_item["paint_layer_active"] = mat.b_painter["layer_information"][layer_item.name][0]
+            for item in mat.b_painter["layer_information"].keys():
+                if item not in mat.b_painter.paint_layers:
+                    del(mat.b_painter["layer_information"][item])
+                    
+            #### set brush alpha settings
+            set_brush_alpha_lock(context,mat)
             
 
 def update_all_paint_layers(self,context):

@@ -48,7 +48,8 @@ def setup_pass(pass_name):
                 assign_material(obj, pass_name +"_CURVE")
         else:
             assign_material(obj, pass_name)
-    background.hide_render = background.hide = True if pass_name in {'DIFFUSE','ID'} and background is not None else False #hide background for these passes
+    background.hide_render = background.hide_viewport = True if pass_name in {
+        'DIFFUSE', 'ID'} and background is not None else False  # hide background for these passes
     if pass_name == 'TANGENT' and background is not None:
         assign_material(background,'FLAT_TANGENT')
 
@@ -81,7 +82,7 @@ def compose_channels(context,bake_pass_list):
     # outputImg.filepath_raw = bpy.path.abspath(bake_settings.hair_bake_path + "Hair_compo." + suffix)
 
 
-class BakeHair(bpy.types.Operator):
+class HT_OT_BakeHair(bpy.types.Operator):
     bl_idname = "object.bake_hair"
     bl_label = "Bake Hair"
     bl_description = "Bake Hair"
@@ -90,16 +91,16 @@ class BakeHair(bpy.types.Operator):
     @staticmethod
     def unify_render_preview_settings ( context):
         for obj in bpy.context.scene.objects:
-            obj.hide_render = obj.hide
+            obj.hide_render = obj.hide_viewport
         particle_objs = [obj for obj in bpy.data.objects if obj.type=='MESH' and len(obj.particle_systems)]
         for particle_obj in particle_objs:
             for particle_system in particle_obj.particle_systems:
                 particle_system.settings.rendered_child_count =  particle_system.settings.child_nbr
-                particle_system.settings.draw_step = 3
+                # particle_system.settings.display_step = 3
 
     def execute(self, context):
         bake_settings = context.scene.hair_bake_settings
-        addon_prefs = bpy.context.user_preferences.addons['hair_tool'].preferences
+        addon_prefs = bpy.context.preferences.addons['hair_tool'].preferences
         bpy.context.scene.render.image_settings.file_format = bake_settings.output_format
         # if save_path:
         #     bpy.ops.wm.save_as_mainfile(filepath=save_path)
@@ -131,7 +132,7 @@ class BakeHair(bpy.types.Operator):
         return {"FINISHED"}
 
 
-class OpenHairFile(bpy.types.Operator):
+class HT_OT_OpenHairFile(bpy.types.Operator):
     bl_idname = "object.open_hair_bake"
     bl_label = "Open Baking scene"
     bl_description = "Open Baking scene"

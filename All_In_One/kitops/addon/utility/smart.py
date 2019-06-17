@@ -4,8 +4,10 @@ import bpy
 
 from bpy.types import Operator
 from bpy.props import *
+from bpy.utils import register_class, unregister_class
 
 from . import addon, bbox, id, insert, remove
+
 
 def authoring_save_pre():
     option = addon.option()
@@ -13,37 +15,43 @@ def authoring_save_pre():
     if insert.authoring() and bpy.data.filepath != addon.path.thumbnail_scene():
 
         bpy.ops.object.mode_set(mode='OBJECT')
-        for object in bpy.data.objects:
-            object.kitops.id = ''
-            object.kitops.author = option.author
-            object.kitops.insert = True
-            object.kitops.animated = bpy.context.scene.kitops.animated
+        for obj in bpy.context.visible_objects:
+            obj.kitops.inserted = False
 
-            if object.data:
-                object.data.kitops.id = id.uuid()
-                object.data.kitops.insert = True
+        for obj in bpy.data.objects:
+            obj.kitops.id = ''
+            obj.kitops.author = option.author
+            obj.kitops.insert = False
+            obj.kitops.applied = False
+            obj.kitops.animated = bpy.context.scene.kitops.animated
 
-        main = [object for object in bpy.context.scene.objects if object.kitops.main][0]
-        bpy.context.scene.objects.active = main
+            if obj.data:
+                obj.data.kitops.id = id.uuid()
+                obj.data.kitops.insert = False
 
-        if bpy.context.scene.kitops.auto_parent and not bpy.context.scene.kitops.thumbnail_scene:
-            bpy.ops.object.visual_transform_apply()
+        main = [obj for obj in bpy.data.objects if obj.kitops.main][0]
+        bpy.context.view_layer.objects.active = main
+        main.select_set(True)
 
-            for object in bpy.context.scene.objects:
-                object.parent = None
+        if bpy.context.scene.kitops.auto_parent:
+            # bpy.ops.object.visual_transform_apply()
 
-            for object in bpy.context.scene.objects:
-                object.select = True
+            for obj in bpy.data.objects:
+                obj.parent = None
+
+            for obj in bpy.data.objects:
+                obj.select_set(True)
 
             bpy.ops.object.parent_set(type='OBJECT', keep_transform=True)
+
 
 def authoring_load_post():
     option = addon.option()
 
     author = False
-    for object in bpy.data.objects:
-        if object.kitops.author:
-            author = object.kitops.author
+    for obj in bpy.data.objects:
+        if obj.kitops.author:
+            author = obj.kitops.author
             break
 
     if author:
@@ -51,12 +59,12 @@ def authoring_load_post():
 
     else:
         option.author = addon.preference().author
-        for object in bpy.data.objects:
-            object.kitops.author = addon.preference().author
+        for obj in bpy.data.objects:
+            obj.kitops.author = addon.preference().author
 
     main = False
-    for object in bpy.data.objects:
-        if object.kitops.main:
+    for obj in bpy.data.objects:
+        if obj.kitops.main:
             main = True
             break
 
@@ -66,143 +74,155 @@ def authoring_load_post():
         elif len(bpy.data.objects):
             bpy.data.objects[0].kitops['main'] = True
 
-def toggles_scene_update_post():
+
+#XXX: type and reference error
+def toggles_depsgraph_update_post():
     option = addon.option()
 
     solid_inserts = insert.collect(solids=True, all=True)
     count = 0
-    for object in solid_inserts:
-        if object.hide:
-            option['show_solid_objects'] = False
-            break
-        elif not object.select:
-            count += 1
+    for obj in solid_inserts:
+        try:
+            if obj.hide_viewport:
+                option['show_solid_objects'] = False
+                break
+            elif obj in bpy.context.view_layer.objects and not obj.select_get():
+                count += 1
+        except: pass
 
     if count > 2 and count == len(solid_inserts):
         option['show_solid_objects'] = True
 
     boolean_inserts = insert.collect(cutters=True, all=True)
     count = 0
-    for object in boolean_inserts:
-        if object.hide:
-            option['show_cutter_objects'] = False
-            break
-        elif not object.select:
-            count += 1
+    for obj in boolean_inserts:
+        try:
+            if obj.hide_viewport:
+                option['show_cutter_objects'] = False
+                break
+            elif not obj.select_get():
+                count += 1
+        except RuntimeError: pass
 
     if count > 2 and count == len(boolean_inserts):
         option['show_cutter_objects'] = True
 
     wire_inserts = insert.collect(wires=True, all=True)
     count = 0
-    for object in wire_inserts:
-        if object.hide:
-            option['show_wire_objects'] = False
-            break
-        elif not object.select:
-            count += 1
+    for obj in wire_inserts:
+        try:
+            if obj.hide_viewport:
+                option['show_wire_objects'] = False
+                break
+            elif not obj.select_get():
+                count += 1
+        except RuntimeError: pass
 
     if count > 2 and count == len(wire_inserts):
         option['show_wire_objects'] = True
 
-def authoring_scene_update_post():
+
+def authoring_depsgraph_update_post():
     if len(bpy.data.objects) == 1:
         bpy.data.objects[0].kitops['main'] = True
 
-    for object in bpy.data.objects:
-        if object.type not in {'MESH', 'CURVE', 'SURFACE', 'META', 'FONT', 'ARMATURE'}:
-            object.kitops.type = 'WIRE'
-        if object.type != 'MESH' and object.kitops.type == 'CUTTER':
-            object.kitops.type = 'WIRE'
-        if object.kitops.main and object.kitops.selection_ignore:
-            object.kitops.selection_ignore = False
+    for obj in bpy.data.objects:
+        if obj.type not in {'MESH', 'CURVE', 'SURFACE', 'META', 'FONT', 'ARMATURE'}:
+            obj.kitops.type = 'WIRE'
+        if obj.type != 'MESH' and obj.kitops.type == 'CUTTER':
+            obj.kitops.type = 'WIRE'
+        if obj.kitops.main and obj.kitops.selection_ignore:
+            obj.kitops.selection_ignore = False
 
-def insert_scene_update_pre():
+
+def insert_depsgraph_update_pre():
     if addon.preference().mode == 'SMART':
         if not insert.operator:
             insert.show_solid_objects()
             insert.show_cutter_objects()
             insert.show_wire_objects()
 
-        objects = [object for object in bpy.data.objects if not object.kitops.insert and object.type == 'MESH']
-        inserts = [object for object in sorted(bpy.data.objects, key=lambda object: object.name) if object.kitops.insert and not object.kitops.applied]
+        objs = [obj for obj in bpy.data.objects if not obj.kitops.insert and obj.type == 'MESH']
+        inserts = [obj for obj in sorted(bpy.data.objects, key=lambda obj: obj.name) if obj.kitops.insert and not obj.kitops.applied]
 
-        for object in inserts:
-            if object.kitops.type == 'CUTTER' and object.kitops.insert_target:
+        for obj in inserts:
+            if obj.kitops.type == 'CUTTER' and obj.kitops.insert_target:
                 available = False
-                for modifier in object.kitops.insert_target.modifiers:
-                    if modifier.type == 'BOOLEAN' and modifier.object == object:
+                for modifier in obj.kitops.insert_target.modifiers:
+                    if modifier.type == 'BOOLEAN' and modifier.object == obj:
                         available = True
 
                         break
 
                 if not available:
                     #TODO: remove all bools for insert and reapply in order (maintain consistent order)
-                    insert.add_boolean(object)
+                    insert.add_boolean(obj)
 
-            if object.kitops.type == 'CUTTER':
-                for target in objects:
+            if obj.kitops.type == 'CUTTER':
+                for target in objs:
                     for modifier in target.modifiers:
-                        if modifier.type == 'BOOLEAN' and modifier.object == object and target != object.kitops.insert_target:
+                        if modifier.type == 'BOOLEAN' and modifier.object == obj and target != obj.kitops.insert_target:
 
                             target.modifiers.remove(modifier)
+
 
 def new_empty():
     empty = bpy.data.objects.new('KIT OPS Mirror Target', None)
     empty.location = bpy.context.active_object.kitops.insert_target.location
-    empty.empty_draw_size = 0.01
+    empty.empty_display_size = 0.01
 
-    bpy.context.scene.objects.link(empty)
+    bpy.data.collections['INSERTS'].objects.link(empty)
 
     return empty
 
-def add_mirror(object, axis='X'):
-    object.kitops.mirror = True
-    modifier = object.modifiers.new(name='KIT OPS Mirror', type='MIRROR')
-    if modifier:
-        modifier.use_x = False
 
-        setattr(modifier, 'use_{}'.format(axis.lower()), getattr(object.kitops, 'mirror_{}'.format(axis.lower())))
+def add_mirror(obj, axis='X'):
+    obj.kitops.mirror = True
+    mod = obj.modifiers.new(name='KIT OPS Mirror', type='MIRROR')
 
-        empty = None
-        for obj in bpy.data.objects:
-            if obj and obj.type == 'EMPTY' and obj.location == object.kitops.insert_target.location:
-                empty = obj
+    if mod:
+        mod.show_expanded = False
+        mod.use_axis[0] = False
 
-        modifier.mirror_object = empty if empty else new_empty()
-        object.kitops.mirror_target = modifier.mirror_object
+        index = {'X': 0, 'Y': 1, 'Z': 2} # patch inplace for api change
+        mod.use_axis[index[axis]] = getattr(obj.kitops, F'mirror_{axis.lower()}')
+
+        mod.mirror_object = obj.kitops.insert_target
+        obj.kitops.mirror_target = obj.kitops.insert_target
+
 
 def validate_mirror(inserts, axis='X'):
-    for object in inserts:
-        if object.kitops.mirror:
+    for obj in inserts:
+        if obj.kitops.mirror:
 
             available = False
             # assuming our mirror is most recent
-            for modifier in reversed(object.modifiers):
+            for modifier in reversed(obj.modifiers):
 
-                if modifier.type == 'MIRROR' and modifier.mirror_object == object.kitops.mirror_target:
+                if modifier.type == 'MIRROR' and modifier.mirror_object == obj.kitops.mirror_target:
                     available = True
-                    setattr(modifier, 'use_{}'.format(axis.lower()), getattr(object.kitops, 'mirror_{}'.format(axis.lower())))
+                    index = {'X': 0, 'Y': 1, 'Z': 2} # patch inplace for api change
+                    modifier.use_axis[index[axis]] = getattr(obj.kitops, F'mirror_{axis.lower()}')
 
-                    if (modifier.use_x, modifier.use_y, modifier.use_z) == (False, False, False):
-                        object.kitops.mirror = False
-                        remove.object(object.kitops.mirror_target)
-                        object.kitops.mirror_target = None
-                        object.modifiers.remove(modifier)
+                    if True not in modifier.use_axis[:]:
+                        obj.kitops.mirror = False
+                        obj.kitops.mirror_target = None
+                        obj.modifiers.remove(modifier)
 
                     break
 
             if not available:
-                add_mirror(object, axis=axis)
+                add_mirror(obj, axis=axis)
 
         else:
-            add_mirror(object, axis=axis)
+            add_mirror(obj, axis=axis)
+
 
 def apply_booleans(inserts):
     targets = []
-    for object in inserts:
-        if object.kitops.insert_target not in targets:
-            targets.append(object.kitops.insert_target)
+    for obj in inserts:
+        if obj.kitops.insert_target not in targets:
+            targets.append(obj.kitops.insert_target)
 
     for target in targets:
         duplicate = target.copy()
@@ -215,12 +235,12 @@ def apply_booleans(inserts):
 
         duplicate.modifiers.clear()
 
-        for object in target_inserts:
-            object.kitops['insert_target'] = duplicate
+        for obj in target_inserts:
+            obj.kitops['insert_target'] = duplicate
 
         bpy.context.scene.update()
 
-        duplicate.data = duplicate.to_mesh(bpy.context.scene, apply_modifiers=True, settings='PREVIEW', calc_tessface=False)
+        duplicate.data = duplicate.to_mesh(bpy.context.depsgraph, apply_modifiers=True)
 
         old_data = bpy.data.meshes[target.data.name]
         name = old_data.name
@@ -231,10 +251,11 @@ def apply_booleans(inserts):
         duplicate.data = old_data
         remove.object(duplicate, data=True)
 
+
 def remove_booleans(inserts, targets=[], clear_target=False):
-    for object in inserts:
-        if object.kitops.insert_target and object.kitops.insert_target not in targets:
-            targets.append(object.kitops.insert_target)
+    for obj in inserts:
+        if obj.kitops.insert_target and obj.kitops.insert_target not in targets:
+            targets.append(obj.kitops.insert_target)
 
     for target in targets:
 
@@ -249,138 +270,105 @@ def remove_booleans(inserts, targets=[], clear_target=False):
             target.modifiers.remove(modifier)
 
     if clear_target:
-        for object in inserts:
-            object.kitops['insert_target'] = None
+        for obj in inserts:
+            obj.kitops['insert_target'] = None
+
 
 def clear(inserts):
-    for object in inserts:
-        object.kitops.insert = False
-        object.kitops['insert_target'] = None
+    for obj in inserts:
+        obj.kitops.insert = False
+        obj.kitops['insert_target'] = None
+
 
 def delete(inserts):
-    for object in inserts:
-        remove.object(object, data=True)
+    for obj in inserts:
+        remove.object(obj, data=True)
 
-class ApplyInsert(Operator):
-    bl_idname = 'kitops.apply_insert'
+
+class KO_OT_apply_insert(Operator):
+    bl_idname = 'ko.apply_insert'
     bl_label = 'Apply'
-    bl_description = 'Apply selected INSERTS'
-    bl_options = {'REGISTER', 'UNDO'}
+    bl_description = 'Apply selected INSERTS\n  Shift - Apply modifiers\n'
+    bl_options = {'UNDO'}
 
-    apply_modifiers = BoolProperty(
-        name = 'Apply modifiers',
-        description = 'Apply modifiers for the selected ISNERTS',
-        default = True)
-
-    keep_insert = BoolProperty(
-        name = 'Keep INSERT',
-        description = 'Keep the selected INSERTS after applying',
-        default = True)
-
-    make_real = BoolProperty(
-        name = 'Make real',
-        description = 'Strip selected INSERTS of all kitops related behavior permanently',
-        default = False)
-
-    def draw(self, context):
-        layout = self.layout
-
-        layout.prop(self, 'apply_modifiers')
-        layout.prop(self, 'keep_insert')
-
-        if self.keep_insert:
-            layout.prop(self, 'make_real')
-
-    def execute(self, context):
+    def invoke(self, context, event):
 
         inserts = insert.collect(context.selected_objects)
 
-        if self.apply_modifiers:
+        if event.shift:
             apply_booleans(inserts)
 
-            for object in inserts:
-                object.kitops['insert_target'] = None
-        else:
-            for object in inserts:
-                object.kitops.applied = True
-                object.kitops['insert_target'] = None
-
-        if not self.keep_insert:
-            delete(inserts)
-
-        if self.make_real:
-            try: insert.clear(inserts)
-            except: pass
+        clear(inserts)
 
         return {'FINISHED'}
 
-class RemoveInsert(Operator):
-    bl_idname = 'kitops.remove_insert'
+
+class KO_OT_remove_insert(Operator):
+    bl_idname = 'ko.remove_insert'
     bl_label = 'Delete'
-    bl_description = 'Remove selected INSERTS'
-    bl_options = {'REGISTER', 'UNDO'}
+    bl_description = 'Remove selected INSERTS\n  Shift - KITOPS properties only'
+    bl_options = {'UNDO'}
 
-    apply_modifiers = BoolProperty(
-        name = 'Apply modifiers',
-        description = 'Apply modifiers for the selected INSERTS',
-        default = False)
-
-    make_real = BoolProperty(
-        name = 'Make real',
-        description = 'Strip selected INSERTS of all kitops related behavior permanently',
-        default = False)
-
-    def execute(self, context):
+    def invoke(self, context, event):
         inserts = insert.collect(context.selected_objects)
 
-        if self.apply_modifiers:
-            apply_booleans(inserts)
+        if not event.shift:
+            for obj in inserts:
+                for o in bpy.data.objects:
+                    for modifier in o.modifiers:
+                        if modifier.type == 'BOOLEAN' and modifier.object == obj:
+                            o.modifiers.remove(modifier)
 
-        if self.make_real:
+            for obj in inserts:
+                remove.object(obj, data=True)
+
+        else:
             clear(inserts)
 
-        else:
-            for object in inserts:
-                remove.object(object, data=True)
-
         return {'FINISHED'}
 
-class RenderThumbnail(Operator):
-    bl_idname = 'kitops.render_thumbnail'
+
+#TODO: render scene needs to be the kpack render scene if any
+#TOOD: progress report update
+class KO_OT_render_thumbnail(Operator):
+    bl_idname = 'ko.render_thumbnail'
     bl_label = 'Render thumbnail'
-    bl_description = 'Render and save a thumbnail for this INSERT\n  CTRL - Import thumbnail scene\n  ALT - Render all thumbnails for the current working directory\n\n  Use system console to see progress (Window > Toggle system console)'
+    bl_description = 'Render and save a thumbnail for this INSERT.\n  Shift - Import thumbnail scene\n  Ctrl - Render all thumbnails for the current working directory\n  Alt - Prevent scale fitting\n\n  Use system console to see progress (Window > Toggle system console)'
     bl_options = {'INTERNAL'}
 
-    render = BoolProperty(default=False)
-
+    render: BoolProperty(default=False)
     max_dimension = 1.8
+    skip_scale = False
 
     def invoke(self, context, event):
         preference = addon.preference()
         init_active = bpy.data.objects[context.active_object.name]
         init_scene = bpy.data.scenes[context.scene.name]
+        init_objects = bpy.data.objects[:]
         duplicates = []
         parents = []
+        self.skip_scale = event.alt
 
         if not self.render:
 
             print('\nKIT OPS beginning thumbnail rendering')
             preference.mode = 'SMART'
 
-            with bpy.data.libraries.load(addon.path.thumbnail_scene()) as (blend, thumbnail):
+            with bpy.data.libraries.load(addon.path.thumbnail_scene()) as (blend, imported):
                 print('\tImported thumbnail rendering scene')
-                thumbnail.scenes = blend.scenes
-                thumbnail.materials = blend.materials
+                imported.scenes = blend.scenes
+                imported.materials = blend.materials
 
-            scene = thumbnail.scenes[0]
-            context.screen.scene = scene
+            scene = imported.scenes[0]
+            scene.kitops.thumbnail_scene = True
+            context.window.scene = scene
 
-            for object in scene.objects:
-                object.select = False
+            for object in scene.collection.objects:
+                object.select_set(False)
 
-            floor = [object for object in context.scene.objects if object.kitops.ground_box][0]
+            floor = [object for object in context.scene.collection.objects if object.kitops.ground_box][0]
 
-            for object in init_scene.objects:
+            for object in init_objects:
                 duplicate = object.copy()
                 duplicate.name = 'ko_duplicate_{}'.format(object.name)
                 if duplicate.type != 'EMPTY':
@@ -389,15 +377,15 @@ class RenderThumbnail(Operator):
                 duplicates.append(duplicate)
                 parents.append((duplicate, object.parent))
 
-                context.scene.objects.link(duplicate)
+                context.scene.collection.objects.link(duplicate)
 
                 duplicate.kitops.insert = True
                 duplicate.kitops.id = 'tmp'
                 duplicate.kitops.applied = False
                 duplicate.kitops['insert_target'] = floor
 
-                duplicate.select = True
-                duplicate.hide = False
+                duplicate.select_set(True)
+                duplicate.hide_viewport = False
 
                 if duplicate.kitops.type == 'CUTTER' and duplicate.kitops.boolean_type == 'UNION':
                     duplicate.data.materials.clear()
@@ -422,12 +410,12 @@ class RenderThumbnail(Operator):
 
             print('\tInsert parenting')
 
-            if event.alt or event.ctrl:
-                main = [duplicate for duplicate in duplicates if duplicate.kitops.main][0]
-                context.scene.objects.active = main
-                bpy.ops.view3d.viewnumpad(type='CAMERA')
-                dimension = main.dimensions
+            main = [duplicate for duplicate in duplicates if duplicate.kitops.main][0]
+            context.view_layer.objects.active = main
+            bpy.ops.view3d.view_camera()
+            dimension = main.dimensions
 
+            if not self.skip_scale:
                 axis = 'x'
                 if dimension.y > dimension.x:
                     axis = 'y'
@@ -445,36 +433,39 @@ class RenderThumbnail(Operator):
             context.scene.render.filepath = bpy.data.filepath[:-6] + '.png'
             print('\tRender path: {}'.format(context.scene.render.filepath))
 
-            if not event.ctrl:
+            if event.shift:
+                bpy.ops.object.convert(target='MESH')
+
+            else:
                 print('\nRendering...')
                 bpy.ops.render.render(write_still=True)
 
-            if not event.alt and not event.ctrl:
+            if not event.shift and not event.ctrl:
 
                 print('Cleaning up\n')
                 for object in duplicates:
                     remove.object(object, data=True)
 
-                context.screen.scene = init_scene
+                context.window.scene = init_scene
 
-                for scene in thumbnail.scenes:
-                    for object in scene.objects:
+                for scene in imported.scenes:
+                    for object in scene.collection.objects:
                         remove.object(object, data=True)
 
                     bpy.data.scenes.remove(scene, do_unlink=True)
 
-                for material in thumbnail.materials:
+                for material in imported.materials:
                     bpy.data.materials.remove(material, do_unlink=True, do_id_user=True, do_ui_user=True)
 
-                init_scene.objects.active = init_active
+                context.view_layer.objects.active = init_active
 
-                for object in init_scene.objects:
-                    object.select = True
-                    object.hide = False
+                for object in init_scene.collection.objects:
+                    object.select_set(True)
+                    object.hide_viewport = False
 
                 print('Finished\n')
 
-            if event.alt and not event.ctrl:
+            if not event.shift and event.ctrl:
 
                 print('Removing insert')
                 for object in duplicates:
@@ -493,24 +484,24 @@ class RenderThumbnail(Operator):
 
                         scene = [scene for scene in imported.scenes if not scene.kitops.thumbnail_scene][0]
 
-                        if not len(scene.objects):
+                        if not len(scene.collection.objects):
                             print('Invalid file... skipping\n')
                             continue
 
-                        elif not len([object for object in scene.objects if object.kitops.main]):
+                        elif not len([object for object in scene.collection.objects if object.kitops.main]):
                             print('Invalid file... skipping\n')
                             continue
 
-                        for object in scene.objects:
-                            context.scene.objects.link(object)
+                        for object in scene.collection.objects:
+                            context.scene.collection.objects.link(object)
 
                             object.kitops.insert = True
                             object.kitops.id = 'tmp'
                             object.kitops.applied = False
                             object.kitops['insert_target'] = floor
 
-                            object.select = True
-                            object.hide = False
+                            object.select_set(True)
+                            object.hide_viewport = False
 
                             if object.kitops.type == 'CUTTER' and object.kitops.boolean_type == 'UNION':
                                 object.data.materials.clear()
@@ -528,22 +519,23 @@ class RenderThumbnail(Operator):
                         print('\tInsert target: {}'.format(floor.name))
                         print('\tInsert materials')
 
-                        main = [object for object in context.scene.objects if object.kitops.main][0]
+                        main = [object for object in context.scene.collection.objects if object.kitops.main][0]
                         dimension = main.dimensions
 
-                        axis = 'x'
-                        if dimension.y > dimension.x:
-                            axis = 'y'
-                        if dimension.z > getattr(dimension, axis):
-                            axis = 'z'
+                        if not self.skip_scale:
+                            axis = 'x'
+                            if dimension.y > dimension.x:
+                                axis = 'y'
+                            if dimension.z > getattr(dimension, axis):
+                                axis = 'z'
 
-                        setattr(dimension, axis, self.max_dimension)
+                            setattr(dimension, axis, self.max_dimension)
 
-                        remaining_axis = [a for a in 'xyz' if a != axis]
-                        setattr(main.scale, remaining_axis[0], getattr(main.scale, axis))
-                        setattr(main.scale, remaining_axis[1], getattr(main.scale, axis))
+                            remaining_axis = [a for a in 'xyz' if a != axis]
+                            setattr(main.scale, remaining_axis[0], getattr(main.scale, axis))
+                            setattr(main.scale, remaining_axis[1], getattr(main.scale, axis))
 
-                        print('\tInsert size (max dimension of {})'.format(self.max_dimension))
+                            print('\tInsert size (max dimension of {})'.format(self.max_dimension))
 
                         context.scene.render.filepath = location[:-6] + '.png'
                         print('\tRender path: {}'.format(context.scene.render.filepath))
@@ -555,7 +547,7 @@ class RenderThumbnail(Operator):
 
                         print('Cleaning up\n')
                         for scene in imported.scenes:
-                            for object in scene.objects:
+                            for object in scene.collection.objects:
                                 remove.object(object, data=True)
 
                             bpy.data.scenes.remove(scene, do_unlink=True)
@@ -564,22 +556,22 @@ class RenderThumbnail(Operator):
                             bpy.data.materials.remove(material, do_unlink=True, do_id_user=True, do_ui_user=True)
 
                 else:
-                    context.screen.scene = init_scene
+                    context.window.scene = init_scene
 
-                    for scene in thumbnail.scenes:
-                        for object in scene.objects:
+                    for scene in imported.scenes:
+                        for object in scene.collection.objects:
                             remove.object(object, data=True)
 
                         bpy.data.scenes.remove(scene, do_unlink=True)
 
-                    for material in thumbnail.materials:
+                    for material in imported.materials:
                         bpy.data.materials.remove(material, do_unlink=True, do_id_user=True, do_ui_user=True)
 
-                    init_scene.objects.active = init_active
+                    context.view_layer.objects.active = init_active
 
-                    for object in init_scene.objects:
-                        object.select = True
-                        object.hide = False
+                    for object in init_scene.collection.objects:
+                        object.select_set(True)
+                        object.hide_viewport = False
 
                     print('Finished\n')
 
@@ -588,13 +580,16 @@ class RenderThumbnail(Operator):
 
         return {'FINISHED'}
 
-class AlignHorizontal(Operator):
-    bl_idname = 'kitops.align_horizontal'
+
+
+#XXX: align needs to check dimensions with current insert disabled
+class KO_OT_align_horizontal(Operator):
+    bl_idname = 'ko.align_horizontal'
     bl_label = 'Align horizontal'
     bl_description = 'Align selected INSERTS horizontally within target bounds'
     bl_options = {'REGISTER', 'UNDO'}
 
-    y_axis = BoolProperty(
+    y_axis: BoolProperty(
         name = 'Y Axis',
         description = 'Use the y axis of the INSERT TARGET for alignment',
         default = False)
@@ -611,13 +606,14 @@ class AlignHorizontal(Operator):
 
         return {'FINISHED'}
 
-class AlignVertical(Operator):
-    bl_idname = 'kitops.align_vertical'
+
+class KO_OT_align_vertical(Operator):
+    bl_idname = 'ko.align_vertical'
     bl_label = 'Align vertical'
     bl_description = 'Align selected INSERTS vertically within target bounds'
     bl_options = {'REGISTER', 'UNDO'}
 
-    z_axis = BoolProperty(
+    z_axis: BoolProperty(
         name = 'Z Axis',
         description = 'Use the Z axis of the INSERT TARGET for alignment',
         default = False)
@@ -634,13 +630,14 @@ class AlignVertical(Operator):
 
         return {'FINISHED'}
 
-class AlignLeft(Operator):
-    bl_idname = 'kitops.align_left'
+
+class KO_OT_align_left(Operator):
+    bl_idname = 'ko.align_left'
     bl_label = 'Align left'
     bl_description = 'Align selected INSERTS to the left of the target bounds'
     bl_options = {'REGISTER', 'UNDO'}
 
-    y_axis = BoolProperty(
+    y_axis: BoolProperty(
         name = 'Y Axis',
         description = 'Use the y axis of the INSERT TARGET for alignment',
         default = False)
@@ -656,13 +653,14 @@ class AlignLeft(Operator):
 
         return {'FINISHED'}
 
-class AlignRight(Operator):
-    bl_idname = 'kitops.align_right'
+
+class KO_OT_align_right(Operator):
+    bl_idname = 'ko.align_right'
     bl_label = 'Align right'
     bl_description = 'Align selected INSERTS to the right of the target bounds'
     bl_options = {'REGISTER', 'UNDO'}
 
-    y_axis = BoolProperty(
+    y_axis: BoolProperty(
         name = 'Y Axis',
         description = 'Use the y axis of the INSERT TARGET for alignment',
         default = False)
@@ -678,13 +676,14 @@ class AlignRight(Operator):
 
         return {'FINISHED'}
 
-class AlignTop(Operator):
-    bl_idname = 'kitops.align_top'
+
+class KO_OT_align_top(Operator):
+    bl_idname = 'ko.align_top'
     bl_label = 'Align top'
     bl_description = 'Align selected INSERTS to the top of the target bounds'
     bl_options = {'REGISTER', 'UNDO'}
 
-    z_axis = BoolProperty(
+    z_axis: BoolProperty(
         name = 'Z Axis',
         description = 'Use the Z axis of the INSERT TARGET for alignment',
         default = False)
@@ -700,13 +699,14 @@ class AlignTop(Operator):
 
         return {'FINISHED'}
 
-class AlignBottom(Operator):
-    bl_idname = 'kitops.align_bottom'
+
+class KO_OT_align_bottom(Operator):
+    bl_idname = 'ko.align_bottom'
     bl_label = 'Align bottom'
     bl_description = 'Align selected INSERTS to the bottom of the target bounds'
     bl_options = {'REGISTER', 'UNDO'}
 
-    z_axis = BoolProperty(
+    z_axis: BoolProperty(
         name = 'Z Axis',
         description = 'Use the Z axis of the INSERT TARGET for alignment',
         default = False)
@@ -722,18 +722,19 @@ class AlignBottom(Operator):
 
         return {'FINISHED'}
 
-class StretchWide(Operator):
-    bl_idname = 'kitops.stretch_wide'
+
+class KO_OT_stretch_wide(Operator):
+    bl_idname = 'ko.stretch_wide'
     bl_label = 'Stretch wide'
     bl_description = 'Stretch selected INSERTS to the width of the target bounds'
     bl_options = {'REGISTER', 'UNDO'}
 
-    y_axis = BoolProperty(
+    y_axis: BoolProperty(
         name = 'X axis',
         description = 'Use the Y axis of the INSERT TARGET for stretching',
         default = False)
 
-    halve = BoolProperty(
+    halve: BoolProperty(
         name = 'Halve',
         description = 'Halve the stretch amount',
         default = False)
@@ -749,22 +750,23 @@ class StretchWide(Operator):
                 if self.halve:
                     dimension /= 2
 
-                main.dimensions[0] = dimension
+                main.scale.x = dimension / main.dimensions[0] * main.scale.x
 
         return {'FINISHED'}
 
-class StretchTall(Operator):
-    bl_idname = 'kitops.stretch_tall'
+
+class KO_OT_stretch_tall(Operator):
+    bl_idname = 'ko.stretch_tall'
     bl_label = 'Stretch tall'
     bl_description = 'Stretch selected INSERTS to the height of the target bounds'
     bl_options = {'REGISTER', 'UNDO'}
 
-    z_axis = BoolProperty(
+    z_axis: BoolProperty(
         name = 'Side',
         description = 'Use the Z axis of the INSERT TARGET for stretching',
         default = False)
 
-    halve = BoolProperty(
+    halve: BoolProperty(
         name = 'Halve',
         description = 'Halve the stretch amount',
         default = False)
@@ -780,83 +782,108 @@ class StretchTall(Operator):
                 if self.halve:
                     dimension /= 2
 
-                main.dimensions[1] = dimension
+                main.scale.y = dimension / main.dimensions[1] * main.scale.y
 
         return {'FINISHED'}
+
 
 class update:
 
     def main(prop, context):
-        for object in bpy.data.objects:
-            if object != context.active_object:
-                object.kitops['main'] = False
+        for obj in bpy.data.objects:
+            if obj != context.active_object:
+                obj.kitops['main'] = False
             else:
-                object.kitops['main'] = True
+                obj.kitops['main'] = True
 
     def author(prop, context):
-        for object in bpy.data.objects:
-            object.kitops.author = context.active_object.kitops.author
+        for obj in bpy.data.objects:
+            obj.kitops.author = context.active_object.kitops.author
 
     def type(prop, context):
-        object = context.active_object
+        obj = context.active_object
 
-        for object in bpy.data.objects:
+        for obj in bpy.data.objects:
 
-            if object.kitops.type == 'SOLID':
-                object.draw_type = 'SOLID'
+            if obj.kitops.type == 'SOLID':
+                obj.display_type = 'SOLID'
 
-                object.hide_render = False
+                obj.hide_render = False
 
-                object.cycles_visibility.camera = True
-                object.cycles_visibility.diffuse = True
-                object.cycles_visibility.glossy = True
-                object.cycles_visibility.transmission = True
-                object.cycles_visibility.scatter = True
-                object.cycles_visibility.shadow = True
+                obj.cycles_visibility.camera = True
+                obj.cycles_visibility.diffuse = True
+                obj.cycles_visibility.glossy = True
+                obj.cycles_visibility.transmission = True
+                obj.cycles_visibility.scatter = True
+                obj.cycles_visibility.shadow = True
 
-            elif object.kitops.type == 'WIRE' or object.kitops.type == 'CUTTER':
+            elif obj.kitops.type == 'WIRE' or obj.kitops.type == 'CUTTER':
 
-                object.draw_type = 'WIRE'
+                obj.display_type = 'WIRE'
 
-                object.hide_render = True
+                obj.hide_render = True
 
-                object.cycles_visibility.camera = False
-                object.cycles_visibility.diffuse = False
-                object.cycles_visibility.glossy = False
-                object.cycles_visibility.transmission = False
-                object.cycles_visibility.scatter = False
-                object.cycles_visibility.shadow = False
+                obj.cycles_visibility.camera = False
+                obj.cycles_visibility.diffuse = False
+                obj.cycles_visibility.glossy = False
+                obj.cycles_visibility.transmission = False
+                obj.cycles_visibility.scatter = False
+                obj.cycles_visibility.shadow = False
 
     def insert_target(prop, context):
         inserts = insert.collect(context.selected_objects)
 
-        for object in inserts:
-            object.kitops.applied = False
-            object.kitops['insert_target'] = context.active_object.kitops.insert_target
+        for obj in inserts:
+            obj.kitops.applied = False
+            obj.kitops['insert_target'] = context.active_object.kitops.insert_target
 
-            if object.kitops.insert_target:
-                object.kitops.reserved_target = context.active_object.kitops.insert_target
+            if obj.kitops.insert_target:
+                obj.kitops.reserved_target = context.active_object.kitops.insert_target
 
     def mirror_x(prop, context):
         inserts = insert.collect(context.selected_objects)
 
-        for object in inserts:
-            object.kitops['mirror_x'] = bpy.context.active_object.kitops.mirror_x
+        for obj in inserts:
+            obj.kitops['mirror_x'] = bpy.context.active_object.kitops.mirror_x
 
         validate_mirror(inserts, axis='X')
 
     def mirror_y(prop, context):
         inserts = insert.collect(context.selected_objects)
 
-        for object in inserts:
-            object.kitops['mirror_y'] = bpy.context.active_object.kitops.mirror_y
+        for obj in inserts:
+            obj.kitops['mirror_y'] = bpy.context.active_object.kitops.mirror_y
 
         validate_mirror(inserts, axis='Y')
 
     def mirror_z(prop, context):
         inserts = insert.collect(context.selected_objects)
 
-        for object in inserts:
-            object.kitops['mirror_z'] = bpy.context.active_object.kitops.mirror_z
+        for obj in inserts:
+            obj.kitops['mirror_z'] = bpy.context.active_object.kitops.mirror_z
 
         validate_mirror(inserts, axis='Z')
+
+
+classes = [
+    KO_OT_apply_insert,
+    KO_OT_remove_insert,
+    KO_OT_render_thumbnail,
+    KO_OT_align_horizontal,
+    KO_OT_align_vertical,
+    KO_OT_align_left,
+    KO_OT_align_right,
+    KO_OT_align_top,
+    KO_OT_align_bottom,
+    KO_OT_stretch_wide,
+    KO_OT_stretch_tall]
+
+
+def register():
+    for cls in classes:
+        register_class(cls)
+
+
+def unregister():
+    for cls in classes:
+        unregister_class(cls)

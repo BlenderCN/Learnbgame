@@ -66,7 +66,7 @@ class ImgChannelSocket(NodeSocket):
         self.node.execute_node(context)
         pass
 
-    channel_color_val = bpy.props.FloatProperty(name = "", description = "", default = 0.0, min = 0, max = 1, update=socket_update)
+    channel_color_val: bpy.props.FloatProperty(name = "", description = "", default = 0.0, min = 0, max = 1, update=socket_update)
  
     @staticmethod
     def get_other_socket(socket):
@@ -133,7 +133,7 @@ class ImgChannelSocket(NodeSocket):
         
     def draw(self, context, layout, node, text):
         if self.is_output or self.is_linked:
-            layout.label(text)
+            layout.label(text=text)
         else:
             layout.prop(self, "channel_color_val", text=text)
 
@@ -151,6 +151,7 @@ class OutputTextureNode(Node, ChannelMixingTreeNode):
     bl_label = "Output Texture"
     # Icon identifier
     bl_icon = 'SOUND'
+
 
     def execute_node(self, context):
         print('Update node run from %s' %(self.name))
@@ -178,14 +179,14 @@ class OutputTextureNode(Node, ChannelMixingTreeNode):
     # def insert_link(self,link):  #works only on link insert - wont work of lind delete
     #     print('LInk changed from %s to %s' %(link.from_node.name, link.to_node.name))
 
-    img = bpy.props.StringProperty(name="Image", description="Output image name", default = "Output",  update=execute_node)
-    img_path = bpy.props.StringProperty(name="Path", subtype='DIR_PATH', default= "//textures/")
+    img: bpy.props.StringProperty(name="Image", description="Output image name", default = "Output",  update=execute_node)
+    img_path: bpy.props.StringProperty(name="Path", subtype='DIR_PATH', default= "//textures/")
     
     my_items = (
         ('PNG', "PNG", ""),
         ('TARGA', "TGA", "")
     )
-    output_format = bpy.props.EnumProperty(name="Format", description="Format", items=my_items, default='PNG', update=execute_node)
+    output_format: bpy.props.EnumProperty(name="Format", description="Format", items=my_items, default='PNG', update=execute_node)
 
     # === Optional Functions ===
     # Initialization function, called when a new node is created.
@@ -212,7 +213,7 @@ class OutputTextureNode(Node, ChannelMixingTreeNode):
         layout.prop(self, "img_path")
         row = layout.row(align=True)
         row.prop(self, "img")
-        op=row.operator('image.save_img', text='', icon='SAVE_AS')
+        op = row.operator('image.save_img', text='', icon='FILE_TICK')
         op.image_name = self.img
         op.image_path = self.img_path
         op.image_format = self.output_format
@@ -235,8 +236,12 @@ class InputTextureNode(Node, ChannelMixingTreeNode):
     # Icon identifier
     bl_icon = 'SOUND'
 
+
     def execute_node(self, context):
         print('Update node run from %s' %(self.name))
+        if self.img[:3] == '   ':
+            self['img'] = self.img[3:]
+
         if self.img != '' and self.img in bpy.data.images.keys():
             node_img = bpy.data.images[self.img]
             np_input_img = np.array(node_img.pixels[:])
@@ -262,7 +267,7 @@ class InputTextureNode(Node, ChannelMixingTreeNode):
     #     #Review linked outputs.
     #     print('Update node run from %s' %(self.name))
 
-    img = bpy.props.StringProperty(name = "", description = "", default = "",  update=execute_node)
+    img: bpy.props.StringProperty(name = "", description = "", default = "",  update=execute_node)
 
     # === Optional Functions ===
     # Initialization function, called when a new node is created.
@@ -285,7 +290,7 @@ class InputTextureNode(Node, ChannelMixingTreeNode):
 
     # Additional buttons displayed on the node.
     def draw_buttons(self, context, layout):
-        layout.label("Node settings")
+        layout.label(text="Node settings")
         layout.prop_search(self, "img", bpy.data, "images", text='Texture')
 
 
@@ -308,7 +313,7 @@ class ImageNodeCategory(NodeCategory):
 # all categories in a list
 node_categories = [
     # identifier, label, items list
-    ImageNodeCategory('SOMENODES', "Images", items=[
+    ImageNodeCategory('TEXTUREMIX', "Images", items=[
         NodeItem("OutputTexture"),
         NodeItem("InputTexture"),
     ])
@@ -316,10 +321,12 @@ node_categories = [
 
 
 def registerNode():
-    nodeitems_utils.register_node_categories('CUSTOM_NODES', node_categories)
+    # nodeitems_utils.register_node_categories('CUSTOM_NODES', node_categories)
+    nodeitems_utils.register_node_categories('CHANNEL_MIX', node_categories)
 
 def unregisterNode():
-    nodeitems_utils.unregister_node_categories('CUSTOM_NODES')
+    # nodeitems_utils.unregister_node_categories('CUSTOM_NODES')
+    nodeitems_utils.unregister_node_categories('CHANNEL_MIX')
 
 
 

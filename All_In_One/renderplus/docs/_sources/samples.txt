@@ -1,0 +1,130 @@
+Pre/Post Actions
+===============================================================================
+
+.. image :: _static/post_actions.png
+
+Pre and Post render actions allow you to run commands or python scripts before the render starts or after it finishes. They can be used to send messages, emails, upload files via FTP, copy them to another folder, and more.
+
+Click the buttons to enable them. A box with settings will appear below them, you use the dropdown to select whether to use a command or a script.
+
+Python scripts need to be loaded into (or created in) Blender to be used from Render+.
+
+Remember to use absolute paths in your commands (eg *"c:user/me"*, *"/home/me/"*).
+Note that pre/post render actions are disabled every time you open a blend file for security reasons.
+
+
+
+Code Samples
+--------------------------------------------------------------------------------
+Some code samples bla bla
+
+
+Copy Rendered image to Dropbox folder
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run this as a post render action
+
+.. code-block:: python
+
+    import shutil
+    import bpy
+
+    rendered = bpy.path.abspath(bpy.context.scene.render.filepath)
+    dropbox  = '/path/to/your/dropbox'    
+
+    try:
+	shutil.copy2(rendered, dropbox)
+    except PermissionError:
+	print('Not allowed to copy')
+    except FileNotFoundError:
+	print('File not found!')
+
+		
+
+
+Clean folder before rendering
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. code-block:: python
+
+    import os
+    import bpy
+
+    output = os.path.dirname(bpy.path.abspath(bpy.context.scene.render.filepath))
+
+    for f in os.listdir(output):
+	try:
+	    os.remove(os.path.join(output, f))
+	except PermissionError:
+	    print('Not allowed to delete ' + str(f))
+	except FileNotFoundError:
+	    continue
+
+
+
+Zip and mail
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   
+**Linux/Mac OS X**
+
+.. code-block:: python
+   
+   import bpy
+   from subprocess import call
+
+   # Settings --------------------------------------------------------------------------
+
+   # Change the settings to point to your files, mail address, etc.
+   # You need to have sendmail installed and configured to send the email.
+
+   files_to_zip 	= '/home/[USER]/my_project/render'
+   zip_to 		= '/home/[USER]/something/file.zip'
+   mail_address 	= 'my_mail@example.com'
+   mail_subject 	= 'Your Render is done!'
+
+   call("zip -r " + zip_to + " " + files_to_zip, shell=True)
+
+   rendertime = 'echo "Rendertime: ' + str(bpy.context.scene.renderplus.renderTime) + '"'
+   call(rendertime + ' | mail -s "' + mail_subject + '" ' + mail_address, shell=True)  
+
+
+**Windows**
+
+.. code-block:: python
+		
+   import bpy
+
+   import smtplib
+   from subprocess import call
+   from email.mime.text import MIMEText	
+
+
+   # Settings --------------------------------------------------------------------------
+
+   # Change the settings to point to your files, mail address, etc.
+
+   files_to_zip 	= 'c:\\Users\\me\\blenderProject'
+   zip_to 		= 'c:\\Users\\me\\/something/file.zip'
+   smtp_server 		= 'smtp.yourserver.com'
+
+   rendertime 		= 'Rendertime: ' + str(bpy.context.scene.renderplus.renderTime)
+   mail 		= MIMEText(rendertime)
+   mail['To'] 		= 'my_mail@example.com'
+   mail['Subject']	= 'Your Render is done!'
+
+
+   # Note that you need to have 7zip installed for the zipping command
+
+   call("7z.exe a -r " + zip_to + " " + files_to_zip, shell=True)
+
+   # To learn more about sending mails with Python check
+   # https://docs.python.org/3.4/library/email-examples.html
+
+   s = smtplib.SMTP(smtp_server)
+   s.sendmail('me@blender.org', mail['To'] , mail.as_string())
+   s.quit() 
+
+
+
+

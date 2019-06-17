@@ -1,152 +1,399 @@
 import bpy
+import bmesh
 
-from . import addon, object, modifier
+from . import addon, object, mesh
 
 
 def shape_bool(ot, obj):
+    bc = bpy.context.window_manager.bc
+
     for mod in reversed(obj.modifiers):
-        if mod.type == 'BOOLEAN' and mod.object == ot.datablock['shape']:
+        if mod.type == 'BOOLEAN' and mod.object == bc.shape:
+
             return mod
+
     return None
 
 
+def update(ot, context):
+    bc = context.window_manager.bc
+    targets = ot.datablock['targets']
+    overrides = ot.datablock['overrides']
+
+    if not overrides:
+        ot.datablock['overrides'] = [obj.data for obj in targets]
+
+    for pair in zip(targets, overrides):
+        obj = pair[0]
+        override = pair[1]
+
+        context.view_layer.objects.active = obj
+        bpy.ops.object.mode_set(mode='OBJECT')
+
+        old_data = obj.data
+
+        if obj.data != override:
+            obj.data = override
+        else:
+            obj.data = obj.data.copy()
+
+        if old_data not in ot.datablock['overrides']:
+            bpy.data.meshes.remove(old_data)
+
+        new = obj.copy()
+        coords = [vert.co for vert in new.data.vertices]
+
+        for mod in new.modifiers:
+            if mod.type == 'BOOLEAN':
+                if mod.object == bc.shape or mod.object in ot.datablock['slices']:
+                    new.modifiers.remove(mod)
+
+        for mod in obj.modifiers:
+            if mod.type == 'BOOLEAN':
+                if mod.object != bc.shape or mod.object in ot.datablock['slices']:
+                    obj.modifiers.remove(mod)
+            else:
+                obj.modifiers.remove(mod)
+
+        context.scene.update()
+
+        obj.data = obj.to_mesh(context.depsgraph, apply_modifiers=True)
+
+        for mod in new.modifiers:
+            duplicate(obj, mod)
+
+        bpy.data.objects.remove(new)
+
+        bm = bmesh.new()
+        bm.from_mesh(obj.data)
+        bm.verts.ensure_lookup_table()
+
+        new_verts = []
+        for v in bm.verts:
+            if v.co not in coords:
+                v.select_set(True)
+                new_verts.append(v)
+
+        bm.select_flush(True)
+
+        bm.edges.ensure_lookup_table()
+        bw = bm.edges.layers.bevel_weight.verify()
+        for e in bm.edges:
+            if False not in [v in new_verts for v in e.verts]:
+                e[bw] = 0
+
+        bm.to_mesh(obj.data)
+        bm.free()
+
+    del targets
+    del overrides
+
+    bpy.ops.object.mode_set(mode='EDIT')
+
+
 def display(ot):
-    return ot.datablock['lattice'].dimensions[2] > 0.01
+    return bc.lattice.dimensions[2] > 0.01
 
 
-def sort(ot, obj):
-    if addon.preference().sort_modifiers:
+def sort(ot, obj, force=False):
+    preference = addon.preference()
+    bc = bpy.context.window_manager.bc
+
+    if preference.behavior.sort_modifiers or force:
 
         mod_types = []
-        if addon.preference().sort_bevel: mod_types.append('BEVEL')
-        if addon.preference().sort_weighted_normal: mod_types.append('WEIGHTED_NORMAL')
-        if addon.preference().sort_array: mod_types.append('ARRAY')
-        if addon.preference().sort_mirror: mod_types.append('MIRROR')
+        if not obj.bc.shape:
+            if preference.behavior.sort_bevel and not preference.behavior.sort_bevel_last: mod_types.append('BEVEL')
+        if preference.behavior.sort_array: mod_types.append('ARRAY')
+        if preference.behavior.sort_mirror: mod_types.append('MIRROR')
+        if preference.behavior.sort_solidify: mod_types.append('SOLIDIFY')
+        if preference.behavior.sort_weighted_normal: mod_types.append('WEIGHTED_NORMAL')
+        if preference.behavior.sort_simple_deform: mod_types.append('SIMPLE_DEFORM')
+        if preference.behavior.sort_triangulate: mod_types.append('TRIANGULATE')
 
-        duplicate = obj.copy()
+        new = obj.copy()
 
         modifiers = []
 
-        for mod in duplicate.modifiers:
-            if mod not in modifiers and mod.type not in mod_types:
+        if not obj.bc.shape:
+            bevel = [mod for mod in new.modifiers if mod.type == 'BEVEL' and mod.limit_method != 'VGROUP' and not mod.use_only_vertices]
+        else:
+            bevel = []
+
+        if len(bevel):
+            bevel = bevel[-1]
+
+        else:
+            bevel = None
+
+        weighted = [mod for mod in new.modifiers if mod.type == 'WEIGHTED_NORMAL']
+
+        if len(weighted):
+            weighted = weighted[-1] if bevel else None
+
+        else:
+            weighted = None
+
+        sort_bevel = preference.behavior.sort_bevel
+        sort_last_bevel = preference.behavior.sort_bevel_last
+
+        for mod in new.modifiers:
+            sort_last = mod == bevel and sort_bevel and sort_last_bevel
+            sort_last_weight = mod == weighted and sort_bevel and sort_last_bevel
+
+            bgroup = mod.type == 'BEVEL' and mod.limit_method == 'VGROUP' and not bc.running
+            only_verts = mod.type == 'BEVEL' and mod.use_only_vertices
+
+            if sort_last or sort_last_weight:
+                continue
+
+            if mod.type not in mod_types or bgroup or only_verts:
                 modifiers.append(mod)
 
-        for mod in duplicate.modifiers:
+        for mod in new.modifiers:
+            if mod not in modifiers and mod.type == 'BOOLEAN':
+                modifiers.append(mod)
+
+        for mod in new.modifiers:
             if mod not in modifiers:
                 modifiers.append(mod)
 
         obj.modifiers.clear()
 
         for mod in modifiers:
-            modifier.duplicate(obj, mod)
+            duplicate(obj, mod)
 
-        bpy.data.objects.remove(duplicate)
+        del modifiers
+
+        bpy.data.objects.remove(new)
+
+        del new
 
 
 #TOOD: permanent hide modifier behavior for keeping
-def apply(obj=None, mod=None, visible=False, modifiers=[], exclude=[], type='NONE'):
+def apply(obj=None, mod=None, visible=False, modifiers=[], exclude=[], type='NONE', kitops=False):
+    bc = bpy.context.window_manager.bc
+
+    mode = bpy.context.workspace.tools_mode
     mods = []
 
     if mod:
         mods.append(mod)
 
     else:
-        for mod in obj.modifiers:
-            if mod not in exclude:
-                if mod in modifiers:
+        for m in obj.modifiers:
+            if m not in exclude:
+                if m in modifiers:
 
                     if visible:
-                        if mod.show_viewport:
+                        if m.show_viewport:
+                            if mode == 'EDIT_MESH':
+                                if m.show_in_editmode and m.show_on_cage:
+                                    if type == 'NONE' or m.type == type:
+                                        mods.append(m)
+                                        continue
 
-                            if bpy.context.workspace.tools_mode == 'EDIT_MESH' and hasattr(mod, 'show_in_edit_mode') and mod.show_in_edit_mode:
-                                if type == 'NONE' or mod.type == type:
-                                    mods.append(mod)
-                                    continue
-
-                            elif type == 'NONE' or mod.type == type:
-                                mods.append(mod)
+                            elif type == 'NONE' or m.type == type:
+                                mods.append(m)
                                 continue
 
-                    elif type == 'NONE' or mod.type == type:
-                        mods.append(mod)
+                    elif type == 'NONE' or m.type == type:
+                        mods.append(m)
                         continue
 
-                if type == 'NONE' or mod.type == type:
-                    mods.append(mod)
+                if type == 'NONE' or m.type == type:
+                    mods.append(m)
                     continue
 
     if mods:
+        if not kitops:
+            for m in mods:
+                if m.type == 'BOOLEAN' and m.object and hasattr(m.object, 'kitops') and m.object.kitops.insert:
+                    mods.remove(m)
 
-        duplicate = object.duplicate(obj, link=False)
+        names = [mod.name for mod in mods]
 
-        duplicate.modifiers.clear()
+        new = obj.copy()
 
-        for mod in mods:
-            modifier.duplicate(duplicate, mod)
+        for mod in new.modifiers:
+            if mod.name in names:
+                new.modifiers.remove(mod)
 
         old_data = obj.data
-        obj.data = duplicate.to_mesh(bpy.context.depsgraph, apply_modifiers=True)
+
+        if old_data.users > 1:
+            old_data = old_data.copy()
+
+        old_data.bc.removeable = True
+
+        for mod in obj.modifiers:
+            if mod.name not in names:
+                obj.modifiers.remove(mod)
+
+        bpy.context.scene.update()
+
+        obj.data = obj.to_mesh(bpy.context.depsgraph, apply_modifiers=True)
         obj.data.validate()
         obj.data.name = old_data.name
 
-        addon.log(value=F'Applied modifiers for {obj.name}: {mods}', indent=2)
+        obj.modifiers.clear()
 
-        addon.log(value=F'Removed stale mesh data: {old_data.name}', indent=2)
-        bpy.data.meshes.remove(old_data)
+        for mod in new.modifiers:
+            duplicate(obj, mod)
 
-        for mod in mods:
-            obj.modifiers.remove(mod)
+        bpy.data.objects.remove(new)
+
+        del new
+        del old_data
+
+    del mods
 
 
+def clean(ot, modifier_only=False):
+    for obj in ot.datablock['targets']:
+        if shape_bool(ot, obj):
+            obj.modifiers.remove(shape_bool(ot, obj))
+
+    if not modifier_only:
+        for obj in ot.datablock['slices']:
+            bpy.data.meshes.remove(obj.data)
+
+        ot.datablock['slices'] = list()
+
+
+# TODO: move array here
 class create:
 
 
-    def bool(ot, show=False):
+    def __init__(self, ot):
+        self.boolean(ot)
+
+
+    @staticmethod
+    def boolean(ot, show=False):
+        preference = addon.preference()
+        bc = bpy.context.window_manager.bc
+
         if shape_bool(ot, ot.datablock['targets'][0]):
             for obj in ot.datablock['targets']:
-                obj.modifiers.remove(shape_bool(ot, obj))
+                if shape_bool(ot, obj):
+                    obj.modifiers.remove(shape_bool(ot, obj))
 
             for obj in ot.datablock['slices']:
                 bpy.data.meshes.remove(obj.data)
 
             ot.datablock['slices'] = []
 
+        bc.shape.display_type = 'WIRE'
+        bc.shape.hide_set(True)
+
         for obj in ot.datablock['targets']:
-            mod = obj.modifiers.new(name='Boolean', type='BOOLEAN')
-            mod.show_viewport = show
-            mod.show_expanded = False
-            mod.object = ot.datablock['shape']
-            mod.operation = 'DIFFERENCE' if ot.mode != 'JOIN' else 'UNION'
+            if not ot.active_only or obj == bpy.context.view_layer.objects.active:
+                mod = obj.modifiers.new(name='Boolean', type='BOOLEAN')
+                mod.show_viewport = show
+                mod.show_expanded = False
+                mod.object = bc.shape
+                mod.operation = 'DIFFERENCE' if ot.mode != 'JOIN' else 'UNION'
 
-            modifier.sort(ot, obj)
+                sort(ot, obj)
 
-            addon.log(value=F'Created boolean on: {obj.name}', indent=2)
+                if ot.mode in {'INSET', 'SLICE'}:
+                    new = obj.copy()
+                    new.data = obj.data.copy()
 
-            if ot.mode == 'SLICE':
+                    if preference.behavior.apply_slices:
+                        apply(new, exclude=[shape_bool(ot, new)], type='BOOLEAN')
 
-                operation = 'INTERSECT'
+                    wm = bpy.context.window_manager
+                    hops = wm.Hard_Ops_material_options if hasattr(wm, 'Hard_Ops_material_options') else False
+                    if hops and hops.active_material:
+                        for slot in new.material_slots:
+                            if slot.link != 'DATA':
+                                slot.link == 'DATA'
 
-                if 'Slices' not in bpy.data.collections:
-                    bpy.context.scene.collection.children.link(bpy.data.collections.new(name='Slices'))
+                        new.data.materials.clear()
+                        mat = bpy.data.materials[hops.active_material]
+                        new.data.materials.append(mat)
 
-                new = obj.copy()
-                new.data = obj.data.copy()
+                    new.name = ot.mode.title()
+                    new.data.name = ot.mode.title()
 
-                new.name = 'Slice'
-                new.data.name = 'Slice'
+                    if ot.mode == 'SLICE':
+                        if obj.users_collection:
+                            for collection in obj.users_collection:
+                                collection.objects.link(new)
+                        else:
+                            bpy.context.scene.collection.objects.link(new)
 
-                new.hide_viewport = bpy.context.workspace.tools_mode == 'EDIT_MESH'
+                        bc.slice = new
 
-                modifier.shape_bool(ot, new).operation = 'INTERSECT'
-                modifier.apply(obj=new, exclude=[modifier.shape_bool(ot, new)], type='BOOLEAN')
+                    else:
+                        bc.collection.objects.link(new)
+                        new.bc.inset = True
+                        new.hide_set(True)
 
-                ot.datablock['slices'].append(new)
-                bpy.data.collections['Slices'].objects.link(new)
+                    shape_bool(ot, new).operation = 'INTERSECT'
 
-                addon.log(value=F'Created slice object: {new.name}', indent=2)
+                    if addon.preference().behavior.apply_slices or ot.mode == 'INSET':
+                        if ot.mode == 'INSET':
+                            for index, mod in enumerate(new.modifiers):
+                                if mod.type == 'BEVEL':
+                                    if index != 0:
+                                        new.modifiers.remove(mod)
 
-        if 'Slices' in bpy.data.collections and not bpy.data.collections['Slices'].objects:
-            bpy.data.collections.remove(bpy.data.collections['Slices'])
+                        apply(obj=new, exclude=[shape_bool(ot, new)], type='BOOLEAN' if ot.mode == 'SLICE' else '')
+
+                    if ot.mode == 'INSET':
+                        new.display_type = 'WIRE'
+                        new.cycles_visibility.camera = False
+                        new.cycles_visibility.diffuse = False
+                        new.cycles_visibility.glossy = False
+                        new.cycles_visibility.transmission = False
+                        new.cycles_visibility.scatter = False
+                        new.cycles_visibility.shadow = False
+                        new.cycles.is_shadow_catcher = False
+                        new.cycles.is_holdout = False
+
+                        solidify = new.modifiers.new(name='Solidify', type='SOLIDIFY')
+                        solidify.thickness = ot.last['thickness']
+                        solidify.offset = 0
+                        solidify.show_on_cage = True
+                        solidify.use_even_offset = True
+                        solidify.use_quality_normals = True
+
+                        new.modifiers.remove(shape_bool(ot, new))
+
+                        mod = new.modifiers.new(name='Boolean', type='BOOLEAN')
+                        mod.show_viewport = show
+                        mod.show_expanded = False
+                        mod.object = bc.shape
+                        mod.operation = 'INTERSECT'
+
+                        for mod in bc.shape.modifiers:
+                            if mod.type == 'SOLIDIFY':
+                                bc.shape.modifiers.remove(mod)
+
+                        bool = None
+                        for mod in reversed(obj.modifiers):
+                            if mod.type == 'BOOLEAN' and mod.object == new:
+                                bool = mod
+                                break
+
+                        if not bool:
+                            mod = obj.modifiers.new(name='Boolean', type='BOOLEAN')
+                            mod.show_viewport = show
+                            mod.show_expanded = False
+                            mod.object = new
+                            mod.operation = 'DIFFERENCE'
+
+                            if hasattr(wm, 'Hard_Ops_material_options'):
+                                new.hops.status = 'BOOLSHAPE'
+
+                            sort(ot, obj)
+
+                        bc.inset = new
+
+                    ot.datablock['slices'].append(new)
 
 
 class duplicate:
@@ -155,9 +402,11 @@ class duplicate:
     def __init__(self, obj, mod):
         self.modifier = obj.modifiers.new(name=mod.name, type=mod.type)
         self.modifier.show_viewport = mod.show_viewport
+        self.modifier.show_render = mod.show_render
         self.modifier.show_expanded = mod.show_expanded
+        self.modifier.show_in_editmode = mod.show_in_editmode
+        self.modifier.show_on_cage = mod.show_on_cage
         getattr(self, mod.type)(mod)
-        addon.log(value=F'Duplicated modifier {mod.name}', indent=2)
 
 
     def ARMATURE(self, mod):
@@ -200,14 +449,16 @@ class duplicate:
         self.modifier.loop_slide = mod.loop_slide
         self.modifier.mark_seam = mod.mark_seam
         self.modifier.mark_sharp = mod.mark_sharp
+        self.modifier.harden_normals = mod.harden_normals
         self.modifier.limit_method = mod.limit_method
         self.modifier.angle_limit = mod.angle_limit
         self.modifier.vertex_group = mod.vertex_group
         self.modifier.offset_type = mod.offset_type
-        self.modifier.hnmode = mod.hnmode
-        self.modifier.hn_strength = mod.hn_strength
-        self.modifier.set_wn_strength = mod.set_wn_strength
+        self.modifier.face_strength_mode = mod.face_strength_mode
         self.modifier.show_in_editmode = mod.show_in_editmode
+        self.modifier.miter_outer = mod.miter_outer
+        self.modifier.miter_inner = mod.miter_inner
+        self.modifier.spread = mod.spread
 
 
     def BOOLEAN(self, mod):
@@ -215,8 +466,8 @@ class duplicate:
         self.modifier.object = mod.object
         self.modifier.double_threshold = mod.double_threshold
 
-        if bpy.app.debug:
-            self.modifier.debug_options = mod.debug_options
+        # if bpy.app.debug:
+        #     self.modifier.debug_options = mod.debug_options
 
 
     def BUILD(self, mod):
@@ -334,7 +585,7 @@ class duplicate:
         self.modifier.falloff_radius = mod.falloff_radius
         self.modifier.strength = mod.strength
         self.modifier.falloff_type = mod.falloff_type
-        self.modifier.falloff_curve = mod.falloff_curve
+        # self.modifier.falloff_curve = mod.falloff_curve
         self.modifier.use_falloff_uniform = mod.use_falloff_uniform
 
 
@@ -688,6 +939,7 @@ class duplicate:
     def TRIANGULATE(self, mod):
         self.modifier.quad_method = mod.quad_method
         self.modifier.ngon_method = mod.ngon_method
+        self.modifier.min_vertices = mod.min_vertices
 
 
     def UV_WARP(self, mod):

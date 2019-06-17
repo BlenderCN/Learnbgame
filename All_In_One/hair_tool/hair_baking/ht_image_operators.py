@@ -15,15 +15,15 @@
 
 import bpy
 
-class SaveImage(bpy.types.Operator):
+class HT_OT_SaveImage(bpy.types.Operator):
     bl_idname = "image.save_img"
     bl_label = "save img"
     bl_description = "Save image"
     bl_options = {"REGISTER","UNDO"}
 
-    image_name = bpy.props.StringProperty()
-    image_path = bpy.props.StringProperty()
-    image_format = bpy.props.StringProperty(default='PNG')
+    image_name: bpy.props.StringProperty()
+    image_path: bpy.props.StringProperty()
+    image_format: bpy.props.StringProperty(default='PNG')
 
     def execute(self, context):
         suffix = 'png' if self.image_format=='PNG' else 'tga'

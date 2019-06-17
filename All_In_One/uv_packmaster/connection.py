@@ -13,6 +13,7 @@ class UvPackMessageCode:
     PACK_SOLUTION = 4
     AREA = 5
     INVALID_FACES = 6
+    SIMILAR_ISLANDS = 7
 
 
 def force_read_bytes(stream, bytes_cnt):
@@ -54,7 +55,7 @@ def read_int_array(stream):
     return force_read_ints(stream, count)
 
 
-def prepare_raw_uv_topo_data(uv_island_faces_list, face_to_verts, island_materials = None):
+def prepare_raw_uv_topo_data(uv_island_faces_list, face_to_verts, material_map = None):
     prepare_start = time.time()
 
     raw_uv_topo_data = bytes()
@@ -82,7 +83,7 @@ def prepare_raw_uv_topo_data(uv_island_faces_list, face_to_verts, island_materia
     islands_array = []
     for island_idx, island in enumerate(uv_island_faces_list):
         islands_array.append(len(island))
-        islands_array.append(0 if island_materials is None else island_materials[island_idx])
+        islands_array.append(0 if material_map is None else material_map[island_idx])
         for face_id in island:
             islands_array.append(face_id)
 

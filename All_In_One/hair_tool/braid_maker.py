@@ -31,21 +31,21 @@ import numpy as np
 #DONE: curve len automatic calculation.... from surface to splines.... possibly
 
 
-class BraidMaker(bpy.types.Operator):
+class HT_OT_BraidMaker(bpy.types.Operator):
     bl_label = "Generate Braids"
     bl_idname = "object.braid_make"
     bl_description = "Generate braid Curves"
     bl_options = {"REGISTER", "UNDO"}
 
-    hairType = bpy.props.EnumProperty(name="Hair Type", default="NURBS",
+    hairType: bpy.props.EnumProperty(name="Hair Type", default="NURBS",
                                       items=(("NURBS", "Nurbs", ""),
                                              ("POLY", "Poly", "")))
-    points_per_cycle = IntProperty(name="Points per cycles", default=4, min=3, max=10)
-    braid_length = FloatProperty(name="Braid length", default=1, min=0.1, max=50)
-    braid_freq = FloatProperty(name="Braid Frequency", default=1, min=0.2, max=10)
-    Radius = FloatProperty(name="Radius", description="Braid Radius", default=0.1, min=0.01, max=2)
-    strand_radius = FloatProperty(name="Strand Radius", description="Strand Radius", default=1, min=0.01, max=2)
-    FreqFalloff = FloatProperty(name="Falloff", description="Change braid size over strand length", default=-1,
+    points_per_cycle: IntProperty(name="Points per cycles", default=4, min=3, max=10)
+    braid_length: FloatProperty(name="Braid length", default=1, min=0.1, max=50)
+    braid_freq: FloatProperty(name="Braid Frequency", default=1, min=0.2, max=10)
+    Radius: FloatProperty(name="Radius", description="Braid Radius", default=0.1, min=0.01, max=2)
+    strand_radius: FloatProperty(name="Strand Radius", description="Strand Radius", default=1, min=0.01, max=2)
+    FreqFalloff: FloatProperty(name="Falloff", description="Change braid size over strand length", default=-1,
                                    min=-1, max=1, subtype='PERCENTAGE')
 
     def generate_braid_points(self, braid_index=1):
@@ -70,10 +70,10 @@ class BraidMaker(bpy.types.Operator):
         curveData.dimensions = '3D'
         curveData.bevel_resolution = 2
         Curve = bpy.data.objects.new('Braid', curveData)
-        context.scene.objects.link(Curve)
-        context.scene.objects.active = Curve
-        Curve.select = True
-        Curve.data.show_normal_face = False
+        context.scene.collection.objects.link(Curve)
+        context.view_layer.objects.active = Curve
+        Curve.select_set(True)
+        # Curve.data.show_normal_face = False
         bpy.context.scene.update()
         return Curve
 
@@ -83,7 +83,7 @@ class BraidMaker(bpy.types.Operator):
         curve.data.bevel_object = None
         backup_bevel_depth = curve.data.bevel_depth
         curve.data.bevel_depth = 0
-        me_from_curve = curve.to_mesh(bpy.context.scene, apply_modifiers=False, settings='PREVIEW')
+        me_from_curve = curve.to_mesh(bpy.context.depsgraph, apply_modifiers=False, calc_undeformed=False)
         total_len=0
         bm = bmesh.new()
         bm.from_mesh(me_from_curve)
@@ -113,7 +113,7 @@ class BraidMaker(bpy.types.Operator):
             Curve = self.create_new_curve(context)
             Curve.is_braid = True
 
-        Curve.data.show_normal_face = False
+        # Curve.data.show_normal_face = False
         Curve.data.fill_mode = 'FULL'
         Curve.data.use_uv_as_generated = True
         Curve.data.use_auto_texspace = True

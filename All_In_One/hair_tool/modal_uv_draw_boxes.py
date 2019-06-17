@@ -15,7 +15,7 @@
 
 import bpy
 from bpy.props import BoolProperty, IntProperty
-from .ribbons_operations import CurvesUVRefresh
+from .ribbons_operations import HT_OT_CurvesUVRefresh
 import time
 # import sys
 # dir = 'C:\\Users\\JoseConseco\\AppData\\Local\\Programs\\Python\\Python35\\Lib\\site-packages'
@@ -23,9 +23,13 @@ import time
 #     sys.path.append(dir )
 # import ipdb
 
+import gpu
+from gpu_extras.batch import batch_for_shader
+
 import bgl
 import blf
 
+shader = gpu.shader.from_builtin('2D_UNIFORM_COLOR')
 def draw_callback_px(self, context, hair_uv_points):
     # print("mouse points", len(self.mouse_pos))
 
@@ -44,26 +48,27 @@ def draw_callback_px(self, context, hair_uv_points):
 
     fontBottomMargin = 160
     if self.mouse_pos[1] >35 or self.mouse_pos[0] > 110:
-        bgl.glColor4f(1.0, 1.0, 1.0, 1.0)
+        # bgl.glColor4f(1.0, 1.0, 1.0, 1.0)
         blf.size(font_id, 16, 60)
         blf.position(font_id, 15, 15, 0)
         blf.draw(font_id, "[Hair uv help]")
     else:
         # draw box
+        #TODO: copy from WPT?
         x0 = 0
         y0 = 0
         x1 = 330
         y1 = fontBottomMargin
         positions = [[x0, y0], [x0, y1], [x1, y1], [x1, y0]]
 
-        bgl.glEnable(bgl.GL_BLEND)
-        bgl.glBegin(bgl.GL_QUADS)
-        bgl.glColor4f(0, 0, 0, 0.3)
-        for v1, v2 in positions:
-            bgl.glVertex2f(v1, v2)
-        bgl.glEnd()
+        # bgl.glEnable(bgl.GL_BLEND)
+        # bgl.glBegin(bgl.GL_QUADS)
+        # bgl.glColor4f(0, 0, 0, 0.3)
+        # for v1, v2 in positions:
+        #     bgl.glVertex2f(v1, v2)
+        # bgl.glEnd()
 
-        bgl.glColor4f(1.0, 1.0, 1.0, 1.0)
+        # bgl.glColor4f(1.0, 1.0, 1.0, 1.0)
         blf.size(font_id, 16, 60)
         blf.position(font_id, 15, 135, 0)
         blf.draw(font_id, "Draw rectangular shape with LMB")
@@ -79,18 +84,12 @@ def draw_callback_px(self, context, hair_uv_points):
         blf.draw(font_id, "CTRL+Mouse Wheel - change seed ")
         blf.position(font_id, 15, 15, 0)
         blf.draw(font_id, "ESC / RMB - cancel")
-    # 50% alpha, 2 pixel width line
-    bgl.glEnable(bgl.GL_BLEND)
-    bgl.glColor4f(0.2, 1.0, 0.0, 0.5)
-    bgl.glLineWidth(2)
-    # bgl.glBegin(bgl.GL_LINE_STRIP)
-    # for x, y in self.mouse_pos:
-    #     bgl.glVertex2i(x, y)
-    #
-    # edgesUV =[[0.1,0.1]]
+    bgl.glPointSize(6)
+
     drawMouse = self.LMB_Clicked
     if len(hair_uv_points)>0:
-        bgl.glColor4f(0.8, 0.8, 0.8, 0.7)
+        coords = []
+        coords_points = []
         region = context.region
         if drawMouse: #draw not edited uv boxes
             if self.edit_point_index == -1: #draw all exept new one
@@ -107,20 +106,23 @@ def draw_callback_px(self, context, hair_uv_points):
             # y1  = max(min(y1,region.height-1),1)
             # x2 = max(min(x2, region.width-1), 1)
             # y2 = max(min(y2, region.height-1), 1)
-            bgl.glBegin(bgl.GL_LINE_STRIP)
-            bgl.glVertex2i(x1, y1)
-            bgl.glVertex2i(x1, y2)
-            bgl.glVertex2i(x2, y2)
-            bgl.glVertex2i(x2, y1)
-            bgl.glVertex2i(x1, y1)
+            coords = [(x1, y1), (x1, y2), 
+                     (x2, y2), 
+                     (x2, y1),
+                     (x1, y1)]
 
-            bgl.glEnd()
+            coords_points= [(x1, y1),  (x2, y2)] 
 
-            bgl.glPointSize(6)
-            bgl.glBegin(bgl.GL_POINTS)
-            bgl.glVertex2f(x1, y1)
-            bgl.glVertex2f(x2, y2)
-            bgl.glEnd()
+            batch = batch_for_shader(shader, 'LINE_STRIP', {"pos": coords})
+            shader.bind()
+            shader.uniform_float("color", (0.8, 0.8, 0.8, 0.7))
+            batch.draw(shader)
+
+            batch = batch_for_shader(shader, 'POINTS', {"pos": coords_points})
+            shader.bind()
+            batch.draw(shader)
+    
+
 
     if drawMouse:  #draw currently edited box
         if self.edit_point_index == -1:
@@ -136,37 +138,32 @@ def draw_callback_px(self, context, hair_uv_points):
                 x1, y1 = region.view2d.view_to_region(box.start_point[0], box.start_point[1],clip = False) # vies space to UV (0,1 space)
                 start_point = [x1,y1]
                 end_point = self.mouse_pos
-        bgl.glColor4f(0.4, 1.0, 0.2, 1)
-        bgl.glBegin(bgl.GL_LINE_STRIP)
-
-        bgl.glVertex2i(start_point[0], start_point[1])
-        bgl.glVertex2i(start_point[0], end_point[1])
-        bgl.glVertex2i(end_point[0], end_point[1])
-        bgl.glVertex2i(end_point[0], start_point[1])
-        bgl.glVertex2i(start_point[0], start_point[1])
-
-        bgl.glEnd()
-
-        bgl.glPointSize(10)
-        bgl.glBegin(bgl.GL_POINTS)
-        bgl.glVertex2f(start_point[0], start_point[1])
-        bgl.glVertex2f(end_point[0], end_point[1])
-        bgl.glEnd()
-
-    # restore opengl defaults
-    bgl.glLineWidth(1)
-    bgl.glDisable(bgl.GL_BLEND)
-    bgl.glColor4f(0.0, 0.0, 0.0, 1.0)
 
 
-class ModalUvRangeSelect(bpy.types.Operator):
+        coords = [(start_point[0], start_point[1]), (start_point[0], end_point[1]), 
+                (end_point[0], end_point[1]), (end_point[0], start_point[1]),
+                (start_point[0], start_point[1])]
+        batch = batch_for_shader(shader, 'LINE_STRIP', {"pos": coords})
+        shader.bind()
+        shader.uniform_float("color", (0.4, 1.0, 0.2, 1))
+        batch.draw(shader)
+
+        coords_points = [(start_point[0], start_point[1]),  (end_point[0], end_point[1])]
+        batch = batch_for_shader(shader, 'POINTS', {"pos": coords_points})
+        shader.bind()
+        batch.draw(shader)
+
+    bgl.glPointSize(1)
+
+
+class HT_OT_ModalUvRangeSelect(bpy.types.Operator):
     """Draw a line with the mouse"""
     bl_idname = "uv.hair_uv_area_select"
     bl_label = "Draw uv area for Hair"
     bl_description = "Draw box in UV editor to define hair ribbons uv's"
     bl_options = {"REGISTER", "UNDO"}
 
-    Seed = IntProperty(name="Noise Seed", default=20, min=1, max=1000)
+    Seed: IntProperty(name="Noise Seed", default=20, min=1, max=1000)
     _handle = None
     UVBackup= []
     uv_seedBackup = 1
@@ -187,7 +184,7 @@ class ModalUvRangeSelect(bpy.types.Operator):
             for p in points.keys():  # copy start and end point
                 curveHairRibbon["hair_settings"]["hair_uv_points"][-1][p] = points[p]
                 curveHairRibbon.hair_settings.uv_seed = self.uv_seedBackup
-                CurvesUVRefresh.uvCurveRefresh(curveHairRibbon)
+                HT_OT_CurvesUVRefresh.uvCurveRefresh(curveHairRibbon)
 
     def save_xy_to_uv_box(self,uvHairPoints,boxIndex,x,y):
         if self.edit_start_point == False:  #if editing end point - or normally placing second uv box point
@@ -222,22 +219,22 @@ class ModalUvRangeSelect(bpy.types.Operator):
         if event.type == 'MOUSEMOVE':
             self.mouse_pos = [event.mouse_region_x, event.mouse_region_y]
 
-        elif event.type == 'LEFTMOUSE' and self.LMB_Clicked == True and self.edit_point_index == -1:  # finish drawing box, and calculate uv Transformation
+        elif event.type == 'LEFTMOUSE' and event.value == 'RELEASE' and self.LMB_Clicked == True and self.edit_point_index == -1:  # finish drawing box, and calculate uv Transformation
             x, y = region.view2d.region_to_view(self.mouse_pos[0], self.mouse_pos[1])  # vies space to UV (0,1 space)
             self.save_xy_to_uv_box(uvHairPoints,-1,x,y)
             self.LMB_Clicked = False
-            CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed)
+            HT_OT_CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed)
 
-        elif event.type == 'LEFTMOUSE' and self.LMB_Clicked == True and self.edit_point_index != -1:
+        elif event.type == 'LEFTMOUSE'  and event.value == 'RELEASE' and self.LMB_Clicked == True and self.edit_point_index != -1:
             x, y = region.view2d.region_to_view(self.mouse_pos[0], self.mouse_pos[1])  # vies space to UV (0,1 space)
             self.save_xy_to_uv_box(uvHairPoints,self.edit_point_index,x,y)
             self.edit_end_point = False
             self.edit_start_point = False
             self.edit_point_index = -1
             self.LMB_Clicked = False
-            CurvesUVRefresh.uvCurveRefresh(curveHairRibbon, self.Seed)
+            HT_OT_CurvesUVRefresh.uvCurveRefresh(curveHairRibbon, self.Seed)
 
-        elif event.type == 'LEFTMOUSE' and self.LMB_Clicked == False:
+        elif event.type == 'LEFTMOUSE' and event.value == 'PRESS' and self.LMB_Clicked == False:
             # Add the region OpenGL drawing callback
             # draw in view space with 'POST_VIEW' and 'PRE_VIEW'
             self.mouse_start = [event.mouse_region_x, event.mouse_region_y]
@@ -266,17 +263,17 @@ class ModalUvRangeSelect(bpy.types.Operator):
         elif event.ctrl and event.type == 'Z' and event.value == 'PRESS':
             if len(uvHairPoints)>1:
                 uvHairPoints.remove(len(uvHairPoints)-1)
-                CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed)
+                HT_OT_CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed)
 
         elif event.type == 'WHEELUPMOUSE' and event.ctrl:
             self.Seed += 1
             curveHairRibbon.hair_settings.uv_seed = self.Seed
-            CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed)
+            HT_OT_CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed)
 
         elif event.type == 'WHEELDOWNMOUSE' and event.ctrl:
             self.Seed -= 1
             curveHairRibbon.hair_settings.uv_seed = self.Seed
-            CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed)
+            HT_OT_CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed)
 
         elif event.type == 'DEL' and  event.shift == False: #delete box/boxes
             x, y = region.view2d.region_to_view(self.mouse_pos[0], self.mouse_pos[1])  # vies space to UV (0,1 space)
@@ -287,13 +284,13 @@ class ModalUvRangeSelect(bpy.types.Operator):
                     if startX < x < endX and endY < y < startY:
                         uvHairPoints.remove(i)
                         force_uv_reset = True if len(uvHairPoints) == 0 else False
-                        CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed)
+                        HT_OT_CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed)
                         break
         elif event.type == 'DEL' and event.shift:
             print("Shift deletion")
             if len(uvHairPoints)>0:
                 uvHairPoints.clear()
-                CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed, force_uv_reset = True)
+                HT_OT_CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed, force_uv_reset = True)
         elif event.type in {'RIGHTMOUSE', 'ESC'}:
             if self._handle:
                 bpy.types.SpaceImageEditor.draw_handler_remove(self._handle, 'WINDOW')
@@ -311,7 +308,7 @@ class ModalUvRangeSelect(bpy.types.Operator):
                 context.scene.last_hair_settings.hair_uv_points[-1].start_point = uvPoint.start_point
                 context.scene.last_hair_settings.hair_uv_points[-1].end_point = uvPoint.end_point
                 # ipdb.set_trace()
-            CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed)
+            HT_OT_CurvesUVRefresh.uvCurveRefresh(curveHairRibbon,self.Seed)
             self.report({'INFO'}, 'Finished')
             return {'FINISHED'}
 

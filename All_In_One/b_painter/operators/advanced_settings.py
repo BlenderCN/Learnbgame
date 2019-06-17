@@ -45,10 +45,10 @@ class AdvancedColorSettings(bpy.types.Operator):
         #### panel order operator
         subrow = col.row(align=True)
         #subrow.scale_x = .7
-        op = subrow.operator("b_painter.change_panel_order",text="",icon="MOVE_UP_VEC",emboss=True)
+        op = subrow.operator("b_painter.change_panel_order",text="",icon="TRIA_UP",emboss=True)
         op.panel_name = "COLOR"
         op.mode = "UP"
-        op = subrow.operator("b_painter.change_panel_order",text="",icon="MOVE_DOWN_VEC",emboss=True)
+        op = subrow.operator("b_painter.change_panel_order",text="",icon="TRIA_DOWN",emboss=True)
         op.panel_name = "COLOR"
         op.mode = "DOWN"
       
@@ -106,10 +106,10 @@ class AdvancedBrushSettings(bpy.types.Operator):
         #### panel order operator
         subrow = col.row(align=True)
         #subrow.scale_x = .7
-        op = subrow.operator("b_painter.change_panel_order",text="",icon="MOVE_UP_VEC",emboss=True)
+        op = subrow.operator("b_painter.change_panel_order",text="",icon="TRIA_UP",emboss=True)
         op.panel_name = "BRUSH"
         op.mode = "UP"
-        op = subrow.operator("b_painter.change_panel_order",text="",icon="MOVE_DOWN_VEC",emboss=True)
+        op = subrow.operator("b_painter.change_panel_order",text="",icon="TRIA_DOWN",emboss=True)
         op.panel_name = "BRUSH"
         op.mode = "DOWN"
         
@@ -253,10 +253,10 @@ class AdvancedBrushTextureSettings(bpy.types.Operator):
         #### panel order operator
         subrow = col.row(align=True)
         #subrow.scale_x = .7
-        op = subrow.operator("b_painter.change_panel_order",text="",icon="MOVE_UP_VEC",emboss=True)
+        op = subrow.operator("b_painter.change_panel_order",text="",icon="TRIA_UP",emboss=True)
         op.panel_name = "TEXTURE"
         op.mode = "UP"
-        op = subrow.operator("b_painter.change_panel_order",text="",icon="MOVE_DOWN_VEC",emboss=True)
+        op = subrow.operator("b_painter.change_panel_order",text="",icon="TRIA_DOWN",emboss=True)
         op.panel_name = "TEXTURE"
         op.mode = "DOWN"
         
@@ -311,10 +311,10 @@ class AdvancedStencilTextureSettings(bpy.types.Operator):
         #### panel order operator
         subrow = col.row(align=True)
         #subrow.scale_x = .7
-        op = subrow.operator("b_painter.change_panel_order",text="",icon="MOVE_UP_VEC",emboss=True)
+        op = subrow.operator("b_painter.change_panel_order",text="",icon="TRIA_UP",emboss=True)
         op.panel_name = "STENCIL"
         op.mode = "UP"
-        op = subrow.operator("b_painter.change_panel_order",text="",icon="MOVE_DOWN_VEC",emboss=True)
+        op = subrow.operator("b_painter.change_panel_order",text="",icon="TRIA_DOWN",emboss=True)
         op.panel_name = "STENCIL"
         op.mode = "DOWN"
         
@@ -404,10 +404,10 @@ class LayerSettings(bpy.types.Operator):
         #### panel order operator
         subrow = col.row(align=True)
         #subrow.scale_x = .7
-        op = subrow.operator("b_painter.change_panel_order",text="",icon="MOVE_UP_VEC",emboss=True)
+        op = subrow.operator("b_painter.change_panel_order",text="",icon="TRIA_UP",emboss=True)
         op.panel_name = "LAYER"
         op.mode = "UP"
-        op = subrow.operator("b_painter.change_panel_order",text="",icon="MOVE_DOWN_VEC",emboss=True)
+        op = subrow.operator("b_painter.change_panel_order",text="",icon="TRIA_DOWN",emboss=True)
         op.panel_name = "LAYER"
         op.mode = "DOWN"
         
@@ -437,15 +437,19 @@ class LayerSettings(bpy.types.Operator):
                                 if len(tex_node.inputs["Vector"].links) > 0:
                                     uv_node = tex_node.inputs["Vector"].links[0].from_node
                                     col.prop_search(uv_node,"uv_map",obj.data,"uv_textures",text="UV Map",icon="GROUP_UVS")
+                                col.template_ID(tex_node, "image")
                     else:
                         if mat.b_painter.paint_layers_index <= len(mat.b_painter.paint_layers)-1:
                             node_tree = mat.node_tree
                             if node_tree != None:
                                 active_layer = mat.b_painter.paint_layers[mat.b_painter.paint_layers_index]
                                 tex_node = node_tree.nodes[active_layer.tex_node_name]
+                                
                                 if len(tex_node.inputs["Vector"].links) > 0:
                                     uv_node = tex_node.inputs["Vector"].links[0].from_node
                                     col.prop_search(uv_node,"uv_map",obj.data,"uv_textures",text="UV Map",icon="GROUP_UVS")
+                                    
+                                col.template_ID(tex_node, "image")
                                 
                                 
                 elif mat != None and context.scene.render.engine in ["BLENDER_RENDER","BLENDER_GAME"]:

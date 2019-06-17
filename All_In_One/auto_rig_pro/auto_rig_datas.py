@@ -2,7 +2,7 @@ import mathutils
 from mathutils import *
 
 #ARMS
-arm_bones = ['c_shoulder', 'shoulder', 'c_arm_fk', 'arm_fk', 'c_forearm_fk', 'forearm_fk', 'arm_fk_pre_pole', 'arm_fk_pole', 'arm_ik_nostr_scale_fix', 'c_hand_fk_scale_fix', 'c_hand_fk', 'c_hand_ik', 'c_stretch_arm_pin', 'arm_ik_nostr', 'forearm_ik_nostr', 'arm_ik', 'arm', 'c_stretch_arm', 'shoulder_track_pole', 'shoulder_pole', 'arm_twist', 'c_arm_twist_offset', 'arm_stretch', 'c_elbow_bend', 'c_arm_bend', 'c_shoulder_bend', 'forearm_ik', 'forearm', 'hand', 'c_pinky1_base', 'pinky_bend_all', 'c_pinky1_rot', 'c_pinky1', 'c_pinky2_rot', 'c_pinky2', 'c_pinky3_rot', 'c_pinky3', 'c_ring1_base', 'ring_bend_all', 'c_ring1_rot', 'c_ring1', 'c_ring2_rot', 'c_ring2', 'c_ring3_rot', 'c_ring3', 'c_middle1_base', 'middle_bend_all', 'c_middle1_rot', 'c_middle1', 'c_middle2_rot', 'c_middle2', 'c_middle3_rot', 'c_middle3', 'c_index1_base', 'index_bend_all', 'c_index1_rot', 'c_index1', 'c_index2_rot', 'c_index2', 'c_index3_rot', 'c_index3', 'c_thumb1_base', 'thumb_bend_all', 'c_thumb1_rot', 'c_thumb1', 'c_thumb2_rot', 'c_thumb2', 'c_thumb3_rot', 'c_thumb3', 'hand_rot_twist', 'forearm_stretch', 'c_forearm_bend', 'c_wrist_bend', 'forearm_twist', 'c_p_shoulder', 'c_arms_pole']
+arm_bones = ['c_shoulder', 'shoulder', 'c_arm_fk', 'arm_fk', 'c_arm_ik','c_forearm_fk', 'forearm_fk', 'arm_fk_pre_pole', 'arm_fk_pole', 'arm_ik_nostr_scale_fix', 'c_hand_fk_scale_fix', 'c_hand_fk', 'c_hand_ik', 'c_stretch_arm_pin', 'arm_ik_nostr', 'forearm_ik_nostr', 'arm_ik', 'arm', 'c_stretch_arm', 'shoulder_track_pole', 'shoulder_pole', 'arm_twist', 'c_arm_twist_offset', 'arm_stretch', 'c_elbow_bend', 'c_arm_bend', 'c_shoulder_bend', 'forearm_ik', 'forearm', 'hand', 'c_pinky1_base', 'pinky_bend_all', 'c_pinky1_rot', 'c_pinky1', 'pinky1','c_pinky2_rot', 'c_pinky2', 'c_pinky3_rot', 'c_pinky3', 'c_ring1_base', 'ring_bend_all', 'c_ring1_rot', 'c_ring1', 'ring1', 'c_ring2_rot', 'c_ring2', 'c_ring3_rot', 'c_ring3', 'c_middle1_base', 'middle_bend_all', 'c_middle1_rot', 'c_middle1', 'middle1', 'c_middle2_rot', 'c_middle2', 'c_middle3_rot', 'c_middle3', 'c_index1_base', 'index_bend_all', 'c_index1_rot', 'c_index1', 'index1', 'c_index2_rot', 'c_index2', 'c_index3_rot', 'c_index3', 'c_thumb1_base', 'thumb_bend_all', 'c_thumb1_rot', 'c_thumb1', 'thumb1','c_thumb2_rot', 'c_thumb2', 'c_thumb3_rot', 'c_thumb3', 'hand_rot_twist', 'forearm_stretch', 'c_forearm_bend', 'c_wrist_bend', 'forearm_twist', 'c_p_shoulder', 'c_arms_pole']
 
 arm_ref_bones = ['shoulder_ref', 'arm_ref', 'forearm_ref', 'hand_ref', 'pinky1_base_ref', 'pinky1_ref', 'pinky2_ref', 'pinky3_ref', 'ring1_base_ref', 'ring1_ref', 'ring2_ref', 'ring3_ref', 'middle1_base_ref', 'middle1_ref', 'middle2_ref', 'middle3_ref', 'index1_base_ref', 'index1_ref', 'index2_ref', 'index3_ref', 'thumb1_ref', 'thumb2_ref', 'thumb3_ref']
 
@@ -10,51 +10,110 @@ arm_bones_rig_add = ['c_shoulder_bend', 'c_arm_bend', 'c_elbow_bend', 'c_forearm
 
 arm_deform = ['shoulder', 'c_arm_twist_offset', 'arm_stretch', 'forearm_twist', 'forearm_stretch', 'hand']
 
-arm_displayed = ['c_hand_ik', 'c_hand_fk', 'c_arm_fk', 'c_forearm_fk', 'c_shoulder', 'c_arm_twist_offset', 'c_arms_pole', 'c_shoulder_bend', 'c_arm_bend', 'c_elbow_bend', 'c_forearm_bend', 'c_wrist_bend', 'c_stretch_arm', 'c_stretch_arm_pin']
+arm_control = ['c_hand_ik', 'c_hand_fk', 'c_arm_fk', 'c_arm_ik','c_forearm_fk', 'c_shoulder', 'c_arm_twist_offset', 'c_arms_pole', 'c_shoulder_bend', 'c_arm_bend', 'c_elbow_bend', 'c_forearm_bend', 'c_wrist_bend', 'c_stretch_arm', 'c_stretch_arm_pin']
 
 #FINGERS
-fingers_displayed = ['c_pinky1_base', 'c_pinky1', 'c_pinky2', 'c_pinky3', 'c_ring1_base', 'c_ring1', 'c_ring2', 'c_ring3', 'c_middle1_base', 'c_middle1', 'c_middle2', 'c_middle3', 'c_index1_base', 'c_index1', 'c_index2', 'c_index3', 'c_thumb1_base', 'c_thumb1', 'c_thumb2', 'c_thumb3'] 
+fingers_control = ['c_pinky1_base', 'c_pinky1', 'c_pinky2', 'c_pinky3', 'c_ring1_base', 'c_ring1', 'c_ring2', 'c_ring3', 'c_middle1_base', 'c_middle1', 'c_middle2', 'c_middle3', 'c_index1_base', 'c_index1', 'c_index2', 'c_index3', 'c_thumb1_base', 'c_thumb1', 'c_thumb2', 'c_thumb3'] 
+
+thumb_ref_list = ["thumb1_ref", "thumb2_ref", "thumb3_ref"]
+thumb_control_list = ["c_thumb1_base", "c_thumb1", "c_thumb2", "c_thumb3"]
+thumb_intern_list = ["thumb1", "thumb_bend_all", "c_thumb1_rot", "c_thumb2_rot", "c_thumb3_rot"]
+
+index_ref_list = ["index1_base_ref"] + [i.replace("thumb", "index") for i in thumb_ref_list]
+index_control_list = [i.replace("thumb", "index") for i in thumb_control_list]
+index_intern_list = [i.replace("thumb", "index") for i in thumb_intern_list]
+
+middle_ref_list = ["middle1_base_ref"] + [i.replace("thumb", "middle") for i in thumb_ref_list]
+middle_control_list = [i.replace("thumb", "middle") for i in thumb_control_list]
+middle_intern_list = [i.replace("thumb", "middle") for i in thumb_intern_list]
+
+ring_ref_list = ["ring1_base_ref"] + [i.replace("thumb", "ring") for i in thumb_ref_list]
+ring_control_list = [i.replace("thumb", "ring") for i in thumb_control_list]
+ring_intern_list = [i.replace("thumb", "ring") for i in thumb_intern_list]
+
+pinky_ref_list = ["pinky1_base_ref"] + [i.replace("thumb", "pinky") for i in thumb_ref_list]
+pinky_control_list = [i.replace("thumb", "pinky") for i in thumb_control_list]
+pinky_intern_list = [i.replace("thumb", "pinky") for i in thumb_intern_list]
+
+
 
 #LEGS
-leg_bones = ['c_thigh_b', 'thigh_ik', 'leg_ik', 'c_thigh_fk', 'thigh_fk', 'c_leg_fk', 'leg_fk', 'foot', 'toes_01', 'c_toes_pinky1', 'c_toes_pinky2', 'c_toes_pinky3', 'c_toes_ring1', 'c_toes_ring2', 'c_toes_ring3', 'c_toes_middle1', 'c_toes_middle2', 'c_toes_middle3', 'c_toes_index1', 'c_toes_index2', 'c_toes_index3', 'c_toes_thumb1', 'c_toes_thumb2', 'foot_pole', 'c_foot_fk_scale_fix', 'c_foot_fk', 'foot_fk', 'c_toes_fk', 'c_p_foot_fk', 'leg_fk_pre_pole', 'leg_fk_pole', 'thigh', 'c_stretch_leg', 'leg', 'thigh_twist', 'thigh_ik_nostr', 'leg_ik_nostr', 'leg_stretch', 'c_ankle_bend', 'c_leg_bend_02', 'c_leg_bend_01', 'c_knee_bend', 'leg_twist', 'thigh_stretch', 'c_thigh_bend_02', 'c_thigh_bend_01', 'c_thigh_bend_contact', 'c_stretch_leg_pin', 'c_foot_ik', 'c_p_foot_ik', 'foot_ik', 'c_toes_track', 'toes_01_ik', 'toes_02', 'foot_snap_fk', 'c_foot_bank_01', 'c_foot_bank_02', 'c_foot_heel', 'c_toes_end', 'c_toes_ik', 'c_foot_01', 'foot_01_pole', 'foot_ik_target', 'c_toes_end_01', 'c_foot_roll', 'c_foot_roll_cursor', 'c_leg_pole'] 
+leg_bones = ['c_thigh_b', 'thigh_ik', 'leg_ik', 'c_thigh_fk', 'c_thigh_ik', 'thigh_fk', 'c_leg_fk', 'leg_fk', 'foot', 'toes_01', 'c_toes_pinky1', 'c_toes_pinky2', 'c_toes_pinky3', 'c_toes_ring1', 'c_toes_ring2', 'c_toes_ring3', 'c_toes_middle1', 'c_toes_middle2', 'c_toes_middle3', 'c_toes_index1', 'c_toes_index2', 'c_toes_index3', 'c_toes_thumb1', 'c_toes_thumb2', 'foot_pole', 'c_foot_fk_scale_fix', 'c_foot_fk', 'foot_fk', 'c_toes_fk', 'c_p_foot_fk', 'leg_fk_pre_pole', 'leg_fk_pole', 'thigh', 'c_stretch_leg', 'leg', 'thigh_twist', 'thigh_ik_nostr', 'leg_ik_nostr', 'leg_stretch', 'c_ankle_bend', 'c_leg_bend_02', 'c_leg_bend_01', 'c_knee_bend', 'leg_twist', 'thigh_stretch', 'c_thigh_bend_02', 'c_thigh_bend_01', 'c_thigh_bend_contact', 'c_stretch_leg_pin', 'c_foot_ik', 'c_p_foot_ik', 'foot_ik', 'c_toes_track', 'toes_01_ik', 'toes_02', 'foot_snap_fk', 'c_foot_bank_01', 'c_foot_bank_02', 'c_foot_heel', 'c_toes_end', 'c_toes_ik', 'c_foot_01', 'foot_01_pole', 'foot_ik_target', 'c_toes_end_01', 'c_foot_roll', 'c_foot_roll_cursor', 'c_leg_pole'] 
 
 leg_ref_bones = ['foot_bank_01_ref', 'foot_bank_02_ref', 'foot_heel_ref', 'toes_end_ref', 'thigh_ref', 'leg_ref', 'foot_ref', 'toes_ref', 'toes_pinky1_ref', 'toes_pinky2_ref', 'toes_pinky3_ref', 'toes_ring1_ref', 'toes_ring2_ref', 'toes_ring3_ref', 'toes_middle1_ref', 'toes_middle2_ref', 'toes_middle3_ref', 'toes_index1_ref', 'toes_index2_ref', 'toes_index3_ref', 'toes_thumb1_ref', 'toes_thumb2_ref'] 
 
-leg_bones_rig_add = ['c_knee_bend', 'c_knee_bend', 'c_thigh_bend_02', 'c_thigh_bend_02', 'c_thigh_bend_01', 'c_thigh_bend_01', 'c_leg_bend_01', 'c_leg_bend_01', 'c_leg_bend_02', 'c_leg_bend_02', 'c_foot_bend', 'c_foot_bend', 'c_thigh_bend_contact', 'c_thigh_bend_contact', 'c_ankle_bend', 'c_ankle_bend']  
+leg_bones_rig_add = ['c_knee_bend', 'c_thigh_bend_02', 'c_thigh_bend_01', 'c_leg_bend_01', 'c_leg_bend_02', 'c_foot_bend', 'c_thigh_bend_contact', 'c_ankle_bend']  
 
 leg_deform = ['foot', 'c_toes_pinky1', 'c_toes_pinky2', 'c_toes_pinky3', 'c_toes_ring1', 'c_toes_ring2', 'c_toes_ring3', 'c_toes_middle1', 'c_toes_middle2', 'c_toes_middle3', 'c_toes_index1', 'c_toes_index2', 'c_toes_index3', 'c_toes_thumb1', 'c_toes_thumb2', 'toes_01', 'thigh_twist', 'leg_stretch', 'leg_twist', 'thigh_stretch']
 
-leg_displayed = ['c_thigh_b', 'c_thigh_fk', 'c_leg_fk', 'c_toes_pinky1', 'c_toes_pinky2', 'c_toes_pinky3', 'c_toes_ring1', 'c_toes_ring2', 'c_toes_ring3', 'c_toes_middle1', 'c_toes_middle2', 'c_toes_middle3', 'c_toes_index1', 'c_toes_index2', 'c_toes_index3', 'c_toes_thumb1', 'c_toes_thumb2', 'c_foot_fk', 'c_toes_fk', 'c_stretch_leg', 'c_ankle_bend', 'c_leg_bend_02', 'c_leg_bend_01', 'c_knee_bend', 'c_thigh_bend_02', 'c_thigh_bend_01', 'c_thigh_bend_contact', 'c_stretch_leg_pin', 'c_foot_ik', 'c_toes_ik', 'c_foot_01', 'c_foot_roll_cursor', 'c_leg_pole']
+leg_control = ['c_thigh_b', 'c_thigh_fk', 'c_thigh_ik','c_leg_fk', 'c_toes_pinky1', 'c_toes_pinky2', 'c_toes_pinky3', 'c_toes_ring1', 'c_toes_ring2', 'c_toes_ring3', 'c_toes_middle1', 'c_toes_middle2', 'c_toes_middle3', 'c_toes_index1', 'c_toes_index2', 'c_toes_index3', 'c_toes_thumb1', 'c_toes_thumb2', 'c_foot_fk', 'c_toes_fk', 'c_stretch_leg', 'c_ankle_bend', 'c_leg_bend_02', 'c_leg_bend_01', 'c_knee_bend', 'c_thigh_bend_02', 'c_thigh_bend_01', 'c_thigh_bend_contact', 'c_stretch_leg_pin', 'c_foot_ik', 'c_toes_ik', 'c_foot_01', 'c_foot_roll_cursor', 'c_leg_pole']
 
-toes_displayed = ['c_toes_pinky1', 'c_toes_pinky2', 'c_toes_pinky3', 'c_toes_ring1', 'c_toes_ring2', 'c_toes_ring3', 'c_toes_middle1', 'c_toes_middle2', 'c_toes_middle3', 'c_toes_index1', 'c_toes_index2', 'c_toes_index3', 'c_toes_thumb1', 'c_toes_thumb2']
+
+
+#TOES
+toes_control = ['c_toes_pinky1', 'c_toes_pinky2', 'c_toes_pinky3', 'c_toes_ring1', 'c_toes_ring2', 'c_toes_ring3', 'c_toes_middle1', 'c_toes_middle2', 'c_toes_middle3', 'c_toes_index1', 'c_toes_index2', 'c_toes_index3', 'c_toes_thumb1', 'c_toes_thumb2']
+
+toes_thumb_ref_list = ["toes_thumb1_ref", "toes_thumb2_ref"]
+toes_thumb_control_list = ["c_toes_thumb1", "c_toes_thumb2"]
+
+toes_index_ref_list = [i.replace("thumb", "index") for i in toes_thumb_ref_list] + ["toes_index3_ref"]
+toes_index_control_list = [i.replace("thumb", "index") for i in toes_thumb_control_list] + ["c_toes_index3"]
+
+toes_middle_ref_list = [i.replace("index", "middle") for i in toes_index_ref_list]
+toes_middle_control_list =  [i.replace("index", "middle") for i in toes_index_control_list]
+
+toes_ring_ref_list = [i.replace("index", "ring") for i in toes_index_ref_list] 
+toes_ring_control_list = [i.replace("index", "ring") for i in toes_index_control_list]
+
+toes_pinky_ref_list =  [i.replace("index", "pinky") for i in toes_index_ref_list]
+toes_pinky_control_list = [i.replace("index", "pinky") for i in toes_index_control_list]
+
+
 
 #HEAD
 head_deform = ['head.x', 'c_skull_01.x', 'c_skull_02.x', 'c_skull_03.x']
-head_displayed = ['c_head.x', 'c_skull_01.x', 'c_skull_02.x', 'c_skull_03.x', 'c_head_proxy.x', 'c_skull_03_proxy.x', 'c_skull_02_proxy.x', 'c_skull_01_proxy.x']
+head_control = ['c_head.x', 'c_skull_01.x', 'c_skull_02.x', 'c_skull_03.x']
+head_bones = ['head.x', 'c_skull_01.x', 'c_skull_02.x', 'c_skull_03.x', 'c_head.x', 'head_scale_fix.x', 'c_p_head.x']
 
-facial_ref = ['eyebrow_full_ref.r', 'eyebrow_03_ref.r', 'eyebrow_02_ref.r', 'eyebrow_01_ref.r', 'eyebrow_01_end_ref.r', 'eyebrow_full_ref.l', 'eyebrow_03_ref.l', 'eyebrow_02_ref.l', 'eyebrow_01_ref.l', 'eyebrow_01_end_ref.l', 'cheek_inflate_ref.l', 'cheek_inflate_ref.r', 'lips_bot_ref.l', 'lips_bot_01_ref.r', 'lips_bot_01_ref.l', 'lips_bot_ref.r', 'lips_smile_ref.r', 'lips_smile_ref.l', 'lips_corner_mini_ref.r', 'lips_corner_mini_ref.l', 'lips_top_ref.l', 'lips_top_ref.r', 'lips_top_01_ref.l', 'lips_top_01_ref.r', 'lips_top_ref.x', 'lips_bot_ref.x', 'lips_roll_top_ref.x', 'lips_roll_bot_ref.x', 'tong_01_ref.x', 'tong_02_ref.x', 'tong_03_ref.x', 'chin_01_ref.x', 'chin_02_ref.x', 'teeth_bot_ref.x', 'teeth_top_ref.x', 'teeth_top_ref.l', 'teeth_top_ref.r','teeth_bot_ref.l','teeth_bot_ref.r','eye_offset_ref.l', 'eyelid_top_ref.l', 'eyelid_bot_ref.l', 'eyelid_top_01_ref.l', 'eyelid_top_02_ref.l', 'eyelid_top_03_ref.l', 'eyelid_bot_01_ref.l', 'eyelid_bot_02_ref.l', 'eyelid_bot_03_ref.l', 'eyelid_corner_01_ref.l', 'eyelid_corner_02_ref.l', 'eye_offset_ref.r', 'eyelid_top_ref.r', 'eyelid_bot_ref.r', 'eyelid_top_01_ref.r', 'eyelid_top_02_ref.r', 'eyelid_top_03_ref.r', 'eyelid_bot_01_ref.r', 'eyelid_bot_02_ref.r', 'eyelid_bot_03_ref.r', 'eyelid_corner_01_ref.r', 'eyelid_corner_02_ref.r', 'cheek_smile_ref.l', 'cheek_smile_ref.r', 'nose_03_ref.x', 'nose_01_ref.x', 'nose_02_ref.x', 'jaw_ref.x']
+# Facial
+facial_ref = ['eyebrow_full_ref', 'eyebrow_03_ref', 'eyebrow_02_ref', 'eyebrow_01_ref', 'eyebrow_01_end_ref', 'lips_top_ref.x', 'lips_top_ref', 'lips_top_01_ref', 'lips_smile_ref', 'lips_corner_mini_ref', 'lips_bot_ref.x', 'lips_bot_ref', 'lips_bot_01_ref', 'lips_roll_top_ref.x', 'lips_roll_bot_ref.x', 'tong_01_ref.x', 'tong_02_ref.x', 'tong_03_ref.x', 'teeth_bot_ref.x', 'teeth_bot_ref', 'chin_02_ref.x', 'chin_01_ref.x', 'teeth_top_ref.x', 'teeth_top_ref', 'eye_offset_ref', 'eyelid_top_ref', 'eyelid_bot_ref', 'eyelid_top_01_ref', 'eyelid_top_02_ref', 'eyelid_top_03_ref', 'eyelid_bot_01_ref', 'eyelid_bot_02_ref', 'eyelid_bot_03_ref', 'eyelid_corner_01_ref', 'eyelid_corner_02_ref', 'cheek_smile_ref', 'cheek_inflate_ref', 'nose_01_ref.x', 'nose_02_ref.x', 'nose_03_ref.x', 'jaw_ref.x']  
 
-facial_deform =['c_teeth_bot.x', 'c_teeth_top.l', 'c_teeth_top.r', 'c_teeth_bot.l', 'c_teeth_bot.r','c_teeth_top.x', 'c_jawbone.x', 'c_lips_bot.l', 'c_lips_bot_01.r', 'c_lips_bot_01.l', 'c_lips_bot.r', 'c_lips_bot.x', 'c_lips_smile.r', 'c_lips_smile.l', 'c_lips_top.x', 'c_lips_top.l', 'c_lips_top.r', 'c_lips_top_01.l', 'c_lips_top_01.r', 'eyelid_top.l', 'eyelid_bot.l', 'c_eye.l', 'eyelid_top.r', 'eyelid_bot.r', 'c_eye.r', 'c_chin_01.x', 'c_chin_02.x', 'c_eye_offset.l', 'c_cheek_smile.l', 'c_eye_offset.r', 'c_cheek_smile.r', 'c_nose_03.x', 'c_nose_01.x', 'c_nose_02.x', 'c_cheek_inflate.l', 'c_cheek_inflate.r', 'c_eye_ref_track.l', 'c_eye_ref_track.r', 'tong_03.x', 'tong_02.x', 'tong_01.x']
+facial_deform =['c_teeth_bot.x', 'c_teeth_top', 'c_teeth_bot', 'c_teeth_top.x', 'jawbone.x', 'c_lips_bot', 'c_lips_bot_01', 'c_lips_bot.x', 'c_lips_smile', 'c_lips_top.x', 'c_lips_top', 'c_lips_top_01',  'c_eye', 'c_chin_01.x', 'c_chin_02.x', 'c_eye_offset', 'c_cheek_smile', 'c_nose_03.x', 'c_nose_01.x', 'c_nose_02.x', 'c_cheek_inflate', 'c_eye_ref_track', 'tong_03.x', 'tong_02.x', 'tong_01.x', 'c_eyebrow_03', 'c_eyebrow_02', 'c_eyebrow_01', 'c_eyebrow_01_end', 'c_eyelid_top_01', 'c_eyelid_top_02', 'c_eyelid_top_03', 'c_eyelid_bot_01', 'c_eyelid_bot_02', 'c_eyelid_bot_03', 'c_eyelid_corner_01', 'c_eyelid_corner_02']
 
-facial_deform_rig_add = ['c_eyelid_top_01.l', 'c_eyelid_top_02.l', 'c_eyelid_top_03.l', 'c_eyelid_bot_01.l', 'c_eyelid_bot_02.l', 'c_eyelid_bot_03.l', 'c_eyelid_corner_01.l', 'c_eyelid_corner_02.l', 'c_eyelid_top_01.r', 'c_eyelid_top_02.r', 'c_eyelid_top_03.r', 'c_eyelid_bot_01.r', 'c_eyelid_bot_02.r', 'c_eyelid_bot_03.r', 'c_eyelid_corner_01.r', 'c_eyelid_corner_02.r']
 
-facial_displayed = ['c_teeth_top_master.x', 'c_teeth_bot_master.x', 'c_teeth_bot.x', 'c_teeth_top.l', 'c_teeth_top.r', 'c_teeth_bot.l', 'c_teeth_bot.r','c_teeth_top.x', 'c_tong_03.x', 'c_tong_02.x', 'c_tong_01.x', 'c_cheek_inflate.l', 'c_cheek_inflate.r', 'c_nose_03.x', 'c_nose_01.x', 'c_nose_02.x', 'c_eye_offset.l', 'c_cheek_smile.l', 'c_eye_offset.r', 'c_cheek_smile.r', 'c_chin_01.x', 'c_chin_02.x', 'c_eye.r', 'c_eye.l', 'c_lips_smile.r', 'c_lips_smile.l', 'c_lips_top.l', 'c_lips_top.r', 'c_lips_top_01.l', 'c_lips_top_01.r', 'c_lips_top.x', 'c_lips_bot.l', 'c_lips_bot_01.r', 'c_lips_bot_01.l', 'c_lips_bot.r', 'c_lips_bot.x', 'c_jawbone.x', 'c_tong_01.x', 'c_tong_02.x', 'c_tong_03.x', 'c_lips_corner_mini.r', 'c_lips_corner_mini.l', 'c_lips_roll_top.x', 'c_lips_roll_bot.x', 'c_eyelid_top.l', 'c_eyelid_bot.l', 'c_eyelid_top.r', 'c_eyelid_bot.r', 'c_eyebrow_full.r', 'c_eyebrow_03.r', 'c_eyebrow_02.r', 'c_eyebrow_01.r', 'c_eyebrow_01_end.r', 'c_eyebrow_full.l', 'c_eyebrow_03.l', 'c_eyebrow_02.l', 'c_eyebrow_01.l', 'c_eyebrow_01_end.l', 'c_eye_target.x', 'c_eye_target.l', 'c_eye_target.r', 'c_eye_ref.l', 'c_eyelid_top_01.l', 'c_eyelid_top_02.l', 'c_eyelid_top_03.l', 'c_eyelid_bot_01.l', 'c_eyelid_bot_02.l', 'c_eyelid_bot_03.l', 'c_eyelid_corner_01.l', 'c_eyelid_corner_02.l', 'c_eyelid_top_01.r', 'c_eyelid_top_02.r', 'c_eyelid_top_03.r', 'c_eyelid_bot_01.r', 'c_eyelid_bot_02.r', 'c_eyelid_bot_03.r', 'c_eyelid_corner_01.r', 'c_eyelid_corner_02.r', 'c_eye_ref.r']
 
+facial_control = ['c_teeth_top_master.x', 'c_teeth_bot_master.x', 'c_teeth_bot.x', 'c_teeth_top', 'c_teeth_bot', 'c_teeth_top.x', 'c_tong_03.x', 'c_tong_02.x', 'c_tong_01.x', 'c_cheek_inflate', 'c_nose_03.x', 'c_nose_01.x', 'c_nose_02.x', 'c_eye_offset', 'c_cheek_smile', 'c_chin_01.x', 'c_chin_02.x', 'c_eye', 'c_lips_smile', 'c_lips_top', 'c_lips_top_01', 'c_lips_top.x', 'c_lips_bot', 'c_lips_bot_01', 'c_lips_bot.x', 'c_jawbone.x', 'c_tong_01.x', 'c_tong_02.x', 'c_tong_03.x', 'c_lips_corner_mini', 'c_lips_roll_top.x', 'c_lips_roll_bot.x', 'c_eyelid_top', 'c_eyelid_bot', 'c_eyebrow_full', 'c_eyebrow_03', 'c_eyebrow_02', 'c_eyebrow_01', 'c_eyebrow_01_end', 'c_eye_target.x', 'c_eye_target', 'c_eye_ref', 'c_eyelid_top_01', 'c_eyelid_top_02', 'c_eyelid_top_03', 'c_eyelid_bot_01', 'c_eyelid_bot_02', 'c_eyelid_bot_03', 'c_eyelid_corner_01', 'c_eyelid_corner_02']
+
+facial_bones = ['c_eye_ref_track', 'c_jawbone.x', 'jawbone.x', 'c_tong_01.x', 'c_tong_02.x', 'c_tong_03.x', 'tong_03.x', 'tong_02.x', 'tong_01.x', 'c_chin_01.x', 'c_chin_02.x', 'c_teeth_bot_master.x', 'c_teeth_bot.x', 'c_teeth_bot', 'c_lips_bot_01_offset', 'c_lips_bot_01', 'c_lips_bot_offset', 'c_lips_bot', 'c_lips_bot_offset.x', 'c_lips_bot.x', 'c_lips_roll_bot.x', 'c_lips_roll_top.x', 'c_teeth_top_master.x', 'c_teeth_top.x', 'c_teeth_top', 'jaw_ret_bone.x', 'c_lips_top_retain.x', 'c_lips_top_retain', 'c_lips_top_01_retain', 'c_lips_smile_retain', 'c_lips_bot_01_retain', 'c_lips_bot_retain', 'c_lips_bot_retain.x', 'c_lips_top_offset.x', 'c_lips_top.x', 'c_lips_top_offset', 'c_lips_top', 'c_lips_top_01_offset', 'c_lips_top_01', 'c_lips_smile_offset', 'c_lips_smile', 'c_lips_corner_mini', 'c_eye_offset', 'c_eyelid_base', 'c_eyelid_top', 'c_eyelid_top_01', 'c_eyelid_top_02', 'c_eyelid_top_03', 'c_eyelid_bot', 'c_eyelid_bot_01', 'c_eyelid_bot_02', 'c_eyelid_bot_03', 'c_eye', 'c_eye_ref', 'c_eyelid_corner_01', 'c_eyelid_corner_02', 'eyelid_top', 'eyelid_bot', 'c_cheek_smile', 'c_nose_03.x', 'c_nose_01.x', 'c_nose_02.x', 'c_cheek_inflate', 'c_eyebrow_full', 'c_eyebrow_03', 'c_eyebrow_02', 'c_eyebrow_01', 'c_eyebrow_01_end', 'c_eye_target.x', 'c_eye_target']
+
+
+#EARS
+ear_ref = ['ear_01_ref', 'ear_02_ref']
+ear_control = ['c_ear_01', 'c_ear_02']
 
 #NECK
 neck_deform = ['c_neck_01.x', 'neck.x']
-neck_displayed = ['c_neck.x', 'c_neck_01.x', 'c_neck_thick_proxy.x', 'c_neck_proxy.x']
-
+neck_control = ['c_neck.x', 'c_neck_01.x']
+neck_bones = ['c_neck.x', 'c_neck_01.x', 'neck.x', 'c_p_neck.x', 'c_p_neck_01.x', 'neck_twist.x']
 
 #SPINE
 spine03_deform = ['spine_03.x']
-spine03_displayed = ['c_spine_03.x', 'c_spine_03_proxy.x']
+spine03_control = ['c_spine_03.x', 'c_spine_03_proxy.x']
 
 spine02_deform = ['c_spine_02_bend.x', 'spine_02.x']
-spine02_displayed = ['c_spine_02.x', 'c_spine_02_bend.x', 'c_spine_02_proxy.x', 'c_spine_02_bend_proxy.x']
+spine02_control = ['c_spine_02.x', 'c_spine_02_bend.x', 'c_spine_02_proxy.x', 'c_spine_02_bend_proxy.x']
 
 spine01_deform = ['c_spine_01_bend.x', 'spine_01.x']
-spine01_displayed = ['c_spine_01.x', 'c_spine_01_bend.x', 'c_spine_01_proxy.x', 'c_spine_01_bend_proxy.x']
+spine01_control = ['c_spine_01.x', 'c_spine_01_bend.x', 'c_spine_01_proxy.x', 'c_spine_01_bend_proxy.x']
+
+spine_ref = ['root_ref.x', 'spine_01_ref.x', 'spine_02_ref.x']
+spine_bones = ['c_root_master.x', 'c_root.x', 'root.x', 'c_root_bend.x', 'c_waist_bend.x', 'c_p_root_master.x', 'c_p_root.x', 'c_p_spine_01.x', 'c_p_spine_02.x', 'c_spine_01.x', 'spine_01.x', 'c_spine_01_bend.x', 'c_spine_02_bend.x', 'spine_02.x', 'c_spine_02.x']
+spine_bones_rig_add = ['c_waist_bend.x', 'c_waist_bend_end.x', 'epaules_bend.x']
+
+spine_control = spine01_control + spine02_control + ['c_root.x', 'c_root_master.x', 'c_root_bend.x']
+
+#SMART FACIAL MARKERS
+facial_markers = {'eyebrow_01_end': 19, 'eyebrow_01':20, 'eyebrow_02':21, 'eyebrow_03':22, 'eyelid_corner_01':9, 'eyelid_bot_01':8, 'eyelid_bot_02':7, 'eyelid_bot_03':14, 'eyelid_corner_02':13, 'eyelid_top_03':12, 'eyelid_top_02':11, 'eyelid_top_01':10, 'nose_03.x':15, 'nose_01.x':16, 'cheek_smile':17, 'cheek_inflate':18, 'lips_top.x':1, 'lips_top':2, 'lips_top_01':3, 'lips_smile':4, 'lips_bot_01':5, 'lips_bot':6, 'lips_bot.x':0, 'chin_01.x': 26, 'chin_02.x':25, 'ear_01':24, 'ear_02':23}
 
 
 

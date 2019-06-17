@@ -20,10 +20,10 @@ Created by Andreas Esau
     
 import os
 import bpy
-from bpy.props import CollectionProperty, StringProperty, PointerProperty, IntProperty, FloatProperty, BoolProperty, EnumProperty, FloatVectorProperty
+from bpy.props import CollectionProperty, StringProperty, PointerProperty, IntProperty, FloatProperty, BoolProperty, EnumProperty, FloatVectorProperty, IntVectorProperty
 from mathutils import Vector
 import math
-from . functions import _tonemap, _invert_ramp, _mute_ramp, setup_brush_tex, id_from_string, set_active_paint_layer, update_all_paint_layers, get_materials_recursive, set_material_shading
+from . functions import _tonemap, _invert_ramp, _mute_ramp, setup_brush_tex, id_from_string, set_active_paint_layer, update_all_paint_layers, get_materials_recursive, set_material_shading, set_brush_alpha_lock
 from . operators.preset_handling import texture_path, get_tex_previews, get_brush_tex_previews, get_stencil_tex_previews
 
 def set_paint_layer(self,context):
@@ -199,6 +199,9 @@ def set_brush(self,context):
         context.tool_settings.image_paint.brush.b_painter_invert_mask = context.tool_settings.image_paint.brush.b_painter_invert_mask
         context.tool_settings.image_paint.brush.b_painter_ramp_tonemap_l = context.tool_settings.image_paint.brush.b_painter_ramp_tonemap_l
         context.tool_settings.image_paint.brush.b_painter_ramp_tonemap_r = context.tool_settings.image_paint.brush.b_painter_ramp_tonemap_r
+    #### set brush alpha settings
+    mat = context.active_object.active_material if context.active_object != None else None
+    set_brush_alpha_lock(context,mat)     
 
 def set_texture(self,context):
     context.window_manager.b_painter_brush_textures_loaded = False
@@ -261,6 +264,7 @@ def refresh_brush_category(self,context):
             context.tool_settings.image_paint.brush.texture = brush_tex  
         else:
             context.tool_settings.image_paint.brush.texture = None  
+    bpy.ops.b_painter.refresh_previews()
         
 def refresh_stencil_category(self,context):
     context.window_manager.b_painter_stencil_textures_loaded = False
@@ -277,7 +281,9 @@ def refresh_stencil_category(self,context):
             brush_tex = setup_brush_tex(img_path,tex_type="STENCIL")
             context.tool_settings.image_paint.brush.mask_texture = brush_tex  
         else:
-            context.tool_settings.image_paint.brush.mask_texture = None                    
+            context.tool_settings.image_paint.brush.mask_texture = None
+            
+    bpy.ops.b_painter.refresh_previews()
             
 
 PAINT_CHANNELS = []
@@ -303,8 +309,11 @@ def set_show_hide(self,context):
     if self.type == "MIX_RGB":
         if len(self.inputs["Color2"].links) > 0:
             from_node = self.inputs["Color2"].links[0].from_node
+            math_node = self.inputs["Fac"].links[0].from_node
             if from_node.type == "TEX_IMAGE":
                 from_node.mute = self.b_painter_layer_hide
+            if math_node.type == "MATH":
+                math_node.mute = self.b_painter_layer_hide
 
 def set_b_painter_opacity(self,context):
     if self.type == "MATH":
@@ -392,9 +401,15 @@ def set_hotkeys(self,context):
             
 ##############################
 
-class BPainterChannelSettings(bpy.types.PropertyGroup):
+class BPainterImageSettings(bpy.types.PropertyGroup):
+    def set_brush_lock_alpha(self,context):
+        brush = context.tool_settings.image_paint.brush if context.tool_settings != None and context.tool_settings.image_paint != None else None
+        brush.use_alpha = not(self.lock_alpha)
+    
+    lock_alpha = BoolProperty(default=False,update=set_brush_lock_alpha)
     active = BoolProperty(default=False)
     color = FloatVectorProperty(subtype="COLOR_GAMMA",min=0.0,max=1.0)    
+
 
 class PaintChannels(bpy.types.PropertyGroup):
     name = StringProperty()
@@ -413,16 +428,16 @@ class PaintLayers(bpy.types.PropertyGroup):
         self["mask_layer_active"] = False
         self["paint_layer_active"] = True
         
-        self.id_data.b_painter[self.name] = [1,0]
+        self.id_data.b_painter["layer_information"][self.name] = [1,0]
         self.id_data.b_painter.paint_layers_index = self.id_data.b_painter.paint_layers_index
         
     def set_mask_layer_active(self,context):
         self["paint_layer_active"] = False
         self["mask_layer_active"] = True
         
-        self.id_data.b_painter[self.name] = [0,1]
+        self.id_data.b_painter["layer_information"][self.name] = [0,1]
         self.id_data.b_painter.paint_layers_index = self.id_data.b_painter.paint_layers_index
-    
+
     name = StringProperty(update=rename)
     index = IntProperty()
     layer_type = StringProperty()
@@ -459,21 +474,13 @@ class BPainterProperties(bpy.types.PropertyGroup):
     merge_layers_index = IntProperty(default=-1,update=set_merge_layers_index)
     expanded = BoolProperty(default=True)
     external_path = StringProperty(name="External Image Path",description="If this path is set, images will be exported on blendfile save.")
+    preview_aspect_ratio = IntVectorProperty(default=(1,1),size=2)
     
 class BPainterBrushSettings(bpy.types.PropertyGroup):
     hardness = FloatProperty(min=0.0,max=1.0)
-
-classes = (
-    BPainterChannelSettings,
-    PaintChannels,
-    PaintLayers,
-    BPainterProperties,
-    BPainterBrushSettings    
-    )
-
+    
 def register():
-    for cla in classes:
-        bpy.utils.register_class(cla)
+    
     bpy.types.WindowManager.b_painter_restart_needed = BoolProperty(default=False)  
     bpy.types.WindowManager.b_painter_modal_update = BoolProperty(default=False)
     bpy.types.WindowManager.b_painter_in_view_3d = BoolProperty(default=False)
@@ -483,13 +490,13 @@ def register():
     bpy.types.WindowManager.b_painter_brush_filter = StringProperty(default="",update=update_brush_filter,options={'TEXTEDIT_UPDATE'})
     bpy.types.Scene.b_painter_texture_preview = BoolProperty(default=False)
     
-    bpy.types.Image.b_painter_channel = PointerProperty(type=BPainterChannelSettings)
+    bpy.types.Image.b_painter = PointerProperty(type=BPainterImageSettings)
     
     bpy.types.Object.b_painter_active_material = EnumProperty(name="Active Material",items=get_object_materials,update=set_active_material)
     bpy.types.Object.b_painter_shadeless = BoolProperty(name="Shading Mode",description="Make all Materials shadeless.",default=False,update=set_mat_shading)
     
     bpy.types.Material.b_painter = PointerProperty(type=BPainterProperties)
-    #bpy.types.ShaderNodeMaterial.b_painter = PointerProperty(type=BPainterProperties)
+    bpy.types.ShaderNodeMaterial.b_painter = PointerProperty(type=BPainterProperties)
     bpy.types.ShaderNodeMixRGB.b_painter_layer_hide = BoolProperty(default=False,update=set_show_hide)
     bpy.types.ShaderNodeRGBCurve.b_painter_layer_hide = BoolProperty(default=False,update=set_show_hide)
     bpy.types.ShaderNodeHueSaturation.b_painter_layer_hide = BoolProperty(default=False,update=set_show_hide)

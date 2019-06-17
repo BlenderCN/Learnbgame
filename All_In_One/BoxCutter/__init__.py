@@ -17,17 +17,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 bl_info = {
     'name': 'BoxCutter',
-    'description': 'Box Cutter 7.0.5: BetaScythe PHASE: Badger Claw',
-    'author': 'AR, MX, JL, EA, proxe, dairin1d, AgentX, RedFrost',
-    'version': (0, 7, 0, 5),
+    'description': 'BoxCutter 7.1.2: BetaScythe PHASE: Custom Paw',
+    'author': 'AR, MX, proxe, JL, EA, dairin1d, AgentX, RedFrost',
+    'version': (0, 7, 1, 2),
     'blender': (2, 80, 0),
     'location': 'View3D',
-    'wiki_url': 'https://masterxeon1001.com/2018/11/30/boxcutter-7-2-8-betascythe/',
-    "category": "Learnbgame",
-}
+    'wiki_url': 'https://masterxeon1001.com/2019/02/15/boxcutter-711-release-notes/',
+    'category': '3D View'}
 
-from . addon import preference, property
-from . addon.interface import operator, panel, toolbar, keymap
+from . addon import operator, panel, keymap, pie, preference, property, topbar
 
 
 def register():
@@ -37,11 +35,13 @@ def register():
 
     operator.register()
     panel.register()
-    toolbar.register()
+    pie.register()
+    topbar.register()
 
 
 def unregister():
-    toolbar.unregister()
+    topbar.unregister()
+    pie.unregister()
     panel.unregister()
     operator.unregister()
 

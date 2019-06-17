@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tree Distribution &mdash; Mirage 2.0.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/custom_mirage.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Mirage 2.0.0 documentation" href="index.html"/>
+        <link rel="next" title="Tools" href="tools.html"/>
+        <link rel="prev" title="Terrain generated from heightmaps" href="terrain_file.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Mirage
+          
+
+          
+            
+            <img src="_static/logo_square.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain.html">Procedural Terrains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_file.html">Terrain generated from heightmaps</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Tree Distribution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quick-intro">Quick Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-settings">General Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tree-group">Tree Group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="presets.html">Presets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preferences.html">Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_list.html">Full Feature List</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Mirage</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Tree Distribution</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tree_distribution.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tree-distribution">
+<h1>Tree Distribution<a class="headerlink" href="#tree-distribution" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/tree_distro_intro.png" src="_images/tree_distro_intro.png" />
+<p>The tree distribution panel creates a vertex group and particle system to distribute trees.</p>
+<div class="section" id="quick-intro">
+<h2>Quick Intro<a class="headerlink" href="#quick-intro" title="Permalink to this headline">¶</a></h2>
+<iframe width="696" height="392" src="https://www.youtube.com/embed/QkLawB8Biic?rel=0" frameborder="0" allowfullscreen></iframe></div>
+<div class="section" id="general-settings">
+<h2>General Settings<a class="headerlink" href="#general-settings" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/tree_distro_vgroup.png" src="_images/tree_distro_vgroup.png" />
+<dl class="docutils">
+<dt>Density</dt>
+<dd>Number of trees to add. The <em>Tree Density</em> vertex group will
+control Tree placement.</dd>
+<dt>Maximum Slope</dt>
+<dd>Limit the slope in which trees can grow. This number is in degrees,
+up to 90º. <em>Slope</em> vertex group provides the slope data.</dd>
+<dt>Maximum Height</dt>
+<dd>Limit the height at which trees can grow. This is relative to
+the terrain&#8217;s height (0-1) and it&#8217;s calculated from the <em>Height</em> vertex group.</dd>
+<dt>Scale</dt>
+<dd>Scale of the trees, relative to the scale of the source objects.</dd>
+<dt>Use Terrain Scale</dt>
+<dd>Calculate the best scale for trees based on the difference in size
+from the terrain and the source objects. This will disable the scale setting,
+but it will also keep updated so you can uncheck this option and tweak the
+scale yourself.</dd>
+</dl>
+<p>You can tweak these settings by going into the properties editor and into the particles tab.</p>
+</div>
+<div class="section" id="tree-group">
+<h2>Tree Group<a class="headerlink" href="#tree-group" title="Permalink to this headline">¶</a></h2>
+<p>Select a group of meshes to use. They will be picked randomly from this group.
+Mirage doesn&#8217;t include tree models or tree generation yet so you have to supply your own models.</p>
+<p>If you&#8217;re having trouble with scale or rotation, apply rotation and scale.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Mirage 1.0 required tree objects to be rotated, so they were standing upright
+in the Z axis. 2.0 and onward work with trees laying &#8220;on the side&#8221;
+(on the Y axis). If you bought stock tree models you probably don&#8217;t need
+to rotate them.</p>
+</div>
+<p>Also make sure the origin point of the object (the colored dot in the mesh) is aligned to
+the bottom of your mesh. Otherwise the trees will come up intersecting the terrain.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the objects in your group have more than 250,000 vertices in total,
+Mirage will set the display mode of particles to &#8220;Cross&#8221; because Blender&#8217;s
+viewport slows down considerably with large amounts of geometry. Cycles will
+render just fine though, the change is only for the viewport.</p>
+</div>
+<img alt="_images/tree_distro_performance.png" src="_images/tree_distro_performance.png" />
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tools.html" class="btn btn-neutral float-right" title="Tools" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="terrain_file.html" class="btn btn-neutral" title="Terrain generated from heightmaps" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Diego Gangl.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

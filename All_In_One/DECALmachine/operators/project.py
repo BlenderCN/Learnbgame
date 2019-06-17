@@ -1,316 +1,512 @@
 import bpy
-from bpy.props import FloatProperty, BoolProperty
-from . init_base_material import init_base_material
-from . steps import WStep
-from .. import M3utils as m3
-from .. utils.operators import get_selection, hide_meshes, intersect, unlink_render_result
+import bmesh
+from mathutils import Vector, Matrix
+import gpu
+from gpu_extras.batch import batch_for_shader
+import bgl
+from .. utils.decal import apply_decal, set_defaults, get_target
+from .. utils.modifier import add_displace, add_nrmtransfer, get_displace, add_subd, add_shrinkwrap, get_subd, get_shrinkwrap, get_mods_as_dict, add_mods_from_dict
+from .. utils.raycast import get_origin_from_object_boundingbox
+from .. utils.mesh import hide, unhide, blast, smooth
+from .. utils.object import intersect, flatten, parent, update_local_view, lock, unshrinkwrap
+from .. utils.math import remap, create_bbox, flatten_matrix
+from .. utils.raycast import get_bvh_ray_distance_from_verts
+from .. utils.ui import popup_message, wrap_mouse
+from .. utils.collection import unlink_object
+from .. utils.addon import gp_add_to_edit_mode_group
 
 
-class DecalProject(bpy.types.Operator):
-    bl_idname = "machin3.decal_project"
-    bl_label = "MACHIN3: Decal Project"
+class Project(bpy.types.Operator):
+    bl_idname = "machin3.project_decal"
+    bl_label = "MACHIN3: Project Decal"
+    bl_description = "Project Selected Decals on Surface\nALT: Manually Adjust Projection Depth\nCTRL: Use UV Project instead of UV Transfer\nSHIFT: Shrinkwrap"
     bl_options = {'REGISTER', 'UNDO'}
 
-    depth = FloatProperty(name="Projection Depth", default=10, min=0.01)
-    height = FloatProperty(name="Decal Height", default=0)
-    parent = BoolProperty(name="Parent", default=True)
-    wstep = BoolProperty(name="Transfer Normals", default=True)
-    wstepshow = BoolProperty(name="Show in Viewport", default=True)
+    @classmethod
+    def poll(cls, context):
+        return any(obj.DM.isdecal and not obj.DM.isprojected and not obj.DM.issliced for obj in context.selected_objects)
 
     def draw(self, context):
         layout = self.layout
         col = layout.column()
 
-        col.prop(self, "depth")
-        col.prop(self, "height")
-        col.prop(self, "parent")
+    def draw_VIEW3D(self, args):
+        shader = gpu.shader.from_builtin('3D_UNIFORM_COLOR')
+        shader.bind()
 
-        row = col.row()
-        row.prop(self, "wstep")
-        row.prop(self, "wstepshow")
+        bgl.glEnable(bgl.GL_BLEND)
+        # bgl.glDepthFunc(bgl.GL_ALWAYS)
 
-    def execute(self, context):
-        if m3.DM_prefs().consistantscale:
-            self.scene_scale = m3.get_scene_scale()
+        for decal, target, projected, (front, back), bbox in self.projections:
+            coords, edge_indices, tri_indices = bbox
+
+            mxcoords = []
+            for idx, co in enumerate(coords):
+                if idx > 3:
+                    mxt = Matrix.Translation((0, 0, (back + abs(self.offset)) / decal.scale.z))
+                    mxco = decal.matrix_world @ mxt @ Vector(co)
+                else:
+                    mxt = Matrix.Translation((0, 0, (-front - abs(self.offset)) / decal.scale.z))
+                    mxco = decal.matrix_world @ mxt @ Vector(co)
+
+                mxcoords.append(mxco)
+
+            # bottom and top face lines
+            bgl.glLineWidth(4)
+            shader.uniform_float("color", (1, 1, 1, 0.4))
+            batch = batch_for_shader(shader, 'LINES', {"pos": mxcoords}, indices=edge_indices[:8])
+            batch.draw(shader)
+
+            # side lines
+            bgl.glLineWidth(2)
+            shader.uniform_float("color", (1, 1, 1, 0.2))
+            batch = batch_for_shader(shader, 'LINES', {"pos": mxcoords}, indices=edge_indices[8:])
+            batch.draw(shader)
+
+            # bottom and top faces
+            shader.uniform_float("color", (1, 1, 1, 0.1))
+            batch = batch_for_shader(shader, 'TRIS', {"pos": mxcoords}, indices=tri_indices[:4])
+            batch.draw(shader)
+
+
+        bgl.glDisable(bgl.GL_BLEND)
+
+    def modal(self, context, event):
+        context.area.tag_redraw()
+
+        # update mouse postion for HUD
+        if event.type == "MOUSEMOVE":
+            self.mouse_x = event.mouse_region_x
+
+
+        events = ['MOUSEMOVE']
+
+        if event.type in events:
+
+            if event.type == 'MOUSEMOVE':
+                wrap_mouse(self, context, event, x=True)
+
+                divisor = 10000 if event.shift else 100 if event.ctrl else 1000
+                self.offset += (self.mouse_x - self.last_mouse_x) / divisor
+
+        # VIEWPORT control
+
+        elif event.type in {'MIDDLEMOUSE'}:
+            return {'PASS_THROUGH'}
+
+        # FINISH
+
+        elif event.type in {'LEFTMOUSE', 'SPACE'}:
+            bpy.types.SpaceView3D.draw_handler_remove(self.VIEW3D, 'WINDOW')
+
+            for decal, target, projected, (front, back), bbox in self.projections:
+                projected = self.project(context, event, decal, target, projected=projected, depth=(front + abs(self.offset), back + abs(self.offset)))
+
+                if not projected:
+                    self.failed.append(decal)
+
+            if self.failed:
+                self.report_errors(self.failed)
+
+            return {'FINISHED'}
+
+        # CANCEL
+
+        elif event.type in {'RIGHTMOUSE', 'ESC'}:
+            self.cancel_modal()
+            return {'CANCELLED'}
+
+        self.last_mouse_x = self.mouse_x
+
+        return {'RUNNING_MODAL'}
+
+    def cancel_modal(self):
+        bpy.types.SpaceView3D.draw_handler_remove(self.VIEW3D, 'WINDOW')
+
+        for decal, target, projected, (front, back), bbox in self.projections:
+            bpy.data.meshes.remove(projected.data, do_unlink=True)
+
+    def invoke(self, context, event):
+        self.dg = context.evaluated_depsgraph_get()
+        sel = context.selected_objects
+
+        decals = [obj for obj in context.selected_objects if obj.DM.isdecal and not obj.DM.isprojected and not obj.DM.issliced]
+
+        # unselect what won't be projected, not necessary but useful if you want to follow with the Adjust tool
+        for obj in sel:
+            if obj not in decals:
+                obj.select_set(False)
+
+        # alternative modal mode
+        if event.alt:
+            if self.invoke_modal(context, event, decals):
+                return {'RUNNING_MODAL'}
+
+            elif self.failed:
+                self.report_errors(self.failed)
+
+        # simple mode
         else:
-            self.scene_scale = 1
-
-        self.midlevel = 1 - (0.0001 / self.scene_scale)  # 0.9999 for scene scale of 1.0
-        self.projectiondepth = self.depth / 10 / self.scene_scale
-
-        sel = get_selection()
-        if sel is not None:
-            target, decals = sel
-            self.decal_project(target, decals)
-        else:
-            self.report({'ERROR'}, "Select two or more objects: the decal(s) and the object to project onto!")
+            self.invoke_simple(context, event, decals)
 
         return {'FINISHED'}
 
-    def decal_project(self, target, decals):
-        curved = target
-
-        init_base_material([curved])
+    def invoke_modal(self, context, event, decals):
+        self.projections = []
+        self.failed = []
 
         for decal in decals:
-            print("Projecting '%s' on '%s'." % (decal.name, curved.name))
-            m3.unselect_all("OBJECT")
+            target = get_target(context, decal)
 
-            # duplicating and timestamping the decalbackup for potential future use. the timestamp will be used to identify the duplicate, independend of the obj names
-            decalbackup = decal.copy()
-            decalbackup.data = decal.data.copy()
-            # prevent it from being removed after scene reload
-            decalbackup.use_fake_user = True
-            timestamp = m3.set_timestamp(decalbackup)
-            decalbackup.name = "backup_" + decal.name
+            if target:
+                if target != decal.parent:
+                    apply_decal(decal, target=target)
 
-            decal.select = True
-            m3.make_active(decal)
+                projected = target.copy()
+                projected.data = bpy.data.meshes.new_from_object(target.evaluated_get(self.dg))
+                projected.modifiers.clear()
+                projected.name = decal.name + "_projected"
 
-            # check for active mirror modes
-            # they need to be removed and re-applied to the projected decal
-            mirrormods = []
-            for mod in decal.modifiers:
-                if "mirror" in mod.name.lower():
-                    mirror = decal.modifiers.get(mod.name)
-                    mirrordict = {mirror.name: {"use_x": mirror.use_x,
-                                                "use_y": mirror.use_y,
-                                                "use_z": mirror.use_z,
-                                                "use_mirror_merge": mirror.use_mirror_merge,
-                                                "use_clip": mirror.use_clip,
-                                                "use_mirror_vertex_groups": mirror.use_mirror_vertex_groups,
-                                                "use_mirror_u": mirror.use_mirror_u,
-                                                "use_mirror_v": mirror.use_mirror_v,
-                                                "merge_threshold": mirror.merge_threshold,
-                                                "mirror_object": mirror.mirror_object}}
+                # determine  base projection depth
+                front, back = get_bvh_ray_distance_from_verts(projected, decal, (0, 0, -1), 0.1)
 
-                    mirrormods.append(mirrordict)
-                    bpy.ops.object.modifier_remove(modifier=mod.name)
+                # take care of flat decals on a flat face, where both distances are close to 0
+                if front + back < 0.001 * decal.scale.z:
+                    front = back = 0.001 * decal.scale.z
 
-            curved.select = True
-            m3.make_active(curved)
+                bbox = create_bbox(decal)
 
-            try:
-                decalmat = decal.material_slots[0].material
-            except:
-                decalmat = None
+                self.projections.append((decal, target, projected, (front, back), bbox))
 
-            # create empty, used for uv projection later on
+            else:
+                self.failed.append(decal)
+
+
+        # start the modal
+        if self.projections:
+            self.mouse_x = self.last_mouse_x = event.mouse_region_x
+            self.offset = 0
+
+            args = (self, context)
+            self.VIEW3D = bpy.types.SpaceView3D.draw_handler_add(self.draw_VIEW3D, (args, ), 'WINDOW', 'POST_VIEW')
+
+            context.window_manager.modal_handler_add(self)
+
+            return True
+
+    def invoke_simple(self, context, event, decals):
+        failed = []
+
+        for decal in decals:
+            target = get_target(context, decal)
+
+            if target:
+
+                # if the parent is None or different than the "forced" target or raycasted target, re-aply the decal, before projecting to ensure the material matches and the backup is parented
+                # this is useful if you move a decal from an object that was currently parented or applied to another object, and means you don't have to run reapply manually before projecting
+                if target != decal.parent:
+
+                    apply_decal(decal, target=target)
+                    # apply_decal(decal)
+
+                # shrinkwrap
+                if event.shift:
+                    self.shrinkwrap(context, decal, target)
+
+                # project
+                else:
+                    projected = self.project(context, event, decal, target)
+
+                    if not projected:
+                        failed.append(decal)
+
+            else:
+                failed.append(decal)
+
+        if failed:
+            self.report_errors(failed)
+
+    def report_errors(self, failed):
+        msg = ["Projecting the following decals failed:"]
+
+        for obj in failed:
+            msg.append(" » " + obj.name)
+
+        msg.append("Try Re-Applying the decal first!")
+        msg.append("You can also force-project on a non-decal object by selecting it last.")
+
+        popup_message(msg)
+
+    def project(self, context, event, decal, target, projected=None, depth=None):
+        # check  mirror mods, they need to be disabled, added to the projected decal and re-enabled again
+        mirrors = [mod for mod in decal.modifiers if mod.type == "MIRROR" and mod.show_render and mod.show_viewport]
+
+        for mod in mirrors:
+            mod.show_viewport = False
+
+        # remove subd and shrinkwrap mods, if present
+        unshrinkwrap(decal)
+
+        # create and align empty, used for uv projection
+        if event.ctrl:
             uvempty = bpy.data.objects.new("uvempty", None)
-            bpy.context.scene.objects.link(uvempty)
+            context.collection.objects.link(uvempty)
 
-            # align uvempty to decal
-            # uvempty.location = decal.location
-            # uvempty.rotation_euler = decal.rotation_euler
-            # the above doesnt work on decals that are parented to the curved (such as decalbackups brought back and used for re-projection)
+            self.align_uvempty(uvempty, decal)
 
-            # parent uvempty to decal, this positions and aligns it
-            uvempty.parent = decal
+        # duplicate target mesh, which will become the projected decal after boolean, the projected is passed in when run as a modal, because we need to do the raycast in advance
+        if not projected:
+            projected = target.copy()
+            projected.data = bpy.data.meshes.new_from_object(target.evaluated_get(self.dg))
+            projected.modifiers.clear()
+            projected.name = decal.name + "_projected"
 
-            # then immedeately clear the parent again and keep the transforms to "freeze" it in place
-            # if this is not done, then the uvempty will loose its parent once you intersect and so change its location and rotation
+        for col in decal.users_collection:
+            col.objects.link(projected)
 
-            uvempty.select = True
-            m3.make_active(uvempty)
-            curved.select = False
-            decal.select = False
-            bpy.ops.object.parent_clear(type='CLEAR_KEEP_TRANSFORM')
+        # hide decal geo, unhide projected geo, this will allow us to easily select the projected decal faces after the boolean
+        unhide(projected.data)
+        hide(decal.data)
+
+        # determine projection depth, use passed in depth, if available
+        if not depth:
+            front, back = get_bvh_ray_distance_from_verts(projected, decal, (0, 0, -1), 0.1)
+
+            # take care of flat d)ecals on a flat face, where both distances are close to 0
+            if front + back < 0.001 * decal.scale.z:
+                front = back = 0.001 * decal.scale.z
+
+            # add 20% additional depth
+            factor = 1.2
+
+        else:
+            front, back = depth
+
+            # add a tiny amount, to counter cases where no modal depth is added a and a decal is perfectly on a surface
+            factor = 1.01
 
 
-            # recreate the previous selection pattern
-            uvempty.select = False
-            curved.select = True
-            decal.select = True
-            m3.make_active(curved)
+        # add thickness to decal, based on front and backside distances, with proper offset. compensate for decal scaling and add 20% extra for good measure
+        thickness = (front + back) / decal.scale.z
 
-            # duplicate the curved mesh, which will become the projected decal after boolean
-            curveddecal = curved.copy()
-            curveddecal.data = curved.data.copy()
-            bpy.context.scene.objects.link(curveddecal)
-            curveddecal.select = True
-            m3.make_active(curveddecal)
+        solidify = decal.modifiers.new(name="Solidify", type="SOLIDIFY")
+        solidify.thickness = thickness * factor
+        solidify.offset = remap(0, -back, front, -1 / factor, 1 / factor)
 
-            # unselecting and hiding the original curved object
-            curved.select = False
-            curved.hide = True
+        # temporarily turn of the displace mod, otherwise its offset may negatively affeect the intersection. the raycast distance is calculated without it after all
+        displace = get_displace(decal)
+        if displace:
+            displace.show_viewport = False
 
-            # we want the geometry of curveddecal to be hidden
-            # but we dont won't this for the decal, that is to be projected
-            decal.select = False
-            hide_meshes()
-            decal.select = True
+        # """
+        # boolean intersection
+        intersect(projected, decal)
+        flatten(projected)
 
-            # applying all modifiers(including bevel, so you can project on objets where the bevels arent applies yet)
-            # but excluding data_tansfers, because we want to also apply custom normals to the curved decal, if the curved mesh has them!
-            for mod in curveddecal.modifiers:
-                # if mod.type != "DATA_TRANSFER":
-                bpy.ops.object.modifier_apply(apply_as='DATA', modifier=mod.name)
+        # remove everything but the projectd decal faces
+        blast(projected.data, "hidden", "FACES")
 
-            # add thickness to decal
-            solidify = decal.modifiers.new(name="Solidify", type="SOLIDIFY")
-            solidify.offset = -0.5
-            solidify.thickness = self.projectiondepth
+        # parent projected decal
+        parent(projected, target)
 
-            # boolean intersection
-            intersect()
+        # set decal obj props
+        projected.DM.isdecal = True
+        projected.DM.isprojected = True
+        projected.DM.projectedon = target
+        projected.DM.decalbackup = decal
+        projected.DM.uuid = decal.DM.uuid
+        projected.DM.decaltype = decal.DM.decaltype
+        projected.DM.decallibrary = decal.DM.decallibrary
+        projected.DM.decalname = decal.DM.decalname
+        projected.DM.decalmatname = decal.DM.decalmatname
+        projected.DM.creator = decal.DM.creator
 
-            # the decal is now gone, so we can take its name and asign it to the new one
-            # interstingly we can assign the name like this directly, perhaps because
-            # decal is still in memory?
-            # the duplicate of the curved(target), will become the new decal(after boolean)
-            curveddecal.select = True
-            m3.make_active(curveddecal)
+        # turn off shadow casting and diffuse rays
+        projected.cycles_visibility.shadow = False
+        projected.cycles_visibility.diffuse = False
 
-            # the prefix(here and later on the backup) is added, because otherwise there will be a bug (in asset manager)
-            # causing the backup to become linked and offset, when importing an asset, the backup needs to be always unlinked however
-            curveddecal.name = "projected_" + decal.name + "_" + curved.name
 
-            # also adding the timestamp we have previously added to the decalbackup
-            m3.set_timestamp(curveddecal, timestamp=timestamp)
+        # remove solidiy mod from decal and unhide its geo again, this needs to happen before the uv transfer!
+        decal.modifiers.remove(solidify)
+        unhide(decal.data)
 
-            # remove unwanted parts and leave only the "projected decal"
-            curveddecal.select = True
-            m3.set_mode("EDIT")
-            m3.select_all("MESH")
-            bpy.ops.mesh.delete(type='FACE')
-            bpy.ops.mesh.reveal()
-            m3.set_mode("OBJECT")
+        # also enable the displace mod again
+        if displace:
+            displace.show_viewport=True
 
-            # unhiding the original curved object again
-            curved.hide = False
+        # check if the intersection resulted in any geometry, if not abort. also remove polygons facing the wrong direction
+        if not self.validate_projected(projected, decal):
+            bpy.data.meshes.remove(projected.data, do_unlink=True)
+            for mod in mirrors:
+                mod.show_viewport = True
 
-            # adding a slight displace to the decal
-            displace = curveddecal.modifiers.new(name="Displace", type="DISPLACE")
+            return False
 
-            # enough to avoid z-fighting, yet not enough to produce a noticable shadow when rendering
-            displace.mid_level = self.midlevel - (self.height / 1000 / self.scene_scale)
-            displace.show_in_editmode = True
-            displace.show_on_cage = True
-            displace.show_expanded = False
-
-            # clear out all existing uv 'channels'
-            uvs = curveddecal.data.uv_textures
-            while uvs:
-                uvs.remove(uvs[0])
-
-            # add a new channel
-            uvs.new('UVMap')
-
-            # creating uvs for the curved decal using the uvproject mod and the uvempty
-            # this way we are ensuring the uvs are always square/rectangular no matter the new topology
-            # furthermore, the uvs will always be perfectly centered so we can scale them up witht the boundary limit to fit the whole uv space
-            # plus they are of course aligned/rotated just like the source decal!
-            uvproject = curveddecal.modifiers.new(name="UVProject", type="UV_PROJECT")
+        # with ctrl pressed, do an uv projection instead of a transfer
+        # uv project
+        if event.ctrl:
+            uvproject = projected.modifiers.new(name="UVProject", type="UV_PROJECT")
             uvproject.projectors[0].object = uvempty
+            flatten(projected)
+            bpy.data.objects.remove(uvempty, do_unlink=True)
 
-            # applying uvproject mod
-            for mod in curveddecal.modifiers:
-                if "uvproject" in mod.name.lower():
-                    bpy.ops.object.modifier_apply(apply_as='DATA', modifier=mod.name)
+        # uv transfer
+        else:
+            uvtransfer = projected.modifiers.new(name="UVTransfer", type="DATA_TRANSFER")
+            uvtransfer.object = decal
+            uvtransfer.use_loop_data = True
+            uvtransfer.loop_mapping = 'POLYINTERP_NEAREST'
+            uvtransfer.data_types_loops = {'UV'}
+            flatten(projected)
 
-            # scaling the uv's up to fit the entire uv space
-            m3.set_mode("EDIT")
-            m3.select_all("MESH")
-            oldcontext = m3.change_context("IMAGE_EDITOR")
+        # apply the decalmat
+        projected.data.materials.clear()  # actually no longer necessary, materials are cleared and obj is flattened
+        if decal.active_material:
+            projected.data.materials.append(decal.active_material)
 
-            # Check if it is a result image linked, if there is, then no geometry will show in the image editor and nothing can be scaled or rotated
-            # se we need to unlink the render result
-            unlink_render_result()
+        # displace
+        add_displace(projected)
 
-            # this needs to be turned on, otherwise nothing will be selected in uv and so nothing will be scaled up
-            bpy.context.scene.tool_settings.use_uv_select_sync = True
+        # mirror
+        for mod in mirrors:
+            mirror = projected.modifiers.new(name=mod.name, type="MIRROR")
+            mirror.use_axis = mod.use_axis
+            mirror.use_mirror_u = mod.use_mirror_u
+            mirror.use_mirror_v = mod.use_mirror_v
+            mirror.mirror_object = mod.mirror_object
 
-            # contrain uvs to uv/image bounds
-            bpy.context.space_data.uv_editor.lock_bounds = True
+        # normal tranfer
+        add_nrmtransfer(projected, target)
 
-            # uv scaling needs to happen based on the bounding box center(which should also be the uv center)
-            bpy.context.space_data.pivot_point = 'CENTER'
+        # set object defaults
+        set_defaults(decalobj=projected)
 
-            # scaling up a lot to hit those bounds and so fill out the entire uv space
-            bpy.ops.transform.resize(value=(1000, 1000, 1000), constraint_axis=(False, False, False), constraint_orientation='GLOBAL', mirror=False, proportional='DISABLED', proportional_edit_falloff='SMOOTH', proportional_size=1)
+        # lock transforms
+        lock(projected)
 
-            # turning bounds off again
-            bpy.context.space_data.uv_editor.lock_bounds = False
+        # select and make active
+        projected.select_set(True)
 
-            # changing the context back to what it was
-            m3.change_context(oldcontext)
+        if context.active_object == decal:
+            context.view_layer.objects.active = projected
 
-            m3.set_mode("OBJECT")
+        # turn the decal into a decal backup
+        decal.use_fake_user = True
+        decal.DM.isbackup = True
 
-            # remove the uvempty
-            m3.unselect_all("OBJECT")
-            uvempty.select = True
-            bpy.ops.object.delete(use_global=False)
+        unlink_object(decal)
 
-            # cleaning out all materials of the curveddecal
-            curveddecal.select = True
-            for slot in curveddecal.material_slots:
-                bpy.ops.object.material_slot_remove()
+        # store the backup's matrix in target's local space
+        decal.DM.backupmx = flatten_matrix(target.matrix_world.inverted() @ decal.matrix_world)
 
-            if decalmat is not None:
-                # applying the decal material
-                bpy.ops.object.material_slot_add()
-                curveddecal.material_slots[0].material = decalmat
+        # add edit mode group
+        gp_add_to_edit_mode_group(context, projected)
 
-            # bring back mirror modifiers
-            for m in mirrormods:
-                for name in m:
-                    mirror = curveddecal.modifiers.new(name=name, type="MIRROR")
-                    mirror.use_x = m[name]["use_x"]
-                    mirror.use_y = m[name]["use_y"]
-                    mirror.use_z = m[name]["use_z"]
-                    mirror.use_mirror_merge = m[name]["use_mirror_merge"]
-                    mirror.use_clip = m[name]["use_clip"]
-                    mirror.use_mirror_vertex_groups = m[name]["use_mirror_vertex_groups"]
-                    mirror.use_mirror_u = m[name]["use_mirror_u"]
-                    mirror.use_mirror_v = m[name]["use_mirror_v"]
-                    mirror.merge_threshold = m[name]["merge_threshold"]
-                    mirror.mirror_object = m[name]["mirror_object"]
+        # local view update
+        update_local_view(context.space_data, [(projected, True)])
 
-            if self.wstep:
-                # select and make active the curved/target to prepare for wstep
-                m3.make_active(curved)
-                curved.select = True
+        return True
 
-                # transfer the normals from the target
-                bpy.ops.machin3.wstep()
+    def align_uvempty(self, uvempty, decal):
+        # find true location by creating 4 corner boundary locations from decal mesh and calcuate the center from them
+        loc = get_origin_from_object_boundingbox(decal)
 
-                # turn off viewport visibiity for performance reasons
-                if not self.wstepshow:
-                    mod = curveddecal.modifiers.get("M3_copied_normals")
-                    mod.show_viewport = False
+        # get rotation
+        _, rot, _ = decal.matrix_world.decompose()
 
-            # turn off shadow casting
-            curveddecal.cycles_visibility.shadow = False
+        # construct scale matrix from decal dimensions, divided by two, because like a default cube the empty is actually 2 units wide, even though is doesnt have dimenisions
+        sca = Matrix()
+        sca[0][0] = decal.dimensions.x / 2
+        sca[1][1] = decal.dimensions.y / 2
+        sca[2][2] = 1
 
-            # enable wire display
-            curveddecal.show_wire = True
-            curveddecal.show_all_edges = True
+        # align empty for perfect uv projection
+        uvempty.matrix_world = Matrix.Translation(loc) @ rot.to_matrix().to_4x4() @ sca
 
-            if self.parent:
-                # curveddecal.parent = curved
-                # curveddecal.matrix_parent_inverse = curved.matrix_world.inverted()
+    def validate_projected(self, projected, decal):
+        # check if there is any geometry at all, if not abort projection
+        if not projected.data.polygons:
+            return False
 
-                # decalbackup.parent = target
-                # decalbackup.matrix_parent_inverse = curved.matrix_world.inverted()
+        # if there is geometry, check for faces pointing in the same directino as the decals -Z, these need to go
+        dmxw = decal.matrix_world
+        origin, _, _ = dmxw.decompose()
+        direction = dmxw @ Vector((0, 0, -1)) - origin
 
-                curveddecal.select = True
-                curved.select = True
-                m3.make_active(curved)
-                bpy.ops.object.parent_set(type='OBJECT', keep_transform=True)
+        pmxw = projected.matrix_world
+        pmxi = pmxw.inverted()
+        direction_local = pmxi.to_3x3() @ direction
 
-                curveddecal.select = False
-                bpy.context.scene.objects.link(decalbackup)
-                decalbackup.select = True
-                bpy.ops.object.parent_set(type='OBJECT', keep_transform=True)
-                bpy.context.scene.objects.unlink(decalbackup)
+        bm = bmesh.new()
+        bm.from_mesh(projected.data)
+        bm.normal_update()
+        bm.verts.ensure_lookup_table()
 
-                curved.select = False
-                curveddecal.select = True
-                m3.make_active(curveddecal)
+        backfaces = [f for f in bm.faces if f.normal.dot(direction_local) > 0]
 
-            # add to group pro group
-            if m3.GP_check():
-                if m3.DM_prefs().groupproconnection:
-                    if len(bpy.context.scene.storedGroupSettings) > 0:
-                        bpy.ops.object.add_to_grouppro()
+        bmesh.ops.delete(bm, geom=backfaces, context="FACES")
+
+        # again check if any polygons are left
+        if bm.faces:
+            bm.to_mesh(projected.data)
+            bm.clear()
+            return True
+
+        # otherwise abort
+        else:
+            return False
+
+    def shrinkwrap(self, context, decal, target):
+        # smooth mesh
+        smooth(decal.data)
+
+        # get mirror mods
+        mirrors = get_mods_as_dict(decal, types=['MIRROR'])
+
+        # clear existing mods, to guarantee proper order, fetch the current displace mid-level first however
+        displace = get_displace(decal)
+        midlevel = displace.mid_level if displace else None
+
+        decal.modifiers.clear()
+
+        # add shrinkwrap mods
+        add_subd(decal)
+        add_shrinkwrap(decal, target)
+
+        # add original displace
+        displace = add_displace(decal)
+        if midlevel:
+            displace.mid_level = midlevel
+
+        # add original mirrors
+        add_mods_from_dict(decal, mirrors)
+
+        # add new normal transfer
+        add_nrmtransfer(decal, target)
+
+        # set object defaults
+        set_defaults(decalobj=decal)
+
+
+class UnShrinkwrap(bpy.types.Operator):
+    bl_idname = "machin3.unshrinkwrap_decal"
+    bl_label = "MACHIN3: Unshrinkwrap"
+    bl_description = "Un-Shrinkwrap, turn shrinkwrapped decal back into flat one."
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        decals = [obj for obj in context.selected_objects if obj.DM.isdecal]
+        return decals and any(get_shrinkwrap(obj) or get_subd(obj) for obj in decals)
+
+    def execute(self, context):
+        decals = [obj for obj in context.selected_objects if obj.DM.isdecal]
+
+        for obj in decals:
+            # remove shrinkwrap and subd mods
+            unshrinkwrap(obj)
+
+            # unsmooth
+            smooth(obj.data, smooth=False)
+
+        return {'FINISHED'}

@@ -21,13 +21,14 @@ import rna_keymap_ui
 #     sys.path.append(dir )
 # import ipdb
 
-class VIEW3D_PT_Hair_Panel(bpy.types.Panel):
-    bl_label = "Hair Tool"
+class  HT_PT_VIEW3D_PT_Hair_Panel(bpy.types.Panel):
+    bl_label = "Hair Operators"
     bl_idname = "hair_tool"
     bl_space_type = 'VIEW_3D'
-    bl_region_type = 'TOOLS'
-    bl_category = "Tools"
-    bl_context = "objectmode"
+    bl_region_type = 'UI'
+    bl_category = 'Hair Tool'
+    bl_context = 'objectmode'
+    # bl_options = {'HIDE_HEADER'}
 
     drawAsMenu = False
 
@@ -35,7 +36,7 @@ class VIEW3D_PT_Hair_Panel(bpy.types.Panel):
         layout = self.layout
         if self.drawAsMenu:
             layout = self.layout.box()
-            layout.label('Hair Tool')
+            layout.label(text='Hair Tool')
         obj = context.active_object
         if obj is not None:
         # CONVERTERS / GENERATORS
@@ -45,6 +46,8 @@ class VIEW3D_PT_Hair_Panel(bpy.types.Panel):
             if obj.type == 'CURVE':
                 col.operator("object.curve_edit", icon="FILE_REFRESH")
                 col.operator("object.braid_make", icon="LINKED")
+                if obj.targetObjPointer:
+                    col.operator("object.curves_from_mesh", icon="MESH_GRID")
                 if obj.data.bevel_object:
                     op=col.operator("object.curve_uv_refresh", icon="ASSET_MANAGER")
                     op.Seed = obj.hair_settings.uv_seed
@@ -58,10 +61,6 @@ class VIEW3D_PT_Hair_Panel(bpy.types.Panel):
                     row = col.row(align=True)
                     row.operator("object.ribbon_edit_profile", icon="LINKED")
                     row.operator("object.ribbon_close_profile", icon="UNLINKED")
-            if context.scene.grease_pencil or context.active_object.grease_pencil:  # true == use scene gp
-                row = col.row(align=True)
-                row.operator("object.curve_from_gp", icon="GREASEPENCIL")
-                row.prop(context.scene, "GPSource", icon="SCENE_DATA", text='')
             if obj.type == 'MESH' and not obj.hair_settings.hair_mesh_parent:  # for non ribbon kind of  mesh
                 col.operator("object.curves_from_mesh", icon="MESH_GRID")
                 for mod in context.object.modifiers:
@@ -103,7 +102,7 @@ class VIEW3D_PT_Hair_Panel(bpy.types.Panel):
         # MESH RIBBONS OPERATIONS
             if obj.type == 'MESH' and obj.hair_settings.hair_mesh_parent: #for ribbon mesh
                 box = layout.box()
-                box.label('RIBBONS OPERATIONS')
+                box.label(text='RIBBONS OPERATIONS')
                 col = box.column(align=True)
                 col.operator("object.ribbon_weight", icon="WPAINT_HLT")
                 col.operator("object.ribbon_vert_color_grad", icon="VPAINT_HLT")
@@ -112,22 +111,21 @@ class VIEW3D_PT_Hair_Panel(bpy.types.Panel):
             # layout.operator("object.cleanup_hair", icon="CANCEL")
 
 # FOR CURVE EDIT MODE
-class VIEW3D_EDIT_Hair_Panel(bpy.types.Panel):
+class  HT_PT_VIEW3D_EDIT_Hair_Panel(bpy.types.Panel):
     bl_label = "Hair Tool"
     bl_idname = "hair_tool_edit"
     bl_space_type = 'VIEW_3D'
-    bl_region_type = 'TOOLS'
-    bl_category = "Tools"
-
+    bl_region_type = 'UI'
+    bl_category = 'Hair Tool'
     bl_context = "curve_edit"
 
     def draw(self, context):
         self.drawAsMenu = False
-        VIEW3D_PT_Hair_Panel.draw(self, context)
+        HT_PT_VIEW3D_PT_Hair_Panel.draw(self, context)
 
 
 # FOR HOTKEY
-class HairToolMenu(bpy.types.Menu):
+class HT_MT_HairToolMenu(bpy.types.Menu):
     bl_idname = "object.hair_tool_menu"
     bl_label = "Hair Tool Menu Panel"
 
@@ -158,7 +156,20 @@ class HairToolMenu(bpy.types.Menu):
             col.operator("object.curve_simplify", icon="HAIR")
             # layout.prop(obj.hair_settings, 'hairUvMethod', icon="MOD_UVPROJECT")
         else:
-            VIEW3D_PT_Hair_Panel.draw(self, context)
+            layout = self.layout
+            pie = layout.menu_pie()
+
+            split = pie.split()
+            col = split.column(align=True)
+
+            row = col.row(align=True)
+            row.scale_y = 1.3
+            geoOper = row.operator('hair.load_hair_mat', icon='IMPORT')
+
+            row = col.row(align=True)
+            row.scale_y = 1.3
+            geoOper = row.operator('hair.flip_hair_aniso', icon='FORCE_CHARGE')
+            HT_PT_VIEW3D_PT_Hair_Panel.draw(self, context)
 
     def check(self, context):
         return True
@@ -166,10 +177,10 @@ class HairToolMenu(bpy.types.Menu):
 
 class hairToolPreferences(bpy.types.AddonPreferences):
     bl_idname = 'hair_tool'
-    # expandCurveOper = bpy.props.BoolProperty( name="", description="",  default=False)
-    # expandGenerators = bpy.props.BoolProperty( name="", description="",  default=False)
-    flipUVRandom = bpy.props.BoolProperty( name="flip UV Randomly", description="Alter the ribbon look by randomly fliping uv on X axis",  default=True)
-    hideGPStrokes = bpy.props.BoolProperty( name="Hide GP strokes", description="Hide Grease pencil strokes after converting\n "
+    # expandCurveOper: bpy.props.BoolProperty( name="", description="",  default=False)
+    # expandGenerators: bpy.props.BoolProperty( name="", description="",  default=False)
+    flipUVRandom: bpy.props.BoolProperty( name="flip UV Randomly", description="Alter the ribbon look by randomly fliping uv on X axis",  default=True)
+    hideGPStrokes: bpy.props.BoolProperty( name="Hide GP strokes", description="Hide Grease pencil strokes after converting\n "
                                                                                 "them to curve or particle hair",  default=True)
 
 
@@ -180,7 +191,7 @@ class hairToolPreferences(bpy.types.AddonPreferences):
         box = layout.box()
         split = box.split()
         col = split.column()
-        col.label('Hotkey')
+        col.label(text='Hotkey')
         col.separator()
         wm = bpy.context.window_manager
         kc = wm.keyconfigs.user
@@ -189,10 +200,10 @@ class hairToolPreferences(bpy.types.AddonPreferences):
         if kmi:
             col.context_pointer_set("keymap", km)
             rna_keymap_ui.draw_kmi([], kc, km, kmi, col, 0)
-            col.operator(HairTool_Clear_Hotkeys.bl_idname, text="Clear hotkeys", icon='ZOOMOUT')
+            col.operator(HT_OT_HairTool_Clear_Hotkeys.bl_idname, text="Clear hotkeys", icon='REMOVE')
         else:
-            col.label("No hotkey entry found")
-            col.operator(HairTool_Add_Hotkey.bl_idname, text="Add hotkey entry", icon='ZOOMIN')
+            col.label(text="No hotkey entry found")
+            col.operator(HT_OT_HairTool_Add_Hotkey.bl_idname, text="Add hotkey entry", icon='ADD')
 
         row = layout.row()
         col = row.column()
@@ -240,10 +251,10 @@ def register_keymap():
     addon_keymaps.append((km4, kmi4))
 
 
-class HairTool_Add_Hotkey(bpy.types.Operator):
+class HT_OT_HairTool_Add_Hotkey(bpy.types.Operator):
     ''' Add hotkey entry '''
     bl_idname = "hairtool.add_hotkey"
-    bl_label = "Addon Preferences Example"
+    bl_label = "Add HairTool Hotkey"
     bl_options = {'REGISTER', 'INTERNAL'}
 
     def execute(self, context):
@@ -251,7 +262,7 @@ class HairTool_Add_Hotkey(bpy.types.Operator):
         self.report({'INFO'}, "Hotkey added in User Preferences -> Input -> 3D view")
         return {'FINISHED'}
 
-class HairTool_Clear_Hotkeys(bpy.types.Operator):
+class HT_OT_HairTool_Clear_Hotkeys(bpy.types.Operator):
     ''' Add hotkey entry '''
     bl_idname = "hairtool.clear_hotkey"
     bl_label = "Addon Preferences Example"
@@ -266,8 +277,5 @@ def unregister_keymap():  #this only unregisters obj mode hotkey (what about cur
     global addon_keymaps
     wm = bpy.context.window_manager
     for km,kmi in addon_keymaps:
-        for kmi in km.keymap_items:
-            km.keymap_items.remove(kmi)
-        if km in wm.keyconfigs.addon.keymaps.values():
-            wm.keyconfigs.addon.keymaps.remove(km)
+        km.keymap_items.remove(kmi)
     addon_keymaps.clear()

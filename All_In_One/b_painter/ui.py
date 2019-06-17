@@ -21,7 +21,7 @@ Created by Andreas Esau
 import bpy
 from bpy.types import Menu, Panel, UIList
 from bpy.props import CollectionProperty, EnumProperty, StringProperty
-from . functions import setup_brush_tex, id_from_string, _invert_ramp, get_context_node_tree, get_materials_recursive, check_layer_stack_cycles, check_layer_stack_bi, check_paint_channels_count, get_tex_recursive
+from . functions import setup_brush_tex, id_from_string, _invert_ramp, get_context_node_tree, get_materials_recursive, check_layer_stack_cycles, check_layer_stack_bi, check_paint_channels_count, get_tex_recursive, get_addon_prefs
 from . operators.preset_handling import texture_path, brush_icons_path
 import os
 
@@ -66,6 +66,8 @@ class BPAINTER_TextureSlot(UIList):
         misc_icons = preview_collections["b_painter_misc_icons"]
         icon_mask_inactive = misc_icons["icon_mask_inactive"].icon_id
         icon_mask_active = misc_icons["icon_mask_active"].icon_id
+        icon_alpha_locked = misc_icons["icon_alpha_locked"].icon_id
+        prefs = get_addon_prefs(context)
         
         self.use_filter_sort_reverse = context.scene.b_painter_flip_template_list
         ob = context.active_object
@@ -135,7 +137,7 @@ class BPAINTER_TextureSlot(UIList):
             if item.layer_type == "PAINT_LAYER":
                 if tex_node != None:  
                     img = tex_node.image
-                    icon_id = bpy.types.UILayout.icon(img)
+                    icon_id = bpy.types.UILayout.icon(img) if img != None else 0
                     
                     if mix_node != None:    
                         vis_icon = "VISIBLE_IPO_OFF" if mix_node.b_painter_layer_hide else "VISIBLE_IPO_ON" 
@@ -157,7 +159,7 @@ class BPAINTER_TextureSlot(UIList):
                     row2 = row.row()
                     row2.active = True if item.paint_layer_active else False
                     emboss = True if item.paint_layer_active else False
-                    row2.prop(item,"paint_layer_active",text="",icon_value=bpy.types.UILayout.icon(img),emboss=False)
+                    row2.prop(item,"paint_layer_active",text="",icon_value=icon_id,emboss=False)
                     row.prop(img, "name", text="", emboss=False)
                     
                     if mask_node != None:
@@ -245,38 +247,29 @@ class BPAINTER_TextureSlot(UIList):
                         row2 = row.row()
                         row2.scale_x = .5
                         row2.prop(mask_node, "b_painter_layer_hide", text="",icon_value=vis_icon, index=item.index,emboss=False)
+        
+        
+        img = None
+        if context.scene.render.engine in ["BLENDER_RENDER","BLENDER_GAME"]:
+            img = bpy.data.images[item.name] if item.name in bpy.data.images else None
+        elif context.scene.render.engine in ["CYCLES"]:
+            img = bpy.data.images[item.img_name] if item.img_name in bpy.data.images else None
+            
+        if img != None:
+            subrow = row.row()
+            if img.b_painter.lock_alpha and prefs.use_layer_alpha_lock:
+                subrow.prop(img.b_painter,"lock_alpha",text="",icon_value=icon_alpha_locked,emboss=False)
+            else:
+                subrow.enabled=False
+                subrow.prop(img.b_painter,"lock_alpha",text="",icon="NONE",emboss=False)
 
-class BPainter(bpy.types.Panel):
-    bl_idname = "bpainter"
-    bl_label = "BPainter 1.0"
-    bl_space_type = "VIEW_3D"
-    bl_region_type = "TOOLS"
-    bl_category = "BPainter"
-    
-    
-    @classmethod
-    def poll(cls, context):
-        return True
-#        if  context.active_object != None and context.active_object.mode == "TEXTURE_PAINT":
-#            return True
-    
-#    def draw_header(self,context):
-#        layout = self.layout
-#        layout.label(text="",icon="COLOR")
-    
-    def draw_color_palette(self,context,col,row):
-        layout = self.layout
-        ob = context.active_object
-        settings = context.scene.tool_settings.image_paint
-        col.separator()
-        col.template_palette(settings,"palette", color=True)
-
-    def draw_color_panel(self,context,wm,scene,layout,ob,settings,brush,ipaint):
-        ############################################################################# Color Settings
-        col = layout.column()
+def draw_color_panel(self,context,wm,scene,layout,ob,settings,brush,ipaint,pie=False):
+    ############################################################################# Color Settings
+    col = layout.column()
+    if not pie:
         box = layout.box()
         col.separator()
-        
+    
         col = layout.column(align=True)
         row = col.row()
         row.prop(context.scene,"b_painter_show_color_settings",text="Color",icon="COLOR",emboss=False)
@@ -288,48 +281,56 @@ class BPainter(bpy.types.Panel):
         
         
         row.operator("b_painter.advanced_color_settings",text="",icon="SCRIPTWIN",emboss=False)
+    
+    if context.scene.b_painter_show_color_settings:
         
-        if context.scene.b_painter_show_color_settings:
-            
-            row = col.row(align=True)
-            if brush.image_tool == "FILL" and "b_painter" in brush and len(brush.gradient.elements) > 1:
-                subcol = row.column()
-                subcol.template_color_ramp(brush, "gradient", expand=True)
-                subcol.prop(brush,"gradient_fill_mode",text="")
-            else:    
-                if settings.use_unified_color:
-                    if bpy.data.scenes[0].b_painter_show_color_wheel:
-                        row.template_color_picker(settings, "color", value_slider=True)
-                        row = col.row(align=True)
-                    row.operator("b_painter.set_default_colors",text="",icon="IMAGE_ALPHA")
-                    if brush.image_tool != "FILL":
-                        row.prop(settings,"color",text="")
-                        row.prop(settings,"secondary_color",text="")
-                    else:
-                        row.prop(brush.gradient.elements[0],"color",text="")
-                        row.operator("b_painter.add_gradient_color_stop",text="",icon="COLOR")
+        row = col.row(align=True)
+        if brush.image_tool == "FILL" and "b_painter" in brush and len(brush.gradient.elements) > 1:
+            subcol = row.column()
+            subcol.template_color_ramp(brush, "gradient", expand=True)
+            subcol.prop(brush,"gradient_fill_mode",text="")
+        else:    
+            if settings.use_unified_color:
+                if bpy.data.scenes[0].b_painter_show_color_wheel:
+                    row.template_color_picker(settings, "color", value_slider=True)
+                    row = col.row(align=True)
+                row.operator("b_painter.set_default_colors",text="",icon="IMAGE_ALPHA")
+                if brush.image_tool != "FILL":
+                    row.prop(settings,"color",text="")
+                    row.prop(settings,"secondary_color",text="")
                 else:
-                    if bpy.data.scenes[0].b_painter_show_color_wheel:
-                        row.template_color_picker(brush, "color", value_slider=True)
-                        row = col.row(align=True)
-                    row.operator("b_painter.set_default_colors",text="",icon="IMAGE_ALPHA")
-                    if brush.image_tool != "FILL":
-                        row.prop(brush,"color",text="")
-                        row.prop(brush,"secondary_color",text="")
-                    else:
-                        row.prop(brush.gradient.elements[0],"color",text="") 
-                        row.operator("b_painter.add_gradient_color_stop",text="",icon="COLOR")   
-                
-                row.operator("paint.brush_colors_flip",text="",icon="ARROW_LEFTRIGHT")
-                op = row.operator("b_painter.color_pipette",text="",icon="EYEDROPPER")
-                op.pick_mode = "PRESS"
-            if bpy.data.scenes[0].b_painter_show_color_palette:    
-                self.draw_color_palette(context,col,row)
-        col = layout.column()
-        
-    def draw_brush_panel(self,context,wm,scene,layout,ob,settings,brush,ipaint):
-        ############################################################################# Brush Settings
-        col = layout.column()
+                    row.prop(brush.gradient.elements[0],"color",text="")
+                    row.operator("b_painter.add_gradient_color_stop",text="",icon="COLOR")
+            else:
+                if bpy.data.scenes[0].b_painter_show_color_wheel:
+                    row.template_color_picker(brush, "color", value_slider=True)
+                    row = col.row(align=True)
+                row.operator("b_painter.set_default_colors",text="",icon="IMAGE_ALPHA")
+                if brush.image_tool != "FILL":
+                    row.prop(brush,"color",text="")
+                    row.prop(brush,"secondary_color",text="")
+                else:
+                    row.prop(brush.gradient.elements[0],"color",text="") 
+                    row.operator("b_painter.add_gradient_color_stop",text="",icon="COLOR")   
+            
+            row.operator("paint.brush_colors_flip",text="",icon="ARROW_LEFTRIGHT")
+            op = row.operator("b_painter.color_pipette",text="",icon="EYEDROPPER")
+            op.pick_mode = "PRESS"
+        if bpy.data.scenes[0].b_painter_show_color_palette:    
+            draw_color_palette(self,context,col,row)
+    col = layout.column()
+    
+def draw_color_palette(self,context,col,row):
+    layout = self.layout
+    ob = context.active_object
+    settings = context.scene.tool_settings.image_paint
+    col.separator()
+    col.template_palette(settings,"palette", color=True)
+
+def draw_brush_panel(self,context,wm,scene,layout,ob,settings,brush,ipaint,pie=False):
+    ############################################################################# Brush Settings
+    col = layout.column()
+    if not pie:
         box = layout.box()
         col.separator()
         
@@ -347,74 +348,76 @@ class BPainter(bpy.types.Panel):
             row.prop(context.scene,"b_painter_show_brush",text="",icon="LAYER_USED",emboss=False) 
         
         row.operator("b_painter.advanced_brush_settings",text="",icon="SCRIPTWIN",emboss=False)
+    
+    if context.scene.b_painter_show_brush and brush != None:
+        col = layout.column(align=True)
+        row = col.row(align=True)
+        row.prop(wm,"b_painter_brush_filter",text="",icon="VIEWZOOM",toggle=True)
+        row.operator("b_painter.remove_brush_filter",icon="PANEL_CLOSE",text="")
         
-        if context.scene.b_painter_show_brush and brush != None:
-            col = layout.column(align=True)
-            row = col.row(align=True)
-            row.prop(wm,"b_painter_brush_filter",text="",icon="VIEWZOOM",toggle=True)
-            row.operator("b_painter.remove_brush_filter",icon="PANEL_CLOSE",text="")
+        col = layout.column(align=True)
+        
+        col.template_icon_view(context.scene,"b_painter_brush",show_labels=True,scale=6.0)
+        col.scale_y = .7
+        col.alignment = "CENTER"
+        
+        col = layout.column(align=True)
+        row = col.row(align=True)
+        icon = "UNLOCKED" if not scene.b_painter_use_absolute_size else "LOCKED"
             
-            col = layout.column(align=True)
-            
-            col.template_icon_view(context.scene,"b_painter_brush",show_labels=True,scale=6.0)
-            col.scale_y = .7
-            col.alignment = "CENTER"
-            
-            col = layout.column(align=True)
-            row = col.row(align=True)
-            icon = "UNLOCKED" if not scene.b_painter_use_absolute_size else "LOCKED"
-                
-            if settings.use_unified_size:
-                row.prop(settings,"size",text="Size",slider=True)
-            else:    
-                row.prop(brush,"size",text="Size",slider=True)
-                 
-            if settings.use_unified_size:    
-                row.prop(settings,"use_pressure_size",text="",icon="STYLUS_PRESSURE")
-            else:
-                row.prop(brush,"use_pressure_size",text="",icon="STYLUS_PRESSURE")
-            
-            row = col.row(align=True)
-            if settings.use_unified_strength:    
-                row.prop(settings,"strength",text="Opacity",slider=True)
-            else:
-                row.prop(brush,"strength",text="Opacity",slider=True) 
-            if settings.use_unified_strength:    
-                row.prop(settings,"use_pressure_strength",text="",icon="STYLUS_PRESSURE")
-            else:
-                row.prop(brush,"use_pressure_strength",text="",icon="STYLUS_PRESSURE")
-            
-            row = col.row(align=True)
-            subrow = row.row(align=True)
-            if brush.use_smooth_stroke:
-                subrow.active = True
-            else:
-                subrow.active = False       
-            subrow.prop(brush,"smooth_stroke_radius",text="Radius",slider=True)
-            subrow.prop(brush,"smooth_stroke_factor",text="Factor",slider=True) 
-            row.prop(brush, "use_smooth_stroke", text="",icon="MOD_SMOOTH",toggle=True)         
-            ###########################################
-                        
-            row = layout.row(align=True)
+        if settings.use_unified_size:
+            row.prop(settings,"size",text="Size",slider=True)
+        else:    
+            row.prop(brush,"size",text="Size",slider=True)
+             
+        if settings.use_unified_size:    
+            row.prop(settings,"use_pressure_size",text="",icon="STYLUS_PRESSURE")
+        else:
+            row.prop(brush,"use_pressure_size",text="",icon="STYLUS_PRESSURE")
+        
+        row = col.row(align=True)
+        if settings.use_unified_strength:    
+            row.prop(settings,"strength",text="Opacity",slider=True)
+        else:
+            row.prop(brush,"strength",text="Opacity",slider=True) 
+        if settings.use_unified_strength:    
+            row.prop(settings,"use_pressure_strength",text="",icon="STYLUS_PRESSURE")
+        else:
+            row.prop(brush,"use_pressure_strength",text="",icon="STYLUS_PRESSURE")
+        
+        row = col.row(align=True)
+        subrow = row.row(align=True)
+        if brush.use_smooth_stroke:
+            subrow.active = True
+        else:
+            subrow.active = False       
+        subrow.prop(brush,"smooth_stroke_radius",text="Radius",slider=True)
+        subrow.prop(brush,"smooth_stroke_factor",text="Factor",slider=True) 
+        row.prop(brush, "use_smooth_stroke", text="",icon="MOD_SMOOTH",toggle=True)         
+        ###########################################
+                    
+        row = layout.row(align=True)
 
-            col = row.column(align=True)
-            col.label(text="Brush Curve")
-            col.operator("b_painter.set_brush_curve",text="",icon="SMOOTHCURVE")
-            
-            col = row.column(align=True)
-            col.label(text="Use Alpha")
-            col.prop(brush, "use_alpha", text="",icon="IMAGE_RGB_ALPHA",emboss=True)
-            
-            col = row.column(align=True)
-            col.label(text="Brush Mode")
-            col.prop(brush, "blend", text="")
-        col = layout.column()
+        col = row.column(align=True)
+        col.label(text="Brush Curve")
+        col.operator("b_painter.set_brush_curve",text="",icon="SMOOTHCURVE")
         
-    def draw_texture_panel(self,context,wm,scene,layout,ob,settings,brush,ipaint):
-        if brush != None and brush.image_tool == "FILL":
-            layout.active = False
-        ############################################################################# Brush Texture Settings       
-        col = layout.column()
+        col = row.column(align=True)
+        col.label(text="Use Alpha")
+        col.prop(brush, "use_alpha", text="",icon="IMAGE_RGB_ALPHA",emboss=True)
+        
+        col = row.column(align=True)
+        col.label(text="Brush Mode")
+        col.prop(brush, "blend", text="")
+    col = layout.column()
+        
+
+def draw_texture_panel(self,context,wm,scene,layout,ob,settings,brush,ipaint,pie=False):
+    if brush != None and brush.image_tool == "FILL":
+        layout.active = False
+    ############################################################################# Brush Texture Settings       
+    col = layout.column()
+    if not pie:
         box = layout.box()
         col.separator()
         
@@ -429,43 +432,44 @@ class BPainter(bpy.types.Panel):
             row.prop(context.scene,"b_painter_show_brush_settings",text="",icon="LAYER_USED",emboss=False) 
         
         row.operator("b_painter.advanced_brush_texture_settings",text="",icon="SCRIPTWIN",emboss=False)
+    
+    if context.scene.b_painter_show_brush_settings and layout.active:
+        row = layout.row(align=False)
+        col = layout.column(align=False)
         
-        if context.scene.b_painter_show_brush_settings and layout.active:
-            row = layout.row(align=False)
-            col = layout.column(align=False)
-            
-            subrow = col.row(align=True)
-            subrow.prop(brush,"b_painter_tex_brush_categories",text="")
-            subrow.operator("b_painter.refresh_previews",text="",icon="FILE_REFRESH")
-            subrow.operator("b_painter.open_texture_folder",text="",icon="IMASEL")
-            
-            col = layout.column(align=False)
-            col.scale_y = .7
-            col.template_icon_view(brush,"b_painter_brush_texture",show_labels=True)
+        subrow = col.row(align=True)
+        subrow.prop(brush,"b_painter_tex_brush_categories",text="")
+        subrow.operator("b_painter.refresh_previews",text="",icon="FILE_REFRESH")
+        subrow.operator("b_painter.open_texture_folder",text="",icon="IMASEL")
+        
+        col = layout.column(align=False)
+        col.scale_y = .7
+        col.template_icon_view(brush,"b_painter_brush_texture",show_labels=True)
 
-            tex = None
-            if "b_painter_brush_tex" in bpy.data.textures:
-                tex = bpy.data.textures["b_painter_brush_tex"]
-            
-            if brush.b_painter_brush_texture != "None":
-                col = layout.column(align=True)
-                color_ramp = tex.node_tree.nodes["ColorRamp"]
-                
-                subrow = col.row()
-                subrow.prop(brush,"b_painter_use_mask",text="Use as Mask",toggle=False)
-                subrow.prop(brush,"use_primary_overlay",text="Show Texture",toggle=False)
-                
-                if brush.b_painter_use_mask:
-                    col.prop(brush,"b_painter_invert_mask",text="Invert Mask",toggle=True,icon="IMAGE_ALPHA")
-                    col.prop(brush,"b_painter_ramp_tonemap_l",text="Tonemap L",slider=True)
-                    col.prop(brush,"b_painter_ramp_tonemap_r",text="Tonemap R",slider=True)
-        col = layout.column()
+        tex = None
+        if "b_painter_brush_tex" in bpy.data.textures:
+            tex = bpy.data.textures["b_painter_brush_tex"]
         
-    def draw_stencil_panel(self,context,wm,scene,layout,ob,settings,brush,ipaint):
-        if brush != None and brush.image_tool == "FILL":
-            layout.active = False
-        ############################################################################## Stencil Texture Settings    
-        col = layout.column()
+        if brush.b_painter_brush_texture != "None":
+            col = layout.column(align=True)
+            color_ramp = tex.node_tree.nodes["ColorRamp"]
+            
+            subrow = col.row()
+            subrow.prop(brush,"b_painter_use_mask",text="Use as Mask",toggle=False)
+            subrow.prop(brush,"use_primary_overlay",text="Show Texture",toggle=False)
+            
+            if brush.b_painter_use_mask:
+                col.prop(brush,"b_painter_invert_mask",text="Invert Mask",toggle=True,icon="IMAGE_ALPHA")
+                col.prop(brush,"b_painter_ramp_tonemap_l",text="Tonemap L",slider=True)
+                col.prop(brush,"b_painter_ramp_tonemap_r",text="Tonemap R",slider=True)
+    col = layout.column()
+
+def draw_stencil_panel(self,context,wm,scene,layout,ob,settings,brush,ipaint,pie=False):
+    if brush != None and brush.image_tool == "FILL":
+        layout.active = False
+    ############################################################################## Stencil Texture Settings    
+    col = layout.column()
+    if not pie:
         box = layout.box()
         col.separator()
         
@@ -480,36 +484,37 @@ class BPainter(bpy.types.Panel):
             row.prop(context.scene,"b_painter_show_stencil_settings",text="",icon="LAYER_USED",emboss=False)    
         
         row.operator("b_painter.advanced_stencil_texture_settings",text="",icon="SCRIPTWIN",emboss=False)        
+    
+    if context.scene.b_painter_show_stencil_settings and layout.active:
+        row = layout.row(align=False)
+        col = layout.column(align=False)
         
-        if context.scene.b_painter_show_stencil_settings and layout.active:
-            row = layout.row(align=False)
-            col = layout.column(align=False)
+        subrow = col.row(align=True)
+        subrow.prop(context.scene,"b_painter_tex_stencil_categories",text="")
+        subrow.operator("b_painter.refresh_previews",text="",icon="FILE_REFRESH")
+        subrow.operator("b_painter.open_texture_folder",text="",icon="IMASEL")        
             
-            subrow = col.row(align=True)
-            subrow.prop(context.scene,"b_painter_tex_stencil_categories",text="")
-            subrow.operator("b_painter.refresh_previews",text="",icon="FILE_REFRESH")
-            subrow.operator("b_painter.open_texture_folder",text="",icon="IMASEL")        
-                
-            col = layout.column(align=False)
-            col.scale_y = .7
-            col.template_icon_view(brush,"b_painter_stencil_texture",show_labels=True)
-            if brush.b_painter_stencil_texture != "None":
-                col = layout.column(align=True)
-                col.prop(brush,"b_painter_invert_stencil_mask",text="Invert Mask",toggle=True,icon="IMAGE_ALPHA")
-                col.prop(brush,"b_painter_stencil_ramp_tonemap_l",text="Tonemap L",slider=True)
-                col.prop(brush,"b_painter_stencil_ramp_tonemap_r",text="Tonemap R",slider=True)
-                if brush.mask_texture_slot.mask_map_mode == "STENCIL":
-                    op = col.operator("brush.stencil_reset_transform",text="Reset Stencil Transformation",icon="LOOP_BACK")
-                    op.mask = True
-            
-            row = layout.row(align=True)
-            row.prop(context.tool_settings.image_paint,"use_cavity",text="Use Cavity Mask",toggle=True)
-            row.operator("b_painter.set_cavity_curve",text="",icon="SMOOTHCURVE")   
-        col = layout.column()
+        col = layout.column(align=False)
+        col.scale_y = .7
+        col.template_icon_view(brush,"b_painter_stencil_texture",show_labels=True)
+        if brush.b_painter_stencil_texture != "None":
+            col = layout.column(align=True)
+            col.prop(brush,"b_painter_invert_stencil_mask",text="Invert Mask",toggle=True,icon="IMAGE_ALPHA")
+            col.prop(brush,"b_painter_stencil_ramp_tonemap_l",text="Tonemap L",slider=True)
+            col.prop(brush,"b_painter_stencil_ramp_tonemap_r",text="Tonemap R",slider=True)
+            if brush.mask_texture_slot.mask_map_mode == "STENCIL":
+                op = col.operator("brush.stencil_reset_transform",text="Reset Stencil Transformation",icon="LOOP_BACK")
+                op.mask = True
         
-    def draw_layer_panel(self,context,wm,scene,layout,ob,settings,brush,ipaint):
-        ############################################################################# Layer Settings        
-        col = layout.column()
+        row = layout.row(align=True)
+        row.prop(context.tool_settings.image_paint,"use_cavity",text="Use Cavity Mask",toggle=True)
+        row.operator("b_painter.set_cavity_curve",text="",icon="SMOOTHCURVE")   
+    col = layout.column()
+
+def draw_layer_panel(self,context,wm,scene,layout,ob,settings,brush,ipaint,pie=False):
+    ############################################################################# Layer Settings        
+    col = layout.column()
+    if not pie:
         box = layout.box()
         col.separator()
         
@@ -523,69 +528,89 @@ class BPainter(bpy.types.Panel):
             row.prop(context.scene,"b_painter_show_layer_settings",text="",icon="LAYER_USED",emboss=False) 
         
         row.operator("b_painter.layer_settings",text="",icon="SCRIPTWIN",emboss=False)
-        
-        ### force update layer stack
-        if context.scene.render.engine == "CYCLES":
-            obj = context.active_object
-            if obj.b_painter_active_material in bpy.data.materials:
-                mat = bpy.data.materials[obj.b_painter_active_material]
-                stack_length = check_layer_stack_cycles(context,obj,mat)
-                paint_channels_length = check_paint_channels_count(context,obj,mat)
-                image_textures_length = get_tex_recursive(mat.node_tree,"BPaintLayer")
-                if (mat.b_painter.paint_channel_active != "Unordered Images" and stack_length != len(mat.b_painter.paint_layers)) or (mat.b_painter.paint_channel_active == "Unordered Images" and len(mat.b_painter.paint_layers) != len(image_textures_length)) or paint_channels_length != len(mat.b_painter.paint_channel_info):
-                    row.operator("b_painter.force_layer_update",text="",icon="RECOVER_LAST",emboss=False)
-        elif context.scene.render.engine in ['BLENDER_RENDER','BLENDER_GAME']:
-            obj = context.active_object
-            if obj.b_painter_active_material in bpy.data.materials:
-                mat = bpy.data.materials[obj.b_painter_active_material]
-                stack_length = check_layer_stack_bi(context,obj,mat)
-                if stack_length == "UPDATE":
-                    row.operator("b_painter.force_layer_update",text="",icon="RECOVER_LAST",emboss=False)
-                
-                
-        if context.scene.b_painter_show_layer_settings:
-            col.separator()
-            row = col.row(align=True)
-            if context.scene.render.engine in ["BLENDER_RENDER","BLENDER_GAME"]:
-                if ob.b_painter_shadeless:
-                    row.prop(ob,"b_painter_shadeless",text="",icon="POTATO",emboss=True)
-                else:
-                    row.prop(ob,"b_painter_shadeless",text="",icon="SMOOTH",emboss=True)
+    
+    ### force update layer stack
+    if context.scene.render.engine == "CYCLES":
+        obj = context.active_object
+        if obj.b_painter_active_material in bpy.data.materials:
+            mat = bpy.data.materials[obj.b_painter_active_material]
+            stack_length = check_layer_stack_cycles(context,obj,mat)
+            paint_channels_length = check_paint_channels_count(context,obj,mat)
+            image_textures_length = get_tex_recursive(mat.node_tree,"BPaintLayer")
+            if (mat.b_painter.paint_channel_active != "Unordered Images" and stack_length != len(mat.b_painter.paint_layers)) or (mat.b_painter.paint_channel_active == "Unordered Images" and len(mat.b_painter.paint_layers) != len(image_textures_length)) or paint_channels_length != len(mat.b_painter.paint_channel_info):
+                row.operator("b_painter.force_layer_update",text="",icon="RECOVER_LAST",emboss=False)
+    elif context.scene.render.engine in ['BLENDER_RENDER','BLENDER_GAME']:
+        obj = context.active_object
+        if obj.b_painter_active_material in bpy.data.materials:
+            mat = bpy.data.materials[obj.b_painter_active_material]
+            stack_length = check_layer_stack_bi(context,obj,mat)
+            if stack_length == "UPDATE":
+                row.operator("b_painter.force_layer_update",text="",icon="RECOVER_LAST",emboss=False)
             
-            if not scene.b_painter_texture_preview:
-                row.operator("b_painter.plane_texture_preview",text="",icon="MESH_CUBE")
+            
+    if context.scene.b_painter_show_layer_settings:
+        col.separator()
+        row = col.row(align=True)
+        if context.scene.render.engine in ["BLENDER_RENDER","BLENDER_GAME"]:
+            if ob.b_painter_shadeless:
+                row.prop(ob,"b_painter_shadeless",text="",icon="POTATO",emboss=True)
             else:
-                row.operator("b_painter.plane_texture_preview",text="",icon="MESH_PLANE")
-                 
-            row.prop(context.active_object,"b_painter_active_material",text="")
-            col.separator()
+                row.prop(ob,"b_painter_shadeless",text="",icon="SMOOTH",emboss=True)
         
-        if context.scene.render.engine in ['BLENDER_RENDER','BLENDER_GAME']:
-            if ob != None:
-                if ob.b_painter_active_material in bpy.data.materials:
-                    mat = bpy.data.materials[ob.b_painter_active_material]
-                else:
-                    mat = None    
-                draw_material_layer(self,context,layout,col,row,mat,ob)
+        if not scene.b_painter_texture_preview:
+            row.operator("b_painter.plane_texture_preview",text="",icon="MESH_CUBE")
+        else:
+            row.operator("b_painter.plane_texture_preview",text="",icon="MESH_PLANE")
+             
+        row.prop(context.active_object,"b_painter_active_material",text="")
+        col.separator()
+    
+    if context.scene.render.engine in ['BLENDER_RENDER','BLENDER_GAME']:
+        if ob != None:
+            if ob.b_painter_active_material in bpy.data.materials:
+                mat = bpy.data.materials[ob.b_painter_active_material]
+            else:
+                mat = None    
+            draw_material_layer(self,context,layout,col,row,mat,ob)
 
-                if mat == None:
-                    row = col.row(align=True)
-                    row.template_ID(ob, "active_material", new="material.new")
-        elif context.scene.render.engine == 'CYCLES':
-            if ob != None:
-                if ob.active_material != None and ob.active_material.node_tree != None:
-                    mat = bpy.data.materials[ob.b_painter_active_material]
-                    draw_material_layer(self,context,layout,col,row,mat,ob)
-                if ob.active_material== None:
-                    row = layout.row()
-                    row.template_ID(ob, "active_material", new="material.new")
-                elif ob.active_material.use_nodes == False:
-                    row = layout.row()
-                    row.prop(ob.active_material,"use_nodes",text="Use Nodes",icon="NODETREE")
-        col = layout.column()
+            if mat == None:
+                row = col.row(align=True)
+                row.template_ID(ob, "active_material", new="material.new")
+    elif context.scene.render.engine == 'CYCLES':
+        if ob != None:
+            if ob.active_material != None and ob.active_material.node_tree != None:
+                mat = bpy.data.materials[ob.b_painter_active_material]
+                draw_material_layer(self,context,layout,col,row,mat,ob)
+            if ob.active_material== None:
+                row = layout.row()
+                row.template_ID(ob, "active_material", new="material.new")
+            elif ob.active_material.use_nodes == False:
+                row = layout.row()
+                row.prop(ob.active_material,"use_nodes",text="Use Nodes",icon="NODETREE")
+    col = layout.column()
+        
+class BPainter(bpy.types.Panel):
+    bl_idname = "bpainter"
+    bl_label = "BPainter 1.0"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "TOOLS"
+    bl_category = "BPainter"
+    
+    prefs = None
+    
+    @classmethod
+    def poll(cls, context):
+        return True
+#        if  context.active_object != None and context.active_object.mode == "TEXTURE_PAINT":
+#            return True
+    
+#    def draw_header(self,context):
+#        layout = self.layout
+#        layout.label(text="",icon="COLOR")
+
                     
     def draw(self, context):
-        
+        self.prefs = get_addon_prefs(context)
         wm = context.window_manager
         scene = context.scene
         layout = self.layout
@@ -595,21 +620,25 @@ class BPainter(bpy.types.Panel):
         ipaint = context.scene.tool_settings.image_paint
         col = None
         
+        if context.space_data.viewport_shade in ["SOLID","TEXTURED","WIREFRAME","BOUNDBOX"]:
+            layout.label(text="Wrong Shading Mode Set",icon="ERROR")
+            layout.column().operator("b_painter.change_material_mode",text="Set Material Mode",icon="MATERIAL")
         if ob != None and ob.mode == "OBJECT":
             layout.column().operator("paint.texture_paint_toggle",text="Start Painting",icon="BRUSH_DATA")
         
         if "b_painter_panels" in scene and ob != None:
             for panel in scene["b_painter_panels"]:
                 if panel.upper() == "COLOR" and ob.mode == "TEXTURE_PAINT":
-                    self.draw_color_panel(context,wm,scene,layout.column(),ob,settings,brush,ipaint)
+                    #self.draw_color_panel(context,wm,scene,layout.column(),ob,settings,brush,ipaint)
+                    draw_color_panel(self,context,wm,scene,layout.column(),ob,settings,brush,ipaint)
                 elif panel.upper() == "BRUSH" and ob.mode == "TEXTURE_PAINT":
-                    self.draw_brush_panel(context,wm,scene,layout.column(),ob,settings,brush,ipaint)
+                    draw_brush_panel(self,context,wm,scene,layout.column(),ob,settings,brush,ipaint)
                 elif panel.upper() == "TEXTURE" and ob.mode == "TEXTURE_PAINT":
-                    self.draw_texture_panel(context,wm,scene,layout.column(),ob,settings,brush,ipaint)
+                    draw_texture_panel(self,context,wm,scene,layout.column(),ob,settings,brush,ipaint)
                 elif panel.upper() == "STENCIL" and ob.mode == "TEXTURE_PAINT":    
-                    self.draw_stencil_panel(context,wm,scene,layout.column(),ob,settings,brush,ipaint)
+                    draw_stencil_panel(self,context,wm,scene,layout.column(),ob,settings,brush,ipaint)
                 elif panel.upper() == "LAYER":
-                    self.draw_layer_panel(context,wm,scene,layout.column(),ob,settings,brush,ipaint)
+                    draw_layer_panel(self,context,wm,scene,layout.column(),ob,settings,brush,ipaint)
             
 
 def draw_material_layer(self,context,layout,col,row,mat,ob):
@@ -618,6 +647,10 @@ def draw_material_layer(self,context,layout,col,row,mat,ob):
     icon_mask = misc_icons["icon_mask"].icon_id
     icon_adjustment_layer = misc_icons["icon_adjustment_layer"].icon_id
     icon_proc_tex = misc_icons["icon_proc_tex"].icon_id
+    icon_alpha_unlocked = misc_icons["icon_alpha_unlocked"].icon_id
+    icon_alpha_locked = misc_icons["icon_alpha_locked"].icon_id
+    
+    prefs = get_addon_prefs(context)
     
     if context.scene.b_painter_show_layer_settings:
         if mat:
@@ -645,12 +678,19 @@ def draw_material_layer(self,context,layout,col,row,mat,ob):
                 col.separator()        
                 if len(mat.b_painter.paint_layers) > 0:
                     if context.scene.render.engine in ['BLENDER_RENDER','BLENDER_GAME']:
+                        paint_layer = mat.b_painter.paint_layers[mat.b_painter.paint_layers_index] if mat.b_painter.paint_layers_index <= len(mat.b_painter.paint_layers)-1 else None
                         try:
                             tex_slot = mat.texture_slots[mat.b_painter.paint_layers[mat.b_painter.paint_layers_index].index]
                         except:
                             tex_slot = None    
                         row = col.row(align=True)
                         if tex_slot != None:
+                            img = bpy.data.images[paint_layer.name] if paint_layer.name in bpy.data.images else None
+                            if img != None and not img.b_painter.lock_alpha:
+                                row.prop(img.b_painter,"lock_alpha",text="",icon_value=icon_alpha_unlocked)
+                            elif img != None and img.b_painter.lock_alpha:
+                                row.prop(img.b_painter,"lock_alpha",text="",icon_value=icon_alpha_locked)
+                                
                             if tex_slot.use_map_color_diffuse:
                                 row.prop(tex_slot,"blend_type",text="")
                             else:
@@ -670,6 +710,15 @@ def draw_material_layer(self,context,layout,col,row,mat,ob):
                             node_tree = bpy.data.node_groups[mat.b_painter.paint_channel_active]
                             
                             paint_layer = mat.b_painter.paint_layers[mat.b_painter.paint_layers_index] if mat.b_painter.paint_layers_index <= len(mat.b_painter.paint_layers)-1 else None
+                            
+                            row = col.row(align=True)
+                            if paint_layer != None and paint_layer.layer_type not in ["ADJUSTMENT_LAYER","PROCEDURAL_LAYER"] and prefs.use_layer_alpha_lock:
+                                img = bpy.data.images[paint_layer.img_name] if paint_layer.img_name in bpy.data.images else None
+                                if img != None and not img.b_painter.lock_alpha:
+                                    row.prop(img.b_painter,"lock_alpha",text="",icon_value=icon_alpha_unlocked)
+                                elif img != None and img.b_painter.lock_alpha:
+                                    row.prop(img.b_painter,"lock_alpha",text="",icon_value=icon_alpha_locked)
+                                    
                             if mat.b_painter.paint_layers_index <= len(mat.b_painter.paint_layers)-1 and paint_layer != None and paint_layer.layer_type in ["PAINT_LAYER","PROCEDURAL_TEXTURE"]:
                                 node_name = paint_layer.mix_node_name 
                                 
@@ -682,7 +731,7 @@ def draw_material_layer(self,context,layout,col,row,mat,ob):
                                 if mix_node != None:
                                     if mix_node.inputs["Fac"].links[0].from_node.type == "MATH":
                                         math_node = mix_node.inputs["Fac"].links[0].from_node
-                                    row = col.row(align=True)  
+                                    #row = col.row(align=True)  
                                     row.prop(mix_node,"blend_type",text="")
                                     
                                 if math_node != None:
@@ -694,7 +743,7 @@ def draw_material_layer(self,context,layout,col,row,mat,ob):
                                 else:
                                     adjustment_node = None  
                                 if adjustment_node != None:
-                                    row = col.row(align=True)
+                                    #row = col.row(align=True)
                                     row.prop(adjustment_node,"b_painter_opacity",text="Opacity",slider=True)    
                 
                 col.template_list("BPAINTER_TextureSlot", "",mat.b_painter, "paint_layers", mat.b_painter, "paint_layers_index", rows=2)
@@ -747,7 +796,7 @@ def draw_material_layer(self,context,layout,col,row,mat,ob):
                                     
                         if layer != None and layer.name in bpy.data.images:
                             img = bpy.data.images[layer.name]
-                            if img.b_painter_channel.active:
+                            if img.b_painter.active:
                                 row = layout.row(align=False)
                                 layer = mat.b_painter.paint_layers[mat.b_painter.paint_layers_index]
                                 row.prop(img.b_painter_channel,"color")
@@ -808,6 +857,8 @@ def register_previews():
     pcoll.load("icon_mask_active", os.path.join(brush_icons_path,"icon_mask_active.png"), 'IMAGE')
     pcoll.load("icon_mask_inactive", os.path.join(brush_icons_path,"icon_mask_inactive.png"), 'IMAGE')
     pcoll.load("icon_proc_tex", os.path.join(brush_icons_path,"icon_proc_tex.png"), 'IMAGE')
+    pcoll.load("icon_alpha_unlocked", os.path.join(brush_icons_path,"icon_alpha_unlocked.png"), 'IMAGE')
+    pcoll.load("icon_alpha_locked", os.path.join(brush_icons_path,"icon_alpha_locked.png"), 'IMAGE')
     
     
     preview_collections["b_painter_misc_icons"] = pcoll   

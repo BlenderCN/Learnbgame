@@ -44,7 +44,7 @@ from numpy import interp
 
 
 # ### Curves OPERATOR ###
-class CURVE_OT_csimplify(bpy.types.Operator):
+class HT_OT_CURVE_OT_csimplify(bpy.types.Operator):
     bl_idname = "object.curve_simplify"
     bl_label = "Simplify Curves"
     bl_description = "Simplify Curves"
@@ -56,18 +56,18 @@ class CURVE_OT_csimplify(bpy.types.Operator):
                 ('NURBS', 'Nurbs', 'NURBS'),
                 ('BEZIER', 'Bezier', 'BEZIER'),
                 ('POLY', 'Poly', 'POLY')]
-    output = EnumProperty(
+    output: EnumProperty(
                 name="Output splines",
                 description="Type of splines to output",
                 items=SplineTypes
                 )
-    error = FloatProperty(
+    error: FloatProperty(
                 name="Error",
                 description="Maximum allowed distance error in Blender Units",
                 min=0, max=10,
                 default=0.0, precision=2
                 )
-    # onlySelection = BoolProperty(name="Only Selected", description="Affect only selected points", default=True)
+    # onlySelection: BoolProperty(name="Only Selected", description="Affect only selected points", default=True)
 
 
     @classmethod

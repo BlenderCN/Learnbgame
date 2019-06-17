@@ -1,0 +1,28 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "default": {
+            "format": "\n[Render+] [%(levelname)s] %(asctime)s \n-> %(message)s\n",
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        },
+        "debug" : {
+            "format" : "- %(asctime)s : %(name)-26s %(levelname)-8s %(message)s ",
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        }
+    },
+
+    
+    "handlers": {
+        "console": {
+            "class": "renderplus.color_log.ColorStreamHandler",
+            "level": "INFO",
+            "formatter": "default"
+        }
+    },
+
+    "root": {
+        "level": "INFO",
+        "handlers": ["console"]
+    }
+}

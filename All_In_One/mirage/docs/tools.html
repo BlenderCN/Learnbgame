@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tools &mdash; Mirage 2.0.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/custom_mirage.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Mirage 2.0.0 documentation" href="index.html"/>
+        <link rel="next" title="Presets" href="presets.html"/>
+        <link rel="prev" title="Tree Distribution" href="tree_distribution.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Mirage
+          
+
+          
+            
+            <img src="_static/logo_square.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain.html">Procedural Terrains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_file.html">Terrain generated from heightmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tree_distribution.html">Tree Distribution</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vertex-groups-generate-update">Vertex Groups Generate/Update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#export-vertex-group-to-image">Export Vertex Group to Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#export-heightmap">Export Heightmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#export-terrain-as-data">Export terrain as data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="presets.html">Presets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_list.html">Full Feature List</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Mirage</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Tools</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tools.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tools">
+<h1>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="vertex-groups-generate-update">
+<h2>Vertex Groups Generate/Update<a class="headerlink" href="#vertex-groups-generate-update" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/tools_intro.png" src="_images/tools_intro.png" />
+<p>Mirage generates vertex groups to store information about the terrain.
+These weight groups are also automatically converted into color vertex groups to
+use in Cycles. You can use the buttons included in the tools panel to update the
+groups after you have made changes to the terrain.</p>
+<p>They can also be used to add vertex groups to other meshes, or purely sculpted terrains.</p>
+</div>
+<div class="section" id="export-vertex-group-to-image">
+<h2>Export Vertex Group to Image<a class="headerlink" href="#export-vertex-group-to-image" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/vgroups_exported.jpg" src="_images/vgroups_exported.jpg" />
+<p>Exports a specific mirage vertex group to a greyscale image. Values will range from 0 (black)
+to 1 (white).</p>
+<p>The image will contain as many pixels as vertices in the terrain, so the image size
+will be the square root of the vertex count.
+For example, a terrain of 65,536 vertices (medium detail) will create vertex group
+images of 256x256 pixels.</p>
+</div>
+<div class="section" id="export-heightmap">
+<h2>Export Heightmap<a class="headerlink" href="#export-heightmap" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/export_heightmap.jpg" src="_images/export_heightmap.jpg" />
+<p>Export the terrain as a greyscale image. Each value in this image will represent the
+height of a specific vertex in the terrain, with 0 (black) being the lowest point
+of the terrain and 1 (white) the highest.</p>
+<p>Heightmaps can be edited in any 2D editor (like GIMP and Krita), and they can be imported
+into meshes by many 3D editors and applications.</p>
+<p>The images are saved as image datablocks in Blender. You can find them by going into
+the <cite>UV/Image Editor</cite> and finding the image called &#8220;Heightmap&#8221;.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Mirage doesn&#8217;t support generating heightmaps larger than terrains at the moment.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Note that the image has a fake user but it is not automatically saved!
+If you don’t pack it or save it to an external file before closing,
+Blender will lose the contents of the image.</p>
+</div>
+</div>
+<div class="section" id="export-terrain-as-data">
+<h2>Export terrain as data<a class="headerlink" href="#export-terrain-as-data" title="Permalink to this headline">¶</a></h2>
+<p>Export the terrain as a list of heights.</p>
+<p>The exported data is saved as a Text datablock. You can find it by going into the
+<cite>Text Editor</cite> and selecting &#8220;Terrain_data.py&#8221;.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>List</td>
+<td>A flattened list of heights</td>
+</tr>
+<tr class="row-odd"><td>2D List</td>
+<td>A list of rows containing a list of columns which contain the heights</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Encoding</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Python List</td>
+<td>Saves the list as a simple python list (can also be used for JSON)</td>
+</tr>
+<tr class="row-odd"><td>CSV</td>
+<td>Save the list as comma-separated values</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="presets.html" class="btn btn-neutral float-right" title="Presets" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tree_distribution.html" class="btn btn-neutral" title="Tree Distribution" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Diego Gangl.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

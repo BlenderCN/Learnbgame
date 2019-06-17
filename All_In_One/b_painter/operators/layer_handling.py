@@ -70,7 +70,7 @@ class PlaneTexturePreview(bpy.types.Operator):
     bl_idname = "b_painter.plane_texture_preview"
     bl_label = "Plane Texture Preview"
     bl_description = ""
-    bl_options = {"REGISTER"}
+    bl_options = {"INTERNAL"}
     
     plane = None
     paint_obj = None
@@ -85,10 +85,12 @@ class PlaneTexturePreview(bpy.types.Operator):
         override["area"] = area
         if local:
             if area.spaces.active.local_view == None:
+                ### set local view
                 bpy.ops.view3d.localview(override)
                 bpy.ops.view3d.viewnumpad(type='TOP',align_active=True)
         else:
             if area.spaces.active.local_view != None:
+                ### remove local view
                 bpy.ops.view3d.localview(override)
         
     def leave_preview_mode(self,context):
@@ -117,15 +119,28 @@ class PlaneTexturePreview(bpy.types.Operator):
             return {"FINISHED"}
 
         return {"PASS_THROUGH"}
-                
-    def invoke(self, context, event):
+    
+    def draw(self,context):
+        obj = context.active_object
+        mat = bpy.data.materials[obj.b_painter_active_material] if obj.b_painter_active_material in bpy.data.materials else None
+        if mat != None:
+            self.layout.prop(mat.b_painter,"preview_aspect_ratio",text="Aspect Ratio")
+    
+    def execute(self, context):
         wm = context.window_manager
         scene = context.scene
         space_data = bpy.context.space_data
         self.paint_obj = bpy.data.objects[context.active_object.name]
         
+        mat = bpy.data.materials[self.paint_obj.b_painter_active_material] if self.paint_obj.b_painter_active_material in bpy.data.materials else None
+        aspect_ratio = mat.b_painter.preview_aspect_ratio[0] / mat.b_painter.preview_aspect_ratio[1] if mat != None else 1
+        
         if not scene.b_painter_texture_preview and space_data.local_view == None:
+            self.paint_obj.select = False
             scene.b_painter_texture_preview = True
+            mat = self.paint_obj.active_material
+            active_layer = mat.b_painter.paint_layers[mat.b_painter.paint_layers_index]
+            img = bpy.data.images[active_layer.img_name] if active_layer.img_name in bpy.data.images else None
             
             if "BPainter Texture Preview" in bpy.data.objects:
                 self.plane = bpy.data.objects["BPainter Texture Preview"]
@@ -139,18 +154,64 @@ class PlaneTexturePreview(bpy.types.Operator):
             bpy.ops.object.mode_set(mode='TEXTURE_PAINT')
             self.plane = context.active_object
             self.plane.name = "BPainter Texture Preview"
-            self.plane.active_material = self.paint_obj.active_material
+            self.plane.active_material = mat
             self.plane["paint_obj"] = self.paint_obj.name
+            context.scene.objects.active = self.plane
+            self.plane.scale[0] = aspect_ratio
+            self.plane.b_painter_active_material = self.paint_obj.b_painter_active_material
             local_view = self.set_local_view(True)
             context.window_manager.modal_handler_add(self)
             
             return {"RUNNING_MODAL"}
-        
-        
         scene.b_painter_texture_preview = False
         self.plane = context.active_object if context.active_object.name == "BPainter Texture Preview" else None
         self.leave_preview_mode(context)
         return {"FINISHED"}
+                    
+    def invoke(self, context, event):
+        wm = context.window_manager
+        scene = context.scene
+        space_data = bpy.context.space_data
+        self.paint_obj = bpy.data.objects[context.active_object.name]
+        
+        mat = bpy.data.materials[self.paint_obj.b_painter_active_material] if self.paint_obj.b_painter_active_material in bpy.data.materials else None
+        aspect_ratio = mat.b_painter.preview_aspect_ratio[0] / mat.b_painter.preview_aspect_ratio[1] if mat != None else 1
+        
+        if not event.ctrl:
+            if not scene.b_painter_texture_preview and space_data.local_view == None:
+                self.paint_obj.select = False
+                scene.b_painter_texture_preview = True
+                mat = self.paint_obj.active_material
+                active_layer = mat.b_painter.paint_layers[mat.b_painter.paint_layers_index]
+                img = bpy.data.images[active_layer.img_name] if active_layer.img_name in bpy.data.images else None
+                
+                if "BPainter Texture Preview" in bpy.data.objects:
+                    self.plane = bpy.data.objects["BPainter Texture Preview"]
+                    context.scene.objects.link(self.plane)
+                    context.scene.update()
+                    context.scene.objects.active = self.plane
+                else:    
+                    bpy.ops.mesh.primitive_plane_add(radius=1, view_align=False, enter_editmode=True,location=(0,0,0))
+                    bpy.ops.uv.unwrap(method='ANGLE_BASED', margin=0.0)
+                    
+                bpy.ops.object.mode_set(mode='TEXTURE_PAINT')
+                self.plane = context.active_object
+                self.plane.name = "BPainter Texture Preview"
+                self.plane.active_material = mat
+                self.plane["paint_obj"] = self.paint_obj.name
+                context.scene.objects.active = self.plane
+                self.plane.scale[0] = aspect_ratio
+                self.plane.b_painter_active_material = self.paint_obj.b_painter_active_material
+                local_view = self.set_local_view(True)
+                context.window_manager.modal_handler_add(self)
+                
+                return {"RUNNING_MODAL"}
+            scene.b_painter_texture_preview = False
+            self.plane = context.active_object if context.active_object.name == "BPainter Texture Preview" else None
+            self.leave_preview_mode(context)
+            return {"FINISHED"}
+        else:
+            return wm.invoke_props_dialog(self)
             
         
 
@@ -626,7 +687,7 @@ class MovePaintLayer(bpy.types.Operator):
                 
                 ### move paint node
                 try:
-                    nodes_active["math_node"].location = nodes_active["layer_node"].location + Vector((0,-40))
+                    nodes_active["math_node"].location = nodes_active["layer_node"].location + Vector((0,-120))
                     nodes_active["tex_node"].location = nodes_active["layer_node"].location + Vector((0,-40))
                     nodes_active["uv_node"].location = nodes_active["tex_node"].location + Vector((0,-40))
                     
@@ -635,7 +696,7 @@ class MovePaintLayer(bpy.types.Operator):
                 
                 ### move procedural texture node
                 try:
-                    nodes_active["math_node"].location = nodes_active["layer_node"].location + Vector((0,-40))
+                    nodes_active["math_node"].location = nodes_active["layer_node"].location + Vector((0,-120))
                     nodes_active["ramp_node"].location = nodes_active["math_node"].location + Vector((0,-40))
                     nodes_active["proc_tex_node"].location = nodes_active["ramp_node"].location + Vector((0,-40))
                     nodes_active["proc_coord_node"].location = nodes_active["proc_tex_node"].location + Vector((0,-40))
@@ -653,14 +714,14 @@ class MovePaintLayer(bpy.types.Operator):
                 try:
                     nodes_next["tex_node"].location = nodes_next["layer_node"].location + Vector((0,-40))
                     nodes_next["uv_node"].location = nodes_next["tex_node"].location + Vector((0,-40))
-                    nodes_next["math_node"].location = nodes_next["uv_node"].location + Vector((0,-40))
+                    nodes_next["math_node"].location = nodes_next["uv_node"].location + Vector((0,-120))
                     
                 except:
                     pass
                 
                 ### move procedural texture node
                 try:
-                    nodes_next["math_node"].location = nodes_next["layer_node"].location + Vector((0,-40))
+                    nodes_next["math_node"].location = nodes_next["layer_node"].location + Vector((0,-120))
                     nodes_next["ramp_node"].location = nodes_next["math_node"].location + Vector((0,-40))
                     nodes_next["proc_tex_node"].location = nodes_next["ramp_node"].location + Vector((0,-40))
                     nodes_next["proc_coord_node"].location = nodes_next["proc_tex_node"].location + Vector((0,-40))
@@ -1026,14 +1087,20 @@ class NewPaintLayer(bpy.types.Operator):
     
     def get_images(self,context):
         global IMAGES
-        IMAGES = []
-        for i,img in enumerate(bpy.data.images):
-            if "b_painter_brush_img" not in img.name:
-                IMAGES.append((img.name,img.name,img.name,bpy.types.UILayout.icon(img),i))
+        if self.update:
+            self.update = False
+            IMAGES = []
+            for i,img in enumerate(bpy.data.images):
+                if "b_painter_brush_img" not in img.name and "b_painter_stencil_img" not in img.name and self.img_filter.lower() in img.name.lower():
+                    IMAGES.append((img.name,img.name,img.name,bpy.types.UILayout.icon(img),i))            
         
         return IMAGES
     
-    image = EnumProperty(items=get_images)
+    def update_img_filter(self,context):
+        self.update = True
+        self.image = self.image
+    
+    image = EnumProperty(items=get_images,options={"LIBRARY_EDITABLE"})
     custom_img = BoolProperty(default=False)
     mat_name = StringProperty(default="")
     
@@ -1074,6 +1141,8 @@ class NewPaintLayer(bpy.types.Operator):
     color = FloatVectorProperty(name="Layer Color",description="",min=0.0,max=1.0,default=(0,0,0,0),subtype="COLOR_GAMMA",size=4)
     
     layer_type_prev = ""
+    img_filter = StringProperty(default="",update=update_img_filter,options={'TEXTEDIT_UPDATE'})
+    update = BoolProperty(default=True)
     
     @classmethod
     def poll(cls, context):
@@ -1103,8 +1172,13 @@ class NewPaintLayer(bpy.types.Operator):
             col.prop(self,"custom_img",text="Choose existing Image as Layer")
             if self.custom_img:
                 col2 = layout.column()
+                col2.prop(self,"img_filter",text="",icon="VIEWZOOM")
+                col2 = layout.column()
                 col2.scale_y = .5
                 col2.template_icon_view(self,"image",show_labels=True)
+                row = layout.row()
+                row.alignment = "CENTER"
+                row.label(text=self.image)
             else:
                 if self.layer_type == "DIFFUSE" or context.scene.render.engine == "CYCLES":
                     row = layout.row(align=True)
@@ -1463,12 +1537,18 @@ class CreateLayerMask(bpy.types.Operator):
     
     def get_images(self,context):
         global IMAGES
-        IMAGES = []
-        for i,img in enumerate(bpy.data.images):
-            if "b_painter_brush_img" not in img.name:
-                IMAGES.append((img.name,img.name,img.name,bpy.types.UILayout.icon(img),i))
+        if self.update:
+            self.update = False
+            IMAGES = []
+            for i,img in enumerate(bpy.data.images):
+                if "b_painter_brush_img" not in img.name and "b_painter_stencil_img" not in img.name and self.img_filter.lower() in img.name.lower():
+                    IMAGES.append((img.name,img.name,img.name,bpy.types.UILayout.icon(img),i))
         
         return IMAGES
+    
+    def update_img_filter(self,context):
+        self.update = True
+        self.image = self.image
     
     image = EnumProperty(items=get_images)
     custom_img = BoolProperty(default=False)
@@ -1477,6 +1557,8 @@ class CreateLayerMask(bpy.types.Operator):
     resolution_x = IntProperty(default=256)
     resolution_y = IntProperty(default=256)
     color = FloatVectorProperty(name="Mask Color",description="",min=0.0,max=1.0,default=(0,0,0),subtype="COLOR_GAMMA",size=3)
+    img_filter = StringProperty(default="",update=update_img_filter,options={'TEXTEDIT_UPDATE'})
+    update = BoolProperty(default=True)
     
     def check(self,context):
         return True
@@ -1487,8 +1569,13 @@ class CreateLayerMask(bpy.types.Operator):
         col.prop(self,"custom_img",text="Choose existing Image as Layer")
         if self.custom_img:
             col2 = layout.column()
+            col2 = layout.column()
+            col.prop(self,"img_filter",text="",icon="VIEWZOOM")
             col2.scale_y = .5
             col2.template_icon_view(self,"image",show_labels=True)
+            row = layout.row()
+            row.alignment="CENTER"
+            row.label(text=self.image)
         else:
             row = layout.row()
             row.prop(self,"color")
@@ -1512,7 +1599,7 @@ class CreateLayerMask(bpy.types.Operator):
     def invoke(self,context,event):
         wm = context.window_manager
         self.custom_img = False
-        
+        self.image = self.image
         return wm.invoke_props_dialog(self)
     
     def execute(self, context):
@@ -1767,8 +1854,15 @@ class InvertLayerMask(bpy.types.Operator):
             mask_invert_node.mute = not(mask_invert_node.mute)
             self.report({'INFO'}, "Layer Mask inverted.")
         elif event.shift:
+            invert_node = mask_node.inputs["Fac"].links[0].from_node
+            for link in invert_node.outputs["Color"].links:
+                if link.to_node != mask_node:
+                    link.to_node.mute = not(mask_node.b_painter_layer_hide)
+            
+            
             mask_node.b_painter_layer_hide = not(mask_node.b_painter_layer_hide)
-        else:
+        elif not paint_layer.mask_layer_active:
             paint_layer.mask_layer_active = True
+            mat.b_painter.paint_layers_index = mat.b_painter.paint_layers_index
         return {"FINISHED"}
             

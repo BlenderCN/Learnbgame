@@ -1,0 +1,490 @@
+{"environments": [
+  [
+    "Clear 1",
+    "Clear 01",
+    "clear01",
+    1,
+    1
+  ],[
+    "Clear 2",
+    "Clear 02",
+    "clear02",
+    1,
+    1
+  ],[
+    "Clear 3",
+    "Clear 03",
+    "clear03",
+    1.3,
+    0.8
+  ],[
+    "Clear 4",
+    "Clear 04",
+    "clear04",
+    2,
+    1
+  ],[
+    "Cloudy 1",
+    "Cloudy 01",
+    "cloudy01",
+    0.8,
+    0.8
+  ],[
+    "Cloudy 2",
+    "Cloudy 02",
+    "cloudy02",
+    0.4,
+    0.7
+  ],[
+    "Cloudy 3",
+    "Cloudy 03",
+    "cloudy03",
+    2,
+    1
+  ],[
+    "Cloudy 4",
+    "Cloudy 04",
+    "cloudy04",
+    3,
+    1
+  ],[
+    "Cloudy 5",
+    "Cloudy 05",
+    "cloudy05",
+    5,
+    0.2
+  ],[
+    "Cloudy 6",
+    "Cloudy 06",
+    "cloudy06",
+    0.16,
+    1
+  ],[
+    "Cloudy 7",
+    "Cloudy 07",
+    "cloudy07",
+    1,
+    1
+  ],[
+    "Cloudy 8",
+    "Cloudy 08",
+    "cloudy08",
+    0.3,
+    0.8
+  ],[
+    "Cloudy 9",
+    "Cloudy 09",
+    "cloudy09",
+    1,
+    0.7
+  ],[
+    "Cloudy 10",
+    "Cloudy 10",
+    "cloudy10",
+    0.1,
+    0.9
+  ],[
+    "Cloudy 11",
+    "Cloudy 11",
+    "cloudy11",
+    3,
+    0.5
+  ],[
+    "Cloudy 12",
+    "Cloudy 12",
+    "cloudy12",
+    2.5,
+    1
+  ],[
+    "Cloudy 13",
+    "Cloudy 13",
+    "cloudy13",
+    3,
+    1
+  ],[
+    "Cloudy 14",
+    "Cloudy 14",
+    "cloudy14",
+    1.5,
+    1
+  ],[
+    "Cloudy 15",
+    "Cloudy 15",
+    "cloudy15",
+    2,
+    1
+  ],[
+    "Cloudy 16",
+    "Cloudy 16",
+    "cloudy16",
+    1.5,
+    0.8
+  ],[
+    "Cloudy 17",
+    "Cloudy 17",
+    "cloudy17",
+    2,
+    2
+  ],[
+    "Evening 1",
+    "Evening 01",
+    "evening01",
+    3,
+    1
+  ],[
+    "Evening 2",
+    "Evening 02",
+    "evening02",
+    3,
+    1
+  ],[
+    "Evening 3",
+    "Evening 03",
+    "evening03",
+    5,
+    2
+  ],[
+    "Evening 4",
+    "Evening 04",
+    "evening04",
+    3,
+    1
+  ],[
+    "Evening 5",
+    "Evening 05",
+    "evening05",
+    3,
+    1
+  ],[
+    "Evening 6",
+    "Evening 06",
+    "evening06",
+    3,
+    1
+  ],[
+    "Evening 7",
+    "Evening 07",
+    "evening07",
+    1,
+    1
+  ],[
+    "Evening 8",
+    "Evening 08",
+    "evening08",
+    1,
+    1
+  ],[
+    "Evening 9",
+    "Evening 09",
+    "evening09",
+    3,
+    1
+  ],[
+    "Evening 10",
+    "Evening 10",
+    "evening10",
+    3,
+    1
+  ],[
+    "Evening 11",
+    "Evening 11",
+    "evening11",
+    3,
+    1
+  ],[
+    "Evening 12",
+    "Evening 12",
+    "evening12",
+    3,
+    1
+  ],[
+    "Evening 13",
+    "Evening 13",
+    "evening13",
+    3,
+    1
+  ],[
+    "Evening 14",
+    "Evening 14",
+    "evening14",
+    3,
+    1
+  ],[
+    "Evening 15",
+    "Evening 15",
+    "evening15",
+    3,
+    1
+  ],[
+    "Evening 16",
+    "Evening 16",
+    "evening16",
+    3,
+    1
+  ],[
+    "Morning 1",
+    "Morning 01",
+    "morning01",
+    2,
+    1
+  ],[
+    "Morning 2",
+    "Morning 02",
+    "morning02",
+    1,
+    1
+  ],[
+    "Morning 3",
+    "Morning 03",
+    "morning03",
+    1,
+    1
+  ],[
+    "Morning 4",
+    "Morning 04",
+    "morning04",
+    3,
+    1
+  ],[
+    "Morning 5",
+    "Morning 05",
+    "morning05",
+    3,
+    1
+  ],[
+    "Morning 6",
+    "Morning 06",
+    "morning06",
+    3,
+    1
+  ],[
+    "Morning 7",
+    "Morning 07",
+    "morning07",
+    2,
+    1
+  ],[
+    "Morning 8",
+    "Morning 08",
+    "morning08",
+    3,
+    1
+  ],[
+    "Morning 9",
+    "Morning 09",
+    "morning09",
+    2,
+    1
+  ],[
+    "Morning 10",
+    "Morning 10",
+    "morning10",
+    3,
+    1
+  ],[
+    "Morning 11",
+    "Morning 11",
+    "morning11",
+    1,
+    1
+  ],[
+    "Morning 12",
+    "Morning 12",
+    "morning12",
+    1.5,
+    1
+  ],[
+    "Night 1",
+    "Night 01",
+    "night01",
+    1,
+    0.5
+  ],[
+    "Overcast 1",
+    "Overcast 01",
+    "overcast01",
+    3,
+    1
+  ],[
+    "Overcast 2",
+    "Overcast 02",
+    "overcast02",
+    3,
+    1
+  ],[
+    "Overcast 3",
+    "Overcast 03",
+    "overcast03",
+    1,
+    1
+  ],[
+    "Overcast 4",
+    "Overcast 04",
+    "overcast04",
+    1,
+    1
+  ],[
+    "Overcast 5",
+    "Overcast 05",
+    "overcast05",
+    3,
+    1
+  ],[
+    "Overcast 6",
+    "Overcast 06",
+    "overcast06",
+    1,
+    1
+  ],[
+    "Overcast 7",
+    "Overcast 07",
+    "overcast07",
+    1,
+    1
+  ],[
+    "Overcast 8",
+    "Overcast 08",
+    "overcast08",
+    1,
+    1
+  ],[
+    "Overcast 9",
+    "Overcast 09",
+    "overcast09",
+    3,
+    1
+  ],[
+    "Sunset 1",
+    "Sunset 01",
+    "sunset01",
+    3,
+    1
+  ],[
+    "Sunset 2",
+    "Sunset 02",
+    "sunset02",
+    0.5,
+    1
+  ],[
+    "Sunset 3",
+    "Sunset 03",
+    "sunset03",
+    3,
+    1
+  ],[
+    "Sunset 4",
+    "Sunset 04",
+    "sunset04",
+    3,
+    1
+  ],[
+    "Sunset 5",
+    "Sunset 05",
+    "sunset05",
+    0.5,
+    1
+  ],[
+    "Sunset 6",
+    "Sunset 06",
+    "sunset06",
+    3,
+    1
+  ],[
+    "Sunset 7",
+    "Sunset 07",
+    "sunset07",
+    3,
+    1
+  ],[
+    "Sunset 8",
+    "Sunset 08",
+    "sunset08",
+    6,
+    1
+  ],[
+    "Sunset 9",
+    "Sunset 09",
+    "sunset09",
+    1,
+    1
+  ],[
+    "Sunset 10",
+    "Sunset 10",
+    "sunset10",
+    3,
+    1
+  ],[
+    "Sunset 11",
+    "Sunset 11",
+    "sunset11",
+    2,
+    1
+  ],[
+    "Sunset 12",
+    "Sunset 12",
+    "sunset12",
+    6,
+    1
+  ],[
+    "Sunset 13",
+    "Sunset 13",
+    "sunset13",
+    3,
+    1
+  ],[
+    "Sunset 14",
+    "Sunset 14",
+    "sunset14",
+    3,
+    1
+  ],[
+    "Sunset 15",
+    "Sunset 15",
+    "sunset15",
+    3,
+    1
+  ],[
+    "Sunset 16",
+    "Sunset 16",
+    "sunset16",
+    3,
+    1
+  ],[
+    "Sunset 17",
+    "Sunset 17",
+    "sunset17",
+    5,
+    1
+  ],[
+    "Sunset 18",
+    "Sunset 18",
+    "sunset18",
+    3,
+    1
+  ],[
+    "Sunset 19",
+    "Sunset 19",
+    "sunset19",
+    3,
+    1
+  ],[
+    "Sunset 20",
+    "Sunset 20",
+    "sunset20",
+    6,
+    1
+  ],[
+    "Sunset 21",
+    "Sunset 21",
+    "sunset21",
+    6,
+    1
+  ],[
+    "Sunset 22",
+    "Sunset 22",
+    "sunset22",
+    5,
+    1
+  ]
+
+]}

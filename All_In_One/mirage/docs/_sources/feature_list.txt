@@ -1,0 +1,44 @@
+Full Feature List
+===============================================================================
+
+- Terrain generation based on Frequency Synthesis and F2F1 Voronoi
+    - Manual or automatic seeds
+    - Real physical size (metric or imperial) setting
+    - Roughness control
+    - Sea level and Plateau clipping
+    - Control over montainousness, ridges and twisting of the terrain
+    - Straighten edges
+    - Smooth edges to a plane, with smoothing factor control
+    - Automatically generate an ocean plane
+    - Simple and Custom level of detail (vertex count) control 
+    - Add Thermal Erosion to the terrain
+    - Control height of the terrain as a gradient on X/Y axis
+    - Create a layered (strata) terrain
+    - Generate height based vertex weight and color groups
+    - Generate a vertex weight, color group for sea level
+    - Generate slope based vertex weight and color groups
+    - Generate a vertex weight and color groups for plateau
+- Terrain generation from a heightmap image
+    - Automatically add displacement modifier
+    - Automatically adjust image texture
+    - Level of detail (vertex count) control 
+    - Generate height based vertex weight and color groups
+    - Generate slope based vertex weight and color groups
+- Presets System
+    - Save presets from procedural terrains with a name and description
+    - Edit presets
+    - Import presets
+    - Export presets as JSON files  
+- Tree distribution
+    - Automatically generate density vertex group based on height and slope
+    - Maximum slope and height control
+    - Density and scale control
+    - Automatically set scale relative to terrain
+    - Automatic performance display setting  
+- Tools  
+    - Update or generate all terrain vertex groups 
+    - Export vertex groups as images
+    - Export heightmaps (form any plane-like mesh)
+    - Export terrain to a list of heights (Simple or 2D, Python or CSV)
+    
+    

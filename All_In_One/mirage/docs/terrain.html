@@ -1,0 +1,441 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Procedural Terrains &mdash; Mirage 2.0.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/custom_mirage.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Mirage 2.0.0 documentation" href="index.html"/>
+        <link rel="next" title="Terrain generated from heightmaps" href="terrain_file.html"/>
+        <link rel="prev" title="Quickstart Guide" href="quickstart.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Mirage
+          
+
+          
+            
+            <img src="_static/logo_square.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Procedural Terrains</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#detail-level">Detail Level</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#custom-detail-level">Custom detail level</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#checking-progress-and-time">Checking Progress and time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-does-linking-to-scene-mean">What does &#8220;Linking to scene&#8221; mean?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#general-settings">General Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#edges">Edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#features">Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#strata">Strata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thermal-erosion">Thermal Erosion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slopes">Slopes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_file.html">Terrain generated from heightmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tree_distribution.html">Tree Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="presets.html">Presets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_list.html">Full Feature List</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Mirage</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Procedural Terrains</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/terrain.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="procedural-terrains">
+<h1>Procedural Terrains<a class="headerlink" href="#procedural-terrains" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/terrain_proc_intro.png" src="_images/terrain_proc_intro.png" />
+<p>Mirage can generate terrain meshes using real-world measurements, while also
+make useful vertex groups and applying different features (such as erosion or
+strata).</p>
+<div class="section" id="detail-level">
+<h2>Detail Level<a class="headerlink" href="#detail-level" title="Permalink to this headline">¶</a></h2>
+<p>The detail level setting controls how many vertex the terrain mesh will have.
+Increasing the level of detail will increase calculation time and memory usage.</p>
+<p>Mirage offers three basic levels: normal, medium and high. There&#8217;s also
+a custom option to fine tune the level of detail (see below)</p>
+<p>Terrain meshes are created from a plane subdivided in segments. The vertex
+count results from how many segments are used. For instance, the <cite>Normal</cite> level of
+detail has 128 segments, resulting in 16,384 vertices (128x128 = 16,384).</p>
+<p><cite>Normal</cite> and <cite>Medium</cite> are usually good enough for everything (specially when
+used with subdivision and multires).
+<cite>High</cite> is great if you are creating a massive terrain and don&#8217;t plan on changing
+it much.</p>
+<p>Mirage will always generate the same terrain for the same seed, so you can use the
+different detail levels to bake higher detail into meshes with less geometry. <a class="reference external" href="https://www.blender.org/manual/render/workflows/bake.html">Check
+the Blender manual for more information on baking</a></p>
+<img alt="_images/terrain_proc_detail.jpg" src="_images/terrain_proc_detail.jpg" />
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Watch out for memory usage when generating many terrains with high detail levels.
+Blender will keep data around for undo, making RAM usage grow and grow. Save and
+restart Blender if you see memory usage in the info bar growing too big.</p>
+</div>
+<div class="section" id="custom-detail-level">
+<h3>Custom detail level<a class="headerlink" href="#custom-detail-level" title="Permalink to this headline">¶</a></h3>
+<p>It&#8217;s also possible to select a custom level of detail besides the basic three.
+Simply select <cite>Custom</cite> in the detail level menu.</p>
+<p>You will see two new settings: segments and seed grid.</p>
+<dl class="docutils">
+<dt>Segments</dt>
+<dd>This controls how many times the plane will be subdivided. Increasing
+this setting will increase vertex count. Note that this number will
+be rounded automatically according to the base grid.</dd>
+<dt>Seed Grid</dt>
+<dd>Increases the amount of fine detail in the terrain. Mirage&#8217;s
+algorithm uses a base grid of white noise to generate the terrain.
+By default this grid always has a size of 100x100. However you can
+increase this up to be the same as the number of segments (getting
+the biggest amount of detail).</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Changing the Seed Grid setting will give you a different terrain, even with
+the same seed!</p>
+</div>
+</div>
+</div>
+<div class="section" id="checking-progress-and-time">
+<h2>Checking Progress and time<a class="headerlink" href="#checking-progress-and-time" title="Permalink to this headline">¶</a></h2>
+<p>When you click the <cite>Generate</cite> button it will be replaced by a progress message
+and a cancel button. Note that you can still use Blender while the terrain is
+being generated (the message reads &#8220;Generating terrain&#8221;).</p>
+<p>Once the message changes to &#8220;Linking to scene&#8221; Blender&#8217;s UI will be blocked and
+you won&#8217;t be able to cancel. On terrains with high detail levels it might look
+like Blender has frozen. Don&#8217;t worry it will become responsive in a few minutes.</p>
+<p>Mirage will also print how long it took to generate the terrain once it&#8217;s
+finished in the console, as well as how long it took to be linked to the scene.
+This can help you get a &#8220;feel&#8221; for how long it takes to generate terrains at
+different detail levels in your computer.
+To know more about running Blender from a terminal (or console)
+<a class="reference external" href="http://wiki.blender.org/index.php/User:Fade/Doc:2.6/Manual/Interface/Window_system/Console_window">check the wiki.</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The progress message is only available on Mac and Linux. On Windows the UI
+will block, but you can still see the benchmarks in the console.</p>
+</div>
+<div class="section" id="what-does-linking-to-scene-mean">
+<h3>What does &#8220;Linking to scene&#8221; mean?<a class="headerlink" href="#what-does-linking-to-scene-mean" title="Permalink to this headline">¶</a></h3>
+<p>Once Mirage has generated the terrain data (the heights), it applies them to a mesh
+and puts that mesh in an object. Finally the object is added to the current scene
+(linked). These steps are simply called &#8220;Linking to Scene&#8221; in the UI.</p>
+<p>This distinction between generating and linking is made because linking will
+block the UI. So if you see Mirage is &#8220;Linking to Scene&#8221; you can tell Blender
+isn&#8217;t frozen, just adding the terrain into the scene.</p>
+</div>
+</div>
+<div class="section" id="general-settings">
+<h2>General Settings<a class="headerlink" href="#general-settings" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Size</dt>
+<dd>Set the size of the terrain in real world units. This affects the X and Y
+axis.</dd>
+<dt>Max Height</dt>
+<dd>Set the vertical scale. The terrain will always start at zero on the Z
+axis and go up to this value. Note that if you increase the <em>Size</em> value
+you should also increase Max Height, or the generated terrain will
+be flatter.</dd>
+</dl>
+<img alt="_images/terrain_proc_maxheight.jpg" src="_images/terrain_proc_maxheight.jpg" />
+<dl class="docutils">
+<dt>Plateau</dt>
+<dd>Create plateaus (or mesas) by clipping the terrain at this
+height. If this value is higher than Max Height it will not
+affect the terrain.</dd>
+</dl>
+<img alt="_images/terrain_proc_plateau.jpg" src="_images/terrain_proc_plateau.jpg" />
+<dl class="docutils">
+<dt>Sea Level</dt>
+<dd>Make everything below this height flat (set to zero). Note the terrain
+will be moved down so it rests on 0 in the Z axis. This setting
+will make the final height of the terrain shorter.</dd>
+</dl>
+<img alt="_images/terrain_proc_sealevel.jpg" src="_images/terrain_proc_sealevel.jpg" />
+<dl class="docutils">
+<dt>Roughness</dt>
+<dd>Set how coarse the terrain is, and how many small details and
+perturbations it has. Small roughness will produce very smooth
+dune-like terrains, while higher roughness add lots of small
+peaks and valleys.</dd>
+</dl>
+<img alt="_images/terrain_proc_roughness.jpg" src="_images/terrain_proc_roughness.jpg" />
+<dl class="docutils">
+<dt>Alpine</dt>
+<dd>Increase difference between valleys and peaks. Peaks become more
+vertical, while valleys and plains become flatter.</dd>
+</dl>
+<img alt="_images/terrain_proc_alpine.jpg" src="_images/terrain_proc_alpine.jpg" />
+<dl class="docutils">
+<dt>Deformation</dt>
+<dd>Make the terrain more &#8220;twisty&#8221; and increase the amount of ridges.</dd>
+</dl>
+<img alt="_images/terrain_proc_deformation.jpg" src="_images/terrain_proc_deformation.jpg" />
+<dl class="docutils">
+<dt>Seed</dt>
+<dd>This is a number used to initialize the terrain algorithm.
+Different values will produce different terrains, however a specific
+seed will always generate the same.</dd>
+<dt>Auto-seed (clock icon)</dt>
+<dd>Use a different seed every time a terrain is generated. The seed
+value will be updated, so you can un-tick it if you find a seed
+value you would like to keep.</dd>
+</dl>
+</div>
+<div class="section" id="edges">
+<h2>Edges<a class="headerlink" href="#edges" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>No edges</dt>
+<dd>Terrain ends where it ends, nothing is done to the edges.</dd>
+</dl>
+<img alt="_images/terrain_proc_edge_none.jpg" src="_images/terrain_proc_edge_none.jpg" />
+<dl class="docutils">
+<dt>Straight Edge</dt>
+<dd>Edges are set to zero, becoming straight with no transition. If you set
+all initial heights you can get a cube with this.</dd>
+</dl>
+<img alt="_images/terrain_proc_edge_straight.jpg" src="_images/terrain_proc_edge_straight.jpg" />
+<dl class="docutils">
+<dt>Smoothed</dt>
+<dd>Edges are set to zero, but the height gradually transitions from the center
+of the mesh to the edges. Useful for islands and single mountains.
+When this edge is selected, another setting called &#8220;Smooth Factor&#8221; will
+show up. This setting will allow you to control how gradual the smoothing is.</dd>
+</dl>
+<img alt="_images/terrain_proc_edge_smooth.jpg" src="_images/terrain_proc_edge_smooth.jpg" />
+<dl class="docutils">
+<dt>Island</dt>
+<dd>Sets the edges to smoothed and automatically creates an ocean object
+(using the ocean modifier).</dd>
+</dl>
+<img alt="_images/terrain_proc_edge_island.jpg" src="_images/terrain_proc_edge_island.jpg" />
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<p>These are optional effects that can be applied to the terrain. You turn them
+on and off by ticking the checkboxes next to them. Select them to see a short
+description and their settings.</p>
+<div class="section" id="strata">
+<h3>Strata<a class="headerlink" href="#strata" title="Permalink to this headline">¶</a></h3>
+<p>Make the terrain stratified (step-like)</p>
+<img alt="_images/terrain_proc_strata.jpg" src="_images/terrain_proc_strata.jpg" />
+<dl class="docutils">
+<dt>Frequency</dt>
+<dd>How many &#8220;steps&#8221; to use</dd>
+<dt>Strength</dt>
+<dd>Set how much this effect changes the terrain</dd>
+<dt>Invert Slope</dt>
+<dd>Invert the direction of the slope between steps</dd>
+</dl>
+</div>
+<div class="section" id="thermal-erosion">
+<h3>Thermal Erosion<a class="headerlink" href="#thermal-erosion" title="Permalink to this headline">¶</a></h3>
+<p>Simulates loosening and clumping of soil because of temperature changes.</p>
+<img alt="_images/terrain_proc_thermal.jpg" src="_images/terrain_proc_thermal.jpg" />
+<dl class="docutils">
+<dt>Repose Angle</dt>
+<dd>Angle at which the terrain material piles without slumping. Decreasing
+the angle will flatten the terrain more. It&#8217;s also know as the Talus angle.</dd>
+<dt>Strength</dt>
+<dd>Set how much this effect changes the terrain</dd>
+</dl>
+</div>
+<div class="section" id="slopes">
+<h3>Slopes<a class="headerlink" href="#slopes" title="Permalink to this headline">¶</a></h3>
+<p>Gradually lower the height of the terrain. This feature replaces the old
+&#8220;initial heights&#8221;. These settings are repeated twice, for the X and Y axis.</p>
+<img alt="_images/terrain_proc_slopes.jpg" src="_images/terrain_proc_slopes.jpg" />
+<dl class="docutils">
+<dt>Intensity</dt>
+<dd>Set how far into the terrain the effect will go (how smooth)</dd>
+<dt>Minimum Height</dt>
+<dd>Set a percentage of height as the lowest the effect will go</dd>
+<dt>Invert</dt>
+<dd>Invert the direction of the effect along it&#8217;s axis</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="terrain_file.html" class="btn btn-neutral float-right" title="Terrain generated from heightmaps" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quickstart.html" class="btn btn-neutral" title="Quickstart Guide" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Diego Gangl.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -23,9 +23,10 @@ from mathutils import Vector
 from bpy.props import StringProperty, EnumProperty, IntVectorProperty, BoolProperty
 from bpy.types import Menu, Panel, UIList
 import math
-from .. functions import update_paint_layers, update_all_paint_layers, set_active_paint_layer, get_layer_nodes, srgb_to_linear, linear_to_srgb
+from .. functions import update_paint_layers, update_all_paint_layers, set_active_paint_layer, get_layer_nodes, srgb_to_linear, linear_to_srgb, b_version_smaller_than, b_version_bigger_than
 import os
 import time
+        
 
 ### this is a hack to fix the cycles bake operator called from script. It may happen, that the operator does not work when it was aborted. rerunning it in invoke mode seems to fix it again.
 class MergeFix(bpy.types.Operator):
@@ -37,7 +38,7 @@ class MergeFix(bpy.types.Operator):
     @classmethod
     def poll(cls, context):
         return True
-
+    
     def execute(self,context):
         ### setup bake options
         samples_default = int(context.scene.cycles.samples)
@@ -75,7 +76,7 @@ class MergeFix(bpy.types.Operator):
         bake_node.select = True
         node_tree.nodes.active = bake_node
         bpy.ops.object.bake("INVOKE_DEFAULT",type="DIFFUSE")
-        time.sleep(1)
+        time.sleep(2)
         bpy.data.objects.remove(obj,do_unlink=True)
         bpy.data.materials.remove(tmp_mat,do_unlink=True)
         bpy.data.images.remove(tmp_img,do_unlink=True)
@@ -686,7 +687,8 @@ class MergeMaterialLayers(bpy.types.Operator):
             self.bi_bake(context)
             self.get_merge_layers(context)
         elif context.scene.render.engine in ["CYCLES"]:
-            bpy.ops.b_painter.merge_fix()
+            if b_version_smaller_than((2,79,0)):
+                bpy.ops.b_painter.merge_fix()
             self.cycles_bake(context)
             self.get_merge_layers(context)
         
@@ -698,4 +700,5 @@ def get_layer_index(mat,layer_name):
     for i,l in enumerate(mat.b_painter.paint_layers):
         if l.name == layer_name:
             return i
-        
+
+                

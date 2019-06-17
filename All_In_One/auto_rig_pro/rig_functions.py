@@ -1,91 +1,417 @@
 import bpy
-from mathutils import Matrix, Vector, Quaternion
 import mathutils
+from mathutils import *
+import math
 from math import acos, pi
 from bpy.app.handlers import persistent
 from . import auto_rig_datas
-
-
-############################
-## Math utility functions ##
-############################
-rig_id = ""
+from operator import itemgetter
 
 print ("\n Starting Auto-Rig Pro Functions... \n")
 
-def perpendicular_vector(v):
-	""" Returns a vector that is perpendicular to the one given.
-		The returned vector is _not_ guaranteed to be normalized.
+# Global vars
+hands_ctrl = ["c_hand_ik", "c_hand_fk"]
+sides = [".l", ".r"]
+eye_aim_bones = ["c_eye_target.x", "c_eye"]
+auto_eyelids_bones = ["c_eye", "c_eyelid_top", "c_eyelid_bot"]
+
+fk_arm = ["c_arm_fk", "c_forearm_fk", "c_hand_fk", "arm_fk_pole"]
+ik_arm = ["arm_ik", "forearm_ik", "c_hand_ik", "c_arms_pole", "c_arm_ik"]
+
+fk_leg = ["c_thigh_fk", "c_leg_fk", "c_foot_fk", "c_toes_fk", "leg_fk_pole"]
+ik_leg = ["thigh_ik", "leg_ik", "c_foot_ik", "c_leg_pole", "c_toes_ik", "c_foot_01", "c_foot_roll_cursor", "foot_snap_fk", "c_thigh_ik"]
+
+
+#CLASSES ###########################################################################################################
+
+
+	
+class ARP_OT_set_picker_camera_func(bpy.types.Operator):	 
+	
+	"""Display the bone picker of the selected character in this active view"""
+	
+	bl_idname = "id.set_picker_camera_func"
+	bl_label = "set_picker_camera_func"
+	bl_options = {'UNDO'}	
+	
+	@classmethod
+	def poll(cls, context):
+		if context.object != None:
+			if is_object_arp(context.object):
+				return True
+
+	def execute(self, context):
+		use_global_undo = context.preferences.edit.use_global_undo
+		context.preferences.edit.use_global_undo = False
+		try:		   
+			_set_picker_camera(self)		
+					   
+		finally:
+			context.preferences.edit.use_global_undo = use_global_undo		   
+		return {'FINISHED'}
+
+
+class ARP_OT_toggle_multi(bpy.types.Operator):
+	"""Toggle multi-limb visibility"""
+
+	bl_idname = "id.toggle_multi"
+	bl_label = "toggle_multi"
+	bl_options = {'UNDO'}
+	
+	limb : bpy.props.StringProperty(name="Limb")
+	id : bpy.props.StringProperty(name="Id")
+	key : bpy.props.StringProperty(name="key")
 	"""
-	# Create a vector that is not aligned with v.
-	# It doesn't matter what vector.  Just any vector
-	# that's guaranteed to not be pointing in the same
-	# direction.
-	if abs(v[0]) < abs(v[1]):
-		tv = Vector((1,0,0))
+	@classmethod
+	def poll(cls, context):
+		return (context.active_object != None and context.mode == 'POSE')
+	"""
+	
+	def execute(self, context):
+		use_global_undo = context.preferences.edit.use_global_undo
+		context.preferences.edit.use_global_undo = False
+		try:
+			_toggle_multi(self.limb, self.id, self.key)
+		finally:
+			context.preferences.edit.use_global_undo = use_global_undo
+		return {'FINISHED'}
+		
+
+class ARP_OT_arp_snap_pole(bpy.types.Operator):
+	"""Switch and snap the IK pole parent"""
+	
+	bl_idname = "pose.arp_snap_pole"
+	bl_label = "Arp Snap FK arm to IK"
+	bl_options = {'UNDO'}
+
+	side : bpy.props.StringProperty(name="bone side")	
+	bone_type : bpy.props.StringProperty(name="arm or leg")
+	
+
+	@classmethod
+	def poll(cls, context):
+		return (context.active_object != None and context.mode == 'POSE')
+
+	def execute(self, context):
+		use_global_undo = context.preferences.edit.use_global_undo
+		context.preferences.edit.use_global_undo = False
+		try:
+			_arp_snap_pole(context.active_object, self.side, self.bone_type)
+		finally:
+			context.preferences.edit.use_global_undo = use_global_undo
+		return {'FINISHED'}
+		
+		
+class ARP_OT_arm_switch_snap(bpy.types.Operator):
+	"""Switch and snap the IK-FK arm"""
+	
+	bl_idname = "pose.arp_arm_switch_snap"
+	bl_label = "Arp Switch and Snap IK FK Arm"
+	bl_options = {'UNDO'}
+
+	side : bpy.props.StringProperty(name="bone side")	
+
+	@classmethod
+	def poll(cls, context):
+		return (context.active_object != None and context.mode == 'POSE')
+
+	def execute(self, context):
+		use_global_undo = context.preferences.edit.use_global_undo
+		context.preferences.edit.use_global_undo = False
+		try:
+			
+			hand_ik = context.object.pose.bones[ik_arm[2] + self.side]
+			if hand_ik['ik_fk_switch'] < 0.5:				
+				fk_to_ik_arm(context.active_object, self.side)
+			else:
+				ik_to_fk_arm(context.active_object, self.side)
+		finally:
+			context.preferences.edit.use_global_undo = use_global_undo
+		return {'FINISHED'}	
+		
+
+class ARP_OT_arm_fk_to_ik(bpy.types.Operator):
+	"""Snaps an FK arm to an IK arm"""
+	
+	bl_idname = "pose.arp_arm_fk_to_ik_"
+	bl_label = "Arp Snap FK arm to IK"
+	bl_options = {'UNDO'}
+
+	side : bpy.props.StringProperty(name="bone side")	
+	
+
+	@classmethod
+	def poll(cls, context):
+		return (context.active_object != None and context.mode == 'POSE')
+
+	def execute(self, context):
+		use_global_undo = context.preferences.edit.use_global_undo
+		context.preferences.edit.use_global_undo = False
+		try:
+			fk_to_ik_arm(context.active_object, self.side)
+		finally:
+			context.preferences.edit.use_global_undo = use_global_undo
+		return {'FINISHED'}
+
+
+class ARP_OT_arm_ik_to_fk(bpy.types.Operator):
+	"""Snaps an IK arm to an FK arm"""
+	
+	bl_idname = "pose.arp_arm_ik_to_fk_"
+	bl_label = "Arp Snap IK arm to FK"
+	bl_options = {'UNDO'}
+
+	side : bpy.props.StringProperty(name="bone side")
+
+	@classmethod
+	def poll(cls, context):
+		return (context.active_object != None and context.mode == 'POSE')
+
+	def execute(self, context):
+		use_global_undo = context.preferences.edit.use_global_undo
+		context.preferences.edit.use_global_undo = False
+		try:
+			ik_to_fk_arm(context.active_object, self.side)
+		finally:
+			context.preferences.edit.use_global_undo = use_global_undo
+		return {'FINISHED'}
+
+
+		
+class ARP_OT_leg_switch_snap(bpy.types.Operator):
+	"""Switch and snap the IK-FK leg"""
+	
+	bl_idname = "pose.arp_leg_switch_snap"
+	bl_label = "Arp Switch and Snap IK FK Leg"
+	bl_options = {'UNDO'}
+
+	side : bpy.props.StringProperty(name="bone side")	
+
+	@classmethod
+	def poll(cls, context):
+		return (context.active_object != None and context.mode == 'POSE')
+
+	def execute(self, context):
+		use_global_undo = context.preferences.edit.use_global_undo
+		context.preferences.edit.use_global_undo = False
+		try:
+			
+			foot_ik = context.object.pose.bones[ik_leg[2] + self.side]
+			if foot_ik['ik_fk_switch'] < 0.5:				
+				fk_to_ik_leg(context.active_object, self.side)
+			else:
+				ik_to_fk_leg(context.active_object, self.side)
+		finally:
+			context.preferences.edit.use_global_undo = use_global_undo
+		return {'FINISHED'}		
+		
+class ARP_OT_leg_fk_to_ik(bpy.types.Operator):
+	"""Snaps an FK leg to an IK leg"""
+	
+	bl_idname = "pose.arp_leg_fk_to_ik_"
+	bl_label = "Arp Snap FK leg to IK"
+	bl_options = {'UNDO'}
+
+	side : bpy.props.StringProperty(name="bone side")	
+
+	@classmethod
+	def poll(cls, context):
+		return (context.active_object != None and context.mode == 'POSE')
+
+	def execute(self, context):
+		use_global_undo = context.preferences.edit.use_global_undo
+		context.preferences.edit.use_global_undo = False
+		try:
+			fk_to_ik_leg(context.active_object, self.side)
+		finally:
+			context.preferences.edit.use_global_undo = use_global_undo
+		return {'FINISHED'}
+
+
+class ARP_OT_leg_ik_to_fk(bpy.types.Operator):
+	"""Snaps an IK leg to an FK leg"""
+	
+	bl_idname = "pose.arp_leg_ik_to_fk_"
+	bl_label = "Arp Snap IK leg to FK"
+	bl_options = {'UNDO'}
+
+	side : bpy.props.StringProperty(name="bone side")	
+
+	@classmethod
+	def poll(cls, context):
+		return (context.active_object != None and context.mode == 'POSE')
+
+	def execute(self, context):
+		use_global_undo = context.preferences.edit.use_global_undo
+		context.preferences.edit.use_global_undo = False
+		try:
+			ik_to_fk_leg(context.active_object, self.side)
+		finally:
+			context.preferences.edit.use_global_undo = use_global_undo
+		return {'FINISHED'}
+
+
+
+###FUNCTIONS ##############################################
+
+def set_active_object(object_name):
+	 bpy.context.view_layer.objects.active = bpy.data.objects[object_name]
+	 bpy.data.objects[object_name].select_set(state=1)
+
+def is_object_arp(object):
+	if object.type == 'ARMATURE':
+		if object.pose.bones.get('c_pos') != None:
+			return True
+
+def _set_picker_camera(self):
+	
+	# go to object mode
+	bpy.ops.object.mode_set(mode='OBJECT')
+	
+	#save current scene camera
+	current_cam = bpy.context.scene.camera	  
+	
+	rig = bpy.context.active_object
+	bpy.ops.object.select_all(action='DESELECT')	
+	cam_ui = None
+	rig_ui = None
+	ui_mesh = None
+	char_name_text = None
+	
+	for child in rig.children:
+		if child.type == 'CAMERA' and 'cam_ui' in child.name:
+			cam_ui = child
+		if child.type == 'EMPTY' and 'rig_ui' in child.name:
+			rig_ui = child
+			for _child in rig_ui.children:
+				if _child.type == 'MESH' and 'mesh' in _child.name:
+					ui_mesh = _child
+	
+	# ui cam not found, generate one
+	active_obj_name = bpy.context.active_object.name
+	
+	if not cam_ui:
+		bpy.ops.object.camera_add(view_align=True, enter_editmode=False, location=(0.001321, -59.7455, -56.2155), rotation=(math.radians(90), 0, 0))
+		# set cam data
+		bpy.context.active_object.name = "cam_ui"
+		cam_ui = bpy.data.objects["cam_ui"]
+		cam_ui.data.type = "ORTHO"
+		cam_ui.data.display_size = 0.1
+		cam_ui.data.show_limits = False
+		cam_ui.data.show_passepartout = False
+		cam_ui.parent = bpy.data.objects[active_obj_name]
+		# set collections
+		for col in bpy.data.objects[active_obj_name].users_collection:
+			col.objects.link(cam_ui)
+		
+	set_active_object(active_obj_name)
+	
+	if cam_ui:
+		cam_ui.select_set(state=1)
+		print("Selected", cam_ui.name)
+		bpy.context.view_layer.objects.active = cam_ui
+		bpy.ops.view3d.object_as_camera()
+		
+		# set viewport display options
+		#bpy.context.space_data.lock_camera_and_layers = False 
+		bpy.context.space_data.overlay.show_relationship_lines = False
+		bpy.context.space_data.overlay.show_text = False
+		bpy.context.space_data.overlay.show_cursor = False
+		current_area = bpy.context.area
+		space_view3d = [i for i in current_area.spaces if i.type == "VIEW_3D"]		
+		space_view3d[0].shading.type = 'SOLID'
+		space_view3d[0].shading.show_object_outline = False
+		space_view3d[0].shading.show_specular_highlight = False
+		space_view3d[0].show_gizmo_navigate = False	
+		space_view3d[0].use_local_camera = True	
+		bpy.context.space_data.lock_camera = False#unlock camera to view
+		
+		
+		rig_ui_scale = 1.0
+		
+		if rig_ui:
+			rig_ui_scale = rig_ui.scale[0]
+	
+		units_scale = bpy.context.scene.unit_settings.scale_length
+		fac_ortho = 1.8# * (1/units_scale)
+		
+		
+			
+		# Position the camera height to the backplate height		
+		if ui_mesh:
+			vert_pos = [v.co for v in ui_mesh.data.vertices]
+			vert_pos = sorted(vert_pos, reverse = False, key=itemgetter(2))
+			max1 = ui_mesh.matrix_world @ vert_pos[0]
+			max2 = ui_mesh.matrix_world @ vert_pos[len(vert_pos)-1] 
+			picker_size = (max1-max2).magnitude
+			picker_center = (max1 + max2)/2		
+			
+			# save the camera loc, rot, scale
+			cam_ui_loc = cam_ui.location.copy()
+			cam_ui_rot =  cam_ui.rotation_euler.copy()
+			cam_ui_scale =	cam_ui.scale.copy()
+			
+			# set the camera matrix to the picker center
+			cam_ui.matrix_world = mathutils.Matrix.Translation(picker_center)
+			
+			# Restore the necessary camera transforms, since only the cam height has to change
+			cam_ui.location[0], cam_ui.location[1] = cam_ui_loc[0], cam_ui_loc[1]
+			cam_ui.rotation_euler = cam_ui_rot
+			cam_ui.scale = cam_ui_scale
+			
+		
+			bpy.context.scene.update()
+			dist = (cam_ui.matrix_world.to_translation() - picker_center).length
+			
+			cam_ui.data.clip_start = dist*0.9
+			cam_ui.data.clip_end = dist*1.1
+			cam_ui.data.ortho_scale = fac_ortho * picker_size
+			
+			
+		
+		
+		#restore the scene camera
+		bpy.context.scene.camera = current_cam
+		
 	else:
-		tv = Vector((0,1,0))
+		self.report({'ERROR'}, 'No picker camera found for this rig')
+	
+	#back to pose mode
+	bpy.ops.object.select_all(action='DESELECT')
+	rig.select_set(state=1)
+	bpy.context.view_layer.objects.active = rig
+	bpy.ops.object.mode_set(mode='POSE')
+	
+	# enable the picker addon
+	try:		
+		bpy.context.scene.Proxy_Picker.active = True
+	except:
+		pass	
 
-	# Use cross prouct to generate a vector perpendicular to
-	# both tv and (more importantly) v.
-	return v.cross(tv)
-
-
-def rotation_difference(mat1, mat2):
-	""" Returns the shortest-path rotational difference between two
-		matrices.
-	"""
-	q1 = mat1.to_quaternion()
-	q2 = mat2.to_quaternion()
-	angle = acos(min(1,max(-1,q1.dot(q2)))) * 2
-	if angle > pi:
-		angle = -angle + (2*pi)
-	return angle
-
-
-#########################################
-## "Visual Transform" helper functions ##
-#########################################
 
 def get_pose_matrix_in_other_space(mat, pose_bone):
-	""" Returns the transform matrix relative to pose_bone's current
-		transform space.  In other words, presuming that mat is in
-		armature space, slapping the returned matrix onto pose_bone
-		should give it the armature-space transforms of mat.
-		TODO: try to handle cases with axis-scaled parents better.
-	"""
 	rest = pose_bone.bone.matrix_local.copy()
 	rest_inv = rest.inverted()
-	if pose_bone.parent:
+	
+	if pose_bone.parent and pose_bone.bone.use_inherit_rotation:
 		par_mat = pose_bone.parent.matrix.copy()
 		par_inv = par_mat.inverted()
 		par_rest = pose_bone.parent.bone.matrix_local.copy()
-	else:
+		
+	else:		
 		par_mat = Matrix()
 		par_inv = Matrix()
-		par_rest = Matrix()
-
-	# Get matrix in bone's current transform space
-	smat = rest_inv * (par_rest * (par_inv * mat))
-
-	# Compensate for non-local location
-	#if not pose_bone.bone.use_local_location:
-	#	 loc = smat.to_translation() * (par_rest.inverted() * rest).to_quaternion()
-	#	 smat.translation = loc
+		par_rest = Matrix()		
+	
+	smat = rest_inv @ (par_rest @ (par_inv @ mat))
+	
 
 	return smat
 
 
-def get_local_pose_matrix(pose_bone):
-	""" Returns the local transform matrix of the given pose bone.
-	"""
-	return get_pose_matrix_in_other_space(pose_bone.matrix, pose_bone)
 
 
-def set_pose_translation(pose_bone, mat):
-	""" Sets the pose bone's translation to the same translation as the given matrix.
-		Matrix should be given in bone's local space.
-	"""
+def set_pos(pose_bone, mat):	
 	if pose_bone.bone.use_local_location == True:
 		pose_bone.location = mat.to_translation()
 	else:
@@ -97,14 +423,11 @@ def set_pose_translation(pose_bone, mat):
 		else:
 			par_rest = Matrix()
 
-		q = (par_rest.inverted() * rest).to_quaternion()
-		pose_bone.location = q * loc
+		q = (par_rest.inverted() @ rest).to_quaternion()
+		pose_bone.location = q @ loc
 
 
 def set_pose_rotation(pose_bone, mat):
-	""" Sets the pose bone's rotation to the same rotation as the given matrix.
-		Matrix should be given in bone's local space.
-	"""
 	q = mat.to_quaternion()
 
 	if pose_bone.rotation_mode == 'QUATERNION':
@@ -118,147 +441,93 @@ def set_pose_rotation(pose_bone, mat):
 		pose_bone.rotation_euler = q.to_euler(pose_bone.rotation_mode)
 
 
-def set_pose_scale(pose_bone, mat):
-	""" Sets the pose bone's scale to the same scale as the given matrix.
-		Matrix should be given in bone's local space.
-	"""
-	pose_bone.scale = mat.to_scale()
 
-
-def match_pose_translation(pose_bone, target_bone):
-	""" Matches pose_bone's visual translation to target_bone's visual
-		translation.
-		This function assumes you are in pose mode on the relevant armature.
+def snap_pos(pose_bone, target_bone):
+	# Snap a bone to another bone. Supports child of constraints and parent.
 	"""
 	mat = get_pose_matrix_in_other_space(target_bone.matrix, pose_bone)
-	set_pose_translation(pose_bone, mat)
+	set_pos(pose_bone, mat)
 	bpy.ops.object.mode_set(mode='OBJECT')
 	bpy.ops.object.mode_set(mode='POSE')
+	"""	
+	
+	# if the pose_bone has direct parent
+	if pose_bone.parent:		
+		# apply double time because of dependecy lag
+		pose_bone.matrix = target_bone.matrix
+		#update hack
+		bpy.ops.transform.translate(value=(0, 0, 0), constraint_axis=(False, False, False), constraint_orientation='NORMAL', mirror=False)
+		# second apply
+		pose_bone.matrix = target_bone.matrix
+	else:		
+		# is there a child of constraint attached?
+		child_of_cns = None
+		if len(pose_bone.constraints) > 0:
+			all_child_of_cns = [i for i in pose_bone.constraints if i.type == "CHILD_OF" and i.influence == 1.0 and i.mute == False and i.target]
+			if len(all_child_of_cns) > 0:
+				child_of_cns = all_child_of_cns[0]# in case of multiple child of constraints enabled, use only the first for now
+		
+		if child_of_cns != None:
+			if child_of_cns.subtarget != "" and get_pose_bone(child_of_cns.subtarget):
+				# apply double time because of dependecy lag
+				pose_bone.matrix = get_pose_bone(child_of_cns.subtarget).matrix_channel.inverted() @ target_bone.matrix
+				bpy.ops.transform.translate(value=(0, 0, 0), constraint_axis=(False, False, False), constraint_orientation='NORMAL', mirror=False)
+				pose_bone.matrix = get_pose_bone(child_of_cns.subtarget).matrix_channel.inverted() @ target_bone.matrix
+			else:
+				pose_bone.matrix = target_bone.matrix
+				
+		else:		
+			pose_bone.matrix = target_bone.matrix
+			
+			
 
-
-def match_pose_rotation(pose_bone, target_bone):
-	""" Matches pose_bone's visual rotation to target_bone's visual
-		rotation.
-		This function assumes you are in pose mode on the relevant armature.
-	"""
+def snap_rot(pose_bone, target_bone):
 	mat = get_pose_matrix_in_other_space(target_bone.matrix, pose_bone)
 	set_pose_rotation(pose_bone, mat)
 	bpy.ops.object.mode_set(mode='OBJECT')
 	bpy.ops.object.mode_set(mode='POSE')
 
 
-def match_pose_scale(pose_bone, target_bone):
-	""" Matches pose_bone's visual scale to target_bone's visual
-		scale.
-		This function assumes you are in pose mode on the relevant armature.
-	"""
-	mat = get_pose_matrix_in_other_space(target_bone.matrix, pose_bone)
-	set_pose_scale(pose_bone, mat)
-	bpy.ops.object.mode_set(mode='OBJECT')
-	bpy.ops.object.mode_set(mode='POSE')
+def set_inverse_child(b):
+	pbone = bpy.context.active_object.pose.bones[b]
+	context_copy = bpy.context.copy()
+	context_copy["constraint"] = pbone.constraints["Child Of"]
+	bpy.context.active_object.data.bones.active = pbone.bone
+	bpy.ops.constraint.childof_set_inverse(context_copy, constraint="Child Of", owner='BONE')	  
 
 
-##############################
-## IK/FK snapping functions ##
-##############################
-
-def match_pole_target(ik_first, ik_last, pole, match_bone, length):
-	""" Places an IK chain's pole target to match ik_first's
-		transforms to match_bone.  All bones should be given as pose bones.
-		You need to be in pose mode on the relevant armature object.
-		ik_first: first bone in the IK chain
-		ik_last:  last bone in the IK chain
-		pole:  pole target bone for the IK chain
-		match_bone:	 bone to match ik_first to (probably first bone in a matching FK chain)
-		length:	 distance pole target should be placed from the chain center
-	"""
-	a = ik_first.matrix.to_translation()
-	b = ik_last.matrix.to_translation() + ik_last.vector
-
-	# Vector from the head of ik_first to the
-	# tip of ik_last
-	ikv = b - a
-
-	# Get a vector perpendicular to ikv
-	pv = perpendicular_vector(ikv).normalized() * length
-
-	def set_pole(pvi):
-		""" Set pole target's position based on a vector
-			from the arm center line.
-		"""
-		# Translate pvi into armature space
-		ploc = a + (ikv/2) + pvi
-
-		# Set pole target to location
-		mat = get_pose_matrix_in_other_space(Matrix.Translation(ploc), pole)
-		set_pose_translation(pole, mat)
-
-		bpy.ops.object.mode_set(mode='OBJECT')
-		bpy.ops.object.mode_set(mode='POSE')
-
-	set_pole(pv)
-
-	# Get the rotation difference between ik_first and match_bone
-	angle = rotation_difference(ik_first.matrix, match_bone.matrix)
-
-	# Try compensating for the rotation difference in both directions
-	pv1 = Matrix.Rotation(angle, 4, ikv) * pv
-	set_pole(pv1)
-	ang1 = rotation_difference(ik_first.matrix, match_bone.matrix)
-
-	pv2 = Matrix.Rotation(-angle, 4, ikv) * pv
-	set_pole(pv2)
-	ang2 = rotation_difference(ik_first.matrix, match_bone.matrix)
-
-	# Do the one with the smaller angle
-	if ang1 < ang2:
-		set_pole(pv1)	 
-
-
-def fk2ik_arm(obj, fk, ik):
-	""" Matches the fk bones in an arm rig to the ik bones.
-		obj: armature object
-		fk:	 list of fk bone names
-		ik:	 list of ik bone names
-	"""
-	uarm  = obj.pose.bones[fk[0]]
-	farm  = obj.pose.bones[fk[1]]
-	hand  = obj.pose.bones[fk[2]]
-	uarmi = obj.pose.bones[ik[0]]
-	farmi = obj.pose.bones[ik[1]]
-	handi = obj.pose.bones[ik[2]]
-	switch = obj.pose.bones[ik[3]]
-	pole = obj.pose.bones[ik[4]]
+def fk_to_ik_arm(obj, side):	
+	
+	arm_fk  = obj.pose.bones[fk_arm[0] + side]
+	forearm_fk  = obj.pose.bones[fk_arm[1] + side]
+	hand_fk  = obj.pose.bones[fk_arm[2] + side]
+	
+	arm_ik = obj.pose.bones[ik_arm[0] + side]
+	forearm_ik = obj.pose.bones[ik_arm[1] + side]
+	hand_ik = obj.pose.bones[ik_arm[2] + side]
+	pole = obj.pose.bones[ik_arm[3] + side]
 
 	# Stretch
-	if handi['auto_stretch'] == 0.0:
-		hand['stretch_length'] = handi['stretch_length']
-	else:
-		#print("diff=", uarmi.length / uarm.length, farmi.length / farm.length)
-		diff = (uarmi.length+farmi.length) / (uarm.length+farm.length)
-		hand['stretch_length'] *= diff
+	if hand_ik['auto_stretch'] == 0.0:
+		hand_fk['stretch_length'] = hand_ik['stretch_length']
+	else:	
+		diff = (arm_ik.length+forearm_ik.length) / (arm_fk.length+forearm_fk.length)
+		hand_fk['stretch_length'] *= diff
 
-	# Upper arm snap
-	match_pose_rotation(uarm, uarmi)
-	#match_pose_scale(uarm, uarmi)
-
-	# Forearm snap
-	match_pose_rotation(farm, farmi)
-	#match_pose_scale(farm, farmi)
-
-	# Hand snap
-	match_pose_rotation(hand, handi)
+	#Snap rot
+	snap_rot(arm_fk, arm_ik)
+	snap_rot(forearm_fk, forearm_ik)	
+	snap_rot(hand_fk, hand_ik)
 	
-	hand.scale[0]=handi.scale[0]
-	hand.scale[1]=handi.scale[1]
-	hand.scale[2]=handi.scale[2]
+	#Snap scale
+	hand_fk.scale =hand_ik.scale
 	
 	#rot debug
-	farm.rotation_euler[0]=0
-	farm.rotation_euler[1]=0
+	forearm_fk.rotation_euler[0]=0
+	forearm_fk.rotation_euler[1]=0
 	
 	#switch
-	handi['ik_fk_switch'] = 1.0
+	hand_ik['ik_fk_switch'] = 1.0
 
 	#udpate view
 	bpy.ops.transform.translate(value=(0, 0, 0), constraint_axis=(False, False, False), constraint_orientation='NORMAL', mirror=False)
@@ -267,105 +536,97 @@ def fk2ik_arm(obj, fk, ik):
 	#insert key if autokey enable
 	if bpy.context.scene.tool_settings.use_keyframe_insert_auto == True:
 		#fk chain
-		handi.keyframe_insert(data_path='["ik_fk_switch"]')
-		hand.keyframe_insert(data_path='["stretch_length"]')
-		hand.keyframe_insert(data_path="scale")
-		hand.keyframe_insert(data_path="rotation_euler")
-		uarm.keyframe_insert(data_path="rotation_euler")
-		farm.keyframe_insert(data_path="rotation_euler")
+		hand_ik.keyframe_insert(data_path='["ik_fk_switch"]')
+		hand_fk.keyframe_insert(data_path='["stretch_length"]')
+		hand_fk.keyframe_insert(data_path="scale")
+		hand_fk.keyframe_insert(data_path="rotation_euler")
+		arm_fk.keyframe_insert(data_path="rotation_euler")
+		forearm_fk.keyframe_insert(data_path="rotation_euler")
 				
 		#ik chain
-		handi.keyframe_insert(data_path='["stretch_length"]')
-		handi.keyframe_insert(data_path='["auto_stretch"]')
-		handi.keyframe_insert(data_path="location")
-		handi.keyframe_insert(data_path="rotation_euler")
-		handi.keyframe_insert(data_path="scale")
+		hand_ik.keyframe_insert(data_path='["stretch_length"]')
+		hand_ik.keyframe_insert(data_path='["auto_stretch"]')
+		hand_ik.keyframe_insert(data_path="location")
+		hand_ik.keyframe_insert(data_path="rotation_euler")
+		hand_ik.keyframe_insert(data_path="scale")
 		pole.keyframe_insert(data_path="location")
 		
-
-def set_inverse_child(b):
-		pbone = bpy.context.active_object.pose.bones[b]
-		context_copy = bpy.context.copy()
-		context_copy["constraint"] = pbone.constraints["Child Of"]
-		bpy.context.active_object.data.bones.active = pbone.bone
-		bpy.ops.constraint.childof_set_inverse(context_copy, constraint="Child Of", owner='BONE')	 
+	# change FK to IK hand selection, if selected
+	if hand_ik.bone.select:
+		hand_fk.bone.select = True
+		hand_ik.bone.select = False
+		
 
 
-def ik2fk_arm(obj, fk, ik):
-	""" Matches the ik bones in an arm rig to the fk bones.
-		obj: armature object
-		fk:	 list of fk bone names
-		ik:	 list of ik bone names
-	"""
-	uarm  = obj.pose.bones[fk[0]]
-	farm  = obj.pose.bones[fk[1]]
-	hand  = obj.pose.bones[fk[2]]
-	polefk = obj.pose.bones[fk[3]]
-	uarmi = obj.pose.bones[ik[0]]
-	farmi = obj.pose.bones[ik[1]]
-	handi = obj.pose.bones[ik[2]]
-	pole  = obj.pose.bones[ik[3]]
-	#switch = obj.pose.bones[ik[4]]
+
+def ik_to_fk_arm(obj, side):
+	
+	arm_fk  = obj.pose.bones[fk_arm[0] + side]
+	forearm_fk  = obj.pose.bones[fk_arm[1] + side]
+	hand_fk  = obj.pose.bones[fk_arm[2] + side]
+	pole_fk = obj.pose.bones[fk_arm[3] + side]
+	
+	arm_ik = obj.pose.bones[ik_arm[0] + side]
+	forearm_ik = obj.pose.bones[ik_arm[1] + side]
+	hand_ik = obj.pose.bones[ik_arm[2] + side]
+	pole  = obj.pose.bones[ik_arm[3] + side]
  
+	# reset custom pole angle if any
+	if obj.pose.bones.get("c_arm_ik" + side) != None:
+		obj.pose.bones["c_arm_ik" + side].rotation_euler[1] = 0.0
 
 	# Stretch
-	handi['stretch_length'] = hand['stretch_length']
+	hand_ik['stretch_length'] = hand_fk['stretch_length']	
 	
-	# Hand position
-	""""
-	match_pose_translation(handi, hand)
-	match_pose_rotation(handi, hand)
-	
-	# Hand scale
-	handi.scale[0]=hand.scale[0]
-	handi.scale[1]=hand.scale[1]
-	handi.scale[2]=hand.scale[2]
-	"""
-	# 'child-of' constraints handling
-	cns = None
-	
-	try:
-		cns = handi.constraints
-		constraint = cns[0]
-	except:
-		pass
-		
+	# Child Of constraint or parent cases
+	constraint = None
 	bone_parent_string = ""
 	parent_type = ""	
+	valid_constraint = True
 	
-	if cns != None:
-		# get active Child Of constraint, target and subtarget
-		for c in cns:
+	if len(hand_ik.constraints) > 0:		
+		for c in hand_ik.constraints:
 			if not c.mute and c.influence > 0.5 and c.type == 'CHILD_OF':
-				#if bone
-				if c.target.type == 'ARMATURE':
-					bone_parent_string = c.subtarget
-					parent_type = "bone"
-					constraint = c
-				#if object
-				else:
-					bone_parent_string = c.target.name
-					parent_type = "object"
-					constraint = c				
-		
-		# snap
+				if c.target:
+					#if bone
+					if c.target.type == 'ARMATURE':
+						bone_parent_string = c.subtarget
+						parent_type = "bone"
+						constraint = c
+					#if object
+					else:
+						bone_parent_string = c.target.name
+						parent_type = "object"
+						constraint = c				
+						
+	
+	if constraint != None:
+		if parent_type == "bone":
+			if bone_parent_string == "":
+				valid_constraint = False
+	
+	# Snap
+	if constraint and valid_constraint:	
 		if parent_type == "bone":
 			bone_parent = bpy.context.object.pose.bones[bone_parent_string]
-			handi.matrix = bone_parent.matrix_channel.inverted()*hand.matrix
+			hand_ik.matrix = bone_parent.matrix_channel.inverted()@hand_fk.matrix
 		if parent_type == "object":
 			bone_parent = bpy.data.objects[bone_parent_string]
 			obj = bpy.data.objects[bone_parent_string]
-			handi.matrix = constraint.inverse_matrix.inverted() *obj.matrix_world.inverted() *	hand.matrix
-
-			
+			hand_ik.matrix = constraint.inverse_matrix.inverted() @obj.matrix_world.inverted() @ hand_fk.matrix
+	 
+	else:
+		hand_ik.matrix = hand_fk.matrix
+		
+		
 	# Pole target position
-	match_pose_translation(pole, polefk)	
+	snap_pos(pole, pole_fk)		
+
+	
+	
 	
 	#switch
-	handi['ik_fk_switch'] = 0.0
-	
-	# set inverse for child of constraint
-	#set_inverse_child(handi.name)	 
+	hand_ik['ik_fk_switch'] = 0.0
 	
 	#update view
 	bpy.ops.transform.translate(value=(0, 0, 0), constraint_axis=(False, False, False), constraint_orientation='NORMAL', mirror=False)
@@ -373,286 +634,283 @@ def ik2fk_arm(obj, fk, ik):
 	 #insert key if autokey enable
 	if bpy.context.scene.tool_settings.use_keyframe_insert_auto == True:
 		#ik chain
-		handi.keyframe_insert(data_path='["ik_fk_switch"]')
-		handi.keyframe_insert(data_path='["stretch_length"]')
-		handi.keyframe_insert(data_path='["auto_stretch"]')
-		handi.keyframe_insert(data_path="location")
-		handi.keyframe_insert(data_path="rotation_euler")
-		handi.keyframe_insert(data_path="scale")
+		hand_ik.keyframe_insert(data_path='["ik_fk_switch"]')
+		hand_ik.keyframe_insert(data_path='["stretch_length"]')
+		hand_ik.keyframe_insert(data_path='["auto_stretch"]')
+		hand_ik.keyframe_insert(data_path="location")
+		hand_ik.keyframe_insert(data_path="rotation_euler")
+		hand_ik.keyframe_insert(data_path="scale")
 		pole.keyframe_insert(data_path="location")
 		
+		#ik controller if any
+		if obj.pose.bones.get("c_arm_ik" + side) != None:
+			obj.pose.bones["c_arm_ik" + side].keyframe_insert(data_path="rotation_euler", index=1)
+		
 		#fk chain
-		hand.keyframe_insert(data_path='["stretch_length"]')
-		hand.keyframe_insert(data_path="location")		  
-		hand.keyframe_insert(data_path="rotation_euler")
-		hand.keyframe_insert(data_path="scale")
-		uarm.keyframe_insert(data_path="rotation_euler")
-		farm.keyframe_insert(data_path="rotation_euler")
+		hand_fk.keyframe_insert(data_path='["stretch_length"]')
+		hand_fk.keyframe_insert(data_path="location")		  
+		hand_fk.keyframe_insert(data_path="rotation_euler")
+		hand_fk.keyframe_insert(data_path="scale")
+		arm_fk.keyframe_insert(data_path="rotation_euler")
+		forearm_fk.keyframe_insert(data_path="rotation_euler")
 		
 		
-		  
+	# change FK to IK hand selection, if selected
+	if hand_fk.bone.select:
+		hand_fk.bone.select = False
+		hand_ik.bone.select = True
 
 
-def fk2ik_leg(obj, fk, ik):
-	""" Matches the fk bones in an arm rig to the ik bones.
-		obj: armature object
-		fk:	 list of fk bone names
-		ik:	 list of ik bone names
-	"""
-	thigh  = obj.pose.bones[fk[0]]
-	leg	 = obj.pose.bones[fk[1]]
-	foot  = obj.pose.bones[fk[2]]
-	toes = obj.pose.bones[fk[3]]
-	thighi = obj.pose.bones[ik[0]]
-	legi = obj.pose.bones[ik[1]]
-	footi = obj.pose.bones[ik[2]]	 
-	toesi = obj.pose.bones[ik[3]]
-	footi_rot = obj.pose.bones[ik[4]]
-	#switch = obj.pose.bones[ik[5]]
-	foot_01 = obj.pose.bones[ik[6]]
-	foot_roll = obj.pose.bones[ik[7]]
-	pole = obj.pose.bones[ik[8]]
-
+def fk_to_ik_leg(obj, side):
+	
+	
+	thigh  = obj.pose.bones[fk_leg[0] + side]
+	leg	 = obj.pose.bones[fk_leg[1] + side]
+	foot_fk  = obj.pose.bones[fk_leg[2] + side]
+	toes_fk = obj.pose.bones[fk_leg[3] + side]
+	
+	thighi = obj.pose.bones[ik_leg[0] + side]
+	legi = obj.pose.bones[ik_leg[1] + side]	
+	foot_ik = obj.pose.bones[ik_leg[2] + side]
+	pole = obj.pose.bones[ik_leg[3] + side]
+	toes_ik = obj.pose.bones[ik_leg[4] + side]
+	foot_01 = obj.pose.bones[ik_leg[5] + side]
+	foot_roll = obj.pose.bones[ik_leg[6] + side]
+	footi_rot = obj.pose.bones[ik_leg[7] + side]	
+	
 
 	# Stretch
-	if footi['auto_stretch'] == 0.0:
-		foot['stretch_length'] = footi['stretch_length']
+	if foot_ik['auto_stretch'] == 0.0:
+		foot_fk['stretch_length'] = foot_ik['stretch_length']
 	else:
 		diff = (thighi.length+legi.length) / (thigh.length+leg.length)
 	   
-		foot['stretch_length'] *= diff
+		foot_fk['stretch_length'] *= diff
 
 	# Thigh snap
-	match_pose_rotation(thigh, thighi)
+	snap_rot(thigh, thighi)
 
 	# Leg snap
-	match_pose_rotation(leg, legi)	  
+	snap_rot(leg, legi)	  
 
-	# Foot snap
-	match_pose_rotation(foot, footi_rot)
+	# foot_fk snap
+	snap_rot(foot_fk, footi_rot)
 		#scale	  
-	foot.scale[0]=footi.scale[0]
-	foot.scale[1]=footi.scale[1]
-	foot.scale[2]=footi.scale[2]
-	
+	foot_fk.scale =foot_ik.scale	
 	
 	#Toes snap
-	match_pose_rotation(toes, toesi)
+	snap_rot(toes_fk, toes_ik)
 		#scale
-	toes.scale[0]=toesi.scale[0]
-	toes.scale[1]=toesi.scale[1]
-	toes.scale[2]=toesi.scale[2]	
-
+	toes_fk.scale =toes_ik.scale	
+	
 	#rotation debug
 	leg.rotation_euler[0]=0
 	leg.rotation_euler[1]=0
 	
 	 #switch
-	footi['ik_fk_switch'] = 1.0
+	foot_ik['ik_fk_switch'] = 1.0
 	
 	#insert key if autokey enable
 	if bpy.context.scene.tool_settings.use_keyframe_insert_auto == True:
 		#fk chain
-		footi.keyframe_insert(data_path='["ik_fk_switch"]')
-		foot.keyframe_insert(data_path='["stretch_length"]')
-		foot.keyframe_insert(data_path="scale")
-		foot.keyframe_insert(data_path="rotation_euler")
+		foot_ik.keyframe_insert(data_path='["ik_fk_switch"]')
+		foot_fk.keyframe_insert(data_path='["stretch_length"]')
+		foot_fk.keyframe_insert(data_path="scale")
+		foot_fk.keyframe_insert(data_path="rotation_euler")
 		thigh.keyframe_insert(data_path="rotation_euler")
 		leg.keyframe_insert(data_path="rotation_euler")
-		toes.keyframe_insert(data_path="rotation_euler")
-		toes.keyframe_insert(data_path="scale")
+		toes_fk.keyframe_insert(data_path="rotation_euler")
+		toes_fk.keyframe_insert(data_path="scale")
 		
 		#ik chain		 
-		footi.keyframe_insert(data_path='["stretch_length"]')
-		footi.keyframe_insert(data_path='["auto_stretch"]')
-		footi.keyframe_insert(data_path="location")
-		footi.keyframe_insert(data_path="rotation_euler")
-		footi.keyframe_insert(data_path="scale")
+		foot_ik.keyframe_insert(data_path='["stretch_length"]')
+		foot_ik.keyframe_insert(data_path='["auto_stretch"]')
+		foot_ik.keyframe_insert(data_path="location")
+		foot_ik.keyframe_insert(data_path="rotation_euler")
+		foot_ik.keyframe_insert(data_path="scale")
 		foot_01.keyframe_insert(data_path="rotation_euler")
 		foot_roll.keyframe_insert(data_path="location")		  
-		toesi.keyframe_insert(data_path="rotation_euler")
-		toesi.keyframe_insert(data_path="scale")		
+		toes_ik.keyframe_insert(data_path="rotation_euler")
+		toes_ik.keyframe_insert(data_path="scale")		
 		pole.keyframe_insert(data_path="location")
+		
+		#ik angle controller if any
+		if obj.pose.bones.get("c_thigh_ik" + side) != None:
+			obj.pose.bones["c_thigh_ik" + side].keyframe_insert(data_path="rotation_euler", index=1)
+			
+	# change IK to FK foot selection, if selected
+	if foot_ik.bone.select:
+		foot_fk.bone.select = True
+		foot_ik.bone.select = False
   
 
-def ik2fk_leg(obj, fk, ik):
-	""" Matches the ik bones in an arm rig to the fk bones.
-		obj: armature object
-		fk:	 list of fk bone names
-		ik:	 list of ik bone names
-	"""
-	thigh  = obj.pose.bones[fk[0]]
-	leg	 = obj.pose.bones[fk[1]]
-	foot  = obj.pose.bones[fk[2]]
-	toes = obj.pose.bones[fk[3]]
-	polefk = obj.pose.bones[fk[4]]
-	thighi = obj.pose.bones[ik[0]]
-	legi = obj.pose.bones[ik[1]]
-	footi = obj.pose.bones[ik[2]]
-	pole  = obj.pose.bones[ik[3]]
-	toesi = obj.pose.bones[ik[4]]
-	foot_01 = obj.pose.bones[ik[5]]
-	foot_roll = obj.pose.bones[ik[6]]
-	#switch = obj.pose.bones[ik[7]]
+def ik_to_fk_leg(obj, side):
+
+	
+	thigh  = obj.pose.bones[fk_leg[0] + side]
+	leg	 = obj.pose.bones[fk_leg[1] + side]
+	foot_fk  = obj.pose.bones[fk_leg[2] + side]
+	toes_fk = obj.pose.bones[fk_leg[3] + side]
+	pole_fk = obj.pose.bones[fk_leg[4] + side]
+	
+	thighi = obj.pose.bones[ik_leg[0] + side]
+	legi = obj.pose.bones[ik_leg[1] + side]
+	foot_ik = obj.pose.bones[ik_leg[2] + side]
+	pole  = obj.pose.bones[ik_leg[3] + side]
+	toes_ik = obj.pose.bones[ik_leg[4] + side]
+	foot_01 = obj.pose.bones[ik_leg[5] + side]
+	foot_roll = obj.pose.bones[ik_leg[6] + side]
+	
 
 	# Stretch
-	footi['stretch_length'] = foot['stretch_length']
+	foot_ik['stretch_length'] = foot_fk['stretch_length']
    
-	#reset IK foot_01 and foot_roll
-	foot_01.rotation_euler[0]=0
+	# reset IK foot_01 and foot_roll
+	foot_01.rotation_euler = [0,0,0]
+	
 	foot_roll.location[0]=0
 	foot_roll.location[2]=0
 	
-	"""
-	# foot snap
-	match_pose_translation(footi, foot)
-	match_pose_rotation(footi, foot)
+	# reset custom pole angle if any
+	if obj.pose.bones.get("c_thigh_ik" + side) != None:
+		obj.pose.bones["c_thigh_ik" + side].rotation_euler[1] = 0.0
 	
-		#scale
-	footi.scale[0]=foot.scale[0]
-	footi.scale[1]=foot.scale[1]
-	footi.scale[2]=foot.scale[2]
-	"""
-	#toes snap	  
-	#match_pose_rotation(toesi, toes)
-	toesi.rotation_euler= toes.rotation_euler
-	toesi.scale = toes.scale
 	
-	# 'child-of' constraints handling
-	cns = None
+	#toes snap	  	
+	toes_ik.rotation_euler= toes_fk.rotation_euler
+	toes_ik.scale = toes_fk.scale
 	
-	try:
-		cns = footi.constraints
-		constraint = cns[0]
-	except:
-		pass
-		
+	# Child Of constraint or parent cases
+	constraint = None
 	bone_parent_string = ""
 	parent_type = ""	
+	valid_constraint = True
 	
-	if cns != None:
-		# get active Child Of constraint, target and subtarget
-		for c in cns:
+	if len(foot_ik.constraints) > 0:		
+		for c in foot_ik.constraints:
 			if not c.mute and c.influence > 0.5 and c.type == 'CHILD_OF':
-				#if bone
-				if c.target.type == 'ARMATURE':
-					bone_parent_string = c.subtarget
-					parent_type = "bone"
-					constraint = c
-				#if object
-				else:
-					bone_parent_string = c.target.name
-					parent_type = "object"
-					constraint = c				
-		
-		# snap
+				if c.target:
+					#if bone
+					if c.target.type == 'ARMATURE':
+						bone_parent_string = c.subtarget
+						parent_type = "bone"
+						constraint = c
+					#if object
+					else:
+						bone_parent_string = c.target.name
+						parent_type = "object"
+						constraint = c				
+						
+	
+	if constraint != None:
 		if parent_type == "bone":
+			if bone_parent_string == "":
+				valid_constraint = False
+	
+	# Snap
+	if constraint and valid_constraint:	
+		if parent_type == "bone":		
 			bone_parent = bpy.context.object.pose.bones[bone_parent_string]
-			footi.matrix = bone_parent.matrix_channel.inverted()*foot.matrix
+			foot_ik.matrix = bone_parent.matrix_channel.inverted()@foot_fk.matrix
 		if parent_type == "object":
 			bone_parent = bpy.data.objects[bone_parent_string]
 			obj = bpy.data.objects[bone_parent_string]
-			footi.matrix = constraint.inverse_matrix.inverted() *obj.matrix_world.inverted() *	foot.matrix
+			foot_ik.matrix = constraint.inverse_matrix.inverted() @ obj.matrix_world.inverted() @ foot_fk.matrix
+	 
+	else:
+		foot_ik.matrix = foot_fk.matrix
+		
 	
-	
-		#scale
-		"""
-	toesi.scale[0]=toes.scale[0]
-	toesi.scale[1]=toes.scale[1]
-	toesi.scale[2]=toes.scale[2] 
-	"""
 	
 	# Pole target position
-	pole_parent = None
-	if pole.parent:
-		pole_parent = pole.parent
-	
-	if pole_parent != None:
-		# apply double time because of dependecy lag
-		pole.matrix = polefk.matrix
-		#update view
-		bpy.ops.transform.translate(value=(0, 0, 0), constraint_axis=(False, False, False), constraint_orientation='NORMAL', mirror=False)
-		# second apply
-		pole.matrix = polefk.matrix
-	else:
-		pole.matrix = polefk.matrix
-	#match_pose_translation(pole, polefk)
+	snap_pos(pole, pole_fk)
+
 	
 	 #switch
-	footi['ik_fk_switch'] = 0.0
+	foot_ik['ik_fk_switch'] = 0.0	
 	
-	# set inverse for child of constraints
-	#set_inverse_child(footi.name)	 
 	
-	#update view
-	bpy.ops.transform.translate(value=(0, 0, 0), constraint_axis=(False, False, False), constraint_orientation='NORMAL', mirror=False)
+	#update hack
+	bpy.ops.transform.translate(value=(0, 0, 0))
 	
 	#insert key if autokey enable
 	if bpy.context.scene.tool_settings.use_keyframe_insert_auto == True:
 		#ik chain
-		footi.keyframe_insert(data_path='["ik_fk_switch"]')
-		footi.keyframe_insert(data_path='["stretch_length"]')
+		foot_ik.keyframe_insert(data_path='["ik_fk_switch"]')
+		foot_ik.keyframe_insert(data_path='["stretch_length"]')
 		foot_01.keyframe_insert(data_path="rotation_euler")
 		foot_roll.keyframe_insert(data_path="location")
-		footi.keyframe_insert(data_path='["auto_stretch"]')
-		footi.keyframe_insert(data_path="location")
-		footi.keyframe_insert(data_path="rotation_euler")
-		footi.keyframe_insert(data_path="scale")
-		toesi.keyframe_insert(data_path="rotation_euler")
-		toesi.keyframe_insert(data_path="scale")		
+		foot_ik.keyframe_insert(data_path='["auto_stretch"]')
+		foot_ik.keyframe_insert(data_path="location")
+		foot_ik.keyframe_insert(data_path="rotation_euler")
+		foot_ik.keyframe_insert(data_path="scale")
+		toes_ik.keyframe_insert(data_path="rotation_euler")
+		toes_ik.keyframe_insert(data_path="scale")		
 		pole.keyframe_insert(data_path="location")
 		
+		#ik controller if any
+		if obj.pose.bones.get("c_thigh_ik" + side) != None:
+			obj.pose.bones["c_thigh_ik" + side].keyframe_insert(data_path="rotation_euler", index=1)
+		
 		#fk chain
-		foot.keyframe_insert(data_path='["stretch_length"]')
-		foot.keyframe_insert(data_path="rotation_euler")
-		foot.keyframe_insert(data_path="scale")
+		foot_fk.keyframe_insert(data_path='["stretch_length"]')
+		foot_fk.keyframe_insert(data_path="rotation_euler")
+		foot_fk.keyframe_insert(data_path="scale")
 		thigh.keyframe_insert(data_path="rotation_euler")
 		leg.keyframe_insert(data_path="rotation_euler")
-		toes.keyframe_insert(data_path="rotation_euler")
-		toes.keyframe_insert(data_path="scale")
+		toes_fk.keyframe_insert(data_path="rotation_euler")
+		toes_fk.keyframe_insert(data_path="scale")
 
-@persistent
-def auto_ui_cam(dummy): 
-
-	has_active_ob = False
-	
-	try:
-		ob = bpy.context.active_object	
-		has_active_ob = True
-	except:
-		pass
+	# change IK to FK foot selection, if selected
+	if foot_fk.bone.select:
+		foot_fk.bone.select = False
+		foot_ik.bone.select = True
 		
-	if has_active_ob:
-		rig = ob		
-		scene = bpy.context.scene			
- 
-		try:
-			# select character mesh case		
-			if ob.type == 'MESH':		   
-				ob_parent = ob.parent			 
-				for child in ob_parent.children:
-					if 'char_' or 'char1_' in child.name:					 
-						for child1 in child.children:
-							if 'rig' in child1.name:							
-								for child2 in child1.children:
-									if 'cam_ui' in child2.name:
-										rig = child1
-													
-					
-			for children in rig.children:				 
-				if "cam_ui" in children.name:					  
-					for area in bpy.context.screen.areas: # iterate through areas in current screen
-						if area.type == 'VIEW_3D':						   
-							for space in area.spaces: # iterate through spaces in current VIEW_3D area
-								if space.type == 'VIEW_3D': # check if space is a 3D view								  
-									if space.lock_camera_and_layers == False:
-										if space.camera != children:
-											space.camera = children	  
-											
-		except:
-			pass
-
+def _arp_snap_pole(ob, side, bone_type):
+	if get_pose_bone('c_' + bone_type + '_pole' + side) != None:
+		pole = get_pose_bone('c_' + bone_type + '_pole' + side)
+		
+		
+		if "pole_parent" in pole.keys():
+			# save the pole matrix
+			pole_mat = pole.matrix.copy()
+		
+			# switch the property
+			if pole["pole_parent"] == 0:
+				pole["pole_parent"] = 1
+			else:
+				pole["pole_parent"] = 0
 			
+			#update view
+			bpy.ops.transform.translate(value=(0, 0, 0))
+	
+			# are constraints there?
+			cons = [None, None]
+			for cns in pole.constraints:
+				if cns.name == "Child Of_local":
+					cons[0] = cns
+				if cns.name == "Child Of_global":
+					cons[1] = cns
+			
+			
+			# if yes, set parent inverse
+			if cons[0] != None and cons[1] != None:
+				if pole["pole_parent"] == 0:
+					pole.matrix = get_pose_bone(cons[1].subtarget).matrix_channel.inverted() @ pole_mat
+					#pole.matrix = get_pose_bone(cons[1].subtarget).matrix.inverted()
+					
+					
+				if pole["pole_parent"] == 1:
+					pole.matrix = get_pose_bone(cons[0].subtarget).matrix_channel.inverted() @ pole_mat
+					#pole.matrix = get_pose_bone(cons[0].subtarget).matrix.inverted()
+				
+		else:
+			print("No pole_parent poprerty found")
+			
+	else:
+		print("No c_leg_pole found")
+		
+		
 def get_data_bone(name):
 	try:
 		return bpy.context.object.data.bones[name]
@@ -660,7 +918,10 @@ def get_data_bone(name):
 		return None
 		
 def get_pose_bone(name):  
-	return bpy.context.object.pose.bones[name]
+	if bpy.context.object.pose.bones.get(name):
+		return bpy.context.object.pose.bones[name]
+	else:
+		return None
 		
 def _toggle_multi(limb, id, key):
 	bone_list = []
@@ -687,478 +948,253 @@ def _toggle_multi(limb, id, key):
 			else:#need to set an active first
 				current_bone.layers[arp_layer] = True
 				current_bone.layers[22] = False
+				
+"""				
+def update_head_lock(self, context):
+	
+	
+	context.active_pose_bone["head_free"] = context.active_object.head_lock_obj
+	
+	scale_fix_bone = None	
+	if context.active_object.data.bones.get("c_head_scale_fix.x") != None:
+		scale_fix_bone = context.active_object.data.bones["c_head_scale_fix.x"]
+	if context.active_object.data.bones.get("head_scale_fix.x") != None:
+		scale_fix_bone = context.active_object.data.bones["head_scale_fix.x"]
+		
+	scale_fix_bone.use_inherit_rotation = 1-context.active_pose_bone["head_free"]
+	scale_fix_bone.use_inherit_scale = 1-context.active_pose_bone["head_free"]
+"""
 	
 	
 	
 
-class toggle_multi(bpy.types.Operator):
-	"""Toggle multi-limb visibility"""
 
-	bl_idname = "id.toggle_multi" + rig_id
-	bl_label = "toggle_multi"
-	bl_options = {'UNDO'}
-	
-	limb = bpy.props.StringProperty(name="Limb")
-	id = bpy.props.StringProperty(name="Id")
-	key = bpy.props.StringProperty(name="key")
-	"""
-	@classmethod
-	def poll(cls, context):
-		return (context.active_object != None and context.mode == 'POSE')
-	"""
-	
-	def execute(self, context):
-		use_global_undo = context.user_preferences.edit.use_global_undo
-		context.user_preferences.edit.use_global_undo = False
-		try:
-			_toggle_multi(self.limb, self.id, self.key)
-		finally:
-			context.user_preferences.edit.use_global_undo = use_global_undo
-		return {'FINISHED'}
-
-class Rigify_Arm_FK2IK(bpy.types.Operator):
-	""" Snaps an FK arm to an IK arm.
-	"""
-	bl_idname = "pose.rigify_arm_fk2ik_" + rig_id
-	bl_label = "Rigify Snap FK arm to IK"
-	bl_options = {'UNDO'}
-
-	uarm_fk = bpy.props.StringProperty(name="Upper Arm FK Name")
-	farm_fk = bpy.props.StringProperty(name="Forerm FK Name")
-	hand_fk = bpy.props.StringProperty(name="Hand FK Name")
-
-	uarm_ik = bpy.props.StringProperty(name="Upper Arm IK Name")
-	farm_ik = bpy.props.StringProperty(name="Forearm IK Name")
-	hand_ik = bpy.props.StringProperty(name="Hand IK Name")
-	pole	= bpy.props.StringProperty(name="Pole IK Name")
-	switch = bpy.props.StringProperty(name="Switch Name")
-	
-
-	@classmethod
-	def poll(cls, context):
-		return (context.active_object != None and context.mode == 'POSE')
-
-	def execute(self, context):
-		use_global_undo = context.user_preferences.edit.use_global_undo
-		context.user_preferences.edit.use_global_undo = False
-		try:
-			fk2ik_arm(context.active_object, fk=[self.uarm_fk, self.farm_fk, self.hand_fk], ik=[self.uarm_ik, self.farm_ik, self.hand_ik, self.switch, self.pole])
-		finally:
-			context.user_preferences.edit.use_global_undo = use_global_undo
-		return {'FINISHED'}
+		
 
 
-class Rigify_Arm_IK2FK(bpy.types.Operator):
-	""" Snaps an IK arm to an FK arm.
-	"""
-	bl_idname = "pose.rigify_arm_ik2fk_" + rig_id
-	bl_label = "Rigify Snap IK arm to FK"
-	bl_options = {'UNDO'}
 
-	uarm_fk = bpy.props.StringProperty(name="Upper Arm FK Name")
-	farm_fk = bpy.props.StringProperty(name="Forerm FK Name")
-	hand_fk = bpy.props.StringProperty(name="Hand FK Name")
-	pole_fk = bpy.props.StringProperty(name="Pole FK Name")
+# Rig UI Panels ##################################################################################################################
 
-	uarm_ik = bpy.props.StringProperty(name="Upper Arm IK Name")
-	farm_ik = bpy.props.StringProperty(name="Forearm IK Name")
-	hand_ik = bpy.props.StringProperty(name="Hand IK Name")
-	pole	= bpy.props.StringProperty(name="Pole IK Name")
-	switch = bpy.props.StringProperty(name="Switch Name")
-
-	@classmethod
-	def poll(cls, context):
-		return (context.active_object != None and context.mode == 'POSE')
-
-	def execute(self, context):
-		use_global_undo = context.user_preferences.edit.use_global_undo
-		context.user_preferences.edit.use_global_undo = False
-		try:
-			ik2fk_arm(context.active_object, fk=[self.uarm_fk, self.farm_fk, self.hand_fk, self.pole_fk], ik=[self.uarm_ik, self.farm_ik, self.hand_ik, self.pole, self.switch])
-		finally:
-			context.user_preferences.edit.use_global_undo = use_global_undo
-		return {'FINISHED'}
-
-
-class Rigify_Leg_FK2IK(bpy.types.Operator):
-	""" Snaps an FK leg to an IK leg.
-	"""
-	bl_idname = "pose.rigify_leg_fk2ik_" + rig_id
-	bl_label = "Rigify Snap FK leg to IK"
-	bl_options = {'UNDO'}
-
-	thigh_fk = bpy.props.StringProperty(name="Thigh FK Name")
-	leg_fk	= bpy.props.StringProperty(name="Shin FK Name")
-	foot_fk	 = bpy.props.StringProperty(name="Foot FK Name")
-	toes_fk = bpy.props.StringProperty(name="Toes FK Name")
-
-	thigh_ik = bpy.props.StringProperty(name="Thigh IK Name")
-	leg_ik	= bpy.props.StringProperty(name="Shin IK Name")	   
-	foot_ik	 = bpy.props.StringProperty(name="Foot IK Name")
-	foot_01 = bpy.props.StringProperty(name="Foot_01 IK Name")
-	foot_roll = bpy.props.StringProperty(name="Foot_roll IK Name")
-	toes_ik = bpy.props.StringProperty(name="Toes IK Name")
-	foot_ik_rot = bpy.props.StringProperty(name="Foot IK Name")	   
-	pole = bpy.props.StringProperty(name="Pole IK  Name")
-	switch = bpy.props.StringProperty(name="Switch Name")
-
-	@classmethod
-	def poll(cls, context):
-		return (context.active_object != None and context.mode == 'POSE')
-
-	def execute(self, context):
-		use_global_undo = context.user_preferences.edit.use_global_undo
-		context.user_preferences.edit.use_global_undo = False
-		try:
-			fk2ik_leg(context.active_object, fk=[self.thigh_fk, self.leg_fk, self.foot_fk, self.toes_fk], ik=[self.thigh_ik, self.leg_ik, self.foot_ik, self.toes_ik, self.foot_ik_rot, self.switch, self.foot_01, self.foot_roll, self.pole])
-		finally:
-			context.user_preferences.edit.use_global_undo = use_global_undo
-		return {'FINISHED'}
-
-
-class Rigify_Leg_IK2FK(bpy.types.Operator):
-	""" Snaps an IK leg to an FK leg.
-	"""
-	bl_idname = "pose.rigify_leg_ik2fk_" + rig_id
-	bl_label = "Rigify Snap IK leg to FK"
-	bl_options = {'UNDO'}
-
-	thigh_fk = bpy.props.StringProperty(name="Thigh FK Name")
-	leg_fk = bpy.props.StringProperty(name="Shin FK Name")
-	foot_fk = bpy.props.StringProperty(name="Foot FK Name")
-	toes_fk = bpy.props.StringProperty(name="Toes FK Name")
-	pole_fk = bpy.props.StringProperty(name="Pole FK Name")
-
-	thigh_ik = bpy.props.StringProperty(name="Thigh IK Name")
-	leg_ik = bpy.props.StringProperty(name="Shin IK Name")	  
-	foot_ik = bpy.props.StringProperty(name="Foot IK Name")
-	pole = bpy.props.StringProperty(name="Pole IK Name")
-	toes_ik = bpy.props.StringProperty(name="Toes IK Name")
-	foot_01= bpy.props.StringProperty(name="Foot01 IK Name")
-	foot_roll= bpy.props.StringProperty(name="Foot_roll IK Name")
-	switch = bpy.props.StringProperty(name="Switch Name")
-
-	@classmethod
-	def poll(cls, context):
-		return (context.active_object != None and context.mode == 'POSE')
-
-	def execute(self, context):
-		use_global_undo = context.user_preferences.edit.use_global_undo
-		context.user_preferences.edit.use_global_undo = False
-		try:
-			ik2fk_leg(context.active_object, fk=[self.thigh_fk, self.leg_fk, self.foot_fk, self.toes_fk, self.pole_fk], ik=[self.thigh_ik, self.leg_ik, self.foot_ik, self.pole, self.toes_ik, self.foot_01, self.foot_roll, self.switch])
-		finally:
-			context.user_preferences.edit.use_global_undo = use_global_undo
-		return {'FINISHED'}
-
-
-	
-  
-
-###################
-## Rig UI Panels ##
-###################
-
-class RigUI(bpy.types.Panel):
+class ARP_PT_rig_ui(bpy.types.Panel):
 	bl_space_type = 'VIEW_3D'
 	bl_region_type = 'UI'
+	bl_category = "View"	
 	bl_label = "Rig Main Properties"
-	bl_idname = rig_id + "_PT_rig_ui"
+	bl_idname = "_arp_rig_ui"
 
 	@classmethod
 	def poll(self, context):
 		if context.mode != 'POSE':
 			return False
-		try:
-			return (context.active_object.data.get("rig_id") == rig_id)
-		except (AttributeError, KeyError, TypeError):
-			return False
+		else:
+			if context.active_object.data.get("rig_id") != None:
+				return True
+		
 
 	def draw(self, context):
 		layout = self.layout
 		pose_bones = context.active_object.pose.bones
-		try:
-			selected_bones = [bone.name for bone in context.selected_pose_bones]
-			selected_bones += [context.active_pose_bone.name]
+		try:			
+			selected_bones = context.active_pose_bone.name
 			
 		except (AttributeError, TypeError):
 			return
 			
-		try:
-			temp_bone_id = context.active_pose_bone.name[:-2][-3:]
-		   
-			bone_id = ""
-			if temp_bone_id.isdigit():
-				bone_id = "_dupli_"+temp_bone_id
-			#print(bone_id)
-		except:
-			pass
+		bone_name = context.active_pose_bone.name
+			
+		# Get bone side
+		bone_side = bone_name[-2:]
+		
+		if "_dupli_" in bone_name:
+			bone_side = bone_name[-12:]		
 
-		def is_selected(names):
-			# Returns whether any of the named bones are selected.
-			if type(names) == list:
-				for name in names:
-					if name in selected_bones:
-						return True
-			elif names in selected_bones:
+		def is_selected(names):			
+			if type(names) == list:				
+				for name in names:	
+					if not "." in name[-2:]:
+					
+						if name + bone_side == selected_bones:					
+							return True						
+					else:
+						if name[-2:] == ".x":							
+							if name[:-2] + bone_side == selected_bones:
+								return True
+			elif names == selected_bones:
 				return True
-			return False 
+			return False  
+
 
 		if not 'humanoid' in bpy.context.active_object.name:
 	  
-		   #LEFT LEG
-			fk_leg = ["c_thigh_fk" + bone_id + ".l", "c_leg_fk" + bone_id + ".l", "c_foot_fk" + bone_id + ".l", "c_toes_fk"+ bone_id +".l", "leg_fk_pole" + bone_id + ".l"]
-			ik_leg = ["thigh_ik" + bone_id + ".l", "leg_ik" + bone_id + ".l", "c_foot_ik"+ bone_id + ".l", "c_leg_pole" + bone_id + ".l", "c_toes_ik" + bone_id + ".l", "c_foot_01" + bone_id + ".l", "c_foot_roll_cursor" + bone_id + ".l", "foot_snap_fk" + bone_id + ".l", "c_ikfk_leg" + bone_id + ".l"]
-	   
-		   
-							
-			if is_selected(fk_leg) or is_selected(ik_leg):
-				layout.label("Left Leg:")
+		   #LEG						
+			if (is_selected(fk_leg) or is_selected(ik_leg)):				
 				
-			   #stretch length property
+			   # Stretch length property
 				if is_selected(fk_leg):
-					layout.prop(pose_bones["c_foot_fk"+bone_id+".l"], '["stretch_length"]', text="Stretch Length (FK)", slider=True)			
+					layout.prop(pose_bones["c_foot_fk" + bone_side], '["stretch_length"]', text="Stretch Length (FK)", slider=True)			
 				if is_selected(ik_leg):
-					layout.prop(pose_bones["c_foot_ik"+bone_id+".l"], '["stretch_length"]', text="Stretch Length (IK)", slider=True)
+					layout.prop(pose_bones["c_foot_ik" + bone_side], '["stretch_length"]', text="Stretch Length (IK)", slider=True)
 					#auto_stretch ik property
-					layout.prop(pose_bones["c_foot_ik"+bone_id+".l"], '["auto_stretch"]', text="Auto Stretch", slider=True) 
+					layout.prop(pose_bones["c_foot_ik" + bone_side], '["auto_stretch"]', text="Auto Stretch", slider=True) 					
 					
-				#fix_roll prop		 
-				layout.prop(pose_bones["c_foot_ik"+bone_id+".l"], '["fix_roll"]', text="Fix Roll", slider=True) 
+					
+				# Fix_roll prop		 
+				layout.prop(pose_bones["c_foot_ik" + bone_side], '["fix_roll"]', text="Fix Roll", slider=True) 
 				  
 				layout.separator()				  
 					
-				layout.prop(pose_bones["c_foot_ik"+bone_id+".l"], '["ik_fk_switch"]', text="IK-FK Switch", slider=True)
-				p = layout.operator("pose.rigify_leg_fk2ik_" + rig_id, text="Snap FK > IK")
-				p.thigh_fk = fk_leg[0]
-				p.leg_fk = fk_leg[1]
-				p.foot_fk = fk_leg[2]
-				p.toes_fk = fk_leg[3]			 
-				p.thigh_ik = ik_leg[0]
-				p.leg_ik  = ik_leg[1]
-				p.foot_ik = ik_leg[2]
-				p.pole = ik_leg[3]
-				p.toes_ik = ik_leg[4]
-				p.foot_01 = ik_leg[5]
-				p.foot_roll = ik_leg[6]
-				p.foot_ik_rot = ik_leg[7]
-				p.switch = ik_leg[8]			
-				p = layout.operator("pose.rigify_leg_ik2fk_" + rig_id, text="Snap IK > FK")
-				p.thigh_fk = fk_leg[0]
-				p.leg_fk = fk_leg[1]  
-				p.foot_fk = fk_leg[2]
-				p.toes_fk = fk_leg[3]
-				p.pole_fk = fk_leg[4]		  
-				p.thigh_ik = ik_leg[0]
-				p.leg_ik = ik_leg[1]
-				p.foot_ik = ik_leg[2] 
-				p.pole = ik_leg[3]
-				p.toes_ik = ik_leg[4]
-				p.foot_01 = ik_leg[5]
-				p.foot_roll = ik_leg[6]
-				p.switch = ik_leg[8] 
-
-			if is_selected(fk_leg+ik_leg):
-				layout.separator()
-			
-			#RIGHT LEG		  
-			fk_leg = ["c_thigh_fk"+bone_id+".r", "c_leg_fk"+bone_id+".r", "c_foot_fk"+bone_id+".r","c_toes_fk"+bone_id+".r", "leg_fk_pole"+bone_id+".r"]
-			ik_leg = ["thigh_ik"+bone_id+".r", "leg_ik"+bone_id+".r", "c_foot_ik"+bone_id+".r", "c_leg_pole"+bone_id+".r", "c_toes_ik"+bone_id+".r", "c_foot_01"+bone_id+".r", "c_foot_roll_cursor"+bone_id+".r", "foot_snap_fk"+bone_id+".r", "c_ikfk_leg"+bone_id+".r"]
-			
-						
-			if is_selected(fk_leg) or is_selected(ik_leg): 
-				layout.label("Right Leg:")
-			   #stretch length property
-				if is_selected(fk_leg):
-					layout.prop(pose_bones["c_foot_fk"+bone_id+".r"], '["stretch_length"]', text="Stretch Length (FK)", slider=True)			
-				if is_selected(ik_leg):
-					layout.prop(pose_bones["c_foot_ik"+bone_id+".r"], '["stretch_length"]', text="Stretch Length (IK)", slider=True)
-					#auto_stretch ik property
-					layout.prop(pose_bones["c_foot_ik"+bone_id+".r"], '["auto_stretch"]', text="Auto Stretch", slider=True) 
-					
-				#fix_roll prop					 
-				layout.prop(pose_bones["c_foot_ik"+bone_id+".r"], '["fix_roll"]', text="Fix Roll", slider=True) 
-				   
+				# IK-FK Switch
+				col = layout.column(align=True)
+				row = col.row(align=True)
+				p = row.operator("pose.arp_leg_switch_snap", text="Snap IK-FK")	
+				p.side = bone_side
+				row.prop(bpy.context.scene, "show_ik_fk_advanced", text="", icon="SETTINGS")		
+				col.prop(pose_bones["c_foot_ik" + bone_side], '["ik_fk_switch"]', text="IK-FK Switch", slider=True)
 				
-				layout.separator() 
-				layout.prop(pose_bones["c_foot_ik"+bone_id+".r"], '["ik_fk_switch"]', text="IK-FK Switch", slider=True)
-				#Snap buttons
-				p = layout.operator("pose.rigify_leg_fk2ik_" + rig_id, text="Snap FK > IK")
-				p.thigh_fk = fk_leg[0]
-				p.leg_fk = fk_leg[1]
-				p.foot_fk = fk_leg[2]
-				p.toes_fk = fk_leg[3]			  
-				p.thigh_ik = ik_leg[0]
-				p.leg_ik = ik_leg[1]
-				p.foot_ik = ik_leg[2]
-				p.pole = ik_leg[3]
-				p.toes_ik = ik_leg[4]
-				p.foot_01 = ik_leg[5]
-				p.foot_roll = ik_leg[6]
-				p.foot_ik_rot = ik_leg[7]
-				p.switch = ik_leg[8]			   
-				p = layout.operator("pose.rigify_leg_ik2fk_" + rig_id, text="Snap IK > FK")
-				p.thigh_fk = fk_leg[0]
-				p.leg_fk = fk_leg[1]
-				p.foot_fk = fk_leg[2]
-				p.toes_fk = fk_leg[3]
-				p.pole_fk = fk_leg[4]				   
-				p.thigh_ik = ik_leg[0]
-				p.leg_ik = ik_leg[1]
-				p.foot_ik = ik_leg[2] 
-				p.pole = ik_leg[3]
-				p.toes_ik = ik_leg[4]
-				p.foot_01 = ik_leg[5]
-				p.foot_roll = ik_leg[6]
-				p.switch = ik_leg[8]
-			   
-			if is_selected(fk_leg+ik_leg):
-				layout.separator()
+				if bpy.context.scene.show_ik_fk_advanced:
+					p = col.operator("pose.arp_leg_fk_to_ik_", text="Snap FK > IK")	
+					p.side = bone_side
+					p = col.operator("pose.arp_leg_ik_to_fk_", text="Snap IK > FK")
+					p.side = bone_side
+				
+				if is_selected(ik_leg):	
+					if "pole_parent" in pose_bones["c_leg_pole" + bone_side].keys():		
+						# IK Pole parent
+						col = layout.column(align=True)
+						op = col.operator("pose.arp_snap_pole", text = "Snap Pole Parent")
+						op.side = bone_side
+						op.bone_type = "leg"
+						col.prop(pose_bones["c_leg_pole" + bone_side], '["pole_parent"]', text="Pole Parent", slider=True)
+				
 			
-			#LEFT ARM		 
-			fk_arm = ["c_arm_fk" + bone_id +".l", "c_forearm_fk" + bone_id + ".l", "c_hand_fk" + bone_id + ".l", "arm_fk_pole" + bone_id + ".l"]
-			ik_arm = ["arm_ik" + bone_id + ".l", "forearm_ik" + bone_id + ".l", "c_hand_ik" + bone_id + ".l", "c_arms_pole" + bone_id + ".l"]			
-
-				#Snap buttons
+			
+			#ARM				
 			if is_selected(fk_arm) or is_selected(ik_arm):
-				layout.label("Left Arm:")
-			   #stretch length property
+				
+			   # Stretch length property
 				if is_selected(fk_arm):
-					layout.prop(pose_bones["c_hand_fk" + bone_id + ".l"], '["stretch_length"]', text="Stretch Length (FK)", slider=True)			
+					layout.prop(pose_bones["c_hand_fk" + bone_side], '["stretch_length"]', text="Stretch Length (FK)", slider=True)			
 				if is_selected(ik_arm):
-					layout.prop(pose_bones["c_hand_ik" + bone_id + ".l"], '["stretch_length"]', text="Stretch Length (IK)", slider=True)
-				#auto_stretch ik property
-					layout.prop(pose_bones["c_hand_ik" + bone_id + ".l"], '["auto_stretch"]', text="Auto Stretch", slider=True)	 
+					layout.prop(pose_bones["c_hand_ik" + bone_side], '["stretch_length"]', text="Stretch Length (IK)", slider=True)
+				
+				# Auto_stretch ik property
+					layout.prop(pose_bones["c_hand_ik" + bone_side], '["auto_stretch"]', text="Auto Stretch", slider=True)	 
 			
 				layout.separator()				   
 					
-				layout.prop(pose_bones["c_hand_ik" + bone_id + ".l"], '["ik_fk_switch"]', text="IK-FK Switch", slider=True)
+				# IK-FK Switch
+				col = layout.column(align=True)
+				row = col.row(align=True)
+				p = row.operator("pose.arp_arm_switch_snap", text="Snap IK-FK")	
+				p.side = bone_side
+				row.prop(bpy.context.scene, "show_ik_fk_advanced", text="", icon="SETTINGS")			
+				col.prop(pose_bones["c_hand_ik" + bone_side], '["ik_fk_switch"]', text="IK-FK Switch", slider=True)	
 				
-				props = layout.operator("pose.rigify_arm_fk2ik_" + rig_id, text="Snap FK > IK")
-				props.uarm_fk = fk_arm[0]
-				props.farm_fk = fk_arm[1]
-				props.hand_fk = fk_arm[2]
-				props.uarm_ik = ik_arm[0]
-				props.farm_ik = ik_arm[1]
-				props.hand_ik = ik_arm[2]
-				props.pole = ik_arm[3]
-				props.switch = ik_arm[2]
-				props = layout.operator("pose.rigify_arm_ik2fk_" + rig_id, text="Snap IK > FK")
-				props.uarm_fk = fk_arm[0]
-				props.farm_fk = fk_arm[1]
-				props.hand_fk = fk_arm[2]
-				props.pole_fk = fk_arm[3]
-				props.uarm_ik = ik_arm[0]
-				props.farm_ik = ik_arm[1]
-				props.hand_ik = ik_arm[2]
-				props.pole = ik_arm[3]
-				props.switch = ik_arm[2]	  
-
-			if is_selected(fk_arm+ik_arm):
-				layout.separator()
+				if bpy.context.scene.show_ik_fk_advanced:
+					p=col.operator("pose.arp_arm_fk_to_ik_", text="Snap FK > IK")
+					p.side = bone_side				
+					p=col.operator("pose.arp_arm_ik_to_fk_", text="Snap IK > FK")	
+					p.side = bone_side
 				
-			 #RIGHT ARM			   
-			fk_arm = ["c_arm_fk" + bone_id +".r", "c_forearm_fk" + bone_id + ".r", "c_hand_fk" + bone_id + ".r", "arm_fk_pole" + bone_id + ".r"]
-			ik_arm = ["arm_ik" + bone_id + ".r", "forearm_ik" + bone_id + ".r", "c_hand_ik" + bone_id + ".r", "c_arms_pole" + bone_id + ".r"]
-		   
-			if is_selected(fk_arm) or is_selected(ik_arm):
-				layout.label("Right Arm:")
-			   #stretch length property
-				if is_selected(fk_arm):
-					layout.prop(pose_bones["c_hand_fk" + bone_id + ".r"], '["stretch_length"]', text="Stretch Length (FK)", slider=True)			
 				if is_selected(ik_arm):
-					layout.prop(pose_bones["c_hand_ik" + bone_id + ".r"], '["stretch_length"]', text="Stretch Length (IK)", slider=True)
-				#auto_stretch ik property
-					layout.prop(pose_bones["c_hand_ik" + bone_id + ".r"], '["auto_stretch"]', text="Auto Stretch", slider=True)	 
+					# IK Pole parent
+					if "pole_parent" in pose_bones["c_arms_pole" + bone_side].keys():						
+						col = layout.column(align=True)
+						op = col.operator("pose.arp_snap_pole", text = "Snap Pole Parent")
+						op.side = bone_side
+						op.bone_type = "arms"
+						col.prop(pose_bones["c_arms_pole" + bone_side], '["pole_parent"]', text="Pole Parent", slider=True)
+
+							
+			# EYE AIM		 			
+			if is_selected(eye_aim_bones):				
+				layout.prop(pose_bones["c_eye_target" + bone_side[:-2] + '.x'], '["eye_target"]', text="Eye Target", slider=True)
+				
 			
-				layout.separator() 
-				layout.prop(pose_bones["c_hand_ik" + bone_id + ".r"], '["ik_fk_switch"]', text="IK-FK Switch", slider=True)
-				props = layout.operator("pose.rigify_arm_fk2ik_" + rig_id, text="Snap FK > IK")
-				props.uarm_fk = fk_arm[0]
-				props.farm_fk = fk_arm[1]
-				props.hand_fk = fk_arm[2]
-				props.uarm_ik = ik_arm[0]
-				props.farm_ik = ik_arm[1]
-				props.hand_ik = ik_arm[2]
-				props.pole = ik_arm[3]
-				props.switch = ik_arm[2]
-				props = layout.operator("pose.rigify_arm_ik2fk_" + rig_id, text="Snap IK > FK")
-				props.uarm_fk = fk_arm[0]
-				props.farm_fk = fk_arm[1]
-				props.hand_fk = fk_arm[2]
-				props.pole_fk = fk_arm[3]
-				props.uarm_ik = ik_arm[0]
-				props.farm_ik = ik_arm[1]
-				props.hand_ik = ik_arm[2]
-				props.pole = ik_arm[3]
-				props.switch = ik_arm[2]	  
-		   
-			if is_selected(fk_arm+ik_arm):
-				layout.separator()
+			#AUTO EYELID
+			for eyel in auto_eyelids_bones:				
+				if is_selected(eyel + bone_side):					
+					eyeb = pose_bones["c_eye" + bone_side]
+					#retro compatibility, check if property exists
+					if len(eyeb.keys()) > 0:
+						if "auto_eyelid" in eyeb.keys():
+							layout.separator()							
+							layout.prop(pose_bones["c_eye" + bone_side], '["auto_eyelid"]', text="Auto-Eyelid", slider=True)
 				
-			# EYE AIM		 
-			eye_aim_bones = ["c_eye_target.x", "c_eye_target.l", "c_eye_target.r", "c_eye.l", "c_eye.r"]
-			if is_selected(eye_aim_bones):
-				
-				layout.prop(pose_bones["c_eye_target.x"], '["eye_target"]', text="Eye target follow", slider=True)
-				
+			
 			# FINGERS BEND
 			
-			thumb_l = "c_thumb1_base" + bone_id + ".l"
-			thumb_r = "c_thumb1_base" + bone_id + ".r"
-			index_l = "c_index1_base" + bone_id + ".l"
-			index_r = "c_index1_base" + bone_id + ".r"
-			middle_l = "c_middle1_base" + bone_id + ".l"
-			middle_r = "c_middle1_base" + bone_id + ".r"
-			ring_l = "c_ring1_base"+ bone_id + ".l"
-			ring_r = "c_ring1_base"+ bone_id + ".r"
-			pinky_l = "c_pinky1_base"+ bone_id +".l"
-			pinky_r = "c_pinky1_base"+ bone_id + ".r"	
+			thumb_00 = "c_thumb1_base" + bone_side			
+			index_00 = "c_index1_base" + bone_side			
+			middle_00 = "c_middle1_base" + bone_side			
+			ring_00 = "c_ring1_base"+ bone_side			
+			pinky_00 = "c_pinky1_base"+ bone_side			
 			
-			fingers = [thumb_l, thumb_r, index_l, index_r, middle_l, middle_r, ring_l, ring_r, pinky_l, pinky_r]
-			finger_side = ""
-			for fing in fingers:
-				if is_selected(fing):
-					if (fing[-2:] == ".l"):
-						finger_side = "Left "
-					if (fing[-2:] == ".r"):
-						finger_side = "Right "				  
-					text_upper = (fing[:3]).upper()
-					layout.label(finger_side + text_upper[2:] + fing[3:-8] + ":")
-					layout.prop(pose_bones[fing], '["bend_all"]', text="Bend All Phalanges", slider=True)
+			fingers = [thumb_00, index_00, middle_00, ring_00, pinky_00]
 					
+			if is_selected(fingers):
+				if (bone_side[-2:] == ".l"):
+					finger_side = "Left "
+				if (bone_side[-2:] == ".r"):
+					finger_side = "Right "				  
+				text_upper = (bone_name[:3]).upper()
+				layout.label(text=finger_side + text_upper[2:] + bone_name[3:-8] + ":")
+				layout.prop(pose_bones[bone_name], '["bend_all"]', text="Bend All Phalanges", slider=True)
+			
+			
+			#FINGERS GRASP					
+			if is_selected(hands_ctrl):					
+				if 'fingers_grasp' in pose_bones["c_hand_fk" + bone_side].keys():#if property exists, retro-compatibility check
+					layout.label(text="Fingers:")
+					layout.prop(pose_bones["c_hand_fk" + bone_side],  '["fingers_grasp"]', text = "Fingers Grasp", slider = False)
+			
+			
+			
+			
+			
 			# PINNING 
-			pin_arms = ["c_stretch_arm_pin"+bone_id+".l", "c_stretch_arm_pin"+bone_id+".r", "c_stretch_arm"+bone_id+".l", "c_stretch_arm"+bone_id+".r"]		 
+			pin_arms = ["c_stretch_arm_pin", "c_stretch_arm_pin", "c_stretch_arm", "c_stretch_arm"]		 			
+			if is_selected(pin_arms):
+				if (bone_name[-2:] == ".l"):
+					layout.label(text="Left Elbow Pinning")
+					layout.prop(pose_bones["c_stretch_arm"+ bone_side], '["elbow_pin"]', text="Elbow pinning", slider=True)
+				if (bone_name[-2:] == ".r"):
+					layout.label(text="Right Elbow Pinning")
+					layout.prop(pose_bones["c_stretch_arm"+bone_side], '["elbow_pin"]', text="Elbow pinning", slider=True)
 						
-			for pin_arm in pin_arms:
-				if is_selected(pin_arm):
-					if (pin_arm[-2:] == ".l"):
-						layout.label("Left Elbow Pinning")
-						layout.prop(pose_bones["c_stretch_arm"+bone_id+".l"], '["elbow_pin"]', text="Elbow pinning", slider=True)
-					if (pin_arm[-2:] == ".r"):
-						layout.label("Right Elbow Pinning")
-						layout.prop(pose_bones["c_stretch_arm"+bone_id+".r"], '["elbow_pin"]', text="Elbow pinning", slider=True)
-						
-			pin_legs = ["c_stretch_leg_pin"+bone_id+".l", "c_stretch_leg_pin"+bone_id+".r", "c_stretch_leg"+bone_id+".l", "c_stretch_leg"+bone_id+".r"]	 
+			pin_legs = ["c_stretch_leg_pin", "c_stretch_leg_pin", "c_stretch_leg", "c_stretch_leg"]	 
 			
-			for pin_leg in pin_legs:
-				if is_selected(pin_leg):
-					if (pin_leg[-2:] == ".l"):
-						layout.label("Left Knee Pinning")
-						layout.prop(pose_bones["c_stretch_leg"+bone_id+".l"], '["leg_pin"]', text="Knee pinning", slider=True)
-					if (pin_leg[-2:] == ".r"):
-						layout.label("Right Knee Pinning")
-						layout.prop(pose_bones["c_stretch_leg"+bone_id+".r"], '["leg_pin"]', text="Knee pinning", slider=True)
-					
-			#Head lock
-			if is_selected(['c_head.x']):
-				if len(pose_bones['c_head.x'].keys()) > 0:
-					if 'head_free' in pose_bones['c_head.x'].keys():#retro compatibility
-						layout.prop(pose_bones['c_head.x'], '["head_free"]', text = 'Head Lock', slider = True)
-					
+		
+			if is_selected(pin_legs):
+				if (bone_name[-2:] == ".l"):
+					layout.label(text="Left Knee Pinning")
+					layout.prop(pose_bones["c_stretch_leg"+bone_side], '["leg_pin"]', text="Knee pinning", slider=True)
+				if (bone_name[-2:] == ".r"):
+					layout.label(text="Right Knee Pinning")
+					layout.prop(pose_bones["c_stretch_leg"+bone_side], '["leg_pin"]', text="Knee pinning", slider=True)
+				
+			
+			#HEAD LOCK
+			if is_selected('c_head' + bone_side):
+				if len(pose_bones['c_head' + bone_side].keys()) > 0:
+					if 'head_free' in pose_bones['c_head' + bone_side].keys():#retro compatibility
+						layout.prop(context.active_pose_bone, '["head_free"]', text = 'Head Lock', slider = True)
+						
+							
+			
+			#LIPS RETAIN
+			if is_selected('c_jawbone' + bone_side):
+				if len(pose_bones['c_jawbone' + bone_side].keys()) > 0:
+					if 'lips_retain' in pose_bones['c_jawbone' + bone_side].keys():#retro compatibility
+						layout.prop(pose_bones["c_jawbone" + bone_side], '["lips_retain"]', text = 'Lips Retain', slider = True)
+						layout.prop(pose_bones["c_jawbone" + bone_side], '["lips_stretch"]', text = 'Lips Stretch', slider = True)
+			
+						
+			
+			
 			#Multi Limb display
 			if is_selected('c_pos'):
-				layout.label('Multi-Limb Display:')
+				layout.label(text='Multi-Limb Display:')
 				#look for multi limbs
 				
 				if len(get_pose_bone('c_pos').keys()) > 0:
@@ -1166,7 +1202,7 @@ class RigUI(bpy.types.Panel):
 						
 						if 'leg' in key or 'arm' in key:
 							row = layout.column(align=True)
-							b = row.operator('id.toggle_multi', key)
+							b = row.operator('id.toggle_multi', text=key)
 							if 'leg' in key:
 								b.limb = 'leg'
 							if 'arm' in key:
@@ -1176,17 +1212,39 @@ class RigUI(bpy.types.Panel):
 							row.prop(pose_bones['c_pos'], '["'+key+'"]', text=key)			  
 							
 				else:
-					layout.label('No Multiple Limbs')
+					layout.label(text='No Multiple Limbs')
 					
+			#Set Picker Camera
+			layout.separator()
+			layout.label(text="Picker Camera")
+			col = layout.column(align=True)
+			col.operator(ARP_OT_set_picker_camera_func.bl_idname, text="Set Picker Cam")#, icon = 'CAMERA_DATA')
+			row = col.row(align=True)
+			"""
+			op = row.operator("pp.start_picker", text="Start Picker", icon="PLAY")
+			op.state = True
+			op = row.operator("pp.start_picker", text="", icon="PAUSE")
+			op.state = False
+			"""
+			
 				
 					
 ###########	 REGISTER  ##################
+classes = (ARP_OT_set_picker_camera_func, ARP_OT_toggle_multi, ARP_OT_arp_snap_pole, ARP_OT_arm_switch_snap, ARP_OT_arm_fk_to_ik, ARP_OT_arm_ik_to_fk, ARP_OT_leg_switch_snap, ARP_OT_leg_fk_to_ik, ARP_OT_leg_ik_to_fk, ARP_PT_rig_ui)
 
-def register():	  
-	#bpy.types.Scene.enable_auto_ui_cam	 = bpy.props.BoolProperty(name="enable_auto_ui_cam", description = "Enable auto UI camera switch for multiple characters", default = False)
-	bpy.app.handlers.scene_update_pre.append(auto_ui_cam)
+def register():
+	from bpy.utils import register_class
+
+	for cls in classes:
+		register_class(cls)	
+		
+	bpy.types.Scene.show_ik_fk_advanced = bpy.props.BoolProperty(name="Show IK-FK operators", description="Show IK-FK manual operators", default=False)
+	
 	
 def unregister():	
-	#del bpy.types.Scene.enable_auto_ui_cam
-	bpy.app.handlers.scene_update_pre.remove(auto_ui_cam)
+	from bpy.utils import unregister_class
+
+	for cls in classes:
+		unregister_class(cls)	
 		
+	del bpy.types.Scene.show_ik_fk_advanced

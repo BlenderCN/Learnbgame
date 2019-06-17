@@ -19,12 +19,6 @@ class path:
 
 
 def preference():
-    preference = bpy.context.user_preferences.addons[name].preferences
+    preference = bpy.context.preferences.addons[name].preferences
 
     return preference
-
-
-def log(value='', indent=1):
-    if preference().debug:
-        if value:
-            print(F'{"|  "*indent}{value}')

@@ -1,2 +1,0 @@
-Artyon Zuev's Deferred Decal Shaders for Unity can be found at:
-https://bitbucket.org/bac9/shading

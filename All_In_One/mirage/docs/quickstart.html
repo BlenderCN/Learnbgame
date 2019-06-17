@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quickstart Guide &mdash; Mirage 2.0.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/custom_mirage.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Mirage 2.0.0 documentation" href="index.html"/>
+        <link rel="next" title="Procedural Terrains" href="terrain.html"/>
+        <link rel="prev" title="Welcome to Mirage’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Mirage
+          
+
+          
+            
+            <img src="_static/logo_square.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Quickstart Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#generating-a-terrain">Generating a terrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tweaking-and-sculpting">Tweaking and sculpting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-trees">Adding Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-note-on-materials">A note on materials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="terrain.html">Procedural Terrains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_file.html">Terrain generated from heightmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tree_distribution.html">Tree Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="presets.html">Presets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preferences.html">Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_list.html">Full Feature List</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Mirage</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Quickstart Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/quickstart.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quickstart-guide">
+<h1>Quickstart Guide<a class="headerlink" href="#quickstart-guide" title="Permalink to this headline">¶</a></h1>
+<p>This quick tutorial will guide you through the process of generating, tweaking a
+terrain and furnishing it with trees. Follow the exact values in here to get a
+good result, of course you can also experiment with your own.</p>
+<p>Don&#8217;t be afraid to try different things! As long as you input the same seed
+value, Mirage will generate the same basic terrain shape.</p>
+<img alt="_images/quick_intro.jpg" src="_images/quick_intro.jpg" />
+<div class="section" id="generating-a-terrain">
+<h2>Generating a terrain<a class="headerlink" href="#generating-a-terrain" title="Permalink to this headline">¶</a></h2>
+<p>For this guide we&#8217;ll create valley kind of scene. Let&#8217;s start by finding a good
+seed value.  Let&#8217;s start generating random terrains using the <cite>normal</cite> detail
+level to check the overall shape. Make sure you enable <cite>autoseed</cite> (the clock
+icon next to the seed value). That way Mirage will use a new seed value every
+time you click <cite>Generate</cite>.</p>
+<p>I found a good terrain at a seed of <strong>626198583</strong>. This terrain has a nice drop
+around the middle, and a nice peak that we can show in the background.</p>
+<img alt="_images/quick_terrain_01.jpg" src="_images/quick_terrain_01.jpg" />
+<p>Now that we have a good terrain to begin let&#8217;s tweak it a little. Before doing
+anything else disable <cite>autoseed</cite> by clicking the icon again, that way Mirage
+won&#8217;t change the seed anymore.</p>
+<ul class="simple">
+<li>Increase <cite>Max height</cite> to 3.5. This will give the valleys a little more depth.</li>
+<li>Lower the <cite>Roughness</cite> to 5. This will make the terrain smoother (since valleys</li>
+<li>are not that &#8220;bumpy&#8221;). Increase <cite>Deformation</cite> to 8. This will give it more</li>
+<li>ridges and, add some interesting twists.</li>
+</ul>
+<img alt="_images/quick_terrain_02.jpg" src="_images/quick_terrain_02.jpg" />
+<p>Next, it&#8217;s time to bump up the vertex count and get some more detail in our
+terrain. You may not want to do this, depending on the complexity of your scene
+or whether you have a &#8220;target&#8221; vertex count.</p>
+<p>We have two options: we can apply a <cite>subsurf modifier</cite> to the current terrain,
+or we can re-generate it with a higher level of detail.</p>
+<p>For this guide, I will delete the terrain and re-generate it with a <cite>medium</cite>
+level of detail.</p>
+<img alt="_images/quick_terrain_03.jpg" src="_images/quick_terrain_03.jpg" />
+<p>Before moving on, let&#8217;s look for a good camera angle. That way we know what
+parts of the land will be in view and which won&#8217;t. There&#8217;s no need to waste time
+sculpting features that no one will see.</p>
+<img alt="_images/quick_terrain_04.jpg" src="_images/quick_terrain_04.jpg" />
+</div>
+<div class="section" id="tweaking-and-sculpting">
+<h2>Tweaking and sculpting<a class="headerlink" href="#tweaking-and-sculpting" title="Permalink to this headline">¶</a></h2>
+<p>Most of the time you will want to modify the terrain to suit your scene (or your
+artistic vision) better. One method is to enter edit mode and start moving
+vertices around with proportional editing enabled (pressing the <code class="kbd docutils literal"><span class="pre">O</span></code> key).
+However this is only useful for meshes with low poly count. The best alternative
+for large meshes like the one we&#8217;re working on is to sculpt.</p>
+<p>Press <code class="kbd docutils literal"><span class="pre">tab</span></code> and enter sculpt mode. For a simple tweak like this, I&#8217;ll only
+use the default brush. <code class="kbd docutils literal"><span class="pre">Click</span></code> to add or bump, <code class="kbd docutils literal"><span class="pre">CTRL-Click</span></code> to
+subtract or move down and <code class="kbd docutils literal"><span class="pre">SHIFT-Click</span></code> to soften.</p>
+<p>First I lowered a small bump to the left of the main peak. I wanted it to fall
+more sharply so it would provide some contrast to the lower areas. Next I
+increase the height of the left side, so instead of dropping down it stays at
+about the same height. This improves the composition, making it look more
+&#8220;stable&#8221;.</p>
+<img alt="_images/quick_sculpt.jpg" src="_images/quick_sculpt.jpg" />
+<p>This is all open to personal taste, so feel free to do it your way. In the image
+above you can also see how I like to setup Blender for sculpting Terrains: one
+3D View to work freely on, and another one with Camera View to check the
+results.</p>
+<p>Once you have customized the terrain to your liking it&#8217;s time to update the
+vertex groups. Mirage automatically created <cite>Height</cite> and <cite>Slope</cite> weight groups
+when we generated the terrain. However, now that we have changed the terrain we
+also have to update these groups. This is necessary for the next step, trees,
+since Tree distribution uses these vertex groups for it&#8217;s height and slope
+settings.</p>
+<p>To update them, look for the <cite>Tools panel</cite> in the Mirage tab with the terrain
+selected. Then click the <cite>Update height</cite> and <cite>Update slope</cite> buttons.</p>
+</div>
+<div class="section" id="adding-trees">
+<h2>Adding Trees<a class="headerlink" href="#adding-trees" title="Permalink to this headline">¶</a></h2>
+<p>Mirage doesn&#8217;t come with tree models or generation functions. So you&#8217;ll have to
+generate them using <a class="reference external" href="http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Curve/Sapling_Tree">Sapling</a>
+or <a class="reference external" href="http://arbaro.sourceforge.net/">Arbaro</a>, model them yourself, or get
+models from the web.</p>
+<p>In this case I&#8217;ll be using the <a class="reference external" href="https://cgcookiemarkets.com/all-products/blending-nature-spruce-pine-tree/?ref=32">Spruce Pine Tree  pack from Blending Nature</a></p>
+<p>Whatever way you get the trees, make sure they are in a group. You can easily
+tell if they are in a group because they will have a green outline when
+selected. If they are not grouped, you can group them by selecting them and
+pressing <code class="kbd docutils literal"><span class="pre">CTRL-G</span></code>. Move them out of camera view, or even better to the last
+layer (press <code class="kbd docutils literal"><span class="pre">M</span></code> and click the last square).</p>
+<img alt="_images/quick_tree_01.jpg" src="_images/quick_tree_01.jpg" />
+<p>Look for the Tree Distribution panel in the Mirage tab and set the Tree Group to
+the group containing the tree objects. Set the <cite>Density</cite> at 500 for now. We&#8217;ll
+start with a small density amount to check scale and maximum height without
+slowing down Blender too much.</p>
+<p>Since my scene is a valley and some areas will be high, I&#8217;ve lowered the
+<cite>maximum height</cite> to 40%. If you&#8217;re going for extreme realism, you might want to
+look up the height range for the different tree species you plan to use.</p>
+<p>I also increased the maximum slope to 60º to cover a bit more ground.</p>
+<p>The proper scale for my terrain and tree models is 0.1. You can use the
+automatic scale setting (Lock to terrain scale) to help you figure out the best
+scale for your models.</p>
+<img alt="_images/quick_tree_02.jpg" src="_images/quick_tree_02.jpg" />
+<p>Once we have everything else set it&#8217;s time to increase the density to the final
+level. That will be around 50,000 for my scene. If you set this from the Tree
+Distribution panel, Mirage will automatically set the display to <em>Cross</em> for the
+viewport. The viewport can&#8217;t handle too much geometry currently, and showing
+thousands of trees with a million or so vertex each will slow Blender down to a
+crawl (if not crash it).</p>
+<img alt="_images/quick_tree_03.jpg" src="_images/quick_tree_03.jpg" />
+<p>The <cite>Tree Density</cite> vertex group controls the distribution of trees. Once you&#8217;ve
+generated the trees, you can tweak that group to optimize the distribution. For
+instance you can paint all the areas that are outside of the camera view so you
+don&#8217;t waste resources on particles out of view from the camera. Keep in mind
+you&#8217;ll have to reduce the number of particles in the particle system. Don&#8217;t use
+the Tree Distribution panel to do this, as it will overwrite your customized
+vertex group!</p>
+</div>
+<div class="section" id="a-note-on-materials">
+<h2>A note on materials<a class="headerlink" href="#a-note-on-materials" title="Permalink to this headline">¶</a></h2>
+<p>As we saw in the sculpting section, Mirage can create and keep updated vertex
+groups for the terrain. That also includes color vertex groups that you can use
+in Cycles to make materials that can change depending the height and slope.</p>
+<p>In the nodes editor, bring up the add node menu (<code class="kbd docutils literal"><span class="pre">shift-a</span></code>) and look for
+the <cite>Input &gt; Vertex Color</cite> submenu. You&#8217;ll find the groups there. You might also
+want to use a color ramp node to control them better.</p>
+<img alt="_images/quick_material.png" src="_images/quick_material.png" />
+<p>When <strong>UV Unwrapping</strong> it&#8217;s useful to remember the terrain is essentially a
+grid. That means it can be unwrapped into a grid. To do this, first go into
+orthogonal top view (press <code class="kbd docutils literal"><span class="pre">5</span></code> and then <code class="kbd docutils literal"><span class="pre">7</span></code>). Now go into edit mode,
+and press  <code class="kbd docutils literal"><span class="pre">u</span></code> to bring the unwrap menu. From the menu select
+<cite>Project From View (Bounds)</cite>. Now you have a grid-like UV that you can tweak to
+your liking. Note that there will be some stretching in along the slopes.</p>
+<p>Another option is to use <cite>Smart UV Project</cite>. This option will give you less
+stretching, but it will also create more islands and be more irregular.</p>
+<p>That concludes this guide. If you want to know more about all the settings
+please refer to the other sections of this manual. I hope you have found this
+quick intro useful, and are on your way to making  breathtaking landscapes with
+Mirage!</p>
+<p>If you need help with anything contact me at <a class="reference external" href="mailto:diego&#37;&#52;&#48;sinestesia&#46;co">diego<span>&#64;</span>sinestesia<span>&#46;</span>co</a> (Spanish,
+English), or using the <a class="reference external" href="https://cgcookiemarkets.com/all-products/mirage/?view=support?ref=32">Blender Market&#8217;s support forums</a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="terrain.html" class="btn btn-neutral float-right" title="Procedural Terrains" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to Mirage’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Diego Gangl.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

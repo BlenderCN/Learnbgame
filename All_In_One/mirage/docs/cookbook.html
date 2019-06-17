@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cookbook &mdash; Mirage 2.0.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/custom_mirage.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Mirage 2.0.0 documentation" href="index.html"/>
+        <link rel="next" title="Changelog" href="changelog.html"/>
+        <link rel="prev" title="Presets" href="presets.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Mirage
+          
+
+          
+            
+            <img src="_static/logo_square.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain.html">Procedural Terrains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_file.html">Terrain generated from heightmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tree_distribution.html">Tree Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="presets.html">Presets</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#procedural-terrains">Procedural Terrains</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prairie">Prairie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cliff">Cliff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#volcanic-island">Volcanic Island</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_list.html">Full Feature List</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Mirage</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Cookbook</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/cookbook.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cookbook">
+<h1>Cookbook<a class="headerlink" href="#cookbook" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to the cookbook! Here you will recipes to make different terrains and
+effects in Mirage.</p>
+<p>Want to share a cool terrain setup? Send me an email with the settings (or a
+preset file) at <a class="reference external" href="mailto:diego&#37;&#52;&#48;sinestesia&#46;co">diego<span>&#64;</span>sinestesia<span>&#46;</span>co</a>.</p>
+<div class="section" id="procedural-terrains">
+<h2>Procedural Terrains<a class="headerlink" href="#procedural-terrains" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="prairie">
+<h3>Prairie<a class="headerlink" href="#prairie" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/cookbook_praire.jpg" src="_images/cookbook_praire.jpg" />
+<p>First, use a small max height with a large size to make hills spread out horizontally.
+Also use a small amount of roughness, and no deformation (we don&#8217;t want any carving
+or ridges).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Value to use</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Seed</td>
+<td>860946613</td>
+</tr>
+<tr class="row-odd"><td>Size</td>
+<td>1000</td>
+</tr>
+<tr class="row-even"><td>Max height</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>Roughness</td>
+<td>4</td>
+</tr>
+<tr class="row-even"><td>Plateau</td>
+<td>5</td>
+</tr>
+<tr class="row-odd"><td>Alpine</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>Deformation</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>Edge</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="cliff">
+<h3>Cliff<a class="headerlink" href="#cliff" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/cookbook_cliff.jpg" src="_images/cookbook_cliff.jpg" />
+<p>Set max height to a high value while use a much smaller plateau to clip it.
+Now increase alpine to exaggerate the slope. This will give you a basic cliff
+effect. Set deformation to zero, since it might create some creases along the cliff.</p>
+<p>Don&#8217;t forget you can still edit this mesh. If you want to make the cliff higher,
+go into edit mode, and move the top vertices up with proportional editing
+enabled.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Value to use</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Seed</td>
+<td>1492771800</td>
+</tr>
+<tr class="row-odd"><td>Size</td>
+<td>500</td>
+</tr>
+<tr class="row-even"><td>Max Height</td>
+<td>150</td>
+</tr>
+<tr class="row-odd"><td>Roughness</td>
+<td>5</td>
+</tr>
+<tr class="row-even"><td>Plateau</td>
+<td>15</td>
+</tr>
+<tr class="row-odd"><td>Alpine</td>
+<td>9</td>
+</tr>
+<tr class="row-even"><td>Deformation</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>Edge</td>
+<td>None (or straight if you want)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="volcanic-island">
+<h3>Volcanic Island<a class="headerlink" href="#volcanic-island" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/cookbook_island.jpg" src="_images/cookbook_island.jpg" />
+<p>Start by using a slightly larger Max height than the default. Next set the
+edge to Island and use a small smoothing factor (volcanic islands don&#8217;t usually
+have beaches). Increase Deformation to get more ridges and interesting effects,
+as well as simulating deep canals carved by lava.
+You can also play with the roughness to get different results.</p>
+<p>You&#8217;ll want to sculpt the area where it touches the water, since volcanic
+islands tend to have more irregular contours.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Value to use</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Seed</td>
+<td>893432195</td>
+</tr>
+<tr class="row-odd"><td>Size</td>
+<td>250</td>
+</tr>
+<tr class="row-even"><td>Max Height</td>
+<td>10</td>
+</tr>
+<tr class="row-odd"><td>Roughness</td>
+<td>6</td>
+</tr>
+<tr class="row-even"><td>Alpine</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>Deformation</td>
+<td>8</td>
+</tr>
+<tr class="row-even"><td>Smooth Factor</td>
+<td>0.05-0.1</td>
+</tr>
+<tr class="row-odd"><td>Edge</td>
+<td>Island</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="presets.html" class="btn btn-neutral" title="Presets" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Diego Gangl.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

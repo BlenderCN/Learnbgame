@@ -1,0 +1,934 @@
+{
+    "docs": [
+        {
+            "location": "/index.html",
+            "text": "What is DECALmachine?\n\n\nGumroad\n | \nBlender Market\n - \nPolycount\n | \nBlender Artists\n - \nYoutube\n - \nTwitter\n - \neMail\n\n\n\n\n\n\n\n\n\ncover image: \nStrikebreaker\n - designed and built by \nAlexander Lortkipanidze\n - \nArtstation\n, \nTwitter\n\n\nDECALmachine\n is a \nblender addon\n, which through \nmesh Decals\n, allows for \nsurface detailing\n in a very non-committal, non-destructive, UV-less way. And as such, it represents an alternative approach to hard surface texturing.\n\n\nDecals can be \nprojected\n, \nsliced\n, \nmaterial matched\n, and of course \neasily created\n.\n\n\nRead on below for an \noverview\n of DECALmachine's tools and ideas.\n\n\n\n\nKeep in mind\n\n\nThe focus of \nDECALmachine\n is speed and flexibility in terms of Design and Detailing. Depending on how far you intend to take your designs, and especially if you, intend to use complex shader node setups or do complex texturing such as weathering, this might not be the best workflow, unless you are targeting a deferred rendering solution with mesh decal support, which allows for selective channel blending, instead of just alpha blending as in Blender's Eeevee and Cycles.\n\n\n\n\nResources\n\n\n\n\nAttention\n\n\nIf you need to get in touch with me to \nreport an error\n, \nreport tool misbehavior\n or \nhave another problem\n \nREAD THIS FIRST\n.\n\n\n\n\nFor \ninstallation\n help, see the \nInstallation\n page.\n\nFor \nquestions\n you have or \nproblems\n you may run into, see the \nFAQ\n.\n\nTo \ndiscuss\n using DECALmachine, please use the \nBlender Artists\n and \npolycount\n threads.\n\nFor \ndecal creation\n, jump to \nDecal Creation\n.\n\nTo \nlearn\n about \nall of DECALmachine's features and tools\n, you can either check out \nthis playlist\n on youtube, or better - access the same videos through the sidebar to the left.   \n\n\nFeatures\n\n\n\n\nquick and precise raycast-based \nDecal insertion\n\n\nautomatic \nmaterial matching, parenting, normal transfer\n and collection creation\n\n\nunlimited decal libraries + flexiblie asset loader layout\n\n\ninstant \ndecal creation\n of all types\n\n\nquickly \nadjust\n height, decal mesh or UV rotation and much more using the convenient modal adjust tool\n\n\nenforce default settings scene-wide and change them quickly using the \npanel\n\n\nuse decals on flat surfaces and \nproject\n them on curved surfaces\n\n\nslice\n decal panel lines boolean-style\n\n\ncreate panel decals from Grease Pencil strokes\n\n\nparallax\n adds convincing depth to normal mapped decals, now in real time utilizing Blender's Eevee\n\n\nretain sharp details at all scales, independent of texture resolution, via UV-less object based detailing\n\n\ntake advantage of decals being objects, by using modifiers like mirror\n\n\nadd Decals while editing groups in \nGroupPro\n\n\nhide decal materials (incl. in \nBatch Ops and Hard Ops\n) and textures\n\n\n108 Decals\n included\n\n\nbest documentation in the business\n\n\n\n\n\n\n\n\n\n\n\n\n\nOverview\n\n\n\n\nWith \nDECALmachine\n you can avoid getting bogged down with technicalities and monotonous, laborious clean up work related to mesh topology.  \n\nInstead you can just place your details, re-arrange them at any time, \nproject\n them on curved surfaces or \nexplore paneling\n, graphics, logos etc.\n\n\nDECALmachine - in essence - is object-based, UV-less \ntexturing\n, or rather \ndetailing\n.\n\nLearn more about what a \ndecal\n actually is and how it works.\n\n\n\n\nThis hard surface detailing workflow is incredibly fast and versatile, very easy to handle and manipulate.\n\nAnd the beauty is, it's not bound by texture size limitations - details remain sharp, even when seen from up-close.\n\n\n\n\nDECALmachine\n can be used on its own, or to complement other hard surface workflows, such as a\nbevel and boolean based approach used by \nHardOps\n and \nBoxCutter\n or the classic subdivision surface approach.\n\nIt all works, it will even work on models exported from Solids/NURBS/CAD based tools such as MoI3D or Fusion 360!\n\n\n\n\nIn addition to the tools to simplify and automate working with \nmesh Decals\n, DECALmachine \nsupplies 108 Decals\n, ready to be used, as well as \ndecal creation\n tools, to make your own - \ndirectly in Blender\n without the need for \nANY\n outside tools.",
+            "title": "Introduction"
+        },
+        {
+            "location": "/index.html#what-is-decalmachine",
+            "text": "Gumroad  |  Blender Market  -  Polycount  |  Blender Artists  -  Youtube  -  Twitter  -  eMail     cover image:  Strikebreaker  - designed and built by  Alexander Lortkipanidze  -  Artstation ,  Twitter  DECALmachine  is a  blender addon , which through  mesh Decals , allows for  surface detailing  in a very non-committal, non-destructive, UV-less way. And as such, it represents an alternative approach to hard surface texturing.  Decals can be  projected ,  sliced ,  material matched , and of course  easily created .  Read on below for an  overview  of DECALmachine's tools and ideas.   Keep in mind  The focus of  DECALmachine  is speed and flexibility in terms of Design and Detailing. Depending on how far you intend to take your designs, and especially if you, intend to use complex shader node setups or do complex texturing such as weathering, this might not be the best workflow, unless you are targeting a deferred rendering solution with mesh decal support, which allows for selective channel blending, instead of just alpha blending as in Blender's Eeevee and Cycles.",
+            "title": "What is DECALmachine?"
+        },
+        {
+            "location": "/index.html#resources",
+            "text": "Attention  If you need to get in touch with me to  report an error ,  report tool misbehavior  or  have another problem   READ THIS FIRST .   For  installation  help, see the  Installation  page. \nFor  questions  you have or  problems  you may run into, see the  FAQ . \nTo  discuss  using DECALmachine, please use the  Blender Artists  and  polycount  threads. \nFor  decal creation , jump to  Decal Creation . \nTo  learn  about  all of DECALmachine's features and tools , you can either check out  this playlist  on youtube, or better - access the same videos through the sidebar to the left.",
+            "title": "Resources"
+        },
+        {
+            "location": "/index.html#features",
+            "text": "quick and precise raycast-based  Decal insertion  automatic  material matching, parenting, normal transfer  and collection creation  unlimited decal libraries + flexiblie asset loader layout  instant  decal creation  of all types  quickly  adjust  height, decal mesh or UV rotation and much more using the convenient modal adjust tool  enforce default settings scene-wide and change them quickly using the  panel  use decals on flat surfaces and  project  them on curved surfaces  slice  decal panel lines boolean-style  create panel decals from Grease Pencil strokes  parallax  adds convincing depth to normal mapped decals, now in real time utilizing Blender's Eevee  retain sharp details at all scales, independent of texture resolution, via UV-less object based detailing  take advantage of decals being objects, by using modifiers like mirror  add Decals while editing groups in  GroupPro  hide decal materials (incl. in  Batch Ops and Hard Ops ) and textures  108 Decals  included  best documentation in the business",
+            "title": "Features"
+        },
+        {
+            "location": "/index.html#overview",
+            "text": "With  DECALmachine  you can avoid getting bogged down with technicalities and monotonous, laborious clean up work related to mesh topology.   \nInstead you can just place your details, re-arrange them at any time,  project  them on curved surfaces or  explore paneling , graphics, logos etc.  DECALmachine - in essence - is object-based, UV-less  texturing , or rather  detailing . \nLearn more about what a  decal  actually is and how it works.   This hard surface detailing workflow is incredibly fast and versatile, very easy to handle and manipulate. \nAnd the beauty is, it's not bound by texture size limitations - details remain sharp, even when seen from up-close.   DECALmachine  can be used on its own, or to complement other hard surface workflows, such as a\nbevel and boolean based approach used by  HardOps  and  BoxCutter  or the classic subdivision surface approach. \nIt all works, it will even work on models exported from Solids/NURBS/CAD based tools such as MoI3D or Fusion 360!   In addition to the tools to simplify and automate working with  mesh Decals , DECALmachine  supplies 108 Decals , ready to be used, as well as  decal creation  tools, to make your own -  directly in Blender  without the need for  ANY  outside tools.",
+            "title": "Overview"
+        },
+        {
+            "location": "/installation/index.html",
+            "text": "Requirements\n\n\n\n\nBlender 2.80, f606f588455e (May 20th)\n\n\n\n\n\n\nWarning\n\n\nBlender 2.80 is in \nBETA\n right now.\nNo assurences can be made, that DECALmachine keeps working with every new daily build.\n\nUse the recommended build above, and update on your own risk.\n\n\n\n\nMacOS\n\n\nMacOS users should install Blender properly, by following the \nofficial instructions\n.\n\nAvoid running it just from the Downloads folder!\n\nNote that, for \ndragging\n of files and folders, you need to hold down the \ncommand key\n.\n\nThis will ensure \nAppTranslocation\n1\n is avoided. \n\n\nLatest\n\n\nThe latest version of DECALmachine is 1.8.5 - available on \nGumroad\n and \nBlender Market\n.\n\nSee \nthis page\n to learn what's new in the latest versions, or see the \nchangelog\n for the full release history.\n\n\nInstructions\n\n\n\n\n\n\n\n\n\n\n\nInstall from File\n\n\n\n\nstart Blender, bring up preferences\n\n\nswitch to the \nAdd-ons\n tab and click the \nInstall...\n button at the top right \n\n\nlocate the downloaded DECALmachine_1.8.5.zip file and double-click it\n\n\nactivate the addon by ticking the checkbox and hit the \nSave User Settings\n button at the bottom\n\n\noptionally, switch to the Decal Creation tab, and install PIL\n\n\nclose prefrences and in the 3D View press the \nD\n key to bring up the DECALmachine pie menu in object mode\n\n\n\n\nManual Installation (alternative)\n\n\n\n\nextract the DECALmachine_1.8.5.zip file\n\n\nmove the extracted \nDECALmachine\n folder and its contents to your \naddons folder\n in the \nuser scripts location\n\n\nstart Blender, find the addon in preferences in the Add-ons tab and activate it, save your user config\n\n\noptionally, switch to the Decal Creation tab, and install PIL\n\n\nclose prefrences and in the 3D View press the \nD\n key to bring up the DECALmachine pie menu in object mode\n\n\n\n\n\n\nAddons Folder (in user scripts)\n\n\nLinux\n: /home/name/.config/blender/2.80/scripts/addons\n\n\nMacOS\n: /Users/name/Library/Application Support/Blender/2.80/scripts/addons\n\n\nWindows\n: C:\\Users\\name\\AppData\\Roaming\\Blender Foundation\\Blender\\2.80\\scripts\\addons  \n\n\n\n\n\n\n\n\n\n\n\n\nLearn more about \nAppTranslocation\n.\u00a0\n\u21a9",
+            "title": "Installation"
+        },
+        {
+            "location": "/installation/index.html#requirements",
+            "text": "Blender 2.80, f606f588455e (May 20th)    Warning  Blender 2.80 is in  BETA  right now.\nNo assurences can be made, that DECALmachine keeps working with every new daily build. \nUse the recommended build above, and update on your own risk.",
+            "title": "Requirements"
+        },
+        {
+            "location": "/installation/index.html#macos",
+            "text": "MacOS users should install Blender properly, by following the  official instructions . \nAvoid running it just from the Downloads folder! \nNote that, for  dragging  of files and folders, you need to hold down the  command key . \nThis will ensure  AppTranslocation 1  is avoided.",
+            "title": "MacOS"
+        },
+        {
+            "location": "/installation/index.html#latest",
+            "text": "The latest version of DECALmachine is 1.8.5 - available on  Gumroad  and  Blender Market . \nSee  this page  to learn what's new in the latest versions, or see the  changelog  for the full release history.",
+            "title": "Latest"
+        },
+        {
+            "location": "/installation/index.html#instructions",
+            "text": "",
+            "title": "Instructions"
+        },
+        {
+            "location": "/installation/index.html#install-from-file",
+            "text": "start Blender, bring up preferences  switch to the  Add-ons  tab and click the  Install...  button at the top right   locate the downloaded DECALmachine_1.8.5.zip file and double-click it  activate the addon by ticking the checkbox and hit the  Save User Settings  button at the bottom  optionally, switch to the Decal Creation tab, and install PIL  close prefrences and in the 3D View press the  D  key to bring up the DECALmachine pie menu in object mode",
+            "title": "Install from File"
+        },
+        {
+            "location": "/installation/index.html#manual-installation-alternative",
+            "text": "extract the DECALmachine_1.8.5.zip file  move the extracted  DECALmachine  folder and its contents to your  addons folder  in the  user scripts location  start Blender, find the addon in preferences in the Add-ons tab and activate it, save your user config  optionally, switch to the Decal Creation tab, and install PIL  close prefrences and in the 3D View press the  D  key to bring up the DECALmachine pie menu in object mode    Addons Folder (in user scripts)  Linux : /home/name/.config/blender/2.80/scripts/addons  MacOS : /Users/name/Library/Application Support/Blender/2.80/scripts/addons  Windows : C:\\Users\\name\\AppData\\Roaming\\Blender Foundation\\Blender\\2.80\\scripts\\addons         Learn more about  AppTranslocation .\u00a0 \u21a9",
+            "title": "Manual Installation (alternative)"
+        },
+        {
+            "location": "/preferences/index.html",
+            "text": "General\n\n\n\n\n\n\n\n\n\n\n\nDecal Creation\n\n\nAs in previous versions of DECALmachine, decal creation requires the installation of the PIL module, which is a python image manipulation library.\n\nUnlike in previous versions, this is now completely optional and no longer mandadory for basic usage of DECALmachine.\n\n\nAbout\n\n\nQuick links to all things DECALmachine and MACHIN3 right inside Blender.\n\nIn addition there are links to recommended addons from third paries and various decal recources.\n\n\n\n\n Documentation, Stores, FAQ, Get Support, Blenderartists, Polycount, Artstation and social media.",
+            "title": "Preferences"
+        },
+        {
+            "location": "/preferences/index.html#general",
+            "text": "",
+            "title": "General"
+        },
+        {
+            "location": "/preferences/index.html#decal-creation",
+            "text": "As in previous versions of DECALmachine, decal creation requires the installation of the PIL module, which is a python image manipulation library. \nUnlike in previous versions, this is now completely optional and no longer mandadory for basic usage of DECALmachine.",
+            "title": "Decal Creation"
+        },
+        {
+            "location": "/preferences/index.html#about",
+            "text": "Quick links to all things DECALmachine and MACHIN3 right inside Blender. \nIn addition there are links to recommended addons from third paries and various decal recources.    Documentation, Stores, FAQ, Get Support, Blenderartists, Polycount, Artstation and social media.",
+            "title": "About"
+        },
+        {
+            "location": "/whatsnew/index.html",
+            "text": "1.8.5\n\n\nThis is a hotfix for Decal Creation. Height map creation and decal insertion the panel, was broken due to the recent depsgraph changes.\n\n\n1.8.4\n\n\nThis is a hotfix for the Slice tool, which as a result of the recent depsgraph changes, didn't clear the panel decal material slots properly anymore, which in some circumstances could lead to invisible panel decals.\n\n\n1.8.3\n\n\nThis is another unplanned release, but necessary due to depsgraph changes in Blender.\n\n\nRaycast behavior has been improved as well, and raycast performance was increased, which should be epecially noticable in bigger scenes.\n\n\n\n\nAttention\n\n\nThere are some issues with how decal normal maps are rendered right now, at the time of release, May 18th.\n\nThe issue is supposedly \nfixed already\n, but likely won't be available on build bot releases until May 19th.\n\n\n\n\n1.8.2\n\n\nThis is an unplanned release, but necessary because \nrB8f71a84496a9\n breaks \nMaterial Matching\n and with it the \nRe-Apply\n tool and Decal Insertion.\n\n\nTo fix the issue introduced in that commit, DECALmachine will just ignore the Alpha and Emission parameters of the Princibled PBR shader node for now. So, both of these are not \nmaterial matched\n.\n\nTo properly support those material inputs, all decal assets will need to be updated, which is much more involded and will be done for the 1.9 release.\n\n\nGPanel\n\n\nGPanel\n was supposed to go into 1.9 as well, but I've decided to release it early now - and without full documentation. It may need some more testing and work, so be warned.\n\n\nGpanel\n creates panel decals from grease pencil strokes.  \n\n\n\n\n\n\n\n\n\n\n\nTo use it, take the Grease Pencil and lay down strokes on the surface of a mesh object. The Line shape of the Grease pencil tool is very handy and I recommend you use that. Note however, that - for me at least - it has a tendency to crash Blender.\n\n\nLeave gaps between each stroke and be aware of the order and direction you draw the strokes in. Panel decals will be created based on that order.\n\nWhen done, you can use the Grease Pencil Sculpt tool with \nSHIFT\n pressed to smooth out the spaces.\n\n\nAfter that, go into object mode and choose GPanel from the DECALmachine pie menu. You can hold down \nSHIFT\n or \nCTRL\n to modiy is behavior.\n\nBy default no connections are made, but with \nSHIFT\n the gaps between strokes are closed. With \nCTRL\n you make the panel decal cyclic.\n\nYou can optionally also set these options in the \nRedo Panel\n. You can also set the segments for the connections there.\n\n\nGPanel always works on the active Grease Pencil layer and will hide a layer, once a panel decal is created from it.\n\n\nPIL\n\n\nFrom this version forward, DECALmachine will install PIL 6.0.0. If you have installed the previosu 5.4.1 already, no action is required on your part, 5.4.1 works just fine.\n\nIf you want, you can purge your existing PIL installation from the DECALmachine preferences and install the new one, but it's completely optional.\n\n\nThe installation process has been improved and will now remove any PIL found in the modules folder. There were a few people who attemted to install PIL like it was done in the 1.4 era: by moving a pre-compiled PIL into the modules folder.\n\nBesides being error prone, this will also interfere with how PIL is loaded now (from the user folder).\n\n\nFixes\n\n\nIn addtion to the material matching fix above, there has been a raycasting fix, where decals wouldn't align properly to modifier geometry.\n\nThis was due to a bug introduced in Blender a813e259d630 https://developer.blender.org/rBa813e259d630), shortly before the initial 1.8 release.\n\n\n1.8.1\n\n\nChanges\n\n\nThis update fixes a few issues that came up over the past 2 weeks.\n\nIt includes a workaround for an open Blender bug affecting the Unwrap tool.\n\n\nFurthermore it adds an optional, automatic update check, letting you know in the pie menu, if a new version is available.\n\n\nCheck out the \nchangelog\n for details.\n\n\nFAQ additions\n\n\nTwo new common questions have been added to the FAQ:\n\n\n\n\nWhy can't I access DECALmachine's pie menu when I activate BoxCutter's tool?\n\n\nWhy are my panel decal materials/textures taken from the Aircraft(or any other) library?\n\n\n\n\n1.8 - A Decal Dream\n\n\n\n\nCompletely rewritten + for Blender 2.80\n\n\n\n\nSimpler and more efficient, easier to use and more powerful.\n\nThis describes DECALmachine 1.8 in a single sentence, and I hope you will agree.\n\n\n\n\n\n\n\n\n\n\n1.8 being a fresh start and completely rewritten, really should be be 2.0, but I'm holding that back, until I get to feature parity with 1.4.2.\nThat doesn't mean, that 1.8 is inferior. On the contrary: everything you need to work with Decals and to create Decals is here, and it's all far better, easier to use and more robust than before.\n\nCoupled with Blender's own advances like Eevee and Collections, DECALmachine 1.8 is a completely new experience.\n\n1.9 and 2.0 will bring back baking of decals to a texture, as well as exporting decals via atlas creation.  \n\n\nI've put considerable work into getting rid of a major pain point in the past: the installation of the infamous \nPIL module\n.\n\nBeta tests showed promise, that this is now solved for good, and for all 3 platforms, via an automated \ninstallation\n process, including two fallback installation methods.\n\n\nFor the times when help is needed, there is now a help panel and a \nRequest Support\n tool, streamlining the process and ensuring necessary information like log files is submitted with the first email.\nAlso, all feature videos in the documentation now have voice-overs.\n\n\nI want to thank everyone who has supported my work in the past. All of this is only possible through your contributions. Enjoy 2.80!  \n\n\nCheck out the \ntrailer\n, and \nfeature videos\n to get up to speed.\n\n\n1.4.2 - Decal Dedication\n\n\n\n\nContinuous improvement of the Decal Pipeline \n\n\n\n\nThis release fixes a number of issues, improves and refines many existing tools as well as adds 2 major new tools.\n\n\nReconstruct Panel Cutter\n\n\nThere's \nReconstruct Panel Cutter\n, which takes an all-quad panel decal and builds a cutter from it.\nUnlike the Extract Source tool, which brings back cutting objects used for Topo Slice and Float Slice, Reconstruct Panel Cutter also works for panels created via Draw Slice, for manually built panel decals or for panel decals joined from a number of other (simpler) panels.\nReconstruct Panel Cutter's resulting mesh will perfectly match your panel decal and can then be used for \nMaterial Cutting\n or \nMaterial Decaling\n.\n\n\n\n\n\n\n\n\n\n\n\nSurface Fix\n\n\nThere's also \nSurface Fix\n, which can be used to remove unwanted shading artifacts. This is achieved by maintaining a separate surface source mesh(similar to how \nWStep\n maintains a separate normal_src mesh) and transferring its normal information to vertices masked by a vertex group.\n\n\n\n\n\n\n\n\n\n\n\nImprovements\n\n\nThere's a few minor new tools such as \nEdit/Commit Normal Source\n and \nEdit/Commit Surface Fix\n, which can come in handy when working with WStep and Surface Fix. There's also an Unlink tool - for now only accessible via the space bar menu - which can quicky stash an object away without cluttering the scene, to be used as normal source meshes for either WStep or Surface fix.\n\n\nThe base material used by \nInit Base Material\n, is now customizable in the \nDECALmachine preferences\n.\n\n\nExtract Source\n, now has an option to remove the decal you are extracting the source from. This can save some clicks and avoids tricky selections.\n\nFurthermore, Extract Source now automatically unparents the extracted source.\n\n\nWstep\n has been extended and allows choosing the mapping method used in the DataTransfer mod. There's also a new option to allow hard edges, which creates a secondary DataTransfer mod and masks it using a vertex group.\n\n\nMaterial Cut\n has been improved to include a threshold value, used to merge duplicate vertices.\nBy default, Material Cut marks edges as seams. While this is great to separate out areas that are to receive different materials, it will also influence how UVs are laid out and force separate UV islands.\n\nTo circumvent this, you can now mark Material Cut edges as Freestyle edges. This is just to mark them, and make it easy to select them later.\n\nThere's two new tools called \"Convert Freestyle to Seam\" and \"Convert Seam to Freestyle\" accessed via the spacebar menu, to manually convert one into the other.\n\nAlso, the Unity, Unreal and Unpacked \nexport targets\n support treating Freestyle edges as material seams, without manually converting them. \n\n\nRotate Decal\n now has an axis option, which can be useful in some situations.\n\n\nResources\n\n\nMost of the \nsupplied info decal\n textures have been inverted to be white instead of black and so the invert slider in the info decal materials is now 0 by default.\n\n\nTextures for decals02-32 - decals02-37 have been replaced with higher quality versions.\n\n\nMACHIN3shaders(for the unity export) now include a \"Blend Surface Normals\" parameter, which mixes normals of the materials under the decals with the decal normals. This works perfectly for Info Decals. It's a hack for the other ones, but can produce good enough results.\n\nThe Transparency parameter in the info Decal shader has been renamed to Opacity.\n\n\nCurvature channels in the ao_curv_height maps of supplied panel decals has been improved or re-added. This was intionally removed initially to improve visual integration in Cycles. However it turns out it's really useful to have, if you want to bake it down to control weathering in Substance Painter or Unity.\n\n\nExport\n\n\nA 'Combine all-to-one' option has been added to the \nDECALBakeDown\n export target.\n\nIt overrides per-material-bake-combinations and instead combines bakes of all/selected export groups to one texture set.\n\n\nThe Unity, UE4 and Unpacked export targets have received a \"Assign Unique Materials\" export option.\n\nThis creates unique material IDs based on edge seams found on the model. This means you don't have to manually assign materials to areas they are supposed to receive unique materials before exporting.\nAssign Unique Materials is also available as a tool called form the spacebar menu. Run it on any mesh that has edges marked as seams.\n\n\nThere's a new 'Create DM_non-decals group' option in the DECALexport pie. This is for pure convenience and can be helpful managing your export groups, decals and non-decals when preparing for export.\n\n\nThe default atlas padding value used when packing a new decal atlas has been exposed and can be set in DECALmachine's \npreferences\n.\n\n\nFixes\n\n\nThere's been a number of fixes. See the \nchangelog\n for details.\n\n\n1.4.1 - Blender 2.79 + Principled BSDF\n\n\n\n\n2.79 Compatibility Release\n\n\n\n\nPBR Decals\n\n\n1.4.1. started out as the second bugfix release for 1.4, but the 2.79 Blender release caught me by surprise and I was forced to implement some things originally intended for the 1.5 release.\n\n\nWhile Blender 2.78 is still supported, I'd generally advice anybody to switch to 2.79 now.\n\n\nWith the Principled BSDF shader being a central part of 2.79, DECALmachine needs to support Material Matching it and so needs to have PBR decals.\nTo achieve this the Match Material tool has been rebuilt from the ground up. It's extremely robust now and supports matching the Principled BSDF shader in addition to the Glossy shader.\nOperator properties have been added to modify its behavior and allow matching of either the Material part of a Subset Decal or the Subset part, or both at the same time. Similarly, both sides of a Panel Decal can be matched like this.\nFurthermore, if the target object carries multiple Materials, perhaps as a result of Material Cutting, each of the materials can be matched by stepping through the Material Slot parameter in the operator properties.\n\n\n\n\n\n\n\n\n\n\n\nAny new decals created in 1.4.1 via either Instant or Batch Decal Creation in Blender 2.79, will be switched to be PBR decals.\n\n\nInit Base Material\n will now also create a PBR base material, assuming it's run in Blender 2.79\n\n\nAs a consequence of improving the \nMatch Material\n tool, the old \nGet and Set Material\n tools could be completely removed, as they've become obsolete and redundant.\n\n\nUpdate Decal Nodes\n\n\nTo deal with scenes created before 2.79 and 1.4.1, there's a \nUpdate Decal Nodes\n tool, which you can call from the spacebar menu. This will update all existing decal materials in a scene to support PBR shaders.\nThis tool is also automatically run on new Decals being inserted into a scene from the Asset Loaders, as any Decals created before 1.4.1 naturally don't support the Principled BSDF shader and so need to be updated.\n\n\n\n\n\n\n\n\n\n\n\nChanges and Improvements\n\n\nFilmic was supported before, but was not native to Blender. Now it is and DECALmachine has added support for it.\n\n\nThe \nTopo Slice\n tool now has a twist offset parameter, which can be useful if a panel strip's boundary edge loops don't line up properly.\n\n\nPanel Transition has been improved and is much more robust now.\n\n\nThe triangulation method for DECALexport has been changed from BEAUTY to FIXED, which seems to resemble the viewport/opengl triangulation and so should avoid unwanted surface intersections after exporting.\n\n\nThe \nHOps Fix\n is now a part of HardOps itself making awkward code injections a thing of the past. As a result any Operatives should make sure to update to 'Hard Ops 0093 - Neptunium' before running DECALmachine 1.4.1.\n\n\nFixes\n\n\nAn export group related issue with decals projected on material decals has been fixed. Note that Material Decals should not be exported anyways, cut them into the mesh using Material Cut instead!\n\n\nThe \nRemove Decal Mode\n didn't properly clean the open scene of panel decal assets, this is fixed now.\n\n\nA number of people experienced problems with the \nRotate Decal\n option not working on the slice tools. This was related to them not having selection sync enabled in the UV editor, which now happens automatically.\nThis also caused the \nRotate Decal\n tool to not properly work, when run from edit mode.\n\n\nThe mesh.intersect tool in Blender has been changed in 2.79, which caused the \nMaterial Cut\n and \nPanel Transition\n tools to fail. Both are working great with the 1.4.1 update.\n\n\nDecal and CustomDecal asset paths will no longer resist changes to a custom locations.\n\n\nPreviously (W)Step would throw an exception, if it encountered empty material slots. A safety check has been added to prevent this.\n\n\n1.4 - Decal Domination\n\n\n\n\nThe Export Release\n\n\n\n\nComplete Decal Export Pipeline\n\n\nDECALmachine 1.4 is a huge release and the center piece of this update is the export capability.\nThis turns DM from a \nmere\n Blender addon, into a complete pipeline for mesh based decals: experiment, create, design in Blender, but then also get your work out into a number of target platforms, if you so choose.\n\n\nIn addition to the ability to export decals, there's also \n(W)Step\n - a tool/workflow to easily create custom vertex normals, which complement the decal workflow beautifully and are used to control hard surface shading without the need for normal maps. Note, it's highly recommended to use \n(W)Step\n along side HardOps and its boolean tools.\n\n\nIf you are taking your assets into Unity3D, DM even supplies shaders specifically made to be used with the DM exported decals - it's the whole nine yards.\n\n\nBut it doesn't stop there. The added ability to bake decal textures down into normal maps, ao maps, curvature maps, etc., unlocks a new approach to hard surface texturing, that could augment and in some scenarios perhaps even replace the traditional high-poly to low-poly workflow.\n\n\nSo, how does this all work? The first step in the export process is the creation of an optimally packed Decal Atlas from individual decal textures. This is in essence completely automated, but does allow for some user input, in that you have the ability to change the scale of individual decals in the atlas as well as adjust the padding between them.\n\n\nAlternatively, instead of creating a new Atlas pack for each new asset, you can also use an existing packing solution you've created previously.\n\n\nThe second step is organizing Decals and their parent objects(called \ntargets\n) via so called \nExport Groups\n. With this in place, decals will be joined, decal UVs will be adjusted according to the atlas packing solution and materials using the atlas textures will be applied - all automatically.\n\n\nFinally, your complete asset(incl. mesh decals) can be either exported to a number of platforms - such as Unity3D, Unreal Engine 4, Substance Painter and Sketchfab - or decals can be baked down, creating texture maps, that can be taken into any tool or engine you choose.\n\n\nExpanding the Slice Toolset\n\n\n1.4 introduces an alternative Slice tool called \nFloat Slice\n, useful in circumstances were the old \nDecal Slice\n - renamed to \nTopo Slice\n - has trouble or would fail, particularly on dense meshes.\n\n\nThere's also \nDraw Slice\n which is a precursor tool to \nFloat Slice\n and enables you to manually draw panel strips, by extruding vertices on the surface of an object.\n\n\nConcluding the additions to the slice tools is the \nPanelize\n tool, which makes adding simple decal strip shapes quick and effortless by turning polygon boundaries into panel strips, instead of the boolean-like approach of intersecting an object with a cutting object.\n\n\nImproving Usability\n\n\nOperator Properties\n\n\nThis release adds \nOperator Properties\n for the main tools. This makes using DM more interactive, simplifies dealing with unexpected behavior(such as \nTopo Slice\n failing) and allows for a greater degree of customizing each tools behavior. \nOperator Properties\n can be accessed from the bottom of the \nT\n panel  or by bringing up the \nF6\n menu.\n\n\nAutomatic Parenting of Projections and Slices\n\n\nIf you \nproject\n a decal or create a panel strip via one of the \nSlice\n tools, the decals will - by default - be parented to the object you project them on or the object you are slicing.\nThis extends to the \nDecal Sources\n as well. So, when you change your objects location, orientation or scale and attempt to bring back a \nDecal Source\n, it will be properly positioned, just where you'd expect it to be.\n\n\nKeymap Settings to Preferences\n\n\nChanging DM's keymaps is now extremely easy and can be done directly in DECALmachine's \npreferences\n.\nIn addition, all the GPencil tools can now be accessed via \nCTRL + D\n, so there's no longer any keymap overlap between DM and GPencil.\n\n\nScene Scale/Unit Settings support\n\n\nThere is a new setting called \nForce Consistent Scale\n in DM's preferences, which you should enable, if have experienced very small or big decals when dropping them into a scene in relation to your unit scale settings.\n\n\nRemove Decal Mode\n\n\nYou can now delete decals] from inside Blender, without having to navigate to the Decal Library locations on your hard disk.\n\n\nVarious Improvements\n\n\nMost tools have received small improvements and refinements in their behavior. Standing out from this is \nMaterial Cut\n which is now much more robust and has received \nOperator Properties\n to customize the behavior.\n\n\nWindows 32bit support\n\n\nWindows 32bit support through PILwin32.zip has been added thanks to Jordan.\n\n\nFixes\n\n\nDecal Project\n and through \nPanel Unwrap\n the \nSlice\n tools will now remove any pre-existing UVs before creating new ones to avoid potential issues.\n\n\nThe main DECALmachine pie menu is from now on keymaped only in \nObject\n and \nEdit\n modes instead of generally in all 3D Views, freeing the \nD\n shortcut for all other modes, such as \nSculpt\n and \nPaint\n modes.\n\n\nAn issue where non-tangent base normals would be created when running \nInstant Decal Creation\n has been fixed.\n\n\nAnother issue related to hidden geometry causing very dark AO maps has also been resolved.\n\n\nFurthermore, \nRemove Duplicates\n could in some cases replace custom decal materials with their supplied decals counter parts and was fixed.\n\n\nFinally, split panel decal strips causing \nPanel Transition\n to fail was rectified.\n\n\nHardOps and MACHIN3tools\n\n\nIf you use HardOps alongside DECALmachine, you should run the \nHardOps Fix\n in DECALmachine's preferences.md#general).\n\n\nFurthermore, I'd recommend you use at least some of the tools provided by \nMACHIN3tools\n, which is a free continuously evolving collection of scripts.\nIn particular, \nMirrror\n and \nShading Switch\n are particularly useful in combination with DECALmachine and highly suggest you use \nRed Mode\n, should you use DECALmachine's custom vertex normal tool \n(W)Step\n.\n\n\nMirror\n is the recommended way to mirror Decals across another object. If you are using Rob Fornof's \nMirror Mirror\n and/or my previous \nMulti Mirror Mirror\n, \nMirror\n replaces them both.",
+            "title": "What's new?"
+        },
+        {
+            "location": "/whatsnew/index.html#185",
+            "text": "This is a hotfix for Decal Creation. Height map creation and decal insertion the panel, was broken due to the recent depsgraph changes.",
+            "title": "1.8.5"
+        },
+        {
+            "location": "/whatsnew/index.html#184",
+            "text": "This is a hotfix for the Slice tool, which as a result of the recent depsgraph changes, didn't clear the panel decal material slots properly anymore, which in some circumstances could lead to invisible panel decals.",
+            "title": "1.8.4"
+        },
+        {
+            "location": "/whatsnew/index.html#183",
+            "text": "This is another unplanned release, but necessary due to depsgraph changes in Blender.  Raycast behavior has been improved as well, and raycast performance was increased, which should be epecially noticable in bigger scenes.   Attention  There are some issues with how decal normal maps are rendered right now, at the time of release, May 18th. \nThe issue is supposedly  fixed already , but likely won't be available on build bot releases until May 19th.",
+            "title": "1.8.3"
+        },
+        {
+            "location": "/whatsnew/index.html#182",
+            "text": "This is an unplanned release, but necessary because  rB8f71a84496a9  breaks  Material Matching  and with it the  Re-Apply  tool and Decal Insertion.  To fix the issue introduced in that commit, DECALmachine will just ignore the Alpha and Emission parameters of the Princibled PBR shader node for now. So, both of these are not  material matched . \nTo properly support those material inputs, all decal assets will need to be updated, which is much more involded and will be done for the 1.9 release.",
+            "title": "1.8.2"
+        },
+        {
+            "location": "/whatsnew/index.html#gpanel",
+            "text": "GPanel  was supposed to go into 1.9 as well, but I've decided to release it early now - and without full documentation. It may need some more testing and work, so be warned.  Gpanel  creates panel decals from grease pencil strokes.        To use it, take the Grease Pencil and lay down strokes on the surface of a mesh object. The Line shape of the Grease pencil tool is very handy and I recommend you use that. Note however, that - for me at least - it has a tendency to crash Blender.  Leave gaps between each stroke and be aware of the order and direction you draw the strokes in. Panel decals will be created based on that order. \nWhen done, you can use the Grease Pencil Sculpt tool with  SHIFT  pressed to smooth out the spaces.  After that, go into object mode and choose GPanel from the DECALmachine pie menu. You can hold down  SHIFT  or  CTRL  to modiy is behavior. \nBy default no connections are made, but with  SHIFT  the gaps between strokes are closed. With  CTRL  you make the panel decal cyclic. \nYou can optionally also set these options in the  Redo Panel . You can also set the segments for the connections there.  GPanel always works on the active Grease Pencil layer and will hide a layer, once a panel decal is created from it.",
+            "title": "GPanel"
+        },
+        {
+            "location": "/whatsnew/index.html#pil",
+            "text": "From this version forward, DECALmachine will install PIL 6.0.0. If you have installed the previosu 5.4.1 already, no action is required on your part, 5.4.1 works just fine. \nIf you want, you can purge your existing PIL installation from the DECALmachine preferences and install the new one, but it's completely optional.  The installation process has been improved and will now remove any PIL found in the modules folder. There were a few people who attemted to install PIL like it was done in the 1.4 era: by moving a pre-compiled PIL into the modules folder. \nBesides being error prone, this will also interfere with how PIL is loaded now (from the user folder).",
+            "title": "PIL"
+        },
+        {
+            "location": "/whatsnew/index.html#fixes",
+            "text": "In addtion to the material matching fix above, there has been a raycasting fix, where decals wouldn't align properly to modifier geometry. \nThis was due to a bug introduced in Blender a813e259d630 https://developer.blender.org/rBa813e259d630), shortly before the initial 1.8 release.",
+            "title": "Fixes"
+        },
+        {
+            "location": "/whatsnew/index.html#181",
+            "text": "",
+            "title": "1.8.1"
+        },
+        {
+            "location": "/whatsnew/index.html#changes",
+            "text": "This update fixes a few issues that came up over the past 2 weeks. \nIt includes a workaround for an open Blender bug affecting the Unwrap tool.  Furthermore it adds an optional, automatic update check, letting you know in the pie menu, if a new version is available.  Check out the  changelog  for details.",
+            "title": "Changes"
+        },
+        {
+            "location": "/whatsnew/index.html#faq-additions",
+            "text": "Two new common questions have been added to the FAQ:   Why can't I access DECALmachine's pie menu when I activate BoxCutter's tool?  Why are my panel decal materials/textures taken from the Aircraft(or any other) library?",
+            "title": "FAQ additions"
+        },
+        {
+            "location": "/whatsnew/index.html#18-a-decal-dream",
+            "text": "Completely rewritten + for Blender 2.80   Simpler and more efficient, easier to use and more powerful. \nThis describes DECALmachine 1.8 in a single sentence, and I hope you will agree.     1.8 being a fresh start and completely rewritten, really should be be 2.0, but I'm holding that back, until I get to feature parity with 1.4.2.\nThat doesn't mean, that 1.8 is inferior. On the contrary: everything you need to work with Decals and to create Decals is here, and it's all far better, easier to use and more robust than before. \nCoupled with Blender's own advances like Eevee and Collections, DECALmachine 1.8 is a completely new experience. \n1.9 and 2.0 will bring back baking of decals to a texture, as well as exporting decals via atlas creation.    I've put considerable work into getting rid of a major pain point in the past: the installation of the infamous  PIL module . \nBeta tests showed promise, that this is now solved for good, and for all 3 platforms, via an automated  installation  process, including two fallback installation methods.  For the times when help is needed, there is now a help panel and a  Request Support  tool, streamlining the process and ensuring necessary information like log files is submitted with the first email.\nAlso, all feature videos in the documentation now have voice-overs.  I want to thank everyone who has supported my work in the past. All of this is only possible through your contributions. Enjoy 2.80!    Check out the  trailer , and  feature videos  to get up to speed.",
+            "title": "1.8 - A Decal Dream"
+        },
+        {
+            "location": "/whatsnew/index.html#142-decal-dedication",
+            "text": "Continuous improvement of the Decal Pipeline    This release fixes a number of issues, improves and refines many existing tools as well as adds 2 major new tools.",
+            "title": "1.4.2 - Decal Dedication"
+        },
+        {
+            "location": "/whatsnew/index.html#reconstruct-panel-cutter",
+            "text": "There's  Reconstruct Panel Cutter , which takes an all-quad panel decal and builds a cutter from it.\nUnlike the Extract Source tool, which brings back cutting objects used for Topo Slice and Float Slice, Reconstruct Panel Cutter also works for panels created via Draw Slice, for manually built panel decals or for panel decals joined from a number of other (simpler) panels.\nReconstruct Panel Cutter's resulting mesh will perfectly match your panel decal and can then be used for  Material Cutting  or  Material Decaling .",
+            "title": "Reconstruct Panel Cutter"
+        },
+        {
+            "location": "/whatsnew/index.html#surface-fix",
+            "text": "There's also  Surface Fix , which can be used to remove unwanted shading artifacts. This is achieved by maintaining a separate surface source mesh(similar to how  WStep  maintains a separate normal_src mesh) and transferring its normal information to vertices masked by a vertex group.",
+            "title": "Surface Fix"
+        },
+        {
+            "location": "/whatsnew/index.html#improvements",
+            "text": "There's a few minor new tools such as  Edit/Commit Normal Source  and  Edit/Commit Surface Fix , which can come in handy when working with WStep and Surface Fix. There's also an Unlink tool - for now only accessible via the space bar menu - which can quicky stash an object away without cluttering the scene, to be used as normal source meshes for either WStep or Surface fix.  The base material used by  Init Base Material , is now customizable in the  DECALmachine preferences .  Extract Source , now has an option to remove the decal you are extracting the source from. This can save some clicks and avoids tricky selections. \nFurthermore, Extract Source now automatically unparents the extracted source.  Wstep  has been extended and allows choosing the mapping method used in the DataTransfer mod. There's also a new option to allow hard edges, which creates a secondary DataTransfer mod and masks it using a vertex group.  Material Cut  has been improved to include a threshold value, used to merge duplicate vertices.\nBy default, Material Cut marks edges as seams. While this is great to separate out areas that are to receive different materials, it will also influence how UVs are laid out and force separate UV islands. \nTo circumvent this, you can now mark Material Cut edges as Freestyle edges. This is just to mark them, and make it easy to select them later. \nThere's two new tools called \"Convert Freestyle to Seam\" and \"Convert Seam to Freestyle\" accessed via the spacebar menu, to manually convert one into the other. \nAlso, the Unity, Unreal and Unpacked  export targets  support treating Freestyle edges as material seams, without manually converting them.   Rotate Decal  now has an axis option, which can be useful in some situations.",
+            "title": "Improvements"
+        },
+        {
+            "location": "/whatsnew/index.html#resources",
+            "text": "Most of the  supplied info decal  textures have been inverted to be white instead of black and so the invert slider in the info decal materials is now 0 by default.  Textures for decals02-32 - decals02-37 have been replaced with higher quality versions.  MACHIN3shaders(for the unity export) now include a \"Blend Surface Normals\" parameter, which mixes normals of the materials under the decals with the decal normals. This works perfectly for Info Decals. It's a hack for the other ones, but can produce good enough results. \nThe Transparency parameter in the info Decal shader has been renamed to Opacity.  Curvature channels in the ao_curv_height maps of supplied panel decals has been improved or re-added. This was intionally removed initially to improve visual integration in Cycles. However it turns out it's really useful to have, if you want to bake it down to control weathering in Substance Painter or Unity.",
+            "title": "Resources"
+        },
+        {
+            "location": "/whatsnew/index.html#export",
+            "text": "A 'Combine all-to-one' option has been added to the  DECALBakeDown  export target. \nIt overrides per-material-bake-combinations and instead combines bakes of all/selected export groups to one texture set.  The Unity, UE4 and Unpacked export targets have received a \"Assign Unique Materials\" export option. \nThis creates unique material IDs based on edge seams found on the model. This means you don't have to manually assign materials to areas they are supposed to receive unique materials before exporting.\nAssign Unique Materials is also available as a tool called form the spacebar menu. Run it on any mesh that has edges marked as seams.  There's a new 'Create DM_non-decals group' option in the DECALexport pie. This is for pure convenience and can be helpful managing your export groups, decals and non-decals when preparing for export.  The default atlas padding value used when packing a new decal atlas has been exposed and can be set in DECALmachine's  preferences .",
+            "title": "Export"
+        },
+        {
+            "location": "/whatsnew/index.html#fixes_1",
+            "text": "There's been a number of fixes. See the  changelog  for details.",
+            "title": "Fixes"
+        },
+        {
+            "location": "/whatsnew/index.html#141-blender-279-principled-bsdf",
+            "text": "2.79 Compatibility Release",
+            "title": "1.4.1 - Blender 2.79 + Principled BSDF"
+        },
+        {
+            "location": "/whatsnew/index.html#pbr-decals",
+            "text": "1.4.1. started out as the second bugfix release for 1.4, but the 2.79 Blender release caught me by surprise and I was forced to implement some things originally intended for the 1.5 release.  While Blender 2.78 is still supported, I'd generally advice anybody to switch to 2.79 now.  With the Principled BSDF shader being a central part of 2.79, DECALmachine needs to support Material Matching it and so needs to have PBR decals.\nTo achieve this the Match Material tool has been rebuilt from the ground up. It's extremely robust now and supports matching the Principled BSDF shader in addition to the Glossy shader.\nOperator properties have been added to modify its behavior and allow matching of either the Material part of a Subset Decal or the Subset part, or both at the same time. Similarly, both sides of a Panel Decal can be matched like this.\nFurthermore, if the target object carries multiple Materials, perhaps as a result of Material Cutting, each of the materials can be matched by stepping through the Material Slot parameter in the operator properties.      Any new decals created in 1.4.1 via either Instant or Batch Decal Creation in Blender 2.79, will be switched to be PBR decals.  Init Base Material  will now also create a PBR base material, assuming it's run in Blender 2.79  As a consequence of improving the  Match Material  tool, the old  Get and Set Material  tools could be completely removed, as they've become obsolete and redundant.",
+            "title": "PBR Decals"
+        },
+        {
+            "location": "/whatsnew/index.html#update-decal-nodes",
+            "text": "To deal with scenes created before 2.79 and 1.4.1, there's a  Update Decal Nodes  tool, which you can call from the spacebar menu. This will update all existing decal materials in a scene to support PBR shaders.\nThis tool is also automatically run on new Decals being inserted into a scene from the Asset Loaders, as any Decals created before 1.4.1 naturally don't support the Principled BSDF shader and so need to be updated.",
+            "title": "Update Decal Nodes"
+        },
+        {
+            "location": "/whatsnew/index.html#changes-and-improvements",
+            "text": "Filmic was supported before, but was not native to Blender. Now it is and DECALmachine has added support for it.  The  Topo Slice  tool now has a twist offset parameter, which can be useful if a panel strip's boundary edge loops don't line up properly.  Panel Transition has been improved and is much more robust now.  The triangulation method for DECALexport has been changed from BEAUTY to FIXED, which seems to resemble the viewport/opengl triangulation and so should avoid unwanted surface intersections after exporting.  The  HOps Fix  is now a part of HardOps itself making awkward code injections a thing of the past. As a result any Operatives should make sure to update to 'Hard Ops 0093 - Neptunium' before running DECALmachine 1.4.1.",
+            "title": "Changes and Improvements"
+        },
+        {
+            "location": "/whatsnew/index.html#fixes_2",
+            "text": "An export group related issue with decals projected on material decals has been fixed. Note that Material Decals should not be exported anyways, cut them into the mesh using Material Cut instead!  The  Remove Decal Mode  didn't properly clean the open scene of panel decal assets, this is fixed now.  A number of people experienced problems with the  Rotate Decal  option not working on the slice tools. This was related to them not having selection sync enabled in the UV editor, which now happens automatically.\nThis also caused the  Rotate Decal  tool to not properly work, when run from edit mode.  The mesh.intersect tool in Blender has been changed in 2.79, which caused the  Material Cut  and  Panel Transition  tools to fail. Both are working great with the 1.4.1 update.  Decal and CustomDecal asset paths will no longer resist changes to a custom locations.  Previously (W)Step would throw an exception, if it encountered empty material slots. A safety check has been added to prevent this.",
+            "title": "Fixes"
+        },
+        {
+            "location": "/whatsnew/index.html#14-decal-domination",
+            "text": "The Export Release",
+            "title": "1.4 - Decal Domination"
+        },
+        {
+            "location": "/whatsnew/index.html#complete-decal-export-pipeline",
+            "text": "DECALmachine 1.4 is a huge release and the center piece of this update is the export capability.\nThis turns DM from a  mere  Blender addon, into a complete pipeline for mesh based decals: experiment, create, design in Blender, but then also get your work out into a number of target platforms, if you so choose.  In addition to the ability to export decals, there's also  (W)Step  - a tool/workflow to easily create custom vertex normals, which complement the decal workflow beautifully and are used to control hard surface shading without the need for normal maps. Note, it's highly recommended to use  (W)Step  along side HardOps and its boolean tools.  If you are taking your assets into Unity3D, DM even supplies shaders specifically made to be used with the DM exported decals - it's the whole nine yards.  But it doesn't stop there. The added ability to bake decal textures down into normal maps, ao maps, curvature maps, etc., unlocks a new approach to hard surface texturing, that could augment and in some scenarios perhaps even replace the traditional high-poly to low-poly workflow.  So, how does this all work? The first step in the export process is the creation of an optimally packed Decal Atlas from individual decal textures. This is in essence completely automated, but does allow for some user input, in that you have the ability to change the scale of individual decals in the atlas as well as adjust the padding between them.  Alternatively, instead of creating a new Atlas pack for each new asset, you can also use an existing packing solution you've created previously.  The second step is organizing Decals and their parent objects(called  targets ) via so called  Export Groups . With this in place, decals will be joined, decal UVs will be adjusted according to the atlas packing solution and materials using the atlas textures will be applied - all automatically.  Finally, your complete asset(incl. mesh decals) can be either exported to a number of platforms - such as Unity3D, Unreal Engine 4, Substance Painter and Sketchfab - or decals can be baked down, creating texture maps, that can be taken into any tool or engine you choose.",
+            "title": "Complete Decal Export Pipeline"
+        },
+        {
+            "location": "/whatsnew/index.html#expanding-the-slice-toolset",
+            "text": "1.4 introduces an alternative Slice tool called  Float Slice , useful in circumstances were the old  Decal Slice  - renamed to  Topo Slice  - has trouble or would fail, particularly on dense meshes.  There's also  Draw Slice  which is a precursor tool to  Float Slice  and enables you to manually draw panel strips, by extruding vertices on the surface of an object.  Concluding the additions to the slice tools is the  Panelize  tool, which makes adding simple decal strip shapes quick and effortless by turning polygon boundaries into panel strips, instead of the boolean-like approach of intersecting an object with a cutting object.",
+            "title": "Expanding the Slice Toolset"
+        },
+        {
+            "location": "/whatsnew/index.html#improving-usability",
+            "text": "",
+            "title": "Improving Usability"
+        },
+        {
+            "location": "/whatsnew/index.html#operator-properties",
+            "text": "This release adds  Operator Properties  for the main tools. This makes using DM more interactive, simplifies dealing with unexpected behavior(such as  Topo Slice  failing) and allows for a greater degree of customizing each tools behavior.  Operator Properties  can be accessed from the bottom of the  T  panel  or by bringing up the  F6  menu.",
+            "title": "Operator Properties"
+        },
+        {
+            "location": "/whatsnew/index.html#automatic-parenting-of-projections-and-slices",
+            "text": "If you  project  a decal or create a panel strip via one of the  Slice  tools, the decals will - by default - be parented to the object you project them on or the object you are slicing.\nThis extends to the  Decal Sources  as well. So, when you change your objects location, orientation or scale and attempt to bring back a  Decal Source , it will be properly positioned, just where you'd expect it to be.",
+            "title": "Automatic Parenting of Projections and Slices"
+        },
+        {
+            "location": "/whatsnew/index.html#keymap-settings-to-preferences",
+            "text": "Changing DM's keymaps is now extremely easy and can be done directly in DECALmachine's  preferences .\nIn addition, all the GPencil tools can now be accessed via  CTRL + D , so there's no longer any keymap overlap between DM and GPencil.",
+            "title": "Keymap Settings to Preferences"
+        },
+        {
+            "location": "/whatsnew/index.html#scene-scaleunit-settings-support",
+            "text": "There is a new setting called  Force Consistent Scale  in DM's preferences, which you should enable, if have experienced very small or big decals when dropping them into a scene in relation to your unit scale settings.",
+            "title": "Scene Scale/Unit Settings support"
+        },
+        {
+            "location": "/whatsnew/index.html#remove-decal-mode",
+            "text": "You can now delete decals] from inside Blender, without having to navigate to the Decal Library locations on your hard disk.",
+            "title": "Remove Decal Mode"
+        },
+        {
+            "location": "/whatsnew/index.html#various-improvements",
+            "text": "Most tools have received small improvements and refinements in their behavior. Standing out from this is  Material Cut  which is now much more robust and has received  Operator Properties  to customize the behavior.",
+            "title": "Various Improvements"
+        },
+        {
+            "location": "/whatsnew/index.html#windows-32bit-support",
+            "text": "Windows 32bit support through PILwin32.zip has been added thanks to Jordan.",
+            "title": "Windows 32bit support"
+        },
+        {
+            "location": "/whatsnew/index.html#fixes_3",
+            "text": "Decal Project  and through  Panel Unwrap  the  Slice  tools will now remove any pre-existing UVs before creating new ones to avoid potential issues.  The main DECALmachine pie menu is from now on keymaped only in  Object  and  Edit  modes instead of generally in all 3D Views, freeing the  D  shortcut for all other modes, such as  Sculpt  and  Paint  modes.  An issue where non-tangent base normals would be created when running  Instant Decal Creation  has been fixed.  Another issue related to hidden geometry causing very dark AO maps has also been resolved.  Furthermore,  Remove Duplicates  could in some cases replace custom decal materials with their supplied decals counter parts and was fixed.  Finally, split panel decal strips causing  Panel Transition  to fail was rectified.",
+            "title": "Fixes"
+        },
+        {
+            "location": "/whatsnew/index.html#hardops-and-machin3tools",
+            "text": "If you use HardOps alongside DECALmachine, you should run the  HardOps Fix  in DECALmachine's preferences.md#general).  Furthermore, I'd recommend you use at least some of the tools provided by  MACHIN3tools , which is a free continuously evolving collection of scripts.\nIn particular,  Mirrror  and  Shading Switch  are particularly useful in combination with DECALmachine and highly suggest you use  Red Mode , should you use DECALmachine's custom vertex normal tool  (W)Step .  Mirror  is the recommended way to mirror Decals across another object. If you are using Rob Fornof's  Mirror Mirror  and/or my previous  Multi Mirror Mirror ,  Mirror  replaces them both.",
+            "title": "HardOps and MACHIN3tools"
+        },
+        {
+            "location": "/faq/index.html",
+            "text": "Contents\n\n\n\n\nInstallation\n\n\nGet Support\n\n\nOther Addons\n\n\nTechnique\n\n\nUsing DECALmachine\n\n\nDecal Creation\n\n\nErrors\n\n\n\n\nInstallation\n\n\nHow is it done?\n\n\nSee the \nInstallation\n guide and follow it precisely. Note the version requirement.\n\n\nGet support\n\n\n\n\nAttention\n\n\nNote the \nRequirements\n in the installation guide.\n\nMake sure you are using the \nlatest version\n.\n\nConfirm you've followed the \ninstallation instructions\n.\n\n\n\n\nGeneral information\n\n\nTo provide help, I need the following:\n\n\n\n\nProof of Purchase\n\n\nsystem-info.txt\n and \npil.log\n \n\n\n\n\n\n\nNote\n\n\nPlease use the \nRequest Support\n tool in the help panel to create the system-info.txt and pil.log files, and for further instructions.\n\n\n\n\n\nErrors\n\n\nIf you are seeing an error, please send me a \nscreenshot of the error message\n.\n\nEven better, send a \nscreenshot\n of the terminal/system console via email, or \ncopy and paste its text\n into the mail.\n\n\nOn windows you can turn on the console from Windows > 'Toggle System Console'.\n\nOn Linux and MacOS, just start Blender from a terminal.\n\n\n\n\nKeep in mind\n\n\nI \ndo not\n need an image of Blender's \nInfo View\n and I don't need to see Blender's \nPython Console\n either.\n\n\n\n\nIf the error only occurs on a certain model, please attach the blend file as well.\n\nPlease remove any part of the model that doesn't contrinbute to the problem to keep the file size small.\n\n\nTool misbehaviors\n\n\nIf you think a tool of DECALmachine doesn't do what it should do, please \nsend me the blend file\n.\n\nPlease remove any part of the model that doesn't contribute to the problem to keep the file size small.\n\n\nContact\n\n\nUse \neMail\n, not twitter, not facebook, not youtube, not artstation, not blender market, and not the \nBlender Artists\n or \npolycount\n threads \nfor reporting of errors\n.\n\n\nOther Addons\n\n\nIs MACHIN3tools required?\n\n\nMASCHIN3tools\n is not needed, but I'd recommended to use at least some of its tools, as they are very convenient in the DECALmachine workflow.\nCheck out the \naddons\n section.\n\n\nAre HardOps and BoxCutter required?\n\n\nHardOps\n and \nBoxCutter\n are not needed to use DECALmachine. HOps/BC and DM fill different niches in a hard surface workflow.\n\nDM is a finishing and detailing tool. While HOps/BC are tools for working with form and generally improve the Blender experience greatly.\n\nAs such the addons complement each either very well and I'd recommend them to any DECALmachine user.\n\n\nFurthermore it should be noted, that the HardOps and BoxCuter developers have been and continue to be extremely supportive and helpful and DECALmachine would not be what it is, without their initial contributions and guidance.\n\n\nWhy can't I access DECALmachine's pie menu when I activate BoxCutter's tool?\n\n\nIf you make Boxcutter active, by pressing its button in the tool bar, or via the \nAlt + W\n shortcut, BoxCutter takes over and brings up its own pie menu when pressing the \nD\n key.\nThat is - for now - expected behavior. You are seeing Blenders new tool system - or perhaps a disadvantage of it - in action.\n\n\nTo get the DECALmachine pie menu back when pressing \nD\n, you need to switch to any other tool but BoxCutter.\nI'll be looking into allowing none-\nD\n keys - even when BoxCutter is active - to bring up DECALmachine's pie menu in an upcoming update. From a user perspective that's definitely something that should be possible.\n\n\nThe tool system in Blender is still new and perhaps unfinished. And so the BoxCutter devs and I are using pretty drastic methods to avoid overlaps at this point.\n\nOver time the system will mature and best practices will evolve.\n\n\nTechnique\n\n\nCan you bake the decal normal maps to a single normal map?\n\n\nThis is planed for the upcoming 1.9 or 2.0 release.\n\n\n\n\n\n\n\n\n\n\n\nHow do you export the decals to Unity/Unreal?\n\n\nThis is planed for the upcoming 1.9 or 2.0 release.\n\n\n\n\n\nWhy are my panel decal materials/textures taken from the Aircraft(or any other) library?\n\n\nYou have enabled the \nSlice\n option for this other, non-panel decal library in the addon \npreferences\n.\n\n\n\n\nChanging the \nSlice\n property of a decal library, requires a library reload, or alternatively a Blender restart. Don't forget to save your preferences after the reload, or before the restart.\n\n\nTo change panel decal materials, check out the \nAdjust\n tool. Adjust will access all decal libraries marked as \nSlice\n.\nThe \nSlice tool\n will access that same pool of materials.\n\n\nIs there a way to make decals affect displacement instead of normals?\n\n\nTechnically it's trivial to change the decal node tree to do displacement as the height maps are already supplied. But think about it, a floating decal with actual displacement?\n\nFirst off, the decal would need to be subdivided a lot, which can be done, but secondly what would happen to the displaced geometry? It would intersect with the base mesh the decals are floating above - you wouldn't see much of the displaced geometry, as it is sunk into the base mesh.\n\n\nUsing DECALmachine\n\n\nHow do I snap decals to a surface?\n\n\nWhen Decals are imported using the asset loaders, all snap settings are prepared - face snapping, align to surface, etc. Snapping itself is not turned on however.\n\nThe suggested method to move decals and align them is by holding down \nCTRL\n while  moving decals via \ng\n. This will turn on snapping temporarily for as long as \nCTRL\n is pressed.\n\n\nDecal Creation\n\n\nHow do I create Decals?\n\n\nYou can ceate decals of all 4 types directly in Blender, see \nDecal Creation\n for details.",
+            "title": "FAQ"
+        },
+        {
+            "location": "/faq/index.html#contents",
+            "text": "Installation  Get Support  Other Addons  Technique  Using DECALmachine  Decal Creation  Errors",
+            "title": "Contents"
+        },
+        {
+            "location": "/faq/index.html#installation",
+            "text": "",
+            "title": "Installation"
+        },
+        {
+            "location": "/faq/index.html#how-is-it-done",
+            "text": "See the  Installation  guide and follow it precisely. Note the version requirement.",
+            "title": "How is it done?"
+        },
+        {
+            "location": "/faq/index.html#get-support",
+            "text": "Attention  Note the  Requirements  in the installation guide. \nMake sure you are using the  latest version . \nConfirm you've followed the  installation instructions .",
+            "title": "Get support"
+        },
+        {
+            "location": "/faq/index.html#general-information",
+            "text": "To provide help, I need the following:   Proof of Purchase  system-info.txt  and  pil.log      Note  Please use the  Request Support  tool in the help panel to create the system-info.txt and pil.log files, and for further instructions.",
+            "title": "General information"
+        },
+        {
+            "location": "/faq/index.html#errors",
+            "text": "If you are seeing an error, please send me a  screenshot of the error message . \nEven better, send a  screenshot  of the terminal/system console via email, or  copy and paste its text  into the mail.  On windows you can turn on the console from Windows > 'Toggle System Console'. \nOn Linux and MacOS, just start Blender from a terminal.   Keep in mind  I  do not  need an image of Blender's  Info View  and I don't need to see Blender's  Python Console  either.   If the error only occurs on a certain model, please attach the blend file as well. \nPlease remove any part of the model that doesn't contrinbute to the problem to keep the file size small.",
+            "title": "Errors"
+        },
+        {
+            "location": "/faq/index.html#tool-misbehaviors",
+            "text": "If you think a tool of DECALmachine doesn't do what it should do, please  send me the blend file . \nPlease remove any part of the model that doesn't contribute to the problem to keep the file size small.",
+            "title": "Tool misbehaviors"
+        },
+        {
+            "location": "/faq/index.html#contact",
+            "text": "Use  eMail , not twitter, not facebook, not youtube, not artstation, not blender market, and not the  Blender Artists  or  polycount  threads  for reporting of errors .",
+            "title": "Contact"
+        },
+        {
+            "location": "/faq/index.html#other-addons",
+            "text": "",
+            "title": "Other Addons"
+        },
+        {
+            "location": "/faq/index.html#is-machin3tools-required",
+            "text": "MASCHIN3tools  is not needed, but I'd recommended to use at least some of its tools, as they are very convenient in the DECALmachine workflow.\nCheck out the  addons  section.",
+            "title": "Is MACHIN3tools required?"
+        },
+        {
+            "location": "/faq/index.html#are-hardops-and-boxcutter-required",
+            "text": "HardOps  and  BoxCutter  are not needed to use DECALmachine. HOps/BC and DM fill different niches in a hard surface workflow. \nDM is a finishing and detailing tool. While HOps/BC are tools for working with form and generally improve the Blender experience greatly. \nAs such the addons complement each either very well and I'd recommend them to any DECALmachine user.  Furthermore it should be noted, that the HardOps and BoxCuter developers have been and continue to be extremely supportive and helpful and DECALmachine would not be what it is, without their initial contributions and guidance.",
+            "title": "Are HardOps and BoxCutter required?"
+        },
+        {
+            "location": "/faq/index.html#why-cant-i-access-decalmachines-pie-menu-when-i-activate-boxcutters-tool",
+            "text": "If you make Boxcutter active, by pressing its button in the tool bar, or via the  Alt + W  shortcut, BoxCutter takes over and brings up its own pie menu when pressing the  D  key.\nThat is - for now - expected behavior. You are seeing Blenders new tool system - or perhaps a disadvantage of it - in action.  To get the DECALmachine pie menu back when pressing  D , you need to switch to any other tool but BoxCutter.\nI'll be looking into allowing none- D  keys - even when BoxCutter is active - to bring up DECALmachine's pie menu in an upcoming update. From a user perspective that's definitely something that should be possible.  The tool system in Blender is still new and perhaps unfinished. And so the BoxCutter devs and I are using pretty drastic methods to avoid overlaps at this point. \nOver time the system will mature and best practices will evolve.",
+            "title": "Why can't I access DECALmachine's pie menu when I activate BoxCutter's tool?"
+        },
+        {
+            "location": "/faq/index.html#technique",
+            "text": "",
+            "title": "Technique"
+        },
+        {
+            "location": "/faq/index.html#can-you-bake-the-decal-normal-maps-to-a-single-normal-map",
+            "text": "This is planed for the upcoming 1.9 or 2.0 release.",
+            "title": "Can you bake the decal normal maps to a single normal map?"
+        },
+        {
+            "location": "/faq/index.html#how-do-you-export-the-decals-to-unityunreal",
+            "text": "This is planed for the upcoming 1.9 or 2.0 release.",
+            "title": "How do you export the decals to Unity/Unreal?"
+        },
+        {
+            "location": "/faq/index.html#why-are-my-panel-decal-materialstextures-taken-from-the-aircraftor-any-other-library",
+            "text": "You have enabled the  Slice  option for this other, non-panel decal library in the addon  preferences .   Changing the  Slice  property of a decal library, requires a library reload, or alternatively a Blender restart. Don't forget to save your preferences after the reload, or before the restart.  To change panel decal materials, check out the  Adjust  tool. Adjust will access all decal libraries marked as  Slice .\nThe  Slice tool  will access that same pool of materials.",
+            "title": "Why are my panel decal materials/textures taken from the Aircraft(or any other) library?"
+        },
+        {
+            "location": "/faq/index.html#is-there-a-way-to-make-decals-affect-displacement-instead-of-normals",
+            "text": "Technically it's trivial to change the decal node tree to do displacement as the height maps are already supplied. But think about it, a floating decal with actual displacement? \nFirst off, the decal would need to be subdivided a lot, which can be done, but secondly what would happen to the displaced geometry? It would intersect with the base mesh the decals are floating above - you wouldn't see much of the displaced geometry, as it is sunk into the base mesh.",
+            "title": "Is there a way to make decals affect displacement instead of normals?"
+        },
+        {
+            "location": "/faq/index.html#using-decalmachine",
+            "text": "",
+            "title": "Using DECALmachine"
+        },
+        {
+            "location": "/faq/index.html#how-do-i-snap-decals-to-a-surface",
+            "text": "When Decals are imported using the asset loaders, all snap settings are prepared - face snapping, align to surface, etc. Snapping itself is not turned on however. \nThe suggested method to move decals and align them is by holding down  CTRL  while  moving decals via  g . This will turn on snapping temporarily for as long as  CTRL  is pressed.",
+            "title": "How do I snap decals to a surface?"
+        },
+        {
+            "location": "/faq/index.html#decal-creation",
+            "text": "",
+            "title": "Decal Creation"
+        },
+        {
+            "location": "/faq/index.html#how-do-i-create-decals",
+            "text": "You can ceate decals of all 4 types directly in Blender, see  Decal Creation  for details.",
+            "title": "How do I create Decals?"
+        },
+        {
+            "location": "/pie_menu/index.html",
+            "text": "Pie Menu\n\n\nshortcut\n \nD\n\n\nThe primary interface to DECALmachine.\n\n\nAsset Loaders\n, tools and properties.",
+            "title": "Pie Menu"
+        },
+        {
+            "location": "/pie_menu/index.html#pie-menu",
+            "text": "shortcut   D  The primary interface to DECALmachine.  Asset Loaders , tools and properties.",
+            "title": "Pie Menu"
+        },
+        {
+            "location": "/panels/index.html",
+            "text": "Panels\n\n\nshortcut\n \nN\n\n\nThe secondary interface to DECALmachine.\n\nDecal related defaults and settings, \nDecal Creation\n and Help.",
+            "title": "Panels"
+        },
+        {
+            "location": "/panels/index.html#panels",
+            "text": "shortcut   N  The secondary interface to DECALmachine. \nDecal related defaults and settings,  Decal Creation  and Help.",
+            "title": "Panels"
+        },
+        {
+            "location": "/decals/index.html",
+            "text": "Decals\n\n\nDecals in the context of DECALmachine, are mostly - but not necessarily - single-polygon-meshes with a specific Decal material applied.\nThe material determines the \ntype\n of a decal, of which there are currently 4:\n\n\n\n\nSimple - normal mapped + parallax, 1 material component\n\n\nSubset - normal mapped + parallax, 2 material components\n\n\nPanel - normal mapped, up to 3 material components\n\n\nInfo - color mapped\n\n\n\n\n\n\n 3 simple, subset, panel and info decals, each 1 polygon\n\n\nThese so called \nmesh-decals\n are an alternative approach to detail texturing.\n\nBut unlike actual texturing, detailing using Decals, does not require any UVs being present and is extremely flexible, due to it being noncommittal, non-destructive and object based.\n\n\n\n\nNote\n\n\nThis is not to be confused with mixing textures and materials via multiple uv channels on the same objects, for which term \nDecal\n is also sometimes used.\n\n\n\n\nParallax\n\n\nParallax is a shader effect, that by utilizing an UV offset, creates the \nillusion of depth\n on flat geometry.\n\n\n\n\n\n\nNote\n\n\nHow well parallax works depends on the angle you are looking at it from.\n\nAlso, parallax works better for some types of detail than others.\n\nGoing into the surface, works surprisingly well. Going above, not so much.\n\nA single level of depth works better than multiple levels.",
+            "title": "Decals"
+        },
+        {
+            "location": "/decals/index.html#decals",
+            "text": "Decals in the context of DECALmachine, are mostly - but not necessarily - single-polygon-meshes with a specific Decal material applied.\nThe material determines the  type  of a decal, of which there are currently 4:   Simple - normal mapped + parallax, 1 material component  Subset - normal mapped + parallax, 2 material components  Panel - normal mapped, up to 3 material components  Info - color mapped     3 simple, subset, panel and info decals, each 1 polygon  These so called  mesh-decals  are an alternative approach to detail texturing. \nBut unlike actual texturing, detailing using Decals, does not require any UVs being present and is extremely flexible, due to it being noncommittal, non-destructive and object based.   Note  This is not to be confused with mixing textures and materials via multiple uv channels on the same objects, for which term  Decal  is also sometimes used.",
+            "title": "Decals"
+        },
+        {
+            "location": "/decals/index.html#parallax",
+            "text": "Parallax is a shader effect, that by utilizing an UV offset, creates the  illusion of depth  on flat geometry.    Note  How well parallax works depends on the angle you are looking at it from. \nAlso, parallax works better for some types of detail than others. \nGoing into the surface, works surprisingly well. Going above, not so much. \nA single level of depth works better than multiple levels.",
+            "title": "Parallax"
+        },
+        {
+            "location": "/asset_loaders/index.html",
+            "text": "Asset Loaders\n\n\nshortcut\n \nD\n\n\nThe asset loaders, located in the \nPie Menu\n, are used to append decals from your Decal libraries to the current scene.\n\n\n\n\nNote\n\n\nBy default Decals will added at the location of the mouse, at the time of opening the pie menu.\n\nThis can be changed in the \nPanel\n.\n\n\n\n\n\n\nVarious Decal libraries, represented by Asset Loaders in the DECALmachine pie menu\n\n\nUsing the Asset Loaders\n\n\n\n\n\n\n\n\n\n\n\nQuick Insert\n\n\nshortcut\n \nCTRL + D\n\n\nTo quickly bring the same decal into the scene, that you've appended previously, \nQuick Insert\n can be used, thereby skipping the \nPie Menu\n completely.",
+            "title": "Asset Loaders"
+        },
+        {
+            "location": "/asset_loaders/index.html#asset-loaders",
+            "text": "shortcut   D  The asset loaders, located in the  Pie Menu , are used to append decals from your Decal libraries to the current scene.   Note  By default Decals will added at the location of the mouse, at the time of opening the pie menu. \nThis can be changed in the  Panel .    Various Decal libraries, represented by Asset Loaders in the DECALmachine pie menu",
+            "title": "Asset Loaders"
+        },
+        {
+            "location": "/asset_loaders/index.html#using-the-asset-loaders",
+            "text": "",
+            "title": "Using the Asset Loaders"
+        },
+        {
+            "location": "/asset_loaders/index.html#quick-insert",
+            "text": "shortcut   CTRL + D  To quickly bring the same decal into the scene, that you've appended previously,  Quick Insert  can be used, thereby skipping the  Pie Menu  completely.",
+            "title": "Quick Insert"
+        },
+        {
+            "location": "/re-apply/index.html",
+            "text": "Re-Apply\n\n\nshortcut\n \nDR\n\n\nApplying a Decal\n is a new concept introduced in DECALmachine 1.8.\n\nIt refers to a proccess of 3 things:\n\n\n\n\nAuto-\nMaterial-Match\n a Decal\n\n\nParent a Decal\n\n\nSetup the Normal Transfer\n\n\n\n\nThis process happens automatically, when bringing a decal into the scene via the \nAsset Loaders\n, but it can also be done manually, using the \nRe-Apply\n tool.\n\n\nSelection\n\n\nAny number of Decal objects.\n\nOptionally a non-decal object - selected last - to force-apply the Decal(s) to this very object, instead of having DECALmachine find the target object(s) itself.\n\n\nModes\n\n\nDefault: Re-Apply Decal to (new) Object.\n\n\nALT\n: Forcibly auto-match Decal material, even if a specific material is chosen in the \nPanel\n.  \n\n\nUsing Re-Apply",
+            "title": "Re-Apply"
+        },
+        {
+            "location": "/re-apply/index.html#re-apply",
+            "text": "shortcut   DR  Applying a Decal  is a new concept introduced in DECALmachine 1.8. \nIt refers to a proccess of 3 things:   Auto- Material-Match  a Decal  Parent a Decal  Setup the Normal Transfer   This process happens automatically, when bringing a decal into the scene via the  Asset Loaders , but it can also be done manually, using the  Re-Apply  tool.",
+            "title": "Re-Apply"
+        },
+        {
+            "location": "/re-apply/index.html#selection",
+            "text": "Any number of Decal objects. \nOptionally a non-decal object - selected last - to force-apply the Decal(s) to this very object, instead of having DECALmachine find the target object(s) itself.",
+            "title": "Selection"
+        },
+        {
+            "location": "/re-apply/index.html#modes",
+            "text": "Default: Re-Apply Decal to (new) Object.  ALT : Forcibly auto-match Decal material, even if a specific material is chosen in the  Panel .",
+            "title": "Modes"
+        },
+        {
+            "location": "/re-apply/index.html#using-re-apply",
+            "text": "",
+            "title": "Using Re-Apply"
+        },
+        {
+            "location": "/adjust_defaults/index.html",
+            "text": "Adjust\n\n\nshortcut\n \nDA\n\n\nshortcut\n \nDAW\n to adjust panel decal width\n\n\nshortcut\n \nDA + scroll\n to rotate a decal\n\n\ncheck out the hints in the tool's modal HUD for more\n\n\nAdjust\n is a Decal-Swiss-Army-Knife. Using it, you can manipulate various \nDecal Properties\n.\n\n\n\n\nTips\n\n\n\n\nWhen changing the width of a Panel Decal, \nAdjust\n will update the default panel width value in the \npie menu\n, used by the \nSlice\n tool.\n\n\nSimilarly, if you change the material/type of a Panel Decal using \nAdjust\n, the \nSlice\n tool will remember that choice and use that same material for the next Panel Decal.\n\n\n\n\n\n\nSelection\n\n\nAny number of Decal objects, including a mix of \ndifferent types\n.\n\nNon-decal objects can be among the selection and will be ignored.\n\n\nUsing Adjust\n\n\n\n\n\n\n\n\n\n\n\nDefaults\n\n\nThere are various Decal related default settings, that can be accessed in the DECALmachine \nPanel\n.  \n\n\n\n\nAnd there is quite a bit of overlap between the panel's defaults and the properties in the \nAdjust\n tool.\n\nBut while \nAdjust\n works on the current selection of objects, the settings in the panel change Decal properties scene-wide.",
+            "title": "Adjust/Defaults"
+        },
+        {
+            "location": "/adjust_defaults/index.html#adjust",
+            "text": "shortcut   DA  shortcut   DAW  to adjust panel decal width  shortcut   DA + scroll  to rotate a decal  check out the hints in the tool's modal HUD for more  Adjust  is a Decal-Swiss-Army-Knife. Using it, you can manipulate various  Decal Properties .   Tips   When changing the width of a Panel Decal,  Adjust  will update the default panel width value in the  pie menu , used by the  Slice  tool.  Similarly, if you change the material/type of a Panel Decal using  Adjust , the  Slice  tool will remember that choice and use that same material for the next Panel Decal.",
+            "title": "Adjust"
+        },
+        {
+            "location": "/adjust_defaults/index.html#selection",
+            "text": "Any number of Decal objects, including a mix of  different types . \nNon-decal objects can be among the selection and will be ignored.",
+            "title": "Selection"
+        },
+        {
+            "location": "/adjust_defaults/index.html#using-adjust",
+            "text": "",
+            "title": "Using Adjust"
+        },
+        {
+            "location": "/adjust_defaults/index.html#defaults",
+            "text": "There are various Decal related default settings, that can be accessed in the DECALmachine  Panel .     And there is quite a bit of overlap between the panel's defaults and the properties in the  Adjust  tool. \nBut while  Adjust  works on the current selection of objects, the settings in the panel change Decal properties scene-wide.",
+            "title": "Defaults"
+        },
+        {
+            "location": "/project/index.html",
+            "text": "Project\n\n\nshortcut\n \ndd\n1\n\n\nProject\n conforms a decal to the curved surface of a non-decal target object.\n\nProjected decals will keep their original, unprojected Decal as a \nbackup\n.\n\n\n\n\nKeep in mind\n\n\nDecals on flat surfaces \nDO NOT\n need to be projected.\n\nAnd neither do decals, covering only a single polygon on the target object.\n\n\n\n\nSelection\n\n\nAny number of Decal objects. \n\nAlready projected and sliced Decals among the selection will be ignored.  \n\n\nModes\n\n\nDefault: Project Selected Decals on Surface\n\n\nALT\n: Manually adjust projection depth\n\n\nCTRL\n: Use UV Project instead of UV Transfer\n\n\nSHIFT\n: Shrinkwrap  \n\n\nUsing Project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn the case of \ndd\n, you need to also click with the mouse afterwards, otherwise the pie menu will stay open, as it is triggered with the second \nd\n as well, unfortunately.\u00a0\n\u21a9",
+            "title": "Project"
+        },
+        {
+            "location": "/project/index.html#project",
+            "text": "shortcut   dd 1  Project  conforms a decal to the curved surface of a non-decal target object. \nProjected decals will keep their original, unprojected Decal as a  backup .   Keep in mind  Decals on flat surfaces  DO NOT  need to be projected. \nAnd neither do decals, covering only a single polygon on the target object.",
+            "title": "Project"
+        },
+        {
+            "location": "/project/index.html#selection",
+            "text": "Any number of Decal objects.  \nAlready projected and sliced Decals among the selection will be ignored.",
+            "title": "Selection"
+        },
+        {
+            "location": "/project/index.html#modes",
+            "text": "Default: Project Selected Decals on Surface  ALT : Manually adjust projection depth  CTRL : Use UV Project instead of UV Transfer  SHIFT : Shrinkwrap",
+            "title": "Modes"
+        },
+        {
+            "location": "/project/index.html#using-project",
+            "text": "In the case of  dd , you need to also click with the mouse afterwards, otherwise the pie menu will stay open, as it is triggered with the second  d  as well, unfortunately.\u00a0 \u21a9",
+            "title": "Using Project"
+        },
+        {
+            "location": "/slice/index.html",
+            "text": "Slice\n\n\nshortcut\n \nDS\n\n\nSlice\n is used to create a \nPanel Decal\n at the intersection of two objects.\n\nSliced Panel Decals, will keep their cutter object as a \nbackup\n.  \n\n\n\n\nTips\n\n\n\n\nUse the \nAdjust\n tool to change the material/type of exiting Panel Decals.\n\n\nWhen sliced, Panel Decals will use the default panel width defined in the \npie menu\n\n\nThe \nAdjust\n tool will also set this value automatically, when changing the width of a panel.\n\n\n\n\n\n\nSelection\n\n\nTwo intersecting non-decal objects.\n\n\nModes\n\n\nDefault: Create \nfloating\n Panel Decal\n\n\nALT\n: \nTopo Slice\n, follow target object's topology closely\n\n\nSHIFT\n: Create smoothed Panel Decal\n\n\nCTRL\n: Create subdivided \nand\n smoothed Panel Decal  \n\n\nUsing Slice\n\n\n\n\n\n\n\n\n\n\n\nUnwrap\n\n\nIf a sliced Panel Decal is selected, the \nUnwrap\n tool will appear in place of \nSlice\n in the \nPie Menu\n.  \n\n\n\n\nUnwrap\n recreates the panel decal UVs and should \nalways\n be run, after panel decal geometry has been changed.\n\n\n\n\nKeep in mind\n\n\nIf you edit panel decals, make sure you keep them all-quad polygon strips.\n\n\n\n\nModes\n\n\nDefault: Unwrap all-quad Panel Decal\n\n\nAlt\n: Unwrap + shrinkwrap all-quad Panel Decal",
+            "title": "Slice"
+        },
+        {
+            "location": "/slice/index.html#slice",
+            "text": "shortcut   DS  Slice  is used to create a  Panel Decal  at the intersection of two objects. \nSliced Panel Decals, will keep their cutter object as a  backup .     Tips   Use the  Adjust  tool to change the material/type of exiting Panel Decals.  When sliced, Panel Decals will use the default panel width defined in the  pie menu  The  Adjust  tool will also set this value automatically, when changing the width of a panel.",
+            "title": "Slice"
+        },
+        {
+            "location": "/slice/index.html#selection",
+            "text": "Two intersecting non-decal objects.",
+            "title": "Selection"
+        },
+        {
+            "location": "/slice/index.html#modes",
+            "text": "Default: Create  floating  Panel Decal  ALT :  Topo Slice , follow target object's topology closely  SHIFT : Create smoothed Panel Decal  CTRL : Create subdivided  and  smoothed Panel Decal",
+            "title": "Modes"
+        },
+        {
+            "location": "/slice/index.html#using-slice",
+            "text": "",
+            "title": "Using Slice"
+        },
+        {
+            "location": "/slice/index.html#unwrap",
+            "text": "If a sliced Panel Decal is selected, the  Unwrap  tool will appear in place of  Slice  in the  Pie Menu .     Unwrap  recreates the panel decal UVs and should  always  be run, after panel decal geometry has been changed.   Keep in mind  If you edit panel decals, make sure you keep them all-quad polygon strips.",
+            "title": "Unwrap"
+        },
+        {
+            "location": "/slice/index.html#modes_1",
+            "text": "Default: Unwrap all-quad Panel Decal  Alt : Unwrap + shrinkwrap all-quad Panel Decal",
+            "title": "Modes"
+        },
+        {
+            "location": "/get_backup/index.html",
+            "text": "Get Backup\n\n\nshortcut\n \nDB\n\n\nRetrieve orignal, \nunprojected\n decal or cutter object used for \nSlice\n.\n\n\nSelection\n\n\nAny number of projected or sliced decals.\n\n\nModes\n\n\nDefault: Retrieve dublicate of backup\n\n\nALT\n: Retrieve original backup and delete selected Decal\n\n\nUsing Get Backup",
+            "title": "Get Backup"
+        },
+        {
+            "location": "/get_backup/index.html#get-backup",
+            "text": "shortcut   DB  Retrieve orignal,  unprojected  decal or cutter object used for  Slice .",
+            "title": "Get Backup"
+        },
+        {
+            "location": "/get_backup/index.html#selection",
+            "text": "Any number of projected or sliced decals.",
+            "title": "Selection"
+        },
+        {
+            "location": "/get_backup/index.html#modes",
+            "text": "Default: Retrieve dublicate of backup  ALT : Retrieve original backup and delete selected Decal",
+            "title": "Modes"
+        },
+        {
+            "location": "/get_backup/index.html#using-get-backup",
+            "text": "",
+            "title": "Using Get Backup"
+        },
+        {
+            "location": "/match_material/index.html",
+            "text": "Match Material\n\n\nshortcut\n \nDV\n\n\nDecals in Blender are opaque and occlude the underlying surfaces and materials.\n\nTo integrate a decal and so create the illusion of surface detail, a Decal's material can be \nmatched\n to other materials.\n\n\n\n\nNote\n\n\nInfo Decals cannot be material matched, because they don't imitate surface detail.\n\n\n\n\n\n\nKeep in mind\n\n\nOnly Materials with a Principled BSDF shader node at the end can be matched.\n\nUnderstand, that any nodes connected to the inputs of this shader will be ignored. Keep it to simple parameter based materials, \nfor now\n.\n\n\n\n\n\n\nMaterial Components\n\n\nDecal Materials have up to 3 components, each of which can be matched to another material.\n\n\n\n\nSimple, Subset and Panel Decal materials and their components\n\n\n\n\nNote\n\n\nThe \nRe-Apply\n tool also \nmatches\n materials, but it only ever does so for the Material and Material 2 components.\n\nAlso, the same is done when \nbringing Decals into the scene\n.\n\n\n\n\nSelection\n\n\nAny number of Simple, Subset or Panel Decals.\n\nInfo Decals and non-decals among the selection will be ignored.\n\n\nUsing Match Material",
+            "title": "Match Material"
+        },
+        {
+            "location": "/match_material/index.html#match-material",
+            "text": "shortcut   DV  Decals in Blender are opaque and occlude the underlying surfaces and materials. \nTo integrate a decal and so create the illusion of surface detail, a Decal's material can be  matched  to other materials.   Note  Info Decals cannot be material matched, because they don't imitate surface detail.    Keep in mind  Only Materials with a Principled BSDF shader node at the end can be matched. \nUnderstand, that any nodes connected to the inputs of this shader will be ignored. Keep it to simple parameter based materials,  for now .",
+            "title": "Match Material"
+        },
+        {
+            "location": "/match_material/index.html#material-components",
+            "text": "Decal Materials have up to 3 components, each of which can be matched to another material.   Simple, Subset and Panel Decal materials and their components   Note  The  Re-Apply  tool also  matches  materials, but it only ever does so for the Material and Material 2 components. \nAlso, the same is done when  bringing Decals into the scene .",
+            "title": "Material Components"
+        },
+        {
+            "location": "/match_material/index.html#selection",
+            "text": "Any number of Simple, Subset or Panel Decals. \nInfo Decals and non-decals among the selection will be ignored.",
+            "title": "Selection"
+        },
+        {
+            "location": "/match_material/index.html#using-match-material",
+            "text": "",
+            "title": "Using Match Material"
+        },
+        {
+            "location": "/select/index.html",
+            "text": "Select\n\n\nshortcut\n \ndbl LMB\n\n\nThe \nSelect\n tool is used to quickly select all decals of one or more parent objects.\n\nIt's simimlar to Blender's \nobject.select_grouped(type='CHILDREN_RECURSIVE'\n, however, will only select Decals, instead of all children.\n\n\nCheck out \nthis part\n of the \nPreferences\n video, where the tool and keymap are explained.\n\n\nSelection\n\n\nAny number of objects carrying Decals.\n\n\n\n\nNote\n\n\nFor multiple objects, you want to double click on the background, otherwise you will \ndeselect one\n of the objects.\n\nAlso, for users of the 2.80 default keymap, I suggest changing the keymap to something else, because selecting on the background will \ndeselect all objects\n.\n\n\n\n\nProperties\n\n\nKeep Decal Parents Selected\n\n\n\n\nAdds the Decal objects to the already selected parent objects.",
+            "title": "Select"
+        },
+        {
+            "location": "/select/index.html#select",
+            "text": "shortcut   dbl LMB  The  Select  tool is used to quickly select all decals of one or more parent objects. \nIt's simimlar to Blender's  object.select_grouped(type='CHILDREN_RECURSIVE' , however, will only select Decals, instead of all children.  Check out  this part  of the  Preferences  video, where the tool and keymap are explained.",
+            "title": "Select"
+        },
+        {
+            "location": "/select/index.html#selection",
+            "text": "Any number of objects carrying Decals.   Note  For multiple objects, you want to double click on the background, otherwise you will  deselect one  of the objects. \nAlso, for users of the 2.80 default keymap, I suggest changing the keymap to something else, because selecting on the background will  deselect all objects .",
+            "title": "Selection"
+        },
+        {
+            "location": "/select/index.html#properties",
+            "text": "Keep Decal Parents Selected   Adds the Decal objects to the already selected parent objects.",
+            "title": "Properties"
+        },
+        {
+            "location": "/decal_creation_instant/index.html",
+            "text": "Create\n\n\nAll four \nDecal types\n can be created without leaving Blender.  \n\n\nThe created Decals will be added to a temporary libary called \nInstant\n. It's meant to be a temporary holding place, to collect decals and experiment with various settings.\n\n\nSelection\n\n\nOne or multipe non-decal objects.\n\n\nAdd Decal to Libarary\n\n\nUse this tool to add an \nInstant\n Decal, or any other existing Decal to any \nunlocked\n library of your choosing.\n\n\nSelection\n\n\nAny Decal.\n\n\n\n\nKeep in mind\n\n\nAdd Panel Decals to libararies marked as \nSlice\n in the \npreferences\n, if you want their materials to be accessible by the \nAdjust\n and \nSlice\n tools.\n\n\n\n\nUsing Create + Add Decal to Libary",
+            "title": "Instant"
+        },
+        {
+            "location": "/decal_creation_instant/index.html#create",
+            "text": "All four  Decal types  can be created without leaving Blender.    The created Decals will be added to a temporary libary called  Instant . It's meant to be a temporary holding place, to collect decals and experiment with various settings.",
+            "title": "Create"
+        },
+        {
+            "location": "/decal_creation_instant/index.html#selection",
+            "text": "One or multipe non-decal objects.",
+            "title": "Selection"
+        },
+        {
+            "location": "/decal_creation_instant/index.html#add-decal-to-libarary",
+            "text": "Use this tool to add an  Instant  Decal, or any other existing Decal to any  unlocked  library of your choosing.",
+            "title": "Add Decal to Libarary"
+        },
+        {
+            "location": "/decal_creation_instant/index.html#selection_1",
+            "text": "Any Decal.   Keep in mind  Add Panel Decals to libararies marked as  Slice  in the  preferences , if you want their materials to be accessible by the  Adjust  and  Slice  tools.",
+            "title": "Selection"
+        },
+        {
+            "location": "/decal_creation_instant/index.html#using-create-add-decal-to-libary",
+            "text": "",
+            "title": "Using Create + Add Decal to Libary"
+        },
+        {
+            "location": "/fix_texture_paths/index.html",
+            "text": "Fix Texture Paths\n\n\nThe \nFix Texture Paths\n tool, located in the \nDebug Panel\n, is used to repair decal textures paths, if they have changed - for instance when a blend file has been moved to a different computer.",
+            "title": "Fix Texture Paths"
+        },
+        {
+            "location": "/fix_texture_paths/index.html#fix-texture-paths",
+            "text": "The  Fix Texture Paths  tool, located in the  Debug Panel , is used to repair decal textures paths, if they have changed - for instance when a blend file has been moved to a different computer.",
+            "title": "Fix Texture Paths"
+        },
+        {
+            "location": "/validate_decal/index.html",
+            "text": "Validate Decal\n\n\nThe \nValidate Decal\n tool is a developer tool, located in the \nDebug Panel\n and used to find problems with decals. As such, it's mostly used in context of \nDecal Creation\n.\n\n\nSelection\n\n\nA single Decal object.\n\n\nUsing Validate Decal",
+            "title": "Validate Decal"
+        },
+        {
+            "location": "/validate_decal/index.html#validate-decal",
+            "text": "The  Validate Decal  tool is a developer tool, located in the  Debug Panel  and used to find problems with decals. As such, it's mostly used in context of  Decal Creation .",
+            "title": "Validate Decal"
+        },
+        {
+            "location": "/validate_decal/index.html#selection",
+            "text": "A single Decal object.",
+            "title": "Selection"
+        },
+        {
+            "location": "/validate_decal/index.html#using-validate-decal",
+            "text": "",
+            "title": "Using Validate Decal"
+        },
+        {
+            "location": "/update_legacy_decals/index.html",
+            "text": "Update Legacy Decals\n\n\nDecals created with earlier DECALmachine versions, such as 1.4.2, need to be converted before they can be used in version 1.8 and newer. \n\nThe tool is located in the the \nUpdate Legacy Decal Libraries\n panel.\n\n\n\n\nNote\n\n\nYou can pick out individual decals you \ndon't want to convert\n, by deleting their icons.",
+            "title": "Update Legacy Decals"
+        },
+        {
+            "location": "/update_legacy_decals/index.html#update-legacy-decals",
+            "text": "Decals created with earlier DECALmachine versions, such as 1.4.2, need to be converted before they can be used in version 1.8 and newer.  \nThe tool is located in the the  Update Legacy Decal Libraries  panel.   Note  You can pick out individual decals you  don't want to convert , by deleting their icons.",
+            "title": "Update Legacy Decals"
+        },
+        {
+            "location": "/supplied_decals/index.html",
+            "text": "Supplied Decals\n\n\nDECALmachine comes with 108 pre-made Decals, ready to be used.\n\n\nExamples\n\n\n\n\n38 simple and Subset Decals\n\n\nExample Panels\n\n\n\n\n14 Panel Decals\n\n\nAircraft\n\n\n\n\n55 Info Decals\n\n\nMyDecals\n\n\n\n\n1 Info Decal",
+            "title": "Supplied Decals"
+        },
+        {
+            "location": "/supplied_decals/index.html#supplied-decals",
+            "text": "DECALmachine comes with 108 pre-made Decals, ready to be used.",
+            "title": "Supplied Decals"
+        },
+        {
+            "location": "/supplied_decals/index.html#examples",
+            "text": "38 simple and Subset Decals",
+            "title": "Examples"
+        },
+        {
+            "location": "/supplied_decals/index.html#example-panels",
+            "text": "14 Panel Decals",
+            "title": "Example Panels"
+        },
+        {
+            "location": "/supplied_decals/index.html#aircraft",
+            "text": "55 Info Decals",
+            "title": "Aircraft"
+        },
+        {
+            "location": "/supplied_decals/index.html#mydecals",
+            "text": "1 Info Decal",
+            "title": "MyDecals"
+        },
+        {
+            "location": "/addons/index.html",
+            "text": "Addons\n\n\nDECALmachine tries to work seamlessly with as many other addons as possible.\n\n\n\n\n\n\n\n\n\n\n\nGroupPro\n\n\nGroupPro makes working with huge scenes and lots of objects easy and unlocks the potential of collection instances in Blender.\n\n\nBartosz Styperek\n: \nWordPress\n, \nTwitter\n\nBuy: \nGumroad\n\nDiscuss: \nBlender Artitst\n  \n\n\nBatch Ops\u21222\n\n\nBatch Ops\u21222 is a highly sophisticated data manager. It can outline/arrange/control all your modifiers, materials, collections (and other data) in the currently open file, scene or among the visible objects. \n\n\nMOTH3R\n aka \nIvan Santic\n: \nWeb\n, \nTwitter\n\nBuy: \nGumroad\n, \nBlender Market\n\nDiscuss: \nBlender Artists\n \n\n\nHard Ops\n\n\nHard Ops is a toolkit aimed at assisting users with everything from modelling to rendering, with a focus on hard surface design. \n\n\nmasterXeon1001\n/\nTeamC\n(\nAR\n, \nproxe\n and more): \nWeb\n, \nTwitter\n\nBuy: \nGumroad\n, \nBlender Market\n\nDiscuss: \nBlender Artists\n\n\nMACHIN3tools\n\n\nMACHIN3tools is a free, continuously evolving collection of blender tools and pie menus in a single customizable package.\n\n\nGet: \nGumroad\n, \nGitHub\n\nBuy: \nBlender Market\n\nDiscuss: \nBlender Artists",
+            "title": "Addons"
+        },
+        {
+            "location": "/addons/index.html#addons",
+            "text": "DECALmachine tries to work seamlessly with as many other addons as possible.",
+            "title": "Addons"
+        },
+        {
+            "location": "/addons/index.html#grouppro",
+            "text": "GroupPro makes working with huge scenes and lots of objects easy and unlocks the potential of collection instances in Blender.  Bartosz Styperek :  WordPress ,  Twitter \nBuy:  Gumroad \nDiscuss:  Blender Artitst",
+            "title": "GroupPro"
+        },
+        {
+            "location": "/addons/index.html#batch-opstm2",
+            "text": "Batch Ops\u21222 is a highly sophisticated data manager. It can outline/arrange/control all your modifiers, materials, collections (and other data) in the currently open file, scene or among the visible objects.   MOTH3R  aka  Ivan Santic :  Web ,  Twitter \nBuy:  Gumroad ,  Blender Market \nDiscuss:  Blender Artists",
+            "title": "Batch Ops\u21222"
+        },
+        {
+            "location": "/addons/index.html#hard-ops",
+            "text": "Hard Ops is a toolkit aimed at assisting users with everything from modelling to rendering, with a focus on hard surface design.   masterXeon1001 / TeamC ( AR ,  proxe  and more):  Web ,  Twitter \nBuy:  Gumroad ,  Blender Market \nDiscuss:  Blender Artists",
+            "title": "Hard Ops"
+        },
+        {
+            "location": "/addons/index.html#machin3tools",
+            "text": "MACHIN3tools is a free, continuously evolving collection of blender tools and pie menus in a single customizable package.  Get:  Gumroad ,  GitHub \nBuy:  Blender Market \nDiscuss:  Blender Artists",
+            "title": "MACHIN3tools"
+        },
+        {
+            "location": "/decal_resources/index.html",
+            "text": "Pawe\u0142 \u0141yczkowski\n\n\nStencil Kit Industrial ($)\n\n\n \n\n\nAntoine Collignon\n\n\n40 Sci-Fi decals 2017 ($)\n\n\n\n\nMaciej Sobolewski\n\n\nS-F Decals ($)\n\n\n\n\nPiotr Jedzi\u0144ski\n\n\n100+ Sci-Fi Decals ($)\n\n\n\n\nTony Leonard\n\n\nTL-MX Set 01 ($)\n\n\n\n\nJROTools\n\n\nSign Decals Vol. 1 ($)",
+            "title": "Decal Resources"
+        },
+        {
+            "location": "/decal_resources/index.html#pawe-yczkowski",
+            "text": "",
+            "title": "Pawe\u0142 \u0141yczkowski"
+        },
+        {
+            "location": "/decal_resources/index.html#stencil-kit-industrial",
+            "text": "",
+            "title": "Stencil Kit Industrial ($)"
+        },
+        {
+            "location": "/decal_resources/index.html#antoine-collignon",
+            "text": "",
+            "title": "Antoine Collignon"
+        },
+        {
+            "location": "/decal_resources/index.html#40-sci-fi-decals-2017",
+            "text": "",
+            "title": "40 Sci-Fi decals 2017 ($)"
+        },
+        {
+            "location": "/decal_resources/index.html#maciej-sobolewski",
+            "text": "",
+            "title": "Maciej Sobolewski"
+        },
+        {
+            "location": "/decal_resources/index.html#s-f-decals",
+            "text": "",
+            "title": "S-F Decals ($)"
+        },
+        {
+            "location": "/decal_resources/index.html#piotr-jedzinski",
+            "text": "",
+            "title": "Piotr Jedzi\u0144ski"
+        },
+        {
+            "location": "/decal_resources/index.html#100-sci-fi-decals",
+            "text": "",
+            "title": "100+ Sci-Fi Decals ($)"
+        },
+        {
+            "location": "/decal_resources/index.html#tony-leonard",
+            "text": "",
+            "title": "Tony Leonard"
+        },
+        {
+            "location": "/decal_resources/index.html#tl-mx-set-01",
+            "text": "",
+            "title": "TL-MX Set 01 ($)"
+        },
+        {
+            "location": "/decal_resources/index.html#jrotools",
+            "text": "",
+            "title": "JROTools"
+        },
+        {
+            "location": "/decal_resources/index.html#sign-decals-vol-1",
+            "text": "",
+            "title": "Sign Decals Vol. 1 ($)"
+        },
+        {
+            "location": "/changelog/index.html",
+            "text": "v1.8.5\n\n\n\n\n2019-05-20\n\n\n\n\n\n\nDecal Creation issues due to recent depsgraph changes\n\n\n\n\nv1.8.4\n\n\n\n\n2019-05-20\n\n\n\n\n\n\nfix Slice not clearing materials, due to recent depsgraph changes\n\n\n\n\nv1.8.3\n\n\n\n\n2019-05-18\n\n\n\n\n\n\nfix recent depsgraph issues\n\n\nimprove raycast and raycast performance\n\n\n\n\nv1.8.2\n\n\n\n\n2019-05-13\n\n\n\n\n\n\nadd GPanel\n\n\npanel decal creation from grease pencil strokes\n\n\n\n\n\n\nupdate PIL to 6.0.0\n\n\nimprove PIL installation\n\n\nadd extra, temporary debug output for decal creation, likely only related to Oscuart addon exception\n\n\nfix material match issue introduced in Blender 8f71a84496a9/27d097e92d54 (May 13th)\n\n\nfix raycast issue where decals were not aligned properly on modifier geometry\n\n\n\n\nv1.8.1\n\n\n\n\n2019-04-25\n\n\n\n\n\n\nadd optional update check\n\n\nappears in pie menu once update is available\n\n\n\n\n\n\nwork around issue in Unwrap (alternative mode) and Decal Creation, due to open Blender bug\n\n\nfix rare panel decal UV over or under stretching in Slice and Unwrap \n\n\nfix Normal Transfer defaults not being enforced by Shrinkwrap\n\n\noptimze addons check on preferences - about page\n\n\n\n\nv1.8\n\n\n\n\n2019-04-06\n\n\n\n\n\n\ncompletely rewrite DM for Blender 2.80\n\n\nredo Project tool, add new Shrinkwrap variation\n\n\nredo Slice, add new super robust \"float slice\", massively improve \"topo slice\"\n\n\nredo Instant Decal creation, add 3 new ways to create Info Decals inside Blender\n\n\nredo pie menu completely, add sidebar panels \n\n\nsupport unlimited decal libraries\n\n\nadd new raycast Decal insertion\n\n\nadd new Re-Apply tool\n\n\nadd new modal \"Adjust-everything\" tool\n\n\nadd new automatic material matching\n\n\nadd new scene-wide default settings\n\n\ntake full advantage of Eevee incl. real-time parallax\n\n\nhide decal materials and textures\n\n\nimprove integration with GroupPro, Batch Ops, Hard Ops and MACHIN3tools\n\n\n\n\nv1.4.2a\n\n\n\n\n2018-01-15\n\n\n\n\n\n\nfix MACHIN3tools Shading Switch related decal transparancy issue\n\n\n\n\nv1.4.2\n\n\n\n\n2018-01-14\n\n\n\n\n\n\nadded ReconstructPanelCutter tool\n\n\nadded 'Remove Decal' property to ExtractSource tool, also clear parent\n\n\nadded Principled BSDF support to WStep()\n\n\nadded Edit/Commit Normal Source tool\n\n\nexposed base material parameters in DM Preferences\n\n\nadjusted decal materials according to those preferencess when inserting decals and when slicing\n\n\nupdated InitBaseMaterial() to take parameters\n\n\n\n\n\n\nadded MACHIN3tools Material Viewport Compensation support to InitBaseMaterial\n\n\nadded 'Remove Decal' property to ExtractSource as well as clear parent\n\n\nadded interpolation type selection to WStep properties\n\n\nadded option to allow hard edges to WStep, which adds 2nd DataTransfer and mask existing hard edges using a vertex group\n\n\nadded SufaceFix tool, Edit/Commit Surface Fix tool and Unlink tool(space bar menu only)\n\n\nadded threshold value to control duplicate vert removal in Material Cut\n\n\nadded option to mark edges Freestyle in Material Cut\n\n\nadded ConvertFreestyletoSeam and ConvertSeamToFreestyle operators (spacebar menu)\n\n\n\n\n\n\nsimplified DecalRotate into single operator for CW and CCW rotations\n\n\nadded axis option to DecalRotate in object mode\n\n\nadded higher quality decal textures of decals02_32 - decals02_37\n\n\ninverted most supplied info decal textures to be white and set the invert slider in their decal materials to 0\n\n\nupdated MACHIN3shaders(unity3D) to include 'Blend Surface Normals' parameter and change info decal transparency to opacity\n\n\nimproved or re-added curvature in supplied panel decals textures\n\n\nadded 'Combine all-to-one' option to DECALBakeDown\n\n\nadded Assign Unique Materials option to Decal Exports\n\n\nadded \"Treat Freestyle edges as seams\" to export options, if Assign Unique Materials is turned on\n\n\n\n\n\n\nadded option to create 'DM_non-decals' group in ExportGroup  for convenience\n\n\nexposed atlas padding value to DM preferences\n\n\nadded 'Suppress Decal Name' option to DM create preferences for Batch Decal Creation\n\n\nadded 'Normal Alpha Tolerance' option to create preferences\n\n\nimproved batch decal creation sorting\n\n\nupdated color profiles in DECAL_create.blend for 2.79\n\n\nfixed info decals creation issue in 2.79 where texture assignment and thumbnail generation would fail\n\n\nfixed nrm_alpha map atlas quality issue when scaling decals in atlas or when using atlas downsampling\n\n\nfixed issue with Match Material replacing materials of supplied decals with materials of custom decals\n\n\nfixed exception in DECALexport when non-mesh objects are part of the selection\n\n\nfixed exception where atlas could not be laid out due to missing texture\n\n\nfixed exception and added warning in Panelize on closed meshes\n\n\nfixed DecalProject uv issue when pivot was not set to bounding box center\n\n\nfixed ExportGroup exception when blend file is saved to new name after atlas has been packed\n\n\nprevent export group creation from going forward in this case and open the new export folder, so you can copy the json and png files over from the old one\n\n\n\n\n\n\nfixed exception in export group creation when disabled mods on decals can't be applied\n\n\nin case of M3_copied_normals mods being the issue, the export groups target object will be added as the normal source and the mod will be applied\n\n\n\n\n\n\nfixed subtractor decal material input socket sorting\n\n\nfixed slice tools showing up in pie in edit mode\n\n\nfixed info decal shader(in MACHIn3shaders for unity) issue with metalness not working as expected with transparency\n\n\n\n\nv1.4.1a\n\n\n\n\n2017-09-24\n\n\n\n\n\n\ncatch the most frequent errors resulting from improper installation and provide terminal output info about how to solve them\n\n\nadded GroupPro connection\n\n\n\n\nv1.4.1\n\n\n\n\n2017-09-20\n\n\n\n\n\n\nrebuilt Match Material completely\n\n\nadded operator properties to match either Material or Subset or both (Material 1 and 2 in Panel Decals)\n\n\nsupports matching any of a target objects materials, by choosing a material socket id from the operator properties\n\n\nsupports matching Principled BSDF and Glossy BSDF shaders\n\n\navoids creating duplicate materials and finds existing materials that match the criteria\n\n\n\n\n\n\nadded Update Decal Nodes tool, to update scenes created before 2.79 to support Principled BSDF decals\n\n\nruns automatically on pre 2.79 decals, dropped into a scene via the Asset Loaders\n\n\n\n\n\n\nDecals created in 2.79 will use the Principled BSDF shader\n\n\nremoved Get and Set Material tools, as Match Material does the same now and does it better\n\n\nInit Base Material initiates a Principled BSDF base material in 2.79\n\n\nadded filmic 2.79 support\n\n\nadded Topo Slice twist offset parameter\n\n\nimproved Panel Transition panel section selection logic\n\n\nchanged export triangulation quad method to FIXED\n\n\nmoved HOps fix over to HardOps - update to 'Hard Ops 0093 - Neptunium' to use DECALmachine 1.4.1\n\n\nfixed export related issue with decals projected on material decals\n\n\nfixed Remove Decal Mode for panel decal assets\n\n\nfxxed Rotate Decal not working ing edit mode for some users\n\n\nfixed MaterialCut and PanelTransition not working properly in 2.79\n\n\nfixed issue with assetpaths resisting change\n\n\nfixed Rotate UVs option not working for some users\n\n\nfixed empty material slots issue in (W)Step\n\n\n\n\nv1.4a\n\n\n\n\n2017-08-30\n\n\n\n\n\n\nadded consistent scale parameter to prefs, making the unit scale compensation optional\n\n\nfixed wstep exception, when no HOps is installed\n\n\nadjusted wstep behaviour for when no HOps is installed\n\n\n\n\nv1.4\n\n\n\n\n2017-08-29\n\n\n\n\n\n\ncreated complete decal export pipeline\n\n\ndecal atlas creation\n\n\nuse existing atlas Solution\n\n\nautomatic decal UVs according to atlas packing\n\n\nexport targets:\n\n\nUnity3D - MACHIN3\n\n\ndecal shaders: plain, textured, info, panels\n\n\n\n\n\n\nUnity3D - bac9\n\n\nUnreal Engine 4\n\n\nSubstance Painter\n\n\nSketchfab\n\n\nUnpacked\n\n\n\n\n\n\nbake decals down\n\n\n\n\n\n\nadded w-step - a custom vertex normal workflow\n\n\nadded float slice\n\n\nadded draw slice\n\n\nadded panelize tool\n\n\nadded keymap settings to preferences\n\n\nadded operator properties to the main tools\n\n\nadded automatic parenting of projections and slices to their targets, incl for decal- and cutter backups/sources\n\n\nsupport scene scale/unit settings\n\n\nadded remove decal mode\n\n\nimproved material cut\n\n\nkeymapped gpencil pie to 'CTRL+D'\n\n\nadded win32 PIL, thanks to Jordan\n\n\nfixed project and slice(panel_unwrap) to always remove existing uvs\n\n\nfixed main DM pie, to only trigger object and edit modes\n\n\nfixed issue with non-tangent base normal maps from instant decal creation\n\n\nfixed black/dark ao issue in instant decal creation related to hidden geometry\n\n\nfixed issue with remove duplicates replacing custom decals\n\n\nfixed panel transition issue when panel strips were split\n\n\n\n\nv1.3.5b\n\n\n\n\n2017-06-07\n\n\n\n\n\n\nauto-set cycles and auto-switch to material view when inserting decals\n\n\nfixed decal create exception when scene has no world\n\n\nfixed panel unwrap exception when panel decal geo is hidden\n\n\nfixed thumbnail rendering issue related to non-png file ending setting in render panel\n\n\nadded experimental, alternative PIL for linux\n\n\nsimplified Readme.md and Readme.html\n\n\nadded local copy of full documentation in ReadtheDocs format\n\n\n\n\nv1.3.5a\n\n\n\n\n2017-05-19\n\n\n\n\n\n\nfixed batch decal creation bug when encountering filename with illegal characters\n\n\nfixed filmic related batch decal creation bug\n\n\nadded panel decal resolution options, useful for repeating elements in panel decals which require more length\n\n\nclarified and extended installation instructions\n\n\nswitched CREATE_decal.blend to CPU rendering\n\n\n\n\nv1.3.5\n\n\n\n\n2017-05-10\n\n\n\n\n\n\n5 new panel decals\n\n\nadded Init Base Material tool\n\n\nchanged panel unwrap from EVEN to LENGTH, allowing for regular repeating patterns in paneling\n\n\nadded panel decal material choice for decal slice/knife\n\n\ndecal creation: added instant panel creation\n\n\ndecal creation: fixed info decal batch creation, when filmic is not installed\n\n\ndecal creation: improved alignment of decal plane to source geometry when baking\n\n\nimproved Asset Management check to make sure its activated before DM, before exposing AM related settings\n\n\ndecal creation: improved height map mid level adjustment\n\n\ndecal creation: added 'replace last' checkbox, to overwrite last decal of category\n\n\ndecal creation: exposed ao samples\n\n\ndecal creation: exposed height contrast and parallax value for finer depth control\n\n\nadded CustomDecals library for user created decals\n\n\nadded uv rotation support to decal rotate tool (in edit mode or image editor)\n\n\ndecal creation: fixed pink thumbnails with gaffer addon and similar\n\n\ndecal creation: fixed thumbnail resolution percentage\n\n\n\n\nv1.3c\n\n\n\n\n2017-05-06\n\n\n\n\n\n\nbug fix in relation to custom script paths being set but not used\n\n\n\n\nv1.3b\n\n\n\n\n2017-05-06\n\n\n\n\n\n\nadded a warning on windows and macos, when trying to create decals using an unsaved blender scene\n\n\n\n\nv1.3a\n\n\n\n\n2017-05-06\n\n\n\n\n\n\nadded custom addon path support, thanks Ted\n\n\nswitched the macos PIL to a precompiled version for python 3.5 instead of 3.6\n\n\n\n\nv1.3\n\n\n\n\n2017-05-05\n\n\n\n\n\n\ndropped 2.77 support\n\n\nnew simplified decal creation guide\n\n\nvarious cleanup and restructuring\n\n\nnew modal \nadjust decal height\n tool, replacing the old decal push and decal lift\n\n\ndecals with mirror modifiers already applied can now be projected properly\n\n\nadded DECALcreate pie menu\n\n\ninsert buttons above asset loaders for quick re-import of the last decal\n\n\nsimplified custom decal creation: batch decal creation and instant decal creation\n\n\nadded PIL python library requirement for automated processing and curvature map creation\n\n\n7 new subset decals\n\n\nadded the_box sample scene\n\n\n\n\nv1.2b\n\n\n\n\n2017-04-25\n\n\n\n\n\n\nversion bump in addon meta data\n\n\nadditional info in the usage section of the readme, about the asset loader\n\n\n\n\nv1.2a\n\n\n\n\n2017-04-25\n\n\n\n\n\n\n2.77 decal creation hotfix to solve exception in saving decal blend\n\n\nno more unnecessary hiding of the original mesh when projecting on it\n\n\n\n\nv1.2\n\n\n\n\n2017-04-24\n\n\n\n\n\n\nunpacked sample scenes\n\n\nadded addon preferences to allow switching of the native path or the AM library\n\n\ndecal_rotate always uses the active_element pivot now and sets it back to what it was before afterwards\n\n\ninserted decals always move to the cursor location, with AM they'd only do this when nothing was selected\n\n\nwhen using the built in asset loader, there won't be duplicate material instances with 0 users accumulating anymore as is the case with AM\n\n\ndecal slice should now always be able to assign the decal panel material, no more dependence on AM\n\n\nsafety checks for get_material and decal_project\n\n\nadded decal creation guide and improved Readme(html), no more missing line breaks under windows\n\n\nadded decal creation template files and helper scripts\n\n\nmerged decals03 with decals02, as they are both subset decals\n\n\ndefault asset location in the addon folder, can be changed to use the AM library path, if you want\n\n\nsome pie menu restructuring for the asset loader, there are 4 previews for 4 decal categories now\n\n\nadded native asset loader, based on HOps tech, thanks guys!\n\n\nfile split and source restructuring\n\n\ncleanup\n\n\n\n\nv1.1\n\n\n\n\n2017-04-18\n\n\n\n\n\n\nadded decals03 library category: decals based on \nHard Ops\n assets\n\n\nadded sample assets: the crate, the barrel, the egg\n\n\n\n\nv1.0\n\n\n\n\n2017-04-17\n\n\n\n\n\n\ninitial release",
+            "title": "Changelog"
+        },
+        {
+            "location": "/changelog/index.html#v185",
+            "text": "2019-05-20    Decal Creation issues due to recent depsgraph changes",
+            "title": "v1.8.5"
+        },
+        {
+            "location": "/changelog/index.html#v184",
+            "text": "2019-05-20    fix Slice not clearing materials, due to recent depsgraph changes",
+            "title": "v1.8.4"
+        },
+        {
+            "location": "/changelog/index.html#v183",
+            "text": "2019-05-18    fix recent depsgraph issues  improve raycast and raycast performance",
+            "title": "v1.8.3"
+        },
+        {
+            "location": "/changelog/index.html#v182",
+            "text": "2019-05-13    add GPanel  panel decal creation from grease pencil strokes    update PIL to 6.0.0  improve PIL installation  add extra, temporary debug output for decal creation, likely only related to Oscuart addon exception  fix material match issue introduced in Blender 8f71a84496a9/27d097e92d54 (May 13th)  fix raycast issue where decals were not aligned properly on modifier geometry",
+            "title": "v1.8.2"
+        },
+        {
+            "location": "/changelog/index.html#v181",
+            "text": "2019-04-25    add optional update check  appears in pie menu once update is available    work around issue in Unwrap (alternative mode) and Decal Creation, due to open Blender bug  fix rare panel decal UV over or under stretching in Slice and Unwrap   fix Normal Transfer defaults not being enforced by Shrinkwrap  optimze addons check on preferences - about page",
+            "title": "v1.8.1"
+        },
+        {
+            "location": "/changelog/index.html#v18",
+            "text": "2019-04-06    completely rewrite DM for Blender 2.80  redo Project tool, add new Shrinkwrap variation  redo Slice, add new super robust \"float slice\", massively improve \"topo slice\"  redo Instant Decal creation, add 3 new ways to create Info Decals inside Blender  redo pie menu completely, add sidebar panels   support unlimited decal libraries  add new raycast Decal insertion  add new Re-Apply tool  add new modal \"Adjust-everything\" tool  add new automatic material matching  add new scene-wide default settings  take full advantage of Eevee incl. real-time parallax  hide decal materials and textures  improve integration with GroupPro, Batch Ops, Hard Ops and MACHIN3tools",
+            "title": "v1.8"
+        },
+        {
+            "location": "/changelog/index.html#v142a",
+            "text": "2018-01-15    fix MACHIN3tools Shading Switch related decal transparancy issue",
+            "title": "v1.4.2a"
+        },
+        {
+            "location": "/changelog/index.html#v142",
+            "text": "2018-01-14    added ReconstructPanelCutter tool  added 'Remove Decal' property to ExtractSource tool, also clear parent  added Principled BSDF support to WStep()  added Edit/Commit Normal Source tool  exposed base material parameters in DM Preferences  adjusted decal materials according to those preferencess when inserting decals and when slicing  updated InitBaseMaterial() to take parameters    added MACHIN3tools Material Viewport Compensation support to InitBaseMaterial  added 'Remove Decal' property to ExtractSource as well as clear parent  added interpolation type selection to WStep properties  added option to allow hard edges to WStep, which adds 2nd DataTransfer and mask existing hard edges using a vertex group  added SufaceFix tool, Edit/Commit Surface Fix tool and Unlink tool(space bar menu only)  added threshold value to control duplicate vert removal in Material Cut  added option to mark edges Freestyle in Material Cut  added ConvertFreestyletoSeam and ConvertSeamToFreestyle operators (spacebar menu)    simplified DecalRotate into single operator for CW and CCW rotations  added axis option to DecalRotate in object mode  added higher quality decal textures of decals02_32 - decals02_37  inverted most supplied info decal textures to be white and set the invert slider in their decal materials to 0  updated MACHIN3shaders(unity3D) to include 'Blend Surface Normals' parameter and change info decal transparency to opacity  improved or re-added curvature in supplied panel decals textures  added 'Combine all-to-one' option to DECALBakeDown  added Assign Unique Materials option to Decal Exports  added \"Treat Freestyle edges as seams\" to export options, if Assign Unique Materials is turned on    added option to create 'DM_non-decals' group in ExportGroup  for convenience  exposed atlas padding value to DM preferences  added 'Suppress Decal Name' option to DM create preferences for Batch Decal Creation  added 'Normal Alpha Tolerance' option to create preferences  improved batch decal creation sorting  updated color profiles in DECAL_create.blend for 2.79  fixed info decals creation issue in 2.79 where texture assignment and thumbnail generation would fail  fixed nrm_alpha map atlas quality issue when scaling decals in atlas or when using atlas downsampling  fixed issue with Match Material replacing materials of supplied decals with materials of custom decals  fixed exception in DECALexport when non-mesh objects are part of the selection  fixed exception where atlas could not be laid out due to missing texture  fixed exception and added warning in Panelize on closed meshes  fixed DecalProject uv issue when pivot was not set to bounding box center  fixed ExportGroup exception when blend file is saved to new name after atlas has been packed  prevent export group creation from going forward in this case and open the new export folder, so you can copy the json and png files over from the old one    fixed exception in export group creation when disabled mods on decals can't be applied  in case of M3_copied_normals mods being the issue, the export groups target object will be added as the normal source and the mod will be applied    fixed subtractor decal material input socket sorting  fixed slice tools showing up in pie in edit mode  fixed info decal shader(in MACHIn3shaders for unity) issue with metalness not working as expected with transparency",
+            "title": "v1.4.2"
+        },
+        {
+            "location": "/changelog/index.html#v141a",
+            "text": "2017-09-24    catch the most frequent errors resulting from improper installation and provide terminal output info about how to solve them  added GroupPro connection",
+            "title": "v1.4.1a"
+        },
+        {
+            "location": "/changelog/index.html#v141",
+            "text": "2017-09-20    rebuilt Match Material completely  added operator properties to match either Material or Subset or both (Material 1 and 2 in Panel Decals)  supports matching any of a target objects materials, by choosing a material socket id from the operator properties  supports matching Principled BSDF and Glossy BSDF shaders  avoids creating duplicate materials and finds existing materials that match the criteria    added Update Decal Nodes tool, to update scenes created before 2.79 to support Principled BSDF decals  runs automatically on pre 2.79 decals, dropped into a scene via the Asset Loaders    Decals created in 2.79 will use the Principled BSDF shader  removed Get and Set Material tools, as Match Material does the same now and does it better  Init Base Material initiates a Principled BSDF base material in 2.79  added filmic 2.79 support  added Topo Slice twist offset parameter  improved Panel Transition panel section selection logic  changed export triangulation quad method to FIXED  moved HOps fix over to HardOps - update to 'Hard Ops 0093 - Neptunium' to use DECALmachine 1.4.1  fixed export related issue with decals projected on material decals  fixed Remove Decal Mode for panel decal assets  fxxed Rotate Decal not working ing edit mode for some users  fixed MaterialCut and PanelTransition not working properly in 2.79  fixed issue with assetpaths resisting change  fixed Rotate UVs option not working for some users  fixed empty material slots issue in (W)Step",
+            "title": "v1.4.1"
+        },
+        {
+            "location": "/changelog/index.html#v14a",
+            "text": "2017-08-30    added consistent scale parameter to prefs, making the unit scale compensation optional  fixed wstep exception, when no HOps is installed  adjusted wstep behaviour for when no HOps is installed",
+            "title": "v1.4a"
+        },
+        {
+            "location": "/changelog/index.html#v14",
+            "text": "2017-08-29    created complete decal export pipeline  decal atlas creation  use existing atlas Solution  automatic decal UVs according to atlas packing  export targets:  Unity3D - MACHIN3  decal shaders: plain, textured, info, panels    Unity3D - bac9  Unreal Engine 4  Substance Painter  Sketchfab  Unpacked    bake decals down    added w-step - a custom vertex normal workflow  added float slice  added draw slice  added panelize tool  added keymap settings to preferences  added operator properties to the main tools  added automatic parenting of projections and slices to their targets, incl for decal- and cutter backups/sources  support scene scale/unit settings  added remove decal mode  improved material cut  keymapped gpencil pie to 'CTRL+D'  added win32 PIL, thanks to Jordan  fixed project and slice(panel_unwrap) to always remove existing uvs  fixed main DM pie, to only trigger object and edit modes  fixed issue with non-tangent base normal maps from instant decal creation  fixed black/dark ao issue in instant decal creation related to hidden geometry  fixed issue with remove duplicates replacing custom decals  fixed panel transition issue when panel strips were split",
+            "title": "v1.4"
+        },
+        {
+            "location": "/changelog/index.html#v135b",
+            "text": "2017-06-07    auto-set cycles and auto-switch to material view when inserting decals  fixed decal create exception when scene has no world  fixed panel unwrap exception when panel decal geo is hidden  fixed thumbnail rendering issue related to non-png file ending setting in render panel  added experimental, alternative PIL for linux  simplified Readme.md and Readme.html  added local copy of full documentation in ReadtheDocs format",
+            "title": "v1.3.5b"
+        },
+        {
+            "location": "/changelog/index.html#v135a",
+            "text": "2017-05-19    fixed batch decal creation bug when encountering filename with illegal characters  fixed filmic related batch decal creation bug  added panel decal resolution options, useful for repeating elements in panel decals which require more length  clarified and extended installation instructions  switched CREATE_decal.blend to CPU rendering",
+            "title": "v1.3.5a"
+        },
+        {
+            "location": "/changelog/index.html#v135",
+            "text": "2017-05-10    5 new panel decals  added Init Base Material tool  changed panel unwrap from EVEN to LENGTH, allowing for regular repeating patterns in paneling  added panel decal material choice for decal slice/knife  decal creation: added instant panel creation  decal creation: fixed info decal batch creation, when filmic is not installed  decal creation: improved alignment of decal plane to source geometry when baking  improved Asset Management check to make sure its activated before DM, before exposing AM related settings  decal creation: improved height map mid level adjustment  decal creation: added 'replace last' checkbox, to overwrite last decal of category  decal creation: exposed ao samples  decal creation: exposed height contrast and parallax value for finer depth control  added CustomDecals library for user created decals  added uv rotation support to decal rotate tool (in edit mode or image editor)  decal creation: fixed pink thumbnails with gaffer addon and similar  decal creation: fixed thumbnail resolution percentage",
+            "title": "v1.3.5"
+        },
+        {
+            "location": "/changelog/index.html#v13c",
+            "text": "2017-05-06    bug fix in relation to custom script paths being set but not used",
+            "title": "v1.3c"
+        },
+        {
+            "location": "/changelog/index.html#v13b",
+            "text": "2017-05-06    added a warning on windows and macos, when trying to create decals using an unsaved blender scene",
+            "title": "v1.3b"
+        },
+        {
+            "location": "/changelog/index.html#v13a",
+            "text": "2017-05-06    added custom addon path support, thanks Ted  switched the macos PIL to a precompiled version for python 3.5 instead of 3.6",
+            "title": "v1.3a"
+        },
+        {
+            "location": "/changelog/index.html#v13",
+            "text": "2017-05-05    dropped 2.77 support  new simplified decal creation guide  various cleanup and restructuring  new modal  adjust decal height  tool, replacing the old decal push and decal lift  decals with mirror modifiers already applied can now be projected properly  added DECALcreate pie menu  insert buttons above asset loaders for quick re-import of the last decal  simplified custom decal creation: batch decal creation and instant decal creation  added PIL python library requirement for automated processing and curvature map creation  7 new subset decals  added the_box sample scene",
+            "title": "v1.3"
+        },
+        {
+            "location": "/changelog/index.html#v12b",
+            "text": "2017-04-25    version bump in addon meta data  additional info in the usage section of the readme, about the asset loader",
+            "title": "v1.2b"
+        },
+        {
+            "location": "/changelog/index.html#v12a",
+            "text": "2017-04-25    2.77 decal creation hotfix to solve exception in saving decal blend  no more unnecessary hiding of the original mesh when projecting on it",
+            "title": "v1.2a"
+        },
+        {
+            "location": "/changelog/index.html#v12",
+            "text": "2017-04-24    unpacked sample scenes  added addon preferences to allow switching of the native path or the AM library  decal_rotate always uses the active_element pivot now and sets it back to what it was before afterwards  inserted decals always move to the cursor location, with AM they'd only do this when nothing was selected  when using the built in asset loader, there won't be duplicate material instances with 0 users accumulating anymore as is the case with AM  decal slice should now always be able to assign the decal panel material, no more dependence on AM  safety checks for get_material and decal_project  added decal creation guide and improved Readme(html), no more missing line breaks under windows  added decal creation template files and helper scripts  merged decals03 with decals02, as they are both subset decals  default asset location in the addon folder, can be changed to use the AM library path, if you want  some pie menu restructuring for the asset loader, there are 4 previews for 4 decal categories now  added native asset loader, based on HOps tech, thanks guys!  file split and source restructuring  cleanup",
+            "title": "v1.2"
+        },
+        {
+            "location": "/changelog/index.html#v11",
+            "text": "2017-04-18    added decals03 library category: decals based on  Hard Ops  assets  added sample assets: the crate, the barrel, the egg",
+            "title": "v1.1"
+        },
+        {
+            "location": "/changelog/index.html#v10",
+            "text": "2017-04-17    initial release",
+            "title": "v1.0"
+        }
+    ]
+}

@@ -19,21 +19,17 @@ import math
 import numpy as np
 from bpy.props import StringProperty, BoolProperty, IntProperty, FloatProperty
 from .helper_functions import calc_power
-# import sys
-# dir = 'C:\\Users\\JoseConseco\\AppData\\Local\\Programs\\Python\\Python35\\Lib\\site-packages'
-# if not dir in sys.path:
-#     sys.path.append(dir )
-# import ipdb
 
 
-class GenerateWeight(bpy.types.Operator):
+
+class HT_OT_GenerateWeight(bpy.types.Operator):
     bl_label = "Add ribbon weights"
     bl_idname = "object.ribbon_weight"
     bl_description = "Add vertex weights to ribbons mesh"
     bl_options = {"REGISTER", "UNDO"}
 
-    createNewVC = BoolProperty(name="Add new VColor", description="Adds new vertex color layer instead of overriding active one", default=False)
-    gradientFalloff = FloatProperty(name="Gradient Falloff", description="Gradient Falloff", default=0,
+    createNewVC: BoolProperty(name="Add new VColor", description="Adds new vertex color layer instead of overriding active one", default=False)
+    gradientFalloff: FloatProperty(name="Gradient Falloff", description="Gradient Falloff", default=0,
                                     min=-1, max=1, subtype='PERCENTAGE')
     def execute(self, context):
         ribbonMesh = context.active_object
@@ -42,7 +38,7 @@ class GenerateWeight(bpy.types.Operator):
             return {"CANCELLED"}
         mesh = ribbonMesh.data
         if not ribbonMesh.vertex_groups or self.createNewVC:
-            ribbonMesh.vertex_groups.new('gradient')
+            ribbonMesh.vertex_groups.new(name = 'gradient')
         if self.createNewVC:
             vg = ribbonMesh.vertex_groups[-1]
         else:
@@ -65,14 +61,14 @@ class GenerateWeight(bpy.types.Operator):
         bpy.ops.object.mode_set(mode='WEIGHT_PAINT')
         return {"FINISHED"}
 
-class GenerateVerColorGradient(bpy.types.Operator):
+class HT_OT_GenerateVerColorGradient(bpy.types.Operator):
     bl_label = "Add vertex colors gradient to ribbons"
     bl_idname = "object.ribbon_vert_color_grad"
     bl_description = "Add vertex color gradient to ribbons"
     bl_options = {"REGISTER", "UNDO"}
 
-    createNewVC = BoolProperty(name="Add new VColor", description="Adds new vertex color layer instead of overriding active one", default=False)
-    gradientFalloff = FloatProperty(name="Gradient Falloff", description="Gradient Falloff", default=0,
+    createNewVC: BoolProperty(name="Add new VColor", description="Adds new vertex color layer instead of overriding active one", default=False)
+    gradientFalloff: FloatProperty(name="Gradient Falloff", description="Gradient Falloff", default=0,
                                   min=-1, max=1, subtype='PERCENTAGE')
 
     def execute(self, context):
@@ -107,15 +103,15 @@ class GenerateVerColorGradient(bpy.types.Operator):
         bpy.ops.object.mode_set(mode='VERTEX_PAINT')
         return {"FINISHED"}
 
-class GenerateVerColorRandom(bpy.types.Operator):
+class HT_OT_GenerateVerColorRandom(bpy.types.Operator):
     bl_label = "Add random vertex colors per ribbon"
     bl_idname = "object.ribbon_vert_color_random"
     bl_description = "Makes each ribbon vertex color unique"
     bl_options = {"REGISTER", "UNDO"}
 
-    Seed = IntProperty(name="Noise Seed", default=1, min=1, max=1000)
-    mergeSimilar = BoolProperty(name="Merge Similar", description="Merge Simila", default=False)
-    createNewVC = BoolProperty(name="Add new VColor", description="Adds new vertex color layer instead of overriding active one", default=False)
+    Seed: IntProperty(name="Noise Seed", default=1, min=1, max=1000)
+    mergeSimilar: BoolProperty(name="Merge Similar", description="Merge Simila", default=False)
+    createNewVC: BoolProperty(name="Add new VColor", description="Adds new vertex color layer instead of overriding active one", default=False)
 
 
     def execute(self, context):
@@ -139,7 +135,7 @@ class GenerateVerColorRandom(bpy.types.Operator):
         faces = bm.faces
 
         while faces:
-            faces[0].select_set(True)  # select 1st face
+            faces[0].select = True  # select 1st face
             bpy.ops.mesh.select_linked()  # select all linked faces makes a full loop
             faceIslandsList.append([f for f in faces if f.select])
             bpy.ops.mesh.hide(unselected=False)  # hide the detected loop
