@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Terrain generated from heightmaps &mdash; Mirage 2.0.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/custom_mirage.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Mirage 2.0.0 documentation" href="index.html"/>
+        <link rel="next" title="Tree Distribution" href="tree_distribution.html"/>
+        <link rel="prev" title="Procedural Terrains" href="terrain.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Mirage
+          
+
+          
+            
+            <img src="_static/logo_square.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain.html">Procedural Terrains</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Terrain generated from heightmaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#heightmap-file">Heightmap File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-issues">Common issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#general-settings">General Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tree_distribution.html">Tree Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="presets.html">Presets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_list.html">Full Feature List</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Mirage</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Terrain generated from heightmaps</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/terrain_file.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="terrain-generated-from-heightmaps">
+<h1>Terrain generated from heightmaps<a class="headerlink" href="#terrain-generated-from-heightmaps" title="Permalink to this headline">¶</a></h1>
+<p>This tool uses the displace modifier on a grid mesh to produce a terrain using the
+elevation data from a heightmap.</p>
+<img alt="_images/terrain_file_intro.png" src="_images/terrain_file_intro.png" />
+<div class="section" id="heightmap-file">
+<h2>Heightmap File<a class="headerlink" href="#heightmap-file" title="Permalink to this headline">¶</a></h2>
+<p>This input sets the heightmap image to use. A <strong>heightmap</strong> (also know as heightfield)
+is a greyscale image representing elevation data. You can find them online by googling,
+or from websites like <a class="reference external" href="http://www.naturalearthdata.com">Natural Earth</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you want to know more about heightmaps <a class="reference external" href="https://en.wikipedia.org/wiki/Heightmap">check this Wikipedia article.</a></p>
+</div>
+<img alt="_images/terrain_file_selector.png" src="_images/terrain_file_selector.png" />
+<p>To select a heightmap click the <cite>Select a Heightmap</cite> button and navigate to the file.
+Note that once you select a heightmap you will see a preview of it, and the button&#8217;s
+text will change to the name of the image file. You can click the preview to see a
+list of heightmaps you have previously loaded.</p>
+<div class="section" id="common-issues">
+<h3>Common issues<a class="headerlink" href="#common-issues" title="Permalink to this headline">¶</a></h3>
+<p>Some heightmaps can produce strange artifacts around the edges (see image), this is
+a UV issue and can you can fix easily.</p>
+<img alt="_images/terrain_file_issues.jpg" src="_images/terrain_file_issues.jpg" />
+<p>Simply enter <cite>edit mode</cite> and go into the <cite>UV/Image editor</cite>, select everything (with
+the <strong>a</strong> key) and scale it down just a bit.</p>
+</div>
+</div>
+<div class="section" id="general-settings">
+<h2>General Settings<a class="headerlink" href="#general-settings" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Strength</dt>
+<dd>How strong the displacement is (vertical scale of features)</dd>
+<dt>Size</dt>
+<dd>Sets the size in real world units</dd>
+<dt>Detail level</dt>
+<dd>Set vertex count for the base grid (in segments). Note that the grid
+has to be UV Unwrapped to apply the displacement and this can be
+slow with high vertex counts.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since this terrain object uses a displacement modifier, you can tweak it
+after generating it. Check the modifiers tab in the properties editor.
+Don&#8217;t forget to update the vertex groups using the Tools panel.
+You can also change the texture image, by going into the texture tab.</p>
+</div>
+<img alt="_images/terrain_file_modifier.png" src="_images/terrain_file_modifier.png" />
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tree_distribution.html" class="btn btn-neutral float-right" title="Tree Distribution" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="terrain.html" class="btn btn-neutral" title="Procedural Terrains" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Diego Gangl.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

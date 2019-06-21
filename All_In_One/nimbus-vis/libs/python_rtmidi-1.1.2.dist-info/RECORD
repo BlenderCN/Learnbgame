@@ -1,0 +1,16 @@
+python_rtmidi-1.1.2.dist-info/AUTHORS.rst,sha256=j-AnKOlEjP0g4Pc_e9CI87sQjmAMpwr-6SxEtL2HZuM,274
+python_rtmidi-1.1.2.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+python_rtmidi-1.1.2.dist-info/LICENSE.txt,sha256=zRw4mh000bRfiS26eywGPIR58mpiGuG9Pomw9DSNCXc,2771
+python_rtmidi-1.1.2.dist-info/METADATA,sha256=RnYhBK4WftgKP3Qp_IiIhNOhvM8VEYrmS5aiAVauTYQ,3486
+python_rtmidi-1.1.2.dist-info/RECORD,,
+python_rtmidi-1.1.2.dist-info/WHEEL,sha256=48XWcqSBAesjnot8y-pbu95wq5FSiR6GARIbxcGoyPo,106
+python_rtmidi-1.1.2.dist-info/top_level.txt,sha256=zdXDd16SSzjBcv3ZghttppOSKVq7mPvpPZuHg2fo3as,7
+rtmidi/__init__.py,sha256=XVa5ZNqwTSrAbJmh8yHxRr00iziI_LgE1KNG5BpHU7c,202
+rtmidi/__pycache__/__init__.cpython-37.pyc,,
+rtmidi/__pycache__/midiconstants.cpython-37.pyc,,
+rtmidi/__pycache__/midiutil.cpython-37.pyc,,
+rtmidi/__pycache__/release.cpython-37.pyc,,
+rtmidi/_rtmidi.cp37-win_amd64.pyd,sha256=TSxdg7t_BqJ0_tWyUI3jr9XT3VVMfbXVVzk9Rfb5TBI,164352
+rtmidi/midiconstants.py,sha256=IgdCwMLZ8CLPkfVwAHsXhmgmi7nuX81sAwg50pjy_ZQ,7412
+rtmidi/midiutil.py,sha256=wZ-CHvZeAWzTKJ5LYB7iiaZkG1tgWsseLhRTOYJufIc,8756
+rtmidi/release.py,sha256=FaC_knE2fmtP3oV1_LzMN8jSI2FiiTpnlep_lQ1W4Bs,3672

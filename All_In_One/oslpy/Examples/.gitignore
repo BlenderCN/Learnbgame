@@ -1,0 +1,14 @@
+# common files we don't want to archive
+*.blend*
+*~
+*.oso
+
+# more specific ignores from test renders
+*.mp4
+render*
+textures*
+
+# my geany project
+OSL-dev.geany
+
+

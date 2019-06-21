@@ -1,0 +1,100 @@
+Changelog
+===================================
+
+2.0
+-----------------------------------
+
+Presets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- `new` Presets system. Applies only to procedural terrains at the moment.
+- `new` Presets can be imported/exported
+- `new` 10 default presets included
+
+Procedural Terrains
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- `new` New Terrain algorithm based on Frequency Synthesis. Much more realistic,
+  and slightly faster.
+- `new` Terrain generation doesn't block the Blender ui anymore, and shows progress
+  in two steps. (Mac and Linux only)
+- `new` Terrain generation can be canceled (before it's linked to the scene)
+- `new` Terrain Features tab. This is where optional terrain effects will live in the ui.
+- `new` Slopes Effect
+
+   - Can control intensity for X/Y axis
+   - Can set a minimum height for X/Y axis
+   - Slope direction can be inverted
+
+- `removed` Initial heights was removed and replaced with the slopes effect.
+- `new` Thermal Erosion
+   
+   - Repose angle (talus) can be modified between common ground values (30-45)
+   - Strength of the effect can be controlled
+
+- `new` Stratified effect (strata).
+
+   - Can happen at different frequencies
+   - Strength of the effect can be controlled
+   - Slope can be inverted (going inwards)
+
+- `changed` Terrain detail now uses a dropdown selector with three levels
+  (normal, medium and high) and a custom option.
+- `new` Custom detail. Terrains can now have specific number of segments. 
+
+  - Lets the user fine-tune the amount of vertices in the final mesh
+  - Custom Base Grid setting lets the user increase the amount of fine detail in the terrain
+
+- `new` Plateau setting. Flattens terrain at a specific height.
+- `changed` Terrain is always generated at 0,0 coordinates and is scaled 
+  vertically between 0 and max height.
+- `changed` Terrain remains at 0,0 coordinates even if sea level is higher than zero
+- `new` Alpine setting. Increases difference between valleys and peaks
+- `new` Deformation setting. Makes the terrain more "twisty" and adds more ridges
+- `changed` Seed values are now positive integers going up to 2,000,000,000
+- `new` Smoothed to plane edges now have a "smoothing factor" 
+  that determines how much the terrain is smoothed  (works in island too)
+
+Terrains from Heightmaps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- `new` Add preview selector for previous heightmaps
+- `fix` Make the file browser show only images when selecting heightmap
+- `changed` Move terrain from heightmaps to it's own panel
+
+General UI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- `changed` Group buttons and inputs in the ui
+- `changed` Use real world measure units whenever possible in the ui
+- `changed` Use 0-10 and 0-5 integer ranges in the ui whenever possible (easier to tweak)
+- `new` Set a custom tab for Mirage's panels in Addon Preferences
+
+Tree Distribution
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- `fix` Disable "Add trees" if no group selected
+- `fix` Check if the selected tree group is not empty
+- `fix` Use trees rotated on the side to take advantage of Blender's random rotation
+- `fix` Make sure tree mesh dimensions are never 0 
+  when calculating auto-scale (so billboards can be used)
+
+Tools
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- `new` Export vertex Groups to image
+- `new` Export terrain to data
+
+  - Export as 1D/2D list
+  - Export as Python/CSV
+
+- `new` Export to heightmap is now separated into a button
+
+  - Can export heightmaps from any plane-like mesh
+
+- `changed` Heightmaps are now exported in Linear colorspace
+
+
+1.0
+-----------------------------------
+
+- Initial Release
+- Terrain Generation using Diamond-Square
+- Terrain Generation using Heightmap image
+- Tree Distribution
+- Tools for vertex groups  

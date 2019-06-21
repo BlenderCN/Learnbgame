@@ -1,0 +1,237 @@
+attrs:
+ ddt_schemes_default:
+  type: Enum
+  name: "DDT schemes default:"
+  description: "DDT schemes default"
+  default: 'Euler'
+  items: 
+    -
+     - Euler
+     - Euler
+     - ""
+    -
+     - CrankNicolson 0.9
+     - CrankNicolson 0.9
+     - ""
+    -
+     - backward
+     - backward
+     - ""
+    -
+     - localEuler
+     - localEuler
+     - ""
+    -
+     - steadyState
+     - steadyState
+     - ""
+ grad_schemes_default:
+  type: Enum
+  name: "Grad Schemes Default:"
+  description: "Grad Schemes Default"
+  default: 'Gauss linear'
+  items: 
+    -
+     - Gauss linear
+     - Gauss linear
+     - ""
+    -
+     - Gauss cubic
+     - Gauss cubic
+     - ""
+    -
+     - leastSquares
+     - leastSquares
+     - ""
+ grad_schemes_grad_T:
+  type: Enum
+  name: "Grad Schemes Grad(T):"
+  description: "Grad Schemes Grad(P)"
+  default: 'Gauss linear'
+  items: 
+    -
+     - Gauss linear
+     - Gauss linear
+     - ""
+    -
+     - Gauss cubic
+     - Gauss cubic
+     - ""
+    -
+     - leastSquares
+     - leastSquares
+     - ""
+ grad_schemes_grad_p:
+  type: Enum
+  name: "Grad Schemes Grad(p):"
+  description: "Grad Schemes Grad(p)"
+  default: 'Gauss linear'
+  items: 
+    -
+     - Gauss linear
+     - Gauss linear
+     - ""
+    -
+     - Gauss cubic
+     - Gauss cubic
+     - ""
+    -
+     - leastSquares
+     - leastSquares
+     - ""
+ div_schemes_default:
+  type: Enum
+  name: "Div Schemes Default:"
+  description: "Div Schemes Default"
+  default: none
+  items: 
+    -
+     - Gauss cubic
+     - Gauss cubic
+     - ""
+    -
+     - none
+     - none
+     - ""
+ div_schemes_phi_U:
+  type: Enum
+  name: "Div Schemes Div(Phi, U):"
+  description: "Div Schemes Div(Phi, U)"
+  default: Gauss linear
+  items: 
+    -
+     - Gauss linear
+     - Gauss linear
+     - ""
+    -
+     - none
+     - none
+     - ""
+ lap_schemes_default:
+  type: Enum
+  name: "Laplacian Schemes Default"
+  description: "Laplacian Schemes Default"
+  default: none
+  items: 
+    -
+     - Gauss linear corrected
+     - Gauss linear corrected
+     - ""
+    -
+     - Gauss linear limited corrected 0.33
+     - Gauss linear limited corrected 0.33
+     - ""
+    -
+     - Gauss linear limited corrected 0.5
+     - Gauss linear limited corrected 0.5
+     - ""
+    -
+     - Gauss linear orthogonal
+     - Gauss linear orthogonal
+     - ""
+    -
+     - Gauss linear uncorrected
+     - Gauss linear uncorrected
+     - ""
+    -
+     - none
+     - none
+     - ""
+ lap_schemes_dt_t:
+  type: Enum
+  name: "Laplacian Schemes (DT, T)"
+  description: "Laplacian Schemes (DT, T)"
+  default: Gauss linear corrected
+  items: 
+    -
+     - Gauss linear corrected
+     - Gauss linear corrected
+     - ""
+    -
+     - Gauss linear limited corrected 0.33
+     - Gauss linear limited corrected 0.33
+     - ""
+    -
+     - Gauss linear limited corrected 0.5
+     - Gauss linear limited corrected 0.5
+     - ""
+    -
+     - Gauss linear orthogonal
+     - Gauss linear orthogonal
+     - ""
+    -
+     - Gauss linear uncorrected
+     - Gauss linear uncorrected
+     - ""
+    -
+     - none
+     - none
+     - ""
+ interp_schemes_default:
+  type: Enum
+  name: "Interpolation Schemes"
+  description: "Interpolation Schemes"
+  default: 'linear'
+  items: 
+    -
+     - cubic
+     - cubic
+     - ""
+    -
+     - linear
+     - linear
+     - ""
+ sngrad_schemes_default:
+  type: Enum
+  name: "snGradSchemes Default"
+  description: "snGradSchemes Default"
+  default: 'corrected'
+  items: 
+    -
+     - corrected
+     - corrected
+     - ""
+    -
+     - limited corrected 0.33
+     - limited corrected 0.33
+     - ""
+    -
+     - limited corrected 0.5
+     - limited corrected 0.5
+     - ""
+    -
+     - orthogonal
+     - orthogonal
+     - ""
+    -
+     - uncorrected
+     - uncorrected
+     - ""
+ flux_required_default:
+  type: Enum
+  name: "Flux Requried Default"
+  description: "Flux Required Default"
+  default: "no"
+  items: 
+    -
+     - "no"
+     - "no"
+     - ""
+    -
+     - "yes"
+     - "yes"
+     - ""
+ flux_required_t:
+  type: Enum
+  name: "Flux Requried T"
+  description: "Flux Required T"
+  default: "no"
+  items: 
+    -
+     - "no"
+     - "no"
+     - ""
+    -
+     - "yes"
+     - "yes"
+     - ""

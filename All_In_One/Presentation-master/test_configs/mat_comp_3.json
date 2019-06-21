@@ -1,0 +1,1716 @@
+{
+    "composite": {
+        "links": [
+            {
+                "from": {
+                    "bl_idname": "NodeSocketColor",
+                    "index": 0,
+                    "name": "node_0",
+                    "port": "Image"
+                },
+                "to": {
+                    "bl_idname": "NodeSocketColor",
+                    "index": 1,
+                    "name": "node_3",
+                    "port": "Image"
+                }
+            },
+            {
+                "from": {
+                    "bl_idname": "NodeSocketColor",
+                    "index": 0,
+                    "name": "node_3",
+                    "port": "Image"
+                },
+                "to": {
+                    "bl_idname": "NodeSocketColor",
+                    "index": 0,
+                    "name": "node_2",
+                    "port": "Image"
+                }
+            },
+            {
+                "from": {
+                    "bl_idname": "NodeSocketColor",
+                    "index": 0,
+                    "name": "node_1",
+                    "port": "RGBA"
+                },
+                "to": {
+                    "bl_idname": "NodeSocketColor",
+                    "index": 2,
+                    "name": "node_3",
+                    "port": "Image"
+                }
+            },
+            {
+                "from": {
+                    "bl_idname": "NodeSocketFloat",
+                    "index": 1,
+                    "name": "node_0",
+                    "port": "Alpha"
+                },
+                "to": {
+                    "bl_idname": "NodeSocketFloatFactor",
+                    "index": 0,
+                    "name": "node_3",
+                    "port": "Fac"
+                }
+            },
+            {
+                "from": {
+                    "bl_idname": "NodeSocketFloat",
+                    "index": 2,
+                    "name": "node_0",
+                    "port": "Z"
+                },
+                "to": {
+                    "bl_idname": "NodeSocketFloat",
+                    "index": 2,
+                    "name": "node_2",
+                    "port": "Z"
+                }
+            },
+            {
+                "from": {
+                    "bl_idname": "NodeSocketFloat",
+                    "index": 1,
+                    "name": "node_0",
+                    "port": "Alpha"
+                },
+                "to": {
+                    "bl_idname": "NodeSocketFloat",
+                    "index": 1,
+                    "name": "node_2",
+                    "port": "Alpha"
+                }
+            }
+        ],
+        "nodes": [
+            {
+                "_name": "node_0",
+                "_type": "CompositorNodeRLayers",
+                "color": [
+                    0.6079999804496765,
+                    0.6079999804496765,
+                    0.6079999804496765
+                ],
+                "height": 100.0,
+                "inputs": [],
+                "layer": "RenderLayer",
+                "location": [
+                    -227.34165954589844,
+                    445.0035400390625
+                ],
+                "name": "Render Layers",
+                "type": "R_LAYERS",
+                "width": 140.0
+            },
+            {
+                "_name": "node_1",
+                "_type": "CompositorNodeRGB",
+                "color": [
+                    0.6079999804496765,
+                    0.6079999804496765,
+                    0.6079999804496765
+                ],
+                "height": 100.0,
+                "inputs": [],
+                "location": [
+                    -43.82362747192383,
+                    204.69583129882812
+                ],
+                "name": "RGB",
+                "type": "RGB",
+                "width": 100.0
+            },
+            {
+                "_name": "node_2",
+                "_type": "CompositorNodeComposite",
+                "color": [
+                    0.6079999804496765,
+                    0.6079999804496765,
+                    0.6079999804496765
+                ],
+                "height": 100.0,
+                "inputs": [
+                    {
+                        "index": 0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "index": 1,
+                        "value": 1.0
+                    },
+                    {
+                        "index": 2,
+                        "value": 1.0
+                    }
+                ],
+                "location": [
+                    510.3710021972656,
+                    438.7030334472656
+                ],
+                "name": "Composite",
+                "type": "COMPOSITE",
+                "use_alpha": true,
+                "width": 140.0
+            },
+            {
+                "_name": "node_3",
+                "_type": "CompositorNodeMixRGB",
+                "color": [
+                    0.6079999804496765,
+                    0.6079999804496765,
+                    0.6079999804496765
+                ],
+                "height": 100.0,
+                "inputs": [
+                    {
+                        "index": 0,
+                        "value": 1.0
+                    },
+                    {
+                        "index": 1,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "index": 2,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    }
+                ],
+                "location": [
+                    194.17572021484375,
+                    313.6043701171875
+                ],
+                "name": "Mix",
+                "type": "MIX_RGB",
+                "use_alpha": false,
+                "use_clamp": false,
+                "width": 140.0
+            }
+        ]
+    },
+    "materials": [
+        {
+            "name": "BrickFloorStage",
+            "value": {
+                "links": [
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketShader",
+                            "index": 0,
+                            "name": "node_6",
+                            "port": "BSDF"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketShader",
+                            "index": 1,
+                            "name": "node_8",
+                            "port": "Shader"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketColor",
+                            "index": 0,
+                            "name": "node_4",
+                            "port": "Color"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketColor",
+                            "index": 0,
+                            "name": "node_6",
+                            "port": "Color"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_5",
+                            "port": "Output"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_4",
+                            "port": "Vector"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketShader",
+                            "index": 0,
+                            "name": "node_8",
+                            "port": "Shader"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketShader",
+                            "index": 0,
+                            "name": "node_10",
+                            "port": "Surface"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketShader",
+                            "index": 0,
+                            "name": "node_7",
+                            "port": "BSDF"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketShader",
+                            "index": 2,
+                            "name": "node_8",
+                            "port": "Shader"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_5",
+                            "port": "Output"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_2",
+                            "port": "Vector"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketColor",
+                            "index": 0,
+                            "name": "node_2",
+                            "port": "Color"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketFloat",
+                            "index": 0,
+                            "name": "node_3",
+                            "port": "Value"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketFloat",
+                            "index": 0,
+                            "name": "node_3",
+                            "port": "Value"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketFloatFactor",
+                            "index": 0,
+                            "name": "node_8",
+                            "port": "Fac"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_5",
+                            "port": "Output"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_9",
+                            "port": "Vector"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketColor",
+                            "index": 0,
+                            "name": "node_9",
+                            "port": "Color"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketColor",
+                            "index": 1,
+                            "name": "node_13",
+                            "port": "Color"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_13",
+                            "port": "Normal"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 2,
+                            "name": "node_7",
+                            "port": "Normal"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_13",
+                            "port": "Normal"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 2,
+                            "name": "node_6",
+                            "port": "Normal"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_5",
+                            "port": "Output"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_12",
+                            "port": "Vector"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketColor",
+                            "index": 0,
+                            "name": "node_12",
+                            "port": "Color"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketFloat",
+                            "index": 2,
+                            "name": "node_11",
+                            "port": "Height"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_11",
+                            "port": "Normal"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketFloat",
+                            "index": 2,
+                            "name": "node_10",
+                            "port": "Displacement"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 2,
+                            "name": "node_0",
+                            "port": "UV"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_5",
+                            "port": "Input"
+                        }
+                    }
+                ],
+                "nodes": [
+                    {
+                        "_name": "node_0",
+                        "_type": "ShaderNodeTexCoord",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [],
+                        "location": [
+                            -1036.1484375,
+                            375.5447998046875
+                        ],
+                        "name": "Texture Coordinate",
+                        "type": "TEX_COORD",
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_1",
+                        "_type": "ShaderNodeMapping",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "location": [
+                            -819.5411376953125,
+                            383.64739990234375
+                        ],
+                        "max": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "min": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "name": "Mapping",
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "type": "MAPPING",
+                        "use_max": false,
+                        "use_min": false,
+                        "width": 320.0
+                    },
+                    {
+                        "_name": "node_2",
+                        "_type": "ShaderNodeTexImage",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "interpolation": "Linear",
+                        "location": [
+                            -164.2459716796875,
+                            617.6783447265625
+                        ],
+                        "name": "Image Texture.001",
+                        "type": "TEX_IMAGE",
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_3",
+                        "_type": "ShaderNodeMath",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": 0.5
+                            },
+                            {
+                                "index": 1,
+                                "value": 3.1999998092651367
+                            }
+                        ],
+                        "location": [
+                            120.91887664794922,
+                            519.3333129882812
+                        ],
+                        "name": "Math",
+                        "operation": "MULTIPLY",
+                        "type": "MATH",
+                        "use_clamp": false,
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_4",
+                        "_type": "ShaderNodeTexImage",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "interpolation": "Linear",
+                        "location": [
+                            -177.5084686279297,
+                            368.6763916015625
+                        ],
+                        "name": "Image Texture",
+                        "type": "TEX_IMAGE",
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_5",
+                        "_type": "NodeReroute",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "location": [
+                            -451.5887145996094,
+                            215.07977294921875
+                        ],
+                        "name": "Reroute",
+                        "type": "REROUTE",
+                        "width": 100.0
+                    },
+                    {
+                        "_name": "node_6",
+                        "_type": "ShaderNodeBsdfDiffuse",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.800000011920929,
+                                    0.800000011920929,
+                                    0.800000011920929,
+                                    1.0
+                                ]
+                            },
+                            {
+                                "index": 1,
+                                "value": 0.0
+                            },
+                            {
+                                "index": 2,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "location": [
+                            91.18042755126953,
+                            366.45733642578125
+                        ],
+                        "name": "Diffuse BSDF",
+                        "type": "BSDF_DIFFUSE",
+                        "width": 150.0
+                    },
+                    {
+                        "_name": "node_7",
+                        "_type": "ShaderNodeBsdfGlossy",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.800000011920929,
+                                    0.800000011920929,
+                                    0.800000011920929,
+                                    1.0
+                                ]
+                            },
+                            {
+                                "index": 1,
+                                "value": 0.20000000298023224
+                            },
+                            {
+                                "index": 2,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "location": [
+                            89.57783508300781,
+                            230.49343872070312
+                        ],
+                        "name": "Glossy BSDF",
+                        "type": "BSDF_GLOSSY",
+                        "width": 150.0
+                    },
+                    {
+                        "_name": "node_8",
+                        "_type": "ShaderNodeMixShader",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": 0.5
+                            }
+                        ],
+                        "location": [
+                            358.7454833984375,
+                            391.9012145996094
+                        ],
+                        "name": "Mix Shader",
+                        "type": "MIX_SHADER",
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_9",
+                        "_type": "ShaderNodeTexImage",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "interpolation": "Linear",
+                        "location": [
+                            -360.65631103515625,
+                            143.16708374023438
+                        ],
+                        "name": "Image Texture.002",
+                        "type": "TEX_IMAGE",
+                        "width": 155.9259033203125
+                    },
+                    {
+                        "_name": "node_10",
+                        "_type": "ShaderNodeOutputMaterial",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 2,
+                                "value": 0.0
+                            }
+                        ],
+                        "location": [
+                            838.650634765625,
+                            287.0572509765625
+                        ],
+                        "name": "Material Output",
+                        "type": "OUTPUT_MATERIAL",
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_11",
+                        "_type": "ShaderNodeBump",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": 1.0
+                            },
+                            {
+                                "index": 1,
+                                "value": 0.10000000149011612
+                            },
+                            {
+                                "index": 2,
+                                "value": 1.0
+                            },
+                            {
+                                "index": 3,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "location": [
+                            554.3861083984375,
+                            165.84524536132812
+                        ],
+                        "name": "Bump",
+                        "type": "BUMP",
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_12",
+                        "_type": "ShaderNodeTexImage",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "interpolation": "Linear",
+                        "location": [
+                            174.54100036621094,
+                            41.40427017211914
+                        ],
+                        "name": "Image Texture.003",
+                        "type": "TEX_IMAGE",
+                        "width": 281.337890625
+                    },
+                    {
+                        "_name": "node_13",
+                        "_type": "ShaderNodeNormalMap",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": 1.0
+                            },
+                            {
+                                "index": 1,
+                                "value": [
+                                    0.5,
+                                    0.5,
+                                    1.0,
+                                    1.0
+                                ]
+                            }
+                        ],
+                        "location": [
+                            -132.3828582763672,
+                            114.33450317382812
+                        ],
+                        "name": "Normal Map",
+                        "space": "TANGENT",
+                        "type": "NORMAL_MAP",
+                        "width": 150.0
+                    }
+                ]
+            }
+        },
+        {
+            "name": "BrickFloorStage.001",
+            "value": {
+                "links": [
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketShader",
+                            "index": 0,
+                            "name": "node_6",
+                            "port": "BSDF"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketShader",
+                            "index": 1,
+                            "name": "node_8",
+                            "port": "Shader"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketColor",
+                            "index": 0,
+                            "name": "node_4",
+                            "port": "Color"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketColor",
+                            "index": 0,
+                            "name": "node_6",
+                            "port": "Color"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_5",
+                            "port": "Output"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_4",
+                            "port": "Vector"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketShader",
+                            "index": 0,
+                            "name": "node_8",
+                            "port": "Shader"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketShader",
+                            "index": 0,
+                            "name": "node_10",
+                            "port": "Surface"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketShader",
+                            "index": 0,
+                            "name": "node_7",
+                            "port": "BSDF"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketShader",
+                            "index": 2,
+                            "name": "node_8",
+                            "port": "Shader"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_5",
+                            "port": "Output"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_2",
+                            "port": "Vector"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketColor",
+                            "index": 0,
+                            "name": "node_2",
+                            "port": "Color"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketFloat",
+                            "index": 0,
+                            "name": "node_3",
+                            "port": "Value"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketFloat",
+                            "index": 0,
+                            "name": "node_3",
+                            "port": "Value"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketFloatFactor",
+                            "index": 0,
+                            "name": "node_8",
+                            "port": "Fac"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_5",
+                            "port": "Output"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_9",
+                            "port": "Vector"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketColor",
+                            "index": 0,
+                            "name": "node_9",
+                            "port": "Color"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketColor",
+                            "index": 1,
+                            "name": "node_13",
+                            "port": "Color"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_13",
+                            "port": "Normal"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 2,
+                            "name": "node_7",
+                            "port": "Normal"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_13",
+                            "port": "Normal"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 2,
+                            "name": "node_6",
+                            "port": "Normal"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_5",
+                            "port": "Output"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_12",
+                            "port": "Vector"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketColor",
+                            "index": 0,
+                            "name": "node_12",
+                            "port": "Color"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketFloat",
+                            "index": 2,
+                            "name": "node_11",
+                            "port": "Height"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_11",
+                            "port": "Normal"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketFloat",
+                            "index": 2,
+                            "name": "node_10",
+                            "port": "Displacement"
+                        }
+                    },
+                    {
+                        "from": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 2,
+                            "name": "node_0",
+                            "port": "UV"
+                        },
+                        "to": {
+                            "bl_idname": "NodeSocketVector",
+                            "index": 0,
+                            "name": "node_5",
+                            "port": "Input"
+                        }
+                    }
+                ],
+                "nodes": [
+                    {
+                        "_name": "node_0",
+                        "_type": "ShaderNodeTexCoord",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [],
+                        "location": [
+                            -1036.1484375,
+                            375.5447998046875
+                        ],
+                        "name": "Texture Coordinate",
+                        "type": "TEX_COORD",
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_1",
+                        "_type": "ShaderNodeMapping",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "location": [
+                            -819.5411376953125,
+                            383.64739990234375
+                        ],
+                        "max": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "min": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "name": "Mapping",
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "type": "MAPPING",
+                        "use_max": false,
+                        "use_min": false,
+                        "width": 320.0
+                    },
+                    {
+                        "_name": "node_2",
+                        "_type": "ShaderNodeTexImage",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "image": {
+                            "alpha_mode": "STRAIGHT",
+                            "filepath": "D:\\Render\\Presenatation\\Test\\3\\Bricks01_SPEC.jpg",
+                            "filepath_raw": "D:\\Render\\Presenatation\\Test\\3\\Bricks01_SPEC.jpg",
+                            "name": "Bricks01_SPEC.jpg",
+                            "source": "FILE",
+                            "use_fake_user": false
+                        },
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "interpolation": "Linear",
+                        "location": [
+                            -164.2459716796875,
+                            617.6783447265625
+                        ],
+                        "name": "Image Texture.001",
+                        "type": "TEX_IMAGE",
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_3",
+                        "_type": "ShaderNodeMath",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": 0.5
+                            },
+                            {
+                                "index": 1,
+                                "value": 3.1999998092651367
+                            }
+                        ],
+                        "location": [
+                            120.91887664794922,
+                            519.3333129882812
+                        ],
+                        "name": "Math",
+                        "operation": "MULTIPLY",
+                        "type": "MATH",
+                        "use_clamp": false,
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_4",
+                        "_type": "ShaderNodeTexImage",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "image": {
+                            "alpha_mode": "STRAIGHT",
+                            "filepath": "D:\\Render\\Presenatation\\Test\\3\\Bricks01.jpg",
+                            "filepath_raw": "D:\\Render\\Presenatation\\Test\\3\\Bricks01.jpg",
+                            "name": "Bricks01.jpg",
+                            "source": "FILE",
+                            "use_fake_user": false
+                        },
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "interpolation": "Linear",
+                        "location": [
+                            -177.5084686279297,
+                            368.6763916015625
+                        ],
+                        "name": "Image Texture",
+                        "type": "TEX_IMAGE",
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_5",
+                        "_type": "NodeReroute",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "location": [
+                            -451.5887145996094,
+                            215.07977294921875
+                        ],
+                        "name": "Reroute",
+                        "type": "REROUTE",
+                        "width": 16.0
+                    },
+                    {
+                        "_name": "node_6",
+                        "_type": "ShaderNodeBsdfDiffuse",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.800000011920929,
+                                    0.800000011920929,
+                                    0.800000011920929,
+                                    1.0
+                                ]
+                            },
+                            {
+                                "index": 1,
+                                "value": 0.0
+                            },
+                            {
+                                "index": 2,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "location": [
+                            91.18042755126953,
+                            366.45733642578125
+                        ],
+                        "name": "Diffuse BSDF",
+                        "type": "BSDF_DIFFUSE",
+                        "width": 150.0
+                    },
+                    {
+                        "_name": "node_7",
+                        "_type": "ShaderNodeBsdfGlossy",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.800000011920929,
+                                    0.800000011920929,
+                                    0.800000011920929,
+                                    1.0
+                                ]
+                            },
+                            {
+                                "index": 1,
+                                "value": 0.20000000298023224
+                            },
+                            {
+                                "index": 2,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "location": [
+                            89.57783508300781,
+                            230.49343872070312
+                        ],
+                        "name": "Glossy BSDF",
+                        "type": "BSDF_GLOSSY",
+                        "width": 150.0
+                    },
+                    {
+                        "_name": "node_8",
+                        "_type": "ShaderNodeMixShader",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": 0.5
+                            }
+                        ],
+                        "location": [
+                            358.7454833984375,
+                            391.9012145996094
+                        ],
+                        "name": "Mix Shader",
+                        "type": "MIX_SHADER",
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_9",
+                        "_type": "ShaderNodeTexImage",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "image": {
+                            "alpha_mode": "STRAIGHT",
+                            "filepath": "D:\\Render\\Presenatation\\Test\\3\\Bricks01_NRM.jpg",
+                            "filepath_raw": "D:\\Render\\Presenatation\\Test\\3\\Bricks01_NRM.jpg",
+                            "name": "Bricks01_NRM.jpg",
+                            "source": "FILE",
+                            "use_fake_user": false
+                        },
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "interpolation": "Linear",
+                        "location": [
+                            -360.65631103515625,
+                            143.16708374023438
+                        ],
+                        "name": "Image Texture.002",
+                        "type": "TEX_IMAGE",
+                        "width": 155.9259033203125
+                    },
+                    {
+                        "_name": "node_10",
+                        "_type": "ShaderNodeOutputMaterial",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 2,
+                                "value": 0.0
+                            }
+                        ],
+                        "location": [
+                            838.650634765625,
+                            287.0572509765625
+                        ],
+                        "name": "Material Output",
+                        "type": "OUTPUT_MATERIAL",
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_11",
+                        "_type": "ShaderNodeBump",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": 1.0
+                            },
+                            {
+                                "index": 1,
+                                "value": 0.10000000149011612
+                            },
+                            {
+                                "index": 2,
+                                "value": 1.0
+                            },
+                            {
+                                "index": 3,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "location": [
+                            554.3861083984375,
+                            165.84524536132812
+                        ],
+                        "name": "Bump",
+                        "type": "BUMP",
+                        "width": 140.0
+                    },
+                    {
+                        "_name": "node_12",
+                        "_type": "ShaderNodeTexImage",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "image": {
+                            "alpha_mode": "STRAIGHT",
+                            "filepath": "D:\\Render\\Presenatation\\Test\\3\\Bricks01_DISP.jpg",
+                            "filepath_raw": "D:\\Render\\Presenatation\\Test\\3\\Bricks01_DISP.jpg",
+                            "name": "Bricks01_DISP.jpg",
+                            "source": "FILE",
+                            "use_fake_user": false
+                        },
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        ],
+                        "interpolation": "Linear",
+                        "location": [
+                            174.54100036621094,
+                            41.40427017211914
+                        ],
+                        "name": "Image Texture.003",
+                        "type": "TEX_IMAGE",
+                        "width": 281.337890625
+                    },
+                    {
+                        "_name": "node_13",
+                        "_type": "ShaderNodeNormalMap",
+                        "color": [
+                            0.6079999804496765,
+                            0.6079999804496765,
+                            0.6079999804496765
+                        ],
+                        "height": 100.0,
+                        "inputs": [
+                            {
+                                "index": 0,
+                                "value": 1.0
+                            },
+                            {
+                                "index": 1,
+                                "value": [
+                                    0.5,
+                                    0.5,
+                                    1.0,
+                                    1.0
+                                ]
+                            }
+                        ],
+                        "location": [
+                            -132.3828582763672,
+                            114.33450317382812
+                        ],
+                        "name": "Normal Map",
+                        "space": "TANGENT",
+                        "type": "NORMAL_MAP",
+                        "width": 150.0
+                    }
+                ]
+            }
+        },
+        {
+            "blender_render": true,
+            "name": "Material",
+            "value": {
+                "__doc__": {},
+                "__module__": {},
+                "__slots__": {},
+                "active_node_material": {},
+                "active_texture": {},
+                "active_texture_index": 0,
+                "alpha": 1.0,
+                "ambient": 1.0,
+                "animation_data": {},
+                "animation_data_clear": {},
+                "animation_data_create": {},
+                "bl_rna": {},
+                "copy": {},
+                "cycles": {},
+                "darkness": 1.0,
+                "diffuse_color": [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929
+                ],
+                "diffuse_fresnel": 0.10000000149011612,
+                "diffuse_fresnel_factor": 0.5,
+                "diffuse_intensity": 0.800000011920929,
+                "diffuse_ramp": {},
+                "diffuse_ramp_blend": {},
+                "diffuse_ramp_factor": 1.0,
+                "diffuse_ramp_input": {},
+                "diffuse_shader": {},
+                "diffuse_toon_size": 0.5,
+                "diffuse_toon_smooth": 0.10000000149011612,
+                "emit": 0.0,
+                "game_settings": {},
+                "halo": {},
+                "invert_z": false,
+                "is_library_indirect": false,
+                "is_updated": false,
+                "is_updated_data": false,
+                "library": {},
+                "light_group": {},
+                "line_color": {},
+                "line_priority": 0,
+                "mirror_color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "name": {},
+                "node_tree": {},
+                "offset_z": 0.0,
+                "paint_active_slot": 0,
+                "paint_clone_slot": 0,
+                "pass_index": 0,
+                "physics": {},
+                "preview": {},
+                "preview_render_type": {},
+                "raytrace_mirror": {},
+                "raytrace_transparency": {},
+                "rna_type": {},
+                "roughness": 0.5,
+                "shadow_buffer_bias": 0.0,
+                "shadow_cast_alpha": 1.0,
+                "shadow_only_type": {},
+                "shadow_ray_bias": 0.0,
+                "specular_alpha": 1.0,
+                "specular_color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "specular_hardness": 50,
+                "specular_intensity": 0.5,
+                "specular_ior": 4.0,
+                "specular_ramp": {},
+                "specular_ramp_blend": {},
+                "specular_ramp_factor": 1.0,
+                "specular_ramp_input": {},
+                "specular_shader": {},
+                "specular_slope": 0.10000000149011612,
+                "specular_toon_size": 0.5,
+                "specular_toon_smooth": 0.10000000149011612,
+                "strand": {},
+                "subsurface_scattering": {
+                    "color": [
+                        0.6038274168968201,
+                        0.6038274168968201,
+                        0.6038274168968201
+                    ]
+                },
+                "tag": false,
+                "texture_paint_images": {},
+                "texture_paint_slots": {},
+                "texture_slots": {},
+                "translucency": 0.0,
+                "transparency_method": {},
+                "type": {},
+                "update_tag": {},
+                "use_cast_approximate": true,
+                "use_cast_buffer_shadows": true,
+                "use_cast_shadows": true,
+                "use_cast_shadows_only": false,
+                "use_cubic": false,
+                "use_diffuse_ramp": false,
+                "use_face_texture": false,
+                "use_face_texture_alpha": false,
+                "use_fake_user": false,
+                "use_full_oversampling": false,
+                "use_light_group_exclusive": false,
+                "use_light_group_local": false,
+                "use_mist": true,
+                "use_nodes": false,
+                "use_object_color": false,
+                "use_only_shadow": false,
+                "use_ray_shadow_bias": true,
+                "use_raytrace": true,
+                "use_shadeless": false,
+                "use_shadows": true,
+                "use_sky": false,
+                "use_specular_ramp": false,
+                "use_tangent_shading": false,
+                "use_textures": {},
+                "use_transparency": false,
+                "use_transparent_shadows": false,
+                "use_uv_project": false,
+                "use_vertex_color_light": false,
+                "use_vertex_color_paint": false,
+                "user_clear": {},
+                "user_of_id": {},
+                "users": 0,
+                "volume": {
+                    "emission_color": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "reflection_color": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "transmission_color": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ]
+                }
+            }
+        }
+    ]
+}

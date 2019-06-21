@@ -1,0 +1,49 @@
+
+float fract(float f)
+{
+return f - floor(f);
+}
+
+shader uv_map_tile_pattern_2(
+	point Vector = P,
+	float scale = 1.0,
+	output point UV = 0,
+    output point cellID = 0,
+    output float brick_width = 0.5, 
+    output float brick_height = 0.25,
+	output float tile_mask=0,
+    )
+{   
+    point ScaledVector = point(Vector[0]*scale, Vector[1]*scale,0);
+    float x = fract(ScaledVector[0]);
+    float y = fract(ScaledVector[1]);
+    int ix = (int) (x/0.25);
+    int iy = (int) (y/0.25);
+    float vv=0;
+    float vu=0;
+    
+    int state = (ix-iy < 1) && (ix-iy >=-1) || (ix-iy==3);
+    if (state ==1)
+    {
+        //vertical
+        vu = 0.5-(fmod(2+y-(ix*0.25),0.5));
+        vv = fmod(x,0.25);
+        int cellU =  (int) (((floor(ScaledVector[1] - (ix*0.25))) /0.5) *2)  ;
+        int cellV = ((int)(ScaledVector[0]/0.25)) *4;
+        cellID = point((float)cellU,(float)cellV,0.0);
+        tile_mask = 1;
+    }
+    else
+    { 
+        //horizontal
+        vu = fmod(2.25+x-(iy*-0.25),0.5); 
+        vv = fmod(y,0.25);
+        int cellU =  1 +(int) (((floor(ScaledVector[0] - (iy*0.25))) /0.5) *2)  ;
+        int cellV = ((int)(ScaledVector[1]/0.25)) *4;
+        cellID = point((float)cellU,(float)cellV,0.0);
+    }
+        
+    UV = point(fmod(vu,1),fmod(vv,1),0);
+    
+}
+

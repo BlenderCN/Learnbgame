@@ -1,0 +1,84 @@
+ /* Sphinx css */
+@import url("css/theme.css");
+
+
+/*▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+  Sidebar
+ */
+
+body .wy-side-nav-search
+{
+    background-color: #1A1A1A;
+}
+
+.wy-side-nav-search .version           { display: none; }
+.wy-side-nav-search input[type="text"] { border-color: #aaa;  }
+
+.wy-menu-vertical a:active
+{
+    background-color: #F54949;
+    color: white !important;
+}
+
+
+.wy-menu-vertical a
+{
+    transition: all 250ms;
+}
+
+
+/*▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+  Images
+ */
+
+.document img
+{
+    border-radius: 5px;
+}
+
+
+
+/*▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+  Typography
+ */
+
+h1,
+h2,
+.rst-content .toctree-wrapper p.caption,
+h3,
+h4,
+h5,
+h6,
+legend
+{
+    font-family: inherit !important;
+}
+
+h2
+{
+    margin-top: 2em;
+    border-bottom: 1px solid #ccc;
+}
+
+h3 { color: #555; }
+
+cite
+{
+    font-style: normal;
+    background: rgb(227, 227, 227);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 #888;
+}
+
+
+/*▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+  Tables
+ */
+.wy-table thead,
+.rst-content table.docutils thead,
+.rst-content table.field-list thead
+ {
+     background: #555;
+     color: white;
+ }

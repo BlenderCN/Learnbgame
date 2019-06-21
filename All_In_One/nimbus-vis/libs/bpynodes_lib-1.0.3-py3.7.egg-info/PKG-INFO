@@ -1,0 +1,12 @@
+Metadata-Version: 1.2
+Name: bpynodes-lib
+Version: 1.0.3
+Summary: Blender Python Nodes extension that provides a python library for creating Python Node systems
+Home-page: https://gitlab.com/blenderone/bpynodes_lib
+Author: Jared Webber
+Author-email: info@onelvxe.com
+License: GNU GPLv3
+Description: UNKNOWN
+Keywords: blender bpy nodes custom pynodes
+Platform: UNKNOWN
+Requires-Python: ~=3.5

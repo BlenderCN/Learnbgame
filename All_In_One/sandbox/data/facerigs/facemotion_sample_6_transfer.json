@@ -1,0 +1,14 @@
+{
+    "name" : "facemotion_sample_6",
+    "baseset" : "facemotion_45_markers",
+    "replacements" : {
+    	"l_chin" : "l_chin1",
+    	"r_chin" : "r_chin2",
+    	"d_r_mouth1" : "d_l_mouth1",
+    	"d_l_mouth1" : "d_l_mouth2",
+    	"d_l_mouth2" : "d_r_mouth1"
+    }
+}
+
+
+    	

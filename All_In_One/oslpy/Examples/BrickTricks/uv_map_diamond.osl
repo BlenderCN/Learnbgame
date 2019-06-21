@@ -1,0 +1,86 @@
+#include "helpers.h"
+
+shader uv_map_diamond(
+    point Vector = P,
+    float scale = 1.0, 
+    float diamond_size = 0.2,
+    float brick_width = 1.0,
+    float brick_height = 1.0,
+    float feather = 0.1,
+    float border = 0.05,
+    output point UV =0,
+    output point CellID =0,
+    output float Height = 0.0,
+    output float TileMask = 0.0,
+    output float BorderMask = 0.0,
+    output float BrickWidth = 1.0,
+    output float BrickHeight = 1.0,
+    )
+{
+    float RealDiamond = min(diamond_size, min(brick_width, brick_height)/2);
+    float hb = border/2;
+    float hf = feather/2;
+    BrickWidth = brick_width;
+    BrickHeight = brick_height;
+    float CellX = (int) ((Vector[0]*scale)/brick_width);
+    float CellY = (int) ((Vector[1]*scale)/brick_height); 
+    float rx = smod((Vector[0]*scale),brick_width);
+    float ry = smod((Vector[1]*scale),brick_height);
+    float x = min(rx, brick_width-rx);
+    float y = min(ry, brick_height-ry);
+    if (x + y < RealDiamond) 
+    {
+        float offsx=0;
+        float offsy=0;
+        BrickWidth = BrickHeight = RealDiamond*2;
+        float addX =  0;//(x > diamond_size/2) *(RealDiamond/2);
+        if ((rx >  RealDiamond) && (ry < RealDiamond))
+        {
+            offsx=0.5;
+            offsy=0.5;
+            UV = point( RealDiamond-x-y,RealDiamond-(x-y),0); 
+        }
+        if ((rx >  RealDiamond) && (ry > RealDiamond))
+        {
+            offsx=0.5;
+            offsy=1.5;
+            UV = point( RealDiamond-(x-y) , RealDiamond-x-y,0); 
+        }
+        if ((rx <  RealDiamond) && (ry > RealDiamond))
+        {   
+            offsx=-0.5;
+            offsy=1.5;
+            UV = point( RealDiamond+ y+x,RealDiamond-(y-x) ,0); 
+        }
+        if ((rx < RealDiamond) && (ry < RealDiamond))
+        {
+            offsx=-0.5;
+            offsy=0.5;
+            UV = point( x+RealDiamond-y, RealDiamond+ y+x ,0); 
+        }
+        CellID = point(CellX+offsx, CellY+offsy,0);
+        Height = min(RealDiamond-(x-y),RealDiamond-(y+x));
+        TileMask = 1;
+        BorderMask = Height < hb;
+        Height = _step(hb,hb+(hf*(BrickWidth-hb)),Height); 
+        
+    }
+    else
+    {
+       CellID = point(CellX, CellY,0);
+       UV = point(rx,ry,0);
+       if (ry < RealDiamond)
+       {
+           Height = min(x-(RealDiamond-y),y);
+       }
+       else if (ry > brick_height-RealDiamond)
+       {
+           Height = min(x-(RealDiamond-y),y);
+       }
+       else
+           Height = min(x,y);
+      BorderMask = Height < hb;
+      Height = _step(hb,hb+(hf*(min(brick_width,brick_height)-hb)),Height);         
+    }
+    
+}

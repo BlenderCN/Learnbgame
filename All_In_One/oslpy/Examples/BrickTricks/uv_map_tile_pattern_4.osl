@@ -1,0 +1,55 @@
+
+float fract(float f)
+{
+return f - floor(f);
+}
+
+shader uv_map_tile_pattern_4(
+	point Vector = P,
+	float scale = 1.0, 
+	output point UV = 0,
+    output point cellID = 0,
+    output float brick_width = 0.5, 
+    output float brick_height = 0.25,
+    output float tile_mask = 0    
+    )
+{   
+    UV = Vector;
+    float rx = Vector[0] * scale;
+    float ry = Vector[1] * scale;
+    float x = fract(rx);
+    float y = fract(ry);
+    if (x < 0.75 && y<0.75)
+    {
+       UV = point(0.75-fmod(y,0.75),fmod(x,0.75),0.0);
+       brick_width = 0.75;
+       brick_height = 0.75;
+       cellID = point(floor(rx)*4, floor(ry)*4,0);
+       tile_mask=1;
+    }
+    else 
+    {
+       if (( x>0.75) && (y < 0.75))
+       {
+          UV = point(fmod(x,0.25),fmod(y,0.75),0);
+          cellID = point((floor(rx)*4)+3, (floor(ry)*4) + floor(UV[1]/(0.75/2)),0);
+          brick_width = 0.25;
+          brick_height = 0.5;
+       }
+       else if (x < 0.75)
+       {
+          UV = point(fmod(x,0.75),fmod(y,0.25),0);
+          brick_width = 0.75;
+          brick_height = 0.25;
+          cellID = point((floor(rx)*4)+floor(UV[0]/(0.75/2)), (floor(ry)*4) +3 ,0);
+       }
+       else 
+       {
+          UV = point(fmod(x,0.25),fmod(y,0.25),0);
+          brick_width = 0.25;
+          brick_height = 0.25;
+          cellID = point((floor(rx)*4)+3, (floor(ry)*4)+3,0);
+       }
+    }
+}
+

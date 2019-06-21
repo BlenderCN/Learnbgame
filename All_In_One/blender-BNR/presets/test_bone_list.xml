@@ -1,0 +1,18 @@
+<bnr_skeleton>
+	<bone name="Root" group="body" optional="False">
+		<bone name="Pelvis" group="body" optional="False">
+			<bone name="Spine" group="body" optional="False" alias="Spine_01">
+				<bone name="Spine_02" group="body" optional="True">
+				</bone>
+				<bone name="Torso" group="body" optional="False">
+					<bone name="Chest" group="body" optional="False">
+						<bone name="Neck" group="body" optional="False">
+							<bone name="Head" group="body" optional="False">
+							</bone>
+						</bone>
+					</bone>
+				</bone>
+			</bone>
+		</bone>
+	</bone>
+</bnr_skeleton>

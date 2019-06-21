@@ -1,0 +1,289 @@
+##RenderMan RIB
+#Created by RenderMan for Maya 21.0b1 (<unknown_buildid> Nov 20 2015)
+#Fri Nov 20 14:23:50 GMT 2015
+version 3.04
+Option "ribparse" "string varsubst" [""]
+Option "ribparse" "string varsubst" ["$"]
+
+ReadArchive "m_config.rib"
+
+Option "searchpath" "string resource" ["@"]
+Option "searchpath" "string archive" ["."]
+Option "searchpath" "string display" ["${RMSTREE}/bin:@"]
+Option "searchpath" "string shader" ["${RMANTREE}/lib/shaders/:${RMSTREE}/lib/shaders/:${MATDIR}:@"]
+Option "searchpath" "string texture" ["${RMSTREE}/lib/textures/:${MATDIR}:.:@"]
+Option "searchpath" "string rixplugin" ["${RMSTREE}/lib/shaders/:${MATDIR}:@"]
+Option "searchpath" "string dirmap" [""]
+Option "searchpath" "string rifilter" ["${RMSTREE}/lib/rif/:${RMANTREE}/lib/plugins:@"]
+Option "searchpath" "string procedural" ["${RMSTREE}/lib/plugins/:${RMSTREE}/lib/plugins:${RMANTREE}/lib/plugins:@"]
+FrameBegin 1
+    Identity
+    Option "user" "string pass_id" ["SampleCamShape_Final"] 
+        "string pass_phase" ["/Job/Frames/Images"] 
+        "string pass_class" ["Final"] 
+        "string pass_flavor" [""] 
+        "string pass_crew" [""] 
+        "string pass_camera_name" ["SampleCamShape"] 
+        "string pass_camera_flavor" [""] 
+        "string pass_layer" [""] 
+        "string renderer" ["RIS"] 
+        "int pass_features_trace" [1] 
+        "int input_color_profile" [0]
+    Option "trace" "int maxdepth" [10]
+    Option "bucket" "string order" ["horizontal"]
+    Option "limits" "int[2] bucketsize" [16 16]
+    Option "limits" "int gridsize" [256]
+    Option "trace" "float decimationrate" [1]
+    Option "hair" "float minwidth" [0.5]
+    Option "statistics" "int level" [1]
+    Option "statistics" "string filename" ["stdout"]
+    # Option "statistics" "string xmlfilename" ["materialSample.xml"]
+    Option "limits" "color zthreshold" [0.996 0.996 0.996]
+    Option "limits" "color othreshold" [0.996 0.996 0.996]
+    Option "limits" "int texturememory" [2097152]
+    Option "limits" "int geocachememory" [2097152]
+    Option "limits" "int proceduralmemory" [0]
+    # Option "limits" "int deepshadowtiles" [1000]
+    # Option "limits" "int deepshadowmemory" [102400]
+    # Option "limits" "int radiositycachememory" [102400]
+    # Option "limits" "int brickmemory" [10240]
+    # Option "shading" "int directlightinglocalizedsampling" [0]
+    Option "shading" "int directlightingservices" [1]
+    # Option "limits" "int opacitycachememory" [1024000]
+    CropWindow 0 1 0 1
+
+    # Option "photon" "string lifetime" ["transient"]
+    # Option "photon" "int emit" [0]
+
+    PixelVariance 0.01
+    Hider "raytrace"
+            "int adaptall" [0]
+            "int incremental" [0]
+            "int minsamples" [32]
+            "int maxsamples" [64]
+            "int minextrasamples" [8]
+            "float darkfalloff" [0.02]
+    Integrator "PxrPathTracer" "PxrPathTracer"
+            "int maxPathLength" [10]
+            "int maxContinuationLength" [-1]
+            "string sampleMode" ["bxdf"]
+            "int numLightSamples" [4]
+            "int numBxdfSamples" [4]
+            "int numIndirectSamples" [4]
+            "int allowCaustics" [0]
+            "int rouletteDepth" [4]
+            "float rouletteThreshold" [0.2]
+            "int clampDepth" [2]
+            "float clampLuminance" [10]
+            "string imagePlaneSubset" ["rman__imageplane"]
+
+    Format 128 128 1
+
+    Display "${MATDIR}/asset_100.tif" "tiff" "rgb"
+            "string compression" ["none"]
+            "string filter" ["gaussian"]
+            "float[2] filterwidth" [2 2]
+            "int[4] quantize" [255 0 255 1]
+            "float dither" [1]
+            "float[2] exposure" [1 2.2]
+
+    #Camera SampleCamShape
+    Clipping 0.1 10000
+    Projection "perspective" "fov" [39.5978]
+    ScreenWindow -1 1 -1 1
+    Shutter 0 0
+    ConcatTransform [ 1 0 0 0  -3.93631e-10 0.992673 -0.12083 0  4.48876e-11 -0.12083 -0.992673 0  0.023 0.125604 16.5661 1 ]
+    Camera "world" "float[2] shutteropening" [0 1]
+    Option "user" "color camera_bg" [0 0 0] "float camera_bga" [0]
+    DisplayFilter "PxrBackgroundDisplayFilter" "background" "color backgroundColor" [0 0 0]
+
+    ResourceBegin
+        WorldBegin
+            ScopedCoordinateSystem "world_ref"
+            Attribute "user" "float[17] floorGridManifold" [1 1 0 0 0
+                0 0 0 1 1 100 100 0 0 0 0 0]
+            Attribute "visibility" "int transmission" [1] "int indirect" [1]
+            Bxdf "PxrDiffuse" "default"
+            Attribute "trace" "int maxdiffusedepth" [10] "int maxspeculardepth" [10] "int samplemotion" [1] "float autobias" [1] "float bias" [0.001] "int displacements" [1]
+            Attribute "dice" "string referencecamera" ["worldcamera"] "int watertight" [1]
+            Attribute "procedural" "int reentrant" [1]
+            ShadingRate 1
+            Attribute "displacementbound" "string coordinatesystem" ["shader"] "float sphere" [0]
+            # Attribute "photon" "string causticmap" [""] "string globalmap" [""]
+
+            # default neutral rig
+            #
+            IfBegin "$user:lightrig == 'winter'"
+                ReadArchive "m_lightrig_winter.rib"
+            ElseIf "$user:lightrig == 'envMap'"
+                ReadArchive "m_lightrig_envMap.rib"
+            Else
+                ReadArchive "m_lightrig_winter.rib"
+            IfEnd
+
+            # scene
+            AttributeBegin
+                Attribute "identifier" "string name" ["Sample"]
+                Attribute "identifier" "float id" [2]
+                ConcatTransform [ -0.669131 5.55112e-17 0.743145 0  0.698328 0.34202 0.628777 0  -0.254171 0.939693 -0.228856 0  0 0 0 1 ]
+                AttributeBegin
+                    Attribute "identifier" "string name" ["materialGeo"]
+                    Attribute "identifier" "float id" [7]
+                    ConcatTransform [ 1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1 ]
+                    AttributeBegin
+                        AttributeBegin
+                            Attribute "identifier" "string name" ["materialGeoShape"]
+                            Attribute "identifier" "float id" [14]
+                            Sides 2
+                            Attribute "user" "int receivesShadows" [1]
+                            Attribute "visibility" "int camera" [1] "int indirect" [1] "int transmission" [1]
+                            Attribute "shade" "string transmissionhitmode" ["shader"]
+                            Attribute "grouping" "string membership" ["+reflection,refraction,shadow"]
+
+                                # material from preset
+                                ReadArchive "${MATDIR}/m_shading.rib"
+
+                            TransformBegin
+                                ReadArchive "m_geometry.rib"
+                            TransformEnd
+                        AttributeEnd
+                    AttributeEnd
+                AttributeEnd
+                AttributeBegin
+                    Attribute "identifier" "string name" ["greyBallGeo"]
+                    Attribute "identifier" "float id" [6]
+                    ConcatTransform [ 1 0 0 0  0 1 0 0  0 0 1 0  0 0.1 0 1 ]
+                    AttributeBegin
+                        AttributeBegin
+                            Attribute "identifier" "string name" ["greyBallGeoShape"]
+                            Attribute "identifier" "float id" [13]
+                            Sides 2
+                            Attribute "user" "int receivesShadows" [1]
+                            Attribute "visibility" "int camera" [1] "int indirect" [1] "int transmission" [1]
+                            Attribute "shade" "string transmissionhitmode" ["shader"]
+                            Attribute "grouping" "string membership" ["+reflection,refraction,shadow"]
+                            # IfBegin "!defined(user:shader_bindingstrength) || $user:shader_bindingstrength <= 0"
+                                Displacement "null"
+                                Bxdf "PxrLMDiffuse" "grey18" "color frontColor" [0.18 0.18 0.18] "color backColor" [0.5 0.5 0.5] "float roughness" [0] "color sheen" [0 0 0] "float translucence" [0] "color incandescence" [0 0 0]
+                                    "normal bumpNormal" [0 0 0] "float presence" [1] "int inputAOV" [0] "__instanceid" ["grey18_0"]
+                                VPInterior "null"
+                                Interior "null"
+                                # Attribute "user" "int shader_bindingstrength" [0]
+                            # IfEnd
+                            TransformBegin
+                                NuPatch 7 4 [0 0 0 0 0.25 0.5 0.75 1 1 1 1] 0 1 11 4 [-0.25 -0.25 -0.125
+                                    0 0.125 0.25 0.375 0.5 0.625 0.75 0.875 1 1.125 1.25 1.25] 0 1 "Pw" [3.59868e-16 -3.35 -1.02152e-15 1 0.749688 -3.35 -0.749688 1
+                                    2.31161 -2.53854 -2.31161 1 3.25201 0.4 -3.25201 1 2.31161 3.33854 -2.31161 1
+                                    0.749688 4.15 -0.749688 1 6.52488e-16 4.15 3.13703e-17 1 3.59868e-16 -3.35 -1.02152e-15 1
+                                    1.06022 -3.35 -3.28995e-16 1 3.26911 -2.53854 2.67247e-16 1 4.59904 0.4 9.96898e-16 1
+                                    3.26911 3.33854 1.15642e-15 1 1.06022 4.15 8.05711e-16 1 6.52488e-16 4.15 3.13703e-17 1
+                                    3.59868e-16 -3.35 -1.02152e-15 1 0.749688 -3.35 0.749688 1 2.31161 -2.53854 2.31161 1
+                                    3.25201 0.4 3.25201 1 2.31161 3.33854 2.31161 1 0.749688 4.15 0.749688 1
+                                    6.52488e-16 4.15 3.13703e-17 1 3.59868e-16 -3.35 -1.02152e-15 1 4.08309e-16 -3.35 1.06022 1
+                                    6.73769e-16 -2.53854 3.26911 1 6.67347e-16 0.4 4.59904 1 2.74966e-16 3.33854 3.26911 1
+                                    -1.00621e-16 4.15 1.06022 1 6.52488e-16 4.15 3.13703e-17 1 3.59868e-16 -3.35 -1.02152e-15 1
+                                    -0.749688 -3.35 0.749688 1 -2.31161 -2.53854 2.31161 1 -3.25201 0.4 3.25201 1
+                                    -2.31161 3.33854 2.31161 1 -0.749688 4.15 0.749688 1 6.52488e-16 4.15 3.13703e-17 1
+                                    3.59868e-16 -3.35 -1.02152e-15 1 -1.06022 -3.35 1.65846e-16 1 -3.26911 -2.53854 6.22607e-16 1
+                                    -4.59904 0.4 9.35781e-16 1 -3.26911 3.33854 7.14169e-16 1 -1.06022 4.15 2.82692e-16 1
+                                    6.52488e-16 4.15 3.13703e-17 1 3.59868e-16 -3.35 -1.02152e-15 1 -0.749688 -3.35 -0.749688 1
+                                    -2.31161 -2.53854 -2.31161 1 -3.25201 0.4 -3.25201 1 -2.31161 3.33854 -2.31161 1
+                                    -0.749688 4.15 -0.749688 1 6.52488e-16 4.15 3.13703e-17 1 3.59868e-16 -3.35 -1.02152e-15 1
+                                    -6.7053e-16 -3.35 -1.06022 1 -1.48231e-15 -2.53854 -3.26911 1 -1.80481e-15 0.4 -4.59904 1
+                                    -1.08351e-15 3.33854 -3.26911 1 -1.616e-16 4.15 -1.06022 1 6.52488e-16 4.15 3.13703e-17 1
+                                    3.59868e-16 -3.35 -1.02152e-15 1 0.749688 -3.35 -0.749688 1 2.31161 -2.53854 -2.31161 1
+                                    3.25201 0.4 -3.25201 1 2.31161 3.33854 -2.31161 1 0.749688 4.15 -0.749688 1
+                                    6.52488e-16 4.15 3.13703e-17 1 3.59868e-16 -3.35 -1.02152e-15 1 1.06022 -3.35 -3.28995e-16 1
+                                    3.26911 -2.53854 2.67247e-16 1 4.59904 0.4 9.96898e-16 1 3.26911 3.33854 1.15642e-15 1
+                                    1.06022 4.15 8.05711e-16 1 6.52488e-16 4.15 3.13703e-17 1 3.59868e-16 -3.35 -1.02152e-15 1
+                                    0.749688 -3.35 0.749688 1 2.31161 -2.53854 2.31161 1 3.25201 0.4 3.25201 1
+                                    2.31161 3.33854 2.31161 1 0.749688 4.15 0.749688 1 6.52488e-16 4.15 3.13703e-17 1] "constant string primtype" ["nurbs"]
+                            TransformEnd
+                        AttributeEnd
+                    AttributeEnd
+                AttributeEnd
+            AttributeEnd
+            AttributeBegin
+                Attribute "identifier" "string name" ["SampleCam"]
+                Attribute "identifier" "float id" [3]
+                ConcatTransform [ 0.736097 0 -0.676876 0  -0.0519293 0.997053 -0.0564727 0  0.674881 0.076719 0.733928 0  2.025 1.22 2.19912 1 ]
+                AttributeBegin
+                AttributeEnd
+            AttributeEnd
+            AttributeBegin
+                Attribute "identifier" "string name" ["floorGeo"]
+                Attribute "identifier" "float id" [4]
+                ConcatTransform [ 0.707107 0 -0.707107 0  0 1 0 0  0.707107 0 0.707107 0  0 -5.01 0 1 ]
+                AttributeBegin
+                    AttributeBegin
+                        Attribute "identifier" "string name" ["floorGeoShape"]
+                        Attribute "identifier" "float id" [12]
+                        Sides 2
+                        Attribute "user" "int receivesShadows" [1]
+                        Attribute "visibility" "int camera" [1] "int indirect" [1] "int transmission" [1]
+                        Attribute "shade" "string transmissionhitmode" ["shader"]
+                        Attribute "grouping" "string membership" ["+reflection,refraction,shadow"]
+                        # IfBegin "!defined(user:shader_bindingstrength) || $user:shader_bindingstrength <= 0"
+                            Displacement "null"
+                            Pattern "PxrManifold2D" "PxrManifold2D1"
+                                "float scaleT" [10 ] 
+                                "float offsetT" [0.5 ] 
+                                "float angle" [0 ] 
+                                "float offsetS" [0.5 ] 
+                                "string primvarS" ["" ] 
+                                "float scaleS" [10 ] 
+                                "string primvarT" ["" ] 
+                                "int invertT" [1 ] 
+                                "__instanceid" ["PxrManifold2D1_0"]
+                            Pattern "PxrTexture" "PxrTextureFloorSample"
+                                "color missingColor" [1 0 1 ] 
+                                "int linearize" [1 ] 
+                                "reference struct manifold" ["PxrManifold2D1:result" ] 
+                                "int lerp" [1 ] 
+                                "int invertT" [1 ] 
+                                "string filename" ["./grid10cm.tex" ] 
+                                "float missingAlpha" [1 ] 
+                                "int atlasStyle" [0 ] 
+                                "float blur" [0 ] 
+                                "int filter" [1 ] 
+                                "int firstChannel" [0 ] 
+                                "__instanceid" ["PxrTextureFloorSample_0"]
+                            Bxdf "PxrDisney" "Sample_floor"
+                                "float specular" [0 ] 
+                                "reference color baseColor" ["PxrTextureFloorSample:resultRGB" ] 
+                                "float clearcoatGloss" [1 ] 
+                                "color emitColor" [0 0 0 ] 
+                                "float sheenTint" [0.5 ] 
+                                "normal bumpNormal" [0 0 0 ] 
+                                "float specularTint" [0 ] 
+                                "int inputAOV" [0 ] 
+                                "float metallic" [0 ] 
+                                "float presence" [1 ] 
+                                "float subsurface" [0 ] 
+                                "color subsurfaceColor" [0 0 0 ] 
+                                "float clearcoat" [0 ] 
+                                "float anisotropic" [0 ] 
+                                "float roughness" [0.25 ] 
+                                "float sheen" [0 ] 
+                                "__instanceid" ["Sample_floor_0"]
+                            VPInterior "null"
+                            Interior "null"
+                            # Attribute "user" "int shader_bindingstrength" [0]
+                        # IfEnd
+                        TransformBegin
+                            PointsGeneralPolygons [1] [4] [0 1 3 2] "P" [-50 -1.11022e-14 50 50 -1.11022e-14 50 -50 1.11022e-14 -50 50 1.11022e-14 -50] "constant string primtype" ["mesh"] "facevarying normal N" [0 1 2.22045e-16 0 1 2.22045e-16 0 1 2.22045e-16 0 1 2.22045e-16] "facevarying float s" [0 1 1 0] "facevarying float t" [0 0 1 1]
+                        TransformEnd
+                    AttributeEnd
+                AttributeEnd
+            AttributeEnd
+            # AttributeBegin
+            #   Attribute "identifier" "string name" ["PxrDomeLight1"]
+            #   Attribute "identifier" "float id" [1]
+            #   ConcatTransform [ -230.251 -0 -0 0  0 230.251 0 0  0 0 230.251 0  0 0 0 1 ]
+            #   AttributeBegin
+            #   AttributeEnd
+            # AttributeEnd
+        WorldEnd
+    ResourceEnd
+    ##streammarker 139
+FrameEnd

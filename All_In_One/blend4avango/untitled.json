@@ -1,0 +1,79 @@
+{
+	"urlBaseType": "relativeToHTML",
+	"metadata": {
+		"formatVersion" : 3.2,
+		"type"          : "scene",
+		"sourceFile"    : "",
+		"generatedBy"   : "Blender 2.7 Exporter",
+		"objects"       : 2,
+		"geometries"    : 1,
+		"materials"     : 1,
+		"textures"      : 0
+	},
+
+	"objects": {
+		"Cube": {
+            "type"      : "TriMeshGeometry",
+			"geometry"      : "Cube.001",
+			"material"      : "Material",
+			"position"      : [ 0, 0, 0 ],
+			"quaternion"    : [ -0.707107, 0, 0, 0.707107 ],
+			"scale"         : [ 1, 1, 1 ],
+			
+			"castShadow"    : false,
+			"receiveShadow" : false,
+		},
+		"Lamp": {
+			"type"      : "PointLight",
+			"position"  : [ 4.07625, 5.90386, 1.00545 ],
+			"color"     : 16777215,
+			"distance"  : 30.000,
+			"intensity" : 1.000
+		}
+	},
+
+	"cameras": {
+		"Camera": {
+			"type"     : "PerspectiveCamera",
+			"fov"      : 49.159264,
+			"aspect"   : 1.333000,
+			"near"     : 0.100000,
+			"far"      : 100.000000,
+			"position" : [ 7.48113, 5.34367, 6.50764 ],
+			"target"   : [ 0, 0, 0 ]
+		}
+	},
+
+	"options": {
+        "god_ray_settings": {
+            "intensity":0,
+            "maxraylenght":1,
+            "stepsperpass":10
+        },
+        "bloom_settings": {
+            "key":1,
+            "blur":4,
+            "edge_lum":1
+        },
+        "bloom_settings": {
+            "radius_increase":3,
+            "hemisphere":false,
+            "blur_depth":false,
+            "blur_discard_value":1,
+            "binfluencelur":0,
+            "dist_factor":0,
+            "samples":16
+        }
+	},
+
+	"transform": {
+		"position" : [ 0, 0, 0 ],
+		"rotation" : [ 0, 0, 0 ],
+		"scale"    : [ 1, 1, 1 ]
+	},
+	"defaults": {
+		"bgcolor" : [ 0, 0, 0 ],
+		"bgalpha" : 1.000000,
+		"camera"  : "default_camera"
+	}
+}

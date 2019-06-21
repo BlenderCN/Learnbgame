@@ -1,0 +1,34 @@
+
+QScrollBar:vertical {
+    border: none;
+    background:rgba(60,60,60,255);
+    background-color: rgba(60,60,60,255);
+    width:10px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background:rgba(60,60,60,255);
+    background-color: rgba(60,60,60,255);
+    height: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+
+QScrollBar::handle:vertical {
+    background: rgba(100,100,100,255);
+    background-color: rgba(100,100,100,255);
+    min-height: 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background: rgba(100,100,100,255);
+    background-color: rgba(100,100,100,255);
+    min-width: 0px;
+}
+
+QToolTip{
+  background-color:rgba(10, 10, 10,0.75);
+  color : rgb(250,250,250);
+}

@@ -1,0 +1,43 @@
+attrs:
+ block_width:
+  type: Float
+  name: "W"
+  description: "Block Width"
+  default: 0
+ block_height:
+  type: Float
+  name: "H"
+  description: "Block Height"
+  default: 0
+ block_thickness:
+  type: Float
+  name: "T"
+  description: "Block Thickness"
+  default: 0
+
+operators:
+ reynolds.add_block:
+  operator_type: Operator
+  class_name: BMDAddBlockOperator
+  label: Add Block
+  description: Generate block
+  execute_func: add_block
+
+gui:
+ - row: 
+   - label:
+      text: W
+   - prop: 
+      scene_attr: block_width
+   - label:
+      text: H
+   - prop: 
+      scene_attr: block_height
+   - label:
+      text: T
+   - prop: 
+      scene_attr: block_thickness
+ - row:
+   - operator:
+      id: reynolds.add_block
+      icon: PLUS

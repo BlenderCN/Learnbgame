@@ -1,0 +1,148 @@
+<args format="1.0">
+    <help>
+       A displacement shader based on the displacement portion of RMSGPSurface shader.
+    </help>
+    <shaderType>
+        <tag value="displacement"/>
+    </shaderType>
+    <param name="mask" 
+           label="Mask"
+           type="float"
+           widget="default"
+           default="1.0">
+        <tags>
+            <tag value="float"/>
+        </tags>
+        <help>
+            Controls the area of displacement.
+        </help>
+    </param>
+    <param name="dispMode" 
+           label="Displacement Mode"
+           type="int"
+           widget="mapper"
+           connectable="false"
+           default="1">
+        <hintdict name="options">
+            <string name="Scalar" value="1"/>
+            <string name="Mudbox Vector(Tan)" value="2"/>
+            <string name="Mudbox Vector(Obj)" value="3"/>
+            <string name="Mudbox vector(World)" value="4"/>
+            <string name="ZBrush Vector(Tan)" value="5"/>
+            <string name="ZBrush Vector(Obj)" value="6"/>
+            <string name="ZBrush Vector(World)" value="7"/>
+            <string name="Generic Vector(World)" value="8"/>
+        </hintdict>
+    </param>
+    <param name="vectorEncoding" 
+           label="Displacement Encoding"
+           type="float"
+           widget="mapper"
+           connectable="false"
+           default="1">
+        <hintdict name="options">
+            <string name="Centered" value="0"/>
+            <string name="Signed" value="1"/>
+        </hintdict>
+        <help>
+            Specify how the displacement values are encoded.
+            "Centered" means that the values have been scaled to fit
+            between 0 and 1 and need to be offset by .5 and scaled by
+            2. "Signed" values are signed and don't require such
+            manipulations. This applied to float and vector maps. 
+        </help>
+    </param>
+    <param name="displacementScalar" 
+           label="Scalar Displacement"
+           type="float"
+           widget="default" 
+           default="1.0">
+         <tags>
+             <tag value="float"/>
+         </tags>
+        <help>
+            Input for scalar input for displacing the surface along the
+            normal. 
+        </help>
+    </param>
+    <param name="displacementVector" 
+           label="Vector Displacement"
+           type="vector"
+           widget="default" 
+           default="0.0 0.0 0.0">
+        <tags>
+            <tag value="color or vector"/>
+        </tags>
+        <help>
+            Connect a vector displacement texture here. 
+        </help>
+    </param>
+    <param name="displacementAmount" 
+           label="Displacement Amount"
+           type="float"
+           widget="default" 
+           default="1.0">
+       <tags>
+           <tag value="float"/>
+       </tags>
+        <help>
+            Control the scale of vector or scalar displacement maps. 
+        </help>
+    </param>
+    <param name="displacementCenter" 
+           label="Displacement Map Center"
+           type="float"
+           widget="default" 
+           connectable="false"
+           default="0.5">
+        <tags>
+            <tag value="float"/>
+        </tags>
+        <help>
+            When using "Centered" mode for displacement encoding, use
+            this value as the 0 value. For example if .4 is the neutral
+            value that represents 0 displacement, set this value to .4. 
+        </help>
+    </param>
+    <param name="tangentSource" 
+           label="Tangent Source"
+           type="int"
+           widget="mapper"
+           connectable="false"
+           default="0">
+        <hintdict name="options">
+           <string name="s" value="0"/>
+           <string name="mesh" value="1"/>
+           <string name="input" value="2"/>
+           <string name="default" value="-1"/>
+        </hintdict>
+       <help>
+           Type of tangents to use for this surface. 
+       </help>
+    </param>
+    <param name="tangentInput" 
+           label="Tangent Gradient"
+           type="float"
+           widget="default" 
+           default="-1.0">
+       <tags>
+           <tag value="float"/>
+       </tags>
+       <help>
+           Input gradient that is used to compute a tangent
+           direction. This can be used to create unique
+           anisotropic behaviors. 
+       </help>
+    </param>
+    <param name="disableDisplacement"
+           label="Disabled"
+           type="float"
+           widget="checkBox"
+           connectable="false"
+           default="0.0">
+        <help>
+            Disable displacement.
+        </help>
+    </param>
+</args>
+

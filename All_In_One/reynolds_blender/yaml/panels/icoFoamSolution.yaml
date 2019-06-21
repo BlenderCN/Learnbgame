@@ -1,0 +1,89 @@
+gui:
+ - box:
+   - label:
+      text: icoFoam
+   - row: 
+     - col: 
+        - prop:
+           scene_attr: solvers_p_solver
+        - separator:
+           nums: 1
+        - prop:
+           scene_attr: solvers_p_preconditioner
+        - separator:
+           nums: 1
+        - row:
+          - label:
+             text : tolerance
+          - prop:
+             scene_attr: solvers_p_tolerance
+          - separator:
+             nums: 1
+        - row:
+          - label:
+             text : rel tolerance
+          - prop:
+             scene_attr: solvers_p_relTol
+          - separator:
+             nums: 1
+        - prop:
+           scene_attr: solvers_pfinal_p
+        - separator:
+           nums: 1
+        - row:
+          - label:
+             text : rel tolerance
+          - prop:
+             scene_attr: solvers_pfinal_relTol
+          - separator:
+             nums: 1
+        - prop:
+           scene_attr: solvers_U_solver
+        - separator:
+           nums: 1
+        - prop:
+           scene_attr: solvers_U_smoother
+        - separator:
+           nums: 1
+        - row:
+          - label:
+             text : tolerance
+          - prop:
+             scene_attr: solvers_U_tolerance
+          - separator:
+             nums: 1
+        - row:
+          - label:
+             text : rel tolerance
+          - prop:
+             scene_attr: solvers_U_relTol
+          - separator:
+             nums: 1
+        - row:
+          - label:
+             text : correctors
+          - prop:
+             scene_attr: piso_nCorrectors
+          - separator:
+             nums: 1
+        - row:
+          - label:
+             text : non orthogonal correctors
+          - prop:
+             scene_attr: piso_nNonOrthogonalCorrectors
+          - separator:
+             nums: 1
+        - row:
+          - label:
+             text : ref cell
+          - prop:
+             scene_attr: piso_pRefCell
+          - separator:
+             nums: 1
+        - row:
+          - label:
+             text : ref value
+          - prop:
+             scene_attr: piso_pRefValue
+          - separator:
+             nums: 1

@@ -1,0 +1,28 @@
+QCheckBox {
+  spacing: 4px;
+  color: rgb(180,180,180);
+
+}
+
+QCheckBox::indicator {
+  background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:1 rgb(80, 80,80),
+                      stop:0.4 rgb(60, 60, 60) ,stop:0 rgb(60, 60, 60));
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(30, 30, 30);
+  border-radius: 4px;
+  padding: 3px;
+
+  width: 7px;
+  height: 7px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(RESOURCE/icons/ICON_CHECK.png);
+
+}
+
+QCheckBox::indicator:hover {
+  background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:1 rgb(100, 100,100),
+                      stop:0.4 rgb(80, 80, 80) ,stop:0 rgb(80, 80, 80));
+}

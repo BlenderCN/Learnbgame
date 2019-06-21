@@ -1,0 +1,185 @@
+attrs:
+ geometry_name: 
+  type: String
+  name: "Name"
+  description: ""
+  default: ""
+  maxlen: 1024
+ geometry_type: 
+  type: Enum
+  name: "Type:"
+  description: "Type"
+  items: 
+    -
+     - triSurfaceMesh
+     - triSurfaceMesh
+     - ""
+    -
+     - searchableBox
+     - searchableBox
+     - ""
+    -
+     - searchableSphere
+     - searchableSphere
+     - ""
+ refinement_type: 
+  type: Enum
+  name: "Type:"
+  description: "Type"
+  items: 
+    -
+     - Surface
+     - Surface
+     - ""
+    -
+     - Region
+     - Region
+     - ""
+ refinement_mode: 
+  type: Enum
+  name: "Mode:"
+  description: "Mode"
+  items: 
+    -
+     - inside
+     - inside
+     - ""
+    -
+     - outside
+     - outside
+     - ""
+    -
+     - distance
+     - distance
+     - ""
+ refinement_level_min: 
+  type: Int
+  name: "Min"
+  description: "Refinement level min"
+  default: 0
+ refinement_level_max: 
+  type: Int
+  name: "Max"
+  description: "Refinement level max"
+  default: 0
+ ref_reg_dist:
+  type: Float
+  name: "Distance"
+  description: "Refinement region distance"
+  default: 0
+ ref_reg_level:
+  type: Int
+  name: "Level"
+  description: "Refinement region level"
+  default: 0
+ has_features:
+  type: Bool
+  name: ""
+  description: "Has Features"
+ feature_extract_included_angle:
+  type: Float
+  name: "Included Angle"
+  description: "Included Angle"
+  default: 0
+ feature_extract_ref_level:
+  type: Int
+  name: "Refinement Level"
+  description: "Refinement Level"
+  default: 0
+ geometry_list: 
+  type: UIList
+  coll_data_prop: shmd_geometries
+  coll_data_index: shmd_gindex
+
+operators:
+ shmd_geometries.list_action:
+   operator_type: ListOperator
+   class_name: SHMDGeometriesListAction
+   description: Geometries List
+   label: Geometries List
+   data_prop: shmd_geometries
+   id_prop: shmd_gindex
+ reynolds.assign_shmd_geometry:
+  operator_type: Operator
+  class_name: SHMDGeometryAssignOperator
+  label: Assign Geometry
+  description: Assign geometry 
+  execute_func: assign_shmd_geometry
+ reynolds.remove_shmd_geometry:
+  operator_type: Operator
+  class_name: SHMDGeometryRemoveOperator
+  label: Remove geometry
+  description: Remove geometry
+  execute_func: remove_shmd_geometry
+gui:
+ - box:
+   - label:
+      text: Geometry
+   - row: 
+     - template_list: 
+        coll_data_propname: shmd_geometries
+        coll_index_propname: shmd_gindex
+     - col: 
+       - operator: 
+          id: shmd_geometries.list_action
+          icon: ZOOMIN
+          action: ADD
+       - operator: 
+          id: shmd_geometries.list_action
+          icon: ZOOMOUT
+          action: REMOVE
+   - row:
+     - row:
+        - prop:
+           scene_attr: geometry_name
+           enabled: false
+     - prop:
+        scene_attr: geometry_type
+   - separator:
+      nums: 1
+   - box:
+     - label:
+        text: Refinement
+     - prop:
+        scene_attr: refinement_type
+     - separator:
+        nums: 1
+     - row:
+       - label:
+          text: Min level
+       - prop:
+          scene_attr: refinement_level_min
+     - row:
+       - label:
+          text: Max level
+       - prop:
+          scene_attr: refinement_level_max
+     - separator:
+        nums: 1
+     - row:
+       - prop:
+          scene_attr: refinement_mode
+       - prop:
+          scene_attr: ref_reg_dist
+       - prop:
+          scene_attr: ref_reg_level
+   - box:
+     - label:
+        text: Feature Extraction
+     - prop:
+        scene_attr: has_features
+     - label:
+        text: Included Angle
+     - prop:
+        scene_attr: feature_extract_included_angle
+     - label:
+        text: Refinement Level
+     - prop:
+        scene_attr: feature_extract_ref_level
+   - row: 
+     - operator: 
+        id: reynolds.assign_shmd_geometry
+        icon: VERTEXSEL
+     - operator: 
+        id: reynolds.remove_shmd_geometry
+        icon: X

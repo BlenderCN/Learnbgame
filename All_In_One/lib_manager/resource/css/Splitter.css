@@ -1,0 +1,12 @@
+QSplitter::handle {
+    background-color:rgb(72, 72, 72);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(50, 50, 50);
+    border-top-width : 0px;
+    border-bottom-width : 0px;
+}
+
+QSplitter::handle:pressed {
+    background-color:rgb(70, 70, 70);
+}

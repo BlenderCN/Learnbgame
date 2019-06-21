@@ -1,0 +1,61 @@
+Terrain generated from heightmaps
+=================================================================================
+
+This tool uses the displace modifier on a grid mesh to produce a terrain using the
+elevation data from a heightmap. 
+
+.. image:: _static/terrain_file_intro.png
+
+	   
+Heightmap File
+---------------------------------------------------------------------------------
+
+This input sets the heightmap image to use. A **heightmap** (also know as heightfield)
+is a greyscale image representing elevation data. You can find them online by googling,
+or from websites like `Natural Earth <http://www.naturalearthdata.com>`_
+
+.. note:: If you want to know more about heightmaps `check this Wikipedia article.
+	  <https://en.wikipedia.org/wiki/Heightmap>`_
+
+.. image:: _static/terrain_file_selector.png
+
+To select a heightmap click the `Select a Heightmap` button and navigate to the file.
+Note that once you select a heightmap you will see a preview of it, and the button's
+text will change to the name of the image file. You can click the preview to see a
+list of heightmaps you have previously loaded.
+
+
+Common issues
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	  
+Some heightmaps can produce strange artifacts around the edges (see image), this is
+a UV issue and can you can fix easily.
+
+.. image:: _static/terrain_file_issues.jpg
+
+Simply enter `edit mode` and go into the `UV/Image editor`, select everything (with
+the **a** key) and scale it down just a bit.
+
+
+
+General Settings
+---------------------------------------------------------------------------------
+
+Strength
+          How strong the displacement is (vertical scale of features)
+
+Size
+          Sets the size in real world units
+
+Detail level
+          Set vertex count for the base grid (in segments). Note that the grid
+	  has to be UV Unwrapped to apply the displacement and this can be
+	  slow with high vertex counts.
+
+.. note:: Since this terrain object uses a displacement modifier, you can tweak it
+	  after generating it. Check the modifiers tab in the properties editor.
+	  Don't forget to update the vertex groups using the Tools panel.
+	  You can also change the texture image, by going into the texture tab.
+
+
+.. image:: _static/terrain_file_modifier.png

@@ -1,0 +1,74 @@
+General Settings
+================================================================================
+
+OpenGL Render
+--------------------------------------------------------------------------------
+
+The `Image` and `Animation` buttons let you run a quick OpenGL render using your
+active camera. OpenGL renders are useful to test animations or the composition of a scene 
+before committing to a full render.
+
+By default, OpenGL renders use the active camera and hide invisible objects
+(such as lamps or empties). Click the triangle icon next to the buttons to show
+the settings
+
+Settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+================= ===========================================================
+Settings          Description
+================= ===========================================================
+Transparent       Use a transparent background
+Render Viewport   Render the viewport as it is, instead of using a camera
+Size Percentage   Render at a percentage of the final resolution 
+================= ===========================================================
+
+Note that the Render Viewport settings requires a 3D View open.
+
+
+ 
+Auto save Images
+--------------------------------------------------------------------------------
+
+Let's you save image renders automatically. It will use whatever settings you 
+have set in the output panel in render settings. 
+
+This setting will also affect OpenGL renders when you render a still image.
+OpenGL Animations will always be auto-saved.
+
+If the overwrite option is disabled new files will include a 
+numbered suffix ("_#1", "_#2", etc.)
+
+
+Power Off
+--------------------------------------------------------------------------------
+
+.. image:: _static/poweroff.jpg
+
+The power off options allow you to automatically shutdown or suspend 
+(set to sleep) your computer when rendering finishes.
+
+Windows will use Hibernation (or Hybrid Sleep) instead of regular sleep by 
+default. If you want to use sleep you'll have to turn hibernate off manually. 
+`Follow this guide to disable Hybrid Sleep in Windows 7. <http://maximumpcguides.com/windows-7/turn-off-hybrid-sleep-in-windows-7/>`_
+
+.. note :: 
+   This option is reset every time you open a blend file or render 
+   with it enabled, so you don't accidentally turn off your PC.  
+
+
+Slots Menu
+--------------------------------------------------------------------------------
+
+.. image:: _static/slots.png
+
+The slots menu can be used to change the current rendering slot by selecting it 
+from the list.
+Free slots have a faded icon, while used slots have a fully opaque camera icon.
+
+You can name the slots by clicking the icon next to the menu. These names are 
+stored in the scene data, so they are unique to each scene.
+
+.. note::
+   Note that if you change the slot in the UV Image Editor it won't be 
+   updated in the menu until you start rendering. 

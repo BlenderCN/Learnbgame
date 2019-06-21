@@ -1,0 +1,6 @@
+modifier mesh_output [[string widget="node", string label="Output", string category="Output"]](
+	mesh mesh_in [[string label="Mesh"]]
+)
+{
+	__mesh_output__ = mesh_in;
+}

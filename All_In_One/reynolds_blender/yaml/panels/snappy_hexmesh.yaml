@@ -1,0 +1,27 @@
+attrs:
+ snappyhexmesh_executed:
+  type: Bool
+  name: SnappyHexMesh executed
+  description: SnappyHexMesh executed
+  default: false
+  
+operators:
+ reynolds.generate_shmd:
+  operator_type: Operator
+  class_name: SHMDGenerateDictOperator
+  label: Generate Dict
+  description: Generate snappy hex mesh dict
+  execute_func: generate_snappyhexmeshdict
+ reynolds.snappy_hexmesh_runner:
+  operator_type: Operator
+  class_name: SHMDSnappyHexMeshRunnerOperator
+  label: Run
+  description: Run snappyHexMesh command
+  execute_func: run_snappyhexmesh
+
+gui:
+ - box: 
+   - row: 
+     - operator: 
+        id: reynolds.snappy_hexmesh_runner
+        icon: FILE_TEXT

@@ -1,0 +1,13 @@
+Preferences
+=================================================================================
+
+When you enable Mirage you will notice a new box below it with the addon
+preferences. These options will allow you to customize Mirage to your liking.
+At the moment, there's only one setting.
+
+Panel's Tab
+	By default all of Mirage's panels go in the "Mirage" tab in 3D view.
+	You can type a different name here to change the name of that tab. You
+	can also type the name of a tab that already exists (like "Create") to
+	put Mirage's panels into it. This allows you to group Mirage with other
+	addons or panels, and lower the amount of tabs.

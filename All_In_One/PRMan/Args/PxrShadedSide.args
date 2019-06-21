@@ -1,0 +1,29 @@
+<args format="1.0">
+  <shaderType>
+    <tag value ="pattern"/>
+  </shaderType>
+  <help>
+    
+  </help>
+  <param  name="invert"
+    type="int"
+    label="Invert"
+    widget="switch"
+    default="0">
+    <help>
+      If the side we want is on the opposite side, turn this on to invert it.
+    </help>
+    <tags>
+      <tag value="int"/>
+    </tags>
+  </param>
+  <output  name="resultF">
+    <tags>
+      <tag value="float"/>
+    </tags>
+  </output>
+  <rfcdata
+    nodeid="1037671"
+    description="Xpxrshadedside"
+   />
+</args> 

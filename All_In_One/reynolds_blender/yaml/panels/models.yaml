@@ -1,0 +1,56 @@
+attrs:
+ stl_file_path:
+  type: String
+  name: ""
+  description: Choose a STL file
+  default: "*.stl"
+  maxlen: 1024
+  subtype: FILE_PATH
+ obj_file_path:
+  type: String
+  name: ""
+  description: Choose a OBJ file
+  default: "*.obj"
+  maxlen: 1024
+  subtype: FILE_PATH
+
+operators:
+ reynolds.import_stl:
+  operator_type: Operator
+  class_name: SHMDImportSTL
+  label: Import STL
+  description: Import STL
+  execute_func: import_stl
+ reynolds.import_obj:
+  operator_type: Operator
+  class_name: SHMDImportOBJ
+  label: Import OBJ
+  description: Import Wavefront OBJ file
+  execute_func: import_obj
+ reynolds.add_geometry_block:
+  operator_type: Operator
+  class_name: SHMDGeometryBlockOperator
+  label: Add block mesh
+  description: Add bounding box to geoemtry for blockMesh
+  execute_func: add_geometry_block
+
+gui:
+ - box:
+   - label:
+      text: Import Models
+   - row:
+      - prop:
+         scene_attr: stl_file_path
+      - operator:
+         id: reynolds.import_stl
+         icon: FILESEL
+   - row:
+      - prop:
+         scene_attr: obj_file_path
+      - operator:
+         id: reynolds.import_obj
+         icon: FILESEL
+   - row:
+      - operator:
+         id: reynolds.add_geometry_block
+         icon: META_CUBE

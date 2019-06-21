@@ -1,0 +1,7 @@
+modifier object_data [[string widget="node", string label="Object", string category="Input"]](
+	string path="" [[string label="Path"]],
+	output any result [[string label="Data"]]
+)
+{
+	result = bdata("object." + path);
+}

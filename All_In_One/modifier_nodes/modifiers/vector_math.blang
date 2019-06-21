@@ -1,0 +1,40 @@
+modifier vector_math (
+	string operation="ADD" [[string display="none"]],
+	vector a=vector(0,0,0) [[string label="Vector"]],
+	vector b=vector(0,0,0) [[string label="Vector"]],
+	float x=0.0 [[string label="X"]],
+	float y=0.0 [[string label="Y"]],
+	float z=0.0 [[string label="Z"]],
+	output float rf=0.0 [[string label="Result"]],
+	output vector rv=vector(0,0,0) [[string label="Result"]],
+	output float rx=0.0 [[string label="X"]],
+	output float ry=0.0 [[string label="Y"]],
+	output float rz=0.0 [[string label="Z"]]
+)
+{
+	if (operation == "SEPARATE") {
+		rx = a[0];
+		ry = a[1];
+		rz = a[2];
+	}
+	else if (operation == "COMBINE")
+		rv = vector(x, y, z);
+
+	else if (operation == "ADD")
+		rv = a + b;
+	else if (operation == "SUB")
+		rv = a - b;
+	else if (operation == "MUL")
+		rv = a * b;
+	else if (operation == "DIV")
+		rv = a / b;
+
+	else if (operation == "DOT")
+		rf = dot(a, b);
+	else if (operation == "CROSS")
+		rv = cross(a, b);
+	else if (operation == "LENGTH")
+		rf = length(a);
+	else if (operation == "DISTANCE")
+		rf = distance(a, b);
+}

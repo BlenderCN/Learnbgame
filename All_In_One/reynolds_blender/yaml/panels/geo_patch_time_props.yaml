@@ -1,0 +1,57 @@
+attrs:
+ geo_patches:
+  type: PyDict
+ geo_patch_objs_list: 
+  type: UIList
+  coll_data_prop: geo_patch_objs
+  coll_data_index: geo_patch_rindex
+
+operators:
+ reynolds.load_geo_patch_objs:
+  operator_type: Operator
+  class_name: GeoPatchObjsOperator
+  label: Load Geo Patch Objects
+  description: Load geo patch objects file list from case dir
+  execute_func: load_geo_patch_objs
+ reynolds.add_geo_patch_time_prop:
+  operator_type: Operator
+  class_name: GeoPatchTimePropOperator
+  label: Add time property
+  description: Add geo patch time prop
+  execute_func: add_geo_patch_time_prop
+
+gui:
+ - box: 
+   - col: 
+     - template_list: 
+        coll_data_propname: geo_patch_objs
+        coll_index_propname: geo_patch_rindex
+     - row:
+       - box:
+         - label:
+            text: Assign time properties
+         - row:
+           - label:
+              text: Dimensions
+           - prop:
+              scene_attr: time_prop_dimensions
+         - row:
+           - label:
+              text: Internal field
+           - prop:
+              scene_attr: time_prop_internal_field
+         - row:
+           - prop:
+              scene_attr: time_prop_type
+         - row:
+           - prop:
+              scene_attr: time_prop_patch_type
+         - row:
+           - prop:
+              scene_attr: time_prop_value
+         - separator: 
+            nums: 1
+   - row: 
+     - operator: 
+        id: reynolds.add_geo_patch_time_prop
+        icon: FACESEL_HLT

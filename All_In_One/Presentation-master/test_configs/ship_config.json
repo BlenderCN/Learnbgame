@@ -1,0 +1,94 @@
+{
+    "settings": {
+        "RenderEngine": "CYCLES",
+        "FrameStart": 1,
+        "FrameEnd": 10,
+        "Device": "GPU",
+        "Objects": {
+            "File": "D:\\dev\\Python\\Blender\\Presentation\\v1\\Presenation.Blender\\Presenation.Blender\\objects.blend",
+            "Names": [
+                "OrbLight"
+            ],
+            "Files": [
+                "D:\\dev\\Python\\Blender\\Presentation\\untitled.blend"
+            ]
+        },
+        "Materials": {
+            "File": "D:\\dev\\Python\\Blender\\Presentation\\v1\\Presenation.Blender\\Presenation.Blender\\mat.blend",
+            "Names": [
+                "BlackShiny",
+                "White",
+                "Green",
+                "Red",
+                "Blue",
+                "Orange",
+                "Pink",
+                "Purple"
+            ]
+        }
+    },
+    "scenes": [
+        {
+            "name": "default",
+            "objects": [
+                {
+                    "name": "bullet",
+                    "group": "Bullet",
+                    "type": "custom"
+                },
+                {
+                    "name": "cubebullet",
+                    "type": "cube"
+                },
+                {
+                    "name": "default_fleet_0_5",
+                    "group": "Ship_1",
+                    "type": "custom"
+                },
+                {
+                    "name": "myship",
+                    "group": "Ship_1",
+                    "type": "custom"
+                },
+                {
+                    "name": "othership",
+                    "group": "Ship_1",
+                    "type": "custom"
+                },
+                {
+                    "name": "notepanel",
+                    "group": "NotePanel",
+                    "type": "custom"
+                },
+                {
+                    "name": "notepanel_room",
+                    "group": "Room",
+                    "type": "custom"
+                }
+            ],
+            "keyframes": [
+                {
+                    "frame": 1,
+                    "objects": [
+                        {
+                            "name": "notepanel",
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                          {
+                            "name": "notepanel_room",
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

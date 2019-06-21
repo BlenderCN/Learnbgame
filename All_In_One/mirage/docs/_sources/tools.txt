@@ -1,0 +1,79 @@
+Tools
+=================================================================================
+
+
+Vertex Groups Generate/Update
+---------------------------------------------------------------------------------
+
+.. image:: _static/tools_intro.png
+
+Mirage generates vertex groups to store information about the terrain.
+These weight groups are also automatically converted into color vertex groups to
+use in Cycles. You can use the buttons included in the tools panel to update the
+groups after you have made changes to the terrain.
+
+They can also be used to add vertex groups to other meshes, or purely sculpted terrains.
+
+
+
+Export Vertex Group to Image
+---------------------------------------------------------------------------------
+
+.. image:: _static/vgroups_exported.jpg
+
+Exports a specific mirage vertex group to a greyscale image. Values will range from 0 (black) 
+to 1 (white).
+
+The image will contain as many pixels as vertices in the terrain, so the image size 
+will be the square root of the vertex count.
+For example, a terrain of 65,536 vertices (medium detail) will create vertex group
+images of 256x256 pixels.
+
+
+Export Heightmap
+---------------------------------------------------------------------------------
+
+.. image:: _static/export_heightmap.jpg
+
+Export the terrain as a greyscale image. Each value in this image will represent the 
+height of a specific vertex in the terrain, with 0 (black) being the lowest point
+of the terrain and 1 (white) the highest.
+
+Heightmaps can be edited in any 2D editor (like GIMP and Krita), and they can be imported
+into meshes by many 3D editors and applications.
+
+The images are saved as image datablocks in Blender. You can find them by going into
+the `UV/Image Editor` and finding the image called "Heightmap".
+
+.. note:: 
+   Mirage doesn't support generating heightmaps larger than terrains at the moment.
+
+.. warning::
+   Note that the image has a fake user but it is not automatically saved!
+   If you don’t pack it or save it to an external file before closing,
+   Blender will lose the contents of the image.
+
+   
+Export terrain as data
+---------------------------------------------------------------------------------
+
+Export the terrain as a list of heights. 
+
+The exported data is saved as a Text datablock. You can find it by going into the
+`Text Editor` and selecting "Terrain_data.py".
+
+=======   =========================================================================
+Option    Description 
+=======   =========================================================================
+List      A flattened list of heights         
+2D List   A list of rows containing a list of columns which contain the heights    
+=======   =========================================================================
+
+===========   =======================================================================
+Encoding      Description 
+===========   =======================================================================
+Python List   Saves the list as a simple python list (can also be used for JSON)
+CSV           Save the list as comma-separated values
+===========   =======================================================================
+
+

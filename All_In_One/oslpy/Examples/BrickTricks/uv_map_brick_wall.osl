@@ -1,0 +1,47 @@
+#include "helpers.h"
+ 
+shader uv_map_brick_wall(
+	point Vector = P,
+	float scale = 1.0,
+    float brick_width = 0.5,
+    float brick_height = 0.25,
+    float offset_amount = 0.5,
+    float offset_frequency = 2,
+    float squash_frequency = 1,
+    float squash_amount = 1,
+
+	output point UV = 0,
+	output point CellID = 0,
+	output float BrickWidth = 0,
+    output float BrickHeight = 0,
+    output float squash_Mask = 0,
+    )
+{
+    float offset = 0.0;
+    
+    float x = (Vector[0] * scale); 
+    float y = (Vector[1] * scale);
+   
+    BrickWidth = brick_width;
+    BrickHeight = brick_height;
+    int brick_y = (int)floor(y / brick_height);
+    
+    if ((offset_frequency>0) && (squash_frequency>0)) 
+    {
+        squash_Mask =  floor( smod(brick_y , squash_frequency)) > 0;
+		BrickWidth  *=  squash_Mask ? 1.0 : squash_amount;                /* squash */
+		offset       =  floor(smod(brick_y , offset_frequency) ) > 0 ? 0.0 : (BrickWidth * offset_amount);  /* offset */
+	}
+    squash_Mask = 1-squash_Mask;  
+    int brick_x =  (int)floor((x + offset) / BrickWidth);
+    CellID = point(brick_x, brick_y,0);
+    
+	x = (x + offset) - BrickWidth * brick_x;
+	y = y - brick_height * brick_y;
+    
+    UV = point(x,y,0);
+    
+ 
+
+}
+

@@ -1,0 +1,22 @@
+modifier test(float x = 0, output float v = 2.3)
+{
+	/*
+	float a = 20.0;
+	float c = (v + a) - 100;
+	degrees(a);
+	v = 2 * degrees(a);
+	vector loc = object.location;
+	float d = distance(loc, vector(1,0,0));
+	int haha = bdata.objects["Cube"].lock_scale[0];
+	int hehe = bdata.objects[1].lock_scale[0];
+	int hihi = object.lock_scale[1];
+	*/
+	/* XXX string versions don't work yet */
+	//int haha = bdata("bdata.objects['Cube'].lock_scale[0]");
+	//int hehe = bdata("bdata.objects[1].lock_scale[0]");
+	//int hihi = bdata("object.lock_scale[1]");
+	/*if (haha) {
+		mod_displace("Y", 0.2, d*0.1);
+		v = a*9;
+	}*/
+}
