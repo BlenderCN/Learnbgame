@@ -1,2 +1,0 @@
-no jumps are supported, so the rmap function was rewritten a little bit
-to work around that. 

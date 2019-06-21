@@ -1,5 +1,0 @@
-.PHONY: clean
-clean:
-	ls
-
-

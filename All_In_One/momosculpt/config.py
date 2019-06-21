@@ -1,1 +1,0 @@
-minimise_map = True
