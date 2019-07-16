@@ -254,7 +254,11 @@ atoms---molecules---species---planets---
 blender 2.8+
 openbabel
 
+# LearnruT----他山之石,可以工玉
 
+* houdini特效借鉴
+
+# [LearnbdnelB](All_In_One/LearnbdnelB/README.md)----以blender为唯一软件的流程的尝试.
 
 # 注意事项:
 
@@ -264,7 +268,7 @@ openbabel
 
 * 插件目前主要在kali linux系统中开发,所以可能会有系统兼容性问题,欢迎提[bug](https://github.com/BlenderCN/Learnbgame/issues)
 
-* 关于工程下载:从最初的Learnbgame插件,经过时间的积累,这个工程的大小很可能超过了10个多G,所以这个工程文件很难下载到本地,可能未来很长一段时间体积还会持续增大,然后慢慢回缩.工程文件大是有原因的,但有一点需要明确,这个工程全部都是关于blender的内容,包括但不限于我从github及其他渠道搜罗到的在all in one里2000多个blender的插件,过往时光所做工作的总结和备份,可以这么说,Fofight在blender中的Learnbgame的一切都集中在这了,希望能方便有需要的有缘人,同时也方便自己.
+* 关于工程下载:从最初的Learnbgame插件,经过时间的积累,这个工程的大小很可能超过了10个多G,所以这个工程文件很难下载到本地,可能未来很长一段时间体积还会持续增大,然后慢慢回缩.工程文件大是有原因的,但有一点需要明确,这个工程全部都是关于blender的内容,包括但不限于我从github及其他渠道搜罗到的在[all in one](https://github.com/BlenderCN/Learnbgame/tree/master/All_In_One)里2000多个blender的插件,过往时光所做工作的总结和备份,可以这么说,Fofight在blender中的Learnbgame的一切都集中在这了,希望能方便有需要的有缘人,同时也方便自己.
 
 
 # 插件安装
