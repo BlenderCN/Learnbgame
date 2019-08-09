@@ -37,7 +37,7 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 
 *	计划会编写一个检测github平台上和blender有关的插件和脚本的爬虫脚本,以实时追踪blender的最新动向
 
-*	未整理的托管于[BlenderCN-Org](https://github.com/BlenderCN-Org),共计1845枚.
+*	未整理的托管于[BlenderCN-Org](https://github.com/BlenderCN-Org),共计2.3k枚.
 
 ### 目前集成开源[插件列表](LearnbdnelB.md)
 
