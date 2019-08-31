@@ -204,7 +204,7 @@ atoms---molecules---species---planets---
 
 声--光--热--电--动--势--场
 
- :musical_score: 声-- ► /play trombone
+ :musical_score: 声--  /play trombone
 </a>
 </br>
 
