@@ -1,4 +1,4 @@
-# Learnbgame ----learnbgame is learn by game
+#  :book: Learnbgame ----learnbgame is learn by game
 
 Learnbgame的目标是一个创建一个关于科学知识学习的[AR/VR游戏](),将科学研究得到的科学知识进行三维可视化,力求创建一种所见即所得的学习方式,你可以理解为现实世界的虚拟仿真映射.
 
@@ -42,7 +42,7 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 ### 目前集成开源[插件列表](LearnbdnelB.md)
 
 
-# 模型集成插件UI架构--基于现实世界和科学研究理论进行分类
+#  :book: 模型集成插件UI架构--基于现实世界和科学研究理论进行分类
 ![](mDrivEngine/struct.jpg)
 
 	架构树结构
@@ -239,16 +239,16 @@ atoms---molecules---species---planets---
 </a>
 </br>
 
-# requirement 
+#  :book: requirement 
 
 blender 2.8+
 openbabel
 
-# LearnruT----他山之石,可以工玉
+#  :book: LearnruT----他山之石,可以工玉
 
 * houdini特效借鉴
 
-# [LearnbdnelB](All_In_One/LearnbdnelB/README.md)----以blender为唯一软件的流程的尝试.
+#  :book: [LearnbdnelB](All_In_One/LearnbdnelB/README.md)----以blender为唯一软件的流程的尝试.
 
 #  :warning: 注意事项:
 
@@ -261,11 +261,11 @@ openbabel
 * 关于工程下载:从最初的Learnbgame插件,经过时间的积累,这个工程的大小很可能超过了10个多G,所以这个工程文件很难下载到本地,可能未来很长一段时间体积还会持续增大,然后慢慢回缩.工程文件大是有原因的,但有一点需要明确,这个工程全部都是关于blender的内容,包括但不限于我从github及其他渠道搜罗到的在[all in one](https://github.com/BlenderCN/Learnbgame/tree/master/All_In_One)里2000多个blender的插件,过往时光所做工作的总结和备份,可以这么说,Fofight在blender中的Learnbgame的一切都集中在这了,希望能方便有需要的有缘人,同时也方便自己.
 
 
-# 插件安装
+#  :book: 插件安装
 
 将插件目录[learnbgame](https://github.com/BlenderCN/Learnbgame/tree/master/learnbgame)压缩,即可从blender-2.8安装,插件[目录结构树](Learnbgame.md)
 
-# Learnbgame游戏引擎LearnbgamEngine
+#  :book: Learnbgame游戏引擎LearnbgamEngine
 
 *   三维模型--专注于[gltf](https://github.com/KhronosGroup/glTF)格式
 
@@ -287,7 +287,7 @@ openbabel
 
 
 
-# other
+#  :book: other
 
 <a href="Fofight.md">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
