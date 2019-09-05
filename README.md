@@ -26,16 +26,16 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 
 ###  :memo: poqbdb 
 
-这是关于物质世界的模型库集合,模型的生成主要通过算法的生成和[gltf格式](https://github.com/KhronosGroup/glTF)文件的导入.
+这是关于物质世界的模型库集合,模型的生成主要通过算法的生成和[gltf格式](https://github.com/KhronosGroup/glTF)文件的导入. :floppy_disk:
 
 ###  :memo: [ImmunemaG](ImmunemaG.md)
 
-这是关于免疫学知识的卡牌游戏
+这是关于免疫学知识的卡牌游戏 :video_game:
 
 ###  :memo: All_In_One
-*	收集来源于github上的blender的插件集合,目前共计1825枚插件/脚本----[ing](All_In_One/README.md)
+*	收集来源于github上的blender的插件集合,目前共计1825枚插件/脚本----[ing](All_In_One/README.md) :octocat:
 
-*	计划会编写一个检测github平台上和blender有关的插件和脚本的爬虫脚本,以实时追踪blender的最新动向
+*	计划会编写一个检测github平台上和blender有关的插件和脚本的爬虫脚本,以实时追踪blender的最新动向 :octocat:
 
 *	未整理的托管于[BlenderCN-Org](https://github.com/BlenderCN-Org),共计2.3k枚.
 
@@ -131,10 +131,10 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
             │   ├── 声音库
             │   └── 音效可视化
             ├── 热
-            │   ├── 冰:snowflake:
-            │   └── 火:fire:
+            │   ├── 冰 
+            │   └── 火
             └── 电
-                └── 闪电:zap:
+                └── 闪电
 
 ###  :memo: 物质世界
 
@@ -165,19 +165,11 @@ atoms---molecules---species---planets---
 
 
 :six_pointed_star:  分子--无机物--有机大分子--
-</a>
-</br>
 
-<a href="#">
-  <img width="45" height="45" src="mDrivEngine/lfire_holo.png" >
-无机物--smiles
-</a>
-</br>
+*   无机物--[smiles]()
 
-<a href="#">
-  <img width="45" height="45" src="mDrivEngine/DNA.png" >
-有机大分子--pdb--mol
-</a>
+*   有机大分子--[pdb]()--[mol]()
+
 </br>
 
 
@@ -253,11 +245,11 @@ openbabel
 * 关于工程下载:从最初的Learnbgame插件,经过时间的积累,这个工程的大小很可能超过了10个多G,所以这个工程文件很难下载到本地,可能未来很长一段时间体积还会持续增大,然后慢慢回缩.工程文件大是有原因的,但有一点需要明确,这个工程全部都是关于blender的内容,包括但不限于我从github及其他渠道搜罗到的在[all in one](https://github.com/BlenderCN/Learnbgame/tree/master/All_In_One)里2000多个blender的插件,过往时光所做工作的总结和备份,可以这么说,Fofight在blender中的Learnbgame的一切都集中在这了,希望能方便有需要的有缘人,同时也方便自己.
 
 
-#:book:插件安装
+# :book:插件安装
 
 将插件目录[learnbgame](https://github.com/BlenderCN/Learnbgame/tree/master/learnbgame)压缩,即可从blender-2.8安装,插件[目录结构树](Learnbgame.md)
 
-#:book:Learnbgame游戏引擎LearnbgamEngine
+# :book:Learnbgame游戏引擎LearnbgamEngine
 
 *   三维模型--专注于[gltf](https://github.com/KhronosGroup/glTF)格式
 
@@ -279,7 +271,7 @@ openbabel
 
 
 
-#  :book: other
+# :book:other
 
 <a href="Fofight.md">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
