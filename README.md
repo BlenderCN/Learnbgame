@@ -42,7 +42,7 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 ###  :memo: 目前集成开源[插件列表](LearnbdnelB.md)
 
 
-#  :book: 模型集成插件UI架构--基于现实世界和科学研究理论进行分类
+##  :book: 模型集成插件UI架构--基于现实世界和科学研究理论进行分类
 ![](mDrivEngine/struct.jpg)
 
 	架构树结构
@@ -145,7 +145,7 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
                    电子
 
 
-从原子出发，有元素周期表,往前，有原子核和电子组成的电子云，往后，则是原子构成分子的三维结构，以pdb和smiles格式在blender中，这是个微观世界，
+从原子出发，有元素周期表,往前，有原子核和电子组成的电子云，往后，则是原子构成分子的三维结构，以[pdb]()和[smiles]()格式在blender中，这是个微观世界，
 
 往后，以gltf格式,是物种，种群组成的生态系统。
 
@@ -190,36 +190,36 @@ atoms---molecules---species---planets---
 
 声--光--热--电--动--势--场
 
- :musical_score: 声--  
+ :musical_score: [声]()--  
 
 </br>
 
 
 
 
-:boom: 光--材质库(blender有内置材质库)--<a href="http://codeofart.com/easy-hdri-0-9-0/">环境光easyhdri</a>
+:boom: [光]()--材质库(blender有内置材质库)--<a href="http://codeofart.com/easy-hdri-0-9-0/">环境光easyhdri</a>
 
 </br>
 
 
-:fire: 热--
+:fire: [热]()--烟--火
 
 </br>
 
 
-:zap: 电--
+:zap: [电]()--
 
 </br>
 
-:nut_and_bolt: 动--骨骼--
+:nut_and_bolt: [动]()--骨骼--
 
 </br>
 
- :anchor: 势--状态--液体状态--<a href="https://github.com/rlguy/Blender-FLIP-Fluids">FLIP Fluids</a>
+ :anchor: [势]()--状态--液体状态--<a href="https://github.com/rlguy/Blender-FLIP-Fluids">FLIP Fluids</a>
 </a>
 </br>
 
-:cyclone: 场--Force Field(blender内置)
+:cyclone: [场]()--Force Field(blender内置)
 </a>
 </br>
 
