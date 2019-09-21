@@ -1691,11 +1691,11 @@ Attribute Blur----Blurs out (or "relaxes") points in a mesh or a point cloud.
 
 *	[Attribute Cast](.)----Changes the size/precision Houdini uses to store an attribute.
 
-Attribute Composite----Composites vertex, point, primitive, and/or detail attributes between two or more selections.
+*	[Attribute Composite](.)----Composites vertex, point, primitive, and/or detail attributes between two or more selections.
 
-Attribute Copy----Copies attributes between groups of vertices, points, or primitives.
+*	[Attribute Copy](.)----Copies attributes between groups of vertices, points, or primitives.
 
-Attribute Create----Adds or edits user defined attributes.
+*	[Attribute Create](.)----Adds or edits user defined attributes.
 
 Attribute Delete----Deletes point and primitive attributes.
 
@@ -1703,7 +1703,7 @@ Attribute Expression----Allows simple VEX expressions to modify attributes.
 
 Attribute Fade----Fades a point attribute in and out over time.
 
-Attribute Interpolate----Interpolates attributes within primitives or based on explicit weights.
+*	[Attribute Interpolate](.)----Interpolates attributes within primitives or based on explicit weights.
 
 Attribute Mirror----Copies and flips attributes from one side of a plane to another.
 
@@ -1729,9 +1729,9 @@ Attribute VOP----Runs a VOP network to modify geometry attributes.
 
 Attribute Wrangle----Runs a VEX snippet to modify attribute values.
 
-Attribute from Map----Samples texture map information to a point attribute.
+*	[Attribute from Map](.)----Samples texture map information to a point attribute.
 
-Attribute from Volume----Copies information from a volume onto the point attributes of another piece of geometry, with optional remapping.
+*	[Attribute from Volume](.)----Copies information from a volume onto the point attributes of another piece of geometry, with optional remapping.
 
 Bake ODE----Converts primitives for ODE and Bullet solvers.
 
