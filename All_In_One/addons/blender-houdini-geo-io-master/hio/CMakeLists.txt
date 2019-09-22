@@ -1,0 +1,57 @@
+cmake_minimum_required(VERSION 3.8)
+
+project(hio)
+
+set(HFS "C:/Program Files/Side Effects Software/Houdini 17.0.416" CACHE STRING "Houdini Path")
+
+set(TOOLKIT_CMAKE "${HFS}/toolkit/cmake")
+list(APPEND CMAKE_PREFIX_PATH "${TOOLKIT_CMAKE}")
+
+find_package( Houdini REQUIRED )
+include_directories( Houdini )
+link_libraries( Houdini )
+
+set(HIO_VERSION_SUFFIX "${Houdini_VERSION_MAJOR}_${Houdini_VERSION_MINOR}_${Houdini_VERSION_PATCH}")
+
+file(GLOB HEADERS "src/*.h")
+
+include_directories(
+	"src"
+	"libs/Catch2/single_include"
+)
+
+if (APPLE)
+	set(CMAKE_CXX_STANDARD 11)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
+endif()
+
+add_subdirectory(libs/pybind11)
+
+set(TESTAPP_NAME "testapp_${HIO_VERSION_SUFFIX}")
+set(PYMODULE_NAME "core_${HIO_VERSION_SUFFIX}")
+
+###
+
+set(OUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/test)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${OUT_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${OUT_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${OUT_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO ${OUT_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${OUT_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${OUT_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${OUT_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO ${OUT_DIR})
+
+add_executable(${TESTAPP_NAME} "src/main.cpp" "src/hio.cpp" )
+
+set_target_properties(${TESTAPP_NAME} PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+set_target_properties(${TESTAPP_NAME} PROPERTIES VS_DEBUGGER_ENVIRONMENT "PATH=${HFS}/bin")
+
+set(OUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/hio)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${OUT_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${OUT_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${OUT_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO ${OUT_DIR})
+
+pybind11_add_module(${PYMODULE_NAME} MODULE "src/module.cpp" "src/hio.cpp" )
+target_compile_definitions(${PYMODULE_NAME} PRIVATE CMAKE_PYMODULE_NAME=${PYMODULE_NAME})

@@ -7,5 +7,7 @@
 
 *	1.	[houdini源文件-龙卷风卷起房子](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/TornadoExport.hipnc)-----[演示视屏](https://www.bilibili.com/video/av68503497)
 
-*	2.	[houdini源文件-]()-----[演示视屏]()
+*	2.	[houdini源文件-蒲公英随风飘散]()-----[演示视屏](https://www.bilibili.com/video/av68661259)
+
+*	3.	[houdini源文件-]()-----[演示视屏]()
 

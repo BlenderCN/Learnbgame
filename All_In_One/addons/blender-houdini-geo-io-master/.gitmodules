@@ -1,0 +1,6 @@
+[submodule "hio/libs/Catch2"]
+	path = hio/libs/Catch2
+	url = https://github.com/catchorg/Catch2.git
+[submodule "hio/libs/pybind11"]
+	path = hio/libs/pybind11
+	url = https://github.com/pybind/pybind11.git

@@ -1,0 +1,2 @@
+*.hiplc filter=lfs diff=lfs merge=lfs -text
+*.bgeo filter=lfs diff=lfs merge=lfs -text

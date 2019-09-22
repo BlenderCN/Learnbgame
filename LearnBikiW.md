@@ -1,1 +1,16 @@
-LearnBikiW is learn by wiki,亦三维百科.
+###	LearnBikiW is learn by wiki,亦三维百科.
+
+结合实际的技术和知识架构,将三维百科以自然学科来进行分类管理,亦即
+
+*	数学
+
+*	化学
+
+*	生物
+
+*	物理
+
+*	地理
+
+*	天文
+
