@@ -13,7 +13,7 @@
 
 *	4.	[houdini源文件-](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Gray_Scott_Pattern_On_Surface.hiplc)-----[演示视屏](https://www.bilibili.com/video/av68881585)
 
-*	5.	[houdini源文件-](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/particle_lifespan.hipnc)-----[演示视屏]()
+*	5.	[houdini源文件-](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/particle_lifespan.hipnc)-----[演示视屏](https://www.bilibili.com/video/av68977896)
 
 
 *	6.	[houdini源文件-]()-----[演示视屏]()
