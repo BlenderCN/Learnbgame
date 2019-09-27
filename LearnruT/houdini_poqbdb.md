@@ -15,6 +15,8 @@
 
 *	5.	[houdini源文件-](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/particle_lifespan.hipnc)-----[演示视屏](https://www.bilibili.com/video/av68977896)
 
-*	6.	[houdini源文件-水管破裂喷射的水花](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/pipeline_water.hip)-----[演示视屏]()
+*	6.	[houdini源文件-水管破裂喷射的水花](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/pipeline_water.hip)-----[演示视屏](https://www.bilibili.com/video/av69072863)
 
-*	6.	[houdini源文件-]()-----[演示视屏]()
+*	6.	[houdini源文件-](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/tylorFluid.hipnc)-----[演示视屏](https://www.bilibili.com/video/av69179840)
+
+*	7.	[houdini源文件-]()-----[演示视屏]()
