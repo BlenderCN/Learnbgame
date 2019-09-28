@@ -12,3 +12,5 @@ blender节点式软件计划
 *	[ocvl-addon](https://github.com/feler404/ocvl-addon)
 
 *	[modular_tree](https://github.com/MaximeHerpin/modular_tree)
+
+*	[sverchok](https://github.com/nortikin/sverchok)
