@@ -19,6 +19,8 @@
 
 *	6.	[houdini源文件-](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/tylorFluid.hipnc)-----[演示视屏](https://www.bilibili.com/video/av69179840)
 
-*	7.	[houdini源文件-](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/lava_emitter.hip)-----[演示视屏]()
+*	7.	[houdini源文件-](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/lava_emitter.hip)-----[演示视屏](https://www.bilibili.com/video/av69294995)
 
-*	8.	[houdini源文件-]()-----[演示视屏]()
+*	8.	[houdini源文件-水滴涟漪](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/conservation_attribute_finish.hip)-----[演示视屏]()
+
+*	9.	[houdini源文件-]()-----[演示视屏]()
