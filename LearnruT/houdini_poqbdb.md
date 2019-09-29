@@ -11,16 +11,16 @@
 
 *	3.	[houdini源文件-结蜘蛛网](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/SpidersWeb.hipnc)-----[演示视屏](https://www.bilibili.com/video/av68775852)
 
-*	4.	[houdini源文件-](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Gray_Scott_Pattern_On_Surface.hiplc)-----[演示视屏](https://www.bilibili.com/video/av68881585)
+*	4.	[houdini源文件-Gray Scott 图案表面生长](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Gray_Scott_Pattern_On_Surface.hiplc)-----[演示视屏](https://www.bilibili.com/video/av68881585)
 
-*	5.	[houdini源文件-](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/particle_lifespan.hipnc)-----[演示视屏](https://www.bilibili.com/video/av68977896)
+*	5.	[houdini源文件-鞭炮须点火](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/particle_lifespan.hipnc)-----[演示视屏](https://www.bilibili.com/video/av68977896)
 
 *	6.	[houdini源文件-水管破裂喷射的水花](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/pipeline_water.hip)-----[演示视屏](https://www.bilibili.com/video/av69072863)
 
-*	6.	[houdini源文件-](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/tylorFluid.hipnc)-----[演示视屏](https://www.bilibili.com/video/av69179840)
+*	7.	[houdini源文件-扰动的粒子,黑白融合](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/tylorFluid.hipnc)-----[演示视屏](https://www.bilibili.com/video/av69179840)
 
-*	7.	[houdini源文件-](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/lava_emitter.hip)-----[演示视屏](https://www.bilibili.com/video/av69294995)
+*	8.	[houdini源文件-落地岩浆](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/lava_emitter.hip)-----[演示视屏](https://www.bilibili.com/video/av69294995)
 
-*	8.	[houdini源文件-水滴涟漪](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/conservation_attribute_finish.hip)-----[演示视屏]()
+*	9.	[houdini源文件-水滴涟漪](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/conservation_attribute_finish.hip)-----[演示视屏](https://www.bilibili.com/video/av69422412)
 
 *	9.	[houdini源文件-]()-----[演示视屏]()
