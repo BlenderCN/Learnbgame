@@ -1,10 +1,12 @@
 blender节点式软件计划
 
-软件架构
+[软件架构]()
+
+##	[文档](docs)
 
 软件
 
-
+基础节点
 目前有关blender的节点式插件
 
 *	[animation_nodes](https://github.com/JacquesLucke/animation_nodes)
