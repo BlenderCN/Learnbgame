@@ -25,4 +25,8 @@
 
 *	10.	[houdini源文件-原地爆炸](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Destruction_simulation.hip)-----[演示视屏](https://www.bilibili.com/video/av69532973)
 
-*	11.	[houdini源文件-]()-----[演示视屏]()
+*	11.	[houdini源文件-火箭腾空](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/rocket_launching.hip)-----[演示视屏](https://www.bilibili.com/video/av69690463)
+
+*	12.	[houdini源文件-]()
+
+*	13.	[houdini源文件-]()
