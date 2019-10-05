@@ -6,3 +6,5 @@
 
 # [https://github.com/topics/blender3d?l=python&o=desc&s=updated](https://github.com/topics/blender3d?l=python&o=desc&s=updated)
 
+#	[https://github.com/search?l=Python&o=desc&q=bl_info&s=indexed&type=Code](https://github.com/search?l=Python&o=desc&q=bl_info&s=indexed&type=Code)
+

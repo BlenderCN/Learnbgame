@@ -31,8 +31,8 @@
 
 *	13.	[houdini源文件-平铺地面](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/simple_flip.hipnc)-----[演示视屏](https://www.bilibili.com/video/av69968897)
 
-*	14.	[houdini源文件-奔跑的透明人](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/trailmaker.hiplc)-----[演示视屏]()
+*	14.	[houdini源文件-奔跑的透明人](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/trailmaker.hiplc)-----[演示视屏](https://www.bilibili.com/video/av70101897)
 
-*	15.	[houdini源文件-]()-----[演示视屏]()
+*	15.	[houdini源文件-鱼群粒子](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/n_body_collide.hipnc)-----[演示视屏]()
 
 *	16.	[houdini源文件-]()-----[演示视屏]()
