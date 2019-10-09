@@ -37,6 +37,8 @@
 
 *	16.	[houdini源文件-水轮流体](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/mill_init.hipnc)-----[演示视屏](https://www.bilibili.com/video/av70377867)
 
-*	17.	[houdini源文件-舒展](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/niepan_feixiang.hip)-----[演示视屏]()
+*	17.	[houdini源文件-舒展](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/niepan_feixiang.hip)-----[演示视屏](https://www.bilibili.com/video/av70508830)
 
-*	17.	[houdini源文件-]()-----[演示视屏]()
+*	18.	[houdini源文件-盛开](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/day1-pa_p4_v01.hipnc)-----[演示视屏]()
+
+*	19.	[houdini源文件-]()-----[演示视屏]()
