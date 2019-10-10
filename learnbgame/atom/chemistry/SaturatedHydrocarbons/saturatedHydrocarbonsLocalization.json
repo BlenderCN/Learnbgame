@@ -1,0 +1,42 @@
+{
+	"en": {
+		"methane": "Methane",
+		"ethane" : "Ethane",
+		"propane" : "Propane",
+		"bhutane" : "Bhutane",
+		"pentane" : "Pentane",
+		"hexane" : "Hexane",
+		"heptane" : "Heptane",
+		"octane" : "Octane",
+		"nonae" : "Nonae",
+		"decane" : "Decane",
+		"undecane" : "Undecane",
+		"dodecane" : "Dodecane",
+		"eicosane" : "Eicosane",
+		"triacontane" : "Triacontane",
+		"melting_point" : "Melting Point (oC)",
+		"boiling_point" : "Boiling Point (oC)",
+		"state_at_25" : "State at 25oC",
+		"saturatedHydrocarbons": "Saturated hydrocarbons"
+	},
+	"ru": {
+		"methane" : "Метан",
+		"ethane" : "Этан",
+		"propane" : "Пропан",
+		"bhutane" : "Бутан",
+		"pentane" : "Пентан",
+		"hexane" : "Гексан",
+		"heptane" : "Гептан",
+		"octane" : "Октан",
+		"nonae" : "Нонан",
+		"decane" : "Декан",
+		"undecane" : "Undecane",
+		"dodecane" : "Dodecane",
+		"eicosane" : "Эйкозан",
+		"triacontane" : "Triacontane",
+		"melting_point" : "Температура плавления (oC)",
+		"boiling_point" : "Температура кипения (oC)",
+		"state_at_25" : "Состояние при 25oC",
+		"saturatedHydrocarbons": "Предельные углеводороды"
+	}
+}
