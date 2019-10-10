@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<elementaryParticles>
+  <elementaryParticle>
+    <name>proton</particle>
+    <charge>1</charge>
+    <mass>1007276466812</mass>
+    <radius>0.8775</radius>
+    <spin>0.5</spin>
+    <discovered>
+      <year>1918</year>
+      <name>Ernest Rutherford</name>
+    </discovered>
+  </elementaryParticle>
+  <elementaryParticle>
+    <name>electron</name>
+    <charge>-1</charge>
+    <mass>100866491600</mass>
+    <radius/>
+    <spin>0.5</spin>
+    <discovered>
+      <year>1932</year>
+      <name>James Chadwick</name>
+    </discovered>
+  </elementaryParticle>
+  <elementaryParticle>
+    <name>neutron</name>
+    <charge>0</charge>
+    <mass>100866491600</mass>
+    <radius/>
+    <spin>0.5</spin>
+    <discovered>
+      <year>1932</year>
+      <name>James Chadwick</name>
+    </discovered>
+  </elementaryParticle>
+</elementaryParticles>

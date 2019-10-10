@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">       <!--页面放大代码-->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">                     <!--兼容处理-->
+        <title>Please enter your title</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            HTML,body{
+                height: 100%;
+            }
+            body {
+                font-size: 16px;
+                color: #666;
+                min-width: 1100px;
+                -webkit-perspective: 40em;
+                        perspective: 40em;
+                -webkit-perspective-origin: center center;
+                        perspective-origin: center center;
+                overflow: hidden;
+                background: #000;
+                background-image: -webkit-linear-gradient(left,rgba(255,255,255,0.025) 50%,transparent 70%);
+                background-image: linear-gradient(to right, rgba(255,255,255,0.025) 50%,transparent 20%);
+                background-size: 2rem 100%;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
+            }
+            a {
+                text-decoration: none;
+                color: #666;
+            }
+            ul li {
+                list-style: none;
+            }
+            #box{
+                width: 10em;
+                height: 10em;
+                -webkit-transform-style: preserve-3d;
+                        transform-style: preserve-3d;
+                -webkit-animation: rotate 12s infinite linear;
+                        animation: rotate 12s infinite linear;
+            }
+            .cube{
+                position: absolute;
+                width: 10em;
+                height: 10em;
+                border: 2px dotted rgba(249, 247, 6, 0.99);
+                border-radius: 50%;
+                -webkit-transform-style: preserve-3d;
+                        transform-style: preserve-3d;
+                -webkit-transform: rotateY(150deg);
+                        transform: rotateY(180deg);
+            }
+            .cube1{
+                -webkit-transform: rotateZ(45deg) rotateY(45deg);
+                        transform: rotateZ(45deg) rotateY(45deg);
+            }
+            .cube2{
+                -webkit-transform: rotateX(45deg) rotateY(45deg);
+                        transform: rotateX(45deg) rotateY(45deg);
+             }
+            .cube3{
+                -webkit-transform: rotateX(45deg) rotateZ(45deg);
+                        transform: rotateX(45deg) rotateZ(45deg);
+            }
+            .side{
+                position: absolute;
+                width: 10em;
+                height: 10em;
+                border: 2px dotted rgba(255,213,0,0.35);
+                border-radius: 50%;
+                -webkit-transform-style: preserve-3d;
+                        transform-style: preserve-3d;
+                -webkit-transform: rotateY(150deg);
+                        transform: rotateY(180deg);
+            }
+            .side::before,.side::after{
+                content:"";
+                display: block;
+                position: absolute;
+                left:0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                box-sizing: border-box;
+                border-radius: inherit;
+                border: 1px solid;
+                box-shadow: inset 0 0 2em,0 0 2em;
+            }
+            .side::before{
+                width: 2.5em;
+                height: 2.5em;
+                color: #e0fb04;
+            }
+            .side::after{
+                width: 1.5em;
+                height: 1.5em;
+                -webkit-transform: translateZ(-2em);
+                        transform: translateZ(-2em);
+                box-shadow: inset 0 0 1em,0 0 1em;
+                color: #03e2f8;
+            }
+            .back {
+                -webkit-transform: translateZ(-5em) rotateY(180deg);
+                        transform: translateZ(-5em) rotateY(180deg);
+            }
+            .left {
+                -webkit-transform: translateX(-5em) rotateY(-90deg);
+                        transform: translateX(-5em) rotateY(-90deg);
+            }
+            .right {
+                -webkit-transform: translateX(5em) rotateY(90deg);
+                        transform: translateX(5em) rotateY(90deg);
+            }
+            .top {
+                -webkit-transform: translateY(-5em) rotateX(90deg);
+                        transform: translateY(-5em) rotateX(90deg)
+            }
+            .bottom {
+                -webkit-transform: translateY(5em) rotateX(-90deg);
+                        transform: translateY(5em) rotateX(-90deg);
+            }
+            .front {
+                -webkit-transform: translateZ(5em);
+                        transform: translateZ(5em);
+            }
+            .inner{
+                position: absolute;
+                left:0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                width: 5em;
+                height: 5em;
+                border-radius: inherit;
+                border: 1px solid;
+                box-shadow: inset 0 0 2em;
+                color: #ff3f10;
+                -webkit-transform-style: preserve-3d;
+                        transform-style: preserve-3d;
+                -webkit-transform: translateZ(2em);
+                        transform: translateZ(2em);
+            }
+            .inner::before,.inner::after{
+                content: "";
+                display: block;
+                position: absolute;
+                left:0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                box-sizing: border-box;
+                border-radius: inherit;
+                border: 1px solid;
+                box-shadow: inset 0 0 2em, 0 0 2em;
+            }
+            .inner::before{
+                width: 2.5em;
+                height: 2.5em;
+                -webkit-transform: translateZ(2em);
+                        transform: translateZ(2em);
+                color: crimson;
+            }
+            .inner::after{
+                width: 1.5em;
+                height: 1.5em;
+                -webkit-transform: translateZ(4em);
+                        transform: translateZ(4em);
+                color: #7f03fa;
+            }
+            @-webkit-keyframes rotate {
+                100% {
+                    -webkit-transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+                    transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+                }
+            }
+            @keyframes rotate {
+                100% {
+                    -webkit-transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+                    transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <div class="cube cube1">
+                <div class="side back">
+                    <div class="inner"></div>
+                </div>
+                <div class="side left">
+                    <div class="inner"></div>
+                </div>
+                <div class="side right">
+                    <div class="inner"></div>
+                </div>
+                <div class="side top">
+                    <div class="inner"></div>
+                </div>
+                <div class="side bottom">
+                    <div class="inner"></div>
+                </div>
+                <div class="side front">
+                    <div class="inner"></div>
+                </div>
+            </div>
+            <div class="cube cube2">
+                <div class="side back">
+                    <div class="inner"></div>
+                </div>
+                <div class="side left">
+                    <div class="inner"></div>
+                </div>
+                <div class="side right">
+                    <div class="inner"></div>
+                </div>
+                <div class="side top">
+                    <div class="inner"></div>
+                </div>
+                <div class="side bottom">
+                    <div class="inner"></div>
+                </div>
+                <div class="side front">
+                    <div class="inner"></div>
+                </div>
+            </div>
+            <div class="cube cube3">
+                <div class="side back">
+                    <div class="inner"></div>
+                </div>
+                <div class="side left">
+                    <div class="inner"></div>
+                </div>
+                <div class="side right">
+                    <div class="inner"></div>
+                </div>
+                <div class="side top">
+                    <div class="inner"></div>
+                </div>
+                <div class="side bottom">
+                    <div class="inner"></div>
+                </div>
+                <div class="side front">
+                    <div class="inner"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+---
+proton:
+  charge: 1
+  mass: 1007276466812
+  radius: 0.8775
+  spin: 0.5
+  discovered:
+    year: 1918
+    name: Ernest Rutherford
+electron:
+  charge: -1
+  mass: 100866491600
+  radius:
+  spin: 0.5
+  discovered:
+    year: 1932
+    name: James Chadwick
+neutron:
+  charge: 0
+  mass: 100866491600
+  radius:
+  spin: 0.5
+  discovered:
+    year: 1932
+    name: James Chadwick
