@@ -47,4 +47,6 @@
 
 *	21.	[houdini源文件-电流](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Lightning_Example_Scene_NC.hipnc)-----[演示视屏](https://www.bilibili.com/video/av70914232)
 
-*	21.	[houdini源文件-]()-----[演示视屏]()
+*	22.	[houdini源文件-lsystem.矩](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/subdivideTriPattern.hiplc)-----[演示视屏](https://www.bilibili.com/video/av71031966/)
+
+*	23.	[houdini源文件-]()-----[演示视屏]()
