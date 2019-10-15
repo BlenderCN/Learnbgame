@@ -51,4 +51,6 @@
 
 *	23.	[houdini源文件-沙地脚印](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/sand_scene.hip)-----[演示视屏](https://www.bilibili.com/video/av71152953)
 
-*	24.	[houdini源文件-]()-----[演示视屏]()
+*	24.	[houdini源文件-苍蝇群集](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/flyswarm.hip)-----[演示视屏](https://www.bilibili.com/video/av71269281)
+
+*	25.	[houdini源文件-]()-----[演示视屏]()
