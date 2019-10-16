@@ -54,3 +54,9 @@
 *	24.	[houdini源文件-苍蝇群集](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/flyswarm.hip)-----[演示视屏](https://www.bilibili.com/video/av71269281)
 
 *	25.	[houdini源文件-鱼集群](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/fish_crowd.hipnc)-----[演示视屏](https://www.bilibili.com/video/av71347253)
+
+*	26.	[houdini源文件-喷泉](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/flipfountain.hip)-----[演示视屏](https://www.bilibili.com/video/av71464470)
+
+*	27.	[houdini源文件-]()-----[演示视屏]()
+
+
