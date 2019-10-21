@@ -63,4 +63,6 @@
 
 *	28.	[houdini源文件-落雨](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/drop_rain.hip)-----[演示视屏](https://www.bilibili.com/video/av71809516)
 
-*	29.	[houdini源文件-]()-----[演示视屏]()
+*	29.	[houdini源文件-纸燃烧](https://github.com/Learnbgame/LearnbgameWWW/blob/master/BurningPaper_.zip)-----[演示视屏](https://www.bilibili.com/video/av71938674)
+
+*	30.	[houdini源文件-]()-----[演示视屏]()
