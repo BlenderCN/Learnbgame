@@ -67,4 +67,6 @@
 
 *	30.	[houdini源文件-炫轨](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Chen-Lee.hip)-----[演示视屏](https://www.bilibili.com/video/av73002314)
 
-*	31.	[houdini源文件-]()-----[演示视屏]()
+*	31.	[houdini源文件-z轨](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/Spring.hip)-----[演示视屏](https://www.bilibili.com/video/av73107571)
+
+*	32.	[houdini源文件-]()-----[演示视屏]()
