@@ -69,4 +69,6 @@
 
 *	31.	[houdini源文件-z轨](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/Spring.hip)-----[演示视屏](https://www.bilibili.com/video/av73107571)
 
-*	32.	[houdini源文件-]()-----[演示视屏]()
+*	32.	[houdini源文件-3D大战僵尸](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/2_6_tracer_fire.hiplc)-----[演示视屏](https://www.bilibili.com/video/av73209512)
+
+*	33.	[houdini源文件-]()-----[演示视屏]()
