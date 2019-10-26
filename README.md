@@ -20,6 +20,8 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 
 * 灵活管理模型
 
+* 节点非破坏式模型
+
 ###  :memo: 插件效果演示
 
 ![](mDrivEngine/demo.gif)
