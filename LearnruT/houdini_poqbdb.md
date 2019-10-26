@@ -71,4 +71,8 @@
 
 *	32.	[houdini源文件-3D大战僵尸](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/2_6_tracer_fire.hiplc)-----[演示视屏](https://www.bilibili.com/video/av73209512)
 
-*	33.	[houdini源文件-]()-----[演示视屏]()
+*	33.	[houdini源文件-飘旗](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Flag_01.hiplc)-----[演示视屏](https://www.bilibili.com/video/av73314120)
+
+*	34.	[houdini源文件-墙爆破](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/velocity.sculpt.v0.1.hiplc)-----[演示视屏](https://www.bilibili.com/video/av73412250/)
+
+*	35.	[houdini源文件-]()-----[演示视屏]()
