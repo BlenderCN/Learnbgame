@@ -1,4 +1,4 @@
-ImmunemaG是一个仿免疫系统塔防游戏
+ImmunemaG是一个仿免疫系统塔防游戏，learnbgame系列尝试
 
 ImmunemaG is immune game
 
@@ -216,4 +216,5 @@ ImmunemaG is immune game
 <a href="#">
   <img width="125" height="145" src="mDrivEngine/immunemag/霉菌.jpg" >
 </a>
+
 

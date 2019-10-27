@@ -75,4 +75,10 @@
 
 *	34.	[houdini源文件-墙爆破](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/velocity.sculpt.v0.1.hiplc)-----[演示视屏](https://www.bilibili.com/video/av73412250/)
 
-*	35.	[houdini源文件-]()-----[演示视屏]()
+*	35.	[houdini源文件-沙发](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/hamed_chair.hip)-----[演示视屏](https://www.bilibili.com/video/av73545924)
+
+*	36.	[houdini源文件-凳子](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/chair.hip)-----[演示视屏](https://www.bilibili.com/video/av73662395/)
+
+*	37.	[houdini源文件-]()-----[演示视屏]()
+
+*	38.	[houdini源文件-]()-----[演示视屏]()
