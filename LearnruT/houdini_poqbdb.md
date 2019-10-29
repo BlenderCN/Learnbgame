@@ -79,6 +79,8 @@
 
 *	36.	[houdini源文件-凳子](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/chair.hip)-----[演示视屏](https://www.bilibili.com/video/av73662395/)
 
-*	37.	[houdini源文件-]()-----[演示视屏]()
+*	37.	[houdini源文件-魑魅](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/character.hip)-----[演示视屏](https://www.bilibili.com/video/av73815851)
 
 *	38.	[houdini源文件-]()-----[演示视屏]()
+
+*	39.	[houdini源文件-]()-----[演示视屏]()
