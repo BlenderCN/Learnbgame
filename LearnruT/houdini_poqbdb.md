@@ -85,4 +85,6 @@
 
 *	39.	[houdini源文件-海桥](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/bridge_sea.hipnc)-----[演示视屏](https://www.bilibili.com/video/av73960414)
 
+*	40.	[houdini源文件-楼](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/building_v001.hip)-----[演示视屏](https://www.bilibili.com/video/av74097101)
+
 *	40.	[houdini源文件-]()-----[演示视屏]()
