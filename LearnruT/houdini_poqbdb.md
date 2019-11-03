@@ -89,4 +89,6 @@
 
 *	41.	[houdini源文件-方花](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/095_Square%20Flower.hipnc)-----[演示视屏](https://www.bilibili.com/video/av74197921)
 
-*	42.	[houdini源文件-]()-----[演示视屏]()
+*	42.	[houdini源文件-医院楼外](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/hospital_outside.zip)-----[演示视屏](https://www.bilibili.com/video/av74373913)
+
+*	43.	[houdini源文件-]()-----[演示视屏]()
