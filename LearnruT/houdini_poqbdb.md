@@ -96,3 +96,9 @@
 *	44.	[houdini源文件-门](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/door.hipnc)-----[演示视屏](https://www.bilibili.com/video/av74583455)
 
 *	45.	[houdini源文件-烛火](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/candle.hip)-----[演示视屏](https://www.bilibili.com/video/av74707264)
+
+*	46.	[houdini源文件-火把](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/torch.hip)-----[演示视屏](https://www.bilibili.com/video/av74788691)
+
+*	47.	[houdini源文件-环梯](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/staircase.hip)-----[演示视屏](https://www.bilibili.com/video/av74900273)
+
+*	48.	[houdini源文件-]()-----[演示视屏]()
