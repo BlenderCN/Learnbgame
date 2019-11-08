@@ -101,4 +101,6 @@
 
 *	47.	[houdini源文件-环梯](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/staircase.hip)-----[演示视屏](https://www.bilibili.com/video/av74900273)
 
-*	48.	[houdini源文件-]()-----[演示视屏]()
+*	48.	[houdini源文件-雪花](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/snowflake.hip)-----[演示视屏](https://www.bilibili.com/video/av75023744)
+
+*	49.	[houdini源文件-]()-----[演示视屏]()
