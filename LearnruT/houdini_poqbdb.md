@@ -103,4 +103,8 @@
 
 *	48.	[houdini源文件-雪花](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/snowflake.hip)-----[演示视屏](https://www.bilibili.com/video/av75023744)
 
-*	49.	[houdini源文件-]()-----[演示视屏]()
+*	49.	[houdini源文件-斜梯](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/hauntedstaircase.hip)-----[演示视屏](https://www.bilibili.com/video/av75122766)
+
+*	50.	[houdini源文件-]()-----[演示视屏]()
+
+*	51.	[houdini源文件-]()-----[演示视屏]()
