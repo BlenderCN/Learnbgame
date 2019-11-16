@@ -113,4 +113,13 @@
 
 *	53.	[houdini源文件-蓝紫焰弹](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/pyrojetexhaust.hip)-----[演示视屏](https://www.bilibili.com/video/av75594419)
 
-*	54.	[houdini源文件-]()-----[演示视屏]()
+*	54.	[houdini源文件-南瓜灯](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/carvedpumpkin.hip)-----[演示视屏](https://www.bilibili.com/video/av75705187)
+
+*	55.	[houdini源文件-果树](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/deciduoostree.hip)-----[演示视屏](https://www.bilibili.com/video/av75850013)
+
+*	56.	[houdini源文件-]()-----[演示视屏]()
+
+*	57.	[houdini源文件-]()-----[演示视屏]()
+
+
+
