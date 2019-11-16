@@ -3,7 +3,7 @@
 
 # [自己整理的houdini教程相关](https://github.com/FofightFong/All_In_One)
 
-#	目前积累了3000+[有效的houdini源文件](houdini_poqbdb_tree.md).源文件一般为非商业版.,供学习使用.每天发布一个,推动Learnbgame项目进行.
+#	目前积累了30000+[有效的houdini源文件](houdini_poqbdb_tree.md).源文件一般为非商业版.,供学习使用.每天发布一个,推动Learnbgame项目进行.
 
 *	1.	[houdini源文件-龙卷风卷起房子](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/TornadoExport.hipnc)-----[演示视屏](https://www.bilibili.com/video/av68503497)
 
@@ -117,7 +117,7 @@
 
 *	55.	[houdini源文件-果树](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/deciduoostree.hip)-----[演示视屏](https://www.bilibili.com/video/av75850013)
 
-*	56.	[houdini源文件-]()-----[演示视屏]()
+*	56.	[houdini源文件-茵茵草地](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/grass_generator.hipnc)-----[演示视屏](https://www.bilibili.com/video/av75901901)
 
 *	57.	[houdini源文件-]()-----[演示视屏]()
 
