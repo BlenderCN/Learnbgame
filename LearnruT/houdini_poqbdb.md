@@ -121,7 +121,9 @@
 
 *	57.	[houdini源文件-宴](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/scott_spookytable.hip)-----[演示视屏](https://www.bilibili.com/video/av76077711)
 
-*	58.	[houdini源文件-]()-----[演示视屏]()
+*	58.	[houdini源文件-太空船](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/spaceship.hip)-----[演示视屏](https://www.bilibili.com/video/av76189411)
+
+*	59.	[houdini源文件-]()-----[演示视屏]()
 
 *	59.	[houdini源文件-]()-----[演示视屏]()
 
