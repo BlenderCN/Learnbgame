@@ -123,9 +123,12 @@
 
 *	58.	[houdini源文件-太空船](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/spaceship.hip)-----[演示视屏](https://www.bilibili.com/video/av76189411)
 
-*	59.	[houdini源文件-]()-----[演示视屏]()
+*	59.	[houdini源文件-礼品盒](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/giftbox.hip)-----[演示视屏](https://www.bilibili.com/video/av76333089)
 
-*	59.	[houdini源文件-]()-----[演示视屏]()
+*	60.	[houdini源文件-汽车](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/compactcar.hip)-----[演示视屏](https://www.bilibili.com/video/av76421234)
 
+*	61.	[houdini源文件-围栏](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/fence.hipnc)-----[演示视屏](https://www.bilibili.com/video/av76540221)
 
+*	62.	[houdini源文件-机械手](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/robot_arm_begin.hipnc)-----[演示视屏](https://www.bilibili.com/video/av76699257)
 
+*	63.	[houdini源文件-]()-----[演示视屏]()
