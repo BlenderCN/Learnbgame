@@ -3,7 +3,7 @@
 
 # [自己整理的houdini教程相关](https://github.com/FofightFong/All_In_One)
 
-#	目前积累了30000+[有效的houdini源文件](houdini_poqbdb_tree.md).源文件一般为非商业版.,供学习使用.每天发布一个,推动Learnbgame项目进行.
+#	目前积累了50000+[有效的houdini源文件](houdini_poqbdb_tree.md).源文件一般为非商业版.,供学习使用.每天发布一个,推动Learnbgame项目进行.
 
 *	1.	[houdini源文件-龙卷风卷起房子](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/TornadoExport.hipnc)-----[演示视屏](https://www.bilibili.com/video/av68503497)
 
@@ -131,4 +131,18 @@
 
 *	62.	[houdini源文件-机械手](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/robot_arm_begin.hipnc)-----[演示视屏](https://www.bilibili.com/video/av76699257)
 
-*	63.	[houdini源文件-]()-----[演示视屏]()
+*	63.	[houdini源文件-藤蔓](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/mazeSuccess.hipnc)-----[演示视屏](https://www.bilibili.com/video/av76774160)
+
+*	64.	[houdini源文件-齿轮](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/gear.hip)-----[演示视屏](https://www.bilibili.com/video/av76920344)
+
+*	65.	[houdini源文件-时钟](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/clock.hipnc)-----[演示视屏](https://www.bilibili.com/video/av77042013)
+
+*	66.	[houdini源文件-根生长]()-----[演示视屏](https://www.bilibili.com/video/av77172564)
+
+*	67.	[houdini源文件-颠沙](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/rainbowparticles.hiplc)-----[演示视屏](https://www.bilibili.com/video/av77346469)
+
+*	68.	[houdini源文件-]()-----[演示视屏]()
+
+*	69.	[houdini源文件-]()-----[演示视屏]()
+
+*	70.	[houdini源文件-]()-----[演示视屏]()
