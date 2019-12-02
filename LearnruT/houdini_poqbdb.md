@@ -141,8 +141,14 @@
 
 *	67.	[houdini源文件-颠沙](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/rainbowparticles.hiplc)-----[演示视屏](https://www.bilibili.com/video/av77346469)
 
-*	68.	[houdini源文件-]()-----[演示视屏]()
+*	68.	[houdini源文件-气泡](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/week5---spoon%20bubble-v2.hiplc)-----[演示视屏](https://www.bilibili.com/video/av77405644)
 
-*	69.	[houdini源文件-]()-----[演示视屏]()
+*	69.	[houdini源文件-破网](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/week5---spider.hiplc)-----[演示视屏](https://www.bilibili.com/video/av77491455)
 
-*	70.	[houdini源文件-]()-----[演示视屏]()
+*	70.	[houdini源文件-儿时玩具×弹簧圈](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/springs-coil.hiplc)-----[演示视屏](https://www.bilibili.com/video/av77568083)
+
+*	71.	[houdini源文件-水母](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/jellyfish.hipnc)-----[演示视屏](https://www.bilibili.com/video/av77759411)
+
+*	72.	[houdini源文件-]()-----[演示视屏]()
+
+*	73.	[houdini源文件-]()-----[演示视屏]()
