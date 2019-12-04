@@ -149,6 +149,14 @@
 
 *	71.	[houdini源文件-水母](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/jellyfish.hipnc)-----[演示视屏](https://www.bilibili.com/video/av77759411)
 
-*	72.	[houdini源文件-]()-----[演示视屏]()
+*	72.	[houdini源文件-蝴蝶](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/butterfly.hipnc)-----[演示视屏](https://www.bilibili.com/video/av77871965)
 
-*	73.	[houdini源文件-]()-----[演示视屏]()
+*	73.	[houdini源文件-生长树×虬枝](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/L_Systems_Trees-3.hipnc)-----[演示视屏](https://www.bilibili.com/video/av77966655)
+
+*	74.	[houdini源文件-]()-----[演示视屏]()
+
+*	75.	[houdini源文件-]()-----[演示视屏]()
+
+*	76.	[houdini源文件-]()-----[演示视屏]()
+
+*	77.	[houdini源文件-]()-----[演示视屏]()
