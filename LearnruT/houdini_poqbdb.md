@@ -153,10 +153,16 @@
 
 *	73.	[houdini源文件-生长树×虬枝](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/L_Systems_Trees-3.hipnc)-----[演示视屏](https://www.bilibili.com/video/av77966655)
 
-*	74.	[houdini源文件-]()-----[演示视屏]()
+*	74.	[houdini源文件-骚猪八](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/ap_me_volume_pig_hair.hiplc)-----[演示视屏](https://www.bilibili.com/video/av78082848)
 
-*	75.	[houdini源文件-]()-----[演示视屏]()
+*	75.	[houdini源文件-生长藤](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Leafs.hip)-----[演示视屏](https://www.bilibili.com/video/av78227125)
 
-*	76.	[houdini源文件-]()-----[演示视屏]()
+*	76.	[houdini源文件-链断裂](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Chain_Break.hip)-----[演示视屏](https://www.bilibili.com/video/av78227908)
 
-*	77.	[houdini源文件-]()-----[演示视屏]()
+*	77.	[houdini源文件-出世](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/outworld.hip)-----[演示视屏](https://www.bilibili.com/video/av78446008)
+
+*	78.	[houdini源文件-]()-----[演示视屏]()
+
+*	79.	[houdini源文件-]()-----[演示视屏]()
+
+*	80.	[houdini源文件-]()-----[演示视屏]()
