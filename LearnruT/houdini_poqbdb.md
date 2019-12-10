@@ -161,8 +161,14 @@
 
 *	77.	[houdini源文件-出世](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/outworld.hip)-----[演示视屏](https://www.bilibili.com/video/av78446008)
 
-*	78.	[houdini源文件-]()-----[演示视屏]()
+*	78.	[houdini源文件-雪地雪人](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/snowman25.hipnc)-----[演示视屏](https://www.bilibili.com/video/av78600209)
 
-*	79.	[houdini源文件-]()-----[演示视屏]()
+*	79.	[houdini源文件-雪地雪人升级版](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/snowmanM.hipnc)-----[演示视屏](https://www.bilibili.com/video/av78681022)
 
-*	80.	[houdini源文件-]()-----[演示视屏]()
+*	80.	[houdini源文件-一念花开](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Flower_04_idea.hip)-----[演示视屏](https://www.bilibili.com/video/av78796449)
+
+*	81.	[houdini源文件-]()-----[演示视屏]()
+
+*	82.	[houdini源文件-]()-----[演示视屏]()
+
+*	83.	[houdini源文件-]()-----[演示视屏]()
