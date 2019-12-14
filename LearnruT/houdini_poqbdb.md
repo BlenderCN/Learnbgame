@@ -169,10 +169,12 @@
 
 *	81.	[houdini源文件-风吹麦浪](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/grass_example.hip)-----[演示视屏](https://www.bilibili.com/video/av78958531)
 
-*	82.	[houdini源文件-]()-----[演示视屏]()
+*	82.	[houdini源文件-玩具鼠集群](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/mouse_003.hipnc)-----[演示视屏](https://www.bilibili.com/video/av79049885)
 
-*	83.	[houdini源文件-]()-----[演示视屏]()
+*	83.	[houdini源文件-气泡融合](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/newtonian_nightmare_00.hipnc)-----[演示视屏](https://www.bilibili.com/video/av79189154)
 
-*	84.	[houdini源文件-]()-----[演示视屏]()
+*	84.	[houdini源文件-蝙蝠集群](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/bats_simple.v23.hipnc)-----[演示视屏](https://www.bilibili.com/video/av79282107)
+
+*	85.	[houdini源文件-]()-----[演示视屏]()
 
 *	85.	[houdini源文件-]()-----[演示视屏]()
