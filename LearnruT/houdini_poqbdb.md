@@ -175,6 +175,22 @@
 
 *	84.	[houdini源文件-蝙蝠集群](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/bats_simple.v23.hipnc)-----[演示视屏](https://www.bilibili.com/video/av79282107)
 
-*	85.	[houdini源文件-]()-----[演示视屏]()
+*	85.	[houdini源文件-紫银河](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Pink_Galaxy.hipnc)-----[演示视屏](https://www.bilibili.com/video/av79389669)
 
-*	85.	[houdini源文件-]()-----[演示视屏]()
+*	86.	[houdini源文件-网罩](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/web_cover.hipnc)-----[演示视屏](https://www.bilibili.com/video/av79573646)
+
+*	87.	[houdini源文件-因特net](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/ap_toad_trails_for_atom.hiplc)-----[演示视屏](https://www.bilibili.com/video/av79688545)
+
+*	88.	[houdini源文件-牡丹异开](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/flower0.hipnc)-----[演示视屏](https://www.bilibili.com/video/av79752424)
+
+*	89.	[houdini源文件-6形花簇](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/FLOWER_v002.hip)-----[演示视屏](https://www.bilibili.com/video/av79911576)
+
+*	90.	[houdini源文件-千丝万缕](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/pelotitas.v01.hip)-----[演示视屏](https://www.bilibili.com/video/av80079743)
+
+*	91.	[houdini源文件-龙卷风](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/ljf2.hip)-----[演示视屏](https://www.bilibili.com/video/av80082282)
+
+*	92.	[houdini源文件-]()-----[演示视屏]()
+
+*	93.	[houdini源文件-]()-----[演示视屏]()
+
+*	94.	[houdini源文件-]()-----[演示视屏]()
