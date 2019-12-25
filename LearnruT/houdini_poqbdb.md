@@ -189,8 +189,20 @@
 
 *	91.	[houdini源文件-龙卷风](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/ljf2.hip)-----[演示视屏](https://www.bilibili.com/video/av80082282)
 
-*	92.	[houdini源文件-]()-----[演示视屏]()
+*	92.	[houdini源文件-塔楼爆破](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/SILO.hipnc)-----[演示视屏](https://www.bilibili.com/video/av80299017)
 
-*	93.	[houdini源文件-]()-----[演示视屏]()
+*	93.	[houdini源文件-眼镜蛇汽车](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/cobra_character.hipnc)-----[演示视屏](https://www.bilibili.com/video/av80394959)
 
-*	94.	[houdini源文件-]()-----[演示视屏]()
+*	94.	[houdini源文件-半成品小游戏](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/game.hip)-----[演示视屏](https://www.bilibili.com/video/av80545845)
+
+*	95.	[houdini源文件-]()-----[演示视屏]()
+
+*	96.	[houdini源文件-]()-----[演示视屏]()
+
+*	97.	[houdini源文件-]()-----[演示视屏]()
+
+*	98.	[houdini源文件-]()-----[演示视屏]()
+
+*	99.	[houdini源文件-]()-----[演示视屏]()
+
+*	100.	[houdini源文件-]()-----[演示视屏]()
