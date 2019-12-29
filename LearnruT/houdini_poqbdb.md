@@ -195,13 +195,13 @@
 
 *	94.	[houdini源文件-半成品小游戏](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/game.hip)-----[演示视屏](https://www.bilibili.com/video/av80545845)
 
-*	95.	[houdini源文件-]()-----[演示视屏]()
+*	95.	[houdini源文件-羽毛](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/featherGenerator.hip)-----[演示视屏](https://www.bilibili.com/video/av80681798)
 
-*	96.	[houdini源文件-]()-----[演示视屏]()
+*	96.	[houdini源文件-船重组](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/pirate_ship_i.hipnc)-----[演示视屏](https://www.bilibili.com/video/av80795996)
 
-*	97.	[houdini源文件-]()-----[演示视屏]()
+*	97.	[houdini源文件-雪人集群](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/1_1_setting_up_the_crowd.hip)-----[演示视屏](https://www.bilibili.com/video/av80897082)
 
-*	98.	[houdini源文件-]()-----[演示视屏]()
+*	98.	[houdini源文件-儿时回忆×满地珍珠](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/ground_pearl.hipnc)-----[演示视屏](https://www.bilibili.com/video/av81058107)
 
 *	99.	[houdini源文件-]()-----[演示视屏]()
 
