@@ -203,6 +203,27 @@
 
 *	98.	[houdini源文件-儿时回忆×满地珍珠](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/ground_pearl.hipnc)-----[演示视屏](https://www.bilibili.com/video/av81058107)
 
-*	99.	[houdini源文件-]()-----[演示视屏]()
+*	99.	[houdini源文件-DNA生成](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/02_dna.hip)-----[演示视屏](https://www.bilibili.com/video/av81204378)
 
-*	100.	[houdini源文件-]()-----[演示视屏]()
+*	100.	[houdini源文件-花轮](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/iris_v004.hip)-----[演示视屏](https://www.bilibili.com/video/av81306980)
+
+*	101.	[houdini源文件-环球
+](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/3_ali_seiffouri_tron_ring.hip)-----[演示视屏](https://www.bilibili.com/video/av81550833)
+
+*	102.	[houdini源文件-蓝光环](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/tron_ring.hip)-----[演示视屏](https://www.bilibili.com/video/av81726966)
+
+*	103.	[houdini源文件-斜丝绕字](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/2d_line_growth_01.hip)-----[演示视屏](https://www.bilibili.com/video/av81812169)
+
+*	104.	[houdini源文件-]()-----[演示视屏]()
+
+*	105.	[houdini源文件-]()-----[演示视屏]()
+
+*	106.	[houdini源文件-]()-----[演示视屏]()
+
+*	107.	[houdini源文件-]()-----[演示视屏]()
+
+*	108.	[houdini源文件-]()-----[演示视屏]()
+
+*	109.	[houdini源文件-]()-----[演示视屏]()
+
+*	110.	[houdini源文件-]()-----[演示视屏]()
