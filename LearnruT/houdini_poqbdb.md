@@ -214,13 +214,13 @@
 
 *	103.	[houdini源文件-斜丝绕字](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/2d_line_growth_01.hip)-----[演示视屏](https://www.bilibili.com/video/av81812169)
 
-*	104.	[houdini源文件-]()-----[演示视屏]()
+*	104.	[houdini源文件-乱如麻](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/crawl_thing.hiplc)-----[演示视屏](https://www.bilibili.com/video/av81988489)
 
-*	105.	[houdini源文件-]()-----[演示视屏]()
+*	105.	[houdini源文件-粒子花](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/3_superformula.hip)-----[演示视屏](https://www.bilibili.com/video/av82139582)
 
-*	106.	[houdini源文件-]()-----[演示视屏]()
+*	106.	[houdini源文件-猪头鳄](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/8_spinface.hip)-----[演示视屏](https://www.bilibili.com/video/av82342428)
 
-*	107.	[houdini源文件-]()-----[演示视屏]()
+*	107.	[houdini源文件-红蘑菇](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Mushroom_Asset_v2.hip)-----[演示视屏](https://www.bilibili.com/video/av82433863)
 
 *	108.	[houdini源文件-]()-----[演示视屏]()
 
