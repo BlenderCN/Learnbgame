@@ -222,8 +222,16 @@
 
 *	107.	[houdini源文件-红蘑菇](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Mushroom_Asset_v2.hip)-----[演示视屏](https://www.bilibili.com/video/av82433863)
 
-*	108.	[houdini源文件-]()-----[演示视屏]()
+*	108.	[houdini源文件-二维幻圈](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/16_02_29_radiating_sine_waves.hip)-----[演示视屏](https://www.bilibili.com/video/av82525614)
 
-*	109.	[houdini源文件-]()-----[演示视屏]()
+*	109.	[houdini源文件-Lsystem地裂](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/20130805_Lsystem.hip)-----[演示视屏](https://www.bilibili.com/video/av82607164)
 
-*	110.	[houdini源文件-]()-----[演示视屏]()
+*	110.	[houdini源文件-数字线](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/19-06-26-digital-lines.hip)-----[演示视屏](https://www.bilibili.com/video/av82788386)
+
+*	111.	[houdini源文件-乱方](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Cubeslicesolver.hip)-----[演示视屏](https://www.bilibili.com/video/av82926261)
+
+*	112.	[houdini源文件-]()-----[演示视屏]()
+
+*	113.	[houdini源文件-]()-----[演示视屏]()
+
+*	114.	[houdini源文件-]()-----[演示视屏]()
