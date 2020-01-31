@@ -258,12 +258,18 @@
 
 *	125.	[houdini源文件-蓝光鸭驴形成](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/1011_test_form.hip)-----[演示视屏](https://www.bilibili.com/video/av85035070)
 
-*	126.	[houdini源文件-]()-----[演示视屏]()
+*	126.	[houdini源文件-scott反应](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/2b_gray_scott_reaction_diffusion_VOL.hip)-----[演示视屏](https://www.bilibili.com/video/av85169300)
 
-*	127.	[houdini源文件-]()-----[演示视屏]()
+*	127.	[houdini源文件-洄巢](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/back_to_nest.hip)-----[演示视屏](https://www.bilibili.com/video/av85316534)
 
-*	128.	[houdini源文件-]()-----[演示视屏]()
+*	128.	[houdini源文件-副散射](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/2017_09_14radiation.hip)-----[演示视屏](https://www.bilibili.com/video/av85493916/)
 
-*	129.	[houdini源文件-]()-----[演示视屏]()
+*	129.	[houdini源文件-七叶灵](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Leaves_rbd_with_anim.hipnc)-----[演示视屏](https://www.bilibili.com/video/av85655801/)
 
-*	130.	[houdini源文件-]()-----[演示视屏]()
+*	130.	[houdini源文件-玉缠痕](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Curve_3d_grow.hipnc)-----[演示视屏](https://www.bilibili.com/video/av85805743)
+
+*	131.	[houdini源文件-]()-----[演示视屏]()
+
+*	132.	[houdini源文件-]()-----[演示视屏]()
+
+*	133.	[houdini源文件-]()-----[演示视屏]()
