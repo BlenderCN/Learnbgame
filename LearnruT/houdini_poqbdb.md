@@ -268,8 +268,70 @@
 
 *	130.	[houdini源文件-玉缠痕](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Curve_3d_grow.hipnc)-----[演示视屏](https://www.bilibili.com/video/av85805743)
 
-*	131.	[houdini源文件-]()-----[演示视屏]()
+*	131.	[houdini源文件-琉璃砖塔多米诺
+](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Jenga_Final.hip)-----[演示视屏](https://www.bilibili.com/video/av85993257)
 
-*	132.	[houdini源文件-]()-----[演示视屏]()
+*	132.	[houdini源文件-立方子堆](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Effectors_vex_and_vops.hip)-----[演示视屏](https://www.bilibili.com/video/av86222107)
 
-*	133.	[houdini源文件-]()-----[演示视屏]()
+*	133.	[houdini源文件-三维mandelulb
+](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/mandelulb_MultiFractal_MultiFractalSetup_Export_001__NS.hip)-----[演示视屏](https://www.bilibili.com/video/av86622755)
+
+*	134.	[houdini源文件-蓄箭而发](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/JKVel.hip)-----[演示视屏](https://www.bilibili.com/video/av87021148/)
+
+*	135.	[houdini源文件-石人撞碎木门](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Hinge_test_B_04.hip)-----[演示视屏](https://www.bilibili.com/video/av87236003)
+
+*	136.	[houdini源文件-]()-----[演示视屏]()
+
+*	137.	[houdini源文件-]()-----[演示视屏]()
+
+*	138.	[houdini源文件-]()-----[演示视屏]()
+
+*	139.	[houdini源文件-]()-----[演示视屏]()
+
+*	140.	[houdini源文件-]()-----[演示视屏]()
+
+*	141.	[houdini源文件-]()-----[演示视屏]()
+
+*	142.	[houdini源文件-]()-----[演示视屏]()
+
+*	143.	[houdini源文件-]()-----[演示视屏]()
+
+*	144.	[houdini源文件-]()-----[演示视屏]()
+
+*	145.	[houdini源文件-]()-----[演示视屏]()
+
+*	146.	[houdini源文件-]()-----[演示视屏]()
+
+*	147.	[houdini源文件-]()-----[演示视屏]()
+
+*	148.	[houdini源文件-]()-----[演示视屏]()
+
+*	149.	[houdini源文件-]()-----[演示视屏]()
+
+*	150.	[houdini源文件-]()-----[演示视屏]()
+
+*	151.	[houdini源文件-]()-----[演示视屏]()
+
+*	152.	[houdini源文件-]()-----[演示视屏]()
+
+*	153.	[houdini源文件-]()-----[演示视屏]()
+
+*	154.	[houdini源文件-]()-----[演示视屏]()
+
+*	155.	[houdini源文件-]()-----[演示视屏]()
+
+*	156.	[houdini源文件-]()-----[演示视屏]()
+
+*	157.	[houdini源文件-]()-----[演示视屏]()
+
+*	158.	[houdini源文件-]()-----[演示视屏]()
+
+*	159.	[houdini源文件-]()-----[演示视屏]()
+
+*	160.	[houdini源文件-]()-----[演示视屏]()
+
+*	161.	[houdini源文件-]()-----[演示视屏]()
+
+*	162.	[houdini源文件-]()-----[演示视屏]()
+
+*	163.	[houdini源文件-]()-----[演示视屏]()
