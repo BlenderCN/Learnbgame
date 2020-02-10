@@ -280,13 +280,13 @@
 
 *	135.	[houdini源文件-石人撞碎木门](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Hinge_test_B_04.hip)-----[演示视屏](https://www.bilibili.com/video/av87236003)
 
-*	136.	[houdini源文件-]()-----[演示视屏]()
+*	136.	[houdini源文件-冰棱落碎](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/KRAPNIK_SYSTEM_HELP_01.hip)-----[演示视屏](https://www.bilibili.com/video/av87442022)
 
-*	137.	[houdini源文件-]()-----[演示视屏]()
+*	137.	[houdini源文件-玉枝木痕](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/patterns.hip)-----[演示视屏](https://www.bilibili.com/video/av87651174)
 
-*	138.	[houdini源文件-]()-----[演示视屏]()
+*	138.	[houdini源文件-玉旋金痕](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/torusPacking_trails.hip)-----[演示视屏](https://www.bilibili.com/video/av87878931)
 
-*	139.	[houdini源文件-]()-----[演示视屏]()
+*	139.	[houdini源文件-蚀珠](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/MarbleBall.hip)-----[演示视屏](https://www.bilibili.com/video/av88098121)
 
 *	140.	[houdini源文件-]()-----[演示视屏]()
 
