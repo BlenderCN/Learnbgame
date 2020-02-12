@@ -288,11 +288,11 @@
 
 *	139.	[houdini源文件-蚀珠](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/MarbleBall.hip)-----[演示视屏](https://www.bilibili.com/video/av88098121)
 
-*	140.	[houdini源文件-]()-----[演示视屏]()
+*	140.	[houdini源文件-血喷溅](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/Splash.hipnc)-----[演示视屏](https://www.bilibili.com/video/av88329324)
 
-*	141.	[houdini源文件-]()-----[演示视屏]()
+*	141.	[houdini源文件-雨溅涟漪](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/rain_waterflower.hip)-----[演示视屏](https://www.bilibili.com/video/av88561561)
 
-*	142.	[houdini源文件-]()-----[演示视屏]()
+*	142.	[houdini源文件-雷击金地](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/lightning_strike.hip)-----[演示视屏](https://www.bilibili.com/video/av88562900)
 
 *	143.	[houdini源文件-]()-----[演示视屏]()
 
