@@ -294,9 +294,9 @@
 
 *	142.	[houdini源文件-雷击金地](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/lightning_strike.hip)-----[演示视屏](https://www.bilibili.com/video/av88562900)
 
-*	143.	[houdini源文件-]()-----[演示视屏]()
+*	143.	[houdini源文件-深空爆炸](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/0018_od.hip)-----[演示视屏](https://www.bilibili.com/video/av89070265)
 
-*	144.	[houdini源文件-]()-----[演示视屏]()
+*	144.	[houdini源文件-翠绿欲滴](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/green_siral.hip)-----[演示视屏](https://www.bilibili.com/video/av89816944)
 
 *	145.	[houdini源文件-]()-----[演示视屏]()
 
