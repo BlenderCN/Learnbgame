@@ -298,11 +298,12 @@
 
 *	144.	[houdini源文件-翠绿欲滴](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/green_siral.hip)-----[演示视屏](https://www.bilibili.com/video/av89816944)
 
-*	145.	[houdini源文件-]()-----[演示视屏]()
+*	145.	[houdini源文件-墓地蠕虫](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/worms_05_GC.hip)-----[演示视屏](https://www.bilibili.com/video/av90047126)
 
-*	146.	[houdini源文件-]()-----[演示视屏]()
+*	146.	[houdini源文件-冰淇淋](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/icecream_vimeo_v001_to_share.hip)-----[演示视屏](https://www.bilibili.com/video/av90250105)
 
-*	147.	[houdini源文件-]()-----[演示视屏]()
+*	147.	[houdini源文件-一杯冰水压压惊
+](https://github.com/BlenderCN/blender-houdini-geo-io/blob/master/houdini_source/ice-water.hipnc)-----[演示视屏](https://www.bilibili.com/video/av90735733)
 
 *	148.	[houdini源文件-]()-----[演示视屏]()
 
