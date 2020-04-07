@@ -20,7 +20,11 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 
 * 灵活管理模型
 
-* 节点非破坏式模型
+* 节点式非破坏性程序化模型
+
+## 节点时代
+
+blender + houdini + unreal
 
 ###  :memo: 插件效果演示
 
@@ -55,6 +59,8 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
         │   │   ├── javascript
         │   │   ├── kali linux
         │   │   └── python
+        │   │   └── unreal
+        |   |   
         │   └── 大数据
         │       ├── 数据分析
         │       │   ├── 机器学习
