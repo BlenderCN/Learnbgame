@@ -24,7 +24,16 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 
 ## 节点时代
 
-blender + houdini + unreal
+# 节点式非破坏性程序化模型
+
+# 程序化材质
+
+#  后期
+
+# 节点式逻辑
+
+#   [blender]() + [houdini]() + [unreal蓝图]() + [Nuke]() + [substance design]()
+
 
 ###  :memo: 插件效果演示
 
@@ -259,7 +268,7 @@ openbabel
 
 # :book:Learnbgame游戏引擎LearnbgamEngine
 
-*   三维模型--专注于节点式非破坏性程序化模型，格式多借鉴于[gltf](https://github.com/KhronosGroup/glTF)格式
+*   三维模型--专注于节点式非破坏性程序化模型，格式多借鉴于hda(houdini data asset)格式
 
 *   脚本语言:专注于python:black_large_square:
 
