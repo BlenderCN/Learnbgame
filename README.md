@@ -8,150 +8,40 @@ Learnbgame的目标是一个创建一个关于科学知识学习的[AR/VR游戏]
 
 ![](mDrivEngine/develep.jpg)
 
-Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为依托[Blender](https://www.blender.org/)三维软件开发三维模型集成插件,插件集成开源的模型生成插件算法和脚本,力求
+Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为依托主流开源虚幻引擎Unreal的3D游戏项目，力求
 
-* 一键生成模型
+*   模型尽量使用节点式非破坏性程序化模型----现阶段采用Houdini的hda进行创建
 
-* 灵活自定义模型
-
-* 批量生成高级可观模型
-
-* 创建基于现实的模型
-
-* 灵活管理模型
-
-* 节点式非破坏性程序化模型
-
-## 节点时代
-
-# 节点式非破坏性程序化模型
-
-# 程序化材质
-
-#  后期
-
-# 节点式逻辑
-
-#   [blender]() + [houdini]() + [unreal蓝图]() + [Nuke]() + [substance design]()
+*   逻辑采用节点式逻辑----现阶段采用Unreal的蓝图进行实现
 
 
-###  :memo: 插件效果演示
+## 节点时代 :memo: All_In_One
 
-![](mDrivEngine/demo.gif)
+* 节点式非破坏性程序化模型----现阶段使用houdini的hda
 
-###  :memo: poqbdb 
+* 程序化材质纹理----现阶段使用substance design，houdini，blender实现
 
-这是关于物质世界的模型库集合,模型的生成主要通过算法的生成和[gltf格式](https://github.com/KhronosGroup/glTF)文件的导入. :floppy_disk:
+*  后期----现阶段采用Nuke，houdini，blender实现
+
+* 节点式逻辑----现阶段使用unreal蓝图
+
+*   [blender]() + [houdini]() + [unreal蓝图]() + [Nuke]() + [substance design]()
+
+
+###  :memo: poqbdb---- poqbdb is power or quest by database
+
+这是关于Learnbgame世界的数据集合引擎
+*   模型的生成主要采用节点式非破坏性程序化模型
 
 ###  :memo: [ImmunemaG](ImmunemaG.md)
 
 这是关于免疫学知识的卡牌游戏 :video_game:
 
-###  :memo: All_In_One
-*	收集来源于github上的blender的插件集合,目前共计1825枚插件/脚本----[ing](All_In_One/README.md) :octocat:
 
-*	计划会编写一个检测github平台上和blender有关的插件和脚本的爬虫脚本,以实时追踪blender的最新动向 :octocat:
-
-*	未整理的托管于[BlenderCN-Org](https://github.com/BlenderCN-Org),共计2.7k+枚.
-
-###  :memo: 目前集成开源[插件列表](LearnbdnelB.md)
 
 
 ##  :book: 模型集成插件UI架构--基于现实世界和科学研究理论进行分类
 ![](mDrivEngine/struct.jpg)
-
-	架构树结构
-        ├── 信息
-        │   ├── PByHack
-        │   │   ├── blender
-        │   │   ├── html
-        │   │   ├── javascript
-        │   │   ├── kali linux
-        │   │   └── python
-        │   │   └── unreal
-        |   |   
-        │   └── 大数据
-        │       ├── 数据分析
-        │       │   ├── 机器学习
-        │       │   └── 自然语言处理
-        │       ├── 数据库
-        │       │   └── poqbdb
-        │       └── 数据获取
-        │           └── 爬虫
-        ├── 物质世界
-        │   ├── 分子
-        │   │   └── 化合物
-        │   │       ├── blender_pdb
-        │   │       └── openbabel_smiles
-        │   ├── 原子
-        │   │   ├── 元素周期表
-        │   │   └── 电子轨道
-        │   ├── 星球
-        │   │   ├── 地球内
-        │   │   │   ├── 工具
-        │   │   │   │   └── 交通工具
-        │   │   │   ├── 建筑
-        │   │   │   │   └── 家具
-        │   │   │   └── 设备
-        │   │   │       └── 电子设备
-        │   │   └── 地球外
-        │   ├── 物种
-        │   │   ├── 属
-        │   │   │   ├── 牛属
-        │   │   │   └── 犬属
-        │   │   ├── 界
-        │   │   │   ├── 动物
-        │   │   │   ├── 微生物
-        │   │   │   └── 植物
-        │   │   ├── 目
-        │   │   │   ├── 偶蹄目
-        │   │   │   ├── 啮齿目
-        │   │   │   ├── 灵长目
-        │   │   │   └── 食肉目
-        │   │   ├── 种
-        │   │   ├── 科
-        │   │   │   ├── 熊科
-        │   │   │   ├── 犬科
-        │   │   │   ├── 猫科
-        │   │   │   └── 鲤科
-        │   │   ├── 纲
-        │   │   │   ├── 哺乳纲
-        │   │   │   └── 昆虫纲
-        │   │   └── 门
-        │   │       ├── 脊索动物门
-        │   │       ├── 苔藓植物
-        │   │       ├── 蕨类植物
-        │   │       ├── 被子植物
-        │   │       └── 裸子植物
-        │   └── 细胞
-        │       └── 神经细胞
-        └── 能量驱动
-            ├── 光
-            │   ├── 材质
-            │   │   └── 材质库
-            │   └── 环境光
-            │       └── hdr
-            ├── 动
-            │   └── 骨骼
-            ├── 势
-            │   └── 状态
-            │       ├── 固
-            │       │   └── 硬表面
-            │       ├── 气
-            │       │   └── 粒子
-            │       └── 液
-            │           └── 流体
-            ├── 场
-            │   ├── 重力场
-            │   └── 风
-            ├── 声
-            │   ├── 声音库
-            │   └── 音效可视化
-            ├── 热
-            │   ├── 冰 
-            │   └── 火
-            └── 电
-                └── 闪电
 
 ###  :memo: 物质世界
 
@@ -259,32 +149,24 @@ openbabel
 
 * 插件目前主要在kali linux系统中开发,所以可能会有系统兼容性问题,欢迎提[bug](https://github.com/BlenderCN/Learnbgame/issues)
 
-* 关于工程下载:从最初的Learnbgame插件,经过时间的积累,这个工程的大小很可能超过了10个多G,所以这个工程文件很难下载到本地,可能未来很长一段时间体积还会持续增大,然后慢慢回缩.工程文件大是有原因的,但有一点需要明确,这个工程全部都是关于blender的内容,包括但不限于我从github及其他渠道搜罗到的在[all in one](https://github.com/BlenderCN/Learnbgame/tree/master/All_In_One)里2000多个blender的插件,过往时光所做工作的总结和备份,可以这么说,Fofight在blender中的Learnbgame的一切都集中在这了,希望能方便有需要的有缘人,同时也方便自己.
-
-
-# :book:插件安装
-
-将插件目录[learnbgame](https://github.com/BlenderCN/Learnbgame/tree/master/learnbgame)压缩,即可从blender-2.8安装,插件[目录结构树](Learnbgame.md)
 
 # :book:Learnbgame游戏引擎LearnbgamEngine
 
 *   三维模型--专注于节点式非破坏性程序化模型，格式多借鉴于hda(houdini data asset)格式
 
-*   脚本语言:专注于python:black_large_square:
-
-*   依托blender平台eevee引擎
+*   脚本语言: python C++  :black_large_square:
 
 *   注释系统:memo:
 
 *   特效系统:dizzy:
 
-*   物理引擎
+*   物理引擎:
+
+*   交易商城系统，拍卖系统
 
 *   声音引擎:sound:
 
 *   人工智能 :computer:
-
-借鉴[BlenderPanda引擎](https://github.com/Moguri/BlenderPanda)----[UPBGE引擎](https://github.com/UPBGE/blender)
 
 
 
