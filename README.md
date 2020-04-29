@@ -1,6 +1,6 @@
 #  :book: Learnbgame ----learnbgame is learn by game
 
-Learnbgame的目标是一个创建一个关于科学知识学习的[AR/VR游戏]():video_game:,将科学研究得到的科学知识进行三维可视化,力求创建一种所见即所得的学习方式,你可以理解为现实世界的虚拟仿真映射.
+Learnbgame的目标是一个创建一个关于科学知识学习的:video_game:[3D游戏]():video_game:,将科学研究得到的科学知识进行三维可视化,力求创建一种所见即所得的学习方式,你可以理解为现实世界的虚拟仿真映射.
 
 关于[Learnbgame](https://www.bilibili.com/video/av53908817)
 
@@ -35,7 +35,7 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 
 ###  :memo: [ImmunemaG](ImmunemaG.md)
 
-这是关于免疫学知识的卡牌游戏 :video_game:
+这是关于免疫学知识的卡牌游戏 :video_game: [部分内容展示](http://www.learnbgame.com/)
 
 
 
@@ -73,9 +73,9 @@ atoms---molecules---species---planets---
 
 :six_pointed_star:  分子--无机物--有机大分子--
 
-*   无机物--[smiles]()
+:six_pointed_star:   无机物--[smiles]()
 
-*   有机大分子--[pdb]()--[mol]()
+:six_pointed_star:   有机大分子--[pdb]()--[mol]()
 
 </br>
 
@@ -139,22 +139,20 @@ openbabel
 
 * houdini特效借鉴
 
-#  :book: [LearnbdnelB](All_In_One/LearnbdnelB/README.md)----以blender为唯一软件的流程的尝试.
-
 #  :warning: 注意事项:
 
 * 目前由于插件中的化学分子三维结构生成部分需要调用openbabel化学python库,所以还需另外安装,日后会进行改进,敬请期待
 
 * atom模块中电子的排布引用Fibonacci lattice算法,运动引用AXIS ANGLE旋转算法.
 
-* 插件目前主要在kali linux系统中开发,所以可能会有系统兼容性问题,欢迎提[bug](https://github.com/BlenderCN/Learnbgame/issues)
+* learnbgame目前主要在kali linux系统中开发,所以可能会有系统兼容性问题,欢迎提[bug](https://github.com/BlenderCN/Learnbgame/issues)
 
 
 # :book:Learnbgame游戏引擎LearnbgamEngine
 
 *   三维模型--专注于节点式非破坏性程序化模型，格式多借鉴于hda(houdini data asset)格式
 
-*   脚本语言: python C++  :black_large_square:
+*   脚本语言/逻辑节点: python :black_large_square: C++  :black_large_square: blueprint 
 
 *   注释系统:memo:
 
