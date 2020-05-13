@@ -75,7 +75,7 @@ atoms---molecules---species---planets---
 
 :six_pointed_star:   无机物--[smiles]()
 
-:six_pointed_star:   有机大分子--[pdb]()--[mol]()
+✡   有机大分子--[pdb]()--[mol]()
 
 </br>
 
