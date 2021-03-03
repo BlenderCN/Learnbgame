@@ -27,7 +27,7 @@ bl_info = {
     }
 
 
-pdsimg_path = 'https://pdsimg.jpl.nasa.gov/data/'
+pdsimg_path = 'https://pds-imaging.jpl.nasa.gov/data/'
 nasaimg_path = 'https://mars.nasa.gov/'
 
 roverDataDir = []
