@@ -24,6 +24,8 @@
 
 *	计算机图形学算法
 
+*	[波函数塌陷算法](https://github.com/mxgmn/WaveFunctionCollapse)
+
 
 *
 
