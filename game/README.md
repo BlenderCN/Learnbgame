@@ -24,7 +24,7 @@
 
 *	计算机图形学算法
 
-*	[波函数塌陷算法](https://github.com/mxgmn/WaveFunctionCollapse)
+*	[波函数塌陷算法](https://github.com/mxgmn/WaveFunctionCollapse)----[论文](https://adamsmith.as/papers/wfc_is_constraint_solving_in_the_wild.pdf)
 
 
 *
