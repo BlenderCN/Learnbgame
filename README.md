@@ -29,7 +29,7 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 
 * 节点式逻辑----现阶段使用unreal蓝图
 
-*   [blender]() + [houdini]() + [unreal蓝图]() + [Nuke]() + [substance design]()
+*   [blender]() + [houdini]() + [unreal蓝图]() + [Nuke]() + [substance design]() +
 
 
 ###  :memo: poqbdb---- poqbdb is power or quest by database
