@@ -246,6 +246,6 @@ poqbdb
 </a>
 </br>
 <a href="Lmy.md">
-  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
+  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="left">
 Lmy
 </a>
