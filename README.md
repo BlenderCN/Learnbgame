@@ -12,11 +12,13 @@ Learnbgame的目标是一个创建一个关于科学知识学习的:video_game:[
 
 ![](mDrivEngine/develep.jpg)
 
-Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为依托主流开源虚幻引擎Unreal的3D游戏项目，力求
+Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为依托主流开源虚幻引擎Unreal以及houdini Engine for unreal的3D游戏项目，力求
 
 *   模型尽量使用节点式非破坏性程序化模型----现阶段采用Houdini的hda进行创建
 
-*   逻辑采用节点式逻辑----现阶段采用Unreal的蓝图进行实现
+*   逻辑采用节点式逻辑----现阶段采用Unreal的蓝图和houdini hda进行实现
+
+## [LearnruT](https://github.com/BlenderCN/Learnbgame/tree/master/LearnruT)为Learnbgame项目实时进行时
 
 ##  百科知识元宇宙
 
