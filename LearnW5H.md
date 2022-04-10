@@ -1,3 +1,5 @@
+# [LearnW5H](LearnW5H)
+
 :four: :five: who?-----Fofight
 
 :anchor: where?----Learnbgame
@@ -9,3 +11,8 @@
 :four: :five: why?-----Fofight is forever fight,Learnbgame is learn by game
 
 :repeat_one: how?-----forever fight
+
+
+过去？现在？未来？
+
+025——>045

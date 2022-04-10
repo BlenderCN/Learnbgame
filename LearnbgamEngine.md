@@ -1,10 +1,10 @@
 Learnbgame游戏引擎
 
-三维模型--计划专注于[gltf](https://github.com/KhronosGroup/glTF)格式
+三维模型--计划专注于类似于hda的节点式非破坏性程序化模型格式
 
-脚本语言:计划基于python
+脚本语言:计划基于python 
 
-依托blender平台
+依托blender平台，houdini,unreal
 
 *	注释系统
 

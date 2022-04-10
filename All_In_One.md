@@ -1,7 +1,10 @@
-# [插件All_In_One](All_In_One/addons)
+# 软件资源模型All_in_one
+*	1.	[unreal all in one]()
+*	2.	[houdini all in one]()
+*	3.	[blender all in one]()
 
-# [影视流程All_In_One](All_In_One/LearnbdnelB/README.md)
 
-# [节点式All_in_one](LearnruT/houdini_poqbdb.md)
+
+# [节点式非破坏性程序化模型库poqbdb All_in_one](LearnruT/houdini_poqbdb.md)
 
 # []()

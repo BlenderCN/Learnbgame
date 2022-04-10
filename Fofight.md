@@ -2,8 +2,6 @@ Fofight is forever fight
 
 # 昨天
 
-Fifight目前学过[kali linux](https://www.kali.org/)，[blender](https://www.blender.org/)，[python](https://www.python.org/)，[html](https://www.w3.org/html/)，[javascript](https://www.javascript.com/)(虽然只简单学过皮毛，但也乐于交流,当然接触过的还有很多,但是只想列出以上几项）因为是自学，所以也相对自由，如果有同学也对上述内容或Learnbgame感兴趣，欢迎相互交流技术(或者想学在我能力范围内我可以教），这是我的联系方式：QQ：3378046857(加Q请注明来意)
-
 =======
 
 # 自圆其说----懒是一种美德
@@ -19,6 +17,10 @@ Fifight目前学过[kali linux](https://www.kali.org/)，[blender](https://www.b
 # 初学者
 
 对于这个世界,我认为也希望自己是一个初学者,
+
+# 搬砖手
+
+不迷信权威
 
 # 今天
 
