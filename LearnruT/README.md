@@ -1,6 +1,6 @@
 # LearnruT is Learn turn
 
-# 所见即所得的百科全书：
+# 所见即所得的百科全书(百科知识元宇宙）：
 
 
 ## 1.建立游戏场景，(目前尚未实现，但是有参考[farm](https://www.blend4web.com/apps/farm/farm.html)——[YoFrankie ](https://apricot.blender.org/)，因为是开源的，可以寻求合作，也可自己研究源代码):
@@ -50,3 +50,5 @@ osm数据来源[openstreetmap](http://www.openstreetmap.org/#map=15/34.6293/112.
 
 植物图片数据库——维基百科
 	
+
+https://github.com/FofightFong/Learnrut	

@@ -1,9 +1,0 @@
-class $opclassname(bpy.types.Operator):
-    bl_idname = "$idname"
-    bl_label = "$label"
-    def execute(self,context):
-        print("self:",self)
-        print("context:",context)
-        return {"FINISHED"}
-
-

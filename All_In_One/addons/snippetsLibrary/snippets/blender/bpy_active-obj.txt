@@ -1,3 +1,0 @@
-bpy.context.scene.objects.active = bpy.data.objects['Cube']
-        objarm.data.bones.active = bone
-        objarm.data.bones.active = pbone.bone#from pose bone

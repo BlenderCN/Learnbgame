@@ -18,7 +18,7 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 
 *   逻辑采用节点式逻辑----现阶段采用Unreal的蓝图进行实现
 
-##  元宇宙
+##  百科知识元宇宙
 
 ## 节点时代 :memo: All_In_One
 

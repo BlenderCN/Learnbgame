@@ -1,9 +1,0 @@
-.vs
-*.pyc
-*.pdb
-*.pyd
-*.ilk
-
-build
-test/
-__pycache__

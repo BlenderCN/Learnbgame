@@ -1,8 +1,0 @@
-May 8 2018
-
-* fix HUD offsets, Tape offsets and mousewrap issues with some layouts
-* add Tape stroke undo/redo (ctrl + z/ctrl + shift + z, F1/F2)
-* add flatten face/vert mode to subtitle in HUD
-* QuadCorner slipped through the cracks:
-	- add mouse wrap
-	- add pen tablet support

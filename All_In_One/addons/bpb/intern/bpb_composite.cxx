@@ -1,8 +1,0 @@
-#include "bpbID.cxx"
-#include "bpbMesh.cxx"
-#include "bpbObject.cxx"
-#include "bpbObjectData.cxx"
-#include "bpbOpenGLRenderer.cxx"
-#include "bpbRenderer.cxx"
-#include "bpbWindowRenderer.cxx"
-#include "bpb_api.cxx"

@@ -1,8 +1,0 @@
-start: F;
-define:
-_L: r-90;
-_R: r90;
-rules:
-F: F _R F _L F _L F _R F;
-final:
-F: d0.1;

@@ -1,1 +1,0 @@
-from . rectangle import Rectangle

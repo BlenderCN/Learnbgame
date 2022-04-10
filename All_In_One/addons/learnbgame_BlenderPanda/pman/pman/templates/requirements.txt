@@ -1,2 +1,0 @@
-panda3d
-panda3d_pman

@@ -1,5 +1,0 @@
-============
-Introduction
-============
-
-Hello world!

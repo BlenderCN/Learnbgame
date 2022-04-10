@@ -1,6 +1,0 @@
-from cpython cimport PyMem_Malloc, PyMem_Free
-from ... graphics import Rectangle
-
-cdef class EvaluateFunctionData:
-    cdef EvaluateFunction function
-    cdef list channels

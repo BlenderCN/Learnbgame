@@ -1,3 +1,0 @@
-cdef class VirtualLISTNAME(VirtualList):
-    # Should only be called with a positiv index
-    cdef TYPE OPTIONAL_STAR get(self, Py_ssize_t i)
