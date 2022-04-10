@@ -30,7 +30,7 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
 
 * 节点式逻辑----现阶段使用unreal蓝图
 
-*   [blender]() + [houdini]() + [unreal蓝图]() + [Nuke]() + [substance design]() +
+*   [blender]() + [houdini]() + [unreal蓝图]() + [Nuke]() + 
 
 
 ###  :memo: poqbdb---- poqbdb is power or quest by database
@@ -139,7 +139,7 @@ atoms---molecules---species---planets---
 
 #  :book: requirement 
 
-blender 2.8+
+blender 3+
 openbabel
 
 #  :book: LearnruT----他山之石,可以工玉
@@ -245,4 +245,7 @@ PByHack
 poqbdb
 </a>
 
-
+<a href="Lmy.md">
+  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
+poqbdb
+</a>
