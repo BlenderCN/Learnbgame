@@ -18,7 +18,7 @@
 *	Unreal
 *	Houdini
 *	Blender
-*	Gimp/PS
+*	Gimp
 
 ##	算法
 
