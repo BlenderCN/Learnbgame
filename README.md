@@ -79,9 +79,9 @@ Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为�
                    电子
 
 
-从原子出发，有元素周期表,往前，有原子核和电子组成的电子云，往后，则是原子构成分子的三维结构，以[pdb]()和[smiles]()格式在blender中，这是个微观世界，
+从原子出发，有元素周期表,往前，有原子核和电子组成的电子云，往后，则是原子构成分子的三维结构，以[smiles]()格式构建分子三维结构，这是个微观世界，
 
-往后，以gltf格式,是物种，种群组成的生态系统。
+往后，以节点式非破坏性程序化模型形式式,是物种，种群组成的生态系统。
 
 再往后，是地球以外广阔的宇宙。
 
@@ -133,7 +133,7 @@ atoms---molecules---species---planets---
 
 
 
-:boom: [光]()--材质库(blender有内置材质库)--<a href="http://codeofart.com/easy-hdri-0-9-0/">环境光easyhdri</a>
+:boom: [光]()--材质库(程序纹理材质库)--<a href="http://codeofart.com/easy-hdri-0-9-0/">环境光easyhdri</a>
 
 </br>
 
@@ -151,11 +151,11 @@ atoms---molecules---species---planets---
 
 </br>
 
- :anchor: [势]()--状态--液体状态--<a href="https://github.com/rlguy/Blender-FLIP-Fluids">FLIP Fluids</a>
+ :anchor: [势]()--状态--液体状态--<a href="">FLIP Fluids</a>
 </a>
 </br>
 
-:cyclone: [场]()--Force Field(blender内置)
+:cyclone: [场]()--Force Field()
 </a>
 </br>
 
