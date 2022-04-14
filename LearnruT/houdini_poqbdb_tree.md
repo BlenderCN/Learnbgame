@@ -1,4 +1,4 @@
-此为部分houdini源文件目录结构树.总数达50000+,敬请期待
+此为部分houdini源文件目录结构树.总数达[50000+](https://github.com/all-in-one-of/houdini_asset),敬请期待
 
 
 	houdini_asset
