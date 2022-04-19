@@ -4,21 +4,24 @@
 
 #  :book: Learnbgame ----learnbgame is learn by game
 
-Learnbgame的目标是一个创建一个关于科学知识学习的:video_game:[3D游戏]():video_game:,将科学研究得到的科学知识进行三维可视化,构建一个科学知识元宇宙，力求创建一种所见即所得的学习方式,你可以理解为现实世界的虚拟仿真映射.这个项目旨在构建可行性方案蓝图
+Learnbgame的目标是一个创建一个关于科学知识学习的:video_game:[3D游戏]():video_game:,将科学研究得到的科学知识进行三维可视化,构建一个科学知识元宇宙，力求创建一种所见即所得的学习方式,你可以理解为现实世界的虚拟仿真映射.这个项目旨在不断迭代构建可行性方案蓝图。
 
 关于[Learnbgame](https://www.bilibili.com/video/BV1kf4y1q7Mp)
 
 ## Learnbgame开发路线图式
 
+
 ![](mDrivEngine/develep.jpg)
 
-Learnbgame目标的实现还有很长的路要走,因此现阶段Learnbgame为依托主流开源虚幻引擎Unreal以及houdini Engine for unreal的3D游戏项目，力求
+Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代会修正不同的施行方案和蓝图，现阶段Learnbgame为依托主流开源虚幻引擎Unreal以及houdini Engine for unreal的3D游戏项目，力求
 
 *   模型尽量使用节点式非破坏性程序化模型----现阶段采用Houdini的hda进行创建
 
 *   逻辑采用节点式逻辑----现阶段采用Unreal的蓝图和houdini hda进行实现
 
 ## [LearnruT](https://github.com/BlenderCN/Learnbgame/tree/master/LearnruT)为Learnbgame项目实时进行时
+
+[Blender3DWorld](https://github.com/Fofight/Blender3DWorld)——————>[All_In_One](https://github.com/FofightFong/All_In_One)————>
 
 ##  百科知识元宇宙
      ✡ 数学
@@ -133,7 +136,7 @@ atoms---molecules---species---planets---
 
 
 
-:boom: [光]()--材质库(程序纹理材质库)--<a href="">环境光easyhdri</a>
+:boom: [光]()--材质库(程序纹理材质库)--<a href="">环境光</a>
 
 </br>
 
@@ -151,7 +154,7 @@ atoms---molecules---species---planets---
 
 </br>
 
- :anchor: [势]()--状态--液体状态--<a href="">FLIP Fluids</a>
+ :anchor: [势]()--状态--液体状态--<a href=""></a>
 </a>
 </br>
 
