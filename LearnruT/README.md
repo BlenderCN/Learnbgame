@@ -23,3 +23,7 @@ PDB文件https://www.learnmedical.art/blog/rendering-the-corona-virus-spike-prot
 mol文件
 
 
+houdini脚本开发
+https://codeantenna.com/a/ECM2jvjWPE
+
+https://blog.csdn.net/weixin_39543647/article/details/111294793

@@ -30,7 +30,7 @@ Fofight is forerver fight...
 
 
 
-
+字幕2：
 [Learnbgame踏出第一步，以科学知识学习为导向的基于虚幻引擎Unreal的开源完整游戏项目，Learnbgame is Learn By Game](https://www.bilibili.com/video/BV1kf4y1q7Mp)
 
 learnbgame is learn by game,
@@ -42,5 +42,5 @@ learnbgame is learn by game,
 诚然，要实现learnbgame的目标我一个人难以完成，，我选择了以特效为业，Blender——>Houdini——>Unreal,一路走来，在实现Learnbgame这条路上，我所学所积累都开源在Github上，我相信有和learbgame类似的想法的人还有很多，我时间和精力也有限，所以我决定开源出来。那么，就由我来抛砖引玉吧，这条平凡之路
 
 
-字幕2：
-自Learnbgame释义后，经历了一些事，区块链，元宇宙，这一切都昭示着”虚拟现实“的时代到来，时代在变，我们也需不断进步
+字幕3：
+自Learnbgame释义后，经历了一些事，于这个世界，区块链，元宇宙，这一切都昭示着”虚拟现实“的时代到来，时代在变，我们也需不断进步,有人说，梦醒之时，成长之时，或许吧，清醒的人最疯狂，于我个人而言，我曾顶着毕业而失业压力，闭门造车一年，而后工作沉淀一年，很庆幸初心未变，但是，横流争渡，总要付出代价，许下过的愿，挖下过的坑
