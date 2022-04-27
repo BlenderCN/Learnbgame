@@ -99,12 +99,12 @@ atoms---molecules---species---planets---
 
 原子---分子---物种----星球---
 
-:six_pointed_star: 原子--元素周期表--核外电子排布--
+:atom: 原子--元素周期表--核外电子排布--
 
 </br>
 
 
-:six_pointed_star:  分子--无机物--有机大分子--
+:electron:  分子--无机物--有机大分子--
 
 :six_pointed_star:   无机物--[smiles]()
 
