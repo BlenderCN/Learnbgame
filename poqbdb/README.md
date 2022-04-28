@@ -18,6 +18,8 @@
 	*	[微生物模型](https://github.com/FofightFong/Learnrut/tree/main/poqbdb/biology/microorganism)
 	*	[异性（未知类生物，包括不限于外星生物）](https://github.com/FofightFong/Learnrut/tree/main/poqbdb/biology/Alien)
 
+![](mDrivEngine/poqbdb.png)
+
 # 动作:
 	*	人型动作：动作捕捉文件库（bvh已实现），使用houdini进行动作群集
 	*	四足动捕：动捕数据结合机器学习处理
