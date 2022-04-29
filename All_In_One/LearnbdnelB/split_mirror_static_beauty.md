@@ -1,8 +1,3 @@
-
-<a href="#">
-  <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/640.gif" >
-</a>
-
 <a href="#">
   <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/640.jpg" >
 </a>
@@ -11,17 +6,11 @@
   <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/alvin-shih.jpg" >
 </a>
 
-<a href="#">
-  <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/b-ge-ps-wonderbody.jpg" >
-</a>
 
 <a href="#">
   <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/evdio.jpeg" >
 </a>
 
-<a href="#">
-  <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/girl.gif" >
-</a>
 
 <a href="#">
   <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/jung_won_park_beauty.jpeg" >
@@ -43,9 +32,6 @@
   <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/girl1.jpeg" >
 </a>
 
-<a href="#">
-  <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/girl2.jpeg" >
-</a>
 
 <a href="#">
   <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/girl4.jpeg" >
@@ -55,7 +41,4 @@
   <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/girl5.jpeg" >
 </a>
 
-<a href="#">
-  <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/gifl7.jpeg" >
-</a>
 
