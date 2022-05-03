@@ -7,9 +7,3 @@ poqbdb 是节点式非破坏性程序化模型库，以自然科学分类框架�
 ![](mDrivEngine/kpcofgs.png)
 
 
-# UI
-
-:dog:	 :mouse:	:frog:	 :pig:	 :cow:	 :monkey_face:	 :racehorse:	 :camel:	:elephant:	 :snake:	 :chicken:	 :turtle:	 :snail:
-
- :sunflower:
- 
