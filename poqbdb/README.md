@@ -11,12 +11,17 @@
 # [化学元素周期表](https://ptable.com/#Properties)——电子绕原子核运动 118
 ![https://images-of-elements.com/——http://cheman.chemnet.com/elements/](https://ptable.com/image/periodic-table.svg)
 
+# 基因序列
+![](/mDrivEngine/GeneticCode.svg)
+
+
 # [物种模型](https://github.com/FofightFong/Learnrut/tree/main/poqbdb)：
 
-	*	[动物模型](https://github.com/FofightFong/Learnrut/tree/main/poqbdb/biology/animal)
-	*	[植物模型](https://github.com/FofightFong/Learnrut/tree/main/poqbdb/biology/plant)
-	*	[微生物模型](https://github.com/FofightFong/Learnrut/tree/main/poqbdb/biology/microorganism)
-	*	[异性（未知类生物，包括不限于外星生物）](https://github.com/FofightFong/Learnrut/tree/main/poqbdb/biology/Alien)
+
+*	[动物模型](https://github.com/FofightFong/Learnrut/tree/main/poqbdb/biology/animal)
+*	[植物模型](https://github.com/FofightFong/Learnrut/tree/main/poqbdb/biology/plant)
+*	[微生物模型](https://github.com/FofightFong/Learnrut/tree/main/poqbdb/biology/microorganism)
+*	[异性（未知类生物，包括不限于外星生物）](https://github.com/FofightFong/Learnrut/tree/main/poqbdb/biology/Alien)
 
 ![](/mDrivEngine/kpcofgs.png)
 
@@ -28,3 +33,4 @@
 
 # 星球
 
+![](/mDrivEngine/SolarSystem.jpg)
