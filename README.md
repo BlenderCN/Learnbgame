@@ -99,7 +99,7 @@ atoms---molecules---species---planets---
 
 原子---分子---物种----星球---
 
-:atom: 原子--元素周期表--核外电子排布--
+:atom: 原子--[元素周期表](https://ptable.com/#Properties)--核外电子排布--
 
 </br>
 
