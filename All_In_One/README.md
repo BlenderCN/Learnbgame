@@ -1,6 +1,5 @@
 
-插件---[addons](addons.md)
-项目---[LeanrnbdnelB](LearnbdnelB.md)
+参考Houdini PDG将All_In_One流程有机连接在一起
 
 #	[资源+理论+算法](asset_theory_algorithm/README.md)
 
