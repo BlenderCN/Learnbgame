@@ -188,7 +188,7 @@ openbabel
 
 * atom模块中电子的排布引用Fibonacci lattice算法,运动引用AXIS ANGLE旋转算法.
 
-* learnbgame目前主要在kali linux系统中开发,所以可能会有系统兼容性问题,欢迎提[bug](https://github.com/BlenderCN/Learnbgame/issues)
+
 
 
 # :book:Learnbgame游戏引擎LearnbgamEngine
