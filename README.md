@@ -262,7 +262,7 @@ LearnioC
 </br>
 <a href="LearnruT.md">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
-LearnruT.md
+LearnruT
 </a>
 </br>
 <a href="LearnW5H.md">
