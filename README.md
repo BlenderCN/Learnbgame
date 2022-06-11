@@ -52,7 +52,7 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
 
 
 
-* 节点式非破坏性程序化模型----现阶段使用houdini的hda
+* [节点式非破坏性程序化模型](poqbdb.md)----现阶段使用houdini的hda
 
 * 程序化材质纹理----现阶段使用substance design，houdini，blender实现
 
