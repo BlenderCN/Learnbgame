@@ -8,4 +8,4 @@ LearnioC计划为基于区块链的客观的加密数字货币/非同质化代�
 
 [以太坊](https://ethereum.org/zh/)
 
-
+* 去中心化，
