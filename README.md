@@ -26,7 +26,7 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
 
 [Blender3DWorld](https://github.com/Fofight/Blender3DWorld)——————>[All_In_One](https://github.com/FofightFong/All_In_One)————>
 
-##  百科知识元宇宙
+##  [百科知识元宇宙](https://github.com/BlenderCN/Learnbgame/blob/master/LearnBikiW.md)
      ✡ [数学]()
          |———— ✡  [物理]()
                     |———— ✡ [化学]()
