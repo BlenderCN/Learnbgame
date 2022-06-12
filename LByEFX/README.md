@@ -7,6 +7,8 @@
 
 声--光--热--电--动--势--场
 
+sound--light--heat--electricity--dynamic--potential--field
+
  :musical_score: [声]()--  
 
 </br>
