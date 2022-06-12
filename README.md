@@ -128,7 +128,7 @@ atoms---molecules---species---planets---
 
 
 
-###  :memo: 能量驱动——（主要以特效形式体现）
+###  :memo: [能量驱动——（主要以特效形式体现）](https://github.com/BlenderCN/Learnbgame/tree/master/LByFX)
 
 
 
