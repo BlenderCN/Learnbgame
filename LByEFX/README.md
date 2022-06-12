@@ -1,4 +1,4 @@
-# 能量
+# LByEFX Learnbgame by energy FX
 
 
 ###  :memo: 能量驱动——（主要以特效形式体现）
