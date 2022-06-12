@@ -78,7 +78,7 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
 ##  :book: 模型集成插件UI架构--基于现实世界和科学研究理论进行分类
 ![](mDrivEngine/struct.jpg)
 
-###  :memo: 物质世界(poqbdb节点式非破坏性程序化模型)
+###  :memo: 物质世界(主要以poqbdb节点式非破坏性程序化模型形式体现)
 
 
     ✡夸克————✡质子
@@ -128,7 +128,7 @@ atoms---molecules---species---planets---
 
 
 
-###  :memo: 能量驱动
+###  :memo: 能量驱动——（主要以特效形式体现）
 
 
 
