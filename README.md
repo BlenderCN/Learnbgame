@@ -287,6 +287,6 @@ LByEFX
 </br>
 <a href="Lmy">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
-     </br>
-     Lmy
+<p style="text-align:right;">Lmy</p>
+
 </a>
