@@ -87,7 +87,7 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
                    ✡电子
 
 
-从原子出发，有元素周期表,往前，有原子核和电子组成的电子云，往后，则是原子构成分子的三维结构，以[smiles]()格式构建分子三维结构，这是个微观世界，
+从原子出发，有元素周期表,往前，有原子核和电子组成的电子云，往后，则是原子构成分子的三维结构，以[smiles](https://github.com/BlenderCN/Learnbgame/blob/master/poqbdb/%E5%88%86%E5%AD%90.md)格式构建分子三维结构，这是个微观世界，
 
 往后，以节点式非破坏性程序化模型形式式,是物种，种群组成的生态系统。
 
@@ -108,7 +108,7 @@ atoms---molecules---species---planets---
 
 :electron:  分子--无机物--有机大分子--
 
-:six_pointed_star:   无机物--[smiles]()
+:six_pointed_star:   无机物--[smiles](https://github.com/BlenderCN/Learnbgame/blob/master/poqbdb/%E5%88%86%E5%AD%90.md)
 
 ✡   有机大分子--[pdb]()--[mol]()
 
