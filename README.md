@@ -199,7 +199,7 @@ openbabel
 
 *   [注释系统:memo:]()
 
-*   [特效系统:dizzy:](HoudiniEngineForUnreal/特效系统.md)
+*   [特效系统:dizzy:]([HoudiniEngineForUnreal/特效系统.md](https://github.com/BlenderCN/Learnbgame/tree/master/LByEFX))
 
 *   [库存系统](HoudiniEngineForUnreal/库存系统.md)
 
