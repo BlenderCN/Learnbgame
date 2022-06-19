@@ -247,12 +247,12 @@ LearmWWW
 </a>
 </br>
 <a href="LearnbdnelB.md">
-  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
+  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
 LearnbdnelB
 </a>
 </br>
 <a href="Learnbgame.md">
-  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
+  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
 Learnbgame
 </a>
 </br>
