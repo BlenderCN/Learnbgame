@@ -9,14 +9,14 @@
 
 sound--light--heat--electricity--dynamic--potential--field
 
- :musical_score: [声]()--  
+ :musical_score: [声]()--  波
 
 </br>
 
 
 
 
-:boom: [光]()
+:boom: [光]()——色，
 
 </br>
 
