@@ -271,12 +271,12 @@ LearnW5H
 </a>
 </br>
 <a href="PByHack">
-  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
+  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="right">
 PByHack
 </a>
 </br>
 <a href="poqbdb">
-  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
+  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="right">
 poqbdb
 </a>
 </br>
