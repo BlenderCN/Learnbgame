@@ -242,7 +242,7 @@ ImmunemaG
 </a>
 </br>
 <a href="LearmWWW.md">
-     LearmWWW
+<p style="text-align:center;">LearmWWW</p>
      <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
 
 </a>
