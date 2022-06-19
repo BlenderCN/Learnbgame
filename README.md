@@ -285,7 +285,7 @@ poqbdb
 LByEFX
 </a>
 </br>
-<a href="Lmy">
+<a href="Lmy"align="right">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
 Lmy
 </a>
