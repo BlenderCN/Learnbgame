@@ -169,8 +169,9 @@ atoms---molecules---species---planets---
 
 #  :book: requirement 
 
-blender 3+
-openbabel
+blender
+
+python
 
 #  :book: LearnruT----他山之石,可以工玉
 
