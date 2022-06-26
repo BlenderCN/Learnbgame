@@ -185,7 +185,7 @@ python
 
 #  :warning: 注意事项:
 
-* 目前由于插件中的化学分子三维结构生成部分需要调用openbabel化学python库,所以还需另外安装,日后会进行改进,敬请期待
+
 
 * atom模块中电子的排布引用Fibonacci lattice算法,运动引用AXIS ANGLE旋转算法.
 
