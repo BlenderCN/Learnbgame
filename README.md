@@ -70,7 +70,7 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
 
 ###  :memo: [ImmunemaG](ImmunemaG.md)
 
-这是关于免疫学知识的卡牌游戏 :video_game: [部分内容展示](http://www.learnbgame.com/)
+这是关于免疫学知识的卡牌游戏 :video_game: [部分构想展示](http://www.learnbgame.com/)
 
 
 
