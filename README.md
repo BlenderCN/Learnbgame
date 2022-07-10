@@ -24,7 +24,7 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
 
 ## [LearnruT](https://github.com/BlenderCN/Learnbgame/tree/master/LearnruT)为Learnbgame项目实时进行时
 
-[Blender3DWorld](https://github.com/Fofight/Blender3DWorld)——————>[All_In_One](https://github.com/FofightFong/All_In_One)————>
+[Blender3DWorld](https://github.com/Fofight/Blender3DWorld)——————>[All_In_One](https://github.com/FofightFong/All_In_One)————>[Learnrut](https://github.com/FofightFong/Learnrut)————>
 
 ##  [百科知识元宇宙](https://github.com/BlenderCN/Learnbgame/blob/master/LearnBikiW.md)
      ✡ [数学]()
