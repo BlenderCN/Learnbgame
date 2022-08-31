@@ -34,7 +34,7 @@ sound--light--heat--electricity--dynamic--potential--field
 
 </br>
 
-:nut_and_bolt: [动]()--骨骼--
+:nut_and_bolt: [动]()--骨骼--四足动捕，二足动捕
 
 </br>
 
