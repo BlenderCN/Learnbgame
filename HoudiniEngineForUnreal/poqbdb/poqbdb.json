@@ -1,0 +1,18 @@
+{
+    "recommends": "houdini_version >= '17.5.321'",
+
+    "env": [
+        {
+            "POQBDB": "$HOUDINI_USER_PREF_DIR/packages/poqbdb"
+        },
+        {
+            "poqbdbOTL": "$POQBDB/otls"
+        },
+        {
+            "HOUDINI_OTLSCAN_PATH": "$HOUDINI_OTLSCAN_PATH;$poqbdbOTL"
+        }
+    ],
+    
+    "path": "$POQBDB"
+}
+

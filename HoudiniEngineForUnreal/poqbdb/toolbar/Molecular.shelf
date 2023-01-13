@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shelfDocument>
+  <!-- This file contains definitions of shelves, toolbars, and tools.
+ It should not be hand-edited when it is being used by the application.
+ Note, that two definitions of the same element are not allowed in
+ a single file. -->
+
+  <tool name="Molecular" label="Molecular" icon="$HOUDINI_USER_PREF_DIR/packages/poqbdb/learnbgame.png">
+    <script scriptType="python"><![CDATA[import os
+import hou
+import objecttoolutils
+
+
+
+
+
+hdas = hou.getenv("HOUDINI_USER_PREF_DIR") + "/packages/poqbdb/otls/Learnrut/poqbdb/chemistry/molecular"
+
+def findAllFile(hdas):
+    for root, ds, fs in os.walk(hdas):
+        for f in fs:
+            fullname = os.path.join(root, f).split(hdas)[1].split(".")[0].replace("\\","/")
+            
+            yield fullname
+
+            
+selected = hou.ui.selectFromTree(list(findAllFile(hdas)))
+
+
+hou.hda.installFile(hdas+selected[0]+".hda")
+
+
+nodename = hou.hda.definitionsInFile(hdas+selected[0]+".hda")[0].nodeType().name()
+
+geonode = hou.node('/obj').createNode('geo',nodename)
+
+hdanode = geonode.createNode(nodename,nodename)
+
+#node = objecttoolutils.customStateTool(kwargs,nodename)
+
+
+hou.node("obj/"+nodename + "/" + nodename).allowEditingOfContents()
+
+hou.hda.uninstallFile(hdas+selected[0]+".hda")]]></script>
+  </tool>
+</shelfDocument>
