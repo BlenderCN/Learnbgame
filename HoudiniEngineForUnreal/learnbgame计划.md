@@ -18,3 +18,4 @@
 
 # 流水：
 
+trace channels————》Action mappings————》terrain————》
