@@ -22,6 +22,6 @@
 
 # 流水：
 
-##### trace channels————》Action mappings————》terrain————》BP_MapTargetPoint————》WB_MainGameplayMenu————》BP_ThirdPersonGameMode————》BP_Area————》DT_Areas————》LevelBlueprint————》BP_HardChest————》BP_BigBagMoney————》DT_TaskInformation————》DT_Items
+##### trace channels————》Action mappings————》terrain————》BP_MapTargetPoint————》WB_MainGameplayMenu————》BP_ThirdPersonGameMode————》BP_Area————》DT_Areas————》LevelBlueprint————》BP_HardChest————》BP_BigBagMoney————》DT_TaskInformation————》DT_Items————》NavMeshBoundsVolume
 
 ##### [地形————》UI/图标————》分区划分————》关卡设计————》任务系统————》货币经验收益系统]()
