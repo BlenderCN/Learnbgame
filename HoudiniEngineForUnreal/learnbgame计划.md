@@ -18,6 +18,6 @@
 
 # 流水：
 
-##### trace channels————》Action mappings————》terrain————》BP_MapTargetPoint————》WB_MainGameplayMenu————》
+##### trace channels————》Action mappings————》terrain————》BP_MapTargetPoint————》WB_MainGameplayMenu————》BP_ThirdPersonGameMode————》BP_Area————》DT_Areas
 
-##### [地形————》UI————》]()
+##### [地形————》UI————》分区]()
