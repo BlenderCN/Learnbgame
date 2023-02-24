@@ -16,7 +16,11 @@
 * [任务系统](任务系统.md)
 
 * [货币经验收益系统](货币经验收益系统.md)
+
 * [地图地形系统](地图地形系统.md)
+
+
+* [交易系统](交易系统.md)
 
 
 
@@ -25,4 +29,4 @@
 
 ##### trace channels————》Action mappings————》terrain————》BP_MapTargetPoint————》WB_MainGameplayMenu————》BP_ThirdPersonGameMode————》BP_Area————》DT_Areas————》LevelBlueprint————》BP_HardChest————》BP_BigBagMoney————》DT_TaskInformation————》DT_Items————》NavMeshBoundsVolume————》BP_TravelPoint————》BP_Portal————》DT_WorldActors————》BP_InvItem————》DT_WorldParts————》BP_WorldPart————》DT_CharacterInformation————》BP_CasualCharacter
 
-##### [地图地形系统————》UI/图标————》分区划分（生态系统）————》关卡设计————》任务系统————》货币经验收益系统]()
+##### [地图地形系统————》UI/图标————》分区划分（生态系统）————》关卡设计————》任务系统————》货币经验收益系统————》交易系统]()
