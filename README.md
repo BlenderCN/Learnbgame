@@ -128,9 +128,9 @@ atoms---molecules---species---planets---
 
 
 
-###  :memo: [能量驱动——（主要以特效形式体现LByEFX）](https://github.com/BlenderCN/Learnbgame/tree/master/LByEFX))
+###  :memo: [能量驱动——（主要以特效形式体现LByEFX及相应反应逻辑）](https://github.com/BlenderCN/Learnbgame/tree/master/LByEFX))
 
-
+化学反应————化学方程式
 
 声--光--热--电--动--势--场
 
