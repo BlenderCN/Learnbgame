@@ -130,6 +130,8 @@ atoms---molecules---species---planets---
 
 ###  :memo: [能量驱动——（主要以特效形式及相应反应逻辑体现LByEFX）](https://github.com/BlenderCN/Learnbgame/tree/master/LByEFX))
 
+:currency_exchange: 物质合成反应
+
 化学反应————化学方程式
 
 声--光--热--电--动--势--场
