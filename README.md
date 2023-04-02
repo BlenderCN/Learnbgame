@@ -70,7 +70,7 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
 这是关于Learnbgame世界的数据集合引擎
 *   模型的生成主要采用节点式非破坏性程序化模型
 
-###  :memo: [ImmunemaG](ImmunemaG.md)
+###  :memo: [ImmunemaG](ImmunemaG.md)————他山之石
 
 这是关于免疫学知识的卡牌游戏 :video_game: [部分构想展示](http://www.learnbgame.com/)
 
