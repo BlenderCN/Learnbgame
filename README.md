@@ -121,7 +121,7 @@ atoms---molecules---species---planets---
 </a>
 </br>
 
-:earth_asia: 星球--
+:earth_asia: 星球--行星--恒星--星系
 
 </br>
 
