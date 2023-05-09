@@ -12,4 +12,6 @@
 
 ## [BlenderCN-Org](https://github.com/BlenderCN-Org)
 
+## [Github](https://github.com/BlenderCN/Learnbgame)
+
 ## 微信公众号learnbgame
