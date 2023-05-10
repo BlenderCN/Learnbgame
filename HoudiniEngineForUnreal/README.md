@@ -9,6 +9,7 @@
 ## 他山之石，可以工玉
 
 [ue元素周期表](https://www.zcool.com.cn/work/ZNTM5MzU4ODQ=.html)
+[化合物](https://astroneer.fandom.com/zh/wiki/%E5%8C%96%E5%90%88%E7%89%A9）
 
 # PCG
 
