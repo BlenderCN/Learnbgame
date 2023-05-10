@@ -18,5 +18,7 @@ https://github.com/BlenderCN/Learnbgame/tree/master/HoudiniEngineForUnreal
 
 [行星 42 教育游戏](http://planeta42.com/cn.html)
 
+[【寓教于乐】国外化学教育游戏设计研究](https://www.sohu.com/a/423127893_281937)
+
 
 
