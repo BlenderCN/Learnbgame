@@ -6,7 +6,7 @@
 
 
 
-## 他山之石，可以工玉
+## [他山之石，可以工玉](https://github.com/BlenderCN/Learnbgame/tree/master/LearnruT)
 
 [ue元素周期表](https://www.zcool.com.cn/work/ZNTM5MzU4ODQ=.html)
 
