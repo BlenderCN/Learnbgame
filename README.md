@@ -256,14 +256,16 @@ Fofight
 
 
 <a href="LearnbdnelB.md" align="right">
+     <p style="text-align:center;" align="right">LearnbdnelB</p>
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
-LearnbdnelB
+
 </a>
 </br>
 
 <a href="Learnbgame.md" align="right" align="right">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
-Learnbgame
+          <p style="text-align:center;" align="right">Learnbgame</p>
+
 </a>
 </br>
 
