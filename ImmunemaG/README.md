@@ -10,7 +10,7 @@ ImmunemaG is immune game
 以下为模板参考，来源互联网
 
 <a href="#">
-  <img width="125" height="145" src="mDrivEngine/immunemag/B淋巴细胞.jpg" >
+  <img width="125" height="145" src="/mDrivEngine/immunemag/B淋巴细胞.jpg" >
 </a>
 
 
