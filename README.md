@@ -248,7 +248,7 @@ Fofight
 </br>
 </br>
 </br>
-<a href="LearmWWW.md">
+<a href="LearmWWW.md" align="right">
 <p style="text-align:center;">LearmWWW</p>
      <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
 
