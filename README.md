@@ -207,6 +207,8 @@ python
 
 *   [注释系统:memo:]()
 
+*   [物质合成系统]()
+
 *   [特效系统:dizzy:](https://github.com/BlenderCN/Learnbgame/tree/master/LByEFX)
 
 *   [库存系统](HoudiniEngineForUnreal/库存系统.md)
