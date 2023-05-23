@@ -7,6 +7,9 @@ BP_DemoCharacter————》AC_Inventory——》Inventory
 DT_Items————》“AlchemyType”
 
 
+tooltips
+
+
 
 
 
