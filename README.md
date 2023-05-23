@@ -295,5 +295,5 @@ FreetimeJoW
 </br>
 <a href="Lmy">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">    
-<p style="text-align:center;">Lmy</p>
+<p style="text-align:right;">Lmy</p>
 </a>
