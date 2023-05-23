@@ -245,20 +245,20 @@ Fofight
 </a>
 </br>
 </br>
-</br>
-</br>
+
+
 <a href="LearmWWW.md" >
 <p style="text-align:center;" align="right">LearmWWW</p>
      <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
 
 </a>
 </br>
-<a href="LearnbdnelB.md">
+<a href="LearnbdnelB.md" align="right">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
 LearnbdnelB
 </a>
 </br>
-<a href="Learnbgame.md">
+<a href="Learnbgame.md" align="right">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
 Learnbgame
 </a>
