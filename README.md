@@ -268,12 +268,6 @@ FreetimeJoW
 </br>
 
 
-<a href="FreetimeJoW.md">
-<img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
-FreetimeJoW
-</a>
-
-
 <a href="All_In_One.md" >
 <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
 <p style="text-align:center;" align="right">All_In_One</p>
