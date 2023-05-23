@@ -262,13 +262,13 @@ LearnbdnelB
 </br>
 
 <a href="Learnbgame.md" align="right" align="right">
-  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" >
+  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
 Learnbgame
 </a>
 </br>
 
 <a href="LearnbgameWWW.md" align="right">
-  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" >
+  <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right" >
 LearnbgameWWW
 </a>
 </br>
