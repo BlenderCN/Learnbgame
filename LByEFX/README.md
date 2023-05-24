@@ -3,6 +3,8 @@
 
 ###  :memo: 能量驱动——（（主要以特效形式及相应反应逻辑体现LByEFX））
 
+通常是能量的表现形式
+
 :currency_exchange: [物质合成反应](https://github.com/BlenderCN/Learnbgame/blob/master/LByEFX/%E7%89%A9%E8%B4%A8%E5%90%88%E6%88%90.md)
 
 化学反应————化学方程式
