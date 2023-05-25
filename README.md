@@ -229,7 +229,7 @@ python
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
 Fofight
 </a>
-<a href="Lmy">
+<a href="Lmy.md">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">    
 <p  align="right">Lmy</p>
 </a>
