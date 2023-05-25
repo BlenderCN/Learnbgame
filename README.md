@@ -108,7 +108,7 @@ atoms---molecules---species---planets---
 </br>
 
 
-:electron:  分子--无机物--有机大分子--
+:electron:  分子--由元素周期表的化学元素组成(无机物,有机大分子)
 
 :six_pointed_star:   无机物--[smiles](https://github.com/BlenderCN/Learnbgame/blob/master/poqbdb/%E5%88%86%E5%AD%90.md)
 
