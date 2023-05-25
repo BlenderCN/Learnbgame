@@ -13,6 +13,9 @@
 # [化学元素周期表](https://ptable.com/#Properties)——电子绕原子核运动 118
 ![https://images-of-elements.com/——http://cheman.chemnet.com/elements/](https://ptable.com/image/periodic-table.svg)
 
+# 物质合成————由化学方程式配平
+![https://github.com/BlenderCN/Learnbgame/blob/master/HoudiniEngineForUnreal/%E7%89%A9%E5%93%81%E5%90%88%E6%88%90%E7%B3%BB%E7%BB%9F.md](https://github.com/BlenderCN/Learnbgame/blob/master/mDrivEngine/%E7%89%A9%E8%B4%A8%E5%90%88%E6%88%90.png)
+
 # 基因序列
 ![](/mDrivEngine/GeneticCode.svg)
 
