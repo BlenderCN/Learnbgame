@@ -7,3 +7,5 @@
 #### 主角————学者————梦影
 
 [beauty](https://github.com/BlenderCN/Learnbgame/blob/master/All_In_One/LearnbdnelB/split_mirror_static_beauty.md)
+
+黄金比例形体
