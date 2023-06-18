@@ -10,8 +10,8 @@
 编程语言 [Python](https://www.python.org/)----[汇编]()----[C/C++]()-----[HTML]()----[css]()----[javascript]()----[节点可视化]()
 
 引擎： 
--       [blender](https://www.blender.org/)
--		[houdini]()
+
+
 -		[unreal]()
 
 
