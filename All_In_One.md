@@ -9,3 +9,5 @@
 # [节点式非破坏性程序化模型库————poqbdb All_in_one](LearnruT/houdini_poqbdb.md)
 
 # []()
+
+统一化，开放性
