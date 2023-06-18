@@ -26,3 +26,7 @@ LearnruT 是Learnabgame项目的进行时
 *	爬虫/搜索引擎
 
 *	众包模式
+
+*	数据库
+
+*	
