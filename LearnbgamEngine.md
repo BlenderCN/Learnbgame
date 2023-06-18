@@ -25,3 +25,7 @@ Learnbgame游戏引擎
 *	物质合成系统
 
 *	动作系统
+
+# 参考
+
+![](https://github.com/BlenderCN/Learnbgame/blob/master/mDrivEngine/game104.jpg)
