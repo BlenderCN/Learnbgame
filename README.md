@@ -103,8 +103,19 @@ atoms---molecules---species---planets---
 
 </br>
 
+<a href="https://github.com/BlenderCN/Learnbgame/blob/master/HoudiniEngineForUnreal/%E7%89%A9%E5%93%81%E5%90%88%E6%88%90%E7%B3%BB%E7%BB%9F.md">
+  <img width="480" height="270" src="https://github.com/BlenderCN/Learnbgame/blob/master/mDrivEngine/PeriodicTable.png" >
+</a>
 
-:electron:  分子--由元素周期表的化学元素组成(无机物,有机大分子)
+
+
+
+
+:electron:  分子--由元素周期表的化学元素组成(无机物,有机大分子)，通过化学方程式指导物质合成。
+
+<a href="https://github.com/BlenderCN/Learnbgame/blob/master/HoudiniEngineForUnreal/%E7%89%A9%E5%93%81%E5%90%88%E6%88%90%E7%B3%BB%E7%BB%9F.md">
+  <img width="480" height="270" src="https://github.com/BlenderCN/Learnbgame/blob/master/mDrivEngine/%E7%89%A9%E8%B4%A8%E5%90%88%E6%88%90.png" >
+</a>
 
 :six_pointed_star:   无机物--[smiles](https://github.com/BlenderCN/Learnbgame/blob/master/poqbdb/%E5%88%86%E5%AD%90.md)
 
