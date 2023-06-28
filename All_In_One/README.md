@@ -9,7 +9,7 @@ houdini+Nuke+Blender++++Unreal
 #	流程
 
 
-## 化学分子三维结构模型，使用mol文件生成（已实现），计划使用smiles化学式绘制
+## 化学分子三维结构模型，计划使用smiles化学式绘制
 
 # [化学元素周期表](https://ptable.com/#Properties)——电子绕原子核运动 118
 ![https://images-of-elements.com/——http://cheman.chemnet.com/elements/](https://ptable.com/image/periodic-table.svg)
