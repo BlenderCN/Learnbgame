@@ -38,7 +38,7 @@
 
 #	实时录屏监控软件----
 
-#	Work or Job平台系统或软件----kali linux，blender，python，[houdini]，
+#	Work or Job平台系统或软件----kali linux，blender，python，Unreal，
 
 #	涉及到软件和系统blender
 
