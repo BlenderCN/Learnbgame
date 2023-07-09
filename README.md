@@ -16,11 +16,11 @@ Learnbgame的目标是一个创建一个关于科学知识学习的:video_game:[
 
 ![](mDrivEngine/develep.jpg)
 
-Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代会修正不同的施行方案和蓝图，现阶段Learnbgame为依托主流开源虚幻引擎Unreal以及houdini Engine for unreal的3D游戏项目，力求
+Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代会修正不同的施行方案和蓝图，现阶段Learnbgame为依托主流开源虚幻引擎Unreal的3D游戏项目，力求
 
-*   模型尽量使用节点式非破坏性程序化模型----现阶段采用Houdini的hda进行创建
+*   模型尽量使用节点式非破坏性程序化模型----现阶段采用的hda进行创建
 
-*   逻辑采用节点式逻辑----现阶段采用Unreal的蓝图和houdini hda进行实现
+*   逻辑采用节点式逻辑----现阶段采用Unreal的蓝图和 hda进行实现
 
 ## [LearnruT](https://github.com/BlenderCN/Learnbgame/tree/master/LearnruT)为Learnbgame项目实时进行时
 
@@ -36,7 +36,7 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
 ![](mDrivEngine/frame.png)
 ## [节点时代 :memo: All_In_One流程](All_In_One)
 
-参考Houdini PDG将All_In_One流程有机连接在一起
+参考 PDG PCG将All_In_One流程有机连接在一起
 
     ✡原画
      |————————✡模型(节点式非破坏性程序化模型)
@@ -54,11 +54,11 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
 
 
 
-* [节点式非破坏性程序化模型](poqbdb.md)----现阶段使用houdini的hda
+* [节点式非破坏性程序化模型](poqbdb.md)----现阶段使用hda
 
-* 程序化材质纹理----现阶段使用substance design，houdini，blender实现
+* 程序化材质纹理----节点实现
 
-* 后期----现阶段采用Nuke，houdini，blender实现
+* 后期----节点实现
 
 * 节点式逻辑----现阶段使用unreal蓝图
 
@@ -93,7 +93,7 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
 
 
 ###  :memo: 生物
-<a href="https://github.com/BlenderCN/Learnbgame/blob/master/HoudiniEngineForUnreal/%E7%89%A9%E5%93%81%E5%90%88%E6%88%90%E7%B3%BB%E7%BB%9F.md">
+<a href="https://github.com/BlenderCN/Learnbgame/blob/master/UnreaLearnbgame/%E7%89%A9%E5%93%81%E5%90%88%E6%88%90%E7%B3%BB%E7%BB%9F.md">
   <img width="480" height="270" src="mDrivEngine/poqbdb.png" >
 </a>
 
@@ -105,7 +105,7 @@ atoms---molecules---species---planets---
 
 </br>
 
-<a href="https://github.com/BlenderCN/Learnbgame/blob/master/HoudiniEngineForUnreal/%E7%89%A9%E5%93%81%E5%90%88%E6%88%90%E7%B3%BB%E7%BB%9F.md">
+<a href="https://github.com/BlenderCN/Learnbgame/blob/master/UnreaLearnbgame/%E7%89%A9%E5%93%81%E5%90%88%E6%88%90%E7%B3%BB%E7%BB%9F.md">
   <img width="480" height="270" src="https://github.com/BlenderCN/Learnbgame/blob/master/mDrivEngine/PeriodicTable.png" >
 </a>
 
@@ -115,7 +115,7 @@ atoms---molecules---species---planets---
 
 :electron:  分子--由元素周期表的化学元素组成(无机物,有机大分子)，通过化学方程式指导物质合成。
 
-<a href="https://github.com/BlenderCN/Learnbgame/blob/master/HoudiniEngineForUnreal/%E7%89%A9%E5%93%81%E5%90%88%E6%88%90%E7%B3%BB%E7%BB%9F.md">
+<a href="https://github.com/BlenderCN/Learnbgame/blob/master/UnreaLearnbgame/%E7%89%A9%E5%93%81%E5%90%88%E6%88%90%E7%B3%BB%E7%BB%9F.md">
   <img width="480" height="270" src="https://github.com/BlenderCN/Learnbgame/blob/master/mDrivEngine/%E7%89%A9%E8%B4%A8%E5%90%88%E6%88%90.png" >
 </a>
 
@@ -193,9 +193,9 @@ python
 
 
 
-# [Learnbgame 在虚幻引擎](HoudiniEngineForUnreal)
+# [Learnbgame 在虚幻引擎](UnreaLearnbgame)
 
-* [虚幻商城资源VaultCache](HoudiniEngineForUnreal/VaultCache)
+* [虚幻商城资源VaultCache](UnreaLearnbgame/VaultCache)
 
 * [Learnbgame in Github with Unreal](https://github.com/all-in-one-unreal/readme)
 
@@ -220,15 +220,15 @@ python
 
 *   [特效系统:dizzy:](https://github.com/BlenderCN/Learnbgame/tree/master/LByEFX)
 
-*   [库存系统](HoudiniEngineForUnreal/库存系统.md)
+*   [库存系统](UnreaLearnbgame/库存系统.md)
 
-*   [物理引擎:](HoudiniEngineForUnreal/物理引擎.md)
+*   [物理引擎:](UnreaLearnbgame/物理引擎.md)
 
 *   [交易商城系统，拍卖系统](FreetimeJoW)
 
-*   [声音引擎:sound:](HoudiniEngineForUnreal/声音系统.md)
+*   [声音引擎:sound:](UnreaLearnbgame/声音系统.md)
 
-*   [人工智能AI :computer:](HoudiniEngineForUnreal/人工智能.md)
+*   [人工智能AI :computer:](UnreaLearnbgame/人工智能.md)
 
 
 
