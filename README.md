@@ -247,11 +247,11 @@ Fofight
 
 <a href="Game.md">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
-Fofight
+Game
 </a>
 <a href="Learn.md">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">    
-<p  align="right">Lmy</p>
+<p  align="right">Learn</p>
 </a>
 
 </br>
