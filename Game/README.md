@@ -284,16 +284,34 @@
 ##### 云
 *    体积云
 *    1.    云层建模
- 
-     2.云层渲染
 
-     3.云层光照计算
+            Fractal Brownian Motion
+            Density-Height Functions
+            Weather Texture
+            云层覆盖率
+            云层降雨概率
+            云层种类
+
+        
+     2.    云层渲染
+
+            In-Scattering Probability Function模拟当观察方向与太阳光方向一致时的in-scattering效果
+            Henyey-Greenstein Phase Function用于模拟光线与星际尘云交互后各个方向上散射强度与入射光方向夹角的依赖规律
+            Beer's Law用于描述光线穿过一个材质后的衰减作用
+            Volumetric Scattering被水滴或者其他粒子比如灰尘等多吸收，这个过程称为Extinction（消散）或者吸收（absorption）穿出云层抵达人眼，这个称之为内散射in-scattering穿出云层但是并未进入人眼，称为外散射out-scattering
+
+       
+     5.    云层光照计算
 
      
 *    面片云
+
 *    基于公告板云
 
 ##### 渲染管线
+*    群组渲染
+*    1.    优点：相比于Tile的划分，进一步剔除了更多无关光源
+     2.    缺点：Light Culling流程比较复杂，需要多个pass完成
 ##### 地形
 ##### 阴影
 
