@@ -57,12 +57,78 @@
 # 渲染
 
 ### GPU渲染管线
+*    顶点着色器
+*    几何着色器
+*    光栅化
+*    像素着色器
+*    合并阶段
 ### GPU架构
+*    Immediate Mode Rendering
+*    Tile Base Rendering
+*    Tile Based Deferred Rendering
 ### 可见性裁剪
+*    视锥裁剪
+*    Potential Visibililty Set
+*    遮挡剔除
+*    入口裁剪
+
 ### 场景空间管理
+*    层次包围盒（BVH）
+*    二元空间分割树（BSP Trees）
+*    四叉树（Quad Tree）
+*    八叉树（Octree）
+*    场景图（Scene Graphs）
+*    KD树（K-Dimensional Tree）
 ### 贴图压缩
+
+##### Adaptive Scalable Texture Compression
+##### Ericsson Texture Compression
+##### Block Compression
+##### 为什么不使用png和jpg等常见压缩格式
+尽管像jpg、png的压缩率很高，但并不适合纹理，主要问题是不支持像素的随机访问，这对GPU相当不友好，GPU渲染时只使用需要的纹理部分。
+##### 为什么我们需要纹理压缩格式
+*    内存
+*    带宽
+##### 压缩纹理算法特点
+*    解压速度
+*    随机访问
+*    压缩率和图像质量
+*    编码速度
+
 ### Frame Graph
+##### 目标
+*    单一实现，与图形API无关
+*    简化渲染管线配置
+*    简化异步渲染和资源屏障
+*    支持多GPU渲染，可指定调度策略
+
+##### 流程
+*    Setup
+            在这个阶段并不产生任何GPU命令，所有的资源都是虚拟的
+*    Compile
+*    1.    剔除所有没有被引用的Resources和Passes
+     2.    计算资源的生命周期
+     3.    根据资源的用途创建实际的GPU资源
+*    Execute
+            简单地顺序遍历所有真正需要绘制的Pass
+ 
+
+
 ### 渲染系统
+##### 光照
+##### 后处理
+##### 基于物理渲染
+##### 视效
+##### 环境光遮蔽
+##### 大气
+##### 雾效
+##### 云
+##### 渲染管线
+##### 地形
+##### 阴影
+
+
+
 ### Nanite
 ### Lumen
 
