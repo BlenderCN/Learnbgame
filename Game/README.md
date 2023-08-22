@@ -116,7 +116,30 @@
 
 ### 渲染系统
 ##### 光照
+*    全局光照
+*    1.    光照探灯
+     2.    反射探灯
+     3.    预计算光照数据
+*    IBL
+*    1.    Specular
+               Pre-filtered Environment Map
+               Brdf Lut
+       
+     3.    Diffuse
+               Irradiance Map
+*    BRDF模型
+*    1.    Lambert模型
+     2.    Phong模型
+     3.    Blinn-Phong模型
+     4.    Cook-Torrance模型
+
 ##### 后处理
+
+*    颜色校正
+
+*    抗锯齿
+*    1.    超级采样抗锯齿
+
 ##### 基于物理渲染
 ##### 视效
 ##### 环境光遮蔽
