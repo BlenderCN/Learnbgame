@@ -356,8 +356,60 @@
 ### Nanite
 
 #####    GPU Driven Render Pipeline
+*    Culling
+*    1.    三角形剔除
+
+            Backface Culling
+       
+            Small Triangle Culling
+       
+            Occlusion Culling
+*    2.    Cluster 剔除（Coarse）
+
+*    3.    提交
+
+           Material Batch
+
+           Indirect Draw
+
+           Texture Batch
+
+           Virtual Texture
+
+           Bindless Texture
+
+*    目标：GPU承担更多的提交和剔除工作
+       
 #####    Visibility Buffer
+
+*    解决了延迟渲染的问题：带宽高，渲染性能与场景复杂度绑定，容易造成over draw，对MSAA支持不友好
+*    流程
+*    1.    Visibility Pass：对场景进行光栅化，将Primitive ID和Material ID保存到visibility buffer中
+     2.    Worklisk Pass：构建并Worklist，将屏幕划分成很多tile，根据使用到某个Material ID的tile加到该Materail ID的Worklist里，作为下一步的索引
+     3.    Shading Passes：拿到几何和材质信息，对表面着色
+
 #####    Virtualized Geometry Nanite
+*    Nanite Mesh Build Process
+
+         Group
+     
+         merge
+     
+         Simplify
+
+         Split
+
+*    Deferred Materail
+
+*    1.    思想：将材质分类，找出每个材质对应的像素进行Shading
+
+*    2.    Material ID：表示当前像素属于哪个材质
+
+*    3.    Material Shading
+
+           正常流程：为每个材质执行一次全屏渲染，跳过那些未被当前材质覆盖的像素，需要对每个材质都执行一遍渲染，对每个像素都执行一遍是否被材质覆盖的检测，效率较低。
+       
+           Material Culling：将Material ID存成深度值，将屏幕分成Tile，不需要进行一个全屏的材质的绘制进行基于tile尺寸的绘制
 
 
 ### Lumen
