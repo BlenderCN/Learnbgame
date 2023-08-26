@@ -342,11 +342,24 @@
 
 ##### 阴影
 *    Distance Field Shadow
-*    Shadow Mapping算法流程
+*    Shadow Mapping算法流程：
+*    1.    步骤一：从光源处出发，向光照的方向看去，来构造出光照空间。然后在光照空间，我们渲染需要产生阴影的物体，此时将深度写入到ZBuffer中，得到保存最近处物体的深度值的Shadow Map
+     2.    步骤二：然后我们再次正常渲染物体，在渲染时，我们根据渲染物体的世界坐标，变换到上一阶段的光照空间坐标，再计算出该点在Shadow Map中的深度值并进行比较，如果相对光源的距离比Shadow Map中的深度要大，就说明该点处在阴影中，否则就说明不在阴影中。
+     3.    Shadow Bias
+     4.    Cascade Shadow Map
+     5.    Variance Shadow Map
+     6.    PCF
+     7.    PCSS
 
 
 
 ### Nanite
+
+#####    GPU Driven Render Pipeline
+#####    Visibility Buffer
+#####    Virtualized Geometry Nanite
+
+
 ### Lumen
 
 
