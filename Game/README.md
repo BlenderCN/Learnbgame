@@ -414,9 +414,64 @@
 
 ### Lumen
 
+##### Lumen流程
+*    Shading Full Pixels with Screen Space Probes
+*    Surface Caching
+*    1.    Mesh Card
 
+            功能：可以看成是放在6个轴对称方向上的相机，通过正交投影的方式来光栅化Mesh，从而获取Mesh的各种属性（Albedo，Normal,Depth等等）对应surface cache
 
+            离线生成：Mesh-Surfel-Surfel Clusters-Cards最多2级LOD
+*    2.    Surface Cache
 
+           内容：5张Altas-Albedo，Normal，Depth，Emissive，Opacity
+
+           生成：Two Pass， Card Capture，Fix texel budget per frame(512x512),Sort by distance to camera and GPU feedback,Copy card capture to surface cache and compress,Card capture分辨率，根据card bounds最大extent投影到屏幕像素的长度决定，从8到1024，不一定是正方形，根据card的bounds长宽比确定
+
+           管理：Surface Cache Altas size；4096x4096,Pysical Page size:128x128,virtutal page机制分配空间，通过page table进行物理地址映射
+
+*    Fast Ray Trace in Any Hardware
+*    1.    有向距离场（SDF）
+
+            原理 ：有向距离场在每个点将距离最近表面的距离保存到体积纹理中。网格体外的每个点保存的距离为正值，网格体内的每个点保存的距离为负值
+           
+*    2.    实用属性
+
+            在追踪光线时安全地跳过空白空间，因为到最近表面的距离已经明确（有时称这种方法为球体追踪）。只需区区几步就可以判定出交叉点。对距离场进行光线追踪将生成可见性效果，也就是说如果光线和网格体交叉，光线就会投射出阴影。
+
+            在追踪光线时，通过追踪经过遮挡物的距离最近的光线就可以计算出近似的锥体交叉点，而不产生额外成本。这种近似法可以利用距离场来实现非常柔和的区域阴影和天空遮罩。这个属性是距离场环境光遮蔽的关键，因为少量的锥体即可接收器点的整个半球计算出柔和的可见性。
+
+*    3.    局限性
+
+            通过全局位置位置偏移或置换使网格体变形的材质可能会导致自阴影失真，因为距离场表达是离线生成的，并不知道有这些变形仅投射刚性网格体的阴影
+
+*    4.    全局距离场
+
+            全局距离场是分辨率较低的距离场，跟随摄像机的同时，在关卡中使用有向距离场遮蔽。这会创建每个Object网格体距离场的缓存，然后将它们合成到围绕摄像机的若干体积纹理中，称为裁剪图。由于只有新的可见区域或受到场景修改影响的可见区域才需要更新，合成过程中不会有太多消耗。
+
+*    Radiance Injection
+
+*    1.    直接光照
+
+            Cull lights to 8x8 tiles Select first 8 lights per tile 1 bit shadow mask First smmple Shadow Map,then trace Offsecreen Shadows
+       
+*    2.    更新策略
+
+            Fixed update budget Select pages to update based based on priority,Priority = LastUsed-LastUpdated,Priority queue using radix sort 1024x1024 texels for direct lighting,512x512texels for indirect lightning
+
+*    3.    间接光照
+
+            N+2 bounces through feedback,Probe 4x4 hemispherical probe per 4x4 tile Jitter probe placement and ray directioins.Trace in last frame's Voxel Lighting. Lighting Gather ,Bilinear interpolation of 4 probes plane weighting.Visibility weighting using probe hitT.Convert to SH.Shading pixels on surface cache
+       
+*    4.    Voxel Lighting
+
+           动机：Global SDF can't sample surface cache.Merge all cards into lobal clipmaps centered around the camera
+       
+           Structure:4 clipmaps of 64x64x64 voxels.Radiance per 6 directions per vovel.Sample and interppolate 3 directions using normal
+       
+           Visibility Buffer:Track object updates and set modified bricks on GPU.Voxelize modified bricks by tracing rays.6 rays per voxel.Cull objects to 4^3 bricks.One thread per mesh SDF per trace.Cache hits in a visibility buffer HitT I Mesh Index.InterlockedMin write hit to visibility buffer
+
+           Updating:Shade the entire visibility buffer every frame.Sample lighting from surface cache(Final Lighting)
 
 # 动画系统
 
