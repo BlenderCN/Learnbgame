@@ -476,7 +476,124 @@
 # 动画系统
 
 ### 动画技术基础
+##### 蒙皮动画实现
+
+*    坐标空间转换
+*    生物的骨骼结构
+*    游戏中的人形骨骼
+*    GamePlay相关的关节
+*    根骨骼
+*    骨骼绑定
+*    绑定姿势
+*    T-pose
+*    A-pose
+*    谷歌姿势
+
+##### 游戏中的2D动画技术
+
+*    精灵动画
+*    Live2D
+*    2D Skinned Animation
+
+##### 游戏中的3D动画技术
+*    DoF（Degrees of Freedom）
+*    Rigid Hierarchical Animation
+*    Per-vertex Animation
+*    Morph Target Animation
+*    3D Skinned Animation
+*    基于物理的动画Physics-based Animation
+
+            布娃娃系统Ragdol  
+            布料与流体模拟
+            IK（Inverse Kinematics）
+*    动画内容创作
+*    DCC
+
+        动画捕捉
+        Motion Capture
+##### 2D旋转中的数学
+##### 3D旋转中的数学
+*    欧拉角
+*    欧拉角中的顺序依赖
+*    万向节死锁
+*    欧拉角的缺点
+
+        顺序依赖
+        万向节死锁
+        难以插值、组合等
+*    四元数
+
+        2D旋转与复数
+        四元数的定义
+        欧拉角到四元数的转换
+        使用四元数进行转换
+        四元数到旋转矩阵的转换
+        给定旋转轴的四元数旋转
+     
+##### 关节姿势（Joint Pose）
+*    旋转Orientation
+*    位置Position
+*    缩放Scale
+*    仿射矩阵
+*    局部空间到物体空间
+*    插值
+*    单关节蒙皮
+*    蒙皮矩阵
+*    在内存中存储骨骼
+*    蒙皮矩阵调色板
+*    多骨骼的权重蒙皮
+*    权重蒙皮的混合
+*    动画片段（clip）
+*    姿势的插值
+*    NLERP的最短路径插值
+*    SLERP
+*    简单动画的运行时管线
+
+##### 动画DCC流程
+*    网格制作
+*    网格调整
+*    骨骼绑定
+*    添加GamePlay关节
+*    添加根骨骼
+*    蒙皮
+*    动画制作
+*    动画导出
+
+##### 动画压缩
+*   动画片段存储
+*   动画数据尺寸
+*   动画轨道（track）数据之间的差别
+*   关节动画数据之间的差别
+*   DoF缩减
+*   关键帧
+
+        关键帧提取
+*    浮点数压缩
+*    四元数压缩
+*    误差累积
+*    精读衡量
+*    误差补偿
+
+##### 动画重定向
+*    重定向流程
+*    Morph Animation的重定向
+
+##### 面部动画
+*    面部编码系统（FACS）
+*    Action Unit
+*    Key Pose Blending
+*    Morph Target Animation
+*    UV Texture Facial Animation
+*    Muscle Model Animation
+
 ### 动画技术进阶
+
+##### 动画混合
+##### 混合空间Blend Space
+##### 动画状态机
+##### 动画混合树
+##### 反向动力学Inverse Kinematics
+
 
 # 物理系统
 
