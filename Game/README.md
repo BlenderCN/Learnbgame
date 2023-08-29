@@ -1183,11 +1183,55 @@
          Update
      
 ### 软件架构
+##### Stand-alone架构
+##### In Game架构
+
+*    Play in Editor
+
 ### 常见编辑器
+##### World Editor
+
+*    架构
+*    数据抽象
+
+         布局信息（Layout）
+         地形（Terrain）
+         环境（Environment）
+             多系统间的数据交互（eg.Rule System）
+##### Sequencer
+
+*    数据绑定
+*    关键帧
+*    插值
 ### 插件
+##### 架构
+
+*    Plugin Manager
+*    Interfaces
+*    SDK
+
+##### 版本控制
+
 ### 协同编辑
 
+##### 资产拆分
 
+*    按逻辑分层
+*    按位置分块
+*    One File Per Actor
+
+##### 在一个场景内协同编辑
+
+*    同步操作
+
+*    分布式操作的一致性问题
+         锁
+             实例锁
+             资产锁
+         操作转换（OT）
+         无冲突复制数据类型（CRDT）
+     
+*    工作流
 
 # 网络
 
