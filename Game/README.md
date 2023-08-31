@@ -3,52 +3,78 @@
 # 基础架构
 
 ###  游戏引擎的分层架构
+
 ##### 工具层
+
 ##### 为什么要分层
+
 *  减少耦合，降低复杂度
 *  上层无需知道下层的具体实现
 *  应对不同的需求变化
+
 ##### 功能层
+
 *  GameTick控制各系统周期性更新
 *  为游戏引擎提供核心功能模块
 *  多核多线程架构趋势
+
 ##### 资源层
+
 *  GUID
 *  运行时资产管理
-    1.  虚拟文件系统
-    2.  Handle
+
+        虚拟文件系统
+
+        Handle
+   
 *  资产生命周期
-    1.    不同资源有不同的生命周期
-    2.    尽可能减少资源的内存申请与释放
-    3.    垃圾回收
+
+        不同资源有不同的生命周期
+
+        尽可能减少资源的内存申请与释放
+
+        垃圾回收
    
 ##### 平台层
+
 *    硬件架构
 *    图形API概念
+
 ##### 核心层
+
 *    数学计算库
 *    数据结构与容器
 *    内存管理
 
 
 ###  如何构建游戏世界
+
 ##### 游戏世界组成
+
 *    万物皆Game Object
 *    动态物
 *    静态物
 *    环境
 *    其他
+
 ##### GameObject组成
+
 *    组件
 *    继承
+
 ##### 复杂情况处理
+
 *    组件间的依赖关系
 *    Game Object间的依赖关系
 *    事件的处理时机
+
 ##### 游戏场景管理
+
 *    空间数据结构
 *    Game Object检索
+
 ##### 如何让游戏世界动起来
+
 *    基于对象的更新Object-based tick
 *    基于组件的更新Commponent-base tick
 *    事件机制（基本概念）
@@ -57,36 +83,48 @@
 # 渲染
 
 ### GPU渲染管线
+
 *    顶点着色器
 *    几何着色器
 *    光栅化
 *    像素着色器
 *    合并阶段
+
 ### GPU架构
+
 *    Immediate Mode Rendering
 *    Tile Base Rendering
 *    Tile Based Deferred Rendering
 ### 可见性裁剪
+
 *    视锥裁剪
 *    Potential Visibililty Set
 *    遮挡剔除
 *    入口裁剪
 
 ### 场景空间管理
+
 *    层次包围盒（BVH）
 *    二元空间分割树（BSP Trees）
 *    四叉树（Quad Tree）
 *    八叉树（Octree）
 *    场景图（Scene Graphs）
 *    KD树（K-Dimensional Tree）
+
 ### 贴图压缩
 
 ##### Adaptive Scalable Texture Compression
+
 ##### Ericsson Texture Compression
+
 ##### Block Compression
+
 ##### 为什么不使用png和jpg等常见压缩格式
+
 尽管像jpg、png的压缩率很高，但并不适合纹理，主要问题是不支持像素的随机访问，这对GPU相当不友好，GPU渲染时只使用需要的纹理部分。
+
 ##### 为什么我们需要纹理压缩格式
+
 *    内存
 *    带宽
 ##### 压缩纹理算法特点
@@ -96,6 +134,7 @@
 *    编码速度
 
 ### Frame Graph
+
 ##### 目标
 *    单一实现，与图形API无关
 *    简化渲染管线配置
@@ -115,6 +154,7 @@
 
 
 ### 渲染系统
+
 ##### 光照
 *    全局光照
 *    1.    光照探灯
@@ -162,6 +202,7 @@
             综合历史帧的数据来实现抗锯齿，这样会将每个像素点的多次采样均摊到多个帧中，相对的开销要小得多
 
 ##### 基于物理渲染
+
 *    能量守恒
 
            出射光线的能量，永远不能大于入射光线的能量
@@ -175,7 +216,9 @@
 *    3.    感光度
 
             产生Grain效果
+
 *    基于物理材质
+
 *    1.    SG工作流
 
            Albedo Color
@@ -189,6 +232,7 @@
            优点：可以自己控制非金属F0值
 
            缺点：F0可能用错从而导致破坏PBR原则，因为工作流程有些名词和传统的工作流太相似，但实际对应的数据可能是不一样的。RGB贴图多，占用内存多。
+
 *    2.    基于物理相机
 
            快门速度：产生运动模糊效果
@@ -196,6 +240,7 @@
            光圈：产生景深效果
 
            感光度：产生Grain效果
+
 *    3.    F0
 
            当光线笔直或垂直（以0度角）撞击表面时，该光线的一部分会被反射为镜面反射。使用表面的折射率（IOR），可以推导出反射量。这被称为F0。
@@ -210,6 +255,7 @@
            对于绝缘体，折射光会被散射和吸收（有的会重新透出物体表面），
            所以反射光线的量远小于金属，
            而且有漫反射颜色。 
+
 *     5.    MR工作流
  
            Base Color
@@ -225,31 +271,56 @@
            缺点：F0不容易自己指定
 
 ##### 视效
+
 *    粒子数据类型
-*    1.    Billboard类型数据
-     2.    Mesh类型数据
-     3.    光束类型数据
-     4.    条带类型数据
+
+         Billboard类型数据
+
+         Mesh类型数据
+
+         光束类型数据
+
+         条带类型数据
+
 *    组件
-*    1.    系统
-     2.    发射器
-     3.    模块
-     4.    参数
+
+         系统
+
+         发射器
+
+         模块
+
+         参数
+     
 *    粒子常见属性
-*    1.    Acceleration
-     2.    Attraction
-     3.    Cammera
-     4.    Collision
-     5.    Color
-     6.    Lifetime
-     7.    Light
-     8.    Location
-     9.    Orbit
-     10.   Orientation
-     11.   Rotation
-     12.   Size
-     13.   Spawn
-     14.   Velocity
+
+         Acceleration
+
+         Attraction
+
+         Cammera
+
+         Collision
+
+         Color
+
+         Lifetime
+
+         Light
+
+         Location
+
+         Orbit
+
+         Orientation
+
+         Rotation
+
+         Size
+
+         Spawn
+
+         Velocity
 
 ##### 环境光遮蔽
 
@@ -259,20 +330,31 @@
 *    体素基准环境光遮蔽
 *    
 ##### 大气
+
 *    大气散射
-*    1.    地球大气的渲染主要包含两种散射，瑞利散射以及米氏散射，瑞利散射主要构成了天空的颜色变化，而米氏散射则造成了太阳周围的光环效果
-     2.    相位函数
-     3.    瑞利散射
-     4.    米氏散射
-     5.    几何散射
-     6.    单次散射
-     7.    多重散射
+
+         地球大气的渲染主要包含两种散射，瑞利散射以及米氏散射，瑞利散射主要构成了天空的颜色变化，而米氏散射则造成了太阳周围的光环效果
+
+         相位函数
+
+         瑞利散射
+
+         米氏散射
+
+         几何散射
+
+         单次散射
+
+         多重散射
 
 *    介质传播特性
 
-        参与介质中的粒子本身会吸收光能，转换成其他形式的能量，这样在传播路径上的光就会衰减出散射，即光遇到粒子时，粒子会分散的传播方向，因此也会减弱传播路径上的光入散射，从其他传播路径上散射到当前传播路径上的现象，这回加强当前路径上的光能量。粒子本身是发光的，这会加强传播路径上的光
+        参与介质中的粒子本身会吸收光能，转换成其他形式的能量，这样在传播路径上的光就会衰减出散射，即光遇到粒子时，
+        粒子会分散的传播方向，因此也会减弱传播路径上的光入散射，从其他传播路径上散射到当前传播路径上的现象，这回加强当前路径上的光能量。
+        粒子本身是发光的，这会加强传播路径上的光
 
 ##### 雾效
+
 *    体积雾
 
         在摄像机视锥的每个点上都计算参与媒介的密度和光照
@@ -282,6 +364,7 @@
         指数高度雾在地图上较低位置处密度较大，而在较高位置处密度较小。其过渡十分平滑，随着海拔升高，也不会出现明显切换
    
 ##### 云
+
 *    体积云
 *    1.    云层建模
 
@@ -298,7 +381,8 @@
             In-Scattering Probability Function模拟当观察方向与太阳光方向一致时的in-scattering效果
             Henyey-Greenstein Phase Function用于模拟光线与星际尘云交互后各个方向上散射强度与入射光方向夹角的依赖规律
             Beer's Law用于描述光线穿过一个材质后的衰减作用
-            Volumetric Scattering被水滴或者其他粒子比如灰尘等多吸收，这个过程称为Extinction（消散）或者吸收（absorption）穿出云层抵达人眼，这个称之为内散射in-scattering穿出云层但是并未进入人眼，称为外散射out-scattering
+            Volumetric Scattering被水滴或者其他粒子比如灰尘等多吸收，这个过程称为Extinction（消散）或者吸收（absorption）穿出云层抵达人眼，
+            这个称之为内散射in-scattering穿出云层但是并未进入人眼，称为外散射out-scattering
 
        
      5.    云层光照计算
@@ -309,54 +393,73 @@
 *    基于公告板云
 
 ##### 渲染管线
+
 *    群组渲染
-*    1.    优点：相比于Tile的划分，进一步剔除了更多无关光源
-     2.    缺点：Light Culling流程比较复杂，需要多个pass完成
+
+         优点：相比于Tile的划分，进一步剔除了更多无关光源
+         缺点：Light Culling流程比较复杂，需要多个pass完成
 
 *    延迟渲染
-*    1.    优点：渲染性能不再与场景复杂度耦合，避免了over draw
-     2.    缺点：Gubffer占用了较大的空间，Gbuffer的读写需要大量显存带框，对半透明物体支持不友好，对硬件MSAA支持不友好，需要硬件支持MRT，对大量自定义shader支持不友好。
+
+         优点：渲染性能不再与场景复杂度耦合，避免了over draw
+         缺点：Gubffer占用了较大的空间，Gbuffer的读写需要大量显存带框，对半透明物体支持不友好，对硬件MSAA支持不友好，需要硬件支持MRT，对大量自定义shader支持不友好。
 
 *    分块渲染
-*    1.    优点：减少了部分无关光源的计算
-     2.    缺点：需要维护光源列表信息，并维护，带来了一定的性能开销，基于屏幕的Tile划分还是比较粗糙，没有考虑深度值
+
+         优点：减少了部分无关光源的计算
+         缺点：需要维护光源列表信息，并维护，带来了一定的性能开销，基于屏幕的Tile划分还是比较粗糙，没有考虑深度值
 
 *    正向渲染
-*    1.    优点：实现简单，支持MSAA和半透明渲染，带宽消耗小
-     2.    缺点：场景复杂度和光源数量相关，会有大量的over draw
+
+         优点：实现简单，支持MSAA和半透明渲染，带宽消耗小
+         缺点：场景复杂度和光源数量相关，会有大量的over draw
 
 ##### 地形
+
 *    地形材质混合
 
         Texture Splatting技术，，地表纹理使用多种不同的纹理混合，使用一张叫做Splate map的权重图来记录这些纹理的权重
 
 *    虚拟纹理
-*    1.    Virtual texture
-     2.    Physical texture
-     3.    Page table
-     4.    优势：渲染带宽降低：可以把多层地形材质实时混合好，可以Instancing/GpuDriven
+
+         Virtual texture
+         Physical texture
+         Page table
+         优势：渲染带宽降低：可以把多层地形材质实时混合好，可以Instancing/GpuDriven
 
 *    地形几何
-*    1.    网格
-     2.    高度图
+
+         网格
+         高度图
 
 ##### 阴影
+
 *    Distance Field Shadow
 *    Shadow Mapping算法流程：
-*    1.    步骤一：从光源处出发，向光照的方向看去，来构造出光照空间。然后在光照空间，我们渲染需要产生阴影的物体，此时将深度写入到ZBuffer中，得到保存最近处物体的深度值的Shadow Map
-     2.    步骤二：然后我们再次正常渲染物体，在渲染时，我们根据渲染物体的世界坐标，变换到上一阶段的光照空间坐标，再计算出该点在Shadow Map中的深度值并进行比较，如果相对光源的距离比Shadow Map中的深度要大，就说明该点处在阴影中，否则就说明不在阴影中。
-     3.    Shadow Bias
-     4.    Cascade Shadow Map
-     5.    Variance Shadow Map
-     6.    PCF
-     7.    PCSS
+         步骤一：从光源处出发，向光照的方向看去，来构造出光照空间。然后在光照空间，我们渲染需要产生阴影的物体，
+         此时将深度写入到ZBuffer中，得到保存最近处物体的深度值的Shadow Map
+
+         步骤二：然后我们再次正常渲染物体，在渲染时，我们根据渲染物体的世界坐标，变换到上一阶段的光照空间坐标，
+         再计算出该点在Shadow Map中的深度值并进行比较，如果相对光源的距离比Shadow Map中的深度要大，就说明该点处在阴影中，否则就说明不在阴影中。
+
+         Shadow Bias
+
+         Cascade Shadow Map
+
+         Variance Shadow Map
+
+         PCF
+
+         PCSS
 
 
 
 ### Nanite
 
 #####    GPU Driven Render Pipeline
+
 *    Culling
+
 *    1.    三角形剔除
 
             Backface Culling
@@ -383,12 +486,15 @@
 #####    Visibility Buffer
 
 *    解决了延迟渲染的问题：带宽高，渲染性能与场景复杂度绑定，容易造成over draw，对MSAA支持不友好
+
 *    流程
-*    1.    Visibility Pass：对场景进行光栅化，将Primitive ID和Material ID保存到visibility buffer中
-     2.    Worklisk Pass：构建并Worklist，将屏幕划分成很多tile，根据使用到某个Material ID的tile加到该Materail ID的Worklist里，作为下一步的索引
-     3.    Shading Passes：拿到几何和材质信息，对表面着色
+
+         Visibility Pass：对场景进行光栅化，将Primitive ID和Material ID保存到visibility buffer中
+         Worklisk Pass：构建并Worklist，将屏幕划分成很多tile，根据使用到某个Material ID的tile加到该Materail ID的Worklist里，作为下一步的索引
+         Shading Passes：拿到几何和材质信息，对表面着色
 
 #####    Virtualized Geometry Nanite
+
 *    Nanite Mesh Build Process
 
          Group
@@ -415,6 +521,7 @@
 ### Lumen
 
 ##### Lumen流程
+
 *    Shading Full Pixels with Screen Space Probes
 *    Surface Caching
 *    1.    Mesh Card
@@ -422,11 +529,14 @@
             功能：可以看成是放在6个轴对称方向上的相机，通过正交投影的方式来光栅化Mesh，从而获取Mesh的各种属性（Albedo，Normal,Depth等等）对应surface cache
 
             离线生成：Mesh-Surfel-Surfel Clusters-Cards最多2级LOD
+       
 *    2.    Surface Cache
 
            内容：5张Altas-Albedo，Normal，Depth，Emissive，Opacity
 
-           生成：Two Pass， Card Capture，Fix texel budget per frame(512x512),Sort by distance to camera and GPU feedback,Copy card capture to surface cache and compress,Card capture分辨率，根据card bounds最大extent投影到屏幕像素的长度决定，从8到1024，不一定是正方形，根据card的bounds长宽比确定
+           生成：Two Pass， Card Capture，Fix texel budget per frame(512x512),Sort by distance to camera and GPU feedback,
+           Copy card capture to surface cache and compress,Card capture分辨率，根据card bounds最大extent投影到屏幕像素的长度决定，
+           从8到1024，不一定是正方形，根据card的bounds长宽比确定
 
            管理：Surface Cache Altas size；4096x4096,Pysical Page size:128x128,virtutal page机制分配空间，通过page table进行物理地址映射
 
@@ -437,9 +547,11 @@
            
 *    2.    实用属性
 
-            在追踪光线时安全地跳过空白空间，因为到最近表面的距离已经明确（有时称这种方法为球体追踪）。只需区区几步就可以判定出交叉点。对距离场进行光线追踪将生成可见性效果，也就是说如果光线和网格体交叉，光线就会投射出阴影。
+            在追踪光线时安全地跳过空白空间，因为到最近表面的距离已经明确（有时称这种方法为球体追踪）。只需区区几步就可以判定出交叉点。
+            对距离场进行光线追踪将生成可见性效果，也就是说如果光线和网格体交叉，光线就会投射出阴影。
 
-            在追踪光线时，通过追踪经过遮挡物的距离最近的光线就可以计算出近似的锥体交叉点，而不产生额外成本。这种近似法可以利用距离场来实现非常柔和的区域阴影和天空遮罩。这个属性是距离场环境光遮蔽的关键，因为少量的锥体即可接收器点的整个半球计算出柔和的可见性。
+            在追踪光线时，通过追踪经过遮挡物的距离最近的光线就可以计算出近似的锥体交叉点，而不产生额外成本。这种近似法可以利用距离场来实现非常柔和的区域阴影和天空遮罩。
+            这个属性是距离场环境光遮蔽的关键，因为少量的锥体即可接收器点的整个半球计算出柔和的可见性。
 
 *    3.    局限性
 
@@ -457,11 +569,14 @@
        
 *    2.    更新策略
 
-            Fixed update budget Select pages to update based based on priority,Priority = LastUsed-LastUpdated,Priority queue using radix sort 1024x1024 texels for direct lighting,512x512texels for indirect lightning
+            Fixed update budget Select pages to update based based on priority,Priority = LastUsed-LastUpdated,
+            Priority queue using radix sort 1024x1024 texels for direct lighting,512x512texels for indirect lightning
 
 *    3.    间接光照
 
-            N+2 bounces through feedback,Probe 4x4 hemispherical probe per 4x4 tile Jitter probe placement and ray directioins.Trace in last frame's Voxel Lighting. Lighting Gather ,Bilinear interpolation of 4 probes plane weighting.Visibility weighting using probe hitT.Convert to SH.Shading pixels on surface cache
+            N+2 bounces through feedback,Probe 4x4 hemispherical probe per 4x4 tile Jitter probe placement and ray directioins.
+            Trace in last frame's Voxel Lighting. Lighting Gather ,Bilinear interpolation of 4 probes plane weighting.Visibility weighting using probe hitT.
+            Convert to SH.Shading pixels on surface cache
        
 *    4.    Voxel Lighting
 
@@ -469,13 +584,17 @@
        
            Structure:4 clipmaps of 64x64x64 voxels.Radiance per 6 directions per vovel.Sample and interppolate 3 directions using normal
        
-           Visibility Buffer:Track object updates and set modified bricks on GPU.Voxelize modified bricks by tracing rays.6 rays per voxel.Cull objects to 4^3 bricks.One thread per mesh SDF per trace.Cache hits in a visibility buffer HitT I Mesh Index.InterlockedMin write hit to visibility buffer
+           Visibility Buffer:Track object updates and set modified bricks on GPU.
+           Voxelize modified bricks by tracing rays.6 rays per voxel.
+           Cull objects to 4^3 bricks.One thread per mesh SDF per trace.Cache hits in a visibility buffer HitT I Mesh Index.
+           InterlockedMin write hit to visibility buffer
 
            Updating:Shade the entire visibility buffer every frame.Sample lighting from surface cache(Final Lighting)
 
 # 动画系统
 
 ### 动画技术基础
+
 ##### 蒙皮动画实现
 
 *    坐标空间转换
@@ -496,6 +615,7 @@
 *    2D Skinned Animation
 
 ##### 游戏中的3D动画技术
+
 *    DoF（Degrees of Freedom）
 *    Rigid Hierarchical Animation
 *    Per-vertex Animation
@@ -511,8 +631,11 @@
 
         动画捕捉
         Motion Capture
+
 ##### 2D旋转中的数学
+
 ##### 3D旋转中的数学
+
 *    欧拉角
 *    欧拉角中的顺序依赖
 *    万向节死锁
@@ -531,6 +654,7 @@
         给定旋转轴的四元数旋转
      
 ##### 关节姿势（Joint Pose）
+
 *    旋转Orientation
 *    位置Position
 *    缩放Scale
@@ -550,6 +674,7 @@
 *    简单动画的运行时管线
 
 ##### 动画DCC流程
+
 *    网格制作
 *    网格调整
 *    骨骼绑定
@@ -560,6 +685,7 @@
 *    动画导出
 
 ##### 动画压缩
+
 *   动画片段存储
 *   动画数据尺寸
 *   动画轨道（track）数据之间的差别
@@ -575,6 +701,7 @@
 *    误差补偿
 
 ##### 动画重定向
+
 *    重定向流程
 *    Morph Animation的重定向
 
@@ -593,19 +720,22 @@
 *    LERP
 *    混合权重的计算
 *    混合时间轴对齐
-*    
+  
+
 ##### 混合空间Blend Space
 
 *    1D混合空间
 *    2D混合空间
 *    分部混合Skeleton Masked Blending
 *    叠加混合Additive Blending
-*    
+ 
+
 ##### 动画状态机
 
 *    ASM的定义
 *    Cross Fades
 *    分层ASM
+
 ##### 动画混合树
 
 *    Blend Tree
@@ -613,7 +743,7 @@
 *    additive blend node
 *    动画混合树的节点
 *    动画树的控制信号
-*    
+
 ##### 反向动力学Inverse Kinematics
 
 *    基础概念
@@ -621,6 +751,7 @@
       终端效应器End-Effectors
       IK
       FK
+
 *    Two Bone IK
 *    多关节IK
 *    关节约束
@@ -640,6 +771,7 @@
 ### 物理系统基础概念
 
 ##### 刚体Physics Actor
+
 *    静态刚体static
 *    动态刚体dynamic
 *    触发器（trigger）
@@ -664,6 +796,7 @@
      回弹系数
 
 ##### 运动
+
 *    第一牛顿定律
 *    第二牛顿定律
 *    
@@ -695,12 +828,14 @@
 ##### 力与冲量
 
 ##### 碰撞检测
+
 *  粗阶段
 
    动态BVH树
    排序与扫描Sort and Sweep
    
 *  精细阶段
+
 *  1.  概念
 
      闵可夫斯基和/差
@@ -724,6 +859,7 @@
       胶囊-胶囊求交
 
 ##### 碰撞解决
+
 *  惩罚力法
 *  求解速度约束
 
@@ -733,11 +869,14 @@
 *  求解位置约束
 
 ##### 场景查询
+
 *  射线检测raycast
 *  形状扫描sweep
 *  求交overlap
 *  碰撞组过滤
+
 ##### 性能、精度与确定性
+
 *  模拟岛
 *  休眠
 *  连续碰撞检测:冲击时间-保守步进法
@@ -757,6 +896,7 @@
 *  移动平台
 
 ##### 布娃娃模拟
+
 *  用途
 *  骨骼与刚体的映射
 *  人体关节约束
@@ -781,6 +921,7 @@
 *  基于刚体的布料模拟
 
 ##### 载具模拟
+
 *  真实感-风格化谱系
 *  建模
 *  力
@@ -797,7 +938,9 @@
      Ackermann转向
    
 *  轮胎接触
+
 ##### 破坏模拟
+
 *  概念
 
      分块层级
@@ -814,7 +957,9 @@
 *  增加真实感
 *  破坏系统引入的问题
 *  常见的破坏SDK
+
 ##### PBD/XPBD
+
 *  拉格朗日力学约束建模
 *  拉伸约束
 *  约束投影
@@ -824,9 +969,13 @@
 # 音效
 
 ### 音频
+
 ##### 声障
+
 ##### 声笼
+
 ##### 空间化音频
+
 *  平移
 
      听者几何体
@@ -850,13 +999,19 @@
        胶囊体
        盒体
        锥体
+
 *  双耳音频空间化
+
 ### 声音基础
+
 ##### 声音三要素
+
 *  响度
 *  音高
 *  音色
+
 ##### 脉冲编码调制
+
 *  采样
 *  量化
 *  编码
@@ -903,6 +1058,7 @@
          多种脚本语言的对比
      
 ##### 可视化脚本
+
 *    可视化脚本是一种编程语言
 
          编程语言的要素及相应可视化示例
@@ -940,13 +1096,16 @@
 ### 基础AI系统
 
 ##### 转向
+
 *    从路点到运动
 *    转向行为
 
          寻找/逃跑
          速度匹配
          对其
+     
 ##### 群体模拟
+
 *    微观模型
 
         基于规则Boids
@@ -964,6 +1123,7 @@
              ORCA
      
 ##### 感知
+
 *    内部信息
 *    外部信息
 
@@ -977,6 +1137,7 @@
      
      
 ##### 经典决策算法
+
 *    有限状态机
 
          层级有限状态机
@@ -998,10 +1159,13 @@
          
              
 ##### 寻路
+
 *    路径平滑
 
          漏斗算法
+
 *    工作流
+
 *    地图表示
 
          可通行区域
@@ -1038,6 +1202,7 @@
 ### 构建高级的AI系统
 
 ##### Machine Learning（机器学习；ML）
+
 *    监督学习
 *    无监督学习
 *    半监督学习
@@ -1067,6 +1232,7 @@
                      自博弈
                      群体演化
 ##### AI Planning
+
 *    Hierarchical Tasks Network（分层任务网络；HTN）
 
          原子任务
@@ -1114,11 +1280,13 @@
 
 *    即时模式（IMGUI）
 *    保留模式（RMGUI）
+
 ##### 架构模式
 
 *    MVC
 *    MVP
 *    MVVM
+
 ### 资产管理
 
 ##### 资产格式
@@ -1152,6 +1320,7 @@
 
          独立的Schema定义文件
          代码内部定义
+     
 *    不同场景下的引擎数据
 
          Runtime
@@ -1161,18 +1330,25 @@
 ### C++代码反射
 
 ##### 代码分析
+
 *    抽象语法树（AST）
 *    Clang
+
 ##### 反射信息收集
+
 *    Tags
+
 ##### 代码生成
+
 *    代码渲染
 
         Mustache
 ##### 运行时反射信息注册
 
 ### 鲁棒性设计
+
 ##### Command模式
+
 *    定义
 *    UID
 *    序列化与反序列化
@@ -1183,12 +1359,15 @@
          Update
      
 ### 软件架构
+
 ##### Stand-alone架构
+
 ##### In Game架构
 
 *    Play in Editor
 
 ### 常见编辑器
+
 ##### World Editor
 
 *    架构
@@ -1203,7 +1382,9 @@
 *    数据绑定
 *    关键帧
 *    插值
+*    
 ### 插件
+
 ##### 架构
 
 *    Plugin Manager
@@ -1225,6 +1406,7 @@
 *    同步操作
 
 *    分布式操作的一致性问题
+
          锁
              实例锁
              资产锁
@@ -1238,10 +1420,12 @@
 ### 网络基础
 
 ##### 网络协议
+
 *    基于UDP的可靠实时通信实现
 
          自动重传（ARQ）
          前向纠错（FEC）
+     
 *    Socket套接字
 
          TCP协议
@@ -1254,6 +1438,7 @@
              不可靠
              无流控
              无拥塞控制
+     
 *    网络分层
 
          OSI七层模型
@@ -1302,6 +1487,7 @@
              集中式代码
              易于编程
              通信透明
+     
 ##### 网络拓扑
 
 *    DS
@@ -1319,6 +1505,7 @@
              服务器花费较高
              服务端承担更多的逻辑处理
              服务器故障会影响到玩家
+     
 *    P2P
 
          特点
@@ -1347,18 +1534,26 @@
 ##### 快照同步
 
 *    全量快照
+
 *    增量快照
+
 *    带宽对比
+
          全量快照大
          增量快照小
+     
 *    快照同步的缺点
+
          随着游戏复杂，快照越来越大
          带宽浪费
          服务器压力大
      
 ##### 帧同步
+
 *    Bucket Synchronization
+
 *    Deterministic Lockstep
+
 *    帧同步需要面对的挑战与解决：多端不一致问题
 
          浮点数
@@ -1431,6 +1626,7 @@
              收到开火请求，同步给玩家
          Replicated
              模拟Authorized开火
+     
 *    如何解决延迟
 
          哑客户端（客户端不做预测）
@@ -1502,10 +1698,13 @@
                              命中结果等待服务器返回
                  延迟补偿
                      原因
-                         因为有延迟，也就是开枪打中了敌人过去的位置，等到开枪事件到达服务器上，敌人已经不再开枪的位置了，在服务器上，回溯到你开枪时候敌人的真实位置做判定，一切以服务器为准；开枪的时间，回溯到开枪时候敌人的位置，做命中判定
+                         因为有延迟，也就是开枪打中了敌人过去的位置，等到开枪事件到达服务器上，敌人已经不再开枪的位置了，
+                         在服务器上，回溯到你开枪时候敌人的真实位置做判定，一切以服务器为准；
+                         开枪的时间，回溯到开枪时候敌人的位置，做命中判定
                      难点
                          如何回溯，回溯多久
 ##### 状态同步和帧同步的对比
+
 *    网络带宽
 
          帧同步
@@ -1556,6 +1755,7 @@
 ### 服务器架构
 
 ##### 系统举例
+
 *    大厅系统
 *    用户管理系统
 *    交易系统
@@ -1568,6 +1768,7 @@
          Redis
      
 ##### 分布式系统
+
 *    分布式系统挑战
 
          互斥问题
@@ -1589,6 +1790,7 @@
          Etcd
          Zookeeper
 ##### 可扩展游戏世界（实现方案）
+
 *    Zoninng
 
          在大世界中将大量玩家分布
@@ -1605,6 +1807,7 @@
 ### 游戏优化
 
 ##### 带宽优化
+
 *    数据压缩
 *    对象更新频率
 *    对象相关性
@@ -1617,6 +1820,7 @@
              PVS
      
 ##### 反作弊
+
 *    作弊手段分类
 
          读取、篡改内存
@@ -1633,6 +1837,7 @@
 
          非对称加密分发密钥
          对称加密传输数据
+     
 *    VAC & EAV
 *    基于统计数据反作弊
 *    检测已知的作弊程序
@@ -1640,10 +1845,15 @@
 # 面向数据编程与任务系统
 
 ### 游戏引擎并行框架
+
 ##### Fixed-thread
+
 ##### Thread fork-join
+
 ##### Unreal并行框架
+
 *    Named Thread 与Worker Thread TaskGraph
+
 ##### Job System
 *    协程介绍
 
@@ -1669,12 +1879,17 @@
          Job系统的利弊分析
      
 ### 实体-组件-系统ECS
+
 ##### 回顾：基于组件的设计
+
 ##### 概念
+
 *    实体Entity
 *    组件Component
 *    系统System
+
 ##### 实现举例
+
 *    Unity DOTS
 
          Unity ECS
@@ -1698,6 +1913,7 @@
 ### 面向数据编程
 
 ##### 其他编程范式
+
 *    面向过程编程
 *    面向对象编程
 
@@ -1756,6 +1972,7 @@
 
 *    易并行问题
 *    不易并行问题
+
          解决数据竞争
              阻塞方法
                  锁原语
