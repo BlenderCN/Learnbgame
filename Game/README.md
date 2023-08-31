@@ -495,7 +495,10 @@
 *    流程
 
          Visibility Pass：对场景进行光栅化，将Primitive ID和Material ID保存到visibility buffer中
-         Worklisk Pass：构建并Worklist，将屏幕划分成很多tile，根据使用到某个Material ID的tile加到该Materail ID的Worklist里，作为下一步的索引
+     
+         Worklisk Pass：构建并Worklist，将屏幕划分成很多tile，
+             根据使用到某个Material ID的tile加到该Materail ID的Worklist里，作为下一步的索引
+     
          Shading Passes：拿到几何和材质信息，对表面着色
 
 #####    Virtualized Geometry Nanite
