@@ -11,4 +11,5 @@
 [beauty](https://github.com/BlenderCN/Learnbgame/blob/master/All_In_One/LearnbdnelB/split_mirror_static_beauty.md)
 
 符合黄金比例形体
+
 使用AI生成
