@@ -65,3 +65,6 @@
 
 ##### E_ItemType————》E_ItemRarity————》E_ArmorType————》S_ItemInfo————》BP_ItemMaster————》DT_Items————》
 
+
+
+https://www.bilibili.com/video/BV1tg411v7L7?t=9.6&p=16
