@@ -63,8 +63,8 @@
 
 
 
-##### E_ItemType————》E_ItemRarity————》E_ArmorType————》S_ItemInfo————》BP_ItemMaster————》DT_Items————》BPC_ItemsContainer————》BPC_PlayerInventory————》W_MainWidget
+##### E_ItemType————》E_ItemRarity————》E_ArmorType————》S_ItemInfo————》BP_ItemMaster————》DT_Items————》BPC_ItemsContainer————》BPC_PlayerInventory————》W_MainWidget————》SurvivalGame_PC————》SurvivalGame_GM
 
 
 
-https://www.bilibili.com/video/BV1tg411v7L7?t=4.0&p=17
+https://www.bilibili.com/video/BV1tg411v7L7?t=6.7&p=18
