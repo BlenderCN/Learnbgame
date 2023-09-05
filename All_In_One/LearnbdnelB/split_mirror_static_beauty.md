@@ -1,3 +1,6 @@
+### CG
+
+
 <a href="#">
   <img width="154" height="205" src="/mDrivEngine/split_mirror/static/beauty/640.jpg" >
 </a>
@@ -51,6 +54,6 @@
 </a>
 
 
-
+### AI
 
 
