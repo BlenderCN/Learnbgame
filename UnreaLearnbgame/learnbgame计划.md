@@ -63,8 +63,8 @@
 
 
 
-##### E_ItemType————》E_ItemRarity————》E_ArmorType————》S_ItemInfo————》BP_ItemMaster————》DT_Items————》BPC_ItemsContainer————》BPC_PlayerInventory————》W_MainWidget————》SurvivalGame_PC————》SurvivalGame_GM————》W_Inventory
+##### E_ItemType————》E_ItemRarity————》E_ArmorType————》S_ItemInfo————》BP_ItemMaster————》DT_Items————》BPC_ItemsContainer————》BPC_PlayerInventory————》W_MainWidget————》SurvivalGame_PC————》SurvivalGame_GM————》W_Inventory————》W_InventorySlot————》W_ItemContainerGrid————》E_ContainerType
 
 
 
-https://www.bilibili.com/video/BV1tg411v7L7?t=0.2&p=19
+https://www.bilibili.com/video/BV1tg411v7L7?t=5.1&p=21
