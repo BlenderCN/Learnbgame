@@ -63,7 +63,7 @@
 
 
 
-##### E_ItemType————》E_ItemRarity————》E_ArmorType————》S_ItemInfo————》BP_ItemMaster————》DT_Items————》BPC_ItemsContainer————》BPC_PlayerInventory————》W_MainWidget————》SurvivalGame_PC————》SurvivalGame_GM————》W_Inventory————》W_InventorySlot————》W_ItemContainerGrid————》E_ContainerType————》BPI_SurvivalCharacter————》BPI_SurvivalGamePC
+##### E_ItemType————》E_ItemRarity————》E_ArmorType————》S_ItemInfo————》BP_ItemMaster————》DT_Items————》BPC_ItemsContainer————》BPC_PlayerInventory————》W_MainWidget————》SurvivalGame_PC————》SurvivalGame_GM————》W_Inventory————》W_InventorySlot————》W_ItemContainerGrid————》E_ContainerType————》BPI_SurvivalCharacter————》BPI_SurvivalGamePC————》W_DraggedItem
 
 
 
