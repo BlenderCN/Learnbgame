@@ -63,7 +63,7 @@
 
 
 
-##### E_ItemType————》E_ItemRarity————》E_ArmorType————》S_ItemInfo————》BP_ItemMaster————》DT_Items————》BPC_ItemsContainer————》BPC_PlayerInventory————》W_MainWidget————》SurvivalGame_PC————》SurvivalGame_GM————》W_Inventory————》W_InventorySlot————》W_ItemContainerGrid————》E_ContainerType————》BPI_SurvivalCharacter————》BPI_SurvivalGamePC————》W_DraggedItem————》ItemDrag————》W_Hotbar————》BPC_PlayerHotbar————》BP_EquipableMaster————》E_EquipableState————》S_EquipableInfo————》BP_FirstPersonEquipable————》BP_ThirdPersonEquipable————》BPI_EquipableItem————》BP_FP_Hatchet————》BP_TP_Hatchet————》BP_FP_Stone_Hatchet————》BP_TP_StoneHatchet————》HatchetBS————》HatchetBSTP————》BP_HarvestingMaster————》BP_GroundItemMaster————》BP_LargeItemMaster————》BPI_LargeItem————》BP_Tree
+##### E_ItemType————》E_ItemRarity————》E_ArmorType————》S_ItemInfo————》BP_ItemMaster————》DT_Items————》BPC_ItemsContainer————》BPC_PlayerInventory————》W_MainWidget————》SurvivalGame_PC————》SurvivalGame_GM————》W_Inventory————》W_InventorySlot————》W_ItemContainerGrid————》E_ContainerType————》BPI_SurvivalCharacter————》BPI_SurvivalGamePC————》W_DraggedItem————》ItemDrag————》W_Hotbar————》BPC_PlayerHotbar————》BP_EquipableMaster————》E_EquipableState————》S_EquipableInfo————》BP_FirstPersonEquipable————》BP_ThirdPersonEquipable————》BPI_EquipableItem————》BP_FP_Hatchet————》BP_TP_Hatchet————》BP_FP_Stone_Hatchet————》BP_TP_StoneHatchet————》HatchetBS————》HatchetBSTP————》BP_HarvestingMaster————》BP_GroundItemMaster————》BP_LargeItemMaster————》BPI_LargeItem————》BP_Tree————》S_ResourceStructure————》S_LargeItem
 
 
 
