@@ -203,7 +203,7 @@ python
 
 
 
-* atom模块中电子的排布引用Fibonacci lattice算法,运动引用AXIS ANGLE旋转算法.
+*     产品在不断地迭代更新中
 
 
 
