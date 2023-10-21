@@ -20,3 +20,14 @@
 
 ### 64k intro
 * [conspiracy](https://conspiracy.hu/release/64k/)————压缩极限
+
+
+### 待定
+
+数据————爬虫get
+
+分析————AI辅助
+
+区块链
+
+
