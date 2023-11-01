@@ -1,6 +1,5 @@
 # 软件资源模型All_in_one
 *	1.	[unreal all in one]()
-*	2.	[houdini all in one]()
 *	3.	[blender all in one]()
 *	4.  [python all in one]()
 
@@ -10,4 +9,6 @@
 
 # []()
 
-统一化，开放性,便捷，通用
+统一化，开放性,
+
+开源，便捷，通用
