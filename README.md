@@ -22,7 +22,7 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
 
 *   逻辑采用节点式逻辑----现阶段采用Unreal的蓝图和 hda进行实现
 
-## [LearnruT](https://github.com/BlenderCN/Learnbgame/tree/master/LearnruT)为Learnbgame项目实时进行时
+## [LearnruT](https://github.com/BlenderCN/Learnbgame/tree/master/LearnruT)为Learnbgame项目实时更新进行时
 
 [Blender3DWorld](https://github.com/Fofight/Blender3DWorld)——————>[All_In_One](https://github.com/FofightFong/All_In_One)————>[Learnrut](https://github.com/FofightFong/Learnrut)————>[UnreaLearnbgame](UnreaLearnbgame)
 
