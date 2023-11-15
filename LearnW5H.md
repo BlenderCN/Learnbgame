@@ -2,13 +2,13 @@
 
 :four: :five: who?-----Fofight :male_sign:————————Lmy :female_sign:
 
-:anchor: where?----Learnbgame，PByhack,
+:anchor: where?----Learnbgame，PByhack,poqbdb,
 
 :four: :five: what?-----forever fight
 
 :clock530: when?----forever
 
-:four: :five: why?-----Fofight is forever fight,Learnbgame is learn by game
+:four: :five: why?-----Fofight is forever fight！Learnbgame is learn by game！
 
 :repeat_one: how?-----forever fight
 
