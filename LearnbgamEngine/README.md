@@ -26,6 +26,10 @@
 
 *	[波函数塌陷算法](https://github.com/mxgmn/WaveFunctionCollapse)----[论文](https://adamsmith.as/papers/wfc_is_constraint_solving_in_the_wild.pdf)
 
+*	Smiles(Simplified Molecular Input Line Entry System)算法————————
+
+*	化学方程式配平
+
 
 *
 
