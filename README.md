@@ -18,9 +18,15 @@ Learnbgame的目标是一个创建一个关于科学知识学习的 :video_game:
 
 Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代会修正不同的施行方案和蓝图，现阶段Learnbgame为依托主流开源虚幻引擎Unreal的3D游戏项目，力求
 
-*   模型尽量使用节点式非破坏性程序化模型----现阶段采用的hda进行创建
 
-*   逻辑采用节点式逻辑----现阶段采用Unreal的蓝图和 hda进行实现
+*      节点式制作
+*   1.     模型使用节点式非破坏性程序化模型
+    2.      逻辑采用节点式逻辑
+
+*     趣味性
+
+*      学习性
+
 
 ## [LearnruT](https://github.com/BlenderCN/Learnbgame/tree/master/LearnruT)为Learnbgame项目实时更新进行时
 
