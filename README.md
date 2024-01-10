@@ -20,15 +20,15 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
 
 
 ####    节点式制作
-*    1.     模型使用节点式非破坏性程序化模型
+*    模型使用节点式非破坏性程序化模型
 
-*    2.      逻辑采用节点式逻辑
+*    逻辑采用节点式逻辑
 
 ####     趣味性
-*    1.    内容自然过渡
+*  内容自然过渡
 
 ####      学习性
-*    1.    寓教于乐
+*   寓教于乐
 
 
 ## [LearnruT](https://github.com/BlenderCN/Learnbgame/tree/master/LearnruT)为Learnbgame项目实时更新进行时
