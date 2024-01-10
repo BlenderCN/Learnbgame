@@ -219,7 +219,7 @@ python
 
 # :book:Learnbgame游戏引擎LearnbgamEngine
 
-*   [三维模型--专注于节点式非破坏性程序化模型，格式多借鉴于hda(houdini data asset)格式](poqbdb)
+*   [三维模型————节点式非破坏性程序化模型](poqbdb)
 
 *   [脚本语言/逻辑节点: python :black_large_square: C++  :black_large_square: blueprint ](PByHack.md)
 
