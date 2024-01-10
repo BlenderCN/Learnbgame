@@ -63,15 +63,15 @@ Learnbgame目标的实现还有很长的路要走,因此会随着不断的迭代
 
 
 
-* [节点式非破坏性程序化模型](poqbdb.md)----现阶段使用hda
+* [节点式非破坏性程序化模型](poqbdb.md)
 
 * 程序化材质纹理----节点实现
 
 * 后期----节点实现
 
-* 节点式逻辑----现阶段使用unreal蓝图
+* 节点式逻辑
 
-* [blender]() + [houdini]() + [unreal蓝图]() + [Nuke]() + 
+* [blender]() + [unreal蓝图]() 
 
 
 ###  :memo: poqbdb---- poqbdb is power or quest by database
