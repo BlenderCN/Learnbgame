@@ -3,6 +3,8 @@
 
 # [UnreaLearnbgame项目](UnreaLearnbgame)
 
+# [AI]()
+
 [B站成果/进展/视频展示](https://space.bilibili.com/599592220)
 
 #  :book: Learnbgame ----learnbgame is learn by game
