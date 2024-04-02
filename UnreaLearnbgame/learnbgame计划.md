@@ -66,7 +66,7 @@
 ##### E_ItemType————》E_ItemRarity————》E_ArmorType————》S_ItemInfo————》BP_ItemMaster————》DT_Items————》BPC_ItemsContainer————》BPC_PlayerInventory————》W_MainWidget————》SurvivalGame_PC————》SurvivalGame_GM————》W_Inventory————》W_InventorySlot————》W_ItemContainerGrid————》E_ContainerType————》BPI_SurvivalCharacter————》BPI_SurvivalGamePC————》W_DraggedItem————》ItemDrag————》W_Hotbar————》BPC_PlayerHotbar————》BP_EquipableMaster————》E_EquipableState————》S_EquipableInfo————》BP_FirstPersonEquipable————》BP_ThirdPersonEquipable————》BPI_EquipableItem————》BP_FP_Hatchet————》BP_TP_Hatchet————》BP_FP_Stone_Hatchet————》BP_TP_StoneHatchet————》HatchetBS————》HatchetBSTP————》BP_HarvestingMaster————》BP_GroundItemMaster————》BP_LargeItemMaster————》BPI_LargeItem————》BP_Tree————》S_ResourceStructure————》S_LargeItem————》BP_DestructableHarvestable————》W_ItemAdded————》BP_DestructableTree————》BP_PalmDestMaster————》E_ToolTier————》E_HarvestingToolType————》BP_Rock————》BP_BeachRock01————》BP_DestructionForce————》BP_BeachRockDest01————》BP_TropicalBush01————》DT_GroundResources————》W_CraftingSlot————》W_CraftingContrainerGrid————》E_CraftingType————》DT_PlayerItemRecipes————》W_CraftingWindow————》W_CraftingIngredient————》W_CraftingProgressBar————》W_PlayerStatusWindow————》S_PlayerStatus————》E_StatEnum————》W_StatNotificationWidget————》S_Consumable————》S_ConsumableInfo————》W_PlayerStat————》W_PlayerInfoWindow————》S_ExperienceStruct————》DT_ExperienceTable————》W_ExperienceText————》W_LevelNotification————》BP_ArmorMaster————》BPI_ArmorItem————》BP_ArmorPants————》BP_ArmorHelmet————》BP_ArmorChest————》BP_ArmorBoots
 
 
-https://www.bilibili.com/video/BV1ou4y1C71P?t=1.4&p=107
+https://www.bilibili.com/video/BV1ou4y1C71P?t=1.2&p=114
 
 
 
