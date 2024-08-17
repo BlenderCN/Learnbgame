@@ -1,5 +1,5 @@
 # [poqbdb](poqbdb) is process or query by database
-虚拟物质世界基础
+虚拟物质世界基础，虚拟物质数据库
 
 
 poqbdb 是节点式非破坏性程序化模型库，以自然科学分类框架进行分类，现行分类树见[{}](https://github.com/FofightFong/Learnrut)
