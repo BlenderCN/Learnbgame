@@ -5,7 +5,9 @@
 -       懒（避免无意义重复性工作）
 -		开源分布式协同----区块链
 
-系统： [kail linux](https://www.kali.org/)
+开发系统： [kail linux](https://www.kali.org/)
+
+运行系统————跨平台
 
 编程语言 [Python](https://www.python.org/)----[汇编]()----[C/C++]()-----[HTML]()----[css]()----[javascript]()----[节点可视化]()
 
