@@ -4,7 +4,7 @@ Learnbgame游戏引擎————学，精，创
 
 脚本语言:计划基于python，C/C++
 
-依托blender平台，houdini,unreal
+暂依托平台unreal
 
 *	注释系统
 
