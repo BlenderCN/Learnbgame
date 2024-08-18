@@ -1,14 +1,14 @@
 # [LearnW5H](LearnW5H)
 
-:four: :five: who?-----Fofight :male_sign:————————Lmy :female_sign:
+:four: :five: who?-----Fofight :male_sign:————————Lmyerlf :female_sign:
 
 :anchor: where?----Learnbgame，PByhack,poqbdb,
 
-:four: :five: what?-----forever fight
+:four: :five: what?-----Fofight is forever fight！Learnbgame is learn by game！Lmyerlf is Learnbgamer myself!
 
-:clock530: when?----forever
+:clock530: when?----forever————>1314
 
-:four: :five: why?-----Fofight is forever fight！Learnbgame is learn by game！
+:four: :five: why?-----
 
 :repeat_one: how?-----forever fight
 
