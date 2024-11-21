@@ -225,11 +225,11 @@ python
 
 *   [脚本语言/逻辑节点: python :black_large_square: C++  :black_large_square: blueprint ](PByHack.md)
 
-*   [注释系统:memo:]()
+*   [x注释系统x]()
 
 *   [物质合成系统]()
 
-*   [特效系统:dizzy:](https://github.com/BlenderCN/Learnbgame/tree/master/LByEFX)
+*   [:dizzy:特效系统](https://github.com/BlenderCN/Learnbgame/tree/master/LByEFX)
 
 *   [库存系统](UnreaLearnbgame/库存系统.md)
 
