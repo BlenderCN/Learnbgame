@@ -1,8 +1,10 @@
-LearnioC is learn coin
+# LearnioC is learn coin
+
+LearnioC设想为结合Learnbgame游戏事物并基于区块链理论的客观的加密数字货币/非同质化代币
 
 Learnbgame世界的硬通货
 
-LearnioC计划为基于区块链的客观的加密数字货币/非同质化代币
+
 
 基于LearnioC的交易
 
