@@ -227,7 +227,7 @@ python
 
 *   [:dizzy: 注释系统]()
 
-*   [物质合成系统]()
+*   [物质合成系统](https://github.com/BlenderCN/Learnbgame/blob/master/UnreaLearnbgame/%E7%89%A9%E5%93%81%E5%90%88%E6%88%90%E7%B3%BB%E7%BB%9F.md)
 
 *   [:dizzy:特效系统](https://github.com/BlenderCN/Learnbgame/tree/master/LByEFX)
 
