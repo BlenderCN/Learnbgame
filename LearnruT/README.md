@@ -38,5 +38,9 @@ ImmunemaG
 
 [我的世界化学方程式](https://www.curseforge.com/minecraft/modpacks/antimatter-chemistry)[-](https://www.bilibili.com/video/BV1Ro4y1S7Fa)
 
+[游戏中的化学 (一)：Boom！爆炸物篇](https://www.gcores.com/articles/19048)
+
+[游戏中的化学 (三)：DOOM！毒物篇](https://www.gcores.com/articles/19349)
+
 
 
