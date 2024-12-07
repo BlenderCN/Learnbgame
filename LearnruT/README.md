@@ -36,7 +36,7 @@ ImmunemaG
 
 [【寓教于乐】国外化学教育游戏设计研究](https://www.sohu.com/a/423127893_281937)
 
-[]()
+[我的世界化学方程式](https://www.curseforge.com/minecraft/modpacks/antimatter-chemistry)
 
 
 
