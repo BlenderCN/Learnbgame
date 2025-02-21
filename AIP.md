@@ -5,5 +5,5 @@
 *    AI视频IP————解析人体窍穴
 *    AI视频IP————poqbdb
 *    AI视频IP————元素周期表
-*    AI视频IP————AI接管NPC
+*    AI游戏IP————AI接管NPC
 
