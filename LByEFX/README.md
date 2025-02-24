@@ -59,3 +59,24 @@ sound--light--heat--electricity--dynamic--potential--field
 *         线特效（波）
 
 *         体积特效
+
+
+#        特效
+
+*  冰系
+
+*  力系（打击系，近战战斗系）
+
+*  雷系
+
+*  炎系
+
+*  御物
+
+*  毒系
+
+*  水系
+
+*  星空宇宙唯美系
+
+*  风系
