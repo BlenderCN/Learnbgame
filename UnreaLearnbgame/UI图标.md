@@ -14,7 +14,7 @@ tooltips
 科幻风
 
 
-图标计划使用hlsl脚本生成
+图标，材质计划使用hlsl脚本生成
 
 
 
@@ -44,4 +44,4 @@ tooltips
 
 
 
-font，自带字体DroidSansFallback
+
