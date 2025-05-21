@@ -4,6 +4,8 @@ LearnruT 是Learnabgame项目的更新进行时
 
 ## 节点式非破坏性程序化模型库poqbdb
 
+## 非贴图算法图标库 AlconoT
+
 
 
 
