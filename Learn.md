@@ -10,5 +10,13 @@
 Gas(Gameplay Ability System)
 
 
+# 开源软件合集
+
+
+[Blender](https://www.blender.org/)
+
+[krita](https://krita.org/)
+
+
 
 
