@@ -54,6 +54,7 @@ ATP/活性能量/魔法储量/蓝值————能够直接使用的能量，�
   <img width="960" height="540" src="https://github.com/BlenderCN/Learnbgame/blob/master/mDrivEngine/PeriodicTable.png" >
 </a>
 *  分子/物质表示方式————使用 SMILES 表示法的简化图标、结构式表示。
+
 * 化学反应————————化学方程式
 ![]()
 
