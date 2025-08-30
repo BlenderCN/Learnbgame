@@ -1,6 +1,7 @@
 # LByEFX Learnbgame by energy FX
 
-光与影，视效。
+光与影，视效。l.a.s
+
 特效通常是能量的表现形式
 
 ###  :memo: 能量驱动——（（主要以特效形式及相应反应逻辑体现LByEFX））
