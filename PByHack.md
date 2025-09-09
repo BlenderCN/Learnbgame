@@ -1,5 +1,7 @@
 #	PByHack is Power By Hack ————懒是一种美德
 
+#  ————寻找这个世界bug
+
 
 [kali linux](https://www.kali.org/) + 
 [git](https://github.com/)+
