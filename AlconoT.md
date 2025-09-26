@@ -1,4 +1,8 @@
+# 使用AI————deepseek/ChatGPT
+
 # AlconoT 非贴图算法图标
+
+
 ![](/mDrivEngine/AlconoT/AlconoT1.png)
 ![](/mDrivEngine/AlconoT/AlconoT2.png)
 ![](/mDrivEngine/AlconoT/AlconoT3.png)
