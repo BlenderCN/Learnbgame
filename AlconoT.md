@@ -1,5 +1,7 @@
 # 使用AI————deepseek/ChatGPT
 
+# smiles算法实现的化学分子图标
+
 # AlconoT 非贴图算法图标
 
 
