@@ -352,10 +352,10 @@ AlconoT
 
 </br>
 <a href="Spvt.md" >
-AlconoT
+Spvt
 <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoleft.png" align="left">
 </a>
-<a href="Spvt">
+<a href="LByEFX.md">
   <img src="https://github.com/BlenderCN/blenderTutorial/blob/master/mDrivEngine/blenderpng/logoright.png" align="right">
 <p style="text-align:center;" align="right">LByEFX</p>
 </a>
