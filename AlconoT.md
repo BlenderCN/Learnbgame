@@ -1,3 +1,12 @@
+https://iquilezles.org/articles/distfunctions2d/
+
+https://www.bilibili.com/video/BV12u4y1W7aG
+
+https://www.shadertoy.com/
+
+http://www.render-bucket.com/
+
+
 # 使用AI————deepseek/ChatGPT
 
 # smiles算法实现的化学分子图标
