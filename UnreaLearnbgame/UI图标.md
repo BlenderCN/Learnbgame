@@ -1,4 +1,4 @@
-[视频演示[]()](https://www.bilibili.com/video/BV1ST3UzwE7V)
+[视频演示](https://www.bilibili.com/video/BV1ST3UzwE7V)
 
 WB_MainTopGUI————》Graph——》"GetText_8" "MainMenuNames"
 
