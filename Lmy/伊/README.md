@@ -4,4 +4,4 @@
 
 #### 始于脸红，终于眼红！
 
-#### 所谓[伊](https://github.com/BlenderCN/Learnbgame/blob/master/UnreaLearnbgame/Lmy.md)人，在水一方！
+#### 所谓[伊](https://github.com/BlenderCN/Learnbgame/blob/master/All_In_One/LearnbdnelB/split_mirror_static_beauty.md)人，在水一方！
