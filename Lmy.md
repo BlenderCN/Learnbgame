@@ -1,4 +1,4 @@
-# :female_sign: Lmy is Learnbgame myself	♀️
+# :female_sign: [Lmy is Learnbgame myself](https://github.com/BlenderCN/Learnbgame/tree/master/Lmy)	♀️
 
 美好的事物，梦想的影子
 
