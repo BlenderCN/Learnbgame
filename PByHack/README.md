@@ -16,6 +16,8 @@
 
 *   数据与算法
 
+*   [算法图标](https://github.com/BlenderCN/Learnbgame/blob/master/AlconoT.md)
+
 
 
 
