@@ -20,3 +20,12 @@
 [ACE-Step-1.5](https://github.com/ace-step/ACE-Step-1.5/blob/main/docs/zh/Tutorial.md)
 
 [ComfyUI](https://github.com/Comfy-Org/ComfyUI)
+
+
+
+# 一些想法与思考
+破除黑盒
+
+AI对于非破坏性流程的促进作用——预测函数与回归
+
+普适性公式的推导
