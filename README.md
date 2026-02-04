@@ -5,6 +5,8 @@
 
 # [可玩的demo](https://drive.google.com/drive/folders/1si439h7VgASJHuR1lvfGhs2EVkCAL-9e)
 
+# [当前任务重点倾向于游戏特效模块LByEFX的丰富](https://github.com/BlenderCN/Learnbgame/tree/master/LByEFX)
+
 
 
 [B站成果/进展/视频展示](https://space.bilibili.com/599592220)
