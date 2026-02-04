@@ -14,3 +14,5 @@
 
 
 [Toonflow-app](https://github.com/HBAI-Ltd/Toonflow-app)
+
+[stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
