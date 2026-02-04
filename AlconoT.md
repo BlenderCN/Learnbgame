@@ -1,3 +1,6 @@
+关于趋向于使用程序化图标的原因：传统的贴图流程中，贴图的产生更偏向于黑盒，有点不太符合非破坏性流程的宗旨，纵使会耗费一定的算力，但是损失fps在所难免，
+
+
 https://iquilezles.org/articles/distfunctions2d/
 
 https://www.bilibili.com/video/BV12u4y1W7aG
