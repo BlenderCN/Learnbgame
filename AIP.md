@@ -18,3 +18,5 @@
 [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 
 [ACE-Step-1.5](https://github.com/ace-step/ACE-Step-1.5/blob/main/docs/zh/Tutorial.md)
+
+[ComfyUI](https://github.com/Comfy-Org/ComfyUI)
