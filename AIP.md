@@ -35,6 +35,8 @@
 
 [InfiniteTalk](https://github.com/MeiGen-AI/InfiniteTalk)————数字人
 
+[Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM)
+
 # 一些想法与思考
 破除黑盒
 
