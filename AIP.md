@@ -33,7 +33,7 @@
 
 [deepseek](https://github.com/deepseek-ai/)————文字
 
-[InfiniteTalk](https://github.com/MeiGen-AI/InfiniteTalk)
+[InfiniteTalk](https://github.com/MeiGen-AI/InfiniteTalk)————数字人
 
 # 一些想法与思考
 破除黑盒
