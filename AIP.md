@@ -21,7 +21,7 @@
 
 [ComfyUI](https://github.com/Comfy-Org/ComfyUI)
 
-[Z-Image](https://github.com/Tongyi-MAI/Z-Image)
+[造相Z-Image](https://github.com/Tongyi-MAI/Z-Image)
 
 # 模型
 
