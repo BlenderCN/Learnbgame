@@ -25,6 +25,8 @@
 
 [千问Qwen](https://github.com/QwenLM)
 
+[deepseek](https://github.com/deepseek-ai/)
+
 # 一些想法与思考
 破除黑盒
 
