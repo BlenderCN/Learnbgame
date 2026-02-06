@@ -33,6 +33,8 @@
 
 [deepseek](https://github.com/deepseek-ai/)————文字
 
+[InfiniteTalk](https://github.com/MeiGen-AI/InfiniteTalk)
+
 # 一些想法与思考
 破除黑盒
 
