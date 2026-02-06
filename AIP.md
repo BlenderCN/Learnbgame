@@ -10,26 +10,28 @@
 
 
 
-# 工具——工欲善其事必先利其器
+# 工具/模型——工欲善其事必先利其器
 
 
 [Toonflow-app](https://github.com/HBAI-Ltd/Toonflow-app)
 
-[stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
+[stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)————图像
 
 [ACE-Step-1.5](https://github.com/ace-step/ACE-Step-1.5/blob/main/docs/zh/Tutorial.md)
 
-[ComfyUI](https://github.com/Comfy-Org/ComfyUI)
+[ComfyUI](https://github.com/Comfy-Org/ComfyUI)————图像
 
-[造相Z-Image](https://github.com/Tongyi-MAI/Z-Image)
+[造相Z-Image](https://github.com/Tongyi-MAI/Z-Image)——图像
 
-[flux](https://github.com/black-forest-labs/flux)
+[flux](https://github.com/black-forest-labs/flux)————图像
 
-# 模型
+[Wan](https://github.com/Wan-Video)————视频
 
-[千问Qwen](https://github.com/QwenLM)
 
-[deepseek](https://github.com/deepseek-ai/)
+
+[千问Qwen](https://github.com/QwenLM)————文字
+
+[deepseek](https://github.com/deepseek-ai/)————文字
 
 # 一些想法与思考
 破除黑盒
