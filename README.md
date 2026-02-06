@@ -13,7 +13,7 @@
 
 #  :book: Learnbgame ----learnbgame is learn by game，让知识活起来。
 
-Learnbgame的目标是以非破坏流程，创建一个围绕化学生物等科学知识学习的 :video_game:[3D游戏世界平台](https://www.learnbgame.com/) :video_game:,将科学研究得到的科学知识进行三维可视化,构建一个科学知识元宇宙，力求创建一种所见即所得的学习方式,你可以理解为现实世界的虚拟仿真映射.这个项目旨在不断迭代构建可行性方案蓝图。
+Learnbgame的目标是以非破坏性流程，创建一个围绕化学生物等科学知识学习的 :video_game:[3D游戏世界平台](https://www.learnbgame.com/) :video_game:,将科学研究得到的科学知识进行三维可视化,构建一个科学知识元宇宙，力求创建一种所见即所得的学习方式,你可以理解为现实世界的虚拟仿真映射.这个项目旨在不断迭代构建可行性方案蓝图。
 
 关于[Learnbgame](https://www.bilibili.com/video/BV1kf4y1q7Mp)
 
