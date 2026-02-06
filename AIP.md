@@ -23,6 +23,8 @@
 
 [造相Z-Image](https://github.com/Tongyi-MAI/Z-Image)
 
+[flux](https://github.com/black-forest-labs/flux)
+
 # 模型
 
 [千问Qwen](https://github.com/QwenLM)
