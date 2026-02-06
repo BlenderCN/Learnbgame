@@ -21,7 +21,9 @@
 
 [ComfyUI](https://github.com/Comfy-Org/ComfyUI)
 
+# 模型
 
+[千问Qwen](https://github.com/QwenLM)
 
 # 一些想法与思考
 破除黑盒
