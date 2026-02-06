@@ -37,6 +37,8 @@
 
 [Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM)
 
+[n8n](https://github.com/n8n-io/n8n)————工作流
+
 # 一些想法与思考
 破除黑盒
 
