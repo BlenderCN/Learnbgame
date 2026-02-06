@@ -21,6 +21,8 @@
 
 [ComfyUI](https://github.com/Comfy-Org/ComfyUI)
 
+[Z-Image](https://github.com/Tongyi-MAI/Z-Image)
+
 # 模型
 
 [千问Qwen](https://github.com/QwenLM)
