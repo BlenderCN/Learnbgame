@@ -17,7 +17,7 @@
 
 [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)————图像
 
-[ACE-Step-1.5](https://github.com/ace-step/ACE-Step-1.5/blob/main/docs/zh/Tutorial.md)
+[ACE-Step-1.5](https://github.com/ace-step/ACE-Step-1.5/blob/main/docs/zh/Tutorial.md)————音频
 
 [ComfyUI](https://github.com/Comfy-Org/ComfyUI)————图像
 
@@ -27,7 +27,7 @@
 
 [Wan](https://github.com/Wan-Video)————视频
 
-
+[IndexTTS2](https://github.com/index-tts/index-tts)————音频
 
 [千问Qwen](https://github.com/QwenLM)————文字
 
