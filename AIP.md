@@ -45,6 +45,8 @@
 
 [clawra](https://github.com/SumeLabs/clawra)————AI女友
 
+[upscayl](https://github.com/upscayl/upscayl)————图像高清修复
+
 # 一些想法与思考
 破除黑盒
 
