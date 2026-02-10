@@ -49,6 +49,8 @@
 
 [video-subtitle-remover](https://github.com/YaoFANGUK/video-subtitle-remover)————去水印
 
+[SoraWatermarkCleaner](https://github.com/linkedlist771/SoraWatermarkCleaner)————去水印
+
 # 一些想法与思考
 破除黑盒
 
