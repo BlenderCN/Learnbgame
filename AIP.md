@@ -41,6 +41,8 @@
 
 [n8n](https://github.com/n8n-io/n8n)————工作流
 
+[pyvideotrans](https://github.com/jianchang512/pyvideotrans)————视频翻译
+
 # 一些想法与思考
 破除黑盒
 
