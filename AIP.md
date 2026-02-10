@@ -47,6 +47,8 @@
 
 [upscayl](https://github.com/upscayl/upscayl)————图像高清修复
 
+[video-subtitle-remover](https://github.com/YaoFANGUK/video-subtitle-remover)————去水印
+
 # 一些想法与思考
 破除黑盒
 
