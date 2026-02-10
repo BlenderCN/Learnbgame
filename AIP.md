@@ -43,6 +43,8 @@
 
 [pyvideotrans](https://github.com/jianchang512/pyvideotrans)————视频翻译
 
+[clawra](https://github.com/SumeLabs/clawra)————AI女友
+
 # 一些想法与思考
 破除黑盒
 
