@@ -55,6 +55,8 @@
 
 [VideOCR](https://github.com/timminator/VideOCR)————硬编码字幕提取
 
+
+
 # 一些想法与思考
 破除黑盒
 
