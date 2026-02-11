@@ -51,6 +51,8 @@
 
 [SoraWatermarkCleaner](https://github.com/linkedlist771/SoraWatermarkCleaner)————去水印
 
+[video-subtitle-extractor](https://github.com/YaoFANGUK/video-subtitle-extractor)————硬字幕提取
+
 # 一些想法与思考
 破除黑盒
 
