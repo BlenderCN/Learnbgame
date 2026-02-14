@@ -1,3 +1,5 @@
+# AI资源
+[AI网盘资源合集-AIGC特异点](https://zcn0otkmv1cq.feishu.cn/wiki/AgItw3W6pihFA2kzFpscyECmnzb)
 #  AI视频IP（也称水视频系列）
 *    AI视频IP————山河系列
 *    AI视频IP————志怪系列（山海经）
