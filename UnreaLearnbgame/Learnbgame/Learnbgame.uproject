@@ -7,22 +7,9 @@
 		{
 			"Name": "PCG",
 			"Enabled": true
-		},
-		{
-			"Name": "ModelingToolsEditorMode",
-			"Enabled": true
-		},
-		{
-			"Name": "CascadeToNiagaraConverter",
-			"Enabled": true
-		},
-		{
-			"Name": "GameplayAbilities",
-			"Enabled": true
-		},
-		{
-			"Name": "AIAssistant",
-			"Enabled": true
 		}
+	],
+	"TargetPlatforms": [
+		"Windows"
 	]
 }
